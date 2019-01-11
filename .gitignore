@@ -1,0 +1,12 @@
+.DS_Store
+
+dist
+lib
+node_modules
+
+.env
+.env*
+.__msync.js
+
+npm-debug.log
+yarn-error.log
