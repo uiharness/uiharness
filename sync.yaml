@@ -1,8 +1,0 @@
-modules:
-  - ./libs/*/package.json
-  - ./example/package.json
-  #
-  #
-  #
-  #
-  - ../@tdb/code/libs/*/package.json

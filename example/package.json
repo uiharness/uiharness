@@ -5,22 +5,24 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "start": "node .",
-    "watch": "nodemon --watch lib --ext js --exec yarn start",
-    "test": "sh ./node_modules/@tdb/test/sh/test.sh",
-    "tdd": "yarn run test --reporter min --watch",
-    "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh",
+    "start": "yarn copy:bin && uiharness start",
+    "dist": "yarn copy:bin && uiharness dist",
+    "serve": "yarn copy:bin && uiharness serve",
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh",
-    "prepare": "yarn run lint && yarn test && yarn run build"
+    "copy:bin": "sh ./sh/copy-bin.sh"
   },
   "dependencies": {
-    "@tdb/test": "^1.2.9",
-    "@tdb/util": "1.9.21"
+    "@tdb/util": "1.9.21",
+    "@uiharness/core": "0.0.9"
   },
-  "devDependencies": {
-    "@tdb/typescript": "3.2.4",
-    "@uiharness/core": "0.0.3"
-  },
+  "devDependencies": {},
   "repository": "https://github.com/uiharness/uiharness",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "private": true
 }

@@ -1,8 +1,10 @@
 .DS_Store
 
 dist
+build
 lib
 node_modules
+
 
 .env
 .env*
