@@ -1,6 +1,9 @@
 #!/bin/bash
 
 rm -rf public
+rm -rf build
+rm -rf lib
+
 rm .rescriptsrc.js
 rm .prettierrc.js
 rm tslint.json
