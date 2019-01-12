@@ -38,9 +38,7 @@ export function ensureConfiguration() {
 }
 
 export function ensurePath(path: string, options: { force?: boolean } = {}) {
-  let { force } = options;
-  force = true;
-  console.log(`\nTODO 🐷   NO force\n`);
+  const { force } = options;
 
   path = path.replace(/\//, '');
   const to = fsPath.resolve(`./${path}`);

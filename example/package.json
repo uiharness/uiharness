@@ -5,16 +5,17 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "start": "msync sl && echo TEMP-MSync && yarn debug:copy-bin && uiharness start",
-    "bundle": "msync sl && echo TEMP-MSync && yarn debug:copy-bin && uiharness bundle",
+    "start": "yarn debug:copy-bin && uiharness start",
+    "bundle": "yarn debug:copy-bin && uiharness bundle",
     "serve": "serve -s build",
     "build": "node ./node_modules/typescript/bin/tsc --importHelpers --project tsconfig.lib.json $@",
     "debug:copy-bin": "sh ./sh/copy-bin.sh",
-    "reset": "sh ./sh/reset.sh"
+    "reset": "sh ./sh/reset.sh",
+    "postinstall": "yarn reset"
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/react": "1.0.2"
+    "@uiharness/react": "1.0.4"
   },
   "repository": "https://github.com/uiharness/uiharness",
   "license": "UNLICENSED",
