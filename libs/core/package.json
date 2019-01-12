@@ -4,7 +4,8 @@
   "description": "Stub placeholder for UIHarness core.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "echo no-op",
+    "test": "echo no-op"
   },
   "repository": "https://github.com/uiharness/uiharness",
   "license": "MIT"

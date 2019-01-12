@@ -1,4 +1,4 @@
-export * from '../common';
+export * from '../../common';
 
 import * as fs from 'fs-extra';
 import * as fsPath from 'path';

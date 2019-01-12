@@ -1,5 +1,5 @@
-import { log, fs, fsPath, shell } from './libs';
-import { exec } from './util';
+import { log, fs, fsPath, shell } from './common/libs';
+import { exec } from './common/util';
 
 /**
  * Starts in dev mode.
@@ -53,7 +53,7 @@ export function ensurePath(path: string, options: { force?: boolean } = {}) {
   path = path.replace(/\//, '');
   const to = fsPath.resolve(`./${path}`);
   if (force || !fs.existsSync(to)) {
-    const from = fsPath.resolve(`./node_modules/@uiharness/react/${path}`);
+    const from = fsPath.resolve(`./node_modules/@uiharness/react/tmpl/${path}`);
     fs.copySync(from, to);
   }
 }

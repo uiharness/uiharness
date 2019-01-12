@@ -3,12 +3,9 @@
   "description": "React/webpack builder for UIHarness.",
   "version": "1.0.0",
   "scripts": {
-    "start": "react-scripts start",
-    "dist": "react-scripts build",
-    "build": "node ./node_modules/typescript/bin/tsc --importHelpers --project tsconfig.lib.json $@",
+    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
-    "prepare": "yarn build && yarn lint",
-    "tmp": "uiharness --hello"
+    "prepare": "yarn build && yarn lint"
   },
   "bin": {
     "uiharness": "./lib/bin/uiharness.js"
