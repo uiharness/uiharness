@@ -1,0 +1,27 @@
+{
+  "name": "@uiharness/core",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "react-scripts start",
+    "dist": "react-scripts build",
+    "build": "node ./node_modules/typescript/bin/tsc --importHelpers --project tsconfig.lib.json",
+    "prepare": "yarn build",
+    "tmp": "uiharness --hello"
+  },
+  "bin": {
+    "uiharness": "./lib/bin/uiharness.js"
+  },
+  "dependencies": {
+    "@rescripts/rescript-env": "0.0.3",
+    "@tdb/typescript": "3.2.4",
+    "@tdb/util": "1.9.21",
+    "react-scripts": "2.1.3"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "license": "MIT"
+}

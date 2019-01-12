@@ -1,0 +1,5 @@
+modules:
+  - ./libs/*/package.json
+  #
+  # - ../../teamdb/code/libs/util/package.json
+  # - ../../teamdb/code/libs/*/package.json
