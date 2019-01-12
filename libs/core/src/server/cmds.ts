@@ -35,12 +35,17 @@ export function serve() {
  */
 
 export function ensureConfiguration() {
-  ensurePath('/public');
-  ensurePath('/.rescriptsrc.js', { force: true });
-  ensurePath('/webpack.config.js', { force: true });
-  ensurePath('/uiharness.yml', { force: true });
+  // Cofig.
+  ensurePath('/.prettierrc');
+  ensurePath('/tslint.json');
+  ensurePath('/tsconfig.json');
+  ensurePath('/tsconfig.lib.json');
 
-  log.yellow('TEMP 😱 ', 'no force !!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n');
+  // Assets and config.
+  ensurePath('/public');
+  ensurePath('/.rescriptsrc.js');
+  ensurePath('/webpack.config.js');
+  ensurePath('/uiharness.yml');
 }
 
 export function ensurePath(path: string, options: { force?: boolean } = {}) {

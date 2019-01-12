@@ -33,6 +33,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/fs-extra": "^5.0.4",
-    "@types/shelljs": "^0.8.1"
+    "@types/shelljs": "^0.8.1",
+    "raw-loader": "^1.0.0"
   }
 }

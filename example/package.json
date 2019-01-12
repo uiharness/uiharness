@@ -10,7 +10,7 @@
     "serve": "yarn debug:copy-bin && uiharness serve",
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh",
     "debug:copy-bin": "sh ./sh/copy-bin.sh",
-    "clean": "sh ./sh/clean.sh"
+    "reset": "sh ./sh/reset.sh"
   },
   "dependencies": {},
   "devDependencies": {

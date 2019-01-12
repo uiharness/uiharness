@@ -1,5 +1,10 @@
 import { React, css } from '../../common';
 
+// import foo from './TEXT.txt';
+const foo = require('./TEXT.txt');
+// console.log('f', f);
+console.log('foo', foo);
+
 export interface IFooProps {}
 
 export class Foo extends React.Component<IFooProps> {

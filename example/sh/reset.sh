@@ -2,6 +2,10 @@
 
 rm -rf public
 rm .rescriptsrc.js
+rm .prettierrc.js
+rm tslint.json
+rm tsconfig.json
+rm tsconfig.lib.json
 rm uiharness.yml
 rm webpack.config.js
 rm src/react-app-env.d.ts

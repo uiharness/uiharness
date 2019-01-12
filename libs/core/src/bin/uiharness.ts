@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import * as server from '../server';
-import { fsPath, log } from '../server/libs';
+const server = require('@uiharness/core/lib/server');
+const { fsPath, log } = require('@uiharness/core/lib/server/libs');
 
 export const NAME = 'UIHaraness CLI';
 const PKG = require(fsPath.join(__dirname, '../../package.json'));
