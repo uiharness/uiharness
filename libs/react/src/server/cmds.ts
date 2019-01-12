@@ -1,18 +1,52 @@
-import { log, fs, fsPath, shell } from './common/libs';
-import { exec } from './common/util';
+import { fs, fsPath, shell, log } from './common/libs';
+import { Package } from './config';
+
+const FILES = [
+  // Code, lint, style setup.
+  '/.prettierrc',
+  '/tslint.json',
+  '/tsconfig.json',
+  '/tsconfig.lib.json',
+
+  // Files.
+  '/public',
+  '/.rescriptsrc.js',
+  '/webpack.config.js',
+  '/uiharness.yml',
+];
 
 /**
  * Ensure the module is initialized.
  */
 export function init() {
-  ensureConfiguration();
+  FILES.forEach(file => ensureFile(file));
+  Package.create().init();
+}
+
+/**
+ * Removes configuration files.
+ */
+export function debugReset() {
+  Package.create().removeScripts();
+  FILES
+    // Delete copied template files.
+    .map(file => toRootPath(file))
+    .forEach(file => fs.removeSync(file));
+
+  // Log results.
+  log.info('');
+  log.info(
+    '👋   The auto-generated files and scripts from UIHarness have been removed.',
+  );
+  log.info(`    Run \`${log.cyan('uiharness init')}\` to recreate them.`);
+  log.info('');
 }
 
 /**
  * Starts in dev mode.
  */
 export function start() {
-  ensureConfiguration();
+  init();
   const cmd = fsPath.resolve('./node_modules/.bin/rescripts start');
   exec(cmd);
 }
@@ -21,7 +55,7 @@ export function start() {
  * Runs the build packager.
  */
 export function bundle() {
-  ensureConfiguration();
+  init();
   const cmd = fsPath.resolve('./node_modules/.bin/rescripts build');
   exec(cmd);
 }
@@ -29,29 +63,22 @@ export function bundle() {
 /**
  * INTERNAL
  */
-
-export function ensureConfiguration() {
-  // Cofig.
-  ensurePath('/.prettierrc');
-  ensurePath('/tslint.json');
-  ensurePath('/tsconfig.json');
-  ensurePath('/tsconfig.lib.json');
-
-  // Assets and config.
-  ensurePath('/public');
-  ensurePath('/.rescriptsrc.js');
-  ensurePath('/webpack.config.js');
-  ensurePath('/uiharness.yml');
+function exec(command: string) {
+  // NB:  Work around for ensure colors are emitted to the console.
+  //      https://github.com/shelljs/shelljs/issues/86#issuecomment-303705113
+  return shell.exec(`${command} --color always`);
 }
 
-export function ensurePath(path: string, options: { force?: boolean } = {}) {
+function ensureFile(path: string, options: { force?: boolean } = {}) {
   const { force } = options;
-
-  path = path.replace(/\//, '');
-  const to = fsPath.resolve(`./${path}`);
-
+  const to = toRootPath(path);
   if (force || !fs.existsSync(to)) {
     const from = fsPath.resolve(`./node_modules/@uiharness/react/tmpl/${path}`);
     fs.copySync(from, to);
   }
+}
+
+function toRootPath(path: string) {
+  path = path.replace(/\//, '');
+  return fsPath.resolve(`./${path}`);
 }

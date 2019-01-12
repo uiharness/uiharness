@@ -20,13 +20,17 @@ process.on('unhandledRejection', err => {
  */
 const args = process.argv.slice(2);
 const scriptIndex = args.findIndex(
-  x => x === 'init' || x === 'start' || x === 'bundle',
+  x => x === 'init' || x === 'start' || x === 'bundle' || x === 'debug:reset',
 );
 const script = scriptIndex === -1 ? args[0] : args[scriptIndex];
 
 switch (script) {
   case 'init':
     server.init();
+    break;
+
+  case 'debug:reset':
+    server.debugReset();
     break;
 
   case 'start':
