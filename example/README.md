@@ -1,2 +1,3 @@
 # example
-Example usage of @uiharess/core
+
+Example usage of `@uiharess/core`.
