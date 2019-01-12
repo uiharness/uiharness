@@ -3,5 +3,5 @@
 # See:
 #   https://uiharness.com
 #
-uiharness:
-  - COMING_SOON
+webpack:
+  entry: /src/uiharness.tsx

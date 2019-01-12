@@ -13,21 +13,10 @@ export function start() {
 /**
  * Runs the build packager.
  */
-export function dist() {
+export function bundle() {
   ensureConfiguration();
   const cmd = fsPath.resolve('./node_modules/.bin/rescripts build');
   exec(cmd);
-}
-
-/**
- * Serve the built app.
- */
-export function serve() {
-  ensureConfiguration();
-  if (!fs.existsSync(fsPath.resolve('./build'))) {
-    dist();
-  }
-  shell.exec('serve -s build');
 }
 
 /**
@@ -49,9 +38,13 @@ export function ensureConfiguration() {
 }
 
 export function ensurePath(path: string, options: { force?: boolean } = {}) {
-  const { force } = options;
+  let { force } = options;
+  force = true;
+  console.log(`\nTODO 🐷   NO force\n`);
+
   path = path.replace(/\//, '');
   const to = fsPath.resolve(`./${path}`);
+
   if (force || !fs.existsSync(to)) {
     const from = fsPath.resolve(`./node_modules/@uiharness/react/tmpl/${path}`);
     fs.copySync(from, to);

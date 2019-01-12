@@ -12,15 +12,14 @@ Add scripts to `package.json`:
 {
   "scripts": {
     "start": "uiharness start",
-    "dist": "uiharness dist",
-    "serve": "uiharness serve"
+    "bundle": "uiharness bundle",
+    "serve": "serve -s build"
   }
 }
 ```
-
 
 ## TODO
 
 - entry points (Config)
 - put copy files into `tmpl` folder
-- 
+-
