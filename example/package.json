@@ -1,0 +1,28 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "Example usage of @uiharess/core",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "start": "yarn debug:copy-bin && uiharness start",
+    "dist": "yarn debug:copy-bin && uiharness dist",
+    "serve": "yarn debug:copy-bin && uiharness serve",
+    "build": "node ./node_modules/typescript/bin/tsc --importHelpers --project tsconfig.lib.json $@",
+    "debug:copy-bin": "sh ./sh/copy-bin.sh",
+    "reset": "sh ./sh/reset.sh"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@uiharness/core": "1.0.0"
+  },
+  "repository": "https://github.com/uiharness/uiharness",
+  "license": "UNLICENSED",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "private": true
+}

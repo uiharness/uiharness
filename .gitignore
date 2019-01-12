@@ -1,8 +1,10 @@
 .DS_Store
 
 dist
+build
 lib
 node_modules
+
 
 .env
 .env*
@@ -10,3 +12,4 @@ node_modules
 
 npm-debug.log
 yarn-error.log
+sync.yaml
