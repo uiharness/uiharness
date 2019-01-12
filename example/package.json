@@ -14,7 +14,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/core": "0.0.12"
+    "@uiharness/core": "1.0.0"
   },
   "repository": "https://github.com/uiharness/uiharness",
   "license": "UNLICENSED",
