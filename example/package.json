@@ -14,11 +14,12 @@
     "prepare": "yarn run lint && yarn test && yarn run build"
   },
   "dependencies": {
+    "@tdb/test": "^1.2.9",
     "@tdb/util": "1.9.21"
   },
   "devDependencies": {
     "@tdb/typescript": "3.2.4",
-    "@uiharness/core": "0.0.2"
+    "@uiharness/core": "0.0.3"
   },
   "repository": "https://github.com/uiharness/uiharness",
   "license": "UNLICENSED"
