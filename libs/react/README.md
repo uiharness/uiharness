@@ -11,6 +11,7 @@ Add scripts to `package.json`:
 ```json
 {
   "scripts": {
+    "postinstall": "uiharness init",
     "start": "uiharness start",
     "bundle": "uiharness bundle",
     "serve": "serve -s build"

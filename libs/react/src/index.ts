@@ -1,3 +1,3 @@
-// Entry.
+// API entry point.
 export * from './types';
-export * from './server/webpack';
+export { webpack } from './server';

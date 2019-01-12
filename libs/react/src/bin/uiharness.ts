@@ -19,10 +19,16 @@ process.on('unhandledRejection', err => {
  * Interpress command-line args.
  */
 const args = process.argv.slice(2);
-const scriptIndex = args.findIndex(x => x === 'start' || x === 'bundle');
+const scriptIndex = args.findIndex(
+  x => x === 'init' || x === 'start' || x === 'bundle',
+);
 const script = scriptIndex === -1 ? args[0] : args[scriptIndex];
 
 switch (script) {
+  case 'init':
+    server.init();
+    break;
+
   case 'start':
     server.start();
     break;

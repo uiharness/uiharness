@@ -1,5 +1,5 @@
-import { IWebpackConfig } from '../types';
-import { fsPath } from './common/libs';
+import { IWebpackConfig } from '../../types';
+import { fsPath } from '../common/libs';
 import { Settings } from './Settings';
 
 /**

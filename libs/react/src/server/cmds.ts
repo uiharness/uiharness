@@ -2,6 +2,13 @@ import { log, fs, fsPath, shell } from './common/libs';
 import { exec } from './common/util';
 
 /**
+ * Ensure the module is initialized.
+ */
+export function init() {
+  ensureConfiguration();
+}
+
+/**
  * Starts in dev mode.
  */
 export function start() {
