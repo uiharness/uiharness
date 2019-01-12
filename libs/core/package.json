@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/core",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "scripts": {
     "start": "react-scripts start",
     "dist": "react-scripts build",

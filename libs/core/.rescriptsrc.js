@@ -1,5 +1,6 @@
 /**
- * https://github.com/harrysolovay/rescripts
+ * See instructions:
+ *  https://github.com/harrysolovay/rescripts
  */
 
 // const logConfig = config => {

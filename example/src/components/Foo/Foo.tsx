@@ -8,8 +8,9 @@ export class Foo extends React.Component<IFooProps> {
       base: css({
         flex: 1,
         backgroundColor: 'rgba(255, 0, 0, 0.1)' /* RED */,
+        padding: 30,
       }),
     };
-    return <div {...styles.base}>Foo</div>;
+    return <div {...styles.base}>Foo Example</div>;
   }
 }

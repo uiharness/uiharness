@@ -5,17 +5,17 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "start": "yarn copy:bin && uiharness start",
-    "dist": "yarn copy:bin && uiharness dist",
-    "serve": "yarn copy:bin && uiharness serve",
+    "start": "yarn debug:copy-bin && uiharness start",
+    "dist": "yarn debug:copy-bin && uiharness dist",
+    "serve": "yarn debug:copy-bin && uiharness serve",
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh",
-    "copy:bin": "sh ./sh/copy-bin.sh"
+    "debug:copy-bin": "sh ./sh/copy-bin.sh",
+    "clean": "sh ./sh/clean.sh"
   },
-  "dependencies": {
-    "@tdb/util": "1.9.21",
+  "dependencies": {},
+  "devDependencies": {
     "@uiharness/core": "0.0.9"
   },
-  "devDependencies": {},
   "repository": "https://github.com/uiharness/uiharness",
   "license": "UNLICENSED",
   "browserslist": [

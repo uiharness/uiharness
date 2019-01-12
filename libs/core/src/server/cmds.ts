@@ -1,4 +1,4 @@
-import { fs, fsPath, shell } from './libs';
+import { log, fs, fsPath, shell } from './libs';
 import { exec } from './util';
 
 /**
@@ -35,22 +35,20 @@ export function serve() {
  */
 
 export function ensureConfiguration() {
-  // Copy `public` folder to root of the consuming project.
-  const publicDir = fsPath.resolve('./public');
-  if (!fs.existsSync(publicDir)) {
-    fs.copySync(
-      fsPath.resolve('./node_modules/@uiharness/core/public'),
-      publicDir,
-    );
-  }
+  ensurePath('/public');
+  ensurePath('/.rescriptsrc.js', { force: true });
+  ensurePath('/webpack.config.js', { force: true });
+  ensurePath('/uiharness.yml', { force: true });
 
-  // Copy rescript config.
-  // https://github.com/harrysolovay/rescripts
-  const rescriptConfig = fsPath.resolve('./.rescriptsrc.js');
-  if (!fs.existsSync(rescriptConfig)) {
-    fs.copySync(
-      fsPath.resolve('./node_modules/@uiharness/core/.rescriptsrc.js'),
-      rescriptConfig,
-    );
+  log.yellow('TEMP 😱 ', 'no force !!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n');
+}
+
+export function ensurePath(path: string, options: { force?: boolean } = {}) {
+  const { force } = options;
+  path = path.replace(/\//, '');
+  const to = fsPath.resolve(`./${path}`);
+  if (force || !fs.existsSync(to)) {
+    const from = fsPath.resolve(`./node_modules/@uiharness/core/${path}`);
+    fs.copySync(from, to);
   }
 }
