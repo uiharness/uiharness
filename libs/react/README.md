@@ -1,9 +1,9 @@
-# UIHarness (Core)
+# UIHarness (React)
 
 ## Setup
 
 ```bash
-yarn add -D @uiharness/core
+yarn add -D @uiharness/react
 ```
 
 Add scripts to `package.json`:
@@ -17,3 +17,10 @@ Add scripts to `package.json`:
   }
 }
 ```
+
+
+## TODO
+
+- entry points (Config)
+- put copy files into `tmpl` folder
+- 

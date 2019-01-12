@@ -53,7 +53,7 @@ export function ensurePath(path: string, options: { force?: boolean } = {}) {
   path = path.replace(/\//, '');
   const to = fsPath.resolve(`./${path}`);
   if (force || !fs.existsSync(to)) {
-    const from = fsPath.resolve(`./node_modules/@uiharness/core/${path}`);
+    const from = fsPath.resolve(`./node_modules/@uiharness/react/${path}`);
     fs.copySync(from, to);
   }
 }

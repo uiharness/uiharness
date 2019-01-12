@@ -1,7 +1,7 @@
 {
   "name": "example",
   "version": "1.0.0",
-  "description": "Example usage of @uiharess/core",
+  "description": "Example usage of @uiharess/react",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
@@ -14,7 +14,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/core": "1.0.0"
+    "@uiharness/react": "1.0.0"
   },
   "repository": "https://github.com/uiharness/uiharness",
   "license": "UNLICENSED",
