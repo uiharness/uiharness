@@ -1,5 +1,8 @@
 modules:
   - ./libs/*/package.json
+  - ./example/package.json
   #
-  # - ../../teamdb/code/libs/util/package.json
-  # - ../../teamdb/code/libs/*/package.json
+  #
+  #
+  #
+  - ../@tdb/code/libs/*/package.json
