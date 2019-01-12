@@ -1,39 +1,12 @@
 {
   "name": "@uiharness/core",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "description": "Stub placeholder for UIHarness core.",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "dist": "react-scripts build",
-    "build": "node ./node_modules/typescript/bin/tsc --importHelpers --project tsconfig.lib.json $@",
-    "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
-    "prepare": "yarn build && yarn lint",
-    "tmp": "uiharness --hello"
+    "build": "echo no-op",
+    "test": "echo no-op"
   },
-  "bin": {
-    "uiharness": "./lib/bin/uiharness.js"
-  },
-  "dependencies": {
-    "@rescripts/cli": "0.0.7",
-    "@rescripts/rescript-env": "0.0.3",
-    "@tdb/log": "1.1.16",
-    "@tdb/test": "1.2.9",
-    "@tdb/typescript": "3.2.4",
-    "@tdb/util": "1.9.21",
-    "fs-extra": "7.0.1",
-    "raw-loader": "1.0.0",
-    "react-scripts": "2.1.3",
-    "serve": "10.1.1",
-    "shelljs": "0.8.3"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "license": "MIT",
-  "devDependencies": {
-    "@types/fs-extra": "5.0.4",
-    "@types/shelljs": "0.8.1"
-  }
+  "repository": "https://github.com/uiharness/uiharness",
+  "license": "MIT"
 }

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const server = require('@uiharness/core/lib/server');
-const { fsPath, log } = require('@uiharness/core/lib/server/libs');
+const server = require('@uiharness/react/lib/server');
+const { fsPath, log } = require('@uiharness/react/lib/server/common/libs');
 
 export const NAME = 'UIHaraness CLI';
 const PKG = require(fsPath.join(__dirname, '../../package.json'));
@@ -20,21 +20,25 @@ process.on('unhandledRejection', err => {
  */
 const args = process.argv.slice(2);
 const scriptIndex = args.findIndex(
-  x => x === 'start' || x === 'dist' || x === 'dist',
+  x => x === 'init' || x === 'start' || x === 'bundle' || x === 'debug:reset',
 );
 const script = scriptIndex === -1 ? args[0] : args[scriptIndex];
 
 switch (script) {
+  case 'init':
+    server.init();
+    break;
+
+  case 'debug:reset':
+    server.debugReset();
+    break;
+
   case 'start':
     server.start();
     break;
 
-  case 'dist':
-    server.dist();
-    break;
-
-  case 'serve':
-    server.serve();
+  case 'bundle':
+    server.bundle();
     break;
 
   default:

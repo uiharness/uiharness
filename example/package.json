@@ -1,20 +1,22 @@
 {
   "name": "example",
   "version": "1.0.0",
-  "description": "Example usage of @uiharess/core",
+  "description": "Example usage of @uiharess/react",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "start": "yarn debug:copy-bin && uiharness start",
-    "dist": "yarn debug:copy-bin && uiharness dist",
-    "serve": "yarn debug:copy-bin && uiharness serve",
+    "postinstall": "uiharness init",
     "build": "node ./node_modules/typescript/bin/tsc --importHelpers --project tsconfig.lib.json $@",
-    "debug:copy-bin": "sh ./sh/copy-bin.sh",
-    "reset": "sh ./sh/reset.sh"
+    "debug:sync-libs": "msync sl && sh ./sh/copy-bin.sh",
+    "reset": "echo DEBUG REST && yarn debug:sync-libs && uiharness debug:reset",
+    "tmp": "yarn debug:reset && sleep 0.5s && yarn postinstall",
+    "start": "uiharness start",
+    "bundle": "uiharness bundle",
+    "serve": "serve -s build"
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/core": "1.0.0"
+    "@uiharness/react": "1.0.7"
   },
   "repository": "https://github.com/uiharness/uiharness",
   "license": "UNLICENSED",
