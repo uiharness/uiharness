@@ -1,9 +1,8 @@
 import { React, css } from '../../common';
 
-// import foo from './TEXT.txt';
-// import txt from 'raw-loader!./file.txt';
+// Sample `raw-loader` import.
+// @ts-ignore
 const txt = require('./file.txt');
-// console.log('f', f);
 console.log('txt', txt);
 
 export interface IFooProps {}
