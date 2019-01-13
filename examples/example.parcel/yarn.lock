@@ -814,10 +814,10 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/parcel@^1.0.8":
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/@uiharness/parcel/-/parcel-1.0.8.tgz#9143452a3fba7aeca2a7c1b6ec60cdd23e6a6512"
-  integrity sha512-rV90kHsUJg6tunK+eI0Lr5IXMiqtrwI1IaxAvtCJW/mEglEPWiYCK8xNxnBAxTqB9yKFPfkFGJZKyNol4D4rgw==
+"@uiharness/parcel@^1.0.16":
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/@uiharness/parcel/-/parcel-1.0.16.tgz#a08c801905cfb9647039ec30e0b79244c2202e49"
+  integrity sha512-3r8rnzC8Zi4D+tZXksRmF8XExGsPXHyrz6eAY4+ZW0nAzjPR7D1Tbgs/HRgR1FmMDQQQmNMJQWid5paAaQfUdw==
   dependencies:
     "@tdb/log" "1.1.17"
     "@tdb/typescript" "3.2.5"

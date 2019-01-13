@@ -60,10 +60,8 @@ export async function debugReset() {
   log.info('');
 }
 
-export function createBundler(entryFiles: string[]) {
-  // const { sourceMaps: sourceMaps, treeshake: scopeHoist, target } = args;
-  console.log('settings.buildArgs', settings.buildArgs);
-  console.log();
+export function createBundler() {
+  const entryFiles = settings.entries.map(e => e.html.absolute);
   return new Bundler(entryFiles, settings.buildArgs);
 }
 
@@ -76,8 +74,7 @@ export async function start(options: {} = {}) {
   logInfo();
 
   // Prepare the bundler.
-  const entryFiles = settings.entries.map(e => e.html.absolute);
-  const bundler = createBundler(entryFiles);
+  const bundler = createBundler();
 
   // Start the server.
   const server = await (bundler as any).serve(settings.port);
@@ -93,8 +90,7 @@ export async function bundle(options: {} = {}) {
   logInfo();
 
   // Prepare the bundler.
-  const entryFiles = settings.entries.map(e => e.html.absolute);
-  const bundler = createBundler(entryFiles);
+  const bundler = createBundler();
 
   // Run the bundler.
   await bundler.bundle();

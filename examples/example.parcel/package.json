@@ -19,7 +19,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/parcel": "^1.0.14"
+    "@uiharness/parcel": "^1.0.16"
   },
   "repository": "https://github.com/uiharness/uiharness",
   "license": "UNLICENSED",
