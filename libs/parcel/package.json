@@ -1,7 +1,7 @@
 {
   "name": "@uiharness/parcel",
   "description": "React/parcel/typescript builder for UIHarness.",
-  "version": "1.0.16",
+  "version": "1.0.18",
   "main": "./lib/index.js",
   "scripts": {
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
@@ -9,7 +9,7 @@
     "prepare": "yarn build && yarn lint"
   },
   "bin": {
-    "uiharness": "./lib/bin/uiharness.js"
+    "uiharness": "./lib/bin.js"
   },
   "dependencies": {
     "@tdb/log": "1.1.17",
@@ -28,5 +28,6 @@
     "@types/js-yaml": "3.11.4",
     "@types/parcel-bundler": "1.10.1"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "repository": "github.com/uiharness/uiharness"
 }
