@@ -1,9 +1,9 @@
 #!/bin/bash
 
-cd ./examples/example.parcel && yarn reset
+cd ./examples/parcel && yarn reset
 cd ../../
 
-cd ./examples/example.webpack && yarn reset
+cd ./examples/webpack && yarn reset
 cd ../../
 
 echo

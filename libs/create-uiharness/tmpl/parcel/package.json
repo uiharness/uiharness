@@ -1,0 +1,17 @@
+{
+  "name": "__NAME__",
+  "version": "0.0.0",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "postinstall": "uiharness init",
+    "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
+    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
+    "prepare": "yarn run lint && yarn run build"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@uiharness/parcel": "__UIHARNESS_VERSION__"
+  },
+  "license": "MIT"
+}

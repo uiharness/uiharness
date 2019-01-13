@@ -2,7 +2,7 @@
 const server = require('@uiharness/parcel/lib/server');
 const valueUtil = require('@tdb/util/lib').value;
 const { fsPath, log } = require('@uiharness/parcel/lib/server/common/libs');
-const PKG = require(fsPath.join(__dirname, '../../package.json'));
+const PKG = require(fsPath.join(__dirname, '../package.json'));
 
 /**
  * Makes the script crash on unhandled rejections instead of silently

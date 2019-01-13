@@ -3,7 +3,7 @@
 # See:
 #   https://uiharness.com
 #
-port: 8080
+port: 3030
 
 entry:
   - title: My Title

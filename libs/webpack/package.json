@@ -25,6 +25,11 @@
     "serve": "10.1.1",
     "shelljs": "0.8.3"
   },
+  "devDependencies": {
+    "@types/fs-extra": "5.0.4",
+    "@types/js-yaml": "3.11.4",
+    "@types/shelljs": "0.8.1"
+  },
   "browserslist": [
     ">0.2%",
     "not dead",
@@ -32,9 +37,5 @@
     "not op_mini all"
   ],
   "license": "MIT",
-  "devDependencies": {
-    "@types/fs-extra": "5.0.4",
-    "@types/js-yaml": "3.11.4",
-    "@types/shelljs": "0.8.1"
-  }
+  "repository": "github.com/uiharness/uiharness"
 }
