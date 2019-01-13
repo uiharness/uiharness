@@ -61,7 +61,7 @@ export class Package {
     const scripts = { ...(this.scripts || {}) };
     Object.keys(SCRIPTS).forEach(key => {
       const value = (SCRIPTS[key] || '').trim();
-      if (value) {
+      if (value && !scripts[key]) {
         scripts[key] = value;
       }
     });
