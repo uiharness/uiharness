@@ -83,7 +83,9 @@ export async function bundle() {
   const bundler = new Bundler(entryFiles, {});
 
   // Run the bundler.
-  const res = await bundler.bundle();
+  await bundler.bundle();
+
+  // TODO - write out stats about bundle sizes.
 
   // Finish up.
   log.info();
