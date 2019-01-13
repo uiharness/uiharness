@@ -1,12 +1,5 @@
 # UIHarness (React)
 
-Provides an [extensible](https://github.com/harrysolovay/rescripts), modern, [ceate-react-app](https://facebook.github.io/create-react-app) configuration for building a component library with a UIHarness.
-
-See:
-
-- https://facebook.github.io/create-react-app (base configuration)
-- https://github.com/harrysolovay/rescripts (extensibility hooks, see `.rescriptsrc.js`)
-
 ## Setup
 
 ```bash

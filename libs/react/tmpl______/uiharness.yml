@@ -1,0 +1,7 @@
+#
+# UIHarness Configuration
+# See:
+#   https://uiharness.com
+#
+webpack:
+  entry: /src/uiharness.tsx

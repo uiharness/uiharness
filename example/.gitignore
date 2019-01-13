@@ -3,12 +3,8 @@
 build/
 public/
 
-.rescriptsrc.js
 .prettierrc.js
 tslint.json
 tsconfig.json
-tsconfig.lib.json
 uiharness.yml
-webpack.config.js
-src/react-app-env.d.ts
 

@@ -1,10 +1,5 @@
 import { React, css } from '../../common';
 
-// Sample `raw-loader` import.
-// @ts-ignore
-const txt = require('./file.txt');
-console.log('txt', txt);
-
 export interface IFooProps {}
 
 export class Foo extends React.Component<IFooProps> {

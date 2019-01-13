@@ -2,17 +2,13 @@ import { fs, fsPath, shell, log } from './common/libs';
 import { Package } from './config';
 
 const FILES = [
-  // Code, lint, style setup.
   '/.prettierrc',
-  '/tslint.json',
   '/tsconfig.json',
-  '/tsconfig.lib.json',
-
-  // Files.
-  '/public',
-  '/.rescriptsrc.js',
-  '/webpack.config.js',
+  '/tslint.json',
   '/uiharness.yml',
+
+  // TEMP
+  // '/html',
 ];
 
 /**

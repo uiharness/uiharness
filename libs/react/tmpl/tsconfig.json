@@ -1,17 +1,8 @@
 {
   "extends": "./node_modules/@tdb/typescript/tsconfig.json",
   "compilerOptions": {
-    "allowJs": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "declaration": false,
-    "noEmit": true,
-    "jsx": "preserve"
-  },
-  "include": ["src"]
+    "rootDir": "src",
+    "outDir": "lib",
+    "jsx": "react"
+  }
 }
