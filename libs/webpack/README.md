@@ -10,7 +10,7 @@ See:
 ## Setup
 
 ```bash
-yarn add -D @uiharness/react
+yarn add -D @uiharness/webpack
 ```
 
 Ensure you have the following command in your `postinstall` script in `package.json`:
