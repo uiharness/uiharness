@@ -1,3 +1,3 @@
 #!/usr/bin/env node
-
-console.log('create-uiharness');
+import * as uiharness from '.';
+uiharness.create();

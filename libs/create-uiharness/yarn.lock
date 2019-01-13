@@ -1536,10 +1536,10 @@ needle@^2.2.1:
     iconv-lite "^0.4.4"
     sax "^1.2.4"
 
-new-file@^1.1.14:
-  version "1.1.14"
-  resolved "https://registry.yarnpkg.com/new-file/-/new-file-1.1.14.tgz#b95bdf13724308f7ff586e74a61e2d400b3391a7"
-  integrity sha512-GPPOI9p+AbODFRZTIDVx5VEN5W9pG1ULcD53bsGF5C7B6WULM8WzvjzU0sZ+w3EHT2Pg5PfpwSVyf+AXx9wDIg==
+new-file@1.1.19:
+  version "1.1.19"
+  resolved "https://registry.yarnpkg.com/new-file/-/new-file-1.1.19.tgz#74454580dd65b2e44e169d4c965c28bb0cc39fd8"
+  integrity sha512-tKonnQiNlh1xxJ9x1bDqfwML0lAlxgdW7To6JHJIp0Pc2FICPlPaY25RvESlHZMEcDMLVtV/gp2eZ14jwHLY4w==
   dependencies:
     command-interface "4.0.6"
 
