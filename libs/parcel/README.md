@@ -33,7 +33,7 @@ This will ensure all default files are copied into the module, and that the stan
 
 Options:
 
-- `--treeshaking` - Enable experimental tree shaking. Default `false`.
+- `--treeshake` - Enable experimental tree shaking. Default `false`.
 - `--sourcemaps` - Enable or disable sourcemaps. Default: `true`.
 - `--target` - Environment to build for (`browser | node | electron`). Default: `browser`.
 
@@ -43,7 +43,7 @@ Starts the UIHarness in development mode with live-updates and HMR (hot-module-r
 
 Options:
 
-- `--treeshaking`
+- `--treeshake`
 - `--sourcemaps`
 - `--target`
 
@@ -53,7 +53,7 @@ Packages a bundle into the `/dist` folder.
 
 Options:
 
-- `--treeshaking`
+- `--treeshake`
 - `--sourcemaps`
 - `--target`
 

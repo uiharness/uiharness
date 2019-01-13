@@ -62,7 +62,7 @@ export async function debugReset() {
 }
 
 export function createBundler(entryFiles: string[], args: IBuildArgs = {}) {
-  const { sourcemaps: sourceMaps, treeshaking: scopeHoist, target } = args;
+  const { sourcemaps: sourceMaps, treeshake: scopeHoist, target } = args;
   return new Bundler(entryFiles, {
     sourceMaps,
     scopeHoist,

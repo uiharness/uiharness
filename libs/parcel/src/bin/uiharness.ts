@@ -58,11 +58,11 @@ const findArg = (key: string, defaultValue: string) => {
 };
 
 const buildArgs = (): IBuildArgs => {
-  const treeshaking = findFlag('treeshaking', false);
+  const treeshake = findFlag('treeshake', false);
   const sourcemaps = findFlag('sourcemaps', true);
   let target = findArg('target', 'browser') as any;
   target = target && TARGETS.includes(target as string) ? target : undefined;
-  return { treeshaking, sourcemaps, target };
+  return { treeshake, sourcemaps, target };
 };
 
 switch (script) {

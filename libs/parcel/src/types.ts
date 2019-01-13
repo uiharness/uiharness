@@ -20,6 +20,6 @@ export type IUIHarnessEntry = {
 
 export type IBuildArgs = {
   sourcemaps?: boolean;
-  treeshaking?: boolean;
+  treeshake?: boolean;
   target?: 'browser' | 'node' | 'electron';
 };
