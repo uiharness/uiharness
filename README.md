@@ -11,3 +11,17 @@ See documentation in [@uiharness/parcel](libs/parcel).
 ```bash
 yarn add -D @uiharness/parcel
 ```
+
+## Using the Bootstrapper
+
+```bash
+yarn create uiharness
+```
+
+Then follow the command-line prompts to generate the new module.  From there:
+
+```bash
+cd <new-module>
+yarn
+yarn start
+```
