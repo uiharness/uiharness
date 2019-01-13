@@ -11,7 +11,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/parcel": "1.0.18"
+    "@uiharness/parcel": "__UIHARNESS_VERSION__"
   },
   "license": "MIT"
 }

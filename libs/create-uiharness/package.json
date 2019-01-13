@@ -17,7 +17,7 @@
     "prepare": "yarn run lint && yarn test && yarn run build"
   },
   "dependencies": {
-    "new-file": "1.1.21"
+    "new-file": "1.1.25"
   },
   "devDependencies": {
     "@tdb/test": "1.2.10",

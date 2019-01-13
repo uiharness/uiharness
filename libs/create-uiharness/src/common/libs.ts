@@ -1,4 +1,1 @@
-import * as fsPath from 'path';
-import * as fs from 'fs-extra';
-
-export { fsPath, fs };
+export { exec, log, fs, fsPath } from 'command-interface';
