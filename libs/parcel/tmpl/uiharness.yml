@@ -3,8 +3,13 @@
 # See:
 #   https://uiharness.com
 #
-
 port: 8080
+
 entry:
   - title: My Title
     path: src/uiharness.tsx
+
+# Build args.
+target: 'browser' # 'browser' | 'node' | 'electron'
+sourcemaps: true
+treeshake: false

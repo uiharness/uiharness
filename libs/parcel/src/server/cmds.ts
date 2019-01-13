@@ -3,7 +3,6 @@ import * as Bundler from 'parcel-bundler';
 import * as filesize from 'filesize';
 import { R, fs, fsPath, log, value as valueUtil } from './common/libs';
 import { Package, Settings } from './config';
-import { IBuildArgs } from '../types';
 
 const ROOT_DIR = fsPath.resolve('.');
 const settings = Settings.create('.');
@@ -61,26 +60,24 @@ export async function debugReset() {
   log.info('');
 }
 
-export function createBundler(entryFiles: string[], args: IBuildArgs = {}) {
-  const { sourcemaps: sourceMaps, treeshake: scopeHoist, target } = args;
-  return new Bundler(entryFiles, {
-    sourceMaps,
-    scopeHoist,
-    target,
-  });
+export function createBundler(entryFiles: string[]) {
+  // const { sourceMaps: sourceMaps, treeshake: scopeHoist, target } = args;
+  console.log('settings.buildArgs', settings.buildArgs);
+  console.log();
+  return new Bundler(entryFiles, settings.buildArgs);
 }
 
 /**
  * Starts in dev mode.
  */
-export async function start(options: IBuildArgs = {}) {
+export async function start(options: {} = {}) {
   // Setup initial conditions.
   init();
   logInfo();
 
   // Prepare the bundler.
   const entryFiles = settings.entries.map(e => e.html.absolute);
-  const bundler = createBundler(entryFiles, options);
+  const bundler = createBundler(entryFiles);
 
   // Start the server.
   const server = await (bundler as any).serve(settings.port);
@@ -90,14 +87,14 @@ export async function start(options: IBuildArgs = {}) {
 /**
  * Runs the build packager.
  */
-export async function bundle(options: IBuildArgs = {}) {
+export async function bundle(options: {} = {}) {
   // Setup initial conditions.
   init();
   logInfo();
 
   // Prepare the bundler.
   const entryFiles = settings.entries.map(e => e.html.absolute);
-  const bundler = createBundler(entryFiles, options);
+  const bundler = createBundler(entryFiles);
 
   // Run the bundler.
   await bundler.bundle();
@@ -162,7 +159,6 @@ export async function stats(options: { moduleInfo?: boolean } = {}) {
 /**
  * INTERNAL
  */
-
 const formatPath = (path: string) => {
   let dir = fsPath.dirname(path);
   dir = dir.substr(ROOT_DIR.length);

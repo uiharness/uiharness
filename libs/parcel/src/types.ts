@@ -1,6 +1,12 @@
 export type IUIHarnessConfig = {
   port?: number;
   entry?: string | string[] | IUIHarnessConfigEntry | IUIHarnessConfigEntry[];
+
+  // Build args.
+  // https://parceljs.org/cli.html
+  sourcemaps?: boolean; // Default: true.
+  target?: 'browser' | 'node' | 'electron';
+  treeshake?: boolean; // Default:true
 };
 
 export type IUIHarnessConfigEntry = {
@@ -16,10 +22,4 @@ export type IUIHarnessEntry = {
     relative: string;
   };
   exists: boolean;
-};
-
-export type IBuildArgs = {
-  sourcemaps?: boolean;
-  treeshake?: boolean;
-  target?: 'browser' | 'node' | 'electron';
 };

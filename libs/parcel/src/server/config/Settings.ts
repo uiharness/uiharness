@@ -1,6 +1,7 @@
 import { IUIHarnessConfig, IUIHarnessEntry } from '../../types';
-import { fs, fsPath, log, jsYaml } from '../common/libs';
+import { fs, fsPath, log, jsYaml, value } from '../common/libs';
 import { Package } from './Package';
+import { ParcelOptions } from 'parcel-bundler';
 
 const UIHARNESS_YAML = 'uiharness.yml';
 
@@ -75,6 +76,14 @@ export class Settings {
       .map(e => ({ ...e, html: asHtmlPath(e.path, this.dir) }))
       .map(e => ({ ...e, exists: fs.existsSync(e.path) }))
       .map(e => ({ ...e, title: e.title || this.pkg.name || 'Unnamed' }));
+  }
+
+  public get buildArgs(): ParcelOptions {
+    const data = this._data;
+    const sourceMaps = value.defaultValue(data.sourcemaps, true);
+    const scopeHoist = value.defaultValue(data.treeshake, false);
+    const target = value.defaultValue(data.target, 'browser');
+    return { sourceMaps, scopeHoist, target };
   }
 }
 

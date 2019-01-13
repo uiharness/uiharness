@@ -4,8 +4,6 @@ const valueUtil = require('@tdb/util/lib').value;
 const { fsPath, log } = require('@uiharness/parcel/lib/server/common/libs');
 const PKG = require(fsPath.join(__dirname, '../../package.json'));
 
-import { IBuildArgs } from '../types';
-
 /**
  * Makes the script crash on unhandled rejections instead of silently
  * ignoring them. In the future, promise rejections that are not handled will
@@ -23,8 +21,6 @@ const COMMANDS = {
   DEBUG_RESET: 'debug:reset',
 };
 
-const TARGETS = ['browser', 'node', 'electron'];
-
 /**
  *
  * Interpress command-line args.
@@ -37,33 +33,41 @@ const scriptIndex = args.findIndex(x =>
 );
 const script = scriptIndex === -1 ? args[0] : args[scriptIndex];
 
-const flags = args
-  .filter(arg => arg.startsWith('-'))
-  .map(arg => arg.replace(/^-*/, ''))
-  .map(arg => {
-    const parts = arg.split('=');
-    const key = parts[0];
-    const value: string | boolean | undefined = valueUtil.toType(parts[1]);
-    return { key, value };
-  });
+// const TARGETS = ['browser', 'node', 'electron'];
+// const flags = args
+//   .filter(arg => arg.startsWith('-'))
+//   .map(arg => arg.replace(/^-*/, ''))
+//   .map(arg => {
+//     const parts = arg.split('=');
+//     const key = parts[0];
+//     const value: string | boolean | undefined = valueUtil.toType(parts[1]);
+//     return { key, value };
+//   });
 
-const findFlag = (key: string, defaultValue: boolean) => {
-  const arg = flags.find(arg => arg.key === key);
-  return arg === undefined ? defaultValue : Boolean(arg.value);
-};
+// const findFlag = (key: string, defaultValue: boolean) => {
+//   const arg = flags.find(arg => arg.key === key);
+//   return arg === undefined ? defaultValue : Boolean(arg.value);
+// };
 
-const findArg = (key: string, defaultValue: string) => {
-  const arg = flags.find(arg => arg.key === key);
-  return arg === undefined ? defaultValue : arg.value;
-};
+// const findArg = (key: string, defaultValue: string) => {
+//   const arg = flags.find(arg => arg.key === key);
+//   return arg === undefined ? defaultValue : arg.value;
+// };
 
-const buildArgs = (): IBuildArgs => {
-  const treeshake = findFlag('treeshake', false);
-  const sourcemaps = findFlag('sourcemaps', true);
-  let target = findArg('target', 'browser') as any;
-  target = target && TARGETS.includes(target as string) ? target : undefined;
-  return { treeshake, sourcemaps, target };
-};
+// const buildArgs = (): IBuildArgs => {
+//   const treeshake = findFlag('treeshake', false);
+
+//   console.log('args', args);
+//   console.log(
+//     'findFlag(\'no-sourcemaps\', false)',
+//     findFlag('no-sourcemaps', false),
+//   );
+
+//   const sourceMaps = !findFlag('no-sourcemaps', false);
+//   let target = findArg('target', 'browser') as any;
+//   target = target && TARGETS.includes(target as string) ? target : undefined;
+//   return { treeshake, sourceMaps, target };
+// };
 
 switch (script) {
   case 'init':
@@ -75,11 +79,11 @@ switch (script) {
     break;
 
   case 'start':
-    server.start(buildArgs());
+    server.start();
     break;
 
   case 'bundle':
-    server.bundle(buildArgs());
+    server.bundle();
     break;
 
   case 'stats':
