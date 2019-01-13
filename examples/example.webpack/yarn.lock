@@ -1136,10 +1136,10 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/webpack@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@uiharness/webpack/-/webpack-1.0.0.tgz#92a5a4b7e01996153ffd33aa48ca65d0f091b5c9"
-  integrity sha512-NVWsz9VXR9mDsG0lpU+uePDbVVa69SsbLrP6Y7xe9p1iSNCGfv2fIdLbNZKUSeztKPNETn5QiTs2IfOrK7eCWA==
+"@uiharness/webpack@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@uiharness/webpack/-/webpack-1.0.2.tgz#713aeb60f3e9c971b1bfdf38b59f077e3de452e1"
+  integrity sha512-7xmyBVSSLAkeKq1JmUGTGqQCY9hxIeDKXgKWJY9WlKXiwDfFXK8obnU5npZXuHuANJfk2JjQ1ve0c5MyO+vXQQ==
   dependencies:
     "@rescripts/cli" "0.0.7"
     "@rescripts/rescript-env" "0.0.3"
