@@ -1,5 +1,6 @@
-import { IUIHarnessConfig } from '../../types';
+import { IUIHarnessConfig, IUIHarnessEntry } from '../../types';
 import { fs, fsPath, log, jsYaml } from '../common/libs';
+import { Package } from './Package';
 
 const UIHARNESS_YAML = 'uiharness.yml';
 
@@ -39,14 +40,18 @@ export class Settings {
   /**
    * Fields.
    */
+  public readonly dir: string;
   public readonly path: string;
   private readonly _data: IUIHarnessConfig;
+  private readonly pkg: Package;
 
   /**
    * Constructor.
    */
   private constructor(path: string) {
     this.path = path;
+    this.dir = fsPath.dirname(path);
+    this.pkg = Package.create();
     this._data = fs.existsSync(path) ? Settings.load(path) : {};
   }
 
@@ -56,36 +61,54 @@ export class Settings {
   public get port() {
     return this._data.port || 1234;
   }
+
+  /**
+   * Retrieves the entry path(s).
+   */
+  public get entries(): IUIHarnessEntry[] {
+    const value =
+      this._data && this._data.entry ? this._data.entry : '/src/uiharness.tsx';
+    const paths = Array.isArray(value) ? value : [value];
+    return paths
+      .map(e => (typeof e === 'object' ? e : { path: e }) as IUIHarnessEntry)
+      .map(e => ({ ...e, path: resolvePath(e.path) }))
+      .map(e => ({ ...e, html: asHtmlPath(e.path, this.dir) }))
+      .map(e => ({ ...e, exists: fs.existsSync(e.path) }))
+      .map(e => ({ ...e, title: e.title || this.pkg.name || 'Unnamed' }));
+  }
 }
 
 /**
- * Webpack configuration settings from
- * the `uiharness.yml` configuration file.
+ * INTERNAL
  */
-// export class WebpackSettings {
-//   private readonly _data: IUIHarnessWebpackConfig | undefined;
+function resolvePath(path?: string) {
+  return fsPath.resolve(`./${cleanPath(path)}`);
+}
 
-//   public constructor(data?: IUIHarnessWebpackConfig) {
-//     this._data = data;
-//   }
+function cleanPath(path?: string) {
+  return path
+    ? path
+        .trim()
+        .replace(/^\./, '')
+        .replace(/^\//, '')
+        .replace(/^\'/, '')
+        .replace(/^\"/, '')
+        .replace(/\'$/, '')
+        .replace(/\"$/, '')
+    : path;
+}
 
-//   /**
-//    * Webpack entry paths.
-//    */
-//   public get entry(): string {
-//     const DEFAULT_ENTRY = '/src/index.tsx';
-//     let value = this._data ? this._data.entry : undefined;
-//     value = value ? value : DEFAULT_ENTRY;
+function asHtmlPath(path: string, root: string) {
+  path = path
+    .trim()
+    .substr(root.length)
+    .replace(/^\//, '')
+    .replace(/^src\//, '');
+  const absolute = fsPath.join('html', fsPath.dirname(path), 'index.html');
 
-//     value = value
-//       .trim()
-//       .replace(/^\./, '')
-//       .replace(/^\//, '')
-//       .replace(/^\'/, '')
-//       .replace(/^\"/, '')
-//       .replace(/\'$/, '')
-//       .replace(/\"$/, '');
+  const depth = path.split('/').length + 1;
+  const up = Array.from({ length: depth }).join('../');
+  const relative = fsPath.join(up, 'src', path);
 
-//     return fsPath.resolve(value);
-//   }
-// }
+  return { absolute: resolvePath(absolute), relative };
+}

@@ -2,6 +2,7 @@
 # Auto-generated files from `@uiharness/react`
 build/
 public/
+html/
 
 .prettierrc.js
 tslint.json

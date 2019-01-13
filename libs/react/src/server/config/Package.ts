@@ -12,7 +12,7 @@ const SCRIPTS = {
   postinstall: 'uiharness init',
   start: 'uiharness start',
   bundle: 'uiharness bundle',
-  serve: 'serve -s build',
+  serve: 'serve -s dist',
 };
 
 /**
@@ -35,10 +35,29 @@ export class Package {
   }
 
   /**
+   * Fields
+   */
+  public get name() {
+    return this.json.name;
+  }
+  public get description() {
+    return this.json.description;
+  }
+  public get version() {
+    return this.json.version;
+  }
+  public get main() {
+    return this.json.main;
+  }
+  public get scripts() {
+    return this.json.scripts || {};
+  }
+
+  /**
    * Initializes the `package.json` file ensuring all required fields exist.
    */
   public init() {
-    const scripts = { ...(this.json.scripts || {}) };
+    const scripts = { ...(this.scripts || {}) };
     Object.keys(SCRIPTS).forEach(key => {
       const value = (SCRIPTS[key] || '').trim();
       if (value) {
@@ -54,7 +73,7 @@ export class Package {
    * NB: Used for debugging purposes only.
    */
   public removeScripts() {
-    const scripts = { ...(this.json.scripts || {}) };
+    const scripts = { ...(this.scripts || {}) };
     Object.keys(SCRIPTS)
       .filter(key => key !== 'postinstall')
       .forEach(key => {

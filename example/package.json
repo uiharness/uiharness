@@ -14,7 +14,7 @@
     "tmp": "yarn reset && sleep 0.5s && yarn postinstall && yarn start",
     "start": "uiharness start",
     "bundle": "uiharness bundle",
-    "serve": "serve -s build"
+    "serve": "serve -s dist"
   },
   "dependencies": {},
   "devDependencies": {
