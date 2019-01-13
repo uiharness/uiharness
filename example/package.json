@@ -11,10 +11,7 @@
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
     "sync-libs": "msync sl && sh ./sh/copy-bin.sh",
     "reset": "yarn sync-libs && uiharness debug:reset",
-    "tmp": "yarn reset && sleep 0.5s && yarn postinstall && yarn start",
-    "start": "uiharness start",
-    "bundle": "uiharness bundle",
-    "serve": "serve -s dist"
+    "tmp": "yarn reset && sleep 0.5s && yarn postinstall && yarn start"
   },
   "dependencies": {},
   "devDependencies": {
