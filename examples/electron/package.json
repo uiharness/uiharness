@@ -1,0 +1,21 @@
+{
+  "name": "electron",
+  "version": "0.0.0",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "postinstall": "uiharness init",
+    "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
+    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
+    "prepare": "yarn run lint && yarn run build",
+    "start": "uiharness start",
+    "bundle": "uiharness bundle",
+    "stats": "uiharness stats",
+    "serve": "serve -s dist"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@uiharness/parcel": "^1.0.20"
+  },
+  "license": "MIT"
+}

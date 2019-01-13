@@ -6,6 +6,6 @@ export class HelloWorld extends React.PureComponent {
       padding: 50,
       backgroundColor: 'rgba(255, 0, 0, 0.1)',
     };
-    return <div style={style}>Hello "__NAME__"!</div>;
+    return <div style={style}>Hello "electron"!</div>;
   }
 }
