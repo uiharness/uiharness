@@ -1,7 +1,7 @@
 {
-  "name": "example",
+  "name": "example.webpack",
   "version": "1.0.0",
-  "description": "Example usage of @uiharess/react",
+  "description": "Example usage of @uiharess/webpack",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
@@ -15,7 +15,7 @@
     "serve": "serve -s build"
   },
   "dependencies": {
-    "@uiharness/webpack": "^1.0.0"
+    "@uiharness/webpack": "^1.0.2"
   },
   "devDependencies": {},
   "repository": "https://github.com/uiharness/uiharness",
