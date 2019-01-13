@@ -1,7 +1,7 @@
 {
   "name": "@uiharness/parcel",
   "description": "React/parcel/typescript builder for UIHarness.",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "main": "./lib/index.js",
   "scripts": {
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",

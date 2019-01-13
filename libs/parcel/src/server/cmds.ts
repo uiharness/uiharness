@@ -72,20 +72,25 @@ export function createBundler(entryFiles: string[], args: IBuildArgs = {}) {
  */
 export async function start(options: IBuildArgs = {}) {
   // Setup initial conditions.
-  init();
-  const settings = Settings.create('.');
-
-  // Retrieve the entry files.
-  const entryFiles = settings.entries.map(e => e.html.absolute);
-
-  log.info();
-  log.info(`Entry:`);
   const root = fsPath.resolve('.');
-  entryFiles.forEach(path => {
+  const settings = Settings.create('.');
+  const entryFiles = settings.entries.map(e => e.html.absolute);
+  const pkg = Package.create();
+  init();
+
+  const formatPath = (path: string) => {
     let dir = fsPath.dirname(path);
     dir = dir.substr(root.length);
     const file = fsPath.basename(path);
-    log.info.gray(` - ${dir}/${log.cyan(file)}`);
+    return `${dir}/${log.cyan(file)}`;
+  };
+
+  log.info();
+  log.info.gray(`package: ${log.magenta(pkg.name)}`);
+  log.info.gray(`version: ${pkg.version}`);
+  log.info.gray(`entry:   ${formatPath(entryFiles[0])}`);
+  entryFiles.slice(1).forEach(path => {
+    log.info.gray(`         ${formatPath(path)}`);
   });
 
   // Prepare the bundler.

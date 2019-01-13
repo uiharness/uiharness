@@ -89,6 +89,6 @@ export class Package {
 
   public save() {
     const json = JSON.stringify(this.json, null, '  ');
-    fs.writeFileSync(this.path, json);
+    fs.writeFileSync(this.path, `${json}\n`);
   }
 }

@@ -10,6 +10,7 @@
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
     "sync-libs": "msync sl && sh ./sh/copy-bin.sh",
     "reset": "yarn sync-libs && uiharness debug:reset",
+    "reset-init": "yarn reset && yarn postinstall",
     "tmp": "yarn sync-libs && yarn start",
     "start": "uiharness start",
     "bundle": "uiharness bundle",
@@ -18,7 +19,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/parcel": "^1.0.6"
+    "@uiharness/parcel": "^1.0.8"
   },
   "repository": "https://github.com/uiharness/uiharness",
   "license": "UNLICENSED",
