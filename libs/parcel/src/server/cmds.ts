@@ -5,6 +5,10 @@ import { fs, fsPath, log } from './common/libs';
 import { Package, Settings } from './config';
 import { IBuildArgs } from '../types';
 
+const ROOT_DIR = fsPath.resolve('.');
+const settings = Settings.create('.');
+const pkg = Package.create();
+
 const FILES = [
   '/.prettierrc',
   '/tsconfig.json',
@@ -18,11 +22,10 @@ const FILES = [
 export async function init(options: { force?: boolean } = {}) {
   const { force = false } = options;
   FILES.forEach(file => ensureFile(file));
-  Package.create().init();
+  pkg.init();
 
   // Insert all the HTML entry points.
   const tmpl = fs.readFileSync(templatePath(`html/index.html`), 'utf-8');
-  const settings = Settings.create('.');
   settings.entries
     .filter(e => force || !fs.pathExistsSync(e.html.absolute))
     .forEach(e => {
@@ -39,7 +42,7 @@ export async function init(options: { force?: boolean } = {}) {
  * Removes configuration files.
  */
 export async function debugReset() {
-  Package.create().removeScripts();
+  pkg.removeScripts();
   FILES
     // Delete copied template files.
     .map(file => toRootPath(file))
@@ -72,32 +75,14 @@ export function createBundler(entryFiles: string[], args: IBuildArgs = {}) {
  */
 export async function start(options: IBuildArgs = {}) {
   // Setup initial conditions.
-  const root = fsPath.resolve('.');
-  const settings = Settings.create('.');
-  const entryFiles = settings.entries.map(e => e.html.absolute);
-  const pkg = Package.create();
   init();
-
-  const formatPath = (path: string) => {
-    let dir = fsPath.dirname(path);
-    dir = dir.substr(root.length);
-    const file = fsPath.basename(path);
-    return `${dir}/${log.cyan(file)}`;
-  };
-
-  log.info();
-  log.info.gray(`package: ${log.magenta(pkg.name)}`);
-  log.info.gray(`version: ${pkg.version}`);
-  log.info.gray(`entry:   ${formatPath(entryFiles[0])}`);
-  entryFiles.slice(1).forEach(path => {
-    log.info.gray(`         ${formatPath(path)}`);
-  });
+  logInfo();
 
   // Prepare the bundler.
+  const entryFiles = settings.entries.map(e => e.html.absolute);
   const bundler = createBundler(entryFiles, options);
 
   // Start the server.
-  log.info();
   const server = await (bundler as any).serve(settings.port);
   return server;
 }
@@ -108,7 +93,7 @@ export async function start(options: IBuildArgs = {}) {
 export async function bundle(options: IBuildArgs = {}) {
   // Setup initial conditions.
   init();
-  const settings = Settings.create('.');
+  logInfo();
 
   // Prepare the bundler.
   const entryFiles = settings.entries.map(e => e.html.absolute);
@@ -172,6 +157,26 @@ export async function stats(options: {} = {}) {
 /**
  * INTERNAL
  */
+
+const formatPath = (path: string) => {
+  let dir = fsPath.dirname(path);
+  dir = dir.substr(ROOT_DIR.length);
+  const file = fsPath.basename(path);
+  return `${dir}/${log.cyan(file)}`;
+};
+
+function logInfo() {
+  const entryFiles = settings.entries.map(e => e.html.absolute);
+  log.info();
+  log.info.gray(`package: ${log.magenta(pkg.name)}`);
+  log.info.gray(`version: ${pkg.version}`);
+  log.info.gray(`entry:   ${formatPath(entryFiles[0])}`);
+  entryFiles.slice(1).forEach(path => {
+    log.info.gray(`         ${formatPath(path)}`);
+  });
+  log.info();
+}
+
 function ensureFile(path: string, options: { force?: boolean } = {}) {
   const { force } = options;
   const to = toRootPath(path);
