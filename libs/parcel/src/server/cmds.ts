@@ -43,7 +43,10 @@ export async function debugReset() {
     // Delete copied template files.
     .map(file => toRootPath(file))
     .forEach(file => fs.removeSync(file));
+
   fs.removeSync(fsPath.resolve('./html'));
+  fs.removeSync(fsPath.resolve('./.cache'));
+  fs.removeSync(fsPath.resolve('./dist'));
 
   // Log results.
   log.info('');

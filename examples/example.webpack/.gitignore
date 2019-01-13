@@ -4,7 +4,7 @@ build/
 public/
 
 .rescriptsrc.js
-.prettierrc.js
+.prettierrc
 tslint.json
 tsconfig.json
 tsconfig.lib.json

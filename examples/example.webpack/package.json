@@ -9,10 +9,7 @@
     "build": "node ./node_modules/typescript/bin/tsc --importHelpers --project tsconfig.lib.json $@",
     "debug:sync-libs": "msync sl && sh ./sh/copy-bin.sh",
     "reset": "yarn debug:sync-libs && uiharness debug:reset",
-    "tmp": "yarn debug:reset && sleep 0.5s && yarn postinstall",
-    "start": "uiharness start",
-    "bundle": "uiharness bundle",
-    "serve": "serve -s build"
+    "tmp": "yarn debug:reset && sleep 0.5s && yarn postinstall"
   },
   "dependencies": {
     "@uiharness/webpack": "^1.0.2"

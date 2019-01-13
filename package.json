@@ -1,0 +1,9 @@
+{
+  "name": "uiharness",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "reset": "sh ./sh/reset.sh"
+  },
+  "private": true
+}
