@@ -3,6 +3,7 @@ import * as Bundler from 'parcel-bundler';
 import * as filesize from 'filesize';
 import { fs, fsPath, log } from './common/libs';
 import { Package, Settings } from './config';
+import { IBuildArgs } from '../types';
 
 const FILES = [
   '/.prettierrc',
@@ -57,17 +58,38 @@ export async function debugReset() {
   log.info('');
 }
 
+export function createBundler(entryFiles: string[], args: IBuildArgs = {}) {
+  const { sourcemaps: sourceMaps, treeshaking: scopeHoist, target } = args;
+  return new Bundler(entryFiles, {
+    sourceMaps,
+    scopeHoist,
+    target,
+  });
+}
+
 /**
  * Starts in dev mode.
  */
-export async function start() {
+export async function start(options: IBuildArgs = {}) {
   // Setup initial conditions.
   init();
   const settings = Settings.create('.');
 
-  // Prepare the bundler.
+  // Retrieve the entry files.
   const entryFiles = settings.entries.map(e => e.html.absolute);
-  const bundler = new Bundler(entryFiles, {});
+
+  log.info();
+  log.info(`Entry:`);
+  const root = fsPath.resolve('.');
+  entryFiles.forEach(path => {
+    let dir = fsPath.dirname(path);
+    dir = dir.substr(root.length);
+    const file = fsPath.basename(path);
+    log.info.gray(` - ${dir}/${log.cyan(file)}`);
+  });
+
+  // Prepare the bundler.
+  const bundler = createBundler(entryFiles, options);
 
   // Start the server.
   log.info();
@@ -78,14 +100,16 @@ export async function start() {
 /**
  * Runs the build packager.
  */
-export async function bundle() {
+export async function bundle(options: IBuildArgs = {}) {
+  console.log('BUNDLE options', options);
+
   // Setup initial conditions.
   init();
   const settings = Settings.create('.');
 
   // Prepare the bundler.
   const entryFiles = settings.entries.map(e => e.html.absolute);
-  const bundler = new Bundler(entryFiles, {});
+  const bundler = createBundler(entryFiles, options);
 
   // Run the bundler.
   await bundler.bundle();

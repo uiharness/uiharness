@@ -1,8 +1,9 @@
 
 # Auto-generated files from `@uiharness/parcel`
-build/
-public/
-html/
+build
+dist
+html
+.cache
 
 .prettierrc
 tslint.json

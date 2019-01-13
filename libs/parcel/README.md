@@ -28,3 +28,40 @@ This will ensure all default files are copied into the module, and that the stan
   }
 }
 ```
+
+## Commands
+
+Options:
+
+- `--treeshaking` - Enable experimental tree shaking. Default `false`.
+- `--sourcemaps` - Enable or disable sourcemaps. Default: `true`.
+- `--target` - Environment to build for (`browser | node | electron`). Default: `browser`.
+
+### `start`
+
+Starts the UIHarness in development mode with live-updates and HMR (hot-module-replacement) in action.
+
+Options:
+
+- `--treeshaking`
+- `--sourcemaps`
+- `--target`
+
+### `bundle`
+
+Packages a bundle into the `/dist` folder.
+
+Options:
+
+- `--treeshaking`
+- `--sourcemaps`
+- `--target`
+
+### `stats`
+
+Reads out details about the `/dist` bundle (eg. file sizes).
+
+### `serve`
+
+Starts an HTTP server to view the bundles `/dist` folder.
+Run `yarn bundle` first.

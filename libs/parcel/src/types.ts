@@ -17,3 +17,9 @@ export type IUIHarnessEntry = {
   };
   exists: boolean;
 };
+
+export type IBuildArgs = {
+  sourcemaps?: boolean;
+  treeshaking?: boolean;
+  target?: 'browser' | 'node' | 'electron';
+};
