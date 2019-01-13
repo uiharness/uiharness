@@ -1,6 +1,6 @@
 {
   "name": "create-uiharness",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "Create a minimal starting module using the UIHarness with a single command.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",

@@ -2,12 +2,23 @@
 
 # create-uiharness
 
-Create a minimal starting module using the UIHarness with a single command.
+A simple UIHarness module bootsrapper.
+
+Create a module using the UIHarness with a single command.
 
 https://uiharness.com
 
 
+## Usage
 
-TODO
-- fn to change latest version
-- docs (yarn create uiharness)
+```bash
+yarn create uiharness
+```
+
+Then follow the command-line prompts to generate the new module.  From there:
+
+```bash
+cd <new-module>
+yarn
+yarn start
+```
