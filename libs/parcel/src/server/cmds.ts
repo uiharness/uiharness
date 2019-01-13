@@ -1,7 +1,7 @@
 import * as Bundler from 'parcel-bundler';
 
 import * as filesize from 'filesize';
-import { fs, fsPath, log } from './common/libs';
+import { R, fs, fsPath, log, value as valueUtil } from './common/libs';
 import { Package, Settings } from './config';
 import { IBuildArgs } from '../types';
 
@@ -103,9 +103,8 @@ export async function bundle(options: IBuildArgs = {}) {
   await bundler.bundle();
 
   // Finish up.
-  log.info();
-  log.info.green(`✨✨  Bundle complete.`);
-  log.info(`Run ${log.cyan('yarn serve')}`);
+  stats({ moduleInfo: false });
+  log.info(`Run ${log.cyan('yarn serve')} to view in browser.`);
   log.info();
   process.exit(0);
 }
@@ -113,7 +112,12 @@ export async function bundle(options: IBuildArgs = {}) {
 /**
  * Prints stats about the bundle.
  */
-export async function stats(options: {} = {}) {
+export async function stats(options: { moduleInfo?: boolean } = {}) {
+  const moduleInfo = valueUtil.defaultValue(options.moduleInfo, true);
+  if (moduleInfo) {
+    logInfo();
+  }
+
   const dir = fsPath.resolve('./dist');
   const getPaths = () => {
     return fs.pathExistsSync(dir)
@@ -129,7 +133,7 @@ export async function stats(options: {} = {}) {
     return;
   }
 
-  const sizes = paths
+  let sizes = paths
     .filter(path => !path.endsWith('.map'))
     .filter(path => !path.endsWith('.html'))
     .map(path => {
@@ -138,9 +142,8 @@ export async function stats(options: {} = {}) {
       const size = filesize(bytes);
       return { path, bytes, size };
     });
-
-  log.info.gray(`Folder: ${dir}`);
-  log.info();
+  sizes = R.sortBy(R.prop('bytes'), sizes);
+  sizes.reverse();
 
   const head = ['File', 'Size'].map(label => log.gray(label));
   const table = log.table({ head });
@@ -150,6 +153,8 @@ export async function stats(options: {} = {}) {
     file = file.endsWith('.css') ? log.cyan(file) : file;
     table.add([file, e.size]);
   });
+
+  log.info.gray(`${dir}`);
   table.log();
   log.info();
 }

@@ -11,7 +11,7 @@
     "sync-libs": "msync sl && sh ./sh/copy-bin.sh",
     "reset": "yarn sync-libs && uiharness debug:reset",
     "reset-init": "yarn reset && yarn postinstall",
-    "tmp": "yarn sync-libs && yarn start",
+    "tmp": "yarn sync-libs && yarn stats",
     "start": "uiharness start",
     "bundle": "uiharness bundle",
     "stats": "uiharness stats",
@@ -19,7 +19,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/parcel": "^1.0.9"
+    "@uiharness/parcel": "^1.0.14"
   },
   "repository": "https://github.com/uiharness/uiharness",
   "license": "UNLICENSED",
