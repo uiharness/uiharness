@@ -101,8 +101,6 @@ export async function start(options: IBuildArgs = {}) {
  * Runs the build packager.
  */
 export async function bundle(options: IBuildArgs = {}) {
-  console.log('BUNDLE options', options);
-
   // Setup initial conditions.
   init();
   const settings = Settings.create('.');
@@ -156,14 +154,12 @@ export async function stats(options: {} = {}) {
 
   const head = ['File', 'Size'].map(label => log.gray(label));
   const table = log.table({ head });
-  sizes
-    // .filter(e => e.path.endsWith('.js'))
-    .forEach(e => {
-      let file = fsPath.basename(e.path);
-      file = file.endsWith('.js') ? log.yellow(file) : file;
-      file = file.endsWith('.css') ? log.cyan(file) : file;
-      table.add([file, e.size]);
-    });
+  sizes.forEach(e => {
+    let file = fsPath.basename(e.path);
+    file = file.endsWith('.js') ? log.yellow(file) : file;
+    file = file.endsWith('.css') ? log.cyan(file) : file;
+    table.add([file, e.size]);
+  });
   table.log();
   log.info();
 }
