@@ -1,5 +1,6 @@
 import * as Bundler from 'parcel-bundler';
 
+import * as filesize from 'filesize';
 import { fs, fsPath, log } from './common/libs';
 import { Package, Settings } from './config';
 
@@ -93,6 +94,52 @@ export async function bundle() {
   log.info(`Run ${log.cyan('yarn serve')}`);
   log.info();
   process.exit(0);
+}
+
+/**
+ * Prints stats about the bundle.
+ */
+export async function stats(options: {} = {}) {
+  const dir = fsPath.resolve('./dist');
+  const getPaths = () => {
+    return fs.pathExistsSync(dir)
+      ? fs.readdirSync(dir).map(path => fsPath.resolve(`./dist/${path}`))
+      : [];
+  };
+
+  const paths = getPaths();
+  if (paths.length === 0) {
+    log.info(`👋   Looks like there is no bundle to analyze.`);
+    log.info(`    Run ${log.cyan('yarn bundle')}`);
+    log.info();
+    return;
+  }
+
+  const sizes = paths
+    .filter(path => !path.endsWith('.map'))
+    .filter(path => !path.endsWith('.html'))
+    .map(path => {
+      const stats = fs.statSync(path);
+      const bytes = stats.size;
+      const size = filesize(bytes);
+      return { path, bytes, size };
+    });
+
+  log.info.gray(`Folder: ${dir}`);
+  log.info();
+
+  const head = ['File', 'Size'].map(label => log.gray(label));
+  const table = log.table({ head });
+  sizes
+    // .filter(e => e.path.endsWith('.js'))
+    .forEach(e => {
+      let file = fsPath.basename(e.path);
+      file = file.endsWith('.js') ? log.yellow(file) : file;
+      file = file.endsWith('.css') ? log.cyan(file) : file;
+      table.add([file, e.size]);
+    });
+  table.log();
+  log.info();
 }
 
 /**

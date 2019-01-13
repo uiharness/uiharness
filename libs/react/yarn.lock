@@ -781,6 +781,11 @@
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.1.7.tgz#1b8e33b61a8c09cbe1f85133071baa0dbf9fa71a"
   integrity sha512-2Y8uPt0/jwjhQ6EiluT0XCri1Dbplr0ZxfFXUz+ye13gaqE8u5gL5ppao1JrUYr9cIip5S6MvQzBS7Kke7U9VA==
 
+"@types/filesize@^3.6.0":
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/@types/filesize/-/filesize-3.6.0.tgz#5f1a25c7b4e3d5ee2bc63133d374d096b7008c8d"
+  integrity sha512-rOWxCKMjt2DBuwddUnl5GOpf/jAkkqteB+XldncpVxVX+HPTmK2c5ACMOVEbp9gaH81IlhTdC3TwvRa5nopasw==
+
 "@types/fs-extra@5.0.4":
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-5.0.4.tgz#b971134d162cc0497d221adde3dbb67502225599"
@@ -2570,6 +2575,11 @@ filesize@^3.6.0:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/filesize/-/filesize-3.6.1.tgz#090bb3ee01b6f801a8a8be99d31710b3422bb317"
   integrity sha512-7KjR1vv6qnicaPMi1iiTcI85CyYwRO/PSFCu6SvqL8jN2Wjt/NIYQTFtFs7fSDCYOstUkEWIQGFUg5YZQfjlcg==
+
+filesize@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/filesize/-/filesize-4.0.0.tgz#edd45b16247c815ac3bc7265c34cf3dab6b41234"
+  integrity sha512-IGrOTisl83FmbpiL5KCpfF7+6CRcmndNaWxwYWcnSqXtoNUhVO+1l8rKK4GVE7A8f4fEDkSocS9X6+eXHkEhGA==
 
 fill-range@^4.0.0:
   version "4.0.0"

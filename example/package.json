@@ -5,20 +5,21 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "p": "parcel serve --help",
     "postinstall": "uiharness init",
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
     "sync-libs": "msync sl && sh ./sh/copy-bin.sh",
     "reset": "yarn sync-libs && uiharness debug:reset",
-    "tmp": "yarn reset && sleep 0.5s && yarn postinstall && yarn start",
+    "tmp__": "yarn reset && sleep 0.5s && yarn postinstall && yarn stats",
+    "tmp": "yarn sync-libs && yarn stats",
     "start": "uiharness start",
     "bundle": "uiharness bundle",
+    "stats": "uiharness stats",
     "serve": "serve -s dist"
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/react": "1.1.3"
+    "@uiharness/react": "1.1.6"
   },
   "repository": "https://github.com/uiharness/uiharness",
   "license": "UNLICENSED",

@@ -12,6 +12,7 @@ const SCRIPTS = {
   postinstall: 'uiharness init',
   start: 'uiharness start',
   bundle: 'uiharness bundle',
+  stats: 'uiharness stats',
   serve: 'serve -s dist',
 };
 

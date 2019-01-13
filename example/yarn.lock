@@ -688,10 +688,10 @@
     "@parcel/utils" "^1.11.0"
     physical-cpu-count "^2.0.0"
 
-"@tdb/log@1.1.16":
-  version "1.1.16"
-  resolved "https://registry.yarnpkg.com/@tdb/log/-/log-1.1.16.tgz#e03a00cc99f255008384140d102bcb43d4c89718"
-  integrity sha512-j4eMuHKOVwC0GK7xAy42zEqI5CakxZnmAUemWFIEbFpxmZVdrsadwT8izrnQgWHWA8yqh2+6N7LPAo5CH9mvew==
+"@tdb/log@1.1.17":
+  version "1.1.17"
+  resolved "https://registry.yarnpkg.com/@tdb/log/-/log-1.1.17.tgz#9eded8dbd6fe2bec3ddc7614b132c45640ecf9e1"
+  integrity sha512-Ea1TISw8Wx88E/r4SON0MJePv4n/0n0uLCFkQl4BMFxFriB/haTpeqkhlmOvFqEXMSOlkgSyVBoGwFlgW0tvXw==
   dependencies:
     "@types/ramda" "0.25.46"
     chalk "2.4.1"
@@ -699,10 +699,10 @@
     ramda "0.26.1"
     rxjs "6.3.3"
 
-"@tdb/typescript@3.2.4":
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/@tdb/typescript/-/typescript-3.2.4.tgz#5d8ba65f994485438f52040ba181a36824cf03e8"
-  integrity sha512-jtX7LMQLnlX62GE+6yUbBwkYmsEBWWR/tlgccVfDoTpHDpstXUYUJerHIGdvyBwAxzEiyJZhK/aiXyp+L+WK+g==
+"@tdb/typescript@3.2.5":
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/@tdb/typescript/-/typescript-3.2.5.tgz#2e294d71b130887d5bb3456f8dda37443131860c"
+  integrity sha512-CcsJAHbLFqmJz0sSa+7JnJRT9NQhsRbvAPagqJwvk2U1hTIKC2XgDcJlEWFcV8oV3OPgTShorQcnc/JRD0BuNQ==
   dependencies:
     "@types/node" "10.12.15"
     prettier "1.15.3"
@@ -713,12 +713,12 @@
     tslint-react "3.6.0"
     typescript "3.2.2"
 
-"@tdb/util@1.9.21":
-  version "1.9.21"
-  resolved "https://registry.yarnpkg.com/@tdb/util/-/util-1.9.21.tgz#1b255dffcdcac72386d7acd72ff5e1ee98e6022c"
-  integrity sha512-QRPMvWCatARoJTH22578ZSIAgpdktVTtUxcs4olxEIkbHugDHU30t4Prd2unmsdVKTMz5GYwFHgK3YlrndTgPg==
+"@tdb/util@1.9.22":
+  version "1.9.22"
+  resolved "https://registry.yarnpkg.com/@tdb/util/-/util-1.9.22.tgz#7fc21f3631d28784df3d16fdb9d3d210bc9a1b69"
+  integrity sha512-JGtnwpEE2G0g739Ari/fTfF2MgcKpch2BkEhxjWChZMFlmeAbhLesene0LKqSB6VDPNsx6c7qnGzwZFFAIsHgQ==
   dependencies:
-    "@tdb/log" "1.1.16"
+    "@tdb/log" "1.1.17"
     "@types/react" "16.7.17"
     "@types/react-dom" "16.0.11"
     "@types/string" "0.0.29"
@@ -814,17 +814,18 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/react@1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@uiharness/react/-/react-1.1.1.tgz#8819e6bac5e030010a23ea4a7a7103986723787b"
-  integrity sha512-6LGuxLJ2tr1LGOmPeT1dV4xLw1UY1rR4m80f6dbKuegTmanQIvnerpiyYMRFRVPVPnYRijuy013h4kqkJpNKkw==
+"@uiharness/react@1.1.5":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@uiharness/react/-/react-1.1.5.tgz#d4b9331a776d09841df3b3c814287c06d7b5c80b"
+  integrity sha512-zou3Fha72PWiZb6FteHm4LdlJt4Hzc1V5etGAdu2Ptev+UVLc06VqKH2dYtVlJiOw6+ibgEhUHJ9tnoglH6+0w==
   dependencies:
-    "@tdb/log" "1.1.16"
-    "@tdb/typescript" "3.2.4"
-    "@tdb/util" "1.9.21"
+    "@tdb/log" "1.1.17"
+    "@tdb/typescript" "3.2.5"
+    "@tdb/util" "1.9.22"
+    filesize "^4.0.0"
     fs-extra "7.0.1"
-    js-yaml "^3.12.1"
-    parcel-bundler "^1.11.0"
+    js-yaml "3.12.1"
+    parcel-bundler "1.11.0"
     serve "10.1.1"
 
 "@zeit/schemas@2.6.0":
@@ -2452,6 +2453,11 @@ filesize@^3.6.0:
   resolved "https://registry.yarnpkg.com/filesize/-/filesize-3.6.1.tgz#090bb3ee01b6f801a8a8be99d31710b3422bb317"
   integrity sha512-7KjR1vv6qnicaPMi1iiTcI85CyYwRO/PSFCu6SvqL8jN2Wjt/NIYQTFtFs7fSDCYOstUkEWIQGFUg5YZQfjlcg==
 
+filesize@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/filesize/-/filesize-4.0.0.tgz#edd45b16247c815ac3bc7265c34cf3dab6b41234"
+  integrity sha512-IGrOTisl83FmbpiL5KCpfF7+6CRcmndNaWxwYWcnSqXtoNUhVO+1l8rKK4GVE7A8f4fEDkSocS9X6+eXHkEhGA==
+
 fill-range@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/fill-range/-/fill-range-4.0.0.tgz#d544811d428f98eb06a63dc402d2403c328c38f7"
@@ -3131,7 +3137,7 @@ js-tokens@^3.0.2:
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
   integrity sha1-mGbfOVECEw449/mWvOtlRDIJwls=
 
-js-yaml@^3.10.0, js-yaml@^3.12.0, js-yaml@^3.12.1, js-yaml@^3.7.0, js-yaml@^3.9.0:
+js-yaml@3.12.1, js-yaml@^3.10.0, js-yaml@^3.12.0, js-yaml@^3.7.0, js-yaml@^3.9.0:
   version "3.12.1"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.12.1.tgz#295c8632a18a23e054cf5c9d3cecafe678167600"
   integrity sha512-um46hB9wNOKlwkHgiuyEVAybXBjwFUV0Z/RaHJblRd9DXltue9FTYvzCr9ErQrK9Adz5MU4gHWVaNUfdmrC8qA==
@@ -3799,7 +3805,7 @@ pako@~1.0.5:
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.7.tgz#2473439021b57f1516c82f58be7275ad8ef1bb27"
   integrity sha512-3HNK5tW4x8o5mO8RuHZp3Ydw9icZXx0RANAOMzlMzx7LVXhMJ4mo3MOBpzyd7r/+RUu8BmndP47LXT+vzjtWcQ==
 
-parcel-bundler@^1.11.0:
+parcel-bundler@1.11.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/parcel-bundler/-/parcel-bundler-1.11.0.tgz#7e821a5246d7503aebf3c1bc279b59cbb8a3d4e3"
   integrity sha512-H0w/Obx76vWiG+UtofznfcHZJBmd6JA5iCn7zrGBINyVAh+Nt/JLD6QDROghHLXfJkO4XyczsB+fO+nPbXlFfA==
