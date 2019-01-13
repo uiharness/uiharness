@@ -1,4 +1,8 @@
-# UIHarness (React)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+# UIHarness
+
+The UIHarness using the lightening fast [Parcel](https://parceljs.org) bundler with [React](https://reactjs.org/) and [Typescript](https://www.typescriptlang.org/) default configuration.
 
 ## Setup
 
