@@ -834,6 +834,11 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.15.tgz#20e85651b62fd86656e57c9c9bc771ab1570bc59"
   integrity sha512-9kROxduaN98QghwwHmxXO2Xz3MaWf+I1sLVAA6KJDF5xix+IyXVhds0MAfdNwtcpSrzhaTsNB0/jnL86fgUhqA==
 
+"@types/parcel-bundler@^1.10.1":
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/@types/parcel-bundler/-/parcel-bundler-1.10.1.tgz#77a4c7a033be26d6d15aa8bc0873671220646c5d"
+  integrity sha512-k8bj0ZAq8B4hVxsRBGG+O4uWzTBIRQNrs0naFw+DZYMmpqrywqowwkVOFooGm7VSvcf+6kk59bq0M6621+TQ8Q==
+
 "@types/prop-types@*":
   version "15.5.8"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.5.8.tgz#8ae4e0ea205fe95c3901a5a1df7f66495e3a56ce"

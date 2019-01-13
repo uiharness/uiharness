@@ -3,5 +3,7 @@
 # See:
 #   https://uiharness.com
 #
-webpack:
-  entry: /src/uiharness.tsx
+
+port: 8080
+# webpack:
+#   entry: /src/uiharness.tsx

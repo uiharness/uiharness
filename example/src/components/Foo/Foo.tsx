@@ -11,6 +11,6 @@ export class Foo extends React.Component<IFooProps> {
         padding: 30,
       }),
     };
-    return <div {...styles.base}>Hello World!!!</div>;
+    return <div {...styles.base}>Hello World</div>;
   }
 }

@@ -1,6 +1,10 @@
 import { fs, fsPath, shell, log } from './common/libs';
-import { Package } from './config';
+import { Package, Settings } from './config';
 
+// const Bundler = require('parcel-bundler');
+import * as Bundler from 'parcel-bundler';
+
+const settings = Settings.create('.');
 const FILES = [
   '/.prettierrc',
   '/tsconfig.json',
@@ -41,10 +45,21 @@ export function debugReset() {
 /**
  * Starts in dev mode.
  */
-export function start() {
+export async function start() {
+  // Setup initial conditions.
   init();
-  const cmd = fsPath.resolve('./node_modules/.bin/rescripts start');
-  exec(cmd);
+  if (!settings) {
+    log.info(`😥  UIHarness could not be started.`);
+    log.info(`    Ensure you have a 'uiharness.yml' file in the module root.`);
+  }
+
+  // Prepare the bundler.
+  const entryFiles = fsPath.resolve('./html/index.html');
+  const bundler = new Bundler(entryFiles, {});
+
+  // Start the server.
+  const server = await (bundler as any).serve(settings.port);
+  return server;
 }
 
 /**
