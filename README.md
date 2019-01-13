@@ -6,8 +6,8 @@ https://uiharness.com
 
 ## Getting Started
 
+See documentation in [@uiharness/parcel](libs/parcel).
+
 ```bash
 yarn add -D @uiharness/parcel
 ```
-
-See documentation in [@uiharness/parcel](libs/parcel).

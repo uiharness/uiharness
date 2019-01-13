@@ -2,7 +2,7 @@
 
 # UIHarness
 
-The UIHarness using the lightening fast [Parcel](https://parceljs.org) bundler with [React](https://reactjs.org/) and [Typescript](https://www.typescriptlang.org/) default configuration.
+The UIHarness using the lightening fast [Parcel](https://parceljs.org) bundler with [React](https://reactjs.org/) and [Typescript](https://www.typescriptlang.org/).
 
 ## Setup
 
