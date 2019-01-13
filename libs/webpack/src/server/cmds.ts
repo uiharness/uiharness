@@ -73,7 +73,9 @@ function ensureFile(path: string, options: { force?: boolean } = {}) {
   const { force } = options;
   const to = toRootPath(path);
   if (force || !fs.existsSync(to)) {
-    const from = fsPath.resolve(`./node_modules/@uiharness/react/tmpl/${path}`);
+    const from = fsPath.resolve(
+      `./node_modules/@uiharness/webpack/tmpl/${path}`,
+    );
     fs.copySync(from, to);
   }
 }

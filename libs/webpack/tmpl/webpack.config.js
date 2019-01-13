@@ -1,4 +1,4 @@
-const uiharness = require('@uiharness/react');
+const uiharness = require('@uiharness/webpack');
 
 /**
  * Webpack Configuration.

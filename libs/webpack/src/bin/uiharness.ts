@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const server = require('@uiharness/react/lib/server');
-const { fsPath, log } = require('@uiharness/react/lib/server/common/libs');
+const server = require('@uiharness/webpack/lib/server');
+const { fsPath, log } = require('@uiharness/webpack/lib/server/common/libs');
 
 export const NAME = 'UIHaraness CLI';
 const PKG = require(fsPath.join(__dirname, '../../package.json'));
