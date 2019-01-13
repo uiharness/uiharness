@@ -11,11 +11,7 @@
     "sync-libs": "msync sl && sh ./sh/copy-bin.sh",
     "reset": "yarn sync-libs && uiharness debug:reset",
     "reset-init": "yarn reset && yarn postinstall",
-    "tmp": "yarn sync-libs && yarn start",
-    "start": "uiharness start",
-    "bundle": "uiharness bundle",
-    "stats": "uiharness stats",
-    "serve": "serve -s dist"
+    "tmp": "yarn sync-libs && yarn start"
   },
   "dependencies": {},
   "devDependencies": {
