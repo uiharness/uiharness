@@ -162,13 +162,18 @@ const formatPath = (path: string) => {
   return `${dir}/${log.cyan(file)}`;
 };
 
-function logInfo() {
+function logInfo(options: { port?: boolean | number } = {}) {
   const entryFiles = settings.entries.map(e => e.html.absolute);
+  const showPort = Boolean(options.port);
+  const port = typeof options.port === 'number' ? options.port : settings.port;
+
   log.info();
   log.info.gray(`package: ${log.magenta(pkg.name)}`);
   log.info.gray(`version: ${pkg.version}`);
   log.info.gray(`entry:   ${formatPath(entryFiles[0])}`);
-  log.info.gray(`port:    ${log.yellow(settings.port)}`);
+  if (showPort) {
+    log.info.gray(`port:    ${log.yellow(port)}`);
+  }
   entryFiles.slice(1).forEach(path => {
     log.info.gray(`         ${formatPath(path)}`);
   });

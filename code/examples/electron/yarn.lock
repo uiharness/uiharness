@@ -814,10 +814,10 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/parcel@^1.0.20":
-  version "1.0.20"
-  resolved "https://registry.yarnpkg.com/@uiharness/parcel/-/parcel-1.0.20.tgz#f4ad8813300f85cb1a41c6befa279176b71f5303"
-  integrity sha512-Tzlw2z4WkpTjaMucuDygzBR1m0DWjazcCfAQYQ7R8EDojYhBSa8ejdaN2s1210/78rj3PQjWDWIUVX7r/Seerg==
+"@uiharness/parcel@^1.0.23":
+  version "1.0.23"
+  resolved "https://registry.yarnpkg.com/@uiharness/parcel/-/parcel-1.0.23.tgz#50d5432f3a8edf2202716740081f77b076cd1d76"
+  integrity sha512-zGGXPpY/0RxwrFCa50evoL6DoH9zV6gJgTVR0Ja/qgDlyd0fZ/0KRyPHWPuOxyOJfcrPWEZ4GOC688NGf5UuKQ==
   dependencies:
     "@tdb/log" "1.1.17"
     "@tdb/typescript" "3.2.5"
@@ -3801,9 +3801,9 @@ pako@^0.2.5:
   integrity sha1-8/dSL073gjSNqBYbrZ7P1Rv4OnU=
 
 pako@~1.0.5:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.7.tgz#2473439021b57f1516c82f58be7275ad8ef1bb27"
-  integrity sha512-3HNK5tW4x8o5mO8RuHZp3Ydw9icZXx0RANAOMzlMzx7LVXhMJ4mo3MOBpzyd7r/+RUu8BmndP47LXT+vzjtWcQ==
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.8.tgz#6844890aab9c635af868ad5fecc62e8acbba3ea4"
+  integrity sha512-6i0HVbUfcKaTv+EG8ZTr75az7GFXcLYk9UyLEg7Notv/Ma+z/UG3TCoz6GiNeOrn1E/e63I0X/Hpw18jHOTUnA==
 
 parcel-bundler@1.11.0:
   version "1.11.0"
