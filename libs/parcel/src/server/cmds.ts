@@ -168,6 +168,7 @@ function logInfo() {
   log.info.gray(`package: ${log.magenta(pkg.name)}`);
   log.info.gray(`version: ${pkg.version}`);
   log.info.gray(`entry:   ${formatPath(entryFiles[0])}`);
+  log.info.gray(`port:    ${log.yellow(settings.port)}`);
   entryFiles.slice(1).forEach(path => {
     log.info.gray(`         ${formatPath(path)}`);
   });

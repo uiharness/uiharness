@@ -1,5 +1,7 @@
 # UIHarness (React)
 
+☣️ NOTE: OBSOLETE (the webpack version is currently not maintained, use [@uiharness/parcel](../parcel))
+
 Provides an [extensible](https://github.com/harrysolovay/rescripts), modern, [ceate-react-app](https://facebook.github.io/create-react-app) configuration for building a component library with a UIHarness.
 
 See:
