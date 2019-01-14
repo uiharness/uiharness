@@ -1,4 +1,4 @@
-name: parcel
+name: Web (Typescript + React)
 folder: NAME
 variables:
   NAME: Module name
