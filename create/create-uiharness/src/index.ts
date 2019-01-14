@@ -13,18 +13,13 @@ export async function create() {
   log.info();
 
   if (!res.success) {
-    log.error.yellow(`😥  Failed to create UIHarness from template.`);
-    if (res.error) {
-      log.error(res.error.message);
-    }
+    return;
   }
 
-  log.info('res', res);
-  log.info('-------------------------------------------');
-  log.info('res.dir', res.dir);
+  log.info.gray(`See ${log.blue('https://uiharness.com')} for more.`);
   log.info();
 
-  log.info.gray('Now run:\n');
+  log.info.gray('To start development server, run:\n');
   log.info.cyan(`   cd ${log.white(fsPath.basename(res.dir))}`);
   log.info.cyan(`   yarn start`);
   log.info();
