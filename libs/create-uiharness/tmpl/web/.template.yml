@@ -1,4 +1,5 @@
 name: Web (Typescript + React)
 folder: NAME
+install: true
 variables:
   NAME: Module name
