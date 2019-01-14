@@ -1,27 +1,18 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # UIHarness
-
 https://uiharness.com
 
-## Getting Started
-
-See documentation in [@uiharness/parcel](libs/parcel).
-
-```bash
-yarn add -D @uiharness/parcel
-```
-
-## Using the Bootstrapper
-
+## Quick Start
 ```bash
 yarn create uiharness
 ```
 
-Then follow the command-line prompts to generate the new module.  From there:
+Then follow the command-line prompts to generate your new module.
 
+## Manual Setup
 ```bash
-cd <new-module>
-yarn
-yarn start
+yarn add -D @uiharness/parcel
 ```
+See documentation in [@uiharness/parcel](libs/parcel).
+

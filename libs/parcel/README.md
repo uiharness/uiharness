@@ -4,7 +4,17 @@
 
 The UIHarness using the lightening fast [Parcel](https://parceljs.org) bundler with [React](https://reactjs.org/) and [Typescript](https://www.typescriptlang.org/).
 
-## Setup
+## Quick Start
+Run the bootstrapper for a fresh module with the UIHarness configured:
+
+```bash
+yarn create uiharness
+```
+
+
+
+
+## Manual Setup
 
 ```bash
 yarn add -D @uiharness/parcel
