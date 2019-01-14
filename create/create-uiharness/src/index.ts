@@ -17,9 +17,7 @@ export async function create() {
   }
 
   log.info.gray(`See ${log.blue('https://uiharness.com')} for more.`);
-  log.info();
-
-  log.info.gray('To start development server, run:\n');
+  log.info.gray('To start your development server:\n');
   log.info.cyan(`   cd ${log.white(fsPath.basename(res.dir))}`);
   log.info.cyan(`   yarn start`);
   log.info();
