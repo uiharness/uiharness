@@ -1,7 +1,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-# UIHarness
-
+# UIHarness (Builder)
 The UIHarness using the lightening fast [Parcel](https://parceljs.org) bundler with [React](https://reactjs.org/) and [Typescript](https://www.typescriptlang.org/).
 
 ## Quick Start
@@ -13,9 +12,7 @@ yarn create uiharness
 
 
 
-
 ## Manual Setup
-
 ```bash
 yarn add -D @uiharness/builder
 ```
