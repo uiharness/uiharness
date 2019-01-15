@@ -1,6 +1,6 @@
 {
   "name": "create-uiharness",
-  "version": "1.1.23",
+  "version": "1.1.24",
   "description": "Create a minimal starting module using the UIHarness with a single command.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -18,7 +18,7 @@
     "prepare": "yarn run lint && yarn test && yarn run build"
   },
   "dependencies": {
-    "new-file": "1.2.0"
+    "new-file": "1.2.1"
   },
   "devDependencies": {
     "@tdb/test": "1.2.10",
