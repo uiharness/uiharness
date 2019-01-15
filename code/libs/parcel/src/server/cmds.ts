@@ -20,21 +20,30 @@ const FILES = [
  */
 export async function init(options: { force?: boolean } = {}) {
   const { force = false } = options;
-  FILES.forEach(file => ensureFile(file));
-  pkg.init();
+  const flags = settings.init;
+
+  if (flags.scripts) {
+    pkg.init();
+  }
+
+  if (flags.files) {
+    FILES.forEach(file => ensureFile(file));
+  }
 
   // Insert all the HTML entry points.
-  const tmpl = fs.readFileSync(templatePath(`html/index.html`), 'utf-8');
-  settings.entries
-    .filter(e => force || !fs.pathExistsSync(e.html.absolute))
-    .forEach(e => {
-      const path = e.html.absolute;
-      const html = tmpl
-        .replace(/__TITLE__/, e.title)
-        .replace(/__ENTRY_SCRIPT__/, e.html.relative);
-      fs.ensureDirSync(fsPath.dirname(path));
-      fs.writeFileSync(path, html);
-    });
+  if (flags.html) {
+    const tmpl = fs.readFileSync(templatePath(`html/index.html`), 'utf-8');
+    settings.entries
+      .filter(e => force || !fs.pathExistsSync(e.html.absolute))
+      .forEach(e => {
+        const path = e.html.absolute;
+        const html = tmpl
+          .replace(/__TITLE__/, e.title)
+          .replace(/__ENTRY_SCRIPT__/, e.html.relative);
+        fs.ensureDirSync(fsPath.dirname(path));
+        fs.writeFileSync(path, html);
+      });
+  }
 }
 
 /**

@@ -1,4 +1,4 @@
-import { fsPath, npm, log } from './common';
+import { fsPath, log } from './common';
 import * as newFile from 'new-file';
 
 export async function create() {
@@ -8,7 +8,6 @@ export async function create() {
   const res = await newFile.create({
     targetDir,
     settingsPath,
-    beforeWrite,
   });
   log.info();
 
@@ -22,19 +21,3 @@ export async function create() {
   log.info.cyan(`   yarn start`);
   log.info();
 }
-
-/**
- * INTERNAL
- */
-const beforeWrite: newFile.BeforeWriteFile = async e => {
-  let text = e.text;
-
-  // Update to the latest version of the package.
-  if (e.path.endsWith('/package.json')) {
-    const res = await npm.getInfo('@uiharness/parcel');
-    const version = res ? `^${res.latest}` : 'ERROR';
-    text = text.replace(/__UIHARNESS_VERSION__/g, version);
-  }
-
-  return text;
-};
