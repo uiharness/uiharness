@@ -33,42 +33,6 @@ const scriptIndex = args.findIndex(x =>
 );
 const script = scriptIndex === -1 ? args[0] : args[scriptIndex];
 
-// const TARGETS = ['browser', 'node', 'electron'];
-// const flags = args
-//   .filter(arg => arg.startsWith('-'))
-//   .map(arg => arg.replace(/^-*/, ''))
-//   .map(arg => {
-//     const parts = arg.split('=');
-//     const key = parts[0];
-//     const value: string | boolean | undefined = valueUtil.toType(parts[1]);
-//     return { key, value };
-//   });
-
-// const findFlag = (key: string, defaultValue: boolean) => {
-//   const arg = flags.find(arg => arg.key === key);
-//   return arg === undefined ? defaultValue : Boolean(arg.value);
-// };
-
-// const findArg = (key: string, defaultValue: string) => {
-//   const arg = flags.find(arg => arg.key === key);
-//   return arg === undefined ? defaultValue : arg.value;
-// };
-
-// const buildArgs = (): IBuildArgs => {
-//   const treeshake = findFlag('treeshake', false);
-
-//   console.log('args', args);
-//   console.log(
-//     'findFlag(\'no-sourcemaps\', false)',
-//     findFlag('no-sourcemaps', false),
-//   );
-
-//   const sourceMaps = !findFlag('no-sourcemaps', false);
-//   let target = findArg('target', 'browser') as any;
-//   target = target && TARGETS.includes(target as string) ? target : undefined;
-//   return { treeshake, sourceMaps, target };
-// };
-
 switch (script) {
   case 'init':
     server.init();

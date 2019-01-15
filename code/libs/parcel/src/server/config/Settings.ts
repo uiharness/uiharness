@@ -78,12 +78,28 @@ export class Settings {
       .map(e => ({ ...e, title: e.title || this.pkg.name || 'Unnamed' }));
   }
 
+  /**
+   * Arguments to pass to the parcel-bundler.
+   */
   public get buildArgs(): ParcelOptions {
     const data = this._data;
     const sourceMaps = value.defaultValue(data.sourcemaps, true);
     const scopeHoist = value.defaultValue(data.treeshake, false);
     const target = value.defaultValue(data.target, 'browser');
     return { sourceMaps, scopeHoist, target };
+  }
+
+  /**
+   * Flags used to determine what to inclue/exclude
+   * within the `init` script.
+   */
+  public get init() {
+    const init = this._data.init || {};
+    return {
+      scripts: value.defaultValue(init.scripts, true),
+      files: value.defaultValue(init.files, true),
+      html: value.defaultValue(init.html, true),
+    };
   }
 }
 
