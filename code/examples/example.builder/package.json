@@ -5,13 +5,15 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
+    "tmp": "yarn sl && uiharness $@",
+    "uih": "yarn sl && uiharness $@",
+    "nuke": "sh ./sh/nuke.sh",
     "postinstall": "uiharness init",
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
     "sl": "msync sl && sh ./sh/copy-bin.sh",
-    "reset": "yarn sl && uiharness debug:reset",
+    "reset": "yarn sl && uiharness init --reset",
     "reset-init": "yarn reset && yarn postinstall",
-    "tmp": "yarn sl && uiharness init",
     "start": "uiharness start",
     "bundle": "uiharness bundle",
     "stats": "uiharness stats",
@@ -19,7 +21,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/builder": "^1.0.24"
+    "@uiharness/builder": "^1.0.31"
   },
   "repository": "https://github.com/uiharness/uiharness",
   "license": "UNLICENSED",

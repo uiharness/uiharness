@@ -15,6 +15,11 @@ const FILES = [
   '/uiharness.yml',
 ];
 
+export function createBundler() {
+  const entryFiles = settings.entries.map(e => e.html.absolute);
+  return new Bundler(entryFiles, settings.buildArgs);
+}
+
 /**
  * Ensure the module is initialized.
  */
@@ -49,7 +54,7 @@ export async function init(options: { force?: boolean } = {}) {
 /**
  * Removes configuration files.
  */
-export async function debugReset() {
+export async function reset(options: {} = {}) {
   pkg.removeScripts();
   FILES
     // Delete copied template files.
@@ -67,11 +72,6 @@ export async function debugReset() {
   );
   log.info(`    Run \`${log.cyan('uiharness init')}\` to recreate them.`);
   log.info('');
-}
-
-export function createBundler() {
-  const entryFiles = settings.entries.map(e => e.html.absolute);
-  return new Bundler(entryFiles, settings.buildArgs);
 }
 
 /**
