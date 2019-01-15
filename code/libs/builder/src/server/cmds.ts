@@ -199,7 +199,7 @@ function ensureFile(path: string, options: { force?: boolean } = {}) {
 }
 
 function templatePath(path: string) {
-  return fsPath.resolve(`./node_modules/@uiharness/parcel/tmpl/${path}`);
+  return fsPath.resolve(`./node_modules/@uiharness/builder/tmpl/${path}`);
 }
 
 function toRootPath(path: string) {
