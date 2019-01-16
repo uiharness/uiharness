@@ -25,7 +25,7 @@ yarn add -D @uiharness/electron
 
 ## Modules
 
-- [@uiharness/builder](libs/builder)
-- [@uiharness/core](libs/core)
-- [@uiharness/electron](libs/electron)
+- [@uiharness/builder](libs/builder/README.md)
+- [@uiharness/core](libs/core/README.md)
+- [@uiharness/electron](libs/electron/README.md)
 
