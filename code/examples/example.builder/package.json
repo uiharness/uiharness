@@ -16,7 +16,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/builder": "^1.0.36"
+    "@uiharness/builder": "^1.0.37"
   },
   "repository": "https://github.com/uiharness/uiharness",
   "license": "MIT",
