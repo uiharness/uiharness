@@ -3,9 +3,12 @@
 
 Shared logic of the [UIHarness](https://uiharness.com).
 
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
 
 ## Configuration
-The UIHarness looks for a `.uiharness.yml` file in the root of the module.
+The UIHarness looks for a `uiharness.yml` file in the root of the module.
 
 ```yaml
 port: 8080
@@ -15,17 +18,16 @@ entry:
     path: src/uiharness.tsx
 
 # Build args.
-target: 'browser' # 'browser' | 'node' | 'electron'
 sourcemaps: true
 treeshake: false
 ```
 
-### port `number`
-
+#### 🌳  port `number`
 The port to run the development server on.
 
-### entry `string | string[] | object | objects[]`
+<p>&nbsp;</p>
 
+#### 🌳 entry `string | string[] | object | objects[]`
 Entry points to the files to bundle.
 
 - When `string` (or `string[]`) this represents the path to the `.tsx` files. Default: `/src/uiharness.tsx`.
@@ -39,17 +41,17 @@ Entry points to the files to bundle.
   }
   ```
 
-### target `string`
+<p>&nbsp;</p>
 
-The target environment to build for. Default `browser`.
-See [parcel/target](https://parceljs.org/cli.html#target).
 
-### sourcemaps `boolean`
-
+#### 🌳 sourcemaps `boolean`
 Use or disable sourcemaps. Default `true`.
 See [parcel/source-maps](https://parceljs.org/cli.html#disable-source-maps).
 
-### treeshake `boolean`
+<p>&nbsp;</p>
 
+#### 🌳 treeshake `boolean`
 Use or disable (experimental) treeshaking. Default `false`.
 See [parcel/tree-shaking](https://parceljs.org/cli.html#enable-experimental-scope-hoisting/tree-shaking-support).
+
+<p>&nbsp;</p>

@@ -1,8 +1,13 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-![title](https://user-images.githubusercontent.com/185555/51221316-dd9b1980-199d-11e9-8b78-26bbafd344f1.jpg)
+![title](https://user-images.githubusercontent.com/185555/51246809-2a0f4500-19f0-11e9-9bcc-182aa8a8cf1a.jpg)
 
 
-The [UIHarness](https://uiharness.com) using the lightening fast [Parcel](https://parceljs.org) bundler with [React](https://reactjs.org/) and [Typescript](https://www.typescriptlang.org/).
+[UIHarness](https://uiharness.com) targeting the [web/browser](https://developer.mozilla.org) with the lightening fast [parcel](https://parceljs.org) using [react](https://reactjs.org/) and [typescript](https://www.typescriptlang.org/).
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
 
 ## Quick Start
 Run the bootstrapper for a fresh module with the UIHarness configured:
@@ -11,6 +16,9 @@ Run the bootstrapper for a fresh module with the UIHarness configured:
 yarn create uiharness
 ```
 
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 
 
 ## Manual Setup
@@ -41,29 +49,30 @@ This will ensure all default files are copied into the module, and that the stan
 }
 ```
 
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
 ## Commands
 
-### `start`
-
+### 🌳 `start`
 Starts the UIHarness in development mode with live-updates and HMR (hot-module-replacement) in action.
 
-### `bundle`
-
+### 🌳 `bundle`
 Packages a bundle into the `/dist` folder.
 
-### `stats`
-
+### 🌳 `stats`
 Reads out details about the `/dist` bundle (eg. file sizes).
 
-### `serve`
-
+### 🌳 `serve`
 Starts an HTTP server to view the bundles `/dist` folder.
 Run `yarn bundle` first.
 
-## Configuration
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 
-Include a `.uiharness.yml` file in the root of your module. 
+## Configuration
+Include a `uiharness.yml` file in the root of your module.  
 This is automatically generated via `uiharness init` in your `postinstall`. 
 All values are optional.
 
-See [configuration documentation](../core/README.md#configuration)
+See [configuration documentation](../core/README.md#configuration).

@@ -24,16 +24,15 @@ Use the bootstrapper to be up and running with a scaffold in less than 30 second
 yarn create uiharness
 ```
 
-then follow the prompts to generate your new module.
 
-### Manual Installation
-Or manually add the UIHarness, for the web (browser):
+### Installation
+Or manually add the UIHarness to your module. Targeting the web (browser):
 
 ```bash
 yarn add -D @uiharness/web
 ```
 
-or [electron](https://electronjs.org):
+Targetting [electron](https://electronjs.org):
 
 ```bash
 yarn add -D @uiharness/electron

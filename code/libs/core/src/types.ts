@@ -1,5 +1,5 @@
 /**
- * The `.uiharness.yml` configuration file structure.
+ * The `uiharness.yml` configuration file structure.
  */
 export type IUIHarnessConfig = {
   port?: number;
