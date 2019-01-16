@@ -22,7 +22,7 @@ For the web (browser):
 yarn add -D @uiharness/builder
 ```
 
-or [Electron](https://electronjs.org):
+or [electron](https://electronjs.org):
 
 ```bash
 yarn add -D @uiharness/electron
