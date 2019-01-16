@@ -10,6 +10,6 @@ entry:
     path: src/uiharness.tsx
 
 # Build args.
-target: 'browser' # 'browser' | 'node' | 'electron'
-sourcemaps: true
-treeshake: false
+build:
+  sourcemaps: true
+  treeshake: false

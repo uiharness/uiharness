@@ -10,8 +10,10 @@ export { filesize, log, fs, fsPath, config };
  */
 export function createBundler(settings: config.Settings) {
   const entryFiles = settings.entries.map(e => e.html.absolute);
+  const args = settings.buildArgs;
   return new Bundler(entryFiles, {
-    ...settings.buildArgs,
+    sourceMaps: args.sourcemaps,
+    scopeHoist: args.treeshake,
     target: 'browser',
   });
 }

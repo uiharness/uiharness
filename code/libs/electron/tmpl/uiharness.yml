@@ -9,7 +9,6 @@ entry:
   - title: My Title
     path: src/uiharness.tsx
 
-# Build args.
-target: 'electron'
-sourcemaps: true
-treeshake: false
+build:
+  sourcemaps: true
+  treeshake: false
