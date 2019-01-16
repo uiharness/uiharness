@@ -881,10 +881,10 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.5.tgz#f4f85fe198e1e9cedc0bb53a8c2d30fb34299e50"
   integrity sha512-y51XRWWg1GiW4+mV2zmFQUqJT3bX7nuUaXW4j8a2dFvT9ZlaNLjb7ZxcUSDyklt/UBWrW2+31x+hQpRzxaTFzw==
 
-"@uiharness/electron@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.0.3.tgz#f8d7a93d23f54133372449b5bbe0a48e182d6bdf"
-  integrity sha512-cYdZwQtHso1zpsZPGdP1gCFdv7bVz4n1M7HtOENdPc16llreLb8DIcHXeJAy8zOLLNPYjWyrdMAcn0l+K0xLKg==
+"@uiharness/electron@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.0.4.tgz#5956a59a902e4b7ccb48cac963cae7ec509a033b"
+  integrity sha512-nLK06qjJZWzuB/p1xNhZblZvb6tJlotfem7bvTX1JGfhWoN/+JGiAZQYayoTBDYOIIj8WNcHrsovnMyahkrl3Q==
   dependencies:
     "@babel/core" "7.2.2"
     "@babel/preset-env" "7.2.3"

@@ -10,14 +10,12 @@
     "reset": "echo no-op",
     "sl": "msync sl && sh ./sh/copy-bin.sh",
     "start": "node .",
-    "test": "sh ./node_modules/@tdb/test/sh/test.sh",
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
-    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
-    "prepare": "yarn run build && yarn run lint && yarn test"
+    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@"
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/electron": "^0.0.3"
+    "@uiharness/electron": "^0.0.4"
   },
   "license": "MIT",
   "private": true
