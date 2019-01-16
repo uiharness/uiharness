@@ -16,7 +16,7 @@ const program = yargs
   .usage('Usage: $0 <command> [options]')
   .command(
     COMMAND.INIT,
-    'Initialize the module with default files.',
+    'Initialize the module with default files needed to run electron.',
     e =>
       e
         .option('force', {

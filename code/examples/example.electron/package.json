@@ -5,6 +5,7 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
+    "tmp": "yarn sl && uiharness-electron $@",
     "postinstall": "uiharness-electron init",
     "nuke": "sh ./sh/nuke.sh",
     "reset": "echo no-op",
