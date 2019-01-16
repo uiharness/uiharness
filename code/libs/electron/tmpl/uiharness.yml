@@ -3,11 +3,7 @@
 # See:
 #   https://uiharness.com
 #
-port: 8080
-
-entry:
-  - title: My Title
-    path: src/uiharness.tsx
+port: 8888
 
 build:
   sourcemaps: true

@@ -38,6 +38,10 @@
     "parcel-bundler": "1.11.0",
     "yargs": "12.0.5"
   },
+  "devDependencies": {
+    "@types/parcel-bundler": "1.10.1",
+    "@types/yargs": "12.0.5"
+  },
   "files": [
     "**/*"
   ],
@@ -48,8 +52,5 @@
     "typescript",
     "electron"
   ],
-  "license": "MIT",
-  "devDependencies": {
-    "@types/yargs": "^12.0.5"
-  }
+  "license": "MIT"
 }

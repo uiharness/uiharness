@@ -1,7 +1,4 @@
-import { core, fs, fsPath, log } from '../common';
-
-const settings = core.config.Settings.create();
-const pkg = core.config.Package.create();
+import { config, fs, fsPath, log } from '../common';
 
 const FILES = ['/tsconfig.json', '/tslint.json', '/uiharness.yml'];
 const SCRIPTS = {
@@ -13,11 +10,17 @@ const SCRIPTS = {
 /**
  * Initialize the module.
  */
-export async function init(options: { force?: boolean; reset?: boolean } = {}) {
-  if (options.reset) {
-    return reset();
+export async function init(args: {
+  settings: config.Settings;
+  pkg: config.Package;
+
+  force?: boolean;
+  reset?: boolean;
+}) {
+  const { settings, pkg, force = false } = args;
+  if (args.reset) {
+    return reset({ pkg });
   }
-  const { force = false } = options;
   const flags = settings.init;
 
   if (flags.scripts) {
@@ -32,7 +35,8 @@ export async function init(options: { force?: boolean; reset?: boolean } = {}) {
 /**
  * Removes configuration files.
  */
-async function reset(options: {} = {}) {
+async function reset(args: { pkg: config.Package }) {
+  const { pkg } = args;
   pkg.removeScripts({ scripts: SCRIPTS });
   FILES
     // Delete copied template files.

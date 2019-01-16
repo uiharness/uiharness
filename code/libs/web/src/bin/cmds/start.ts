@@ -1,4 +1,4 @@
-import { logInfo, config, createBundler } from '../common';
+import { logInfo, config, createParcelBundler } from '../common';
 import { init } from './init';
 
 /**
@@ -14,7 +14,7 @@ export async function start(args: {
   logInfo({ settings, pkg, port: true });
 
   // Prepare the bundler.
-  const bundler = createBundler(settings);
+  const bundler = createParcelBundler(settings);
 
   // Start the server.
   const server = await (bundler as any).serve(settings.port);
