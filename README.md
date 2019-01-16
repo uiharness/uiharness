@@ -15,14 +15,14 @@ then follow the prompts to generate your new module.
 
 ## Manual Start
 
-Or you can manually setup the UIHarness.
-To add to build and test for the web (brower):
+Or you can manually add the UIHarness.
+For the web (browser):
 
 ```bash
 yarn add -D @uiharness/builder
 ```
 
-To build and test within [Electron](https://electronjs.org):
+or [Electron](https://electronjs.org):
 
 ```bash
 yarn add -D @uiharness/electron
