@@ -26,9 +26,9 @@
     "@babel/preset-react": "7.0.0",
     "@babel/preset-typescript": "7.1.0",
     "@tdb/log": "1.1.17",
-    "@tdb/util": "1.9.22",
     "@tdb/typescript": "3.2.5",
-    "@types/yargs": "^12.0.5",
+    "@tdb/util": "1.9.22",
+    "@uiharness/core": "1.0.2",
     "app-root-path": "2.1.0",
     "babel-core": "^7.0.0-bridge.0",
     "electron": "4.0.1",
@@ -41,5 +41,8 @@
   "files": [
     "**/*"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/yargs": "^12.0.5"
+  }
 }
