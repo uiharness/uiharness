@@ -22,19 +22,25 @@ export async function start(args: {
   // Save settings as JSON to local project.
   await saveConfigJson({ settings });
 
-  // Start the renderer JS builder.
-  const parcelRenderer = createRendererBundler(settings);
-  await (parcelRenderer as any).serve(port);
-
   // Build the main JS.
   const parcelMain = createMainBundler(main, settings);
   await parcelMain.bundle();
 
+  // Start the renderer JS builder.
+  const parcelRenderer = createRendererBundler(settings);
+  await (parcelRenderer as any).serve(port);
+
   /**
    * TODO
+   * - copy SRC code.
+   * - HMR?
    * - set `main` in package.json to `src/main/.parcel/main.js`
    * - get logging from main showing up in console.
-   * - HMR?
+   * - make specific `Settings` config version for @uiharness/electron.
+   * - move specific `Settings` for web into @uiharness/web
+   * - remove `babel` deps from @uiharness/electron (bought in by parcel??)
+   * - settings
+   *    - main app title?
    */
 
   // Start the electron server.
