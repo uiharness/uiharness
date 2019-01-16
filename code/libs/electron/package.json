@@ -41,6 +41,13 @@
   "files": [
     "**/*"
   ],
+  "keywords": [
+    "design",
+    "test",
+    "react",
+    "typescript",
+    "electron"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@types/yargs": "^12.0.5"

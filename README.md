@@ -1,11 +1,18 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![title](https://user-images.githubusercontent.com/185555/51221320-de33b000-199d-11e9-9c09-d7dc9ede60b0.jpg)
+![title](https://user-images.githubusercontent.com/185555/51241923-b49d7780-19e3-11e9-90c1-c847343d785f.jpg)
 
-https://uiharness.com
+Scaffolding for precise UI component development in electron and the web.
+[uiharness.com](https://uiharness.com)
 
-## Quick Start
+🌳   `STATUS: PRE-RELEASE // API's will change radically.  V4 release coming soon.`
 
-Use the bootstrapper to get up and running with a scaffold module in less than 30 seconds:
+---
+## Getting Started
+
+
+### Quick Start
+
+Use the bootstrapper to get up and running with a scaffold in less than 30 seconds:
 
 ```bash
 yarn create uiharness
@@ -13,7 +20,7 @@ yarn create uiharness
 
 then follow the prompts to generate your new module.
 
-## Manual Start
+### Manual Start
 
 Or manually add the UIHarness, for the web (browser):
 

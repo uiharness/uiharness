@@ -4,7 +4,14 @@
   "scripts": {
     "reset": "sh ./sh/reset.sh"
   },
-  "private": true,
+  "keywords": [
+    "design",
+    "test",
+    "react",
+    "typescript",
+    "electron"
+  ],
   "license": "MIT",
-  "repository": "github.com/uiharness/uiharness"
+  "repository": "github.com/uiharness/uiharness",
+  "private": true
 }
