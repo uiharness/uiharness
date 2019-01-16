@@ -15,7 +15,7 @@ yarn create uiharness
 
 ## Manual Setup
 ```bash
-yarn add -D @uiharness/builder
+yarn add -D @uiharness/web
 ```
 
 Ensure you have the following command in your `postinstall` script in `package.json`:

@@ -70,7 +70,7 @@ async function reset(args: { pkg: config.Package }) {
   // Log results.
   log.info('');
   log.info(
-    '👋   The auto-generated files and scripts from `@uiharness/builder` have been removed.',
+    '👋   The auto-generated files and scripts from `@uiharness/web` have been removed.',
   );
   log.info(`    Run \`${log.cyan('uiharness init')}\` to recreate them.`);
   log.info('');
@@ -89,5 +89,5 @@ function toRootPath(path: string) {
   return fsPath.resolve(`./${path}`);
 }
 function templatePath(path: string) {
-  return fsPath.resolve(`./node_modules/@uiharness/builder/tmpl/${path}`);
+  return fsPath.resolve(`./node_modules/@uiharness/web/tmpl/${path}`);
 }

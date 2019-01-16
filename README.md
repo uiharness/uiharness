@@ -19,7 +19,7 @@ Or you can manually add the UIHarness.
 For the web (browser):
 
 ```bash
-yarn add -D @uiharness/builder
+yarn add -D @uiharness/web
 ```
 
 or [electron](https://electronjs.org):
@@ -31,5 +31,5 @@ yarn add -D @uiharness/electron
 ## Modules
 
 - [@uiharness/core](code/libs/core/README.md)
-- [@uiharness/builder](code/libs/builder/README.md)
+- [@uiharness/web](code/libs/web/README.md)
 - [@uiharness/electron](code/libs/electron/README.md)

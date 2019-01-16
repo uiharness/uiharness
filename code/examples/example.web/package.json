@@ -1,7 +1,7 @@
 {
   "name": "example.parcel",
   "version": "1.0.0",
-  "description": "Example usage of `@uiharness/builder`",
+  "description": "Example usage of `@uiharness/web`",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
@@ -20,7 +20,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/builder": "^1.0.37"
+    "@uiharness/web": "^1.0.37"
   },
   "repository": "https://github.com/uiharness/uiharness",
   "license": "MIT",
