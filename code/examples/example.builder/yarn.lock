@@ -836,16 +836,16 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.5.tgz#f4f85fe198e1e9cedc0bb53a8c2d30fb34299e50"
   integrity sha512-y51XRWWg1GiW4+mV2zmFQUqJT3bX7nuUaXW4j8a2dFvT9ZlaNLjb7ZxcUSDyklt/UBWrW2+31x+hQpRzxaTFzw==
 
-"@uiharness/builder@^1.0.34":
-  version "1.0.34"
-  resolved "https://registry.yarnpkg.com/@uiharness/builder/-/builder-1.0.34.tgz#4b2075f78758530c75a651506a0bb8891335c4b7"
-  integrity sha512-7wLy8aMwt79ngtClZJpXyCIvUuExHEoVFjqocaek0Ak5rtsekTBYK8EIJ+mp655NEJLiAc8306RBp08DcV3Uqw==
+"@uiharness/builder@^1.0.35":
+  version "1.0.35"
+  resolved "https://registry.yarnpkg.com/@uiharness/builder/-/builder-1.0.35.tgz#1226a6ca0a27d5b0353f55b13b9cd2e88fd339d5"
+  integrity sha512-QmOblOC/yc3X/eVfNVauvo/wK75jK/Yi+m7szx2fTNUgI57VNzKwnUusKWnnrtr0dGSBM+IUNhXN5QVcYu7jhQ==
   dependencies:
     "@tdb/log" "1.1.17"
     "@tdb/typescript" "3.2.5"
     "@tdb/util" "1.9.22"
     "@types/yargs" "^12.0.5"
-    "@uiharness/core" "1.0.2"
+    "@uiharness/core" "1.0.4"
     filesize "4.0.0"
     fs-extra "7.0.1"
     js-yaml "3.12.1"
@@ -853,10 +853,10 @@
     serve "10.1.1"
     yargs "12.0.5"
 
-"@uiharness/core@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.2.tgz#9f8aedafc297491ea4537fd096ab9a7c0241ad81"
-  integrity sha512-5/dL5G6f81s84cCBe/UKAzV/hVjjItBYW0KHtx+YXZm1ZlTynEzL/HAuZh2oYNL+1nr5X5zPGpy22U7juR4Wgg==
+"@uiharness/core@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.4.tgz#ae05409cef03ab30ca15280e106c90989296d084"
+  integrity sha512-bd7FZZ/duo/NjSyNfmAX/7IRSWGDZsX0gBUUqB0TcRTlEbuMezQzpBN22hzRqzWyYslthHZaEO3cTueO4zC5xw==
   dependencies:
     "@tdb/util" "1.9.22"
     "@types/fs-extra" "^5.0.4"

@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import * as yargs from 'yargs';
 
-import { log, constants } from '../common';
-import * as server from '../server';
+import { log, constants, config } from './common';
+import * as cmds from './cmds';
 
 const COMMAND = {
   INIT: 'init',
@@ -11,6 +11,9 @@ const COMMAND = {
   STATS: 'stats',
 };
 const COMMANDS = Object.keys(COMMAND).map(key => COMMAND[key]);
+
+const settings = config.Settings.create();
+const pkg = config.Package.create();
 
 /**
  * Cheat sheet.
@@ -34,30 +37,26 @@ const program = yargs
         }),
     e => {
       const { force, reset } = e;
-      if (reset) {
-        server.reset();
-      } else {
-        server.init({ force });
-      }
+      cmds.init({ settings, pkg, force, reset });
     },
   )
   .command(
     COMMAND.START,
     'Start the development server.',
     e => e,
-    e => server.start({}),
+    e => cmds.start({ settings, pkg }),
   )
   .command(
     COMMAND.BUNDLE,
     'Package a bundle into the `/dist` folder.',
     e => e,
-    e => server.bundle({}),
+    e => cmds.bundle({ settings, pkg }),
   )
   .command(
     COMMAND.STATS,
     'Read size details about the `/dist` bundle.',
     e => e,
-    e => server.stats({}),
+    e => cmds.stats({ settings, pkg }),
   )
 
   .help('h')

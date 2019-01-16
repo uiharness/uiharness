@@ -8,15 +8,17 @@
     "tmp": "yarn sl && uiharness-electron $@",
     "postinstall": "uiharness-electron init",
     "nuke": "sh ./sh/nuke.sh",
-    "reset": "echo no-op",
     "sl": "msync sl && sh ./sh/copy-bin.sh",
-    "start": "node .",
+    "reset": "yarn sl && uiharness-electron init --reset",
+    "reset-init": "yarn reset && yarn postinstall",
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
-    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@"
+    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
+    "start": "uiharness-electron start",
+    "bundle": "uiharness-electron bundle"
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/electron": "^0.0.5"
+    "@uiharness/electron": "^0.0.8"
   },
   "license": "MIT",
   "private": true

@@ -85,8 +85,7 @@ export class Settings {
     const data = this._data;
     const sourceMaps = value.defaultValue(data.sourcemaps, true);
     const scopeHoist = value.defaultValue(data.treeshake, false);
-    const target = value.defaultValue(data.target, 'browser');
-    return { sourceMaps, scopeHoist, target };
+    return { sourceMaps, scopeHoist };
   }
 
   /**

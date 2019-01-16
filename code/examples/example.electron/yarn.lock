@@ -893,10 +893,10 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/core@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.2.tgz#9f8aedafc297491ea4537fd096ab9a7c0241ad81"
-  integrity sha512-5/dL5G6f81s84cCBe/UKAzV/hVjjItBYW0KHtx+YXZm1ZlTynEzL/HAuZh2oYNL+1nr5X5zPGpy22U7juR4Wgg==
+"@uiharness/core@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.3.tgz#f7556fff08cfa71af8d0bf8d3a3f414ec8bf0585"
+  integrity sha512-uQDc+o3nK0SB1QyNanAtbg1vlgjsox7QFKO+GDpKVJeb66aBrXJ4PX67ZK6f9zxKJdfJRdiMyQ63mBFFf2aLjA==
   dependencies:
     "@tdb/util" "1.9.22"
     "@types/fs-extra" "^5.0.4"
@@ -906,10 +906,10 @@
     js-yaml "^3.12.1"
     parcel-bundler "^1.11.0"
 
-"@uiharness/electron@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.0.5.tgz#7bfbfddda69bfce462ea793f53a0298b1ccf895e"
-  integrity sha512-09IVg1l0ICbHRWMS0JId37fLotj10su6f2NSe8SSlA3iNJjL+ZgFLAut/MWt4bKwGziAXvfcCFeTj2mC9Fa39A==
+"@uiharness/electron@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.0.8.tgz#c71dad683c1f1c6930cbc12b565dbf808e84792c"
+  integrity sha512-d9ThQ1ixIh/fGMmj06X7cZSitDBySGi2/bzwYnE9OGoqa0HgC4wzXHhm3srmgeKcf8IeQpEEvmePjBFWweGvRw==
   dependencies:
     "@babel/core" "7.2.2"
     "@babel/preset-env" "7.2.3"
@@ -918,7 +918,7 @@
     "@tdb/log" "1.1.17"
     "@tdb/typescript" "3.2.5"
     "@tdb/util" "1.9.22"
-    "@uiharness/core" "1.0.2"
+    "@uiharness/core" "1.0.3"
     app-root-path "2.1.0"
     babel-core "^7.0.0-bridge.0"
     electron "4.0.1"

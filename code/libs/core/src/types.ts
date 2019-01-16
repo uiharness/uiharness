@@ -10,7 +10,6 @@ export type IUIHarnessConfig = {
    * https://parceljs.org/cli.html
    */
   sourcemaps?: boolean; // Default: true.
-  target?: 'browser' | 'node' | 'electron';
   treeshake?: boolean; // Default:true
 
   /**

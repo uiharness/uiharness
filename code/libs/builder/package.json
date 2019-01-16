@@ -1,7 +1,7 @@
 {
   "name": "@uiharness/builder",
   "description": "Lightening fast Typescript/React/Parcel builder for the UIHarness.",
-  "version": "1.0.34",
+  "version": "1.0.35",
   "main": "./lib/index.js",
   "scripts": {
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
@@ -16,7 +16,7 @@
     "@tdb/typescript": "3.2.5",
     "@tdb/util": "1.9.22",
     "@types/yargs": "^12.0.5",
-    "@uiharness/core": "1.0.2",
+    "@uiharness/core": "1.0.4",
     "filesize": "4.0.0",
     "fs-extra": "7.0.1",
     "js-yaml": "3.12.1",
