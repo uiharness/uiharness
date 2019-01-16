@@ -16,7 +16,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/electron": "^0.0.8"
+    "@uiharness/electron": "^0.0.10"
   },
   "license": "MIT",
   "private": true
