@@ -1,6 +1,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![title](https://user-images.githubusercontent.com/185555/51221316-dd9b1980-199d-11e9-8b78-26bbafd344f1.jpg)
 
-# UIHarness (Builder)
+
 The [UIHarness](https://uiharness.com) using the lightening fast [Parcel](https://parceljs.org) bundler with [React](https://reactjs.org/) and [Typescript](https://www.typescriptlang.org/).
 
 ## Quick Start
