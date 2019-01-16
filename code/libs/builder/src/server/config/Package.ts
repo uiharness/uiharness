@@ -5,16 +5,10 @@ export type IPackageJson = {
   description?: string;
   version?: string;
   main?: string;
-  scripts?: { [key: string]: string };
+  scripts?: IPackageScripts;
 };
 
-const SCRIPTS = {
-  postinstall: 'uiharness init',
-  start: 'uiharness start',
-  bundle: 'uiharness bundle',
-  stats: 'uiharness stats',
-  serve: 'serve -s dist',
-};
+export type IPackageScripts = { [key: string]: string };
 
 /**
  * Represents a `package.json`.
@@ -57,10 +51,10 @@ export class Package {
   /**
    * Initializes the `package.json` file ensuring all required fields exist.
    */
-  public init() {
+  public addScripts(args: { scripts: IPackageScripts }) {
     const scripts = { ...(this.scripts || {}) };
-    Object.keys(SCRIPTS).forEach(key => {
-      const value = (SCRIPTS[key] || '').trim();
+    Object.keys(args.scripts).forEach(key => {
+      const value = (args.scripts[key] || '').trim();
       if (value && !scripts[key]) {
         scripts[key] = value;
       }
@@ -73,12 +67,12 @@ export class Package {
    * Removes default scripts from the `package.json`.
    * NB: Used for debugging purposes only.
    */
-  public removeScripts() {
+  public removeScripts(args: { scripts: IPackageScripts }) {
     const scripts = { ...(this.scripts || {}) };
-    Object.keys(SCRIPTS)
+    Object.keys(args.scripts)
       .filter(key => key !== 'postinstall')
       .forEach(key => {
-        const value = SCRIPTS[key];
+        const value = args.scripts[key];
         if ((scripts[key] || '').trim() === value) {
           delete scripts[key];
         }
@@ -87,6 +81,9 @@ export class Package {
     this.save();
   }
 
+  /**
+   * Saves changes to the `package.json` file.
+   */
   public save() {
     const json = JSON.stringify(this.json, null, '  ');
     fs.writeFileSync(this.path, `${json}\n`);

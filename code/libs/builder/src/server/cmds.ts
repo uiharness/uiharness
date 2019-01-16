@@ -15,6 +15,14 @@ const FILES = [
   '/uiharness.yml',
 ];
 
+const SCRIPTS = {
+  postinstall: 'uiharness init',
+  start: 'uiharness start',
+  bundle: 'uiharness bundle',
+  stats: 'uiharness stats',
+  serve: 'serve -s dist',
+};
+
 export function createBundler() {
   const entryFiles = settings.entries.map(e => e.html.absolute);
   return new Bundler(entryFiles, settings.buildArgs);
@@ -28,7 +36,7 @@ export async function init(options: { force?: boolean } = {}) {
   const flags = settings.init;
 
   if (flags.scripts) {
-    pkg.init();
+    pkg.addScripts({ scripts: SCRIPTS });
   }
 
   if (flags.files) {
@@ -55,7 +63,7 @@ export async function init(options: { force?: boolean } = {}) {
  * Removes configuration files.
  */
 export async function reset(options: {} = {}) {
-  pkg.removeScripts();
+  pkg.removeScripts({ scripts: SCRIPTS });
   FILES
     // Delete copied template files.
     .map(file => toRootPath(file))
