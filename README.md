@@ -16,3 +16,10 @@ yarn add -D @uiharness/parcel
 ```
 See documentation in [@uiharness/parcel](libs/parcel).
 
+
+## Modules
+
+- [@uiharness/builder](libs/builder)
+- [@uiharness/core](libs/core)
+- [@uiharness/electron](libs/electron)
+
