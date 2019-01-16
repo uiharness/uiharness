@@ -32,7 +32,7 @@ export async function init(options: { force?: boolean; reset?: boolean } = {}) {
 /**
  * Removes configuration files.
  */
-export async function reset(options: {} = {}) {
+async function reset(options: {} = {}) {
   pkg.removeScripts({ scripts: SCRIPTS });
   FILES
     // Delete copied template files.

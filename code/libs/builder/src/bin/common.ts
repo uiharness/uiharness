@@ -1,12 +1,9 @@
+import { config, fs, fsPath, log } from '@uiharness/core/lib/server';
+import * as filesize from 'filesize';
 import * as Bundler from 'parcel-bundler';
-import { log, fs, fsPath, config } from '@uiharness/core/lib/server';
-// import * as core from '@uiharness/core/lib/server';
 
 export * from '../common';
-import * as filesize from 'filesize';
-
 export { filesize, log, fs, fsPath, config };
-// export { log, fs, fsPath } from '@uiharness/core/lib/server';
 
 /**
  * Creates a new Parcel bundler.

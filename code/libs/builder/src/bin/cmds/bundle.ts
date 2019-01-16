@@ -1,6 +1,6 @@
-import { logInfo, config, createBundler, log } from './common';
-import { init } from './cmd.init';
-import { stats } from './cmd.stats';
+import { logInfo, config, createBundler, log } from '../common';
+import { init } from './init';
+import { stats } from './stats';
 
 /**
  * Runs the build packager.

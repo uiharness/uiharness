@@ -2,7 +2,7 @@
 import * as yargs from 'yargs';
 
 import { log, constants } from '../common';
-import * as api from '.';
+import * as cmds from './cmds';
 
 const COMMAND = {
   INIT: 'init',
@@ -31,7 +31,7 @@ const program = yargs
         }),
     e => {
       const { force, reset } = e;
-      api.init({ force, reset });
+      cmds.init({ force, reset });
     },
   )
 
