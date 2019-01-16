@@ -1,10 +1,9 @@
 import { format } from 'url';
 import { BrowserWindow, app } from 'electron';
 
-const config = require('../../.uiharness/config.json');
-
 const { resolve } = require('app-root-path');
 const isDev = require('electron-is-dev');
+const config = require('../../.uiharness/config.json');
 
 app.on('ready', async () => {
   const mainWindow = new BrowserWindow({

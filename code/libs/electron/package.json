@@ -15,7 +15,7 @@
     "parcel:build": "run-s parcel:main parcel:renderer",
     "parcel:main": "parcel build src/main/main.ts --out-dir src/main/.parcel --out-file main --target electron",
     "parcel:renderer": "parcel build src/renderer/index.html --public-url ./ --out-dir src/renderer/.parcel/production",
-    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh --project tsconfig.lib.json $@",
+    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
     "clean": "sh ./sh/clean.sh",
     "nuke": "sh ./sh/nuke.sh"

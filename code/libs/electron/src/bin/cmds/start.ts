@@ -31,16 +31,20 @@ export async function start(args: {
   await (parcelRenderer as any).serve(port);
 
   /**
-   * TODO
-   * - copy SRC code.
+   * 🐷🐷🐷 TODO 🐷🐷🐷
+   * - clean up `tsconfig.json` (rootDir => include:[src] in the base @tdb/typescript)
+   * - remove `common` from raw template (too @tdb specific)
    * - HMR?
    * - set `main` in package.json to `src/main/.parcel/main.js`
    * - get logging from main showing up in console.
    * - make specific `Settings` config version for @uiharness/electron.
    * - move specific `Settings` for web into @uiharness/web
    * - remove `babel` deps from @uiharness/electron (bought in by parcel??)
+   * - delete electron/bootrap specific scripts from this module.
    * - settings
    *    - main app title?
+   * - template for create-uiharness: `yarn create uiharness` => electron (tmpl)
+   * - update `electron-builder.yml` with template values.
    */
 
   // Start the electron server.

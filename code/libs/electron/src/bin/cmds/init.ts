@@ -1,6 +1,15 @@
 import { config, fs, fsPath, log } from '../common';
 
-const FILES = ['.babelrc', '/tsconfig.json', '/tslint.json', '/uiharness.yml'];
+const FILES = [
+  '/src/common',
+  '/src/main',
+  '/src/renderer',
+  '.babelrc',
+  '/tsconfig.json',
+  '/tslint.json',
+  '/uiharness.yml',
+  'electron-builder.yml',
+];
 const SCRIPTS = {
   postinstall: 'uiharness-electron init',
   start: 'uiharness-electron start',
@@ -46,8 +55,6 @@ async function reset(args: { pkg: config.Package }) {
   fs.removeSync(fsPath.resolve('./.cache'));
   fs.removeSync(fsPath.resolve('./dist'));
   fs.removeSync(fsPath.resolve('./.uiharness'));
-  fs.removeSync(fsPath.resolve('./src/main/.parcel'));
-  fs.removeSync(fsPath.resolve('./src/renderer/.parcel'));
 
   // Log results.
   log.info('');
@@ -66,6 +73,7 @@ async function reset(args: { pkg: config.Package }) {
 function ensureFile(path: string, options: { force?: boolean } = {}) {
   const { force } = options;
   const to = toRootPath(path);
+
   if (force || !fs.existsSync(to)) {
     const from = templatePath(path);
     fs.copySync(from, to);
