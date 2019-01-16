@@ -10,11 +10,17 @@ yarn create uiharness
 
 Then follow the command-line prompts to generate your new module.
 
-## Manual Setup
+## Manual
+To build and test for the web (brower):
 ```bash
-yarn add -D @uiharness/parcel
+yarn add -D @uiharness/builder
 ```
-See documentation in [@uiharness/parcel](libs/parcel).
+
+To build and test within [Electron](https://electronjs.org):
+```bash
+yarn add -D @uiharness/electron
+```
+
 
 
 ## Modules
