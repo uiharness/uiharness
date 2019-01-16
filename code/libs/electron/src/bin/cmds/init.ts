@@ -1,4 +1,4 @@
-import { core, fs, fsPath, log } from './common';
+import { core, fs, fsPath, log } from '../common';
 
 const settings = core.config.Settings.create();
 const pkg = core.config.Package.create();
@@ -65,11 +65,9 @@ function ensureFile(path: string, options: { force?: boolean } = {}) {
   }
 }
 function toRootPath(path: string) {
-  console.log('fsPath', fsPath);
   path = path.replace(/\//, '');
   return fsPath.resolve(`./${path}`);
 }
 function templatePath(path: string) {
-  console.log('path', path);
   return fsPath.resolve(`./node_modules/@uiharness/electron/tmpl/${path}`);
 }
