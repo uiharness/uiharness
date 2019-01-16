@@ -2,13 +2,9 @@
 import * as yargs from 'yargs';
 
 import { log, constants } from '../common';
-import * as server from '../server';
 
 const COMMAND = {
   INIT: 'init',
-  START: 'start',
-  BUNDLE: 'bundle',
-  STATS: 'stats',
 };
 const COMMANDS = Object.keys(COMMAND).map(key => COMMAND[key]);
 
@@ -34,30 +30,11 @@ const program = yargs
         }),
     e => {
       const { force, reset } = e;
-      if (reset) {
-        server.reset();
-      } else {
-        server.init({ force });
-      }
+      log.info('INIT');
+      console.log('force', force);
+      console.log('reset', reset);
+      console.log('e', e);
     },
-  )
-  .command(
-    COMMAND.START,
-    'Start the development server.',
-    e => e,
-    e => server.start({}),
-  )
-  .command(
-    COMMAND.BUNDLE,
-    'Package a bundle into the `/dist` folder.',
-    e => e,
-    e => server.bundle({}),
-  )
-  .command(
-    COMMAND.STATS,
-    'Read size details about the `/dist` bundle.',
-    e => e,
-    e => server.stats({}),
   )
 
   .help('h')

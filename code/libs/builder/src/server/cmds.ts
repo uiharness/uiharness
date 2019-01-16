@@ -80,7 +80,7 @@ export async function reset(options: {} = {}) {
 export async function start(options: {} = {}) {
   // Setup initial conditions.
   init();
-  logInfo();
+  logInfo({ port: true });
 
   // Prepare the bundler.
   const bundler = createBundler();
