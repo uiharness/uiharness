@@ -836,10 +836,10 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.5.tgz#f4f85fe198e1e9cedc0bb53a8c2d30fb34299e50"
   integrity sha512-y51XRWWg1GiW4+mV2zmFQUqJT3bX7nuUaXW4j8a2dFvT9ZlaNLjb7ZxcUSDyklt/UBWrW2+31x+hQpRzxaTFzw==
 
-"@uiharness/builder@^1.0.36":
-  version "1.0.36"
-  resolved "https://registry.yarnpkg.com/@uiharness/builder/-/builder-1.0.36.tgz#3237a7c8f5b505cca8a00adc8a7f1530398a7f63"
-  integrity sha512-nUQWh/jXUXR1o0m+1+otLjMhV9qySiPTxLjM2BYzwPhzudu71m2nQVAY+uxl9iiNBJYQTVHerDpbPdIHzvp96A==
+"@uiharness/builder@^1.0.37":
+  version "1.0.37"
+  resolved "https://registry.yarnpkg.com/@uiharness/builder/-/builder-1.0.37.tgz#08f7731afa6dbe7eb0a7eb9de3490b722e3979c3"
+  integrity sha512-Dv3usgr53U6MuRBK12lH1naP0gNoDACQN6iesgP329zABBytWdWDGUEkwq17qyzllCbEfyfr69/Fo25dHQKtRQ==
   dependencies:
     "@tdb/log" "1.1.17"
     "@tdb/typescript" "3.2.5"
