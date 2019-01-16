@@ -21,7 +21,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/builder": "^1.0.32"
+    "@uiharness/builder": "^1.0.33"
   },
   "repository": "https://github.com/uiharness/uiharness",
   "license": "UNLICENSED",
