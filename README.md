@@ -1,7 +1,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![title](https://user-images.githubusercontent.com/185555/51221320-de33b000-199d-11e9-9c09-d7dc9ede60b0.jpg)
+![title](https://user-images.githubusercontent.com/185555/51241208-342a4700-19e2-11e9-9375-43943214cf3a.jpg)
 
-https://uiharness.com
+Scaffolding for precise UI component development in electron and the web.
+[uiharness.com](https://uiharness.com)
 
 ## Quick Start
 
