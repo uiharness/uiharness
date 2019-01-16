@@ -1,12 +1,11 @@
 import * as Bundler from 'parcel-bundler';
 
 import * as filesize from 'filesize';
-import { R, fs, fsPath, log, value as valueUtil } from './common/libs';
-import { Package, Settings } from './config';
+import { R, fs, fsPath, log, value as valueUtil, core } from './common/libs';
 
 const ROOT_DIR = fsPath.resolve('.');
-const settings = Settings.create('.');
-const pkg = Package.create();
+const settings = core.config.Settings.create('.');
+const pkg = core.config.Package.create();
 
 const FILES = [
   '/.prettierrc',

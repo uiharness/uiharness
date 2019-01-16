@@ -1,14 +1,4 @@
-import { fs, fsPath } from '../common';
-
-export type IPackageJson = {
-  name?: string;
-  description?: string;
-  version?: string;
-  main?: string;
-  scripts?: IPackageScripts;
-};
-
-export type IPackageScripts = { [key: string]: string };
+import { fs, fsPath, types } from '../common';
 
 /**
  * Represents a `package.json`.
@@ -18,7 +8,7 @@ export class Package {
 
   public readonly path: string;
   public readonly exists: boolean;
-  public json: IPackageJson;
+  public json: types.IPackageJson;
 
   private constructor(dir?: string) {
     dir = dir ? dir : '.';
@@ -51,7 +41,7 @@ export class Package {
   /**
    * Initializes the `package.json` file ensuring all required fields exist.
    */
-  public addScripts(args: { scripts: IPackageScripts }) {
+  public addScripts(args: { scripts: types.IPackageScripts }) {
     const scripts = { ...(this.scripts || {}) };
     Object.keys(args.scripts).forEach(key => {
       const value = (args.scripts[key] || '').trim();
@@ -67,7 +57,7 @@ export class Package {
    * Removes default scripts from the `package.json`.
    * NB: Used for debugging purposes only.
    */
-  public removeScripts(args: { scripts: IPackageScripts }) {
+  public removeScripts(args: { scripts: types.IPackageScripts }) {
     const scripts = { ...(this.scripts || {}) };
     Object.keys(args.scripts)
       .filter(key => key !== 'postinstall')

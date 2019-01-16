@@ -6,6 +6,3 @@ import * as fsPath from 'path';
 
 export { fs, fsPath, jsYaml };
 export { log } from '@tdb/log/lib/server';
-
-import * as core from '@uiharness/core/lib/server';
-export { core };
