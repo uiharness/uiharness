@@ -15,8 +15,7 @@ then follow the prompts to generate your new module.
 
 ## Manual Start
 
-Or you can manually add the UIHarness.
-For the web (browser):
+Or manually add the UIHarness, for the web (browser):
 
 ```bash
 yarn add -D @uiharness/web
