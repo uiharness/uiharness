@@ -20,7 +20,7 @@ yarn create uiharness
 
 then follow the prompts to generate your new module.
 
-### Manual Start
+### Manual Installation
 
 Or manually add the UIHarness, for the web (browser):
 
