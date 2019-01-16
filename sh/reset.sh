@@ -8,3 +8,4 @@ cd ../../../
 
 echo
 echo '👋   All example projects reset.'
+
