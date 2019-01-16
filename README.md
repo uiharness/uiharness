@@ -4,14 +4,17 @@
 https://uiharness.com
 
 ## Quick Start
+Use the bootstrapper to get up and running in less than 30 seconds:
+
 ```bash
 yarn create uiharness
 ```
 
-Then follow the command-line prompts to generate your new module.
+then follow the command-line prompts to generate your new module.
 
 ## Manual
-To build and test for the web (brower):
+Or you can manually setup the UIHarness.
+To add to build and test for the web (brower):
 ```bash
 yarn add -D @uiharness/builder
 ```
