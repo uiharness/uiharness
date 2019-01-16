@@ -1,0 +1,12 @@
+
+# Auto-generated files from `@uiharness/builder`
+build
+dist
+html
+.cache
+
+.prettierrc
+tslint.json
+tsconfig.json
+uiharness.yml
+
