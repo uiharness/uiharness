@@ -1,13 +1,19 @@
 #!/usr/bin/env node
 import * as yargs from 'yargs';
 
-import { log, constants } from '../common';
+import { log, constants, config } from './common';
 import * as cmds from './cmds';
 
 const COMMAND = {
   INIT: 'init',
+  START: 'start',
+  BUNDLE: 'bundle',
+  STATS: 'stats',
 };
 const COMMANDS = Object.keys(COMMAND).map(key => COMMAND[key]);
+
+const settings = config.Settings.create();
+const pkg = config.Package.create();
 
 /**
  * Cheat sheet.
@@ -17,7 +23,7 @@ const program = yargs
   .usage('Usage: $0 <command> [options]')
   .command(
     COMMAND.INIT,
-    'Initialize the module with default files needed to run electron.',
+    'Initialize the module with default files.',
     e =>
       e
         .option('force', {
@@ -31,8 +37,26 @@ const program = yargs
         }),
     e => {
       const { force, reset } = e;
-      cmds.init({ force, reset });
+      cmds.init({ settings, pkg, force, reset });
     },
+  )
+  .command(
+    COMMAND.START,
+    'Start the development server.',
+    e => e,
+    e => cmds.start({ settings, pkg }),
+  )
+  .command(
+    COMMAND.BUNDLE,
+    'Package a bundle into the `/dist` folder.',
+    e => e,
+    e => cmds.bundle({ settings, pkg }),
+  )
+  .command(
+    COMMAND.STATS,
+    'Read size details about the `/dist` bundle.',
+    e => e,
+    e => cmds.stats({ settings, pkg }),
   )
 
   .help('h')

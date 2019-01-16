@@ -1,0 +1,28 @@
+{
+  "name": "example.parcel",
+  "version": "1.0.0",
+  "description": "Example usage of `@uiharness/web`",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "tmp": "yarn sl && uiharness $@",
+    "nuke": "sh ./sh/nuke.sh",
+    "postinstall": "uiharness init",
+    "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
+    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
+    "sl": "msync sl && sh ./sh/copy-bin.sh",
+    "reset": "yarn sl && uiharness init --reset",
+    "reset-init": "yarn reset && yarn postinstall",
+    "start": "uiharness start",
+    "bundle": "uiharness bundle",
+    "stats": "uiharness stats",
+    "serve": "serve -s dist"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@uiharness/web": "^0.0.1"
+  },
+  "repository": "https://github.com/uiharness/uiharness",
+  "license": "MIT",
+  "private": true
+}

@@ -5,20 +5,20 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
+    "tmp": "yarn sl && uiharness-electron $@",
     "postinstall": "uiharness-electron init",
-    "start": "node .",
-    "test": "sh ./node_modules/@tdb/test/sh/test.sh",
+    "nuke": "sh ./sh/nuke.sh",
+    "sl": "msync sl && sh ./sh/copy-bin.sh",
+    "reset": "yarn sl && uiharness-electron init --reset",
+    "reset-init": "yarn reset && yarn postinstall",
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
-    "prepare": "yarn run build && yarn run lint && yarn test"
+    "start": "uiharness-electron start",
+    "bundle": "uiharness-electron bundle"
   },
-  "dependencies": {
-    "@tdb/util": "1.9.22",
-    "@uiharness/electron": "^0.0.2"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@tdb/test": "1.2.10",
-    "@tdb/typescript": "3.2.5"
+    "@uiharness/electron": "^0.0.8"
   },
   "license": "MIT",
   "private": true

@@ -1,0 +1,27 @@
+{
+  "name": "example.webpack",
+  "version": "1.0.0",
+  "description": "Example usage of @uiharess/webpack",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "postinstall": "uiharness init",
+    "build": "node ./node_modules/typescript/bin/tsc --importHelpers --project tsconfig.lib.json $@",
+    "debug:sync-libs": "msync sl && sh ./sh/copy-bin.sh",
+    "reset": "yarn debug:sync-libs && uiharness debug:reset",
+    "tmp": "yarn debug:reset && sleep 0.5s && yarn postinstall"
+  },
+  "dependencies": {
+    "@uiharness/webpack": "^1.0.2"
+  },
+  "devDependencies": {},
+  "repository": "https://github.com/uiharness/uiharness",
+  "license": "MIT",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "private": true
+}

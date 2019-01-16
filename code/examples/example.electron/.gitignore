@@ -1,0 +1,10 @@
+.cache
+build
+dist
+
+# Auto-generated files from `@uiharness/electron`
+html
+tslint.json
+tsconfig.json
+uiharness.yml
+

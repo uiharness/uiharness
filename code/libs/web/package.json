@@ -1,0 +1,36 @@
+{
+  "name": "@uiharness/web",
+  "description": "Lightening fast Typescript/React/Parcel builder for the UIHarness.",
+  "version": "0.0.1",
+  "main": "./lib/index.js",
+  "scripts": {
+    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
+    "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
+    "prepare": "yarn build && yarn lint"
+  },
+  "bin": {
+    "uiharness": "./lib/bin/entry.js"
+  },
+  "dependencies": {
+    "@tdb/log": "1.1.17",
+    "@tdb/typescript": "3.2.5",
+    "@tdb/util": "1.9.22",
+    "@types/yargs": "^12.0.5",
+    "@uiharness/core": "1.0.4",
+    "filesize": "4.0.0",
+    "fs-extra": "7.0.1",
+    "js-yaml": "3.12.1",
+    "parcel-bundler": "1.11.0",
+    "serve": "10.1.1",
+    "yargs": "12.0.5"
+  },
+  "devDependencies": {
+    "@tdb/test": "1.2.10",
+    "@types/filesize": "3.6.0",
+    "@types/fs-extra": "5.0.4",
+    "@types/js-yaml": "3.11.4",
+    "@types/parcel-bundler": "1.10.1"
+  },
+  "license": "MIT",
+  "repository": "github.com/uiharness/uiharness"
+}
