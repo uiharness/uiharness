@@ -66,4 +66,4 @@ Include a `.uiharness.yml` file in the root of your module.
 This is automatically generated via `uiharness init` in your `postinstall`. 
 All values are optional.
 
-See [configuration documentation](../core/README.md)
+See [configuration documentation](../core/README.md#configuration)
