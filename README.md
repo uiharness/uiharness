@@ -3,10 +3,12 @@
 
 ![title](https://user-images.githubusercontent.com/185555/51241923-b49d7780-19e3-11e9-90c1-c847343d785f.jpg)
 
-Scaffolding for precise UI component development in electron and the web.
+Precisely isolate, develop and test your UI components in [typescript](https://www.typescriptlang.org/) and [react](https://reactjs.org/) targeting [electron](https://electronjs.org/) or the [web](https://developer.mozilla.org).
 [uiharness.com](https://uiharness.com)
 
-🌳   `API's will change radically. V4 release coming soon.`
+----
+
+🌳   `NOTE: API's will change radically. V4 release coming soon.`
 
 
 ![spacer](https://user-images.githubusercontent.com/185555/51242442-e236f080-19e4-11e9-926d-213338bbaf72.png)
