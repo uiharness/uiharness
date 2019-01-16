@@ -16,7 +16,7 @@
   },
   "devDependencies": {},
   "repository": "https://github.com/uiharness/uiharness",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "browserslist": [
     ">0.2%",
     "not dead",

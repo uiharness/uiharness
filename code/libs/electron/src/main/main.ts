@@ -1,6 +1,7 @@
 import { format } from 'url';
 import { BrowserWindow, app } from 'electron';
-import { resolve } from 'app-root-path';
+
+const { resolve } = require('app-root-path');
 const isDev = require('electron-is-dev');
 
 app.on('ready', async () => {

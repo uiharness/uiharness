@@ -6,7 +6,6 @@
   "types": "./lib/index.d.ts",
   "scripts": {
     "tmp": "yarn sl && uiharness $@",
-    "uih": "yarn sl && uiharness $@",
     "nuke": "sh ./sh/nuke.sh",
     "postinstall": "uiharness init",
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
@@ -24,6 +23,6 @@
     "@uiharness/builder": "^1.0.33"
   },
   "repository": "https://github.com/uiharness/uiharness",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": true
 }
