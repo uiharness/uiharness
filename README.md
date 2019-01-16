@@ -1,12 +1,16 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+![pre-release](https://img.shields.io/badge/Status-pre--release-orange.svg)
+
 ![title](https://user-images.githubusercontent.com/185555/51241923-b49d7780-19e3-11e9-90c1-c847343d785f.jpg)
 
 Scaffolding for precise UI component development in electron and the web.
 [uiharness.com](https://uiharness.com)
 
-🌳   `STATUS: PRE-RELEASE // API's will change radically.  V4 release coming soon.`
+🌳   `STATUS: API's will change radically. V4 release coming soon.`
 
----
+
+![spacer](https://user-images.githubusercontent.com/185555/51242442-e236f080-19e4-11e9-926d-213338bbaf72.png)
+
 ## Getting Started
 
 
