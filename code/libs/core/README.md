@@ -1,4 +1,4 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 ![title](https://user-images.githubusercontent.com/185555/51221318-de33b000-199d-11e9-8ad8-b244c1aab3e4.jpg)
 
 Shared logic of the [UIHarness](https://uiharness.com).
