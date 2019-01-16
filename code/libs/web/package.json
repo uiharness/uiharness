@@ -15,7 +15,6 @@
     "@tdb/log": "1.1.17",
     "@tdb/typescript": "3.2.5",
     "@tdb/util": "1.9.22",
-    "@types/yargs": "^12.0.5",
     "@uiharness/core": "1.0.4",
     "filesize": "4.0.0",
     "fs-extra": "7.0.1",
@@ -29,8 +28,15 @@
     "@types/filesize": "3.6.0",
     "@types/fs-extra": "5.0.4",
     "@types/js-yaml": "3.11.4",
-    "@types/parcel-bundler": "1.10.1"
+    "@types/parcel-bundler": "1.10.1",
+    "@types/yargs": "12.0.5"
   },
+  "keywords": [
+    "design",
+    "test",
+    "react",
+    "typescript"
+  ],
   "license": "MIT",
   "repository": "github.com/uiharness/uiharness"
 }

@@ -29,5 +29,12 @@
   "files": [
     "**/*"
   ],
+  "keywords": [
+    "design",
+    "test",
+    "react",
+    "typescript",
+    "electron"
+  ],
   "license": "UNLICENSED"
 }
