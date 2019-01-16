@@ -5,7 +5,7 @@ https://uiharness.com
 
 ## Quick Start
 
-Use the bootstrapper to get up and running in less than 30 seconds:
+Use the bootstrapper to get up and running with a scaffold module in less than 30 seconds:
 
 ```bash
 yarn create uiharness
