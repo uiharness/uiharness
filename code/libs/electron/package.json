@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/electron",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "src/main/.parcel/main.js",
   "bin": {
     "uiharness-electron": "./lib/bin/entry.js"
