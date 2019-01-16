@@ -6,17 +6,17 @@
 Scaffolding for precise UI component development in electron and the web.
 [uiharness.com](https://uiharness.com)
 
-🌳   `STATUS: API's will change radically. V4 release coming soon.`
+🌳   `API's will change radically. V4 release coming soon.`
 
 
 ![spacer](https://user-images.githubusercontent.com/185555/51242442-e236f080-19e4-11e9-926d-213338bbaf72.png)
 
+
+
 ## Getting Started
 
-
 ### Quick Start
-
-Use the bootstrapper to get up and running with a scaffold in less than 30 seconds:
+Use the bootstrapper to be up and running with a scaffold in less than 30 seconds:
 
 ```bash
 yarn create uiharness
@@ -25,7 +25,6 @@ yarn create uiharness
 then follow the prompts to generate your new module.
 
 ### Manual Installation
-
 Or manually add the UIHarness, for the web (browser):
 
 ```bash
@@ -38,8 +37,10 @@ or [electron](https://electronjs.org):
 yarn add -D @uiharness/electron
 ```
 
-## Modules
 
+
+
+## Modules
 - [@uiharness/core](code/libs/core/README.md)
 - [@uiharness/web](code/libs/web/README.md)
 - [@uiharness/electron](code/libs/electron/README.md)
