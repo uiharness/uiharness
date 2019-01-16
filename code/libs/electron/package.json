@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/electron",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "main": "src/main/.parcel/main.js",
   "bin": {
     "uiharness-electron": "./lib/bin/entry.js"
@@ -34,11 +34,13 @@
     "electron": "4.0.1",
     "electron-builder": "20.38.5",
     "electron-is-dev": "1.0.1",
+    "execa": "1.0.0",
     "npm-run-all": "4.1.5",
     "parcel-bundler": "1.11.0",
     "yargs": "12.0.5"
   },
   "devDependencies": {
+    "@types/execa": "^0.9.0",
     "@types/parcel-bundler": "1.10.1",
     "@types/yargs": "12.0.5"
   },

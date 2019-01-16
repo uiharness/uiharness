@@ -1,6 +1,7 @@
+import * as execa from 'execa';
 import * as ParcelBundler from 'parcel-bundler';
 
-import { config, logInfo } from '../common';
+import { config, fs, fsPath, logInfo } from '../common';
 import { init } from './init';
 
 /**
@@ -12,26 +13,77 @@ export async function start(args: {
 }) {
   // Setup initial conditions.
   const { settings, pkg } = args;
-  init({ settings, pkg });
-  logInfo({ settings, pkg, port: true });
+  const main = fsPath.resolve('./src/main/main.ts');
+  const port = settings.port;
 
-  // Prepare HTML/JS dev-server.
-  const parcel = createParcelBundler(settings);
-  const parcelServer = await (parcel as any).serve(settings.port);
+  init({ settings, pkg });
+  logInfo({ settings, pkg, port: true, main });
+
+  // Save settings as JSON to local project.
+  await saveConfigJson({ settings });
+
+  // Start the renderer JS builder.
+  const parcelRenderer = createRendererBundler(settings);
+  await (parcelRenderer as any).serve(port);
+
+  // Build the main JS.
+  const parcelMain = createMainBundler(main, settings);
+  await parcelMain.bundle();
+
+  /**
+   * TODO
+   * - set `main` in package.json to `src/main/.parcel/main.js`
+   * - get logging from main showing up in console.
+   * - HMR?
+   */
+
+  // Start the electron server.
+  const cmd = `cd ${fsPath.resolve('.')} && electron .`;
+  const childProcess = execa.shell(cmd);
+  childProcess.stdout.pipe(process.stdout);
+  await childProcess;
 }
 
 /**
  * INTERNAL
  */
 
-function createParcelBundler(settings: config.Settings) {
-  const args = settings.buildArgs;
-  const entryFiles = 'src/renderer/index.html';
+/**
+ * Saves configuration JSON to the target module to be imported
+ * by the consuming components.
+ */
+async function saveConfigJson(args: { settings: config.Settings }) {
+  const { port } = args.settings;
+  const data = { port };
+  const dir = fsPath.resolve('./.uiharness');
+  const path = fsPath.join(dir, 'config.json');
+  const json = `${JSON.stringify(data, null, '  ')}\n`;
+  await fs.ensureDir(dir);
+  await fs.writeFile(path, json);
+}
+
+function createMainBundler(entry: string, settings: config.Settings) {
+  const outDir = 'src/main/.parcel';
+  const outFile = 'main';
+  return createBundler(entry, settings, { outDir, outFile });
+}
+
+function createRendererBundler(settings: config.Settings) {
+  const entry = 'src/renderer/index.html';
   const outDir = 'src/renderer/.parcel/development';
-  return new ParcelBundler(entryFiles, {
+  return createBundler(entry, settings, { outDir });
+}
+
+function createBundler(
+  entry: string,
+  settings: config.Settings,
+  options: ParcelBundler.ParcelOptions,
+) {
+  const args = settings.buildArgs;
+  return new ParcelBundler(entry, {
     target: 'electron',
     sourceMaps: args.sourcemaps,
     scopeHoist: args.treeshake,
-    outDir,
+    ...options,
   });
 }

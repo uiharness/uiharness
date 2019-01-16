@@ -4,6 +4,10 @@ import { BrowserWindow, app } from 'electron';
 const { resolve } = require('app-root-path');
 const isDev = require('electron-is-dev');
 
+console.group('🌳 MAIN');
+console.log('-------------------------------------------');
+console.groupEnd();
+
 app.on('ready', async () => {
   const mainWindow = new BrowserWindow({
     width: 1200,

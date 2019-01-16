@@ -10,16 +10,17 @@ export function logInfo(args: {
   settings: config.Settings;
   pkg: config.Package;
   port?: boolean | number;
+  main?: string;
 }) {
-  const { settings, pkg } = args;
-  // const ROOT_DIR = fsPath.resolve('.');
+  const { settings, pkg, main } = args;
+  const ROOT_DIR = fsPath.resolve('.');
 
-  // const formatPath = (path: string) => {
-  //   let dir = fsPath.dirname(path);
-  //   dir = dir.substr(ROOT_DIR.length);
-  //   const file = fsPath.basename(path);
-  //   return `${dir}/${log.cyan(file)}`;
-  // };
+  const formatPath = (path: string) => {
+    let dir = fsPath.dirname(path);
+    dir = dir.substr(ROOT_DIR.length);
+    const file = fsPath.basename(path);
+    return `${dir}/${log.cyan(file)}`;
+  };
 
   // const entryFiles = settings.entries.map(e => e.html.absolute);
   const showPort = Boolean(args.port);
@@ -28,6 +29,7 @@ export function logInfo(args: {
   log.info();
   log.info.gray(`package: ${log.magenta(pkg.name)}`);
   log.info.gray(`version: ${pkg.version}`);
+  log.info.gray(`main:    ${formatPath(main || '')}`);
   if (showPort) {
     log.info.gray(`port:    ${log.yellow(port)}`);
   }

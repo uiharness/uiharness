@@ -1,6 +1,8 @@
 import { format } from 'url';
 import { BrowserWindow, app } from 'electron';
 
+const config = require('../../.uiharness/config.json');
+
 const { resolve } = require('app-root-path');
 const isDev = require('electron-is-dev');
 
@@ -18,7 +20,7 @@ app.on('ready', async () => {
     }
   });
 
-  const devPath = 'http://localhost:8800';
+  const devPath = `http://localhost:${config.port}`;
   const prodPath = format({
     pathname: resolve('src/renderer/.parcel/production/index.html'),
     protocol: 'file:',

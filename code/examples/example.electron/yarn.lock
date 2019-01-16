@@ -14,7 +14,7 @@
   dependencies:
     "@babel/highlight" "^7.0.0"
 
-"@babel/core@7.2.2", "@babel/core@^7.0.0":
+"@babel/core@7.2.2", "@babel/core@^7.0.0", "@babel/core@^7.2.2":
   version "7.2.2"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.2.2.tgz#07adba6dde27bb5ad8d8672f15fde3e08184a687"
   integrity sha512-59vB0RWt09cAct5EIe58+NzGP4TFSD3Bz//2/ELy3ZeTeKF6VTD1AXlH8BGGbCX0PuobZBsIzO7IAI9PH67eKw==
@@ -899,10 +899,10 @@
     fs-extra "7.0.1"
     js-yaml "3.12.1"
 
-"@uiharness/electron@^0.0.10":
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.0.10.tgz#25373fe0d61df00d8d42bc0e99fe88ea8ab9a437"
-  integrity sha512-1kdZQXdGUcjhF/2qwP2392+9itsSnjzfqpg7K5zTkaDyukITALZhheKPGIye1YyFkELpkhgfUZqrJoxX/JZs9Q==
+"@uiharness/electron@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.0.11.tgz#575003202b3a549e4887396902e81abfcc4ba5ba"
+  integrity sha512-iTJF1Q3bRanrAlv1yRwTrk3Orrmz3QpLS33mqqiROrkFMhlILfzRzCj6RxEGZFNxSe12hmQXmX332l0CB21CSQ==
   dependencies:
     "@babel/core" "7.2.2"
     "@babel/preset-env" "7.2.3"
