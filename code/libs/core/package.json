@@ -1,12 +1,27 @@
 {
   "name": "@uiharness/core",
-  "version": "1.0.1",
-  "description": "Stub placeholder for UIHarness core.",
-  "main": "index.js",
+  "version": "0.0.0",
+  "description": "Core compentry and logic of the UIHarness.",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "scripts": {
-    "build": "echo no-op",
-    "test": "echo no-op"
+    "start": "node .",
+    "watch": "nodemon .",
+    "test": "sh ./node_modules/@tdb/test/sh/test.sh",
+    "tdd": "yarn run test --reporter min --watch",
+    "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
+    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
+    "prepare": "yarn run build && yarn run lint && yarn test"
   },
-  "repository": "https://github.com/uiharness/uiharness",
-  "license": "MIT"
+  "dependencies": {
+    "@tdb/util": "1.9.22"
+  },
+  "devDependencies": {
+    "@tdb/test": "1.2.10",
+    "@tdb/typescript": "3.2.5"
+  },
+  "files": [
+    "**/*"
+  ],
+  "license": "UNLICENSED"
 }

@@ -5,7 +5,7 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "postinstall__": "uiharness-electron init",
+    "postinstall": "uiharness-electron init",
     "start": "node .",
     "test": "sh ./node_modules/@tdb/test/sh/test.sh",
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
@@ -13,7 +13,8 @@
     "prepare": "yarn run build && yarn run lint && yarn test"
   },
   "dependencies": {
-    "@tdb/util": "1.9.22"
+    "@tdb/util": "1.9.22",
+    "@uiharness/electron": "^0.0.2"
   },
   "devDependencies": {
     "@tdb/test": "1.2.10",
