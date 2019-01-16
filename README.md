@@ -10,8 +10,8 @@ Precisely isolate, develop and test your UI components in [typescript](https://w
 
 🌳   `NOTE: API's will change radically. V4 release coming soon.`
 
-
-![spacer](https://user-images.githubusercontent.com/185555/51242442-e236f080-19e4-11e9-926d-213338bbaf72.png)
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 
 
 
@@ -40,6 +40,8 @@ yarn add -D @uiharness/electron
 ```
 
 
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 
 
 ## Modules
