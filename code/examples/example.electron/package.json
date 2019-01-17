@@ -11,9 +11,7 @@
     "reset": "yarn sl && uiharness-electron init --reset",
     "reset-init": "yarn reset && yarn postinstall",
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
-    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
-    "start": "uiharness-electron start",
-    "bundle": "uiharness-electron bundle"
+    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@"
   },
   "dependencies": {},
   "devDependencies": {
