@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/core",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "Core compentry and logic of the UIHarness.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -14,15 +14,15 @@
     "prepare": "yarn run build && yarn run lint && yarn test"
   },
   "dependencies": {
-    "@tdb/util": "1.9.22",
+    "@tdb/util": "1.9.24",
     "@types/fs-extra": "5.0.4",
     "@types/js-yaml": "3.11.4",
     "fs-extra": "7.0.1",
     "js-yaml": "3.12.1"
   },
   "devDependencies": {
-    "@tdb/test": "1.2.10",
-    "@tdb/typescript": "3.2.5"
+    "@tdb/test": "1.2.12",
+    "@tdb/typescript": "3.2.7"
   },
   "files": [
     "**/*"

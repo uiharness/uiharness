@@ -25,10 +25,10 @@
     array-from "^2.1.1"
     lodash.get "^4.4.2"
 
-"@tdb/log@1.1.17":
-  version "1.1.17"
-  resolved "https://registry.yarnpkg.com/@tdb/log/-/log-1.1.17.tgz#9eded8dbd6fe2bec3ddc7614b132c45640ecf9e1"
-  integrity sha512-Ea1TISw8Wx88E/r4SON0MJePv4n/0n0uLCFkQl4BMFxFriB/haTpeqkhlmOvFqEXMSOlkgSyVBoGwFlgW0tvXw==
+"@tdb/log@1.1.19":
+  version "1.1.19"
+  resolved "https://registry.yarnpkg.com/@tdb/log/-/log-1.1.19.tgz#26e4297ce6e5dc12b224e3cf8c571033f3d711a7"
+  integrity sha512-nFLEI4sTfOhx4bD/abNOCAemBqB2WcWN+sWHnxZ0Zlle0ZoAVU6S9DwdQBsJilDO4hQ7LXlRs1TaS6cW//2nMQ==
   dependencies:
     "@types/ramda" "0.25.46"
     chalk "2.4.1"
@@ -36,10 +36,10 @@
     ramda "0.26.1"
     rxjs "6.3.3"
 
-"@tdb/test@1.2.10":
-  version "1.2.10"
-  resolved "https://registry.yarnpkg.com/@tdb/test/-/test-1.2.10.tgz#191648f6e40c7bbdbb56310e663ab943aeaa2d68"
-  integrity sha512-HrtDUxWfg/Rb7sBrziTDzj7hCBOIkyb66c7NInyFAXimO3pu+dbGa2NnZkqgFMKCU8iHoNswiE4MdzLyasPytA==
+"@tdb/test@1.2.12":
+  version "1.2.12"
+  resolved "https://registry.yarnpkg.com/@tdb/test/-/test-1.2.12.tgz#bb103419b4753114086e501ae000a6c74af65bae"
+  integrity sha512-xtZejPtzzwTC2HMJ58H+iKg7+yNLIyP4bbw9goR6VgNfk3yFO8CwhM4WWKAxuhKx9VxzKGfBY3/zj9c23P1ZOw==
   dependencies:
     "@types/chai" "4.1.7"
     "@types/mocha" "5.2.5"
@@ -50,10 +50,10 @@
     nock "10.0.4"
     sinon "7.2.2"
 
-"@tdb/typescript@3.2.5":
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/@tdb/typescript/-/typescript-3.2.5.tgz#2e294d71b130887d5bb3456f8dda37443131860c"
-  integrity sha512-CcsJAHbLFqmJz0sSa+7JnJRT9NQhsRbvAPagqJwvk2U1hTIKC2XgDcJlEWFcV8oV3OPgTShorQcnc/JRD0BuNQ==
+"@tdb/typescript@3.2.7":
+  version "3.2.7"
+  resolved "https://registry.yarnpkg.com/@tdb/typescript/-/typescript-3.2.7.tgz#ace58d752effee6011dca5be9d28fc4a7ff991d6"
+  integrity sha512-cmNTqyGBeZeZCcAKz8A7d0njDvwCWRktR9Mmsc8rQNiE8uv5J/2CpHlch0PMrvEYtjf9RmEVythZ2nASNgcyNA==
   dependencies:
     "@types/node" "10.12.15"
     prettier "1.15.3"
@@ -64,12 +64,12 @@
     tslint-react "3.6.0"
     typescript "3.2.2"
 
-"@tdb/util@1.9.22":
-  version "1.9.22"
-  resolved "https://registry.yarnpkg.com/@tdb/util/-/util-1.9.22.tgz#7fc21f3631d28784df3d16fdb9d3d210bc9a1b69"
-  integrity sha512-JGtnwpEE2G0g739Ari/fTfF2MgcKpch2BkEhxjWChZMFlmeAbhLesene0LKqSB6VDPNsx6c7qnGzwZFFAIsHgQ==
+"@tdb/util@1.9.24":
+  version "1.9.24"
+  resolved "https://registry.yarnpkg.com/@tdb/util/-/util-1.9.24.tgz#c687a6b01f16bd6429eaeda39ac9ce23144d1349"
+  integrity sha512-41rNHSGbHJ4wkclQZm8Tb5Ke2LcDT+YFwoy3B13EU6lTu7KAFspsnU56g6RPmV9nZZMyviwHJfbNPtelhEW3hw==
   dependencies:
-    "@tdb/log" "1.1.17"
+    "@tdb/log" "1.1.19"
     "@types/react" "16.7.17"
     "@types/react-dom" "16.0.11"
     "@types/string" "0.0.29"
@@ -147,9 +147,9 @@
     "@types/react" "*"
 
 "@types/react@*":
-  version "16.7.19"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.7.19.tgz#f9a527a172c7fd9375c01445cbd04834fa0fcca7"
-  integrity sha512-qT5NOZiZJ4z+ZjOSzOKeNxFvea2F+EJqTQVsqsMWM8uGIrDxMT2rmoIG/yu2vLmZFiJzW7c7+oFULr4kLCoJ6w==
+  version "16.7.20"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.7.20.tgz#13ae752c012710d0fa800985ca809814b51d3b58"
+  integrity sha512-Qd5RWkwl6SL7R2XzLk/cicjVQm1Mhc6HqXY5Ei4pWd1Vi8Fkbd5O0sA398x8fRSTPAuHdDYD9nrWmJMYTJI0vQ==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"

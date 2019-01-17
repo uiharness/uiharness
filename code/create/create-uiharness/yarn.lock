@@ -43,10 +43,10 @@
     ramda "0.26.1"
     rxjs "6.3.3"
 
-"@tdb/test@1.2.10":
-  version "1.2.10"
-  resolved "https://registry.yarnpkg.com/@tdb/test/-/test-1.2.10.tgz#191648f6e40c7bbdbb56310e663ab943aeaa2d68"
-  integrity sha512-HrtDUxWfg/Rb7sBrziTDzj7hCBOIkyb66c7NInyFAXimO3pu+dbGa2NnZkqgFMKCU8iHoNswiE4MdzLyasPytA==
+"@tdb/test@1.2.12":
+  version "1.2.12"
+  resolved "https://registry.yarnpkg.com/@tdb/test/-/test-1.2.12.tgz#bb103419b4753114086e501ae000a6c74af65bae"
+  integrity sha512-xtZejPtzzwTC2HMJ58H+iKg7+yNLIyP4bbw9goR6VgNfk3yFO8CwhM4WWKAxuhKx9VxzKGfBY3/zj9c23P1ZOw==
   dependencies:
     "@types/chai" "4.1.7"
     "@types/mocha" "5.2.5"
@@ -57,10 +57,10 @@
     nock "10.0.4"
     sinon "7.2.2"
 
-"@tdb/typescript@3.2.5":
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/@tdb/typescript/-/typescript-3.2.5.tgz#2e294d71b130887d5bb3456f8dda37443131860c"
-  integrity sha512-CcsJAHbLFqmJz0sSa+7JnJRT9NQhsRbvAPagqJwvk2U1hTIKC2XgDcJlEWFcV8oV3OPgTShorQcnc/JRD0BuNQ==
+"@tdb/typescript@3.2.7":
+  version "3.2.7"
+  resolved "https://registry.yarnpkg.com/@tdb/typescript/-/typescript-3.2.7.tgz#ace58d752effee6011dca5be9d28fc4a7ff991d6"
+  integrity sha512-cmNTqyGBeZeZCcAKz8A7d0njDvwCWRktR9Mmsc8rQNiE8uv5J/2CpHlch0PMrvEYtjf9RmEVythZ2nASNgcyNA==
   dependencies:
     "@types/node" "10.12.15"
     prettier "1.15.3"

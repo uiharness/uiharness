@@ -750,10 +750,10 @@
     "@parcel/utils" "^1.11.0"
     physical-cpu-count "^2.0.0"
 
-"@tdb/log@1.1.17":
-  version "1.1.17"
-  resolved "https://registry.yarnpkg.com/@tdb/log/-/log-1.1.17.tgz#9eded8dbd6fe2bec3ddc7614b132c45640ecf9e1"
-  integrity sha512-Ea1TISw8Wx88E/r4SON0MJePv4n/0n0uLCFkQl4BMFxFriB/haTpeqkhlmOvFqEXMSOlkgSyVBoGwFlgW0tvXw==
+"@tdb/log@1.1.19":
+  version "1.1.19"
+  resolved "https://registry.yarnpkg.com/@tdb/log/-/log-1.1.19.tgz#26e4297ce6e5dc12b224e3cf8c571033f3d711a7"
+  integrity sha512-nFLEI4sTfOhx4bD/abNOCAemBqB2WcWN+sWHnxZ0Zlle0ZoAVU6S9DwdQBsJilDO4hQ7LXlRs1TaS6cW//2nMQ==
   dependencies:
     "@types/ramda" "0.25.46"
     chalk "2.4.1"
@@ -761,10 +761,10 @@
     ramda "0.26.1"
     rxjs "6.3.3"
 
-"@tdb/typescript@3.2.5":
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/@tdb/typescript/-/typescript-3.2.5.tgz#2e294d71b130887d5bb3456f8dda37443131860c"
-  integrity sha512-CcsJAHbLFqmJz0sSa+7JnJRT9NQhsRbvAPagqJwvk2U1hTIKC2XgDcJlEWFcV8oV3OPgTShorQcnc/JRD0BuNQ==
+"@tdb/typescript@3.2.7":
+  version "3.2.7"
+  resolved "https://registry.yarnpkg.com/@tdb/typescript/-/typescript-3.2.7.tgz#ace58d752effee6011dca5be9d28fc4a7ff991d6"
+  integrity sha512-cmNTqyGBeZeZCcAKz8A7d0njDvwCWRktR9Mmsc8rQNiE8uv5J/2CpHlch0PMrvEYtjf9RmEVythZ2nASNgcyNA==
   dependencies:
     "@types/node" "10.12.15"
     prettier "1.15.3"
@@ -775,12 +775,12 @@
     tslint-react "3.6.0"
     typescript "3.2.2"
 
-"@tdb/util@1.9.22":
-  version "1.9.22"
-  resolved "https://registry.yarnpkg.com/@tdb/util/-/util-1.9.22.tgz#7fc21f3631d28784df3d16fdb9d3d210bc9a1b69"
-  integrity sha512-JGtnwpEE2G0g739Ari/fTfF2MgcKpch2BkEhxjWChZMFlmeAbhLesene0LKqSB6VDPNsx6c7qnGzwZFFAIsHgQ==
+"@tdb/util@1.9.24":
+  version "1.9.24"
+  resolved "https://registry.yarnpkg.com/@tdb/util/-/util-1.9.24.tgz#c687a6b01f16bd6429eaeda39ac9ce23144d1349"
+  integrity sha512-41rNHSGbHJ4wkclQZm8Tb5Ke2LcDT+YFwoy3B13EU6lTu7KAFspsnU56g6RPmV9nZZMyviwHJfbNPtelhEW3hw==
   dependencies:
-    "@tdb/log" "1.1.17"
+    "@tdb/log" "1.1.19"
     "@types/react" "16.7.17"
     "@types/react-dom" "16.0.11"
     "@types/string" "0.0.29"
@@ -846,9 +846,9 @@
     "@types/react" "*"
 
 "@types/react@*":
-  version "16.7.19"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.7.19.tgz#f9a527a172c7fd9375c01445cbd04834fa0fcca7"
-  integrity sha512-qT5NOZiZJ4z+ZjOSzOKeNxFvea2F+EJqTQVsqsMWM8uGIrDxMT2rmoIG/yu2vLmZFiJzW7c7+oFULr4kLCoJ6w==
+  version "16.7.20"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.7.20.tgz#13ae752c012710d0fa800985ca809814b51d3b58"
+  integrity sha512-Qd5RWkwl6SL7R2XzLk/cicjVQm1Mhc6HqXY5Ei4pWd1Vi8Fkbd5O0sA398x8fRSTPAuHdDYD9nrWmJMYTJI0vQ==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -888,35 +888,36 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/core@1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.5.tgz#7b0bda0bb73575b47c62e4d2ad5aabf59b7962a2"
-  integrity sha512-C+K317Fm/YLetWB086kqK12S8hRs3GBN3ERvRWQsCUwOmIlUWoW2r1hJATzmzqGElfVLtpKfIR/7p3dtJXeNOg==
+"@uiharness/core@1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.7.tgz#ed617e0f98dd02a05e59916eab0945e7a879fab9"
+  integrity sha512-nHWDLrZbQ6815roF1cTqxYcYouPf1+NOQ4zzhXP4h8XgrEvZX90d0CWLIyHE+5fjt8DEnUQ/ICUiLZNVbom1Og==
   dependencies:
-    "@tdb/util" "1.9.22"
+    "@tdb/util" "1.9.24"
     "@types/fs-extra" "5.0.4"
     "@types/js-yaml" "3.11.4"
     fs-extra "7.0.1"
     js-yaml "3.12.1"
 
-"@uiharness/electron@^0.0.11":
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.0.11.tgz#575003202b3a549e4887396902e81abfcc4ba5ba"
-  integrity sha512-iTJF1Q3bRanrAlv1yRwTrk3Orrmz3QpLS33mqqiROrkFMhlILfzRzCj6RxEGZFNxSe12hmQXmX332l0CB21CSQ==
+"@uiharness/electron@^0.0.12":
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.0.12.tgz#31bd67c0492ff5646ec82e77e1550c6d7566b10f"
+  integrity sha512-Tz7O+XpY2G0rDB/V1wXtzXzL1c6xBgWL/pfshQAfq6k1FDD8/haQbbAwqUPiOylSsut9LltnJgzhbNpaFrYg8A==
   dependencies:
     "@babel/core" "7.2.2"
     "@babel/preset-env" "7.2.3"
     "@babel/preset-react" "7.0.0"
     "@babel/preset-typescript" "7.1.0"
-    "@tdb/log" "1.1.17"
-    "@tdb/typescript" "3.2.5"
-    "@tdb/util" "1.9.22"
-    "@uiharness/core" "1.0.5"
+    "@tdb/log" "1.1.19"
+    "@tdb/typescript" "3.2.7"
+    "@tdb/util" "1.9.24"
+    "@uiharness/core" "1.0.7"
     app-root-path "2.1.0"
     babel-core "^7.0.0-bridge.0"
     electron "4.0.1"
     electron-builder "20.38.5"
     electron-is-dev "1.0.1"
+    execa "1.0.0"
     npm-run-all "4.1.5"
     parcel-bundler "1.11.0"
     yargs "12.0.5"
@@ -2758,6 +2759,19 @@ evp_bytestokey@^1.0.0, evp_bytestokey@^1.0.3:
     md5.js "^1.3.4"
     safe-buffer "^5.1.1"
 
+execa@1.0.0, execa@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/execa/-/execa-1.0.0.tgz#c6236a5bb4df6d6f15e88e7f017798216749ddd8"
+  integrity sha512-adbxcyWV46qiHyvSp50TKt05tB4tK3HcmF7/nxfAdhnox83seTDbwnaqKO4sXRy7roHAIFqJP/Rw/AuEbX61LA==
+  dependencies:
+    cross-spawn "^6.0.0"
+    get-stream "^4.0.0"
+    is-stream "^1.1.0"
+    npm-run-path "^2.0.0"
+    p-finally "^1.0.0"
+    signal-exit "^3.0.0"
+    strip-eof "^1.0.0"
+
 execa@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/execa/-/execa-0.7.0.tgz#944becd34cc41ee32a63a9faf27ad5a65fc59777"
@@ -2765,19 +2779,6 @@ execa@^0.7.0:
   dependencies:
     cross-spawn "^5.0.1"
     get-stream "^3.0.0"
-    is-stream "^1.1.0"
-    npm-run-path "^2.0.0"
-    p-finally "^1.0.0"
-    signal-exit "^3.0.0"
-    strip-eof "^1.0.0"
-
-execa@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/execa/-/execa-1.0.0.tgz#c6236a5bb4df6d6f15e88e7f017798216749ddd8"
-  integrity sha512-adbxcyWV46qiHyvSp50TKt05tB4tK3HcmF7/nxfAdhnox83seTDbwnaqKO4sXRy7roHAIFqJP/Rw/AuEbX61LA==
-  dependencies:
-    cross-spawn "^6.0.0"
-    get-stream "^4.0.0"
     is-stream "^1.1.0"
     npm-run-path "^2.0.0"
     p-finally "^1.0.0"

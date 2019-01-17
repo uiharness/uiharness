@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/electron",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "main": "src/main/.parcel/main.js",
   "bin": {
     "uiharness-electron": "./lib/bin/entry.js"
@@ -25,10 +25,10 @@
     "@babel/preset-env": "7.2.3",
     "@babel/preset-react": "7.0.0",
     "@babel/preset-typescript": "7.1.0",
-    "@tdb/log": "1.1.17",
-    "@tdb/typescript": "3.2.5",
-    "@tdb/util": "1.9.22",
-    "@uiharness/core": "1.0.5",
+    "@tdb/log": "1.1.19",
+    "@tdb/typescript": "3.2.7",
+    "@tdb/util": "1.9.24",
+    "@uiharness/core": "1.0.7",
     "app-root-path": "2.1.0",
     "babel-core": "^7.0.0-bridge.0",
     "electron": "4.0.1",
