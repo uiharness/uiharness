@@ -48,6 +48,7 @@ export async function start(args: {
    * - update `@types/react` in util (make sure it's actually working now)
    *    - remove `resolutions` from `package.json` in `create-uiharness` (once React types are updated in @tdb/util)
    * - get `web` create templates as minimal as `electron` (copying in tsconfig.json, tslint.json)
+   * - cmd: `bundle`
    */
 
   // Start the electron server.

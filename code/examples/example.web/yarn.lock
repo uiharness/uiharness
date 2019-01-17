@@ -826,10 +826,10 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/core@1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.7.tgz#ed617e0f98dd02a05e59916eab0945e7a879fab9"
-  integrity sha512-nHWDLrZbQ6815roF1cTqxYcYouPf1+NOQ4zzhXP4h8XgrEvZX90d0CWLIyHE+5fjt8DEnUQ/ICUiLZNVbom1Og==
+"@uiharness/core@1.0.9":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.9.tgz#ae59c41ae1a3fab4bf9c35d3fb8b297c733dde6e"
+  integrity sha512-xX4piEdyXLnTmGTl3vHbz8LLOHhbCXVMKmRwFRtVTeF+jmYwCcAkIE82YdCqNVjeHQze8oj4vB0fNuMy5rG5Ew==
   dependencies:
     "@tdb/util" "1.9.24"
     "@types/fs-extra" "5.0.4"
@@ -837,15 +837,15 @@
     fs-extra "7.0.1"
     js-yaml "3.12.1"
 
-"@uiharness/web@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@uiharness/web/-/web-0.0.3.tgz#b98109515a67eb52eb170a79bc385667c0aa4c39"
-  integrity sha512-xM2EpAx0COVxRFfWEJNaZBzLuwpTIQAzo4MP/8auXWi9m5V9RS6HC/LmHv/3APK1SuiuxhH4+Lcl3nsVc9/ycw==
+"@uiharness/web@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@uiharness/web/-/web-0.0.4.tgz#a432abf8dc46950349712f375307055afabf5103"
+  integrity sha512-sV6FGDpXvgqpWFMrjh4vbuVa+DivI2pvZx2owp3Ocx5B2+7YnXSrhI+MUTT5a6fQJyzqX3LZInceTOVGCGiRzw==
   dependencies:
     "@tdb/log" "1.1.19"
     "@tdb/typescript" "3.2.7"
     "@tdb/util" "1.9.24"
-    "@uiharness/core" "1.0.7"
+    "@uiharness/core" "1.0.9"
     filesize "4.0.0"
     fs-extra "7.0.1"
     js-yaml "3.12.1"

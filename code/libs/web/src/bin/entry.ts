@@ -36,6 +36,7 @@ const program = yargs
           boolean: true,
         })
         .option('reset', {
+          alias: 'r',
           describe: 'Deletes all files created by a previous `init`.',
           boolean: true,
         }),
