@@ -2,7 +2,12 @@
 build
 dist
 
+
 # Auto-generated files from `@uiharness/electron` init.
+src/common
+src/main
+src/renderer
+
 .babelrc
 .uiharness
 html
