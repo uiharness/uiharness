@@ -39,6 +39,11 @@ export async function init(args: {
 
   // Insert all the HTML entry points.
   if (flags.html) {
+    console.log(
+      '🐷🐷 TODO',
+      'Perform this operation in a `beforeWrite` callback from `tmpl.ensureTemplate`',
+    );
+
     const tmplPath = tmpl.toTemplatePath(TEMPLATE_DIR, 'html/index.html');
     const text = fs.readFileSync(tmplPath, 'utf-8');
     settings.entries
