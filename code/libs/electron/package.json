@@ -47,6 +47,9 @@
   "files": [
     "**/*"
   ],
+  "engines": {
+    "node": ">=10.x"
+  },
   "keywords": [
     "design",
     "test",

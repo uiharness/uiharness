@@ -31,6 +31,9 @@
     "@types/parcel-bundler": "1.10.1",
     "@types/yargs": "12.0.5"
   },
+  "engines": {
+    "node": ">=10.x"
+  },
   "keywords": [
     "design",
     "test",

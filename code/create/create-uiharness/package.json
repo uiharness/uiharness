@@ -24,6 +24,17 @@
     "@tdb/test": "1.2.12",
     "@tdb/typescript": "3.2.7"
   },
+  "engines": {
+    "node": ">=10.x"
+  },
+  "keywords": [
+    "design",
+    "test",
+    "react",
+    "typescript",
+    "electron",
+    "create"
+  ],
   "repository": "github.com/uiharness/uiharness",
   "license": "MIT"
 }
