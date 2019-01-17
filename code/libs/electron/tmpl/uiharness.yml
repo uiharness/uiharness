@@ -1,15 +1,9 @@
 #
-# UIHarness Configuration
+# UIHarness Configuration (Electron)
 # See:
 #   https://uiharness.com
 #
-port: 8080
-
-entry:
-  - title: My Title
-    path: src/uiharness.tsx
-
-# Build args.
-target: 'electron'
-sourcemaps: true
-treeshake: false
+port: 8888
+build:
+  sourcemaps: true
+  treeshake: false

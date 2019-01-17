@@ -1,7 +1,6 @@
 import { IUIHarnessConfig, IUIHarnessEntry } from '../../types';
 import { fs, fsPath, log, jsYaml, value } from '../common/libs';
 import { Package } from './Package';
-import { ParcelOptions } from 'parcel-bundler';
 
 const UIHARNESS_YAML = 'uiharness.yml';
 
@@ -81,11 +80,11 @@ export class Settings {
   /**
    * Arguments to pass to the parcel-bundler.
    */
-  public get buildArgs(): ParcelOptions {
-    const data = this._data;
-    const sourceMaps = value.defaultValue(data.sourcemaps, true);
-    const scopeHoist = value.defaultValue(data.treeshake, false);
-    return { sourceMaps, scopeHoist };
+  public get buildArgs() {
+    const data = this._data.build || {};
+    const sourcemaps = value.defaultValue(data.sourcemaps, true);
+    const treeshake = value.defaultValue(data.treeshake, false);
+    return { sourcemaps, treeshake };
   }
 
   /**

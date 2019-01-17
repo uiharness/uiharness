@@ -1,5 +1,5 @@
 {
-  "name": "example.parcel",
+  "name": "example.web",
   "version": "1.0.0",
   "description": "Example usage of `@uiharness/web`",
   "main": "./lib/index.js",
@@ -20,7 +20,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/web": "^0.0.1"
+    "@uiharness/web": "^0.0.3"
   },
   "repository": "https://github.com/uiharness/uiharness",
   "license": "MIT",

@@ -1,9 +1,15 @@
-import { core, fs, fsPath, log } from './common';
+import { config, fs, fsPath, log } from '../common';
 
-const settings = core.config.Settings.create();
-const pkg = core.config.Package.create();
-
-const FILES = ['/tsconfig.json', '/tslint.json', '/uiharness.yml'];
+const FILES = [
+  '/src/common',
+  '/src/main',
+  '/src/renderer',
+  '.babelrc',
+  '/tsconfig.json',
+  '/tslint.json',
+  '/uiharness.yml',
+  'electron-builder.yml',
+];
 const SCRIPTS = {
   postinstall: 'uiharness-electron init',
   start: 'uiharness-electron start',
@@ -13,11 +19,17 @@ const SCRIPTS = {
 /**
  * Initialize the module.
  */
-export async function init(options: { force?: boolean; reset?: boolean } = {}) {
-  if (options.reset) {
-    return reset();
+export async function init(args: {
+  settings: config.Settings;
+  pkg: config.Package;
+
+  force?: boolean;
+  reset?: boolean;
+}) {
+  const { settings, pkg, force = false } = args;
+  if (args.reset) {
+    return reset({ pkg });
   }
-  const { force = false } = options;
   const flags = settings.init;
 
   if (flags.scripts) {
@@ -32,7 +44,8 @@ export async function init(options: { force?: boolean; reset?: boolean } = {}) {
 /**
  * Removes configuration files.
  */
-async function reset(options: {} = {}) {
+async function reset(args: { pkg: config.Package }) {
+  const { pkg } = args;
   pkg.removeScripts({ scripts: SCRIPTS });
   FILES
     // Delete copied template files.
@@ -41,6 +54,7 @@ async function reset(options: {} = {}) {
 
   fs.removeSync(fsPath.resolve('./.cache'));
   fs.removeSync(fsPath.resolve('./dist'));
+  fs.removeSync(fsPath.resolve('./.uiharness'));
 
   // Log results.
   log.info('');
@@ -59,17 +73,16 @@ async function reset(options: {} = {}) {
 function ensureFile(path: string, options: { force?: boolean } = {}) {
   const { force } = options;
   const to = toRootPath(path);
+
   if (force || !fs.existsSync(to)) {
     const from = templatePath(path);
     fs.copySync(from, to);
   }
 }
 function toRootPath(path: string) {
-  console.log('fsPath', fsPath);
   path = path.replace(/\//, '');
   return fsPath.resolve(`./${path}`);
 }
 function templatePath(path: string) {
-  console.log('path', path);
   return fsPath.resolve(`./node_modules/@uiharness/electron/tmpl/${path}`);
 }

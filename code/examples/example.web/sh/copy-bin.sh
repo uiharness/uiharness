@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 
-# DEBUG: Copy updates to the .bin/uiharness files during development
+# DEBUG: Copy updates to the .bin/uiharness files during development.
 # 
 
 cp ../../libs/web/lib/bin/entry.js ./node_modules/.bin/uiharness

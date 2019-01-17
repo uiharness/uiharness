@@ -2,9 +2,11 @@
 build
 dist
 
-# Auto-generated files from `@uiharness/electron`
+# Auto-generated files from `@uiharness/electron` init.
+.babelrc
+.uiharness
 html
 tslint.json
 tsconfig.json
 uiharness.yml
-
+.parcel/

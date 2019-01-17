@@ -9,8 +9,10 @@ export type IUIHarnessConfig = {
    * Build args.
    * https://parceljs.org/cli.html
    */
-  sourcemaps?: boolean; // Default: true.
-  treeshake?: boolean; // Default:true
+  build?: {
+    sourcemaps?: boolean; // Default: true.
+    treeshake?: boolean; // Default:true
+  };
 
   /**
    * Flags used to determine what to

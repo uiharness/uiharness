@@ -21,6 +21,10 @@ const pkg = config.Package.create();
  */
 const program = yargs
   .usage('Usage: $0 <command> [options]')
+
+  /**
+   * `init`
+   */
   .command(
     COMMAND.INIT,
     'Initialize the module with default files.',
@@ -40,18 +44,30 @@ const program = yargs
       cmds.init({ settings, pkg, force, reset });
     },
   )
+
+  /**
+   * `start`
+   */
   .command(
     COMMAND.START,
     'Start the development server.',
     e => e,
     e => cmds.start({ settings, pkg }),
   )
+
+  /**
+   * `bundle`
+   */
   .command(
     COMMAND.BUNDLE,
     'Package a bundle into the `/dist` folder.',
     e => e,
     e => cmds.bundle({ settings, pkg }),
   )
+
+  /**
+   * `stats`
+   */
   .command(
     COMMAND.STATS,
     'Read size details about the `/dist` bundle.',
@@ -64,7 +80,9 @@ const program = yargs
   .alias('v', 'version')
   .epilog(`See ${constants.URL.SITE}`);
 
-// Show full list of commands if none was provided.
+/**
+ * Show full list of commands if none was provided.
+ */
 if (!COMMANDS.includes(program.argv._[0])) {
   program.showHelp();
   log.info();

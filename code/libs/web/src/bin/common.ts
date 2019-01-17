@@ -1,6 +1,6 @@
 import { config, fs, fsPath, log } from '@uiharness/core/lib/server';
 import * as filesize from 'filesize';
-import * as Bundler from 'parcel-bundler';
+import * as ParcelBundler from 'parcel-bundler';
 
 export * from '../common';
 export { filesize, log, fs, fsPath, config };
@@ -8,10 +8,12 @@ export { filesize, log, fs, fsPath, config };
 /**
  * Creates a new Parcel bundler.
  */
-export function createBundler(settings: config.Settings) {
+export function createParcelBundler(settings: config.Settings) {
   const entryFiles = settings.entries.map(e => e.html.absolute);
-  return new Bundler(entryFiles, {
-    ...settings.buildArgs,
+  const args = settings.buildArgs;
+  return new ParcelBundler(entryFiles, {
+    sourceMaps: args.sourcemaps,
+    scopeHoist: args.treeshake,
     target: 'browser',
   });
 }
@@ -42,11 +44,11 @@ export function logInfo(args: {
   log.info.gray(`package: ${log.magenta(pkg.name)}`);
   log.info.gray(`version: ${pkg.version}`);
   log.info.gray(`entry:   ${formatPath(entryFiles[0])}`);
-  if (showPort) {
-    log.info.gray(`port:    ${log.yellow(port)}`);
-  }
   entryFiles.slice(1).forEach(path => {
     log.info.gray(`         ${formatPath(path)}`);
   });
+  if (showPort) {
+    log.info.gray(`port:    ${log.yellow(port)}`);
+  }
   log.info();
 }
