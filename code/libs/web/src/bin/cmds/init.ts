@@ -1,4 +1,5 @@
-import { config, fs, fsPath, log, tmpl } from '../common';
+import { fs, fsPath, log, tmpl } from '../common';
+import { Settings, Package } from '../Settings';
 
 const TEMPLATE_DIR = './node_modules/@uiharness/web/tmpl';
 const SCRIPTS = {
@@ -13,8 +14,8 @@ const SCRIPTS = {
  * Ensure the module is initialized.
  */
 export async function init(args: {
-  settings: config.Settings;
-  pkg: config.Package;
+  settings: Settings;
+  pkg: Package;
   force?: boolean;
   reset?: boolean;
 }) {
@@ -43,7 +44,7 @@ export async function init(args: {
 /**
  * Removes configuration files.
  */
-async function reset(args: { pkg: config.Package }) {
+async function reset(args: { pkg: Package }) {
   const { pkg } = args;
   pkg.removeScripts({ scripts: SCRIPTS });
 

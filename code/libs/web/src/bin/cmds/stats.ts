@@ -1,20 +1,13 @@
-import {
-  config,
-  filesize,
-  fs,
-  fsPath,
-  log,
-  logInfo,
-  R,
-  value,
-} from '../common';
+import { filesize, fs, fsPath, log, R, value } from '../common';
+import { Package, Settings } from '../Settings';
+import { logInfo } from '../util';
 
 /**
  * Prints stats about the bundle.
  */
 export async function stats(args: {
-  settings: config.Settings;
-  pkg: config.Package;
+  settings: Settings;
+  pkg: Package;
   moduleInfo?: boolean;
 }) {
   const { settings, pkg } = args;

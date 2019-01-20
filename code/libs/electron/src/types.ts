@@ -1,1 +1,1 @@
-export { IUIHarnessConfig } from '@uiharness/core/lib/types';
+export { IUIHarnessConfig, IUIHarnessEntry } from '@uiharness/core/lib/types';

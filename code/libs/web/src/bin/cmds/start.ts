@@ -1,13 +1,11 @@
-import { logInfo, config, createParcelBundler } from '../common';
+import { Package, Settings } from '../Settings';
+import { createParcelBundler, logInfo } from '../util';
 import { init } from './init';
 
 /**
  * Starts the development server.
  */
-export async function start(args: {
-  settings: config.Settings;
-  pkg: config.Package;
-}) {
+export async function start(args: { settings: Settings; pkg: Package }) {
   // Setup initial conditions.
   const { settings, pkg } = args;
   init({ settings, pkg });

@@ -1,4 +1,5 @@
 import { config, fs, fsPath, log, tmpl } from '../common';
+import { Settings, Package } from '../Settings';
 
 const TEMPLATE_DIR = './node_modules/@uiharness/electron/tmpl';
 const SCRIPTS = {
@@ -11,8 +12,8 @@ const SCRIPTS = {
  * Initialize the module.
  */
 export async function init(args: {
-  settings: config.Settings;
-  pkg: config.Package;
+  settings: Settings;
+  pkg: Package;
   force?: boolean;
   reset?: boolean;
 }) {
