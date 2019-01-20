@@ -1,5 +1,5 @@
-import { IUIHarnessConfig, IUIHarnessEntry } from '../types';
-import { fs, fsPath, log, jsYaml, value, Package, config } from './common';
+import { IUIHarnessConfig, IUIHarnessEntry } from '../../types';
+import { fs, fsPath, log, jsYaml, value, Package, config } from './libs';
 
 export { Package };
 const UIHARNESS_YAML = 'uiharness.yml';

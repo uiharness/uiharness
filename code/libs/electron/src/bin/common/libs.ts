@@ -1,7 +1,8 @@
-import * as filesize from 'filesize';
 import * as ParcelBundler from 'parcel-bundler';
+import * as yargs from 'yargs';
+import * as execa from 'execa';
 
-export { filesize, ParcelBundler };
+export { ParcelBundler, yargs, execa };
 export {
   config,
   fs,
@@ -11,4 +12,4 @@ export {
   jsYaml,
   Package,
 } from '@uiharness/core/lib/server';
-export * from '../common';
+export * from '../../common';

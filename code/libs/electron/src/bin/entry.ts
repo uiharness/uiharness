@@ -1,7 +1,6 @@
 #!/usr/bin/env node
-import { log, constants, config, yargs } from './common';
+import { log, constants, config, yargs, Settings } from './common';
 import * as cmds from './cmds';
-import { Settings } from './Settings';
 
 /**
  * Makes the script crash on unhandled rejections instead of silently

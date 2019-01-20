@@ -1,7 +1,13 @@
-import { fs, fsPath, ParcelBundler, execa } from '../common';
+import {
+  execa,
+  fs,
+  fsPath,
+  logInfo,
+  Package,
+  ParcelBundler,
+  Settings,
+} from '../common';
 import { init } from './init';
-import { logInfo } from '../util';
-import { Settings, Package } from '../Settings';
 
 /**
  * Starts the development server.

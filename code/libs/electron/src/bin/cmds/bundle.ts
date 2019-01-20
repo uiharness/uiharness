@@ -1,7 +1,4 @@
-// import { fs, fsPath, ParcelBundler, execa } from '../common';
-// import { init } from './init';
-// import { logInfo } from '../util';
-import { Settings } from '../Settings';
+import { Settings } from '../common';
 
 /**
  * Bundles the application ready for distribution.

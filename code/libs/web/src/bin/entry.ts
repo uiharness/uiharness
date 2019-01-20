@@ -2,8 +2,7 @@
 import * as yargs from 'yargs';
 
 import * as cmds from './cmds';
-import { config, constants, log } from './common';
-import { Settings } from './Settings';
+import { config, constants, log, Settings } from './common';
 
 /**
  * Makes the script crash on unhandled rejections instead of silently

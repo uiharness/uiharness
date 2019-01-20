@@ -1,5 +1,4 @@
-import { fs, fsPath, log, tmpl } from '../common';
-import { Settings, Package } from '../Settings';
+import { fs, fsPath, log, Package, Settings, tmpl } from '../common';
 
 const TEMPLATE_DIR = './node_modules/@uiharness/web/tmpl';
 const SCRIPTS = {

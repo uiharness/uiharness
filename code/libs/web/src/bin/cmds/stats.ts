@@ -1,6 +1,14 @@
-import { filesize, fs, fsPath, log, R, value } from '../common';
-import { Package, Settings } from '../Settings';
-import { logInfo } from '../util';
+import {
+  filesize,
+  fs,
+  fsPath,
+  log,
+  logInfo,
+  Package,
+  R,
+  Settings,
+  value,
+} from '../common';
 
 /**
  * Prints stats about the bundle.
