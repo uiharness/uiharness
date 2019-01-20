@@ -1,6 +1,6 @@
-import { config, fs, fsPath, log } from '../common';
+import { config, fs, fsPath, log, tmpl } from '../common';
 
-const FILES = ['/tsconfig.json', '/tslint.json', '/uiharness.yml'];
+const TEMPLATE_DIR = './node_modules/@uiharness/web/tmpl';
 const SCRIPTS = {
   postinstall: 'uiharness init',
   start: 'uiharness start',
@@ -21,8 +21,6 @@ export async function init(args: {
   const { settings, pkg, force = false } = args;
   const flags = settings.init;
 
-  // console.log('args', args);
-
   if (args.reset === true) {
     // Reset instead of initialize.
     return reset({ pkg });
@@ -33,22 +31,12 @@ export async function init(args: {
   }
 
   if (flags.files) {
-    FILES.forEach(file => ensureFile(file, { force }));
-  }
-
-  // Insert all the HTML entry points.
-  if (flags.html) {
-    const tmpl = fs.readFileSync(templatePath(`html/index.html`), 'utf-8');
-    settings.entries
-      .filter(e => force || !fs.pathExistsSync(e.html.absolute))
-      .forEach(e => {
-        const path = e.html.absolute;
-        const html = tmpl
-          .replace(/__TITLE__/, e.title)
-          .replace(/__ENTRY_SCRIPT__/, e.html.relative);
-        fs.ensureDirSync(fsPath.dirname(path));
-        fs.writeFileSync(path, html);
-      });
+    const entries = settings.entries;
+    await tmpl
+      .create(TEMPLATE_DIR)
+      .process(tmpl.transformEntryHtml({ entries }))
+      .process(tmpl.copyFile({ force }))
+      .execute();
   }
 }
 
@@ -58,10 +46,11 @@ export async function init(args: {
 async function reset(args: { pkg: config.Package }) {
   const { pkg } = args;
   pkg.removeScripts({ scripts: SCRIPTS });
-  FILES
-    // Delete copied template files.
-    .map(file => toRootPath(file))
-    .forEach(file => fs.removeSync(file));
+
+  await tmpl
+    .create(TEMPLATE_DIR)
+    .process(tmpl.deleteFile())
+    .execute();
 
   fs.removeSync(fsPath.resolve('./html'));
   fs.removeSync(fsPath.resolve('./.cache'));
@@ -74,20 +63,4 @@ async function reset(args: { pkg: config.Package }) {
   );
   log.info(`    Run \`${log.cyan('uiharness init')}\` to recreate them.`);
   log.info('');
-}
-
-function ensureFile(path: string, options: { force?: boolean } = {}) {
-  const { force } = options;
-  const to = toRootPath(path);
-  if (force || !fs.existsSync(to)) {
-    const from = templatePath(path);
-    fs.copySync(from, to);
-  }
-}
-function toRootPath(path: string) {
-  path = path.replace(/\//, '');
-  return fsPath.resolve(`./${path}`);
-}
-function templatePath(path: string) {
-  return fsPath.resolve(`./node_modules/@uiharness/web/tmpl/${path}`);
 }

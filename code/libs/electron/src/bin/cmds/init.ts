@@ -1,15 +1,6 @@
-import { config, fs, fsPath, log } from '../common';
+import { config, fs, fsPath, log, tmpl } from '../common';
 
-const FILES = [
-  '/src/common',
-  '/src/main',
-  '/src/renderer',
-  '.babelrc',
-  '/tsconfig.json',
-  '/tslint.json',
-  '/uiharness.yml',
-  'electron-builder.yml',
-];
+const TEMPLATE_DIR = './node_modules/@uiharness/electron/tmpl';
 const SCRIPTS = {
   postinstall: 'uiharness-electron init',
   start: 'uiharness-electron start',
@@ -37,7 +28,12 @@ export async function init(args: {
   }
 
   if (flags.files) {
-    FILES.forEach(file => ensureFile(file, { force }));
+    const entries = settings.entries;
+    await tmpl
+      .create(TEMPLATE_DIR)
+      .process(tmpl.transformEntryHtml({ entries }))
+      .process(tmpl.copyFile({ force }))
+      .execute();
   }
 }
 
@@ -47,10 +43,11 @@ export async function init(args: {
 async function reset(args: { pkg: config.Package }) {
   const { pkg } = args;
   pkg.removeScripts({ scripts: SCRIPTS });
-  FILES
-    // Delete copied template files.
-    .map(file => toRootPath(file))
-    .forEach(file => fs.removeSync(file));
+
+  await tmpl
+    .create(TEMPLATE_DIR)
+    .process(tmpl.deleteFile())
+    .execute();
 
   fs.removeSync(fsPath.resolve('./.cache'));
   fs.removeSync(fsPath.resolve('./dist'));
@@ -65,24 +62,4 @@ async function reset(args: { pkg: config.Package }) {
     `    Run \`${log.cyan('uiharness-electron init')}\` to recreate them.`,
   );
   log.info('');
-}
-
-/**
- * INTERNAL
- */
-function ensureFile(path: string, options: { force?: boolean } = {}) {
-  const { force } = options;
-  const to = toRootPath(path);
-
-  if (force || !fs.existsSync(to)) {
-    const from = templatePath(path);
-    fs.copySync(from, to);
-  }
-}
-function toRootPath(path: string) {
-  path = path.replace(/\//, '');
-  return fsPath.resolve(`./${path}`);
-}
-function templatePath(path: string) {
-  return fsPath.resolve(`./node_modules/@uiharness/electron/tmpl/${path}`);
 }

@@ -16,7 +16,7 @@
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.2.2",
-    "@uiharness/electron": "^0.0.12"
+    "@uiharness/electron": "^0.0.19"
   },
   "license": "MIT",
   "private": true

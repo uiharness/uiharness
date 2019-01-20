@@ -4,13 +4,22 @@ import * as yargs from 'yargs';
 import { log, constants, config } from './common';
 import * as cmds from './cmds';
 
-const COMMAND = {
+/**
+ * Makes the script crash on unhandled rejections instead of silently
+ * ignoring them. In the future, promise rejections that are not handled will
+ * terminate the Node.js process with a non-zero exit code.
+ */
+process.on('unhandledRejection', err => {
+  throw err;
+});
+
+const CMD = {
   INIT: 'init',
   START: 'start',
   BUNDLE: 'bundle',
   STATS: 'stats',
 };
-const COMMANDS = Object.keys(COMMAND).map(key => COMMAND[key]);
+const CMDS = Object.keys(CMD).map(key => CMD[key]);
 
 const settings = config.Settings.create();
 const pkg = config.Package.create();
@@ -19,14 +28,18 @@ const pkg = config.Package.create();
  * Cheat sheet.
  * https://devhints.io/yargs
  */
+const SCRIPT = log.magenta('uiharness');
+const COMMAND = log.cyan('<command>');
+const OPTIONS = log.gray('[options]');
 const program = yargs
-  .usage('Usage: $0 <command> [options]')
+  .scriptName('')
+  .usage(`${'Usage:'} ${SCRIPT} ${COMMAND} ${OPTIONS}`)
 
   /**
    * `init`
    */
   .command(
-    COMMAND.INIT,
+    [CMD.INIT],
     'Initialize the module with default files.',
     e =>
       e
@@ -36,6 +49,7 @@ const program = yargs
           boolean: true,
         })
         .option('reset', {
+          alias: 'r',
           describe: 'Deletes all files created by a previous `init`.',
           boolean: true,
         }),
@@ -49,7 +63,7 @@ const program = yargs
    * `start`
    */
   .command(
-    COMMAND.START,
+    [CMD.START],
     'Start the development server.',
     e => e,
     e => cmds.start({ settings, pkg }),
@@ -59,7 +73,7 @@ const program = yargs
    * `bundle`
    */
   .command(
-    COMMAND.BUNDLE,
+    [CMD.BUNDLE],
     'Package a bundle into the `/dist` folder.',
     e => e,
     e => cmds.bundle({ settings, pkg }),
@@ -69,7 +83,7 @@ const program = yargs
    * `stats`
    */
   .command(
-    COMMAND.STATS,
+    [CMD.STATS],
     'Read size details about the `/dist` bundle.',
     e => e,
     e => cmds.stats({ settings, pkg }),
@@ -83,7 +97,7 @@ const program = yargs
 /**
  * Show full list of commands if none was provided.
  */
-if (!COMMANDS.includes(program.argv._[0])) {
+if (!CMDS.includes(program.argv._[0])) {
   program.showHelp();
   log.info();
   process.exit(0);

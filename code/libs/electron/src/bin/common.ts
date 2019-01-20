@@ -1,7 +1,7 @@
-import { config, fs, fsPath, log } from '@uiharness/core/lib/server';
+import { config, fs, fsPath, log, tmpl } from '@uiharness/core/lib/server';
 
 export * from '../common';
-export { log, fs, fsPath, config };
+export { log, fs, fsPath, config, tmpl };
 
 /**
  * Logs common information about the module.
