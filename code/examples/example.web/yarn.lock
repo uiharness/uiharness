@@ -826,10 +826,10 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/core@1.0.10":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.10.tgz#adbbae1c2bb6cb3e8292c9d234e4c095ee6d56a7"
-  integrity sha512-jTzDRGrDOrhoNKJHvYXsv3ODJdUu0W4E192BwHwZ2ed02uvD7AzW3w4AwIpjcxfHf1fW3BvRyak9evg5wcVHVg==
+"@uiharness/core@1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.11.tgz#1e7ae80a5d9a66cea2cf3a12b35847d7a75fed9f"
+  integrity sha512-FDI3xSAb85OZkmmHu39LvWxcLleeEsk27I6cfLoTNYaSPMG96Ujrst31IYBc2W60hlQBEYA1hN5wCajZX5+SBQ==
   dependencies:
     "@tdb/util" "1.9.24"
     "@types/fs-extra" "5.0.4"
@@ -838,15 +838,15 @@
     fs-extra "7.0.1"
     js-yaml "3.12.1"
 
-"@uiharness/web@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@uiharness/web/-/web-0.0.5.tgz#3494888a6b382ed9ee0e2ff6bead0e358bb9eaa5"
-  integrity sha512-R3mAlHDLXch+9Dmk8AQbI8aPTnThzNEbqTmV18NF3hr5NsLUB/j2H999wJnKTVqXd+AwWpYMbPdINFpYd8/o0Q==
+"@uiharness/web@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@uiharness/web/-/web-0.0.7.tgz#46f00c0bf94b184fb701a217ba55c937ba0c1d27"
+  integrity sha512-ITsUPHZx0XxCpZ/Im5FvdrGWMC7WuoDi7OHr6VuXcevkpvSPnZSX4p6oHCrtKc/wMjuu5ZqULvv21GnA6W7ECA==
   dependencies:
     "@tdb/log" "1.1.19"
     "@tdb/typescript" "3.2.7"
     "@tdb/util" "1.9.24"
-    "@uiharness/core" "1.0.10"
+    "@uiharness/core" "1.0.11"
     filesize "4.0.0"
     fs-extra "7.0.1"
     js-yaml "3.12.1"
@@ -1764,7 +1764,7 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-create-tmpl@0.0.9, create-tmpl@^0.0.9:
+create-tmpl@0.0.9:
   version "0.0.9"
   resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.0.9.tgz#6eb6955b69858794d49cd688032600b10eaca6aa"
   integrity sha512-54qE6Nmv6IzUXmzZiiVbhGOHfv2Vysjhek39eFfJvAFmRCI0N4yWB+oz4g1S8JIF+nCmdxEknbqjdcRfnCx+cg==
