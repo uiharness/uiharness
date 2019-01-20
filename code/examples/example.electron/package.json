@@ -20,6 +20,9 @@
     "@babel/core": "^7.2.2",
     "@uiharness/electron": "^0.0.23"
   },
+  "resolutions": {
+    "@types/react": "16.7.17"
+  },
   "license": "MIT",
   "private": true
 }

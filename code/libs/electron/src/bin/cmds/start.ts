@@ -4,8 +4,10 @@ import {
   fsPath,
   logInfo,
   Package,
-  ParcelBundler,
+  parcel,
   Settings,
+  constants,
+  ParcelBundler,
 } from '../common';
 import { init } from './init';
 
@@ -15,22 +17,25 @@ import { init } from './init';
 export async function start(args: { settings: Settings; pkg: Package }) {
   // Setup initial conditions.
   const { settings, pkg } = args;
-  const main = fsPath.resolve('./src/main/main.ts');
   const port = settings.port;
 
-  init({ settings, pkg });
-  logInfo({ settings, pkg, port: true, main });
+  // Calculate the main entry-point.
+  const mainPath = fsPath.resolve('./src/main/main.ts');
+
+  // Ensure the module is initialized.
+  await init({ settings, pkg });
+  logInfo({ settings, pkg, port: true, main: mainPath });
 
   // Save settings as JSON to local project.
   await saveConfigJson({ settings });
 
   // Build the main JS.
-  const parcelMain = createMainBundler(main, settings);
-  await parcelMain.bundle();
+  const main = parcel.createMainBundler(mainPath, settings);
+  await main.bundle();
 
   // Start the renderer JS builder.
-  const parcelRenderer = createRendererBundler(settings);
-  await (parcelRenderer as any).serve(port);
+  const renderer = parcel.createRendererBundler(settings);
+  await (renderer as any).serve(port);
 
   // Start the electron server.
   const cmd = `cd ${fsPath.resolve('.')} && electron .`;
@@ -50,35 +55,9 @@ export async function start(args: { settings: Settings; pkg: Package }) {
 async function saveConfigJson(args: { settings: Settings }) {
   const { port } = args.settings;
   const data = { port };
-  const dir = fsPath.resolve('./.uiharness');
-  const path = fsPath.join(dir, 'config.json');
+  const dir = fsPath.resolve(constants.CONFIG.DIR);
+  const path = fsPath.join(dir, constants.CONFIG.FILE);
   const json = `${JSON.stringify(data, null, '  ')}\n`;
   await fs.ensureDir(dir);
   await fs.writeFile(path, json);
-}
-
-function createMainBundler(entry: string, settings: Settings) {
-  const outDir = 'src/main/.parcel';
-  const outFile = 'main';
-  return createBundler(entry, settings, { outDir, outFile });
-}
-
-function createRendererBundler(settings: Settings) {
-  const entry = 'src/renderer/index.html';
-  const outDir = 'src/renderer/.parcel/development';
-  return createBundler(entry, settings, { outDir });
-}
-
-function createBundler(
-  entry: string,
-  settings: Settings,
-  options: ParcelBundler.ParcelOptions,
-) {
-  const args = settings.buildArgs;
-  return new ParcelBundler(entry, {
-    target: 'electron',
-    sourceMaps: args.sourcemaps,
-    scopeHoist: args.treeshake,
-    ...options,
-  });
 }

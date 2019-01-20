@@ -14,7 +14,7 @@ process.on('unhandledRejection', err => {
 const CMD = {
   INIT: 'init',
   START: 'start',
-  BUNDLE: 'bundle',
+  DIST: 'dist',
 };
 const CMDS = Object.keys(CMD).map(key => CMD[key]);
 
@@ -70,10 +70,10 @@ const program = yargs
    * `bundle`
    */
   .command(
-    [CMD.BUNDLE],
-    'Bundles the application ready for distribution.',
+    [CMD.DIST],
+    'Packages the application ready for distribution.',
     e => e,
-    e => cmds.bundle({ settings }),
+    e => cmds.dist({ settings }),
   )
 
   .help('h')

@@ -8,6 +8,7 @@
     "create-uiharness": "./lib/bin.js"
   },
   "scripts": {
+    "tmp": "node ./lib/bin $@",
     "example": "create-uiharness",
     "example:yarn": "yarn create uiharness",
     "clean": "sh ./sh/clean.sh",
@@ -18,7 +19,7 @@
     "prepare": "yarn run lint && yarn test && yarn run build"
   },
   "dependencies": {
-    "new-file": "1.2.2"
+    "new-file": "^1.2.2"
   },
   "devDependencies": {
     "@tdb/test": "1.2.12",
