@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/electron",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "main": "src/main/.parcel/main.js",
   "bin": {
     "uiharness-electron": "./lib/bin/entry.js"
@@ -19,7 +19,7 @@
     "@tdb/log": "1.1.19",
     "@tdb/typescript": "3.2.7",
     "@tdb/util": "1.9.24",
-    "@uiharness/core": "1.0.14",
+    "@uiharness/core": "1.0.15",
     "app-root-path": "2.1.0",
     "babel-core": "^7.0.0-bridge.0",
     "electron": "4.0.1",
