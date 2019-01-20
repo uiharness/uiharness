@@ -13,7 +13,6 @@ const SCRIPTS = {
 export async function init(args: {
   settings: config.Settings;
   pkg: config.Package;
-
   force?: boolean;
   reset?: boolean;
 }) {

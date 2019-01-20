@@ -6,15 +6,6 @@
     "uiharness-electron": "./lib/bin/entry.js"
   },
   "scripts": {
-    "start": "run-p -r parcel:launch electron:launch",
-    "dist": "run-s parcel:build \"electron:build {@}\" --",
-    "electron:launch": "run-s parcel:main electron:start",
-    "electron:start": "electron .",
-    "electron:build": "build --x64 --publish=never",
-    "parcel:launch": "parcel src/renderer/index.html --port 8800 --out-dir src/renderer/.parcel/development",
-    "parcel:build": "run-s parcel:main parcel:renderer",
-    "parcel:main": "parcel build src/main/main.ts --out-dir src/main/.parcel --out-file main --target electron",
-    "parcel:renderer": "parcel build src/renderer/index.html --public-url ./ --out-dir src/renderer/.parcel/production",
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
     "clean": "sh ./sh/clean.sh",
