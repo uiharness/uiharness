@@ -1,16 +1,6 @@
 import { config, fs, fsPath, log, tmpl } from '../common';
 
 const TEMPLATE_DIR = './node_modules/@uiharness/electron/tmpl';
-const FILES = [
-  '/src/common',
-  '/src/main',
-  '/src/renderer',
-  '.babelrc',
-  '/tsconfig.json',
-  '/tslint.json',
-  '/uiharness.yml',
-  'electron-builder.yml',
-];
 const SCRIPTS = {
   postinstall: 'uiharness-electron init',
   start: 'uiharness-electron start',
@@ -38,9 +28,12 @@ export async function init(args: {
   }
 
   if (flags.files) {
-    FILES.forEach(path =>
-      tmpl.ensureTemplate({ tmplDir: TEMPLATE_DIR, path, force }),
-    );
+    const entries = settings.entries;
+    await tmpl
+      .create(TEMPLATE_DIR)
+      .process(tmpl.transformEntryHtml({ entries }))
+      .process(tmpl.copyFile({ force }))
+      .execute();
   }
 }
 
@@ -50,10 +43,11 @@ export async function init(args: {
 async function reset(args: { pkg: config.Package }) {
   const { pkg } = args;
   pkg.removeScripts({ scripts: SCRIPTS });
-  FILES
-    // Delete copied template files.
-    .map(file => tmpl.toRootPath(file))
-    .forEach(file => fs.removeSync(file));
+
+  await tmpl
+    .create(TEMPLATE_DIR)
+    .process(tmpl.deleteFile())
+    .execute();
 
   fs.removeSync(fsPath.resolve('./.cache'));
   fs.removeSync(fsPath.resolve('./dist'));

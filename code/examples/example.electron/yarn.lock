@@ -888,21 +888,22 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/core@1.0.8":
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.8.tgz#6c28de26c34d0c8ccf43affc17309a17c8003dc6"
-  integrity sha512-sjHNSzRaYQNkYc7eHxHGAvQzTAtCS8or5hz3ZIvAKzTLTRFTmnq3th4upNt6J3RkiuBeykajDCZv36vt9jPPzQ==
+"@uiharness/core@1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.10.tgz#adbbae1c2bb6cb3e8292c9d234e4c095ee6d56a7"
+  integrity sha512-jTzDRGrDOrhoNKJHvYXsv3ODJdUu0W4E192BwHwZ2ed02uvD7AzW3w4AwIpjcxfHf1fW3BvRyak9evg5wcVHVg==
   dependencies:
     "@tdb/util" "1.9.24"
     "@types/fs-extra" "5.0.4"
     "@types/js-yaml" "3.11.4"
+    create-tmpl "0.0.9"
     fs-extra "7.0.1"
     js-yaml "3.12.1"
 
-"@uiharness/electron@^0.0.15":
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.0.15.tgz#5506ef468a9039bf27e493177cdf28c31470515d"
-  integrity sha512-2cLU3Y7YvUU5p8OO4rxiCbJ30OlIdCW0gWhVzOOPbeiv5ve+Cutw9COsfbVRPDGTWduKa/9dn0vjqHwGmUNeug==
+"@uiharness/electron@^0.0.17":
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.0.17.tgz#1f3603c6a1e8673ef5a5163826066ea69beadb42"
+  integrity sha512-UldwQZlCGcTPKUiKbKAglw9SQE2Xpi2JKwwC8pvMQqXxXqTbRIeLj4Z2HbZKVxGnQYCmC3ORXE6qQPtktK+L1w==
   dependencies:
     "@babel/core" "7.2.2"
     "@babel/preset-env" "7.2.3"
@@ -911,7 +912,7 @@
     "@tdb/log" "1.1.19"
     "@tdb/typescript" "3.2.7"
     "@tdb/util" "1.9.24"
-    "@uiharness/core" "1.0.8"
+    "@uiharness/core" "1.0.10"
     app-root-path "2.1.0"
     babel-core "^7.0.0-bridge.0"
     electron "4.0.1"
@@ -2012,6 +2013,19 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
+create-tmpl@0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.0.9.tgz#6eb6955b69858794d49cd688032600b10eaca6aa"
+  integrity sha512-54qE6Nmv6IzUXmzZiiVbhGOHfv2Vysjhek39eFfJvAFmRCI0N4yWB+oz4g1S8JIF+nCmdxEknbqjdcRfnCx+cg==
+  dependencies:
+    "@tdb/util" "1.9.24"
+    execa "1.0.0"
+    fast-glob "2.2.6"
+    fs-extra "7.0.1"
+    isbinaryfile "4.0.0"
+    js-yaml "3.12.1"
+    yargs "12.0.5"
+
 cross-spawn@^5.0.1:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
@@ -2867,7 +2881,7 @@ fast-deep-equal@^2.0.1:
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-2.0.1.tgz#7b05218ddf9667bf7f370bf7fdb2cb15fdd0aa49"
   integrity sha1-ewUhjd+WZ79/Nwv3/bLLFf3Qqkk=
 
-fast-glob@^2.2.2:
+fast-glob@2.2.6, fast-glob@^2.2.2:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-2.2.6.tgz#a5d5b697ec8deda468d85a74035290a025a95295"
   integrity sha512-0BvMaZc1k9F+MeWWMe8pL6YltFzZYcJsYU7D4JyDA6PAczaXvxqQQ/z+mDF7/4Mw01DeUc+i3CTKajnkANkV4w==
@@ -3748,17 +3762,17 @@ isarray@1.0.0, isarray@^1.0.0, isarray@~1.0.0:
   resolved "https://registry.yarnpkg.com/isarray/-/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
   integrity sha1-u5NdSFgsuhaMBoNJV6VKPgcSTxE=
 
+isbinaryfile@4.0.0, isbinaryfile@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/isbinaryfile/-/isbinaryfile-4.0.0.tgz#07d1061c21598b41292b0f5c68add5eab601ad8e"
+  integrity sha512-RBtmso6l2mCaEsUvXngMTIjg3oheXo0MgYzzfT6sk44RYggPnm9fT+cQJAmzRnJIxPHXg9FZglqDJGW28dvcqA==
+
 isbinaryfile@^3.0.2:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/isbinaryfile/-/isbinaryfile-3.0.3.tgz#5d6def3edebf6e8ca8cae9c30183a804b5f8be80"
   integrity sha512-8cJBL5tTd2OS0dM4jz07wQd5g0dCCqIhUxPIGtZfa5L6hWlvV5MHTITy/DBAsF+Oe2LS1X3krBUhNwaGUWpWxw==
   dependencies:
     buffer-alloc "^1.2.0"
-
-isbinaryfile@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/isbinaryfile/-/isbinaryfile-4.0.0.tgz#07d1061c21598b41292b0f5c68add5eab601ad8e"
-  integrity sha512-RBtmso6l2mCaEsUvXngMTIjg3oheXo0MgYzzfT6sk44RYggPnm9fT+cQJAmzRnJIxPHXg9FZglqDJGW28dvcqA==
 
 isexe@^2.0.0:
   version "2.0.0"

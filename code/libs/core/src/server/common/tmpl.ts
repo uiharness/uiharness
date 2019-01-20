@@ -1,33 +1,50 @@
-import { fs, fsPath } from './libs';
+import { fs, fsPath, IUIHarnessEntry, template } from './libs';
+
+export const create = template.create;
 
 /**
- * Copies a template.
+ * A template processor for copying files.
  */
-export function ensureTemplate(args: {
-  tmplDir: string;
-  path: string;
-  force?: boolean;
-}) {
-  const { tmplDir, path, force } = args;
-  const to = toRootPath(path);
-  if (force || !fs.existsSync(to)) {
-    const from = toTemplatePath(tmplDir, path);
-    fs.copySync(from, to);
-  }
+export function copyFile(
+  args: { force?: boolean } = {},
+): template.TemplateProcessor {
+  const { force = false } = args;
+  return async (req, res) => {
+    const path = fsPath.resolve(`.${req.path}`);
+    const dir = fsPath.dirname(path);
+    if (force || !(await fs.pathExists(path))) {
+      await fs.ensureDir(dir);
+      await fs.writeFile(path, req.buffer);
+    }
+    res.complete();
+  };
 }
 
 /**
- * Formats a path from the root of the host module.
+ * A template processor for deleting files.
  */
-export function toRootPath(path: string) {
-  path = path.replace(/^\//, '');
-  return fsPath.resolve(`./${path}`);
+export function deleteFile(args: {} = {}): template.TemplateProcessor {
+  return async (req, res) => {
+    const path = fsPath.resolve(`.${req.path}`);
+    await fs.remove(path);
+    res.complete();
+  };
 }
 
 /**
- * Formats a path to within the template dir.
+ * Transforms the entry `index.html` file with data from the YAML configuration.
  */
-export function toTemplatePath(tmplDir: string, path: string) {
-  tmplDir = tmplDir.trim().replace(/\/$/, '');
-  return fsPath.resolve(`${tmplDir}/${path}`);
+export function transformEntryHtml(args: {
+  entries: IUIHarnessEntry[];
+}): template.TemplateProcessor {
+  return (req, res) => {
+    if (req.path.endsWith('.html')) {
+      args.entries.forEach(e => {
+        res
+          .replaceText(/__TITLE__/g, e.title)
+          .replaceText(/__ENTRY_SCRIPT__/g, e.html.relative);
+      });
+    }
+    res.next();
+  };
 }

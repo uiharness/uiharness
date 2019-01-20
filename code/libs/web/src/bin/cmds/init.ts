@@ -1,7 +1,6 @@
 import { config, fs, fsPath, log, tmpl } from '../common';
 
 const TEMPLATE_DIR = './node_modules/@uiharness/web/tmpl';
-const FILES = ['/tsconfig.json', '/tslint.json', '/uiharness.yml'];
 const SCRIPTS = {
   postinstall: 'uiharness init',
   start: 'uiharness start',
@@ -32,30 +31,12 @@ export async function init(args: {
   }
 
   if (flags.files) {
-    FILES.forEach(path =>
-      tmpl.ensureTemplate({ tmplDir: TEMPLATE_DIR, path, force }),
-    );
-  }
-
-  // Insert all the HTML entry points.
-  if (flags.html) {
-    console.log(
-      '🐷🐷 TODO',
-      'Perform this operation in a `beforeWrite` callback from `tmpl.ensureTemplate`',
-    );
-
-    const tmplPath = tmpl.toTemplatePath(TEMPLATE_DIR, 'html/index.html');
-    const text = fs.readFileSync(tmplPath, 'utf-8');
-    settings.entries
-      .filter(e => force || !fs.pathExistsSync(e.html.absolute))
-      .forEach(e => {
-        const path = e.html.absolute;
-        const html = text
-          .replace(/__TITLE__/, e.title)
-          .replace(/__ENTRY_SCRIPT__/, e.html.relative);
-        fs.ensureDirSync(fsPath.dirname(path));
-        fs.writeFileSync(path, html);
-      });
+    const entries = settings.entries;
+    await tmpl
+      .create(TEMPLATE_DIR)
+      .process(tmpl.transformEntryHtml({ entries }))
+      .process(tmpl.copyFile({ force }))
+      .execute();
   }
 }
 
@@ -65,10 +46,11 @@ export async function init(args: {
 async function reset(args: { pkg: config.Package }) {
   const { pkg } = args;
   pkg.removeScripts({ scripts: SCRIPTS });
-  FILES
-    // Delete copied template files.
-    .map(file => tmpl.toRootPath(file))
-    .forEach(file => fs.removeSync(file));
+
+  await tmpl
+    .create(TEMPLATE_DIR)
+    .process(tmpl.deleteFile())
+    .execute();
 
   fs.removeSync(fsPath.resolve('./html'));
   fs.removeSync(fsPath.resolve('./.cache'));
