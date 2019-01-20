@@ -1,4 +1,4 @@
-import { IUIHarnessConfig, IUIHarnessEntry } from '../types';
+import { IUIHarnessElectronConfig, IUIHarnessEntry } from '../types';
 import { fs, fsPath, log, jsYaml, value, Package, config } from './common';
 
 export { Package };
@@ -28,7 +28,7 @@ export class Settings {
     try {
       const text = fs.readFileSync(path, 'utf8');
       const config = jsYaml.safeLoad(text) || {};
-      return config as IUIHarnessConfig;
+      return config as IUIHarnessElectronConfig;
     } catch (error) {
       log.error('💥  ERROR UIHarness');
       log.info.yellow(`Failed to load '${UIHARNESS_YAML}' at path '${path}'.`);
@@ -42,7 +42,7 @@ export class Settings {
    */
   public readonly dir: string;
   public readonly path: string;
-  private readonly _data: IUIHarnessConfig;
+  private readonly _data: IUIHarnessElectronConfig;
   private readonly pkg: Package;
 
   /**
