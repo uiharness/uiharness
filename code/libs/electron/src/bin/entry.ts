@@ -1,8 +1,7 @@
 #!/usr/bin/env node
-import * as yargs from 'yargs';
-
-import { log, constants, config } from './common';
+import { log, constants, config, yargs } from './common';
 import * as cmds from './cmds';
+import { Settings } from './Settings';
 
 /**
  * Makes the script crash on unhandled rejections instead of silently
@@ -19,7 +18,7 @@ const CMD = {
 };
 const CMDS = Object.keys(CMD).map(key => CMD[key]);
 
-const settings = config.Settings.create();
+const settings = Settings.create();
 const pkg = config.Package.create();
 
 /**

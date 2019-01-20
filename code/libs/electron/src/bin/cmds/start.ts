@@ -1,16 +1,12 @@
-import * as execa from 'execa';
-import * as ParcelBundler from 'parcel-bundler';
-
-import { config, fs, fsPath, logInfo } from '../common';
+import { fs, fsPath, ParcelBundler, execa } from '../common';
 import { init } from './init';
+import { logInfo } from '../util';
+import { Settings, Package } from '../Settings';
 
 /**
  * Starts the development server.
  */
-export async function start(args: {
-  settings: config.Settings;
-  pkg: config.Package;
-}) {
+export async function start(args: { settings: Settings; pkg: Package }) {
   // Setup initial conditions.
   const { settings, pkg } = args;
   const main = fsPath.resolve('./src/main/main.ts');
@@ -63,7 +59,7 @@ export async function start(args: {
  * Saves configuration JSON to the target module to be imported
  * by the consuming components.
  */
-async function saveConfigJson(args: { settings: config.Settings }) {
+async function saveConfigJson(args: { settings: Settings }) {
   const { port } = args.settings;
   const data = { port };
   const dir = fsPath.resolve('./.uiharness');
@@ -73,13 +69,13 @@ async function saveConfigJson(args: { settings: config.Settings }) {
   await fs.writeFile(path, json);
 }
 
-function createMainBundler(entry: string, settings: config.Settings) {
+function createMainBundler(entry: string, settings: Settings) {
   const outDir = 'src/main/.parcel';
   const outFile = 'main';
   return createBundler(entry, settings, { outDir, outFile });
 }
 
-function createRendererBundler(settings: config.Settings) {
+function createRendererBundler(settings: Settings) {
   const entry = 'src/renderer/index.html';
   const outDir = 'src/renderer/.parcel/development';
   return createBundler(entry, settings, { outDir });
@@ -87,7 +83,7 @@ function createRendererBundler(settings: config.Settings) {
 
 function createBundler(
   entry: string,
-  settings: config.Settings,
+  settings: Settings,
   options: ParcelBundler.ParcelOptions,
 ) {
   const args = settings.buildArgs;
