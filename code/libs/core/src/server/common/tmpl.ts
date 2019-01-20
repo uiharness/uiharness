@@ -1,6 +1,11 @@
 import { fs, fsPath, IUIHarnessEntry, template } from './libs';
 
-export const create = template.create;
+/**
+ * Initializes a new template.
+ */
+export function create(source?: template.SourceTemplateArg) {
+  return template.create(source);
+}
 
 /**
  * A template processor for copying files.

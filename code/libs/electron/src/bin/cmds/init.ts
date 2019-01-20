@@ -31,8 +31,8 @@ export async function init(args: {
     const entries = settings.entries;
     await tmpl
       .create(TEMPLATE_DIR)
-      .process(tmpl.transformEntryHtml({ entries }))
-      .process(tmpl.copyFile({ force }))
+      .use(tmpl.transformEntryHtml({ entries }))
+      .use(tmpl.copyFile({ force }))
       .execute();
   }
 }
@@ -46,7 +46,7 @@ async function reset(args: { pkg: config.Package }) {
 
   await tmpl
     .create(TEMPLATE_DIR)
-    .process(tmpl.deleteFile())
+    .use(tmpl.deleteFile())
     .execute();
 
   fs.removeSync(fsPath.resolve('./.cache'));
