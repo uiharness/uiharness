@@ -17,7 +17,7 @@
     "@tdb/util": "1.9.24",
     "@types/fs-extra": "5.0.4",
     "@types/js-yaml": "3.11.4",
-    "create-tmpl": "0.0.9",
+    "create-tmpl": "0.0.10",
     "fs-extra": "7.0.1",
     "js-yaml": "3.12.1"
   },
