@@ -14,3 +14,4 @@ tmp
 npm-debug.log
 yarn-error.log
 sync.yaml
+/TMP.md
