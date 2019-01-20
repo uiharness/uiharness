@@ -20,7 +20,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/web": "^0.0.10"
+    "@uiharness/web": "^0.0.11"
   },
   "repository": "https://github.com/uiharness/uiharness",
   "license": "MIT",

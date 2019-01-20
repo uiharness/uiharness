@@ -7,7 +7,7 @@ export const create = template.create;
  */
 export function copyFile(
   args: { force?: boolean } = {},
-): template.TemplateProcessor {
+): template.TemplateMiddleware {
   const { force = false } = args;
   return async (req, res) => {
     const path = fsPath.resolve(`.${req.path}`);
@@ -23,7 +23,7 @@ export function copyFile(
 /**
  * A template processor for deleting files.
  */
-export function deleteFile(args: {} = {}): template.TemplateProcessor {
+export function deleteFile(args: {} = {}): template.TemplateMiddleware {
   return async (req, res) => {
     const path = fsPath.resolve(`.${req.path}`);
     await fs.remove(path);
@@ -36,15 +36,13 @@ export function deleteFile(args: {} = {}): template.TemplateProcessor {
  */
 export function transformEntryHtml(args: {
   entries: IUIHarnessEntry[];
-}): template.TemplateProcessor {
+}): template.TemplateMiddleware {
   return (req, res) => {
-    if (req.path.endsWith('.html')) {
-      args.entries.forEach(e => {
-        res
-          .replaceText(/__TITLE__/g, e.title)
-          .replaceText(/__ENTRY_SCRIPT__/g, e.html.relative);
-      });
-    }
+    args.entries.forEach(e => {
+      res
+        .replaceText(/__TITLE__/g, e.title)
+        .replaceText(/__ENTRY_SCRIPT__/g, e.html.relative);
+    });
     res.next();
   };
 }
