@@ -1,6 +1,7 @@
 .cache
-build
-dist
+/build
+/dist
+/release
 
 
 # Auto-generated files from `@uiharness/electron` init.

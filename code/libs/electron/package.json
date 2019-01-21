@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/electron",
-  "version": "0.0.23",
+  "version": "0.0.26",
   "main": "./lib/index.js",
   "bin": {
     "uiharness-electron": "./lib/bin/entry.js"
@@ -20,11 +20,12 @@
     "@tdb/typescript": "3.2.7",
     "@tdb/util": "1.9.24",
     "@uiharness/core": "1.0.18",
-    "app-root-path": "2.1.0",
+    "app-root-path": "^2.1.0",
     "babel-core": "^7.0.0-bridge.0",
     "electron": "4.0.1",
     "electron-builder": "20.38.5",
-    "electron-is-dev": "1.0.1",
+    "electron-is-dev": "^1.0.1",
+    "electron-log": "^2.2.17",
     "execa": "1.0.0",
     "npm-run-all": "4.1.5",
     "parcel-bundler": "1.11.0",

@@ -5,20 +5,22 @@
   "main": "src/main/.parcel/main.js",
   "scripts": {
     "tmp": "yarn sl && uiharness-electron $@",
-    "postinstall": "uiharness-electron init",
-    "nuke": "sh ./sh/nuke.sh",
+    "postinstall": "yarn run init",
     "sl": "msync sl && sh ./sh/copy-bin.sh",
+    "init": "uiharness-electron init",
     "reset": "yarn sl && uiharness-electron init --reset",
-    "reset-init": "yarn reset && yarn postinstall",
+    "nuke": "sh ./sh/nuke.sh",
+    "clean": "sh ./sh/clean.sh",
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
     "start": "uiharness-electron start",
-    "bundle": "uiharness-electron bundle"
+    "dist": "uiharness-electron dist"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@uiharness/electron": "^0.0.26"
+  },
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@uiharness/electron": "^0.0.23"
+    "@babel/core": "^7.2.2"
   },
   "resolutions": {
     "@types/react": "16.7.17"
