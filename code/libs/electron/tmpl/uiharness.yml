@@ -1,7 +1,6 @@
 #
-# UIHarness Configuration (Electron)
-# See:
-#   https://uiharness.com
+# Electron Configuration
+# https://uiharness.com
 #
 port: 8888
 build:

@@ -1,7 +1,6 @@
 #
-# UIHarness Configuration
-# See:
-#   https://uiharness.com
+# Web Configuration
+# https://uiharness.com
 #
 port: 3030
 
