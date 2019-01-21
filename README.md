@@ -1,5 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-![uiharness](https://user-images.githubusercontent.com/185555/51497576-6c89b500-1e28-11e9-9525-ff1769c2d8af.png)
+![uiharness](https://user-images.githubusercontent.com/185555/51503440-ea0cef80-1e3f-11e9-8e84-6a107a219136.png)
 
 Isolate, develop and test your UI components in [typescript](https://www.typescriptlang.org/) / [react](https://reactjs.org/), targeting [electron](https://electronjs.org/) or the [web](https://developer.mozilla.org).  
 [uiharness.com](https://uiharness.com)
