@@ -36,7 +36,7 @@ Target the desktop with [electron](https://electronjs.org):
 
 ```bash
 yarn add -D @uiharness/electron     # Server tools (js bundler, electron builder)
-yarn add    @uiharness/electron.ui  # Client tools (bundled with app)
+yarn add    @uiharness/electron.ui  # Client tools (bundled with app as dependency)
 ```
 
 
