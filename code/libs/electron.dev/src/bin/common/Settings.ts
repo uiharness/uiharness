@@ -95,6 +95,7 @@ export class Settings {
       scripts: value.defaultValue(init.scripts, true),
       files: value.defaultValue(init.files, true),
       html: value.defaultValue(init.html, true),
+      deps: value.defaultValue(init.deps, true),
     };
   }
 }

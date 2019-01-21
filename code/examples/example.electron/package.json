@@ -17,15 +17,14 @@
     "dist": "uiharness-electron dist"
   },
   "dependencies": {
-    "@uiharness/electron": "^0.1.0"
+    "@uiharness/electron": "0.1.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@uiharness/electron.dev": "^0.0.1"
-  },
-  "resolutions": {
-    "@types/react": "16.7.17"
+    "@uiharness/electron.dev": "0.0.8"
   },
   "license": "MIT",
-  "private": true
+  "private": true,
+  "resolutions": {
+    "@types/react": "16.7.17"
+  }
 }

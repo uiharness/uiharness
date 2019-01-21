@@ -31,6 +31,18 @@ export async function init(args: {
     pkg.addFields('scripts', SCRIPTS).save();
   }
 
+  if (flags.deps) {
+    const PKG = constants.PKG;
+    const npm = tmpl.npm;
+    const deps = await npm.getVersions(PKG.dependencies);
+    const devDeps = await npm.getVersions(PKG.devDependencies);
+    pkg
+      .addFields('dependencies', deps, { force: true })
+      .addFields('devDependencies', devDeps, { force: true })
+      .addFields('resolutions', PKG.resolutions, { force: true })
+      .save();
+  }
+
   if (flags.files) {
     const entries = settings.entries;
     await tmpl

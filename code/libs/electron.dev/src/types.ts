@@ -28,5 +28,6 @@ export type IUIHarnessElectronConfig = {
     scripts?: boolean;
     files?: boolean;
     html?: boolean;
+    deps?: boolean;
   };
 };

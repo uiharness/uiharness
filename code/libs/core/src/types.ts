@@ -30,6 +30,8 @@ export type IPackageJson = {
   scripts?: IPackageFields;
   dependencies?: IPackageFields;
   devDependencies?: IPackageFields;
+  peerDependencies?: IPackageFields;
+  resolutions?: IPackageFields;
 };
 export type IPackageFields = { [key: string]: string };
 export type PackageFieldsKey =

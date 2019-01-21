@@ -827,7 +827,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/inquirer@^0.0.43":
+"@types/inquirer@0.0.43", "@types/inquirer@^0.0.43":
   version "0.0.43"
   resolved "https://registry.yarnpkg.com/@types/inquirer/-/inquirer-0.0.43.tgz#1eb0bbb4648e6cc568bd396c1e989f620ad01273"
   integrity sha512-xgyfKZVMFqE8aIKy1xfFVsX2MxyXUNgjgmbF6dRbR3sL+ZM5K4ka/9L4mmTwX8eTeVYtduyXu0gUVwVJa1HbNw==
@@ -994,7 +994,7 @@
     "@types/rx-lite-time" "*"
     "@types/rx-lite-virtualtime" "*"
 
-"@types/semver@^5.5.0":
+"@types/semver@5.5.0", "@types/semver@^5.5.0":
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-5.5.0.tgz#146c2a29ee7d3bae4bf2fcb274636e264c813c45"
   integrity sha512-41qEJgBH/TWgo5NFSvBCJ1qkoi3Q6ONSF2avrHq1LVEZfYpdHmj0y9SuTK+u9ZhG1sYQKBL1AWXKyLWP4RaUoQ==
@@ -1033,10 +1033,22 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.5.tgz#f4f85fe198e1e9cedc0bb53a8c2d30fb34299e50"
   integrity sha512-y51XRWWg1GiW4+mV2zmFQUqJT3bX7nuUaXW4j8a2dFvT9ZlaNLjb7ZxcUSDyklt/UBWrW2+31x+hQpRzxaTFzw==
 
-"@uiharness/core@1.0.18", "@uiharness/core@^1.0.18":
-  version "1.0.18"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.18.tgz#43d450e0b936814b4369e13f54005b19d5b3332a"
-  integrity sha512-2M1UpsSNCjqWT0V6uD1e2FWg3DXJZdlXdAwDP7s09iDg65zRZzwZVZSXGS3nhde4zZOFxej17dW5f7rLjS1dgQ==
+"@uiharness/core@1.0.21":
+  version "1.0.21"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.21.tgz#70d03dff958ae4013cf32f928a594c9414887261"
+  integrity sha512-0IvF7RjwMaDaJCBS0jzjX8CwF1szFJvH0+dY50Y1fducog077XK+AJ6HKZBFxbN9EjCVyOL51tLXiV6wxKV+lw==
+  dependencies:
+    "@tdb/util" "1.9.24"
+    "@types/fs-extra" "5.0.4"
+    "@types/js-yaml" "3.11.4"
+    create-tmpl "0.0.18"
+    fs-extra "7.0.1"
+    js-yaml "3.12.1"
+
+"@uiharness/core@^1.0.19":
+  version "1.0.20"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.20.tgz#caeff34565b8202af49e579802c146591bc5d46c"
+  integrity sha512-SNkDb7ho0HMA3UPozTENYCsjCckmfFJMkx9IQ4c2I7kk1Auj/BmcTU67oRBB4PGuzXgnpVgtSTC7lVf90syyxQ==
   dependencies:
     "@tdb/util" "1.9.24"
     "@types/fs-extra" "5.0.4"
@@ -1045,14 +1057,14 @@
     fs-extra "7.0.1"
     js-yaml "3.12.1"
 
-"@uiharness/electron@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.1.1.tgz#8db38edc26791a7e598daeff63fcfabc879151b0"
-  integrity sha512-U+sWWbkwJVjAFxIh4Nu0rnCiA8EDLaLilV+gJTeWj51TuX27B2YDAlQ82O6OnMU+FTDZZe15xFJJXQ7JFLayeQ==
+"@uiharness/electron@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.1.2.tgz#0553d94800ec7357f256c255558e91c9607638f4"
+  integrity sha512-z2Zq2ZG6RwUTQpIiC9fOUSZzfw3drBgasCjxPZuCvmA0WZrYragjqe4UBQjgo1zvRYVFuSL1eW9wcLoYSmw7Sw==
   dependencies:
     "@tdb/util" "1.9.24"
     "@types/app-root-path" "^1.2.4"
-    "@uiharness/core" "^1.0.18"
+    "@uiharness/core" "^1.0.19"
     app-root-path "^2.1.0"
     electron-is-dev "^1.0.1"
     electron-log "^2.2.17"
@@ -2180,6 +2192,23 @@ create-tmpl@0.0.17:
     inquirer "^6.2.1"
     isbinaryfile "4.0.0"
     js-yaml "3.12.1"
+    yargs "12.0.5"
+
+create-tmpl@0.0.18:
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.0.18.tgz#4d5423697660afd1581f358d78490e1c64402ed4"
+  integrity sha512-hhihe2BZrL5QFUjic/qXL6SSFAP6Y+bkuYdHDy7Hi1Gvuvi/pAG1e2fP0xhSeCoCWZa5UNl3FubmoY7u9NPDvQ==
+  dependencies:
+    "@tdb/util" "1.9.24"
+    "@types/inquirer" "0.0.43"
+    "@types/semver" "5.5.0"
+    execa "1.0.0"
+    fast-glob "2.2.6"
+    fs-extra "7.0.1"
+    inquirer "6.2.1"
+    isbinaryfile "4.0.0"
+    js-yaml "3.12.1"
+    semver "5.6.0"
     yargs "12.0.5"
 
 cross-spawn@^5.0.1:
@@ -3624,7 +3653,7 @@ inline-style-prefixer@^3.0.6:
     bowser "^1.7.3"
     css-in-js-utils "^2.0.0"
 
-inquirer@^6.2.1:
+inquirer@6.2.1, inquirer@^6.2.1:
   version "6.2.1"
   resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-6.2.1.tgz#9943fc4882161bdb0b0c9276769c75b32dbfcd52"
   integrity sha512-088kl3DRT2dLU5riVMKKr1DlImd6X7smDhpXUCkJDCKvTEJeRiXh0G132HG9u5a+6Ylw9plFRY7RuTnwohYSpg==
@@ -6286,7 +6315,7 @@ semver-diff@^2.0.0:
   dependencies:
     semver "^5.0.3"
 
-"semver@2 || 3 || 4 || 5", semver@^5.0.3, semver@^5.1.0, semver@^5.3.0, semver@^5.4.1, semver@^5.5.0, semver@^5.6.0:
+"semver@2 || 3 || 4 || 5", semver@5.6.0, semver@^5.0.3, semver@^5.1.0, semver@^5.3.0, semver@^5.4.1, semver@^5.5.0, semver@^5.6.0:
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.6.0.tgz#7e74256fbaa49c75aa7c7a205cc22799cac80004"
   integrity sha512-RS9R6R35NYgQn++fkDWaOmqGoj4Ek9gGs+DPxNUZKuwE183xjJroKvyo1IzVFeXvUrvmALy6FWD5xrdJT25gMg==

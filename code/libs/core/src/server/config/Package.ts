@@ -43,6 +43,12 @@ export class Package {
   public get devDependencies() {
     return this.json.devDependencies || {};
   }
+  public get peerDependencies() {
+    return this.json.peerDependencies || {};
+  }
+  public get resolutions() {
+    return this.json.resolutions || {};
+  }
 
   /**
    * Saves changes to the `package.json` file.

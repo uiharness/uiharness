@@ -27,9 +27,11 @@ describe('Package (package.json)', () => {
     expect(pkg.description).to.eql(pkg.json.description);
     expect(pkg.version).to.eql(pkg.json.version);
     expect(pkg.main).to.eql(pkg.json.main);
-    expect(pkg.scripts).to.eql(pkg.json.scripts);
-    expect(pkg.dependencies).to.eql(pkg.json.dependencies);
-    expect(pkg.devDependencies).to.eql(pkg.json.devDependencies);
+    expect(pkg.scripts).to.eql(pkg.json.scripts || {});
+    expect(pkg.dependencies).to.eql(pkg.json.dependencies || {});
+    expect(pkg.devDependencies).to.eql(pkg.json.devDependencies || {});
+    expect(pkg.peerDependencies).to.eql(pkg.json.peerDependencies || {});
+    expect(pkg.resolutions).to.eql(pkg.json.resolutions || {});
   });
 
   describe('addFields', () => {
@@ -131,6 +133,14 @@ describe('Package (package.json)', () => {
       const scripts = { ...pkg.scripts };
       pkg.removeFields('scripts', { foo: 'no-exist' });
       expect(pkg.scripts).to.eql(scripts);
+    });
+
+    it('adds an object if it does not already exist', async () => {
+      const resolutions = { '@types/react': '16.7.17' };
+      const pkg = Package.create();
+      expect(pkg.resolutions).to.eql({});
+      pkg.addFields('resolutions', resolutions);
+      expect(pkg.resolutions).to.eql(resolutions);
     });
   });
 });
