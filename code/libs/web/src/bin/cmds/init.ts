@@ -27,7 +27,7 @@ export async function init(args: {
   }
 
   if (flags.scripts) {
-    pkg.addScripts({ scripts: SCRIPTS });
+    pkg.addFields('scripts', SCRIPTS).save();
   }
 
   if (flags.files) {
@@ -45,7 +45,7 @@ export async function init(args: {
  */
 async function reset(args: { pkg: Package }) {
   const { pkg } = args;
-  pkg.removeScripts({ scripts: SCRIPTS });
+  pkg.removeFields('scripts', SCRIPTS, { exclude: 'postinstall' }).save();
 
   await tmpl
     .create(TEMPLATE_DIR)
