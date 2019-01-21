@@ -14,7 +14,7 @@
   dependencies:
     "@babel/highlight" "^7.0.0"
 
-"@babel/core@7.2.2", "@babel/core@^7.0.0":
+"@babel/core@7.2.2", "@babel/core@^7.0.0", "@babel/core@^7.2.2":
   version "7.2.2"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.2.2.tgz#07adba6dde27bb5ad8d8672f15fde3e08184a687"
   integrity sha512-59vB0RWt09cAct5EIe58+NzGP4TFSD3Bz//2/ELy3ZeTeKF6VTD1AXlH8BGGbCX0PuobZBsIzO7IAI9PH67eKw==
@@ -858,15 +858,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*":
-  version "16.7.20"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.7.20.tgz#13ae752c012710d0fa800985ca809814b51d3b58"
-  integrity sha512-Qd5RWkwl6SL7R2XzLk/cicjVQm1Mhc6HqXY5Ei4pWd1Vi8Fkbd5O0sA398x8fRSTPAuHdDYD9nrWmJMYTJI0vQ==
-  dependencies:
-    "@types/prop-types" "*"
-    csstype "^2.2.0"
-
-"@types/react@16.7.17":
+"@types/react@*", "@types/react@16.7.17":
   version "16.7.17"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.7.17.tgz#3242e796a1ffbba4f49eae5915a67f4c079504e9"
   integrity sha512-YcXcaoXaxo7A76mBCGlKlN2aZu3REQfF0DTrhiyXVJLA7PDdxVCr+wiQOrkVNn44D/zLlIyDSn3U918Ve0AaEA==
@@ -1009,7 +1001,19 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/core@1.0.23", "@uiharness/core@^1.0.19":
+"@uiharness/core@1.0.24":
+  version "1.0.24"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.24.tgz#f42c4f55cb5acd03c1a71e3e6bb8794b7c90e119"
+  integrity sha512-7QUemxKdNWUqIUg9cI7nUEDbcR7LajNA2Yzcp2y5CR4NShRFoxPOkQjCPs4ykUzd8n/62mYoRVjYYFZXfQK+bA==
+  dependencies:
+    "@tdb/util" "1.9.24"
+    "@types/fs-extra" "5.0.4"
+    "@types/js-yaml" "3.11.4"
+    create-tmpl "0.0.19"
+    fs-extra "7.0.1"
+    js-yaml "3.12.1"
+
+"@uiharness/core@^1.0.19":
   version "1.0.23"
   resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.23.tgz#d9517b134ad51a74f1dc49dd26e6a64b8117adda"
   integrity sha512-8iQOG5uXrq7f483Mx7EUb0dmgadH3dzliG+XB7LOoZKbZdBVuBcKoKkf/uk8BFtc86JetlHNjVK+vAbztlUHIg==
@@ -1021,10 +1025,10 @@
     fs-extra "7.0.1"
     js-yaml "3.12.1"
 
-"@uiharness/electron.dev@0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron.dev/-/electron.dev-0.0.8.tgz#8d09f0a6447bb5b0ed188c766516f6d0188cde05"
-  integrity sha512-Q68Gn4Bm6rxBaM7aNnTANNMUbTg0qffUvnatxE6P/blMOO5n+f/KjZMtR4sFMJM2KzDrj7/u/QJHu7zPIX38RA==
+"@uiharness/electron.dev@0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron.dev/-/electron.dev-0.0.9.tgz#6eac2d53b9a1b4d156cc06de35d1ee4c3a6e0daa"
+  integrity sha512-wqlllMb8S96Y54i73r6l8syUV95NNV+71G5gVr/KESzTZIi+YsHMhj+YWosuGmq+FMe2+rgZgVLvNhe4KtcYAQ==
   dependencies:
     "@babel/core" "7.2.2"
     "@babel/preset-env" "7.2.3"
@@ -1033,7 +1037,7 @@
     "@tdb/log" "1.1.19"
     "@tdb/typescript" "3.2.7"
     "@tdb/util" "1.9.24"
-    "@uiharness/core" "1.0.23"
+    "@uiharness/core" "1.0.24"
     "@uiharness/electron" "^0.1.2"
     babel-core "^7.0.0-bridge.0"
     electron "4.0.1"
@@ -1043,7 +1047,7 @@
     parcel-bundler "1.11.0"
     yargs "12.0.5"
 
-"@uiharness/electron@^0.1.2":
+"@uiharness/electron@0.1.2", "@uiharness/electron@^0.1.2":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.1.2.tgz#0553d94800ec7357f256c255558e91c9607638f4"
   integrity sha512-z2Zq2ZG6RwUTQpIiC9fOUSZzfw3drBgasCjxPZuCvmA0WZrYragjqe4UBQjgo1zvRYVFuSL1eW9wcLoYSmw7Sw==

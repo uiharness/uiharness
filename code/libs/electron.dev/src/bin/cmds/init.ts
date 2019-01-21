@@ -9,7 +9,7 @@ import {
   constants,
 } from '../common';
 
-const TEMPLATE_DIR = './node_modules/@uiharness/electron/tmpl';
+const TEMPLATE_DIR = './node_modules/@uiharness/electron.dev/tmpl';
 const { SCRIPTS } = constants;
 
 /**
@@ -39,7 +39,6 @@ export async function init(args: {
     pkg
       .addFields('dependencies', deps, { force: true })
       .addFields('devDependencies', devDeps, { force: true })
-      .addFields('resolutions', PKG.resolutions, { force: true })
       .save();
   }
 

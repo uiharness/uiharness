@@ -21,7 +21,4 @@ export const PKG = {
   devDependencies: {
     '@uiharness/electron.dev': '__LATEST__',
   },
-  resolutions: {
-    '@types/react': '16.7.17',
-  },
 };
