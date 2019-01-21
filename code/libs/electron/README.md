@@ -27,9 +27,11 @@ Include in the `dependencies` of your package.json, along with the corresponding
 ## 🔗 Refs
 - https://electronjs.org
 
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 
 ## 🔗 Modules
-- [@uiharness/web](code/libs/web/README.md)
+- [@uiharness/web](/code/libs/web/README.md)
 - [@uiharness/electron](code/libs/electron/README.md)
-- [@uiharness/electron.dev](code/libs/electron.dev/README.md)
-- [@uiharness/core](code/libs/core/README.md)
+- [@uiharness/electron.dev](/code/libs/electron.dev/README.md)
+- [@uiharness/core](/code/libs/core/README.md)
