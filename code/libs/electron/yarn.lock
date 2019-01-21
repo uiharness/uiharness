@@ -1045,10 +1045,10 @@
     fs-extra "7.0.1"
     js-yaml "3.12.1"
 
-"@uiharness/electron.ui@0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron.ui/-/electron.ui-0.0.3.tgz#2dfda9be1ec35be0a3fa368e17a6c55e75fa9fb4"
-  integrity sha512-xKpCpq62DF6a65ICJbzveGqWnEyF9oZCoMgDqtJFeOIESL/KBZqD+31VecaTMtB+6WEOlf66/JXJGbxGNSIXTA==
+"@uiharness/electron.ui@0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron.ui/-/electron.ui-0.0.4.tgz#79f121444697c8a5a8fd256ca177e7514cc0deb6"
+  integrity sha512-y+VWEJM8hpHZRzk1FSzoLfCGpDFO9jMgo3b85suJ2hUgdLMOjI4DDX6ejrfXMUMZtN2DzHDuGfnHaTVU3AW62w==
   dependencies:
     "@tdb/util" "1.9.24"
     "@types/app-root-path" "1.2.4"

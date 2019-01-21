@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, GlamorValue } from '../../common';
+import { css, GlamorValue, isDev } from '../../common';
 
 export type IHelloWorldProps = {
   style?: GlamorValue;
@@ -16,7 +16,10 @@ export class HelloWorld extends React.PureComponent<IHelloWorldProps> {
     };
     return (
       <div {...css(styles.base, this.props.style)}>
-        <div>@uiharness/electron</div>
+        <ul>
+          <li>@uiharness/electron</li>
+          <li>isDev: {isDev.toString()}</li>
+        </ul>
       </div>
     );
   }

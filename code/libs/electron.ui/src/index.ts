@@ -1,1 +1,1 @@
-export { resolve } from './common';
+export { resolve, isDev } from './common';
