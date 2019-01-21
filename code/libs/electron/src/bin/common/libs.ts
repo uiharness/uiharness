@@ -3,13 +3,13 @@ import * as yargs from 'yargs';
 import * as execa from 'execa';
 
 export { ParcelBundler, yargs, execa };
+export * from '../../common';
 export {
   config,
   fs,
   fsPath,
-  log,
   tmpl,
   jsYaml,
   Package,
+  log,
 } from '@uiharness/core/lib/server';
-export * from '../../common';
