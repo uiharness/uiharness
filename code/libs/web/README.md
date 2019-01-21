@@ -83,5 +83,5 @@ See [configuration documentation](../core/README.md#configuration).
 ## 🔗 Modules
 - [@uiharness/web](/code/libs/web/README.md)
 - [@uiharness/electron](/code/libs/electron/README.md)
-- [@uiharness/electron.dev](/code/libs/electron.dev/README.md)
+- [@uiharness/electron.ui](/code/libs/electron/README.md)
 - [@uiharness/core](/code/libs/core/README.md)

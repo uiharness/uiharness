@@ -1,7 +1,10 @@
 node_modules
-lib
-.DS_Store
-.npmrc
-.env
+
+/.cache
+/coverage
+/src/renderer/.parcel
+/src/main/.parcel
+/release
+
+*.map
 *.log
-/tmp

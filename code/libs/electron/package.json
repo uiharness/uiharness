@@ -1,32 +1,54 @@
 {
   "name": "@uiharness/electron",
-  "version": "0.1.4",
-  "description": "UIHarness client-tools for Electron (include in dependencies).",
+  "description": "UIHarness dev-tools for Electron (include in devDependencies).",
+  "version": "0.2.1",
   "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "bin": {
+    "uiharness-electron": "./lib/bin/entry.js"
+  },
   "scripts": {
-    "start": "node .",
-    "watch": "nodemon .",
-    "test": "sh ./node_modules/@tdb/test/sh/test.sh",
-    "tdd": "yarn run test --reporter min --watch",
-    "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
+    "test": "echo no-op",
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
-    "prepare": "yarn run build && yarn run lint && yarn test"
+    "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
+    "clean": "sh ./sh/clean.sh",
+    "nuke": "sh ./sh/nuke.sh"
   },
   "dependencies": {
+    "@babel/core": "7.2.2",
+    "@babel/preset-env": "7.2.3",
+    "@babel/preset-react": "7.0.0",
+    "@babel/preset-typescript": "7.1.0",
+    "@tdb/log": "1.1.19",
+    "@tdb/typescript": "3.2.7",
     "@tdb/util": "1.9.24",
-    "@types/app-root-path": "^1.2.4",
-    "@uiharness/core": "^1.0.29",
-    "app-root-path": "^2.1.0",
-    "electron-is-dev": "^1.0.1",
-    "electron-log": "^2.2.17"
+    "@uiharness/core": "1.0.30",
+    "@uiharness/electron.ui": "0.0.2",
+    "babel-core": "^7.0.0-bridge.0",
+    "electron": "4.0.1",
+    "electron-builder": "20.38.5",
+    "execa": "1.0.0",
+    "npm-run-all": "4.1.5",
+    "parcel-bundler": "1.11.0",
+    "yargs": "12.0.5"
   },
   "devDependencies": {
-    "@tdb/test": "1.2.12",
-    "@tdb/typescript": "3.2.7"
+    "@types/electron-builder": "^2.8.0",
+    "@types/execa": "^0.9.0",
+    "@types/parcel-bundler": "1.10.1",
+    "@types/yargs": "12.0.5"
   },
   "files": [
     "**/*"
+  ],
+  "engines": {
+    "node": ">=10.x"
+  },
+  "keywords": [
+    "design",
+    "test",
+    "react",
+    "typescript",
+    "electron"
   ],
   "license": "MIT"
 }

@@ -1,4 +1,6 @@
 {
   "extends": "@tdb/typescript/tslint.json",
-  "rules": {}
+  "rules": {
+    "no-console": false
+  }
 }
