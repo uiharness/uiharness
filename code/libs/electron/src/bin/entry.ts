@@ -13,8 +13,12 @@ process.on('unhandledRejection', err => {
 
 const CMD = {
   INIT: 'init',
+  INIT_I: 'i',
   START: 'start',
+  START_S: 's',
+  START_ST: 'st',
   DIST: 'dist',
+  DIST_D: 'd',
 };
 const CMDS = Object.keys(CMD).map(key => CMD[key]);
 
@@ -36,8 +40,8 @@ const program = yargs
    * `init`
    */
   .command(
-    [CMD.INIT],
-    'Initialize the module with default files needed to run electron.',
+    [CMD.INIT, CMD.INIT_I],
+    'Initialize module with default files.',
     e =>
       e
         .option('force', {
@@ -60,7 +64,7 @@ const program = yargs
    * `start`
    */
   .command(
-    [CMD.START],
+    [CMD.START, CMD.START_S, CMD.START_ST],
     'Start the development server.',
     e => e,
     e => cmds.start({ settings, pkg }),
@@ -70,10 +74,10 @@ const program = yargs
    * `bundle`
    */
   .command(
-    [CMD.DIST],
+    [CMD.DIST, CMD.DIST_D],
     'Packages the application ready for distribution.',
     e => e,
-    e => cmds.dist({ settings }),
+    e => cmds.dist({ settings, pkg }),
   )
 
   .help('h')
