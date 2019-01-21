@@ -44,8 +44,8 @@ yarn add -D @uiharness/electron.dev
 <p>&nbsp;</p>
 
 
-## Modules
-- [@uiharness/core](code/libs/core/README.md)
+## 🔗 Modules
 - [@uiharness/web](code/libs/web/README.md)
 - [@uiharness/electron](code/libs/electron/README.md)
 - [@uiharness/electron.dev](code/libs/electron.dev/README.md)
+- [@uiharness/core](code/libs/core/README.md)

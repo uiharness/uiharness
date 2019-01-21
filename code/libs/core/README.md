@@ -55,3 +55,9 @@ Use or disable (experimental) treeshaking. Default `false`.
 See [parcel/tree-shaking](https://parceljs.org/cli.html#enable-experimental-scope-hoisting/tree-shaking-support).
 
 <p>&nbsp;</p>
+
+## 🔗 Modules
+- [@uiharness/web](code/libs/web/README.md)
+- [@uiharness/electron](code/libs/electron/README.md)
+- [@uiharness/electron.dev](code/libs/electron.dev/README.md)
+- [@uiharness/core](code/libs/core/README.md)
