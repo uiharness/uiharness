@@ -1,12 +1,11 @@
 import {
+  constants,
   execa,
-  fs,
   fsPath,
   logInfo,
   Package,
   parcel,
   Settings,
-  constants,
 } from '../common';
 import { init } from './init';
 
