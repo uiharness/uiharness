@@ -11,6 +11,7 @@ src/renderer
 
 .babelrc
 .uiharness
+electron-builder.yml
 html
 tslint.json
 tsconfig.json
