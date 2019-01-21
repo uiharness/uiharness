@@ -76,3 +76,12 @@ This is automatically generated via `uiharness init` in your `postinstall`.
 All values are optional.
 
 See [configuration documentation](../core/README.md#configuration).
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+## 🔗 Modules
+- [@uiharness/web](code/libs/web/README.md)
+- [@uiharness/electron](code/libs/electron/README.md)
+- [@uiharness/electron.dev](code/libs/electron.dev/README.md)
+- [@uiharness/core](code/libs/core/README.md)

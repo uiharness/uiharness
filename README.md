@@ -1,13 +1,13 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-![pre-release](https://img.shields.io/badge/Status-pre--release-orange.svg)
-![uiharness](https://user-images.githubusercontent.com/185555/51472752-44299880-1ddf-11e9-9f4e-14c4724853b1.png)
+![uiharness](https://user-images.githubusercontent.com/185555/51472842-85ba4380-1ddf-11e9-9bc2-e6d996de9d20.png)
 
 Precisely isolate, develop and test your UI components in [typescript](https://www.typescriptlang.org/) / [react](https://reactjs.org/), targeting [electron](https://electronjs.org/) or the [web](https://developer.mozilla.org).  
 [uiharness.com](https://uiharness.com)
 
 ----
 
-🌳   `NOTE: API's will change radically. V4 release coming soon.`
+![pre-release](https://img.shields.io/badge/Status-pre--release-orange.svg)  
+API's will change radically. `v4` release coming soon.
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
