@@ -1,6 +1,6 @@
 {
   "name": "example.electron",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Example usage of `@uiharness/electron`",
   "main": "src/main/.parcel/main.js",
   "scripts": {
@@ -12,12 +12,17 @@
     "nuke": "sh ./sh/nuke.sh",
     "clean": "sh ./sh/clean.sh",
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
-    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@"
+    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
+    "start": "uiharness-electron start",
+    "dist": "uiharness-electron dist"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@uiharness/electron.ui": "0.0.3"
+  },
   "devDependencies": {
     "@babel/core": "^7.2.2",
-    "@uiharness/electron": "0.2.1"
+    "@uiharness/electron": "0.2.5",
+    "create-tmpl": "^0.0.25"
   },
   "license": "MIT",
   "private": true,

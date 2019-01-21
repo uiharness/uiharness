@@ -1,6 +1,6 @@
 import { format } from 'url';
 import { BrowserWindow, app } from 'electron';
-import { resolve } from '@uiharness/electron';
+import { resolve } from '@uiharness/electron.ui';
 
 const isDev = require('electron-is-dev');
 const config = require('../../.uiharness/config.json');
