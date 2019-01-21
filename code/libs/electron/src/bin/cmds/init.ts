@@ -1,11 +1,16 @@
-import { config, fs, fsPath, log, tmpl, Settings, Package } from '../common';
+import {
+  config,
+  fs,
+  fsPath,
+  log,
+  tmpl,
+  Settings,
+  Package,
+  constants,
+} from '../common';
 
 const TEMPLATE_DIR = './node_modules/@uiharness/electron/tmpl';
-const SCRIPTS = {
-  postinstall: 'uiharness-electron init',
-  start: 'uiharness-electron start',
-  bundle: 'uiharness-electron bundle',
-};
+const { SCRIPTS } = constants;
 
 /**
  * Initialize the module.
@@ -34,6 +39,9 @@ export async function init(args: {
       .use(tmpl.copyFile({ force }))
       .execute();
   }
+
+  // Save settings as JSON to local project.
+  await saveConfigJson({ settings });
 }
 
 /**
@@ -51,6 +59,8 @@ async function reset(args: { pkg: config.Package }) {
   fs.removeSync(fsPath.resolve('./.cache'));
   fs.removeSync(fsPath.resolve('./dist'));
   fs.removeSync(fsPath.resolve('./.uiharness'));
+  fs.removeSync(fsPath.resolve('./src/main/.parcel'));
+  fs.removeSync(fsPath.resolve('./src/renderer/.parcel'));
 
   // Log results.
   log.info('');
@@ -61,4 +71,23 @@ async function reset(args: { pkg: config.Package }) {
     `    Run \`${log.cyan('uiharness-electron init')}\` to recreate them.`,
   );
   log.info('');
+}
+
+/**
+ * INTERNAL
+ */
+
+/**
+ * Saves configuration JSON to the target module to be imported
+ * by the consuming components.
+ */
+async function saveConfigJson(args: { settings: Settings }) {
+  const { port } = args.settings;
+  const { DIR, FILE } = constants.PATH.CONFIG;
+  const data = { port };
+  const dir = fsPath.resolve(DIR);
+  const path = fsPath.join(dir, FILE);
+  const json = `${JSON.stringify(data, null, '  ')}\n`;
+  await fs.ensureDir(dir);
+  await fs.writeFile(path, json);
 }
