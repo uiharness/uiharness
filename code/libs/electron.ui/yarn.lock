@@ -103,7 +103,7 @@
     tslib "1.9.3"
     underscore.string "3.3.5"
 
-"@types/app-root-path@^1.2.4":
+"@types/app-root-path@1.2.4":
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/@types/app-root-path/-/app-root-path-1.2.4.tgz#a78b703282b32ac54de768f5512ecc3569919dc7"
   integrity sha1-p4twMoKzKsVN52j1US7MNWmRncc=
@@ -328,10 +328,10 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/core@^1.0.29":
-  version "1.0.29"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.29.tgz#8eb7c542cb36455de2d63ae3561c791073a24497"
-  integrity sha512-2jToiGT6FfNUtu0dxagMwDup6bBoVwqatrF6Ze7zr6IooNH1z2ZSFJ3CisrxXgPgFhW9pV61CeHAbJ57l18S3g==
+"@uiharness/core@1.0.30":
+  version "1.0.30"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.30.tgz#20c84fe47ca7dab90dbfaba1653d755ca7d7ef56"
+  integrity sha512-6IguRO3/qR0ERRL+IXph8r9r1L6bJOLhjhNFP31NS30PCDg5v/MGPDs3ysNjbDmhSR+KA+6evXKb6MsEit2OHQ==
   dependencies:
     "@tdb/util" "1.9.24"
     "@types/fs-extra" "5.0.4"
@@ -372,7 +372,7 @@ ansi-styles@^3.2.1:
   dependencies:
     color-convert "^1.9.0"
 
-app-root-path@^2.1.0:
+app-root-path@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/app-root-path/-/app-root-path-2.1.0.tgz#98bf6599327ecea199309866e8140368fd2e646a"
   integrity sha1-mL9lmTJ+zqGZMJhm6BQDaP0uZGo=
@@ -813,12 +813,12 @@ dynamics.js@1.1.5:
   resolved "https://registry.yarnpkg.com/dynamics.js/-/dynamics.js-1.1.5.tgz#b90bdc33605cefe652b8416e701f79bf6eefce32"
   integrity sha1-uQvcM2Bc7+ZSuEFucB95v27vzjI=
 
-electron-is-dev@^1.0.1:
+electron-is-dev@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/electron-is-dev/-/electron-is-dev-1.0.1.tgz#6e0a184736fe7aea77d18210b0b0f6a02402c4bc"
   integrity sha512-iwM3EotA9HTXqMGpQRkR/kT8OZqBbdfHTnlwcxsjSLYqY8svvsq0MuujsWCn3/vtgRmDv/PC/gKUUpoZvi5C1w==
 
-electron-log@^2.2.17:
+electron-log@2.2.17:
   version "2.2.17"
   resolved "https://registry.yarnpkg.com/electron-log/-/electron-log-2.2.17.tgz#e71e2ebb949fc96ded7cdb99eeee7202e48981d2"
   integrity sha512-v+Af5W5z99ehhaLOfE9eTSXUwjzh2wFlQjz51dvkZ6ZIrET6OB/zAZPvsuwT6tm3t5x+M1r+Ed3U3xtPZYAyuQ==

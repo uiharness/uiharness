@@ -801,7 +801,7 @@
     tslib "1.9.3"
     underscore.string "3.3.5"
 
-"@types/app-root-path@^1.2.4":
+"@types/app-root-path@1.2.4":
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/@types/app-root-path/-/app-root-path-1.2.4.tgz#a78b703282b32ac54de768f5512ecc3569919dc7"
   integrity sha1-p4twMoKzKsVN52j1US7MNWmRncc=
@@ -1033,10 +1033,10 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.5.tgz#f4f85fe198e1e9cedc0bb53a8c2d30fb34299e50"
   integrity sha512-y51XRWWg1GiW4+mV2zmFQUqJT3bX7nuUaXW4j8a2dFvT9ZlaNLjb7ZxcUSDyklt/UBWrW2+31x+hQpRzxaTFzw==
 
-"@uiharness/core@1.0.29", "@uiharness/core@^1.0.29":
-  version "1.0.29"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.29.tgz#8eb7c542cb36455de2d63ae3561c791073a24497"
-  integrity sha512-2jToiGT6FfNUtu0dxagMwDup6bBoVwqatrF6Ze7zr6IooNH1z2ZSFJ3CisrxXgPgFhW9pV61CeHAbJ57l18S3g==
+"@uiharness/core@1.0.30":
+  version "1.0.30"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.30.tgz#20c84fe47ca7dab90dbfaba1653d755ca7d7ef56"
+  integrity sha512-6IguRO3/qR0ERRL+IXph8r9r1L6bJOLhjhNFP31NS30PCDg5v/MGPDs3ysNjbDmhSR+KA+6evXKb6MsEit2OHQ==
   dependencies:
     "@tdb/util" "1.9.24"
     "@types/fs-extra" "5.0.4"
@@ -1045,17 +1045,17 @@
     fs-extra "7.0.1"
     js-yaml "3.12.1"
 
-"@uiharness/electron@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.1.4.tgz#bf6ff8c49e8ffd4fbda8b5c926b674f29edf2940"
-  integrity sha512-Q/rG1AMWZKUN7BCRQHoaQH4g8Hrf3302si22kD2xg/TXpM+ROCYK/gzja1VFagjvQGR4u0IAQTTYLbM+WE8kMQ==
+"@uiharness/electron.ui@0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron.ui/-/electron.ui-0.0.2.tgz#50d90dc13fc5132aa6f17f02c74b51cdc83f8038"
+  integrity sha512-CIG7VMRNlAyKIJWgZOHaWnXWWC3c6PDh77d4CD8TkLGNz9o+MfY+EWua0/0qG94ja09uR4IPQG1+MpFT6VERyw==
   dependencies:
     "@tdb/util" "1.9.24"
-    "@types/app-root-path" "^1.2.4"
-    "@uiharness/core" "^1.0.29"
-    app-root-path "^2.1.0"
-    electron-is-dev "^1.0.1"
-    electron-log "^2.2.17"
+    "@types/app-root-path" "1.2.4"
+    "@uiharness/core" "1.0.30"
+    app-root-path "2.1.0"
+    electron-is-dev "1.0.1"
+    electron-log "2.2.17"
 
 abbrev@1:
   version "1.1.1"
@@ -1176,7 +1176,7 @@ app-builder-lib@20.38.5, app-builder-lib@~20.38.5:
     semver "^5.6.0"
     temp-file "^3.3.2"
 
-app-root-path@^2.1.0:
+app-root-path@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/app-root-path/-/app-root-path-2.1.0.tgz#98bf6599327ecea199309866e8140368fd2e646a"
   integrity sha1-mL9lmTJ+zqGZMJhm6BQDaP0uZGo=
@@ -2740,12 +2740,12 @@ electron-download@^4.1.0:
     semver "^5.4.1"
     sumchecker "^2.0.2"
 
-electron-is-dev@^1.0.1:
+electron-is-dev@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/electron-is-dev/-/electron-is-dev-1.0.1.tgz#6e0a184736fe7aea77d18210b0b0f6a02402c4bc"
   integrity sha512-iwM3EotA9HTXqMGpQRkR/kT8OZqBbdfHTnlwcxsjSLYqY8svvsq0MuujsWCn3/vtgRmDv/PC/gKUUpoZvi5C1w==
 
-electron-log@^2.2.17:
+electron-log@2.2.17:
   version "2.2.17"
   resolved "https://registry.yarnpkg.com/electron-log/-/electron-log-2.2.17.tgz#e71e2ebb949fc96ded7cdb99eeee7202e48981d2"
   integrity sha512-v+Af5W5z99ehhaLOfE9eTSXUwjzh2wFlQjz51dvkZ6ZIrET6OB/zAZPvsuwT6tm3t5x+M1r+Ed3U3xtPZYAyuQ==

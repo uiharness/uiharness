@@ -1016,10 +1016,10 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.5.tgz#f4f85fe198e1e9cedc0bb53a8c2d30fb34299e50"
   integrity sha512-y51XRWWg1GiW4+mV2zmFQUqJT3bX7nuUaXW4j8a2dFvT9ZlaNLjb7ZxcUSDyklt/UBWrW2+31x+hQpRzxaTFzw==
 
-"@uiharness/core@1.0.29":
-  version "1.0.29"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.29.tgz#8eb7c542cb36455de2d63ae3561c791073a24497"
-  integrity sha512-2jToiGT6FfNUtu0dxagMwDup6bBoVwqatrF6Ze7zr6IooNH1z2ZSFJ3CisrxXgPgFhW9pV61CeHAbJ57l18S3g==
+"@uiharness/core@1.0.30":
+  version "1.0.30"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.30.tgz#20c84fe47ca7dab90dbfaba1653d755ca7d7ef56"
+  integrity sha512-6IguRO3/qR0ERRL+IXph8r9r1L6bJOLhjhNFP31NS30PCDg5v/MGPDs3ysNjbDmhSR+KA+6evXKb6MsEit2OHQ==
   dependencies:
     "@tdb/util" "1.9.24"
     "@types/fs-extra" "5.0.4"
