@@ -801,6 +801,11 @@
     tslib "1.9.3"
     underscore.string "3.3.5"
 
+"@types/app-root-path@^1.2.4":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@types/app-root-path/-/app-root-path-1.2.4.tgz#a78b703282b32ac54de768f5512ecc3569919dc7"
+  integrity sha1-p4twMoKzKsVN52j1US7MNWmRncc=
+
 "@types/electron-builder@^2.8.0":
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/@types/electron-builder/-/electron-builder-2.8.0.tgz#b4fe5efa910fc8287fcc8ec6e214cdcfa87405d6"
@@ -1028,7 +1033,7 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.5.tgz#f4f85fe198e1e9cedc0bb53a8c2d30fb34299e50"
   integrity sha512-y51XRWWg1GiW4+mV2zmFQUqJT3bX7nuUaXW4j8a2dFvT9ZlaNLjb7ZxcUSDyklt/UBWrW2+31x+hQpRzxaTFzw==
 
-"@uiharness/core@1.0.18":
+"@uiharness/core@1.0.18", "@uiharness/core@^1.0.18":
   version "1.0.18"
   resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.18.tgz#43d450e0b936814b4369e13f54005b19d5b3332a"
   integrity sha512-2M1UpsSNCjqWT0V6uD1e2FWg3DXJZdlXdAwDP7s09iDg65zRZzwZVZSXGS3nhde4zZOFxej17dW5f7rLjS1dgQ==
@@ -1039,6 +1044,18 @@
     create-tmpl "0.0.17"
     fs-extra "7.0.1"
     js-yaml "3.12.1"
+
+"@uiharness/electron@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.1.1.tgz#8db38edc26791a7e598daeff63fcfabc879151b0"
+  integrity sha512-U+sWWbkwJVjAFxIh4Nu0rnCiA8EDLaLilV+gJTeWj51TuX27B2YDAlQ82O6OnMU+FTDZZe15xFJJXQ7JFLayeQ==
+  dependencies:
+    "@tdb/util" "1.9.24"
+    "@types/app-root-path" "^1.2.4"
+    "@uiharness/core" "^1.0.18"
+    app-root-path "^2.1.0"
+    electron-is-dev "^1.0.1"
+    electron-log "^2.2.17"
 
 abbrev@1:
   version "1.1.1"

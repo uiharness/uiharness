@@ -1,1 +1,1 @@
-export { IS_BROWSER, IS_DEV } from '@tdb/util/lib/constants';
+export { IS_BROWSER } from '@tdb/util/lib/constants';

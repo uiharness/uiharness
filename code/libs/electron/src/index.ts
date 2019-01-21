@@ -1,1 +1,1 @@
-console.log('\n👋  electron\n'); // tslint:disable-line
+export { resolve } from './common';

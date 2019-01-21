@@ -4,5 +4,4 @@ lib
 .npmrc
 .env
 *.log
-/TEMP.md
 /tmp

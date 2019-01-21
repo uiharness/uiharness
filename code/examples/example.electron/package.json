@@ -12,13 +12,16 @@
     "nuke": "sh ./sh/nuke.sh",
     "clean": "sh ./sh/clean.sh",
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
-    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@"
+    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
+    "start": "uiharness-electron start",
+    "dist": "uiharness-electron dist"
   },
   "dependencies": {
-    "@uiharness/electron": "^0.0.26"
+    "@uiharness/electron": "^0.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.2"
+    "@babel/core": "^7.2.2",
+    "@uiharness/electron.dev": "^0.0.1"
   },
   "resolutions": {
     "@types/react": "16.7.17"
