@@ -1,5 +1,6 @@
 {
-  "name": "@uiharness/electron",
+  "name": "@uiharness/electron.dev",
+  "description": "UIHarness dev-tools for Electron (include in devDependencies).",
   "version": "0.0.26",
   "main": "./lib/index.js",
   "bin": {

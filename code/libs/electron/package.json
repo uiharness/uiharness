@@ -1,0 +1,27 @@
+{
+  "name": "@uiharness/electron",
+  "version": "0.0.0",
+  "description": "UIHarness client-tools for Electron (include in dependencies).",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "start": "node .",
+    "watch": "nodemon .",
+    "test": "sh ./node_modules/@tdb/test/sh/test.sh",
+    "tdd": "yarn run test --reporter min --watch",
+    "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
+    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
+    "prepare": "yarn run build && yarn run lint && yarn test"
+  },
+  "dependencies": {
+    "@tdb/util": "^1.9.24"
+  },
+  "devDependencies": {
+    "@tdb/test": "^1.2.12",
+    "@tdb/typescript": "^3.2.7"
+  },
+  "files": [
+    "**/*"
+  ],
+  "license": "MIT"
+}
