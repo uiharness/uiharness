@@ -1,6 +1,6 @@
 import { fs, fsPath, log, tmpl, Settings, constants, npm } from '../common';
 
-const TEMPLATE_DIR = './node_modules/@uiharness/electron.dev/tmpl';
+const TEMPLATE_DIR = './node_modules/@uiharness/electron/tmpl';
 const { SCRIPTS } = constants;
 
 /**
