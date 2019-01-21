@@ -12,9 +12,7 @@
     "nuke": "sh ./sh/nuke.sh",
     "clean": "sh ./sh/clean.sh",
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
-    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
-    "start": "uiharness-electron start",
-    "dist": "uiharness-electron dist"
+    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@"
   },
   "dependencies": {
     "@uiharness/electron": "0.1.3"

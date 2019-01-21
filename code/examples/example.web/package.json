@@ -12,11 +12,7 @@
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
     "sl": "msync sl && sh ./sh/copy-bin.sh",
     "reset": "yarn sl && uiharness init --reset",
-    "reset-init": "yarn reset && yarn postinstall",
-    "start": "uiharness start",
-    "bundle": "uiharness bundle",
-    "stats": "uiharness stats",
-    "serve": "serve -s dist"
+    "reset-init": "yarn reset && yarn postinstall"
   },
   "dependencies": {},
   "devDependencies": {
