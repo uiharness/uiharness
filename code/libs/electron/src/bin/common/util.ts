@@ -8,9 +8,9 @@ export function logInfo(args: {
   settings: Settings;
   pkg: Package;
   port?: boolean | number;
-  main?: string;
+  mainEntry?: string;
 }) {
-  const { settings, pkg, main } = args;
+  const { settings, pkg, mainEntry } = args;
   const ROOT_DIR = fsPath.resolve('.');
 
   const formatPath = (path: string) => {
@@ -27,7 +27,7 @@ export function logInfo(args: {
   log.info();
   log.info.gray(`package: ${log.magenta(pkg.name)}`);
   log.info.gray(`version: ${pkg.version}`);
-  log.info.gray(`main:    ${formatPath(main || '')}`);
+  log.info.gray(`main:    ${formatPath(mainEntry || '')}`);
   if (showPort) {
     log.info.gray(`port:    ${log.yellow(port)}`);
   }
