@@ -1,6 +1,11 @@
 import { fs, fsPath, IUIHarnessEntry, template } from './libs';
 
 /**
+ * Utility helpers for working with NPM.
+ */
+export const npm = template.npm;
+
+/**
  * Initializes a new template.
  */
 export function create(source?: template.SourceTemplateArg) {

@@ -1,27 +1,8 @@
 {
+  "extends": "./node_modules/@tdb/typescript/tsconfig.json",
   "include": ["src"],
   "compilerOptions": {
     "outDir": "lib",
-    "target": "es5",
-    "module": "commonjs",
-    "sourceMap": true,
-    "moduleResolution": "node",
-    "isolatedModules": false,
-    "jsx": "react",
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "declaration": true,
-    "removeComments": true,
-    "noLib": false,
-    "skipLibCheck": true,
-    "preserveConstEnums": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "pretty": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "lib": ["dom", "dom.iterable", "esnext"]
+    "noUnusedLocals": false
   }
 }

@@ -1,8 +1,12 @@
-import { log } from '../common';
+import {
+  createParcelBundler,
+  log,
+  logInfo,
+  Package,
+  Settings,
+} from '../common';
 import { init } from './init';
 import { stats } from './stats';
-import { Settings, Package } from '../Settings';
-import { logInfo, createParcelBundler } from '../util';
 
 /**
  * Runs the build packager.

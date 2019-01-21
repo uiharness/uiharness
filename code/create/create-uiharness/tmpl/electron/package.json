@@ -11,7 +11,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/electron": "__LATEST__"
+    "@uiharness/electron.dev": "__LATEST__"
   },
   "resolutions": {
     "@types/react": "16.7.17"

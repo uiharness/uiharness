@@ -3,9 +3,33 @@
 
 [UIHarness](https://uiharness.com) targeting an [electron](https://electronjs.org/) desktop shell using [react](https://reactjs.org/) and [typescript](https://www.typescriptlang.org/).
 
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+This module contains the client-app tools for UIHarness including:
 
-## Refs
+- Electron specific modules, helpers and utilities
+- Electron speciic UI.
+
+
+## Installation
+
+Include in the `dependencies` of your package.json, along with the corresponding dev-tools as `devDependencies`:
+
+```json
+{
+  "dependencies": {
+    "@uiharness/electron": "x.x.x"
+  },
+  "devDependencies": {
+    "@uiharness/electron.dev": "x.x.x"
+  }
+}
+```
+
+## 🔗 Refs
 - https://electronjs.org
-- https://www.electron.build
+
+
+## 🔗 Modules
+- [@uiharness/web](code/libs/web/README.md)
+- [@uiharness/electron](code/libs/electron/README.md)
+- [@uiharness/electron.dev](code/libs/electron.dev/README.md)
+- [@uiharness/core](code/libs/core/README.md)

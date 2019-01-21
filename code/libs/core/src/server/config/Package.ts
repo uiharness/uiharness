@@ -1,4 +1,4 @@
-import { fs, fsPath, types } from '../common';
+import { fs, fsPath, types, IPackageFields, PackageFieldsKey } from '../common';
 
 /**
  * Represents a `package.json`.
@@ -37,45 +37,111 @@ export class Package {
   public get scripts() {
     return this.json.scripts || {};
   }
-
-  /**
-   * Initializes the `package.json` file ensuring all required fields exist.
-   */
-  public addScripts(args: { scripts: types.IPackageScripts }) {
-    const scripts = { ...(this.scripts || {}) };
-    Object.keys(args.scripts).forEach(key => {
-      const value = (args.scripts[key] || '').trim();
-      if (value && !scripts[key]) {
-        scripts[key] = value;
-      }
-    });
-    this.json = { ...this.json, scripts };
-    this.save();
+  public get dependencies() {
+    return this.json.dependencies || {};
   }
-
-  /**
-   * Removes default scripts from the `package.json`.
-   * NB: Used for debugging purposes only.
-   */
-  public removeScripts(args: { scripts: types.IPackageScripts }) {
-    const scripts = { ...(this.scripts || {}) };
-    Object.keys(args.scripts)
-      .filter(key => key !== 'postinstall')
-      .forEach(key => {
-        const value = args.scripts[key];
-        if ((scripts[key] || '').trim() === value) {
-          delete scripts[key];
-        }
-      });
-    this.json = { ...this.json, scripts };
-    this.save();
+  public get devDependencies() {
+    return this.json.devDependencies || {};
+  }
+  public get peerDependencies() {
+    return this.json.peerDependencies || {};
+  }
+  public get resolutions() {
+    return this.json.resolutions || {};
   }
 
   /**
    * Saves changes to the `package.json` file.
    */
-  public save() {
+  public save(path?: string) {
     const json = JSON.stringify(this.json, null, '  ');
-    fs.writeFileSync(this.path, `${json}\n`);
+    fs.writeFileSync(path || this.path, `${json}\n`);
+  }
+
+  /**
+   * Adds fields to the specified field-set.
+   */
+  public addFields(
+    key: PackageFieldsKey,
+    fields: IPackageFields,
+    options: { force?: boolean } = {},
+  ) {
+    const { force } = options;
+    const json = { ...this.json };
+    const target = (this.json[key] || {}) as IPackageFields;
+    json[key] = Package.addFields(fields, target, { force });
+    this.json = json;
+    return this;
+  }
+
+  /**
+   * Removes fields from the specified field-set.
+   */
+  public removeFields(
+    key: PackageFieldsKey,
+    fields: IPackageFields | string[],
+    options: {
+      force?: boolean;
+      exclude?: string | string[];
+    } = {},
+  ) {
+    const { force, exclude } = options;
+    const json = { ...this.json };
+    const target = (this.json[key] || {}) as IPackageFields;
+    json[key] = Package.removeFields(fields, target, { force, exclude });
+    this.json = json;
+    return this;
+  }
+
+  /**
+   * Adds a set of fields to a target object.
+   */
+  public static addFields(
+    source: IPackageFields,
+    target: IPackageFields,
+    options: { force?: boolean } = {},
+  ) {
+    const { force = false } = options;
+    target = { ...target };
+    Object.keys(source).forEach(key => {
+      const value = (source[key] || '').trim();
+      if (value && (force || !target[key])) {
+        target[key] = value;
+      }
+    });
+    return target;
+  }
+
+  /**
+   * Removes a set of fields from a target object.
+   */
+  public static removeFields(
+    source: IPackageFields | string[],
+    target: IPackageFields,
+    options: { force?: boolean; exclude?: string | string[] } = {},
+  ) {
+    const {
+      force = Array.isArray(source), // NB: Always force remove when an array of keys are passed (no values to compare with).
+    } = options;
+
+    const keys = Array.isArray(source) ? source : Object.keys(source);
+    const exclude = options.exclude
+      ? Array.isArray(options.exclude)
+        ? options.exclude
+        : [options.exclude]
+      : [];
+
+    const trim = (value?: string) => (value || '').trim();
+
+    keys
+      .filter(key => !exclude.includes(key))
+      .forEach(key => {
+        const sourceValue = source[key];
+        const targetValue = target[key];
+        if (force || trim(sourceValue) === trim(targetValue)) {
+          delete target[key];
+        }
+      });
+    return target;
   }
 }

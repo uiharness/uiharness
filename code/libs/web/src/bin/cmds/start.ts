@@ -1,5 +1,4 @@
-import { Package, Settings } from '../Settings';
-import { createParcelBundler, logInfo } from '../util';
+import { createParcelBundler, logInfo, Package, Settings } from '../common';
 import { init } from './init';
 
 /**

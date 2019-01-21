@@ -1,0 +1,10 @@
+node_modules
+
+/.cache
+/coverage
+/src/renderer/.parcel
+/src/main/.parcel
+/release
+
+*.map
+*.log

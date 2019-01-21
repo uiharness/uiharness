@@ -1,1 +1,1 @@
-export * from './types';
+export { resolve } from './common';

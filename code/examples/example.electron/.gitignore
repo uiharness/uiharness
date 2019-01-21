@@ -1,6 +1,7 @@
 .cache
-build
-dist
+/build
+/dist
+/release
 
 
 # Auto-generated files from `@uiharness/electron` init.
@@ -10,6 +11,7 @@ src/renderer
 
 .babelrc
 .uiharness
+electron-builder.yml
 html
 tslint.json
 tsconfig.json

@@ -27,6 +27,16 @@ export type IPackageJson = {
   description?: string;
   version?: string;
   main?: string;
-  scripts?: IPackageScripts;
+  scripts?: IPackageFields;
+  dependencies?: IPackageFields;
+  devDependencies?: IPackageFields;
+  peerDependencies?: IPackageFields;
+  resolutions?: IPackageFields;
 };
-export type IPackageScripts = { [key: string]: string };
+export type IPackageFields = { [key: string]: string };
+export type PackageFieldsKey =
+  | 'scripts'
+  | 'dependencies'
+  | 'devDependencies'
+  | 'peerDependencies'
+  | 'resolutions';

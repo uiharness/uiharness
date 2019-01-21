@@ -1,5 +1,4 @@
-import { fs, fsPath, log, tmpl } from '../common';
-import { Settings, Package } from '../Settings';
+import { fs, fsPath, log, Package, Settings, tmpl } from '../common';
 
 const TEMPLATE_DIR = './node_modules/@uiharness/web/tmpl';
 const SCRIPTS = {
@@ -28,7 +27,7 @@ export async function init(args: {
   }
 
   if (flags.scripts) {
-    pkg.addScripts({ scripts: SCRIPTS });
+    pkg.addFields('scripts', SCRIPTS).save();
   }
 
   if (flags.files) {
@@ -46,7 +45,7 @@ export async function init(args: {
  */
 async function reset(args: { pkg: Package }) {
   const { pkg } = args;
-  pkg.removeScripts({ scripts: SCRIPTS });
+  pkg.removeFields('scripts', SCRIPTS, { exclude: 'postinstall' }).save();
 
   await tmpl
     .create(TEMPLATE_DIR)
