@@ -28,7 +28,6 @@ Include in the `dependencies` of your package.json, along with the corresponding
 - https://electronjs.org
 
 <p>&nbsp;</p>
-<p>&nbsp;</p>
 
 ## 🔗 Modules
 - [@uiharness/web](/code/libs/web/README.md)

@@ -33,7 +33,6 @@ Include in the `devDependencies` of your package.json, along with the correspond
 - https://www.electron.build
 
 <p>&nbsp;</p>
-<p>&nbsp;</p>
 
 ## 🔗 Modules
 - [@uiharness/web](/code/libs/web/README.md)
