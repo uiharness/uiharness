@@ -14,12 +14,10 @@
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@"
   },
-  "dependencies": {
-    "@uiharness/electron": "0.2.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.2.2",
-    "@uiharness/electron.dev": "0.0.13"
+    "@uiharness/electron": "0.2.1"
   },
   "license": "MIT",
   "private": true,
