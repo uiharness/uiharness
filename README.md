@@ -17,7 +17,7 @@ API's will change radically. `v4` release coming soon.
 ## Getting Started
 
 ### Quick Start
-Be up and running with a scaffold, for [electron](https://electronjs.org/) or the [web](https://developer.mozilla.org), in less than 30 seconds:
+Be up and running with a scaffold for [electron](https://electronjs.org/) or the [web](https://developer.mozilla.org), in less than 30 seconds:
 
 ```bash
 yarn create uiharness
