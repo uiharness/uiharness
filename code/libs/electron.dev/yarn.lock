@@ -1033,38 +1033,26 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.5.tgz#f4f85fe198e1e9cedc0bb53a8c2d30fb34299e50"
   integrity sha512-y51XRWWg1GiW4+mV2zmFQUqJT3bX7nuUaXW4j8a2dFvT9ZlaNLjb7ZxcUSDyklt/UBWrW2+31x+hQpRzxaTFzw==
 
-"@uiharness/core@1.0.26":
-  version "1.0.26"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.26.tgz#4d20f974941eeddcd331244424085b1033e7b580"
-  integrity sha512-8pFU631RIHeWS5xoImc+bOVxWGLgH60mVkPqF1rKlY0NZxPMKy2bAfIYP7Ac48DLB4g8MGMcq5JQO9yQr0XwkA==
+"@uiharness/core@1.0.29", "@uiharness/core@^1.0.29":
+  version "1.0.29"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.29.tgz#8eb7c542cb36455de2d63ae3561c791073a24497"
+  integrity sha512-2jToiGT6FfNUtu0dxagMwDup6bBoVwqatrF6Ze7zr6IooNH1z2ZSFJ3CisrxXgPgFhW9pV61CeHAbJ57l18S3g==
   dependencies:
     "@tdb/util" "1.9.24"
     "@types/fs-extra" "5.0.4"
     "@types/js-yaml" "3.11.4"
-    create-tmpl "0.0.21"
+    create-tmpl "0.0.22"
     fs-extra "7.0.1"
     js-yaml "3.12.1"
 
-"@uiharness/core@^1.0.25":
-  version "1.0.25"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.25.tgz#320a8be2417c5aeddc8783850a47a080575eddcb"
-  integrity sha512-A1TfEpN8etvv8buSP68R5ZD1hLVVL0uPX4Kx8LD1O2tHa07u61XWuDMPVW0i+p3JRuBxjHOiTu1gInO8JxpGAw==
-  dependencies:
-    "@tdb/util" "1.9.24"
-    "@types/fs-extra" "5.0.4"
-    "@types/js-yaml" "3.11.4"
-    create-tmpl "0.0.19"
-    fs-extra "7.0.1"
-    js-yaml "3.12.1"
-
-"@uiharness/electron@^0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.1.3.tgz#c70d06ffbbf83ac7e7bc00218e9ef1f6e0ba11a0"
-  integrity sha512-6wG2XfHoKDVSNmfHf6s/3NxQXV4t2nPJxObmXRC6epTUKJXcJ8PGyl9LBxPZV1K/gyt9xHACVmYJ00nIPSLGFQ==
+"@uiharness/electron@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.1.4.tgz#bf6ff8c49e8ffd4fbda8b5c926b674f29edf2940"
+  integrity sha512-Q/rG1AMWZKUN7BCRQHoaQH4g8Hrf3302si22kD2xg/TXpM+ROCYK/gzja1VFagjvQGR4u0IAQTTYLbM+WE8kMQ==
   dependencies:
     "@tdb/util" "1.9.24"
     "@types/app-root-path" "^1.2.4"
-    "@uiharness/core" "^1.0.25"
+    "@uiharness/core" "^1.0.29"
     app-root-path "^2.1.0"
     electron-is-dev "^1.0.1"
     electron-log "^2.2.17"
@@ -2179,27 +2167,10 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-create-tmpl@0.0.19:
-  version "0.0.19"
-  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.0.19.tgz#6c5837180ba806fb4dc7fe4d0adf18ceff85e45b"
-  integrity sha512-6LReVWo4VjK+t0hFyliDf67GZ9HvIAhv7DLRd1YUZYNqmV5RWokyYrndvLkOIIn8+ViGccrPVNcYXMJai2CJYA==
-  dependencies:
-    "@tdb/util" "1.9.24"
-    "@types/inquirer" "0.0.43"
-    "@types/semver" "5.5.0"
-    execa "1.0.0"
-    fast-glob "2.2.6"
-    fs-extra "7.0.1"
-    inquirer "6.2.1"
-    isbinaryfile "4.0.0"
-    js-yaml "3.12.1"
-    semver "5.6.0"
-    yargs "12.0.5"
-
-create-tmpl@0.0.21:
-  version "0.0.21"
-  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.0.21.tgz#fab89af8c82a1f851d8d2388b49dac6cf20dd834"
-  integrity sha512-lgCgHBo3WyX0MdwYZlSRsK6uyMVtLeJoJw7UboGOA97RPeNVNJGMzvG4BGnwAu5xeY50d64dnLkaSiRqUONmOw==
+create-tmpl@0.0.22:
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.0.22.tgz#dc1617e7e2003afcdeb41612363de090297c13c8"
+  integrity sha512-YxoVv7PwBcCk19MxXP2OF7CfTf5qOHH+6UOz0pjmM1EQp85vFEJGkhI1QxIHY37CyLHMyErsxaOmKn/OEi8vyQ==
   dependencies:
     "@tdb/util" "1.9.24"
     "@types/inquirer" "0.0.43"
