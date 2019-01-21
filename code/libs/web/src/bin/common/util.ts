@@ -1,5 +1,5 @@
-import { Package, ParcelBundler, fsPath, log } from './libs';
-import { Settings } from './Settings';
+import { ParcelBundler, fsPath, log } from './libs';
+import { Settings, NpmPackage } from './Settings';
 
 /**
  * Creates a new Parcel bundler.
@@ -19,7 +19,7 @@ export function createParcelBundler(settings: Settings) {
  */
 export function logInfo(args: {
   settings: Settings;
-  pkg: Package;
+  pkg: NpmPackage;
   port?: boolean | number;
 }) {
   const { settings, pkg } = args;

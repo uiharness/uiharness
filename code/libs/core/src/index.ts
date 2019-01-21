@@ -1,1 +1,1 @@
-console.log('\n👋  core\n'); // tslint:disable-line
+// API entry point

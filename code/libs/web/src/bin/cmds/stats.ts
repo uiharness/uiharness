@@ -4,7 +4,7 @@ import {
   fsPath,
   log,
   logInfo,
-  Package,
+  NpmPackage,
   R,
   Settings,
   value,
@@ -15,7 +15,7 @@ import {
  */
 export async function stats(args: {
   settings: Settings;
-  pkg: Package;
+  pkg: NpmPackage;
   moduleInfo?: boolean;
 }) {
   const { settings, pkg } = args;

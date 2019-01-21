@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { log, constants, config, yargs, Settings } from './common';
+import { log, constants, yargs, Settings, npm } from './common';
 import * as cmds from './cmds';
 
 /**
@@ -23,7 +23,7 @@ const CMD = {
 const CMDS = Object.keys(CMD).map(key => CMD[key]);
 
 const settings = Settings.create();
-const pkg = config.Package.create();
+const pkg = npm.pkg('.');
 
 /**
  * Cheat sheet.

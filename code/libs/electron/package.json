@@ -16,7 +16,7 @@
   "dependencies": {
     "@tdb/util": "1.9.24",
     "@types/app-root-path": "^1.2.4",
-    "@uiharness/core": "^1.0.25",
+    "@uiharness/core": "^1.0.28",
     "app-root-path": "^2.1.0",
     "electron-is-dev": "^1.0.1",
     "electron-log": "^2.2.17"

@@ -2,7 +2,7 @@ import {
   parcel,
   log,
   Settings,
-  Package,
+  NpmPackage,
   logInfo,
   fsPath,
   constants,
@@ -13,7 +13,7 @@ import { init } from './init';
 /**
  * Bundles the application ready for distribution.
  */
-export async function dist(args: { settings: Settings; pkg: Package }) {
+export async function dist(args: { settings: Settings; pkg: NpmPackage }) {
   const { settings, pkg } = args;
   const mainEntry = fsPath.resolve(constants.PATH.MAIN_ENTRY);
   process.env.NODE_ENV = 'production';

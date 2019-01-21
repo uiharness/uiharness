@@ -18,25 +18,3 @@ export type IUIHarnessEntry = {
   };
   exists: boolean;
 };
-
-/**
- * NPM Package.
- */
-export type IPackageJson = {
-  name?: string;
-  description?: string;
-  version?: string;
-  main?: string;
-  scripts?: IPackageFields;
-  dependencies?: IPackageFields;
-  devDependencies?: IPackageFields;
-  peerDependencies?: IPackageFields;
-  resolutions?: IPackageFields;
-};
-export type IPackageFields = { [key: string]: string };
-export type PackageFieldsKey =
-  | 'scripts'
-  | 'dependencies'
-  | 'devDependencies'
-  | 'peerDependencies'
-  | 'resolutions';

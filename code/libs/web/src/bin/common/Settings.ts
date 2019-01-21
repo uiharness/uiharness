@@ -1,7 +1,16 @@
 import { IUIHarnessConfig, IUIHarnessEntry } from '../../types';
-import { fs, fsPath, log, jsYaml, value, Package, config } from './libs';
+import {
+  fs,
+  fsPath,
+  log,
+  jsYaml,
+  value,
+  npm,
+  NpmPackage,
+  config,
+} from './libs';
 
-export { Package };
+export { NpmPackage };
 const UIHARNESS_YAML = 'uiharness.yml';
 
 /**
@@ -43,7 +52,7 @@ export class Settings {
   public readonly dir: string;
   public readonly path: string;
   private readonly _data: IUIHarnessConfig;
-  private readonly pkg: Package;
+  private readonly pkg: NpmPackage;
 
   /**
    * Constructor.
@@ -51,7 +60,7 @@ export class Settings {
   private constructor(path: string) {
     this.path = path;
     this.dir = fsPath.dirname(path);
-    this.pkg = Package.create();
+    this.pkg = npm.pkg('.');
     this._data = fs.existsSync(path) ? Settings.load(path) : {};
   }
 

@@ -9,6 +9,7 @@ export {
   log,
   tmpl,
   jsYaml,
-  Package,
+  npm,
+  NpmPackage,
 } from '@uiharness/core/lib/server';
 export * from '../../common';

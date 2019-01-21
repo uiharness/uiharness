@@ -1,13 +1,4 @@
-import {
-  config,
-  fs,
-  fsPath,
-  log,
-  tmpl,
-  Settings,
-  Package,
-  constants,
-} from '../common';
+import { fs, fsPath, log, tmpl, Settings, constants, npm } from '../common';
 
 const TEMPLATE_DIR = './node_modules/@uiharness/electron.dev/tmpl';
 const { SCRIPTS } = constants;
@@ -17,7 +8,7 @@ const { SCRIPTS } = constants;
  */
 export async function init(args: {
   settings: Settings;
-  pkg: Package;
+  pkg: npm.NpmPackage;
   force?: boolean;
   reset?: boolean;
 }) {
@@ -33,7 +24,6 @@ export async function init(args: {
 
   if (flags.deps) {
     const PKG = constants.PKG;
-    const npm = tmpl.npm;
     const deps = await npm.getVersions(PKG.dependencies);
     const devDeps = await npm.getVersions(PKG.devDependencies);
     pkg
@@ -58,7 +48,7 @@ export async function init(args: {
 /**
  * Removes configuration files.
  */
-async function reset(args: { pkg: config.Package }) {
+async function reset(args: { pkg: npm.NpmPackage }) {
   const { pkg } = args;
   pkg.removeFields('scripts', SCRIPTS, { exclude: 'postinstall' }).save();
 

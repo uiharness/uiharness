@@ -2,7 +2,7 @@ import {
   createParcelBundler,
   log,
   logInfo,
-  Package,
+  NpmPackage,
   Settings,
 } from '../common';
 import { init } from './init';
@@ -11,7 +11,7 @@ import { stats } from './stats';
 /**
  * Runs the build packager.
  */
-export async function bundle(args: { settings: Settings; pkg: Package }) {
+export async function bundle(args: { settings: Settings; pkg: NpmPackage }) {
   // Setup initial conditions.
   const { settings, pkg } = args;
   init({ settings, pkg });

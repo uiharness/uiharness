@@ -7,3 +7,4 @@ import * as template from 'create-tmpl';
 
 export { fs, fsPath, jsYaml, template };
 export { log } from '@tdb/log/lib/server';
+export { npm, NpmPackage } from 'create-tmpl';

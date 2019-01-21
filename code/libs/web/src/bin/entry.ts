@@ -2,7 +2,7 @@
 import * as yargs from 'yargs';
 
 import * as cmds from './cmds';
-import { config, constants, log, Settings } from './common';
+import { npm, constants, log, Settings } from './common';
 
 /**
  * Makes the script crash on unhandled rejections instead of silently
@@ -22,7 +22,7 @@ const CMD = {
 const CMDS = Object.keys(CMD).map(key => CMD[key]);
 
 const settings = Settings.create();
-const pkg = config.Package.create();
+const pkg = npm.pkg('.');
 
 /**
  * Cheat sheet.

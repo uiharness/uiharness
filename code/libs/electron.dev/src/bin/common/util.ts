@@ -1,12 +1,12 @@
 import { log, fsPath } from './libs';
-import { Settings, Package } from './Settings';
+import { Settings, NpmPackage } from './Settings';
 
 /**
  * Logs common information about the module.
  */
 export function logInfo(args: {
   settings: Settings;
-  pkg: Package;
+  pkg: NpmPackage;
   port?: boolean | number;
   mainEntry?: string;
 }) {

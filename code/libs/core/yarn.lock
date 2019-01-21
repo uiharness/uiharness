@@ -670,10 +670,10 @@ core-js@^2.4.0:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.2.tgz#267988d7268323b349e20b4588211655f0e83944"
   integrity sha512-NdBPF/RVwPW6jr0NCILuyN9RiqLo2b1mddWHkUL+VnvcB7dzlnBJ1bXYntjpTGOgkZiiLWj2JxmOr7eGE3qK6g==
 
-create-tmpl@0.0.19:
-  version "0.0.19"
-  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.0.19.tgz#6c5837180ba806fb4dc7fe4d0adf18ceff85e45b"
-  integrity sha512-6LReVWo4VjK+t0hFyliDf67GZ9HvIAhv7DLRd1YUZYNqmV5RWokyYrndvLkOIIn8+ViGccrPVNcYXMJai2CJYA==
+create-tmpl@0.0.21:
+  version "0.0.21"
+  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.0.21.tgz#fab89af8c82a1f851d8d2388b49dac6cf20dd834"
+  integrity sha512-lgCgHBo3WyX0MdwYZlSRsK6uyMVtLeJoJw7UboGOA97RPeNVNJGMzvG4BGnwAu5xeY50d64dnLkaSiRqUONmOw==
   dependencies:
     "@tdb/util" "1.9.24"
     "@types/inquirer" "0.0.43"

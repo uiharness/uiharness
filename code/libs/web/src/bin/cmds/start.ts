@@ -1,10 +1,10 @@
-import { createParcelBundler, logInfo, Package, Settings } from '../common';
+import { createParcelBundler, logInfo, NpmPackage, Settings } from '../common';
 import { init } from './init';
 
 /**
  * Starts the development server.
  */
-export async function start(args: { settings: Settings; pkg: Package }) {
+export async function start(args: { settings: Settings; pkg: NpmPackage }) {
   // Setup initial conditions.
   const { settings, pkg } = args;
   init({ settings, pkg });
