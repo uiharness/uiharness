@@ -50,8 +50,6 @@ export async function build(
   settings: Settings,
   options: { isProd?: boolean } = {},
 ) {
-  console.log('🐷  process.env.NODE_ENV', process.env.NODE_ENV);
-
   const { isProd = false } = options;
   await buildMain(settings, { isProd });
   await buildRenderer(settings, { isProd });
