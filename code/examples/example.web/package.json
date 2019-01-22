@@ -14,9 +14,9 @@
     "reset": "yarn sl && uiharness init --reset",
     "reset-init": "yarn reset && yarn postinstall",
     "start": "uiharness start",
-    "bundle": "uiharness bundle",
+    "dist": "uiharness dist",
     "stats": "uiharness stats",
-    "serve": "serve -s dist"
+    "serve": "serve -s .uiharness/dist"
   },
   "dependencies": {},
   "devDependencies": {

@@ -15,7 +15,6 @@ const CMD = {
   INIT: 'init',
   INIT_I: 'i',
   START: 'start',
-  START_S: 's',
   START_ST: 'st',
   DIST: 'dist',
   DIST_D: 'd',
@@ -64,7 +63,7 @@ const program = yargs
    * `start`
    */
   .command(
-    [CMD.START, CMD.START_S, CMD.START_ST],
+    [CMD.START, CMD.START_ST],
     'Start the development server.',
     e => e,
     e => cmds.start({ settings, pkg }),

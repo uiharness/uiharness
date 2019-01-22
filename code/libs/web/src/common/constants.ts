@@ -6,6 +6,15 @@ export const URL = {
 
 export const PATH = {
   ENTRY: './src/index.html',
-  CACHE_DIR: '.uiharness/.cache',
-  OUT_DIR: '.uiharness/.cache',
+  CACHE_DIR: './.uiharness/.cache',
+  OUT_DIR: './.uiharness/dist',
+  TEMPLATES: './node_modules/@uiharness/web/tmpl',
+};
+
+export const SCRIPTS = {
+  postinstall: 'uiharness init',
+  start: 'uiharness start',
+  dist: 'uiharness dist',
+  stats: 'uiharness stats',
+  serve: 'serve -s .uiharness/dist',
 };

@@ -11,7 +11,7 @@ import { stats } from './stats';
 /**
  * Runs the build packager.
  */
-export async function bundle(args: { settings: Settings; pkg: NpmPackage }) {
+export async function dist(args: { settings: Settings; pkg: NpmPackage }) {
   // Setup initial conditions.
   const { settings, pkg } = args;
   process.env.NODE_ENV = 'production';

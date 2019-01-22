@@ -8,6 +8,7 @@ import {
   R,
   Settings,
   value,
+  constants,
 } from '../common';
 
 /**
@@ -24,17 +25,17 @@ export async function stats(args: {
     logInfo({ settings, pkg });
   }
 
-  const dir = fsPath.resolve('./dist');
+  const dir = fsPath.resolve(constants.PATH.OUT_DIR);
   const getPaths = () => {
     return fs.pathExistsSync(dir)
-      ? fs.readdirSync(dir).map(path => fsPath.resolve(`./dist/${path}`))
+      ? fs.readdirSync(dir).map(path => fsPath.join(dir, path))
       : [];
   };
 
   const paths = getPaths();
   if (paths.length === 0) {
-    log.info(`👋   Looks like there is no bundle to analyze.`);
-    log.info(`    Run ${log.cyan('yarn bundle')}`);
+    log.info(`👋   Looks like there is no distribution bundle to analyze.`);
+    log.info(`    Run ${log.cyan('yarn dist')}`);
     log.info();
     return;
   }

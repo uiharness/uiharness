@@ -17,9 +17,8 @@ const CMD = {
   INIT: 'init',
   INIT_I: 'i',
   START: 'start',
-  START_S: 's',
   START_ST: 'st',
-  BUNDLE: 'bundle',
+  DIST: 'dist',
   STATS: 'stats',
 };
 const CMDS = Object.keys(CMD).map(key => CMD[key]);
@@ -66,20 +65,20 @@ const program = yargs
    * `start`
    */
   .command(
-    [CMD.START, CMD.START_ST, CMD.START_S],
+    [CMD.START, CMD.START_ST],
     'Start the development server.',
     e => e,
     e => cmds.start({ settings, pkg }),
   )
 
   /**
-   * `bundle`
+   * `dist`
    */
   .command(
-    [CMD.BUNDLE],
-    'Package a bundle into the `/dist` folder.',
+    [CMD.DIST],
+    'Package the app into production distribution bundle.',
     e => e,
-    e => cmds.bundle({ settings, pkg }),
+    e => cmds.dist({ settings, pkg }),
   )
 
   /**
@@ -87,7 +86,7 @@ const program = yargs
    */
   .command(
     [CMD.STATS],
-    'Read size details about the `/dist` bundle.',
+    'Read size details about the distribution bundle.',
     e => e,
     e => cmds.stats({ settings, pkg }),
   )
