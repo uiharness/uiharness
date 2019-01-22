@@ -10,7 +10,7 @@ export type IUIHarnessConfig = {
    */
   build?: {
     sourcemaps?: boolean; // Default: true.
-    treeshake?: boolean; // Default:true
+    treeshake?: boolean; //  Default: true.
   };
 
   /**
