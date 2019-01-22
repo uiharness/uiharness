@@ -7,12 +7,9 @@
   "scripts": {
     "tmp": "yarn sl && uiharness $@",
     "nuke": "sh ./sh/nuke.sh",
-    "postinstall": "uiharness init",
-    "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
-    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
     "sl": "msync sl && sh ./sh/copy-bin.sh",
     "reset": "yarn sl && uiharness init --reset",
-    "reset-init": "yarn reset && yarn postinstall",
+    "postinstall": "uiharness init",
     "start": "uiharness start",
     "dist": "uiharness dist",
     "stats": "uiharness stats",
@@ -21,7 +18,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/web": "^0.0.34"
+    "@uiharness/web": "^0.0.41"
   },
   "repository": "https://github.com/uiharness/uiharness",
   "license": "MIT",

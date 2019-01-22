@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
-    "@uiharness/electron": "0.2.18"
+    "@uiharness/electron": "0.2.19"
   },
   "resolutions": {
     "@types/react": "16.7.17"
