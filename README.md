@@ -60,4 +60,4 @@ yarn add    @uiharness/electron.ui  # Client tools (bundled with app as dependen
 ## Sponsor
 Proudly sponsored by [Hypersheet](https://hypersheet.io):
 
-[![Hypersheet](https://user-images.githubusercontent.com/185555/51517404-72f74b80-1e7f-11e9-8f2d-70c5f4600b1f.png)](https://hypersheet.io)
+[![Hypersheet](https://user-images.githubusercontent.com/185555/51567641-944a4d00-1efc-11e9-8fab-8ad81862226c.png)](https://hypersheet.io)
