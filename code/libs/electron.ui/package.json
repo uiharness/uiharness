@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/electron.ui",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "UIHarness client-tools for Electron (include in dependencies).",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
