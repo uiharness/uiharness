@@ -1,5 +1,3 @@
-import '../../css/normalize.css';
-
 import { React, ReactDOM } from '../../common';
 import { Foo } from '.';
 

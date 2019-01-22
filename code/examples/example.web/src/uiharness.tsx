@@ -1,5 +1,4 @@
-import './css/normalize.css';
-
+import '@uiharness/web/css/normalize.css';
 import { React, ReactDOM } from './common';
 import { Foo } from './components/Foo';
 

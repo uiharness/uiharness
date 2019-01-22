@@ -15,7 +15,10 @@ process.on('unhandledRejection', err => {
 
 const CMD = {
   INIT: 'init',
+  INIT_I: 'i',
   START: 'start',
+  START_S: 's',
+  START_ST: 'st',
   BUNDLE: 'bundle',
   STATS: 'stats',
 };
@@ -39,7 +42,7 @@ const program = yargs
    * `init`
    */
   .command(
-    [CMD.INIT],
+    [CMD.INIT, CMD.INIT_I],
     'Initialize the module with default files.',
     e =>
       e
@@ -63,7 +66,7 @@ const program = yargs
    * `start`
    */
   .command(
-    [CMD.START],
+    [CMD.START, CMD.START_ST, CMD.START_S],
     'Start the development server.',
     e => e,
     e => cmds.start({ settings, pkg }),

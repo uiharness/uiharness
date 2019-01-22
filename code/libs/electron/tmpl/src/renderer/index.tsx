@@ -1,4 +1,4 @@
-import './css/normalize.css';
+import '@uiharness/electron.ui/css/normalize.css';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { HelloWorld } from './screens/HelloWorld';
