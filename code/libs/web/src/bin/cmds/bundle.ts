@@ -14,6 +14,7 @@ import { stats } from './stats';
 export async function bundle(args: { settings: Settings; pkg: NpmPackage }) {
   // Setup initial conditions.
   const { settings, pkg } = args;
+  process.env.NODE_ENV = 'production';
   init({ settings, pkg });
   logInfo({ settings, pkg, port: true });
 

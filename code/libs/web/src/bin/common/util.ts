@@ -1,16 +1,22 @@
-import { ParcelBundler, fsPath, log } from './libs';
-import { Settings, NpmPackage } from './Settings';
+import { constants, fsPath, log, ParcelBundler } from './libs';
+import { NpmPackage, Settings } from './Settings';
+
+const { PATH } = constants;
 
 /**
  * Creates a new Parcel bundler.
+ * Options:
+ *    https://parceljs.org/api.html
  */
 export function createParcelBundler(settings: Settings) {
-  const entryFiles = settings.entries.map(e => e.html.absolute);
+  const entry = fsPath.resolve(PATH.ENTRY);
   const args = settings.buildArgs;
-  return new ParcelBundler(entryFiles, {
+  return new ParcelBundler(entry, {
+    target: 'browser',
     sourceMaps: args.sourcemaps,
     scopeHoist: args.treeshake,
-    target: 'browser',
+    cacheDir: PATH.CACHE_DIR,
+    outDir: PATH.OUT_DIR,
   });
 }
 
@@ -32,17 +38,13 @@ export function logInfo(args: {
     return `${dir}/${log.cyan(file)}`;
   };
 
-  const entryFiles = settings.entries.map(e => e.html.absolute);
   const showPort = Boolean(args.port);
   const port = typeof args.port === 'number' ? args.port : settings.port;
 
   log.info();
   log.info.gray(`package: ${log.magenta(pkg.name)}`);
   log.info.gray(`version: ${pkg.version}`);
-  log.info.gray(`entry:   ${formatPath(entryFiles[0])}`);
-  entryFiles.slice(1).forEach(path => {
-    log.info.gray(`         ${formatPath(path)}`);
-  });
+  log.info.gray(`entry:   ${formatPath(PATH.ENTRY)}`);
   if (showPort) {
     log.info.gray(`port:    ${log.yellow(port)}`);
   }

@@ -31,10 +31,8 @@ export async function init(args: {
   }
 
   if (flags.files) {
-    const entries = settings.entries;
     await tmpl
       .create(TEMPLATE_DIR)
-      .use(tmpl.transformEntryHtml({ entries }))
       .use(tmpl.copyFile({ force }))
       .execute();
   }
@@ -52,9 +50,7 @@ async function reset(args: { pkg: NpmPackage }) {
     .use(tmpl.deleteFile())
     .execute();
 
-  fs.removeSync(fsPath.resolve('./html'));
-  fs.removeSync(fsPath.resolve('./.cache'));
-  fs.removeSync(fsPath.resolve('./dist'));
+  fs.removeSync(fsPath.resolve('./.uiharness'));
 
   // Log results.
   log.info('');
