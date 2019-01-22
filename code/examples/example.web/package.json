@@ -1,6 +1,6 @@
 {
   "name": "example.web",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Example usage of `@uiharness/web`",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -20,7 +20,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/web": "^0.0.25"
+    "@uiharness/web": "^0.0.26"
   },
   "repository": "https://github.com/uiharness/uiharness",
   "license": "MIT",

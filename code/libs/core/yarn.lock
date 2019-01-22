@@ -103,6 +103,32 @@
     tslib "1.9.3"
     underscore.string "3.3.5"
 
+"@tdb/util@1.9.25":
+  version "1.9.25"
+  resolved "https://registry.yarnpkg.com/@tdb/util/-/util-1.9.25.tgz#6336228b3e17cbcf1e89ce87ee2b7f05e73a0a4e"
+  integrity sha512-mhJk0fAnSAkKLeFyi5TyOnUHJLeo8ixa7AkD6TzQMNoKDBKtHc6hVuDQUDJASx6UIjFNd9h2crcvpS3Sr0GkwA==
+  dependencies:
+    "@tdb/log" "1.1.19"
+    "@types/react" "16.7.17"
+    "@types/react-dom" "16.0.11"
+    "@types/string" "0.0.29"
+    "@types/tinycolor2" "1.4.1"
+    "@types/underscore.string" "0.0.33"
+    cuid "2.1.4"
+    dynamics.js "1.1.5"
+    escape-string-regexp "1.0.5"
+    fastclick "1.0.6"
+    glamor "2.20.40"
+    js-cookie "2.2.0"
+    moment "2.23.0"
+    path-to-regexp "2.4.0"
+    react "16.7.0"
+    react-dom "16.7.0"
+    react-inspector "2.3.1"
+    tinycolor2 "1.4.1"
+    tslib "1.9.3"
+    underscore.string "3.3.5"
+
 "@types/chai@4.1.7":
   version "4.1.7"
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.1.7.tgz#1b8e33b61a8c09cbe1f85133071baa0dbf9fa71a"

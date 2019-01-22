@@ -776,6 +776,32 @@
     tslib "1.9.3"
     underscore.string "3.3.5"
 
+"@tdb/util@1.9.25":
+  version "1.9.25"
+  resolved "https://registry.yarnpkg.com/@tdb/util/-/util-1.9.25.tgz#6336228b3e17cbcf1e89ce87ee2b7f05e73a0a4e"
+  integrity sha512-mhJk0fAnSAkKLeFyi5TyOnUHJLeo8ixa7AkD6TzQMNoKDBKtHc6hVuDQUDJASx6UIjFNd9h2crcvpS3Sr0GkwA==
+  dependencies:
+    "@tdb/log" "1.1.19"
+    "@types/react" "16.7.17"
+    "@types/react-dom" "16.0.11"
+    "@types/string" "0.0.29"
+    "@types/tinycolor2" "1.4.1"
+    "@types/underscore.string" "0.0.33"
+    cuid "2.1.4"
+    dynamics.js "1.1.5"
+    escape-string-regexp "1.0.5"
+    fastclick "1.0.6"
+    glamor "2.20.40"
+    js-cookie "2.2.0"
+    moment "2.23.0"
+    path-to-regexp "2.4.0"
+    react "16.7.0"
+    react-dom "16.7.0"
+    react-inspector "2.3.1"
+    tinycolor2 "1.4.1"
+    tslib "1.9.3"
+    underscore.string "3.3.5"
+
 "@types/chai@4.1.7":
   version "4.1.7"
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.1.7.tgz#1b8e33b61a8c09cbe1f85133071baa0dbf9fa71a"
@@ -1016,24 +1042,24 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.5.tgz#f4f85fe198e1e9cedc0bb53a8c2d30fb34299e50"
   integrity sha512-y51XRWWg1GiW4+mV2zmFQUqJT3bX7nuUaXW4j8a2dFvT9ZlaNLjb7ZxcUSDyklt/UBWrW2+31x+hQpRzxaTFzw==
 
-"@uiharness/core@1.0.35":
-  version "1.0.35"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.35.tgz#b39f5035cb48118be5f0d981c6b3f40f42e3d8c8"
-  integrity sha512-1F7gB2vWwiSrljEDa0lWyLx7xQYl0HEL1ji2sQHL/S5GSl9beMAD/zZy7ke4aCSYH9V5DTbHmy3YvAq2DqAmOA==
+"@uiharness/core@1.0.36":
+  version "1.0.36"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.36.tgz#c68f23a9b1fa24f37e45492d68c4a6285bf9c056"
+  integrity sha512-SuIgXJ1w50Nh/L3c2FXcZ1pLN8/CGmDgu+0vUfcS12ucvnUWb5Mho7QPfHQJWYU240tQ11DjYHwVkTWDNxbKBA==
   dependencies:
-    "@tdb/util" "1.9.24"
+    "@tdb/util" "1.9.25"
     "@types/fs-extra" "5.0.4"
     "@types/js-yaml" "3.11.4"
     create-tmpl "0.0.25"
     fs-extra "7.0.1"
     js-yaml "3.12.1"
 
-"@uiharness/web.ui@0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@uiharness/web.ui/-/web.ui-0.0.2.tgz#ec8ca47e9fe22c028baabefac25c2c5900ac6f99"
-  integrity sha512-Vxna2PAZakQ+a/S1j3WXwaKyXMSI5V4S54kEJuvvFdb7c5xiLct0kynWWJ5QCgDdAnFuNsawkAOSZnp2jIkUGQ==
+"@uiharness/web.ui@0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@uiharness/web.ui/-/web.ui-0.0.3.tgz#e23a5e3524424e8d2b9634a19b1aa18b6592f1db"
+  integrity sha512-XJy1aTS7HSeAP7YbW+RSmOhsMzDsipCWNbhWLXql23DOm0eNplJnmIezTs5eASS7fLlHi8OMMftmRdBDAvxOZQ==
   dependencies:
-    "@uiharness/core" "1.0.35"
+    "@uiharness/core" "1.0.36"
 
 "@zeit/schemas@2.6.0":
   version "2.6.0"
