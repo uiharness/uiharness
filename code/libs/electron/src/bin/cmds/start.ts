@@ -24,8 +24,6 @@ export async function start(args: { settings: Settings; pkg: NpmPackage }) {
 
   // Build the main JS.
   await parcel.buildMain(settings);
-  // const main = parcel.mainBundler(settings);
-  // await main.bundle();
 
   // Start the renderer JS builder.
   const renderer = parcel.rendererBundler(settings);

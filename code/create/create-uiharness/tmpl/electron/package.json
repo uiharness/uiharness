@@ -1,15 +1,13 @@
 {
   "name": "__NAME__",
   "version": "0.0.0",
-  "main": "src/main/.parcel/main.js",
-  "types": "./lib/index.d.ts",
+  "main": ".uiharness/.bundle/main/main.js",
   "scripts": {
     "postinstall": "uiharness-electron init",
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
     "prepare": "yarn run lint && yarn run build"
   },
-  "dependencies": {},
   "devDependencies": {
     "@uiharness/electron": "__LATEST__"
   },

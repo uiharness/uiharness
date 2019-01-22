@@ -2,12 +2,8 @@ productName: MY_APP
 appId: 'com.my-app.app'
 
 files:
-  - 'src/**'
-  - '!src/main/main.ts'
-  - '!src/renderer/**'
-  - 'src/renderer/.parcel/production/**'
-  - '!src/**/*.map'
-  - '!src/**/*.TEST.ts'
+  - .uiharness/.bundle/main/**
+  - .uiharness/.bundle/renderer/production/**
 
 directories:
   output: .uiharness/dist

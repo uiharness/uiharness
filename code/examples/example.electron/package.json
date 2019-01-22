@@ -2,20 +2,16 @@
   "name": "example.electron",
   "version": "0.0.13",
   "description": "Example usage of `@uiharness/electron`",
-  "main": "src/main/.parcel/main.js",
+  "main": ".uiharness/.bundle/main/main.js",
   "scripts": {
     "tmp": "yarn sl && uiharness-electron $@",
-    "eb": "build --x64 --publish=never",
-    "postinstall": "yarn run init",
     "sl": "msync sl && sh ./sh/copy-bin.sh",
-    "init": "uiharness-electron init",
     "reset": "yarn sl && uiharness-electron init --reset",
     "nuke": "sh ./sh/nuke.sh",
-    "clean": "sh ./sh/clean.sh",
-    "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
-    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
+    "postinstall": "uiharness-electron init",
     "start": "uiharness-electron start",
-    "dist": "uiharness-electron dist"
+    "dist": "uiharness-electron dist",
+    "clean": "uiharness-electron clean"
   },
   "dependencies": {
     "@uiharness/electron.ui": "0.0.12"

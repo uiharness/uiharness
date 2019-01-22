@@ -13,10 +13,10 @@ export function mainBundler(
 ) {
   const { isProd = false } = options;
   const MAIN = PATH.MAIN;
-  return createBundler(PATH.MAIN.ENTRY, settings, {
+  const entry = MAIN.ENTRY;
+  return createBundler(entry, settings, {
     target: 'electron',
     outDir: MAIN.OUT_DIR,
-    outFile: MAIN.OUT_FILE,
     minify: isProd,
     watch: !isProd,
     ...options.parcel,
@@ -33,7 +33,8 @@ export function rendererBundler(
   const { isProd = false } = options;
   const RENDERER = PATH.RENDERER;
   const outDir = isProd ? RENDERER.OUT_DIR_PROD : RENDERER.OUT_DIR;
-  return createBundler(RENDERER.ENTRY, settings, {
+  const entry = RENDERER.ENTRY;
+  return createBundler(entry, settings, {
     outDir,
     minify: isProd,
     watch: !isProd,

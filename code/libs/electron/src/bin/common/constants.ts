@@ -3,13 +3,12 @@ export * from '../../common/constants';
 export const PATH = {
   MAIN: {
     ENTRY: './src/main/main.ts',
-    OUT_DIR: './src/main/.parcel',
-    OUT_FILE: 'main',
+    OUT_DIR: './.uiharness/.bundle/main',
   },
   RENDERER: {
     ENTRY: './src/renderer/index.html',
-    OUT_DIR: './src/renderer/.parcel/development',
-    OUT_DIR_PROD: './src/renderer/.parcel/production',
+    OUT_DIR: './.uiharness/.bundle/renderer/development',
+    OUT_DIR_PROD: './.uiharness/.bundle/renderer/production',
   },
   CACHE_DIR: './.uiharness/.cache',
   CONFIG: {
@@ -23,6 +22,7 @@ export const SCRIPTS = {
   postinstall: 'uiharness-electron init',
   start: 'uiharness-electron start',
   dist: 'uiharness-electron dist',
+  clean: 'uiharness-electron clean',
 };
 
 export const PKG = {
