@@ -32,6 +32,7 @@ export function logInfo(args: {
   const ROOT_DIR = fsPath.resolve('.');
 
   const formatPath = (path: string) => {
+    path = fsPath.resolve(path);
     let dir = fsPath.dirname(path);
     dir = dir.substr(ROOT_DIR.length);
     const file = fsPath.basename(path);
