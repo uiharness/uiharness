@@ -49,7 +49,7 @@
     ramda "0.26.1"
     rxjs "6.3.3"
 
-"@tdb/test@^1.2.12":
+"@tdb/test@1.2.12":
   version "1.2.12"
   resolved "https://registry.yarnpkg.com/@tdb/test/-/test-1.2.12.tgz#bb103419b4753114086e501ae000a6c74af65bae"
   integrity sha512-xtZejPtzzwTC2HMJ58H+iKg7+yNLIyP4bbw9goR6VgNfk3yFO8CwhM4WWKAxuhKx9VxzKGfBY3/zj9c23P1ZOw==
@@ -63,7 +63,7 @@
     nock "10.0.4"
     sinon "7.2.2"
 
-"@tdb/typescript@^3.2.7":
+"@tdb/typescript@3.2.7":
   version "3.2.7"
   resolved "https://registry.yarnpkg.com/@tdb/typescript/-/typescript-3.2.7.tgz#ace58d752effee6011dca5be9d28fc4a7ff991d6"
   integrity sha512-cmNTqyGBeZeZCcAKz8A7d0njDvwCWRktR9Mmsc8rQNiE8uv5J/2CpHlch0PMrvEYtjf9RmEVythZ2nASNgcyNA==
@@ -323,10 +323,10 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/core@^1.0.33":
-  version "1.0.33"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.33.tgz#fdcf136beb88c228d7b2758d12d2ad67574af2aa"
-  integrity sha512-hAXPEZRQwYyVE23DSlBcLdoBU/QduCBffMIhVn39gUooEarV3XHsTZ9SKtOrJb8ZMMcnHJFEnVoGI9GjT9nBVg==
+"@uiharness/core@1.0.35":
+  version "1.0.35"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.35.tgz#b39f5035cb48118be5f0d981c6b3f40f42e3d8c8"
+  integrity sha512-1F7gB2vWwiSrljEDa0lWyLx7xQYl0HEL1ji2sQHL/S5GSl9beMAD/zZy7ke4aCSYH9V5DTbHmy3YvAq2DqAmOA==
   dependencies:
     "@tdb/util" "1.9.24"
     "@types/fs-extra" "5.0.4"

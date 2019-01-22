@@ -1057,10 +1057,10 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/core@1.0.31":
-  version "1.0.31"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.31.tgz#0635814bc1a6fad6268f354a375b08a76b859c0a"
-  integrity sha512-FkugcfOWXr8+5OBPCj9HdcI4MoZxpFRmHFOapYN8fD++j7026HFVS9/xnXr/moPGSZamHpdY9IcQmGdZ3ZE1Fw==
+"@uiharness/core@1.0.35":
+  version "1.0.35"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.35.tgz#b39f5035cb48118be5f0d981c6b3f40f42e3d8c8"
+  integrity sha512-1F7gB2vWwiSrljEDa0lWyLx7xQYl0HEL1ji2sQHL/S5GSl9beMAD/zZy7ke4aCSYH9V5DTbHmy3YvAq2DqAmOA==
   dependencies:
     "@tdb/util" "1.9.24"
     "@types/fs-extra" "5.0.4"
@@ -1069,22 +1069,21 @@
     fs-extra "7.0.1"
     js-yaml "3.12.1"
 
-"@uiharness/electron.ui@0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron.ui/-/electron.ui-0.0.4.tgz#79f121444697c8a5a8fd256ca177e7514cc0deb6"
-  integrity sha512-y+VWEJM8hpHZRzk1FSzoLfCGpDFO9jMgo3b85suJ2hUgdLMOjI4DDX6ejrfXMUMZtN2DzHDuGfnHaTVU3AW62w==
+"@uiharness/electron.ui@0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron.ui/-/electron.ui-0.0.7.tgz#e2d594a1c4b118122a70d7914527be825f5cc45e"
+  integrity sha512-ZIZNZ9EBP8Ek7wqJsZj0ZjcIvf1RIHQekOzZvqjP+YjNa9Cz3HUWxJsz0REgQLmKPWA+Fagumz9E6jp469f94A==
   dependencies:
-    "@tdb/util" "1.9.24"
     "@types/app-root-path" "1.2.4"
-    "@uiharness/core" "1.0.31"
+    "@uiharness/core" "1.0.35"
     app-root-path "2.1.0"
     electron-is-dev "1.0.1"
     electron-log "2.2.17"
 
-"@uiharness/electron@0.2.8":
-  version "0.2.8"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.2.8.tgz#71d788942ba3beab5b04593a90eefafc20b3245d"
-  integrity sha512-zP+H7P17yLcKHfqMnzpVFW0wA2ywyChEk7m3hD1vWxm37km8dHGilUEWzTSMThVw7rcryUYG0vWVe5nMlzyQ0g==
+"@uiharness/electron@0.2.13":
+  version "0.2.13"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.2.13.tgz#a77affd9a22980469e93b5b9d7576be67995d816"
+  integrity sha512-ProL12ForscTl/RqLj3OS0GWWfq4fIlMdjhmZFbIoS/YTzzVFDGN0FGEl4qR3MytY+hVwoiAPLhwjAYvuUCSoA==
   dependencies:
     "@babel/core" "7.2.2"
     "@babel/preset-env" "7.2.3"
@@ -1093,8 +1092,8 @@
     "@tdb/log" "1.1.19"
     "@tdb/typescript" "3.2.7"
     "@tdb/util" "1.9.24"
-    "@uiharness/core" "1.0.31"
-    "@uiharness/electron.ui" "0.0.4"
+    "@uiharness/core" "1.0.35"
+    "@uiharness/electron.ui" "0.0.7"
     babel-core "^7.0.0-bridge.0"
     electron "4.0.1"
     electron-builder "20.38.5"

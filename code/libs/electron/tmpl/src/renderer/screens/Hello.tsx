@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { css, GlamorValue, isDev } from '../../common';
 
-export type IHelloWorldProps = {
+export type IHelloProps = {
   style?: GlamorValue;
 };
 
-export class HelloWorld extends React.PureComponent<IHelloWorldProps> {
+export class Hello extends React.PureComponent<IHelloProps> {
   public render() {
     const styles = {
       base: css({
@@ -17,7 +17,7 @@ export class HelloWorld extends React.PureComponent<IHelloWorldProps> {
     return (
       <div {...css(styles.base, this.props.style)}>
         <ul>
-          <li>@uiharness/electron</li>
+          <li>Hello</li>
           <li>isDev: {isDev.toString()}</li>
         </ul>
       </div>

@@ -942,10 +942,10 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/core@1.0.33":
-  version "1.0.33"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.33.tgz#fdcf136beb88c228d7b2758d12d2ad67574af2aa"
-  integrity sha512-hAXPEZRQwYyVE23DSlBcLdoBU/QduCBffMIhVn39gUooEarV3XHsTZ9SKtOrJb8ZMMcnHJFEnVoGI9GjT9nBVg==
+"@uiharness/core@1.0.34":
+  version "1.0.34"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.34.tgz#716942a944036e6c474c3033d0f2da9305da0a2a"
+  integrity sha512-Bm/6ZizYsZy6u0c4f2d37jz9q72uheUzwwALPxlq952mSFZpJJYYelw/o6qyIjOOMhS5CKBWUpNC0sDucmtMOQ==
   dependencies:
     "@tdb/util" "1.9.24"
     "@types/fs-extra" "5.0.4"
@@ -954,15 +954,23 @@
     fs-extra "7.0.1"
     js-yaml "3.12.1"
 
-"@uiharness/web@^0.0.23":
-  version "0.0.23"
-  resolved "https://registry.yarnpkg.com/@uiharness/web/-/web-0.0.23.tgz#1c18847f450ec28510e3998115f303ea85555be3"
-  integrity sha512-uPsFy14Alw6UNtb9Dlr/+3C2IrLLhQ28BJA5IHWt8FQyuv0Oa1bfs/wek2AJpymkKDMCTpQ4mGo+PcePebzpww==
+"@uiharness/web.ui@0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@uiharness/web.ui/-/web.ui-0.0.1.tgz#f87768f48c14c8d67b7c28b08c6263cf8996927d"
+  integrity sha512-kCysmtP6PkGM04c1Hnldw6dnUeef8cAfuud5HhVg0Agd6mPqV5kcBKau2pIZ9GwnBYx+CJh+TgdPnqBoyUQ54Q==
+  dependencies:
+    "@uiharness/core" "1.0.34"
+
+"@uiharness/web@^0.0.24":
+  version "0.0.24"
+  resolved "https://registry.yarnpkg.com/@uiharness/web/-/web-0.0.24.tgz#64aa52ea9c4841f6a11ebeb1a6e087bbb13173ef"
+  integrity sha512-50RtCze4kVO11fXg3sH+NuTOkvJjI1qYz078Sx+HOkzvOBDG4I+JCbwd4MgFmWc4TQZHHPBNDZQKruo1ZjbURQ==
   dependencies:
     "@tdb/log" "1.1.19"
     "@tdb/typescript" "3.2.7"
     "@tdb/util" "1.9.24"
-    "@uiharness/core" "1.0.33"
+    "@uiharness/core" "1.0.34"
+    "@uiharness/web.ui" "0.0.1"
     filesize "4.0.0"
     fs-extra "7.0.1"
     js-yaml "3.12.1"

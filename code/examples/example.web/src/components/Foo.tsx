@@ -1,4 +1,4 @@
-import { React, css } from '../../common';
+import { React, css } from '../common';
 
 export interface IFooProps {}
 

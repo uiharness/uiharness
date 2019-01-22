@@ -328,10 +328,10 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/core@1.0.33":
-  version "1.0.33"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.33.tgz#fdcf136beb88c228d7b2758d12d2ad67574af2aa"
-  integrity sha512-hAXPEZRQwYyVE23DSlBcLdoBU/QduCBffMIhVn39gUooEarV3XHsTZ9SKtOrJb8ZMMcnHJFEnVoGI9GjT9nBVg==
+"@uiharness/core@1.0.35":
+  version "1.0.35"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.35.tgz#b39f5035cb48118be5f0d981c6b3f40f42e3d8c8"
+  integrity sha512-1F7gB2vWwiSrljEDa0lWyLx7xQYl0HEL1ji2sQHL/S5GSl9beMAD/zZy7ke4aCSYH9V5DTbHmy3YvAq2DqAmOA==
   dependencies:
     "@tdb/util" "1.9.24"
     "@types/fs-extra" "5.0.4"
