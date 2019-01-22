@@ -1,9 +1,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-![title](https://user-images.githubusercontent.com/185555/51221319-de33b000-199d-11e9-91d5-2011a5728f0b.jpg)
+![title](https://user-images.githubusercontent.com/185555/51506110-6b1fb300-1e4f-11e9-8c73-cc4c0d659131.jpg)
 
 [UIHarness](https://uiharness.com) targeting an [electron](https://electronjs.org/) desktop shell using [react](https://reactjs.org/) and [typescript](https://www.typescriptlang.org/).
 
-This module contains the client-app tools for UIHarness including:
+This module contains the client-app tools for UIHarness running in [electron](https://electronjs.org/) including:
 
 - Electron specific modules, helpers and utilities
 - Electron speciic UI.
@@ -31,6 +31,7 @@ Include in the `dependencies` of your package.json, along with the corresponding
 
 ## 🔗 Modules
 - [@uiharness/web](/code/libs/web/README.md)
+- [@uiharness/web.ui](/code/libs/web.ui/README.md)
 - [@uiharness/electron](/code/libs/electron/README.md)
 - [@uiharness/electron.ui](code/libs/electron.ui/README.md)
 - [@uiharness/core](/code/libs/core/README.md)

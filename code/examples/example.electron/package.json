@@ -1,10 +1,11 @@
 {
   "name": "example.electron",
-  "version": "0.0.3",
+  "version": "0.0.13",
   "description": "Example usage of `@uiharness/electron`",
   "main": "src/main/.parcel/main.js",
   "scripts": {
     "tmp": "yarn sl && uiharness-electron $@",
+    "eb": "build --x64 --publish=never",
     "postinstall": "yarn run init",
     "sl": "msync sl && sh ./sh/copy-bin.sh",
     "init": "uiharness-electron init",
@@ -12,16 +13,20 @@
     "nuke": "sh ./sh/nuke.sh",
     "clean": "sh ./sh/clean.sh",
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
-    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@"
+    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
+    "start": "uiharness-electron start",
+    "dist": "uiharness-electron dist"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@uiharness/electron.ui": "0.0.12"
+  },
   "devDependencies": {
     "@babel/core": "^7.2.2",
-    "@uiharness/electron": "0.2.1"
+    "@uiharness/electron": "0.2.18"
   },
-  "license": "MIT",
-  "private": true,
   "resolutions": {
     "@types/react": "16.7.17"
-  }
+  },
+  "license": "MIT",
+  "private": true
 }

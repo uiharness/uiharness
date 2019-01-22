@@ -1,6 +1,6 @@
 {
   "name": "example.web",
-  "version": "1.0.3",
+  "version": "1.0.10",
   "description": "Example usage of `@uiharness/web`",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -12,11 +12,16 @@
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
     "sl": "msync sl && sh ./sh/copy-bin.sh",
     "reset": "yarn sl && uiharness init --reset",
-    "reset-init": "yarn reset && yarn postinstall"
+    "reset-init": "yarn reset && yarn postinstall",
+    "start": "uiharness start",
+    "dist": "uiharness dist",
+    "stats": "uiharness stats",
+    "clean": "uiharness clean",
+    "serve": "serve -s .uiharness/dist"
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/web": "^0.0.21"
+    "@uiharness/web": "^0.0.34"
   },
   "repository": "https://github.com/uiharness/uiharness",
   "license": "MIT",

@@ -1,14 +1,5 @@
-import { IUIHarnessConfig, IUIHarnessEntry } from '../../types';
-import {
-  fs,
-  fsPath,
-  log,
-  jsYaml,
-  value,
-  npm,
-  NpmPackage,
-  config,
-} from './libs';
+import { IUIHarnessConfig } from '../../types';
+import { fs, fsPath, jsYaml, log, NpmPackage, value } from './libs';
 
 export { NpmPackage };
 const UIHARNESS_YAML = 'uiharness.yml';
@@ -52,7 +43,6 @@ export class Settings {
   public readonly dir: string;
   public readonly path: string;
   private readonly _data: IUIHarnessConfig;
-  private readonly pkg: NpmPackage;
 
   /**
    * Constructor.
@@ -60,7 +50,6 @@ export class Settings {
   private constructor(path: string) {
     this.path = path;
     this.dir = fsPath.dirname(path);
-    this.pkg = npm.pkg('.');
     this._data = fs.existsSync(path) ? Settings.load(path) : {};
   }
 
@@ -69,19 +58,6 @@ export class Settings {
    */
   public get port() {
     return this._data.port || 1234;
-  }
-
-  /**
-   * Retrieves the entry path(s).
-   */
-  public get entries(): IUIHarnessEntry[] {
-    const entry = this._data ? this._data.entry : undefined;
-    return config.toEntries({
-      entry,
-      defaultValue: '/src/uiharness.tsx',
-      dir: this.dir,
-      moduleName: this.pkg.name,
-    });
   }
 
   /**

@@ -1,8 +1,7 @@
-import './css/normalize.css';
+import '../../node_modules/@uiharness/core/css/normalize.css';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { HelloWorld } from './screens/HelloWorld';
+import { Hello } from './screens/Hello';
 
-const el = <HelloWorld />;
-
+const el = <Hello />;
 ReactDOM.render(el, document.getElementById('root'));

@@ -1,15 +1,8 @@
-import {
-  IUIHarnessConfigEntry,
-  IUIHarnessEntry,
-} from '@uiharness/core/lib/types';
-export { IUIHarnessEntry };
-
 /**
  * The `uiharness.yml` configuration file structure.
  */
 export type IUIHarnessConfig = {
   port?: number;
-  entry?: string | string[] | IUIHarnessConfigEntry | IUIHarnessConfigEntry[];
 
   /**
    * Build args.
@@ -17,7 +10,7 @@ export type IUIHarnessConfig = {
    */
   build?: {
     sourcemaps?: boolean; // Default: true.
-    treeshake?: boolean; // Default:true
+    treeshake?: boolean; //  Default: true.
   };
 
   /**

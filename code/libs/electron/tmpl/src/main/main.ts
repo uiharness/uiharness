@@ -1,8 +1,7 @@
+import { isDev, resolve } from '@uiharness/electron.ui';
+import { app, BrowserWindow } from 'electron';
 import { format } from 'url';
-import { BrowserWindow, app } from 'electron';
-import { resolve } from '@uiharness/electron';
 
-const isDev = require('electron-is-dev');
 const config = require('../../.uiharness/config.json');
 
 app.on('ready', async () => {

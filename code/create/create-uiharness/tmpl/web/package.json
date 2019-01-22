@@ -4,12 +4,11 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "postinstall": "uiharness init",
-    "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
-    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
-    "prepare": "yarn run lint && yarn run build"
+    "postinstall": "uiharness init"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@uiharness/web.ui": "__LATEST__"
+  },
   "devDependencies": {
     "@uiharness/web": "__LATEST__"
   },

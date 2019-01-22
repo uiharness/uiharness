@@ -1,4 +1,4 @@
-productName: electron
+productName: myApp
 appId: 'com.uiharness.lib'
 
 files:

@@ -1,13 +1,7 @@
-import { fs, fsPath, log, NpmPackage, Settings, tmpl } from '../common';
+import { constants, log, NpmPackage, Settings, tmpl } from '../common';
+import { clean } from './clean';
 
-const TEMPLATE_DIR = './node_modules/@uiharness/web/tmpl';
-const SCRIPTS = {
-  postinstall: 'uiharness init',
-  start: 'uiharness start',
-  bundle: 'uiharness bundle',
-  stats: 'uiharness stats',
-  serve: 'serve -s dist',
-};
+const { SCRIPTS, PATH } = constants;
 
 /**
  * Ensure the module is initialized.
@@ -31,10 +25,8 @@ export async function init(args: {
   }
 
   if (flags.files) {
-    const entries = settings.entries;
     await tmpl
-      .create(TEMPLATE_DIR)
-      .use(tmpl.transformEntryHtml({ entries }))
+      .create(PATH.TEMPLATES)
       .use(tmpl.copyFile({ force }))
       .execute();
   }
@@ -48,13 +40,11 @@ async function reset(args: { pkg: NpmPackage }) {
   pkg.removeFields('scripts', SCRIPTS, { exclude: 'postinstall' }).save();
 
   await tmpl
-    .create(TEMPLATE_DIR)
+    .create(PATH.TEMPLATES)
     .use(tmpl.deleteFile())
     .execute();
 
-  fs.removeSync(fsPath.resolve('./html'));
-  fs.removeSync(fsPath.resolve('./.cache'));
-  fs.removeSync(fsPath.resolve('./dist'));
+  await clean({});
 
   // Log results.
   log.info('');

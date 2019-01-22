@@ -1,7 +1,7 @@
 {
   "name": "@uiharness/electron",
   "description": "UIHarness dev-tools for Electron (include in devDependencies).",
-  "version": "0.2.1",
+  "version": "0.2.18",
   "main": "./lib/index.js",
   "bin": {
     "uiharness-electron": "./lib/bin/entry.js"
@@ -11,18 +11,19 @@
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
     "clean": "sh ./sh/clean.sh",
-    "nuke": "sh ./sh/nuke.sh"
+    "nuke": "sh ./sh/nuke.sh",
+    "prepare": "yarn build && yarn lint"
   },
   "dependencies": {
     "@babel/core": "7.2.2",
     "@babel/preset-env": "7.2.3",
     "@babel/preset-react": "7.0.0",
     "@babel/preset-typescript": "7.1.0",
-    "@tdb/log": "1.1.19",
-    "@tdb/typescript": "3.2.7",
-    "@tdb/util": "1.9.24",
-    "@uiharness/core": "1.0.30",
-    "@uiharness/electron.ui": "0.0.2",
+    "@tdb/log": "1.1.20",
+    "@tdb/typescript": "3.2.8",
+    "@tdb/util": "1.9.26",
+    "@uiharness/core": "1.0.39",
+    "@uiharness/electron.ui": "0.0.12",
     "babel-core": "^7.0.0-bridge.0",
     "electron": "4.0.1",
     "electron-builder": "20.38.5",
@@ -37,12 +38,13 @@
     "@types/parcel-bundler": "1.10.1",
     "@types/yargs": "12.0.5"
   },
-  "files": [
-    "**/*"
-  ],
   "engines": {
     "node": ">=10.x"
   },
+  "files": [
+    "lib",
+    "tmpl"
+  ],
   "keywords": [
     "design",
     "test",

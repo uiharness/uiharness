@@ -1,0 +1,21 @@
+{
+  "name": "create-harness",
+  "version": "0.0.21",
+  "main": "./lib/bin.js",
+  "bin": {
+    "create-harness": "./lib/bin.js"
+  },
+  "scripts": {
+    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
+    "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
+    "prepare": "yarn build && yarn lint"
+  },
+  "dependencies": {
+    "@tdb/log": "1.1.17"
+  },
+  "devDependencies": {
+    "@tdb/typescript": "3.2.5"
+  },
+  "repository": "github.com/uiharness/uiharness",
+  "license": "MIT"
+}

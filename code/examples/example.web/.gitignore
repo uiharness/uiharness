@@ -1,12 +1,3 @@
-
-# Auto-generated files from `@uiharness/web`
-build
-dist
-html
-.cache
-
-.prettierrc
-tslint.json
-tsconfig.json
-uiharness.yml
-
+node_modules
+.DS_Store
+.uiharness

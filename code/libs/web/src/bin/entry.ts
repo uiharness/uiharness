@@ -15,8 +15,12 @@ process.on('unhandledRejection', err => {
 
 const CMD = {
   INIT: 'init',
+  INIT_I: 'i',
   START: 'start',
-  BUNDLE: 'bundle',
+  START_ST: 'st',
+  CLEAN: 'clean',
+  CLEAN_C: 'c',
+  DIST: 'dist',
   STATS: 'stats',
 };
 const CMDS = Object.keys(CMD).map(key => CMD[key]);
@@ -39,7 +43,7 @@ const program = yargs
    * `init`
    */
   .command(
-    [CMD.INIT],
+    [CMD.INIT, CMD.INIT_I],
     'Initialize the module with default files.',
     e =>
       e
@@ -63,20 +67,30 @@ const program = yargs
    * `start`
    */
   .command(
-    [CMD.START],
+    [CMD.START, CMD.START_ST],
     'Start the development server.',
     e => e,
     e => cmds.start({ settings, pkg }),
   )
 
   /**
-   * `bundle`
+   * `clean`
    */
   .command(
-    [CMD.BUNDLE],
-    'Package a bundle into the `/dist` folder.',
+    [CMD.CLEAN, CMD.CLEAN_C],
+    'Removes temporary generated files.',
     e => e,
-    e => cmds.bundle({ settings, pkg }),
+    e => cmds.clean({ settings, pkg }),
+  )
+
+  /**
+   * `dist`
+   */
+  .command(
+    [CMD.DIST],
+    'Package the app into production distribution bundle.',
+    e => e,
+    e => cmds.dist({ settings, pkg }),
   )
 
   /**
@@ -84,7 +98,7 @@ const program = yargs
    */
   .command(
     [CMD.STATS],
-    'Read size details about the `/dist` bundle.',
+    'Read size details about the distribution bundle.',
     e => e,
     e => cmds.stats({ settings, pkg }),
   )
