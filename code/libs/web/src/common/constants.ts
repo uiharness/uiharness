@@ -14,8 +14,8 @@ export const PATH = {
 export const SCRIPTS = {
   postinstall: 'uiharness init',
   start: 'uiharness start',
+  clean: 'uiharness clean',
   dist: 'uiharness dist',
   stats: 'uiharness stats',
-  clean: 'uiharness clean',
   serve: 'serve -s .uiharness/dist',
 };

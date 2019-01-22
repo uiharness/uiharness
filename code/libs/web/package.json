@@ -1,7 +1,7 @@
 {
   "name": "@uiharness/web",
   "description": "Lightening fast Typescript/React/Parcel builder for the UIHarness.",
-  "version": "0.0.35",
+  "version": "0.0.38",
   "main": "./lib/index.js",
   "scripts": {
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
@@ -35,6 +35,10 @@
   "engines": {
     "node": ">=10.x"
   },
+  "files": [
+    "lib",
+    "tmpl"
+  ],
   "keywords": [
     "design",
     "test",
