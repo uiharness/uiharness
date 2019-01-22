@@ -7,8 +7,6 @@ export async function clean(args: {}) {
   await fs.remove(fsPath.resolve('./.uiharness'));
 
   // TEMP 🐷
-  await fs.remove(fsPath.resolve('./.cache'));
-  await fs.remove(fsPath.resolve('./dist'));
   await fs.remove(fsPath.resolve('./src/main/.parcel'));
   await fs.remove(fsPath.resolve('./src/renderer/.parcel'));
 }

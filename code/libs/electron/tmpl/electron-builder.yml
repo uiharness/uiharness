@@ -10,7 +10,7 @@ files:
   - '!src/**/*.TEST.ts'
 
 directories:
-  output: release
+  output: .uiharness/dist
 
 mac:
   target:
