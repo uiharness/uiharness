@@ -1,6 +1,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-[![img](https://user-images.githubusercontent.com/185555/51516337-0038a100-1e7c-11e9-8631-49a5b4a3c984.png)](https://uiharness.com)
+[![img](https://user-images.githubusercontent.com/185555/51516739-3a567280-1e7d-11e9-9c3d-10d539a07f8c.png)](https://uiharness.com)
 
 
 
@@ -10,7 +10,7 @@ Isolate, develop and test your UI components in [typescript](https://www.typescr
 ----
 
 ![pre-release](https://img.shields.io/badge/Status-pre--release-orange.svg)  
-API's will change (probably radically). `v4` release coming soon.
+API's will change (probably radically 🐷 ). `v4` release coming soon.
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -53,3 +53,9 @@ yarn add    @uiharness/electron.ui  # Client tools (bundled with app as dependen
 - [@uiharness/electron](/code/libs/electron/README.md)
 - [@uiharness/electron.ui](code/libs/electron.ui/README.md)
 - [@uiharness/core](/code/libs/core/README.md)
+
+<p>&nbsp;</p>
+
+
+## Sponsor
+Proudly sponsored by [Hypersheet](https://hypersheet.io):
