@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const URL = 'https://uiharness.com';
 
-export class HelloWorld extends React.PureComponent {
+export class Hello extends React.PureComponent {
   public render() {
     const style = {
       padding: 50,

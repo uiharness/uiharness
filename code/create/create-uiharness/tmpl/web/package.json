@@ -9,7 +9,9 @@
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
     "prepare": "yarn run lint && yarn run build"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@uiharness/web.ui": "__LATEST__"
+  },
   "devDependencies": {
     "@uiharness/web": "__LATEST__"
   },

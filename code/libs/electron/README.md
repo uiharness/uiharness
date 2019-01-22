@@ -1,5 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-![title](https://user-images.githubusercontent.com/185555/51460371-1a14ae00-1dc0-11e9-84ee-c86e07ab70e7.jpg)
+![title](https://user-images.githubusercontent.com/185555/51506128-84286400-1e4f-11e9-87a7-42b73457ff1b.jpg)
 
 [UIHarness](https://uiharness.com) targeting an [electron](https://electronjs.org/) desktop shell using [react](https://reactjs.org/) and [typescript](https://www.typescriptlang.org/).
 
@@ -36,6 +36,7 @@ Include in the `devDependencies` of your package.json, along with the correspond
 
 ## 🔗 Modules
 - [@uiharness/web](/code/libs/web/README.md)
+- [@uiharness/web.ui](/code/libs/web.ui/README.md)
 - [@uiharness/electron](/code/libs/electron/README.md)
 - [@uiharness/electron.ui](code/libs/electron.ui/README.md)
 - [@uiharness/core](/code/libs/core/README.md)

@@ -46,6 +46,7 @@ yarn add    @uiharness/electron.ui  # Client tools (bundled with app as dependen
 
 ## 🔗 Modules
 - [@uiharness/web](/code/libs/web/README.md)
+- [@uiharness/web.ui](/code/libs/web.ui/README.md)
 - [@uiharness/electron](/code/libs/electron/README.md)
 - [@uiharness/electron.ui](code/libs/electron.ui/README.md)
 - [@uiharness/core](/code/libs/core/README.md)

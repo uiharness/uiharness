@@ -1,12 +1,11 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-![title](https://user-images.githubusercontent.com/185555/51506110-6b1fb300-1e4f-11e9-8c73-cc4c0d659131.jpg)
+![title](https://user-images.githubusercontent.com/185555/51506111-6bb84980-1e4f-11e9-8505-4ec996d41de1.jpg)
 
-[UIHarness](https://uiharness.com) targeting an [electron](https://electronjs.org/) desktop shell using [react](https://reactjs.org/) and [typescript](https://www.typescriptlang.org/).
+[UIHarness](https://uiharness.com) targeting an the web using [react](https://reactjs.org/) and [typescript](https://www.typescriptlang.org/).
 
-This module contains the client-app tools for UIHarness running in [electron](https://electronjs.org/) including:
+This module contains the client-app tools for UIHarness running in the web including:
 
-- Electron specific modules, helpers and utilities
-- Electron speciic UI.
+- UI helpers.
 
 
 ## Installation
@@ -16,16 +15,14 @@ Include in the `dependencies` of your package.json, along with the corresponding
 ```json
 {
   "dependencies": {
-    "@uiharness/electron.ui": "x.x.x"
+    "@uiharness/web.ui": "x.x.x"
   },
   "devDependencies": {
-    "@uiharness/electron": "x.x.x"
+    "@uiharness/web": "x.x.x"
   }
 }
 ```
 
-## 🔗 Refs
-- https://electronjs.org
 
 <p>&nbsp;</p>
 
