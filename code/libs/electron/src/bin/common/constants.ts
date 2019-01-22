@@ -2,11 +2,11 @@ export * from '../../common/constants';
 
 export const PATH = {
   MAIN: {
-    ENTRY: './src/main/main.ts',
+    ENTRY: './src/main.ts',
     OUT_DIR: './.uiharness/.bundle/main',
   },
   RENDERER: {
-    ENTRY: './src/renderer/index.html',
+    ENTRY: './src/index.html',
     OUT_DIR: './.uiharness/.bundle/renderer/development',
     OUT_DIR_PROD: './.uiharness/.bundle/renderer/production',
   },
