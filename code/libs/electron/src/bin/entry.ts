@@ -16,6 +16,8 @@ const CMD = {
   INIT_I: 'i',
   START: 'start',
   START_ST: 'st',
+  CLEAN: 'clean',
+  CLEAN_C: 'c',
   DIST: 'dist',
   DIST_D: 'd',
 };
@@ -67,6 +69,16 @@ const program = yargs
     'Start the development server.',
     e => e,
     e => cmds.start({ settings, pkg }),
+  )
+
+  /**
+   * `clean`
+   */
+  .command(
+    [CMD.CLEAN, CMD.CLEAN_C],
+    'Removes temporary generated files.',
+    e => e,
+    e => cmds.clean({}),
   )
 
   /**

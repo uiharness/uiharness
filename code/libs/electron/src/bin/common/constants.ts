@@ -1,6 +1,7 @@
 export * from '../../common/constants';
 
 export const PATH = {
+  TEMPLATES: './node_modules/@uiharness/electron/tmpl',
   MAIN_ENTRY: './src/main/main.ts',
   CONFIG: {
     DIR: './.uiharness',

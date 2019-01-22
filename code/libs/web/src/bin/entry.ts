@@ -80,7 +80,7 @@ const program = yargs
     [CMD.CLEAN, CMD.CLEAN_C],
     'Removes temporary generated files.',
     e => e,
-    e => cmds.clean({ settings, pkg }),
+    e => cmds.clean({}),
   )
 
   /**
