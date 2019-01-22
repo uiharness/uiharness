@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "outDir": "lib",
+    "target": "esnext",
+    "jsx": "preserve",
+    "sourceMap": true,
+    "moduleResolution": "node"
+  }
+}

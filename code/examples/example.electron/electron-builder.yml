@@ -1,0 +1,47 @@
+productName: myApp
+appId: 'com.uiharness.lib'
+
+files:
+  - 'src/**'
+  - '!src/main/main.ts'
+  - '!src/renderer/**'
+  - 'src/renderer/.parcel/production/**'
+  - '!src/**/*.map'
+  - '!src/**/*.TEST.ts'
+
+directories:
+  output: release
+
+mac:
+  target:
+    - zip
+    - dmg
+  artifactName: '${productName}-mac.${ext}'
+  icon: static/build/app.icns
+
+win:
+  target:
+    - zip
+  artifactName: '${productName}-win.${ext}'
+  icon: static/build/app.ico
+
+linux:
+  target:
+    - zip
+  category: Development
+  artifactName: '${productName}-linux.${ext}'
+
+dmg:
+  title: ${productName} (${version})
+  background: static/build/background.png
+  window:
+    width: 540
+    height: 358
+
+publish:
+  provider: github
+  owner: OWNER
+  repo: REPO
+  vPrefixedTagName: true
+  releaseType: draft
+  publishAutoUpdate: true

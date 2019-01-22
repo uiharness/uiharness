@@ -16,7 +16,7 @@ export async function start(args: { settings: Settings; pkg: NpmPackage }) {
   // Setup initial conditions.
   const { settings, pkg } = args;
   const port = settings.port;
-  const mainEntry = constants.PATH.MAIN_ENTRY;
+  const mainEntry = constants.PATH.MAIN.ENTRY;
 
   // Ensure the module is initialized.
   await init({ settings, pkg });

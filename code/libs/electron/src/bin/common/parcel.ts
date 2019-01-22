@@ -1,5 +1,5 @@
 import { PATH } from './constants';
-import { fsPath, ParcelBundler } from './libs';
+import { ParcelBundler } from './libs';
 import { Settings } from './Settings';
 
 export type ParcelOptions = ParcelBundler.ParcelOptions;
@@ -12,13 +12,11 @@ export function mainBundler(
   options: { parcel?: ParcelOptions; isProd?: boolean } = {},
 ) {
   const { isProd = false } = options;
-  const entry = fsPath.resolve(PATH.MAIN_ENTRY);
-  const outDir = 'src/main/.parcel';
-  const outFile = 'main';
-  return createBundler(entry, settings, {
+  const MAIN = PATH.MAIN;
+  return createBundler(PATH.MAIN.ENTRY, settings, {
     target: 'electron',
-    outDir,
-    outFile,
+    outDir: MAIN.OUT_DIR,
+    outFile: MAIN.OUT_FILE,
     minify: isProd,
     watch: !isProd,
     ...options.parcel,
@@ -33,9 +31,9 @@ export function rendererBundler(
   options: { parcel?: ParcelOptions; isProd?: boolean } = {},
 ) {
   const { isProd = false } = options;
-  const entry = 'src/renderer/index.html';
-  const outDir = 'src/renderer/.parcel/development';
-  return createBundler(entry, settings, {
+  const RENDERER = PATH.RENDERER;
+  const outDir = isProd ? RENDERER.OUT_DIR_PROD : RENDERER.OUT_DIR;
+  return createBundler(RENDERER.ENTRY, settings, {
     outDir,
     minify: isProd,
     watch: !isProd,
@@ -77,10 +75,7 @@ export async function buildRenderer(
   const { isProd = false } = options;
   const renderer = rendererBundler(settings, {
     isProd,
-    parcel: {
-      publicUrl: './',
-      outDir: 'src/renderer/.parcel/production',
-    },
+    parcel: { publicUrl: './' },
   });
   await renderer.bundle();
 }
@@ -98,6 +93,7 @@ function createBundler(
     target: 'electron',
     sourceMaps: args.sourcemaps,
     scopeHoist: args.treeshake,
+    cacheDir: PATH.CACHE_DIR,
     ...options,
   });
 }
