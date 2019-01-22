@@ -16,7 +16,7 @@ export async function dist(args: { settings: Settings; pkg: NpmPackage }) {
   const { settings, pkg } = args;
   process.env.NODE_ENV = 'production';
   init({ settings, pkg });
-  logInfo({ settings, pkg, port: true });
+  logInfo({ settings, pkg, port: false });
 
   // Prepare the bundler.
   const bundler = createParcelBundler(settings);

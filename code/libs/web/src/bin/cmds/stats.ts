@@ -22,7 +22,7 @@ export async function stats(args: {
   const { settings, pkg } = args;
   const moduleInfo = value.defaultValue(args.moduleInfo, true);
   if (moduleInfo) {
-    logInfo({ settings, pkg });
+    logInfo({ settings, pkg, port: false });
   }
 
   const dir = fsPath.resolve(constants.PATH.OUT_DIR);

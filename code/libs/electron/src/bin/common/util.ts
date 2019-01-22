@@ -20,7 +20,6 @@ export function logInfo(args: {
     return `${dir}/${log.cyan(file)}`;
   };
 
-  // const entryFiles = settings.entries.map(e => e.html.absolute);
   const showPort = Boolean(args.port);
   const port = typeof args.port === 'number' ? args.port : settings.port;
 
