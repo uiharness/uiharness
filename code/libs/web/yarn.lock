@@ -1042,10 +1042,10 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.5.tgz#f4f85fe198e1e9cedc0bb53a8c2d30fb34299e50"
   integrity sha512-y51XRWWg1GiW4+mV2zmFQUqJT3bX7nuUaXW4j8a2dFvT9ZlaNLjb7ZxcUSDyklt/UBWrW2+31x+hQpRzxaTFzw==
 
-"@uiharness/core@1.0.36":
-  version "1.0.36"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.36.tgz#c68f23a9b1fa24f37e45492d68c4a6285bf9c056"
-  integrity sha512-SuIgXJ1w50Nh/L3c2FXcZ1pLN8/CGmDgu+0vUfcS12ucvnUWb5Mho7QPfHQJWYU240tQ11DjYHwVkTWDNxbKBA==
+"@uiharness/core@1.0.37":
+  version "1.0.37"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.37.tgz#b95bf8751475b9d2708747b6b4e060eff958358d"
+  integrity sha512-tvHzk3KJH8R/Dej/+HBs8q/jaYd7pgAG3pJdvuGGbqZNV4hOVm/sQSq4cbbXHTtwazB4XLkWmtHFYADwe09lVg==
   dependencies:
     "@tdb/util" "1.9.25"
     "@types/fs-extra" "5.0.4"
@@ -1054,12 +1054,12 @@
     fs-extra "7.0.1"
     js-yaml "3.12.1"
 
-"@uiharness/web.ui@0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@uiharness/web.ui/-/web.ui-0.0.3.tgz#e23a5e3524424e8d2b9634a19b1aa18b6592f1db"
-  integrity sha512-XJy1aTS7HSeAP7YbW+RSmOhsMzDsipCWNbhWLXql23DOm0eNplJnmIezTs5eASS7fLlHi8OMMftmRdBDAvxOZQ==
+"@uiharness/web.ui@0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@uiharness/web.ui/-/web.ui-0.0.4.tgz#6b0e02e3ab00f35c3b57f0fe0bbc8662c9983713"
+  integrity sha512-K7Xt8OPHeaNJf4x6abNRhrzyenkMkFJzG4cBryf/GpTn2rWU7VvlvuuG3pQ5Ti3TCJRJWpMU29LeopBHnBtFZg==
   dependencies:
-    "@uiharness/core" "1.0.36"
+    "@uiharness/core" "1.0.37"
 
 "@zeit/schemas@2.6.0":
   version "2.6.0"
