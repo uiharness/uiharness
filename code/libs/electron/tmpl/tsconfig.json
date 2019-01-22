@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "lib",
+    "outDir": ".uiharness/lib",
     "target": "esnext",
     "jsx": "preserve",
     "sourceMap": true,

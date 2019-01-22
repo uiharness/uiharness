@@ -1,5 +1,5 @@
-productName: myApp
-appId: 'com.uiharness.lib'
+productName: MY_APP
+appId: 'com.my-app.app'
 
 files:
   - 'src/**'
