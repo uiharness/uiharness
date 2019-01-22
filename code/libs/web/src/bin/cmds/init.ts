@@ -1,12 +1,5 @@
-import {
-  constants,
-  fs,
-  fsPath,
-  log,
-  NpmPackage,
-  Settings,
-  tmpl,
-} from '../common';
+import { constants, log, NpmPackage, Settings, tmpl } from '../common';
+import { clean } from './clean';
 
 const { SCRIPTS, PATH } = constants;
 
@@ -51,7 +44,7 @@ async function reset(args: { pkg: NpmPackage }) {
     .use(tmpl.deleteFile())
     .execute();
 
-  fs.removeSync(fsPath.resolve('./.uiharness'));
+  await clean({});
 
   // Log results.
   log.info('');

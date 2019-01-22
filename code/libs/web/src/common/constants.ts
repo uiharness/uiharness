@@ -16,5 +16,6 @@ export const SCRIPTS = {
   start: 'uiharness start',
   dist: 'uiharness dist',
   stats: 'uiharness stats',
+  clean: 'uiharness clean',
   serve: 'serve -s .uiharness/dist',
 };
