@@ -1,4 +1,4 @@
-name: Electron (Typescript + React)
+name: Electron (typescript + react)
 folder: NAME
 install: true
 variables:

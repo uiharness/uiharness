@@ -1,4 +1,4 @@
-name: Web (Typescript + React)
+name: Web (typescript + react)
 folder: NAME
 install: true
 variables:
