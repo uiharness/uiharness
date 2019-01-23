@@ -23,6 +23,7 @@ export const SCRIPTS = {
   start: 'uiharness-electron start',
   dist: 'uiharness-electron dist',
   clean: 'uiharness-electron clean',
+  open: 'uiharness-electron open',
 };
 
 export const PKG = {

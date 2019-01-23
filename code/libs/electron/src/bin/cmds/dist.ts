@@ -41,7 +41,9 @@ export async function dist(args: { settings: Settings }) {
   log.info.gray(`   • productName: ${log.yellow(config.productName)}`);
   log.info.gray(`   • version:     ${settings.package.version}`);
   log.info.gray(`   • appId:       ${config.appId}`);
-  log.info.gray(`   • path:        ${path}`);
+  log.info.gray(`   • folder:      ${path}`);
+  log.info();
+  log.info(`👉  Run ${log.cyan('yarn open')} to run it.`);
   log.info();
 
   // Finish up.
