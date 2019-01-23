@@ -1,5 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![img](https://user-images.githubusercontent.com/185555/51580252-bf4a9600-1f28-11e9-8a34-15f30238a975.png)](https://uiharness.com)
+[![img](https://user-images.githubusercontent.com/185555/51593764-cc32ae00-1f57-11e9-9c49-e86c762be65f.png)](https://uiharness.com)
 
 
 
