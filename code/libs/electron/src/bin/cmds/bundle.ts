@@ -23,7 +23,6 @@ export async function bundle(args: { settings: Settings; isProd?: boolean }) {
 
   // Log results.
   const formatPath = (path: string) => logging.formatPath(path, true);
-
   const rendererDir = isProd ? RENDERER.OUT_DIR.PROD : RENDERER.OUT_DIR.DEV;
 
   log.info();
