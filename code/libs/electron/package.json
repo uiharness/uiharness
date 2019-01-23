@@ -1,7 +1,7 @@
 {
   "name": "@uiharness/electron",
   "description": "UIHarness dev-tools for Electron (include in devDependencies).",
-  "version": "0.2.32",
+  "version": "0.2.33",
   "main": "./lib/index.js",
   "bin": {
     "uiharness-electron": "./lib/bin/entry.js"
@@ -22,8 +22,8 @@
     "@tdb/log": "1.1.20",
     "@tdb/typescript": "3.2.8",
     "@tdb/util": "1.9.26",
-    "@uiharness/core": "1.0.46",
-    "@uiharness/electron.ui": "0.0.18",
+    "@uiharness/core": "1.0.47",
+    "@uiharness/electron.ui": "0.0.19",
     "babel-core": "^7.0.0-bridge.0",
     "electron": "4.0.1",
     "electron-builder": "20.38.5",

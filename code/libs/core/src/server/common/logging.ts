@@ -42,7 +42,7 @@ export async function fileStatsTable(args: {
   sizes.reverse();
 
   const head = showHeader
-    ? ['File', 'Size'].map(label => log.gray(label))
+    ? ['file', 'size'].map(label => log.gray(label))
     : undefined;
   const table = log.table({ head });
   sizes.forEach(e => {
