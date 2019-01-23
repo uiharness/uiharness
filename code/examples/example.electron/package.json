@@ -13,7 +13,8 @@
     "bundle": "uiharness-electron bundle",
     "dist": "uiharness-electron dist",
     "clean": "uiharness-electron clean",
-    "open": "uiharness-electron open"
+    "open": "uiharness-electron open",
+    "stats": "uiharness-electron stats"
   },
   "dependencies": {
     "@uiharness/core": "^1.0.46",
