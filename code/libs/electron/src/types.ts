@@ -5,7 +5,7 @@ import {
 export { IUIHarnessEntry };
 
 /**
- * The `uiharness.yml` configuration file structure.
+ * The `uiharness.yml` configuration file.
  */
 export type IUIHarnessElectronConfig = {
   port?: number;
@@ -29,5 +29,17 @@ export type IUIHarnessElectronConfig = {
     files?: boolean;
     html?: boolean;
     deps?: boolean;
+  };
+};
+
+/**
+ * The `electron-builder.yml` configuration file.
+ */
+export type IElectronBuilderConfig = {
+  productName?: string;
+  appId?: string;
+  files?: string[];
+  directories?: {
+    output?: string;
   };
 };

@@ -1,6 +1,6 @@
 {
   "name": "example.electron",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Example usage of `@uiharness/electron`",
   "main": ".uiharness/.bundle/main/main.js",
   "scripts": {
