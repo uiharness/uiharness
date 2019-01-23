@@ -3,10 +3,7 @@
   "version": "0.0.0",
   "main": ".uiharness/.bundle/main/main.js",
   "scripts": {
-    "postinstall": "uiharness-electron init",
-    "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
-    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
-    "prepare": "yarn run lint && yarn run build"
+    "postinstall": "uiharness-electron init"
   },
   "devDependencies": {
     "@uiharness/electron": "__LATEST__"
