@@ -1,8 +1,0 @@
-node_modules
-.DS_Store
-.npmrc
-.env
-.cache
-.parcel
-.uiharness
-dist

@@ -1,4 +1,4 @@
-import { fs, fsPath, IUIHarnessEntry, template } from './libs';
+import { fs, fsPath, template } from './libs';
 
 /**
  * Utility helpers for working with NPM.
@@ -38,21 +38,5 @@ export function deleteFile(args: {} = {}): template.TemplateMiddleware {
     const path = fsPath.resolve(`.${req.path}`);
     await fs.remove(path);
     res.complete();
-  };
-}
-
-/**
- * Transforms the entry `index.html` file with data from the YAML configuration.
- */
-export function transformEntryHtml(args: {
-  entries: IUIHarnessEntry[];
-}): template.TemplateMiddleware {
-  return (req, res) => {
-    args.entries.forEach(e => {
-      res
-        .replaceText(/__TITLE__/g, e.title)
-        .replaceText(/__ENTRY_SCRIPT__/g, e.html.relative);
-    });
-    res.next();
   };
 }

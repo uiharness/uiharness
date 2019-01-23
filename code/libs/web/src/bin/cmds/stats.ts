@@ -1,14 +1,13 @@
 import {
+  constants,
   filesize,
   fs,
   fsPath,
   log,
   logInfo,
-  NpmPackage,
   R,
   Settings,
   value,
-  constants,
 } from '../common';
 
 /**
@@ -16,13 +15,12 @@ import {
  */
 export async function stats(args: {
   settings: Settings;
-  pkg: NpmPackage;
   moduleInfo?: boolean;
 }) {
-  const { settings, pkg } = args;
+  const { settings } = args;
   const moduleInfo = value.defaultValue(args.moduleInfo, true);
   if (moduleInfo) {
-    logInfo({ settings, pkg, port: false });
+    logInfo({ settings, port: false });
   }
 
   const dir = fsPath.resolve(constants.PATH.OUT_DIR);

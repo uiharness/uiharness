@@ -2,7 +2,7 @@ import { isDev, resolve } from '@uiharness/electron.ui';
 import { app, BrowserWindow } from 'electron';
 import { format } from 'url';
 
-const config = require('../../.uiharness/config.json');
+const config = require('../.uiharness/config.json');
 
 app.on('ready', async () => {
   const mainWindow = new BrowserWindow({
@@ -20,7 +20,7 @@ app.on('ready', async () => {
 
   const devPath = `http://localhost:${config.port}`;
   const prodPath = format({
-    pathname: resolve('src/renderer/.parcel/production/index.html'),
+    pathname: resolve('.uiharness/.bundle/renderer/production/index.html'),
     protocol: 'file:',
     slashes: true,
   });

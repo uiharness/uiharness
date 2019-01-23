@@ -2,7 +2,7 @@
 import * as yargs from 'yargs';
 
 import * as cmds from './cmds';
-import { npm, constants, log, Settings } from './common';
+import { constants, log, Settings } from './common';
 
 /**
  * Makes the script crash on unhandled rejections instead of silently
@@ -26,7 +26,6 @@ const CMD = {
 const CMDS = Object.keys(CMD).map(key => CMD[key]);
 
 const settings = Settings.create();
-const pkg = npm.pkg('.');
 
 /**
  * Cheat sheet.
@@ -59,7 +58,7 @@ const program = yargs
         }),
     e => {
       const { force, reset } = e;
-      cmds.init({ settings, pkg, force, reset });
+      cmds.init({ settings, force, reset });
     },
   )
 
@@ -70,7 +69,7 @@ const program = yargs
     [CMD.START, CMD.START_ST],
     'Start the development server.',
     e => e,
-    e => cmds.start({ settings, pkg }),
+    e => cmds.start({ settings }),
   )
 
   /**
@@ -80,7 +79,7 @@ const program = yargs
     [CMD.CLEAN, CMD.CLEAN_C],
     'Removes temporary generated files.',
     e => e,
-    e => cmds.clean({ settings, pkg }),
+    e => cmds.clean({}),
   )
 
   /**
@@ -90,7 +89,7 @@ const program = yargs
     [CMD.DIST],
     'Package the app into production distribution bundle.',
     e => e,
-    e => cmds.dist({ settings, pkg }),
+    e => cmds.dist({ settings }),
   )
 
   /**
@@ -100,7 +99,7 @@ const program = yargs
     [CMD.STATS],
     'Read size details about the distribution bundle.',
     e => e,
-    e => cmds.stats({ settings, pkg }),
+    e => cmds.stats({ settings }),
   )
 
   .help('h')

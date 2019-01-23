@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import { log, constants, yargs, Settings, npm } from './common';
 import * as cmds from './cmds';
+import { constants, log, Settings, yargs } from './common';
 
 /**
  * Makes the script crash on unhandled rejections instead of silently
@@ -16,13 +16,14 @@ const CMD = {
   INIT_I: 'i',
   START: 'start',
   START_ST: 'st',
+  CLEAN: 'clean',
+  CLEAN_C: 'c',
   DIST: 'dist',
   DIST_D: 'd',
 };
 const CMDS = Object.keys(CMD).map(key => CMD[key]);
 
-const settings = Settings.create();
-const pkg = npm.pkg('.');
+const settings = Settings.create('.');
 
 /**
  * Cheat sheet.
@@ -55,7 +56,7 @@ const program = yargs
         }),
     e => {
       const { force, reset } = e;
-      cmds.init({ settings, pkg, force, reset });
+      cmds.init({ settings, force, reset });
     },
   )
 
@@ -66,7 +67,17 @@ const program = yargs
     [CMD.START, CMD.START_ST],
     'Start the development server.',
     e => e,
-    e => cmds.start({ settings, pkg }),
+    e => cmds.start({ settings }),
+  )
+
+  /**
+   * `clean`
+   */
+  .command(
+    [CMD.CLEAN, CMD.CLEAN_C],
+    'Removes temporary generated files.',
+    e => e,
+    e => cmds.clean({}),
   )
 
   /**
@@ -76,7 +87,7 @@ const program = yargs
     [CMD.DIST, CMD.DIST_D],
     'Packages the application ready for distribution.',
     e => e,
-    e => cmds.dist({ settings, pkg }),
+    e => cmds.dist({ settings }),
   )
 
   .help('h')

@@ -1,15 +1,8 @@
-import {
-  IUIHarnessConfigEntry,
-  IUIHarnessEntry,
-} from '@uiharness/core/lib/types';
-export { IUIHarnessEntry };
-
 /**
- * The `uiharness.yml` configuration file structure.
+ * The `uiharness.yml` configuration file.
  */
 export type IUIHarnessElectronConfig = {
   port?: number;
-  entry?: string | string[] | IUIHarnessConfigEntry | IUIHarnessConfigEntry[];
 
   /**
    * Build args.
@@ -29,5 +22,17 @@ export type IUIHarnessElectronConfig = {
     files?: boolean;
     html?: boolean;
     deps?: boolean;
+  };
+};
+
+/**
+ * The `electron-builder.yml` configuration file.
+ */
+export type IElectronBuilderConfig = {
+  productName?: string;
+  appId?: string;
+  files?: string[];
+  directories?: {
+    output?: string;
   };
 };

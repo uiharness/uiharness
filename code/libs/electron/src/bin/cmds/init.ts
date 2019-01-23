@@ -1,18 +1,17 @@
 import { fs, fsPath, log, tmpl, Settings, constants, npm } from '../common';
-
-const TEMPLATE_DIR = './node_modules/@uiharness/electron/tmpl';
-const { SCRIPTS } = constants;
+import { clean } from './clean';
+const { SCRIPTS, PATH } = constants;
 
 /**
  * Initialize the module.
  */
 export async function init(args: {
   settings: Settings;
-  pkg: npm.NpmPackage;
   force?: boolean;
   reset?: boolean;
 }) {
-  const { settings, pkg, force = false } = args;
+  const { settings, force = false } = args;
+  const pkg = settings.package;
   if (args.reset) {
     return reset({ pkg });
   }
@@ -33,10 +32,8 @@ export async function init(args: {
   }
 
   if (flags.files) {
-    const entries = settings.entries;
     await tmpl
-      .create(TEMPLATE_DIR)
-      .use(tmpl.transformEntryHtml({ entries }))
+      .create(PATH.TEMPLATES)
       .use(tmpl.copyFile({ force }))
       .execute();
   }
@@ -53,15 +50,11 @@ async function reset(args: { pkg: npm.NpmPackage }) {
   pkg.removeFields('scripts', SCRIPTS, { exclude: 'postinstall' }).save();
 
   await tmpl
-    .create(TEMPLATE_DIR)
+    .create(PATH.TEMPLATES)
     .use(tmpl.deleteFile())
     .execute();
 
-  fs.removeSync(fsPath.resolve('./.cache'));
-  fs.removeSync(fsPath.resolve('./dist'));
-  fs.removeSync(fsPath.resolve('./.uiharness'));
-  fs.removeSync(fsPath.resolve('./src/main/.parcel'));
-  fs.removeSync(fsPath.resolve('./src/renderer/.parcel'));
+  await clean({});
 
   // Log results.
   log.info('');

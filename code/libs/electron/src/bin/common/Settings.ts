@@ -1,17 +1,7 @@
-import { IUIHarnessElectronConfig, IUIHarnessEntry } from '../../types';
-import {
-  config,
-  fs,
-  fsPath,
-  jsYaml,
-  log,
-  npm,
-  NpmPackage,
-  value,
-} from './libs';
+import { IUIHarnessElectronConfig, IElectronBuilderConfig } from '../../types';
+import { fs, fsPath, jsYaml, log, NpmPackage, value, npm } from './libs';
 
 export { NpmPackage };
-
 const UIHARNESS_YAML = 'uiharness.yml';
 
 /**
@@ -53,7 +43,8 @@ export class Settings {
   public readonly dir: string;
   public readonly path: string;
   private readonly _data: IUIHarnessElectronConfig;
-  private readonly pkg: npm.NpmPackage;
+  private _package: NpmPackage | undefined;
+  private _builderConfig: IElectronBuilderConfig | undefined;
 
   /**
    * Constructor.
@@ -61,7 +52,6 @@ export class Settings {
   private constructor(path: string) {
     this.path = path;
     this.dir = fsPath.dirname(path);
-    this.pkg = npm.pkg('.');
     this._data = fs.existsSync(path) ? Settings.load(path) : {};
   }
 
@@ -73,26 +63,47 @@ export class Settings {
   }
 
   /**
-   * Retrieves the entry path(s).
+   * Retrieves the [package.json].
    */
-  public get entries(): IUIHarnessEntry[] {
-    const entry = this._data ? this._data.entry : undefined;
-    return config.toEntries({
-      entry,
-      defaultValue: '/src/uiharness.tsx',
-      dir: this.dir,
-      moduleName: this.pkg.name,
-    });
+  public get package(): NpmPackage {
+    return this._package || (this._package = npm.pkg(this.dir));
   }
 
   /**
    * Arguments to pass to the parcel-bundler.
    */
-  public get buildArgs() {
+  public get bundlerArgs() {
     const data = this._data.build || {};
     const sourcemaps = value.defaultValue(data.sourcemaps, true);
     const treeshake = value.defaultValue(data.treeshake, false);
     return { sourcemaps, treeshake };
+  }
+
+  /**
+   * The raw [electron-builder.yml] configuration data.
+   */
+  public get builderConfig() {
+    return (
+      this._builderConfig ||
+      (this._builderConfig = getBuildConfig(this.dir)) ||
+      {}
+    );
+  }
+
+  /**
+   * Extrapolated [electron-builder.yml] values.
+   */
+  public get builderArgs() {
+    const config = this.builderConfig;
+    const productName = config ? config.productName : undefined;
+    const appId = config ? config.appId : undefined;
+    const directories = config ? config.directories : undefined;
+    const outputDir = directories ? directories.output : undefined;
+    return {
+      productName,
+      appId,
+      outputDir,
+    };
   }
 
   /**
@@ -108,4 +119,17 @@ export class Settings {
       deps: value.defaultValue(init.deps, true),
     };
   }
+}
+
+/**
+ * INTERNAL
+ */
+export function getBuildConfig(
+  dir: string,
+  file: string = 'electron-builder.yml',
+): IElectronBuilderConfig | undefined {
+  const path = fsPath.resolve(fsPath.join(dir, file));
+  return fs.pathExistsSync(path)
+    ? jsYaml.safeLoad(fs.readFileSync(path, 'utf8'))
+    : undefined;
 }

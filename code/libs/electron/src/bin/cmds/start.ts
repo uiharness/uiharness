@@ -1,31 +1,21 @@
-import {
-  constants,
-  execa,
-  fsPath,
-  logInfo,
-  NpmPackage,
-  parcel,
-  Settings,
-} from '../common';
+import { constants, execa, fsPath, logInfo, parcel, Settings } from '../common';
 import { init } from './init';
 
 /**
  * Starts the development server.
  */
-export async function start(args: { settings: Settings; pkg: NpmPackage }) {
+export async function start(args: { settings: Settings }) {
   // Setup initial conditions.
-  const { settings, pkg } = args;
+  const { settings } = args;
   const port = settings.port;
-  const mainEntry = constants.PATH.MAIN_ENTRY;
+  const mainEntry = constants.PATH.MAIN.ENTRY;
 
   // Ensure the module is initialized.
-  await init({ settings, pkg });
-  logInfo({ settings, pkg, port: true, mainEntry });
+  await init({ settings });
+  logInfo({ settings, port: true, mainEntry });
 
   // Build the main JS.
   await parcel.buildMain(settings);
-  // const main = parcel.mainBundler(settings);
-  // await main.bundle();
 
   // Start the renderer JS builder.
   const renderer = parcel.rendererBundler(settings);

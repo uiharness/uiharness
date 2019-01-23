@@ -1,5 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![img](https://user-images.githubusercontent.com/185555/51516739-3a567280-1e7d-11e9-9c3d-10d539a07f8c.png)](https://uiharness.com)
+[![img](https://user-images.githubusercontent.com/185555/51580252-bf4a9600-1f28-11e9-8a34-15f30238a975.png)](https://uiharness.com)
 
 
 
@@ -61,3 +61,7 @@ yarn add    @uiharness/electron.ui  # Client tools (bundled with app as dependen
 Proudly sponsored by [Hypersheet](https://hypersheet.io):
 
 [![Hypersheet](https://user-images.githubusercontent.com/185555/51567641-944a4d00-1efc-11e9-8fab-8ad81862226c.png)](https://hypersheet.io)
+
+## See also
+- [github/create-tmpl](https://github.com/philcockfield/create-tmpl)
+
