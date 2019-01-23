@@ -5,5 +5,4 @@ import * as template from 'create-tmpl';
 
 export { fsPath, template };
 export { log } from '@tdb/log/lib/server';
-export { npm, NpmPackage, fs } from '@tdb/npm';
-export { jsYaml } from 'create-tmpl';
+export { npm, NpmPackage, fs, yaml, file } from '@tdb/npm';

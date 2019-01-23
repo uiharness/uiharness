@@ -1,5 +1,5 @@
 import { IUIHarnessElectronConfig, IElectronBuilderConfig } from '../../types';
-import { fs, fsPath, jsYaml, log, NpmPackage, value, npm } from './libs';
+import { fs, fsPath, file, log, NpmPackage, value, npm } from './libs';
 
 export { NpmPackage };
 const UIHARNESS_YAML = 'uiharness.yml';
@@ -26,9 +26,7 @@ export class Settings {
    */
   public static load(path: string) {
     try {
-      const text = fs.readFileSync(path, 'utf8');
-      const config = jsYaml.safeLoad(text) || {};
-      return config as IUIHarnessElectronConfig;
+      return file.loadAndParseSync<IUIHarnessElectronConfig>(path, {});
     } catch (error) {
       log.error('💥  ERROR UIHarness');
       log.info.yellow(`Failed to load '${UIHARNESS_YAML}' at path '${path}'.`);
@@ -83,11 +81,12 @@ export class Settings {
    * The raw [electron-builder.yml] configuration data.
    */
   public get builderConfig() {
-    return (
-      this._builderConfig ||
-      (this._builderConfig = getBuildConfig(this.dir)) ||
-      {}
-    );
+    const load = () => {
+      const dir = fsPath.resolve(this.dir);
+      const path = fsPath.join(dir, 'electron-builder.yml');
+      return file.loadAndParseSync<IElectronBuilderConfig>(path, {});
+    };
+    return this._builderConfig || (this._builderConfig = load());
   }
 
   /**
@@ -119,17 +118,4 @@ export class Settings {
       deps: value.defaultValue(init.deps, true),
     };
   }
-}
-
-/**
- * INTERNAL
- */
-export function getBuildConfig(
-  dir: string,
-  file: string = 'electron-builder.yml',
-): IElectronBuilderConfig | undefined {
-  const path = fsPath.resolve(fsPath.join(dir, file));
-  return fs.pathExistsSync(path)
-    ? jsYaml.safeLoad(fs.readFileSync(path, 'utf8'))
-    : undefined;
 }

@@ -761,16 +761,18 @@
     ramda "0.26.1"
     rxjs "6.3.3"
 
-"@tdb/npm@0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@tdb/npm/-/npm-0.0.2.tgz#e5a40e45a0bfb828a1380acf54fbba1e1150be5b"
-  integrity sha512-QmXxtZ5kvO0iaKFf7Qq79cv0ovGcZSEqxm76IeEUKgInu1se8lE9kabpW/DXd4WCCzYyC88dFGw5tJHVc9p3Yg==
+"@tdb/npm@0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@tdb/npm/-/npm-0.0.4.tgz#a3fde9a82a0626160038b67445460a575383ec59"
+  integrity sha512-/viaJFckV6b2nj06mEVn3VBJdMK8gu5VrDL/96xqk4sLbD6qVZwUQr3K4ma5iOzMwyK54Sp4368z0FTT99Ahlw==
   dependencies:
     "@tdb/util" "1.9.26"
     "@types/fs-extra" "^5.0.4"
+    "@types/js-yaml" "^3.12.0"
     "@types/semver" "^5.5.0"
     execa "^1.0.0"
     fs-extra "^7.0.1"
+    js-yaml "^3.12.1"
     semver "^5.6.0"
 
 "@tdb/typescript@3.2.8":
@@ -847,7 +849,7 @@
     "@types/rx" "*"
     "@types/through" "*"
 
-"@types/js-yaml@3.12.0":
+"@types/js-yaml@3.12.0", "@types/js-yaml@^3.12.0":
   version "3.12.0"
   resolved "https://registry.yarnpkg.com/@types/js-yaml/-/js-yaml-3.12.0.tgz#3494ce97358e2675e24e97a747ec23478eeaf8b6"
   integrity sha512-UGEe/6RsNAxgWdknhzFZbCxuYc5I7b/YEKlfKbo+76SM8CJzGs7XKCj7zyugXViRbKYpXhSXhCYVQZL5tmDbpQ==
@@ -1040,21 +1042,21 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.5.tgz#f4f85fe198e1e9cedc0bb53a8c2d30fb34299e50"
   integrity sha512-y51XRWWg1GiW4+mV2zmFQUqJT3bX7nuUaXW4j8a2dFvT9ZlaNLjb7ZxcUSDyklt/UBWrW2+31x+hQpRzxaTFzw==
 
-"@uiharness/core@1.0.42":
-  version "1.0.42"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.42.tgz#469e9c2d2e5637430c9f29c77ea6d2aa1f5eadc8"
-  integrity sha512-ssWXBirK+tT4pVdU81Vgq0ugHtCcvH0hlxkt7iSsQg0ZfU8NV79pxMcuExCNjX9hj3EP6ENxszkle5ck9wqU1w==
+"@uiharness/core@1.0.44":
+  version "1.0.44"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.44.tgz#8ef76102b1310ea6d2723c880586030e6858cf6d"
+  integrity sha512-+QTCdQOIhUpApiLaYCMMywFW20FYo6U4uJO1jMen3Cc0FXuMt7H+x/hMi6yhj7u3INuurYUjarTxS1bEApUFYg==
   dependencies:
     "@tdb/util" "1.9.26"
-    create-tmpl "0.0.27"
+    create-tmpl "0.0.28"
 
-"@uiharness/electron.ui@0.0.15":
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron.ui/-/electron.ui-0.0.15.tgz#c42cb402dae4257bee13873ff95f9facb4188e4a"
-  integrity sha512-pVFBLqOK1LyWEhb+lZHXC/BZWJT78iRmX9Jet0F0WHSk6mgtP99lu8pxIo40d+G3cZXNISKBP1FhJ/nLs7ibUg==
+"@uiharness/electron.ui@0.0.16":
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron.ui/-/electron.ui-0.0.16.tgz#7bac1a83aead0d16f9447aec1d4089351af714f3"
+  integrity sha512-os1PSeMqYV6N7S1iy2ZJpqu1DCtnHT5oQtZOnQ6776CJsT0bM7F4wHM8zY9ZBw84pp/H+CCp088uLSFZmIFPiA==
   dependencies:
     "@types/app-root-path" "1.2.4"
-    "@uiharness/core" "1.0.42"
+    "@uiharness/core" "1.0.44"
     app-root-path "2.1.0"
     electron-is-dev "1.0.1"
     electron-log "2.2.17"
@@ -2165,12 +2167,12 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-create-tmpl@0.0.27:
-  version "0.0.27"
-  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.0.27.tgz#b1b4aa97ca42a5d5fa9eba68070ea33b951850fb"
-  integrity sha512-8bZfi5iUIeERpfL5YR7btK5U4VEcc3I7tWT3c78FvHwKHtatWUmCo3D2IMl+Qz/ViD8DBIgHt+VhKLf1RdBSSQ==
+create-tmpl@0.0.28:
+  version "0.0.28"
+  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.0.28.tgz#0223c069ced6bf6dd6bdef4121fbd3cf414b9046"
+  integrity sha512-g5bgnw+j/pVb69/9qUpzY1iwwONfhj1qpj4zrDry/Y6gsY5db+5xwjPZNT/1odydBWZV0Go7FT2oJnKsmgb41w==
   dependencies:
-    "@tdb/npm" "0.0.2"
+    "@tdb/npm" "0.0.4"
     "@tdb/util" "1.9.26"
     "@types/inquirer" "0.0.43"
     "@types/js-yaml" "3.12.0"

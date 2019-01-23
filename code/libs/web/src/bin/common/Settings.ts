@@ -1,5 +1,5 @@
 import { IUIHarnessConfig } from '../../types';
-import { fs, fsPath, jsYaml, log, NpmPackage, value, npm } from './libs';
+import { fs, fsPath, file, log, NpmPackage, value, npm } from './libs';
 
 export { NpmPackage };
 const UIHARNESS_YAML = 'uiharness.yml';
@@ -26,9 +26,7 @@ export class Settings {
    */
   public static load(path: string) {
     try {
-      const text = fs.readFileSync(path, 'utf8');
-      const config = jsYaml.safeLoad(text) || {};
-      return config as IUIHarnessConfig;
+      return file.loadAndParseSync<IUIHarnessConfig>(path, {});
     } catch (error) {
       log.error('💥  ERROR UIHarness');
       log.info.yellow(`Failed to load '${UIHARNESS_YAML}' at path '${path}'.`);

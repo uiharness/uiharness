@@ -9,8 +9,8 @@ export {
   fs,
   fsPath,
   tmpl,
-  jsYaml,
   npm,
+  file,
   log,
   NpmPackage,
 } from '@uiharness/core/lib/server';

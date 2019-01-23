@@ -8,8 +8,8 @@ export {
   fsPath,
   log,
   tmpl,
-  jsYaml,
   npm,
+  file,
   NpmPackage,
 } from '@uiharness/core/lib/server';
 export * from '../../common';

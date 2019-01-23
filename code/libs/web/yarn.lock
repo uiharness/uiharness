@@ -722,16 +722,18 @@
     ramda "0.26.1"
     rxjs "6.3.3"
 
-"@tdb/npm@0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@tdb/npm/-/npm-0.0.2.tgz#e5a40e45a0bfb828a1380acf54fbba1e1150be5b"
-  integrity sha512-QmXxtZ5kvO0iaKFf7Qq79cv0ovGcZSEqxm76IeEUKgInu1se8lE9kabpW/DXd4WCCzYyC88dFGw5tJHVc9p3Yg==
+"@tdb/npm@0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@tdb/npm/-/npm-0.0.4.tgz#a3fde9a82a0626160038b67445460a575383ec59"
+  integrity sha512-/viaJFckV6b2nj06mEVn3VBJdMK8gu5VrDL/96xqk4sLbD6qVZwUQr3K4ma5iOzMwyK54Sp4368z0FTT99Ahlw==
   dependencies:
     "@tdb/util" "1.9.26"
     "@types/fs-extra" "^5.0.4"
+    "@types/js-yaml" "^3.12.0"
     "@types/semver" "^5.5.0"
     execa "^1.0.0"
     fs-extra "^7.0.1"
+    js-yaml "^3.12.1"
     semver "^5.6.0"
 
 "@tdb/test@1.2.13":
@@ -813,7 +815,7 @@
     "@types/rx" "*"
     "@types/through" "*"
 
-"@types/js-yaml@3.12.0":
+"@types/js-yaml@3.12.0", "@types/js-yaml@^3.12.0":
   version "3.12.0"
   resolved "https://registry.yarnpkg.com/@types/js-yaml/-/js-yaml-3.12.0.tgz#3494ce97358e2675e24e97a747ec23478eeaf8b6"
   integrity sha512-UGEe/6RsNAxgWdknhzFZbCxuYc5I7b/YEKlfKbo+76SM8CJzGs7XKCj7zyugXViRbKYpXhSXhCYVQZL5tmDbpQ==
@@ -1023,20 +1025,20 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.6.tgz#579f95b303d135f0c16928acfbb3550c8a78d4c2"
   integrity sha512-lppGO3m316B4dY4AcbOVOjyOy3EH1M/Y4gMYNvJxricIJ9B72i5ntGJ8s5DJiSiW4t6J2yEByrGOGDEbBBLlVw==
 
-"@uiharness/core@1.0.42":
-  version "1.0.42"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.42.tgz#469e9c2d2e5637430c9f29c77ea6d2aa1f5eadc8"
-  integrity sha512-ssWXBirK+tT4pVdU81Vgq0ugHtCcvH0hlxkt7iSsQg0ZfU8NV79pxMcuExCNjX9hj3EP6ENxszkle5ck9wqU1w==
+"@uiharness/core@1.0.44":
+  version "1.0.44"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.44.tgz#8ef76102b1310ea6d2723c880586030e6858cf6d"
+  integrity sha512-+QTCdQOIhUpApiLaYCMMywFW20FYo6U4uJO1jMen3Cc0FXuMt7H+x/hMi6yhj7u3INuurYUjarTxS1bEApUFYg==
   dependencies:
     "@tdb/util" "1.9.26"
-    create-tmpl "0.0.27"
+    create-tmpl "0.0.28"
 
-"@uiharness/web.ui@0.0.9":
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/@uiharness/web.ui/-/web.ui-0.0.9.tgz#e1ab4da68ba1e99983dae76068b53e074a6a8d5b"
-  integrity sha512-uKIV4nOspFnG5dMlcR6MjSdBPGfq9q8JrKUlBop+x8MtcJWrnIiOjLnB3gwzUOpVTLIyWGmmrRrEMDJS8b6I4Q==
+"@uiharness/web.ui@0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@uiharness/web.ui/-/web.ui-0.0.10.tgz#c685be5cf3295b40b65179b8d1fb9c52aa9c29b5"
+  integrity sha512-dt+KZZIFkpt6YXadkY1Yha3CjpwJbtPIaJ+H9hGtzUijC9nVT+7bHNL1AWwrlYIZkJbbcDX7lt8mmq0SePAttg==
   dependencies:
-    "@uiharness/core" "1.0.42"
+    "@uiharness/core" "1.0.44"
 
 "@zeit/schemas@2.6.0":
   version "2.6.0"
@@ -2010,12 +2012,12 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-create-tmpl@0.0.27:
-  version "0.0.27"
-  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.0.27.tgz#b1b4aa97ca42a5d5fa9eba68070ea33b951850fb"
-  integrity sha512-8bZfi5iUIeERpfL5YR7btK5U4VEcc3I7tWT3c78FvHwKHtatWUmCo3D2IMl+Qz/ViD8DBIgHt+VhKLf1RdBSSQ==
+create-tmpl@0.0.28:
+  version "0.0.28"
+  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.0.28.tgz#0223c069ced6bf6dd6bdef4121fbd3cf414b9046"
+  integrity sha512-g5bgnw+j/pVb69/9qUpzY1iwwONfhj1qpj4zrDry/Y6gsY5db+5xwjPZNT/1odydBWZV0Go7FT2oJnKsmgb41w==
   dependencies:
-    "@tdb/npm" "0.0.2"
+    "@tdb/npm" "0.0.4"
     "@tdb/util" "1.9.26"
     "@types/inquirer" "0.0.43"
     "@types/js-yaml" "3.12.0"
@@ -3573,7 +3575,7 @@ js-tokens@^3.0.2:
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
   integrity sha1-mGbfOVECEw449/mWvOtlRDIJwls=
 
-js-yaml@3.12.1, js-yaml@^3.10.0, js-yaml@^3.12.0, js-yaml@^3.7.0, js-yaml@^3.9.0:
+js-yaml@3.12.1, js-yaml@^3.10.0, js-yaml@^3.12.0, js-yaml@^3.12.1, js-yaml@^3.7.0, js-yaml@^3.9.0:
   version "3.12.1"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.12.1.tgz#295c8632a18a23e054cf5c9d3cecafe678167600"
   integrity sha512-um46hB9wNOKlwkHgiuyEVAybXBjwFUV0Z/RaHJblRd9DXltue9FTYvzCr9ErQrK9Adz5MU4gHWVaNUfdmrC8qA==
