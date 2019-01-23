@@ -1,10 +1,11 @@
-import { log, fs, fsPath, Settings, exec } from '../common';
+import { log, fs, fsPath, Settings, exec, formatDisplayPath } from '../common';
 
 /**
  * Opens a built application.
  */
 export async function open(args: { settings: Settings }) {
   const { settings } = args;
+  const ROOT = fsPath.resolve('.');
 
   // console.log('settings.buildArgs', settings.buildArgs);
   const config = settings.builderArgs;
@@ -25,10 +26,10 @@ export async function open(args: { settings: Settings }) {
   // Ensure the app has been built.
   if (!(await fs.pathExists(path))) {
     log.info();
-    log.warn(
-      `😩  An app named '${productName}' for [${platform}] does not exist.`,
-    );
-    log.info(`   Run ${log.cyan('yarn dist')} to build it.`);
+    log.warn(`😩  An app named ${log.magenta(productName)} does not exist.`);
+    log.info(`   ${formatDisplayPath(path, ROOT)}`);
+    log.info();
+    log.info(`👉  Run ${log.cyan('yarn dist')} to build it.`);
     log.info();
     return;
   }
