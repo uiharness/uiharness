@@ -1070,10 +1070,10 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.5.tgz#f4f85fe198e1e9cedc0bb53a8c2d30fb34299e50"
   integrity sha512-y51XRWWg1GiW4+mV2zmFQUqJT3bX7nuUaXW4j8a2dFvT9ZlaNLjb7ZxcUSDyklt/UBWrW2+31x+hQpRzxaTFzw==
 
-"@uiharness/core@1.0.39":
-  version "1.0.39"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.39.tgz#6be88b5603b5a45820d839e0da6a25d25155ce0b"
-  integrity sha512-BINsx6d3vkFW8P75G5h+Q/Ym779zU5mmHuK4Tdzj293srQc+2kAholeNrHW5tH7TgE0GFNtsGhFGOF9q0/BX6A==
+"@uiharness/core@1.0.40":
+  version "1.0.40"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.40.tgz#81926f196a649c2a0ed69727eecd9a76832a5952"
+  integrity sha512-E+N+zgfD/vUTIirTEYUOiB9ZX5ZIgVRrqGed+aULKu9I+ToVyQ8OwjA21aPngytAnLVU82j8o4QNqYylTSsN0Q==
   dependencies:
     "@tdb/util" "1.9.26"
     "@types/fs-extra" "5.0.4"
@@ -1082,13 +1082,13 @@
     fs-extra "7.0.1"
     js-yaml "3.12.1"
 
-"@uiharness/electron.ui@0.0.12":
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron.ui/-/electron.ui-0.0.12.tgz#10a43bb6f4b600c7a764ebc9146f770b6a57d7ad"
-  integrity sha512-CZJdAlREU3kdCD1jx7JOnUubbkQv5/F7XB4Tk8GBJKRjp4/op4TiF1xceunOcRAQJJqGlgVhBAx2kObcCCRjqQ==
+"@uiharness/electron.ui@0.0.13":
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron.ui/-/electron.ui-0.0.13.tgz#d2471d5aab8005817d6ea84a6687ad070b4c7d32"
+  integrity sha512-tiF7Bkwh1xAEn7ylmoeLdFyx3OyCAUop8F0CIC3hvAduXamReSIPVb9VYa619NU1taNVYeJbnN5npducLNK5cw==
   dependencies:
     "@types/app-root-path" "1.2.4"
-    "@uiharness/core" "1.0.39"
+    "@uiharness/core" "1.0.40"
     app-root-path "2.1.0"
     electron-is-dev "1.0.1"
     electron-log "2.2.17"
