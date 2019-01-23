@@ -22,17 +22,21 @@ export async function open(args: { settings: Settings }) {
   let path = fsPath.join(outputDir, platform, `${productName}.app`);
   path = `./${path.replace(/^\\/, '')}`;
   path = fsPath.resolve(path);
+  const displayPath = formatDisplayPath(path, ROOT);
 
   // Ensure the app has been built.
   if (!(await fs.pathExists(path))) {
     log.info();
     log.warn(`😩  An app named ${log.magenta(productName)} does not exist.`);
-    log.info(`   ${formatDisplayPath(path, ROOT)}`);
+    log.info(`   ${displayPath}`);
     log.info();
     log.info(`👉  Run ${log.cyan('yarn dist')} to build it.`);
     log.info();
     return;
   }
+
+  log.info(`🖐  Opening`);
+  log.info(`   ${displayPath}\n`);
 
   // Run the command.
   const cmd = `open "${path}"`;
