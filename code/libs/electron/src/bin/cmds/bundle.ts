@@ -1,7 +1,6 @@
 import { constants, log, logging, parcel, Settings } from '../common';
 import { init } from './init';
-
-// const formatPath = logging.formatPath;
+import { stats } from './stats';
 
 /**
  * Runs the JS bundler.
@@ -32,6 +31,9 @@ export async function bundle(args: { settings: Settings; isProd?: boolean }) {
   log.info.gray(`   • main entry:  ${formatPath(MAIN.ENTRY)}`);
   log.info.gray(`   • output:      ${formatPath(MAIN.OUT_DIR)}`);
   log.info.gray(`                  ${formatPath(rendererDir)}`);
+
+  log.info();
+  await stats({ settings, isProd, moduleInfo: false });
 
   // Finish up.
   log.info();

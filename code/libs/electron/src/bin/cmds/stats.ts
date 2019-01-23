@@ -15,16 +15,23 @@ import {
 export async function stats(args: {
   settings: Settings;
   moduleInfo?: boolean;
+  isProd?: boolean;
 }) {
-  const { settings } = args;
+  const { settings, isProd } = args;
   const moduleInfo = value.defaultValue(args.moduleInfo, true);
   if (moduleInfo) {
     logInfo({ settings, port: false });
   }
 
   await logDir(constants.PATH.MAIN.OUT_DIR);
-  await logDir(constants.PATH.RENDERER.OUT_DIR.DEV);
-  await logDir(constants.PATH.RENDERER.OUT_DIR.PROD);
+
+  if (isProd) {
+    await logDir(constants.PATH.RENDERER.OUT_DIR.DEV);
+  }
+
+  if (!isProd) {
+    await logDir(constants.PATH.RENDERER.OUT_DIR.PROD);
+  }
 
   log.info();
 }
@@ -41,7 +48,7 @@ async function logDir(dir: string) {
 
   const res = await logging.fileStatsTable({ dir });
 
-  log.info(logging.formatPath(dir, true));
+  log.info('', logging.formatPath(dir, true));
   res.table.log();
   log.info();
 }

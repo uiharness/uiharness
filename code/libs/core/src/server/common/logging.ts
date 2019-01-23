@@ -15,7 +15,11 @@ export function formatPath(path: string, rootDir?: string | boolean) {
 /**
  * Logs file stats for the given directory
  */
-export async function fileStatsTable(args: { dir: string }) {
+export async function fileStatsTable(args: {
+  dir: string;
+  showHeader?: boolean;
+}) {
+  const { showHeader = false } = args;
   const dir = fsPath.resolve(args.dir);
 
   const getPaths = (dir: string) => {
@@ -37,7 +41,9 @@ export async function fileStatsTable(args: { dir: string }) {
   sizes = R.sortBy(R.prop('bytes'), sizes);
   sizes.reverse();
 
-  const head = ['File', 'Size'].map(label => log.gray(label));
+  const head = showHeader
+    ? ['File', 'Size'].map(label => log.gray(label))
+    : undefined;
   const table = log.table({ head });
   sizes.forEach(e => {
     let file = fsPath.basename(e.path);
