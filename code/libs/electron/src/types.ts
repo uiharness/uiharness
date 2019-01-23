@@ -1,15 +1,8 @@
-import {
-  IUIHarnessConfigEntry,
-  IUIHarnessEntry,
-} from '@uiharness/core/lib/types';
-export { IUIHarnessEntry };
-
 /**
  * The `uiharness.yml` configuration file.
  */
 export type IUIHarnessElectronConfig = {
   port?: number;
-  entry?: string | string[] | IUIHarnessConfigEntry | IUIHarnessConfigEntry[];
 
   /**
    * Build args.

@@ -1,33 +1,4 @@
-import { fsPath, fs } from '../common';
-import { IUIHarnessConfigEntry, IUIHarnessEntry } from '../../types';
-
-export type EntryArg =
-  | undefined
-  | string
-  | string[]
-  | IUIHarnessConfigEntry
-  | IUIHarnessConfigEntry[];
-
-/**
- * Formats an `entry` value in a YAML config.
- */
-export function toEntries(args: {
-  entry: EntryArg;
-  defaultValue: string;
-  dir: string;
-  moduleName?: string;
-}) {
-  const value = args.entry || args.defaultValue;
-  // const value =
-  //   this._data && this._data.entry ? this._data.entry : '/src/uiharness.tsx';
-  const paths = Array.isArray(value) ? value : [value];
-  return paths
-    .map(e => (typeof e === 'object' ? e : { path: e }) as IUIHarnessEntry)
-    .map(e => ({ ...e, path: resolvePath(e.path) }))
-    .map(e => ({ ...e, html: asHtmlPath(e.path, args.dir) }))
-    .map(e => ({ ...e, exists: fs.existsSync(e.path) }))
-    .map(e => ({ ...e, title: e.title || args.moduleName || 'Unnamed' }));
-}
+import { fsPath } from '../common';
 
 export function resolvePath(path?: string) {
   return fsPath.resolve(`./${cleanPath(path)}`);

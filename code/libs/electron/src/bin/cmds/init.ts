@@ -32,10 +32,8 @@ export async function init(args: {
   }
 
   if (flags.files) {
-    const entries = settings.entries;
     await tmpl
       .create(PATH.TEMPLATES)
-      .use(tmpl.transformEntryHtml({ entries }))
       .use(tmpl.copyFile({ force }))
       .execute();
   }
