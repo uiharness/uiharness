@@ -61,3 +61,7 @@ yarn add    @uiharness/electron.ui  # Client tools (bundled with app as dependen
 Proudly sponsored by [Hypersheet](https://hypersheet.io):
 
 [![Hypersheet](https://user-images.githubusercontent.com/185555/51567641-944a4d00-1efc-11e9-8fab-8ad81862226c.png)](https://hypersheet.io)
+
+## See also
+- [github/create-tmpl](https://github.com/philcockfield/create-tmpl)
+
