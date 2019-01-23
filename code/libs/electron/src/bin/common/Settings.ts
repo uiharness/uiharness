@@ -80,7 +80,7 @@ export class Settings {
   /**
    * The raw [electron-builder.yml] configuration data.
    */
-  public get builderConfig() {
+  public get builderArgsJson() {
     const load = () => {
       const dir = fsPath.resolve(this.dir);
       const path = fsPath.join(dir, 'electron-builder.yml');
@@ -93,10 +93,11 @@ export class Settings {
    * Extrapolated [electron-builder.yml] values.
    */
   public get builderArgs() {
-    const config = this.builderConfig;
-    const productName = config ? config.productName : undefined;
-    const appId = config ? config.appId : undefined;
-    const directories = config ? config.directories : undefined;
+    const config = this.builderArgsJson;
+    if (!config) {
+      return {};
+    }
+    const { productName, appId, directories } = config;
     const outputDir = directories ? directories.output : undefined;
     return {
       productName,

@@ -13,4 +13,5 @@ export {
   file,
   log,
   NpmPackage,
+  exec,
 } from '@uiharness/core/lib/server';

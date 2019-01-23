@@ -20,6 +20,8 @@ const CMD = {
   CLEAN_C: 'c',
   DIST: 'dist',
   DIST_D: 'd',
+  OPEN: 'open',
+  OPEN_O: 'o',
 };
 const CMDS = Object.keys(CMD).map(key => CMD[key]);
 
@@ -81,13 +83,23 @@ const program = yargs
   )
 
   /**
-   * `bundle`
+   * `dist`
    */
   .command(
     [CMD.DIST, CMD.DIST_D],
     'Packages the application ready for distribution.',
     e => e,
     e => cmds.dist({ settings }),
+  )
+
+  /**
+   * `open`
+   */
+  .command(
+    [CMD.OPEN, CMD.OPEN_O],
+    'Opens a built application.',
+    e => e,
+    e => cmds.open({ settings }),
   )
 
   .help('h')
