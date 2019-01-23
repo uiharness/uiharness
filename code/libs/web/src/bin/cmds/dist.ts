@@ -10,7 +10,7 @@ export async function dist(args: { settings: Settings }) {
   const { settings } = args;
   process.env.NODE_ENV = 'production';
   init({ settings });
-  logInfo({ settings, port: false });
+  logInfo({ settings, port: true });
 
   // Prepare the bundler.
   const bundler = createParcelBundler(settings);

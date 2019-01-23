@@ -1,4 +1,4 @@
-import { IUIHarnessElectronConfig } from '../../types';
+import { IUIHarnessElectronConfig, IElectronBuilderConfig } from '../../types';
 import { fs, fsPath, jsYaml, log, NpmPackage, value, npm } from './libs';
 
 export { NpmPackage };
@@ -44,6 +44,7 @@ export class Settings {
   public readonly path: string;
   private readonly _data: IUIHarnessElectronConfig;
   private _package: NpmPackage | undefined;
+  private _builderConfig: IElectronBuilderConfig | undefined;
 
   /**
    * Constructor.
@@ -79,6 +80,33 @@ export class Settings {
   }
 
   /**
+   * The raw [electron-builder.yml] configuration data.
+   */
+  public get builderConfig() {
+    return (
+      this._builderConfig ||
+      (this._builderConfig = getBuildConfig(this.dir)) ||
+      {}
+    );
+  }
+
+  /**
+   * Extrapolated [electron-builder.yml] values.
+   */
+  public get builderArgs() {
+    const config = this.builderConfig;
+    const productName = config ? config.productName : undefined;
+    const appId = config ? config.appId : undefined;
+    const directories = config ? config.directories : undefined;
+    const outputDir = directories ? directories.output : undefined;
+    return {
+      productName,
+      appId,
+      outputDir,
+    };
+  }
+
+  /**
    * Flags used to determine what to inclue/exclude
    * within the `init` script.
    */
@@ -91,4 +119,17 @@ export class Settings {
       deps: value.defaultValue(init.deps, true),
     };
   }
+}
+
+/**
+ * INTERNAL
+ */
+export function getBuildConfig(
+  dir: string,
+  file: string = 'electron-builder.yml',
+): IElectronBuilderConfig | undefined {
+  const path = fsPath.resolve(fsPath.join(dir, file));
+  return fs.pathExistsSync(path)
+    ? jsYaml.safeLoad(fs.readFileSync(path, 'utf8'))
+    : undefined;
 }

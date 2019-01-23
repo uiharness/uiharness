@@ -40,11 +40,11 @@ export function logInfo(args: { settings: Settings; port?: boolean | number }) {
   const port = typeof args.port === 'number' ? args.port : settings.port;
 
   log.info();
-  log.info.gray(`package: ${log.magenta(pkg.name)}`);
-  log.info.gray(`version: ${pkg.version}`);
-  log.info.gray(`entry:   ${formatPath(PATH.ENTRY)}`);
+  log.info.gray(`package:     ${log.magenta(pkg.name)}`);
+  log.info.gray(`• version:   ${pkg.version}`);
+  log.info.gray(`• entry:     ${formatPath(PATH.ENTRY)}`);
   if (showPort) {
-    log.info.gray(`port:    ${log.yellow(port)}`);
+    log.info.gray(`• port:      ${log.yellow(port)}`);
   }
   log.info();
 }

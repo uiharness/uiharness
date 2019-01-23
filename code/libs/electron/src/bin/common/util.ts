@@ -18,11 +18,11 @@ export function logInfo(args: {
   const port = typeof args.port === 'number' ? args.port : settings.port;
 
   log.info();
-  log.info.gray(`package: ${log.magenta(pkg.name)}`);
-  log.info.gray(`version: ${pkg.version}`);
-  log.info.gray(`main:    ${formatPath(mainEntry || '')}`);
+  log.info.gray(`package:     ${log.magenta(pkg.name)}`);
+  log.info.gray(`• version:   ${pkg.version}`);
+  log.info.gray(`• main:      ${formatPath(mainEntry || '')}`);
   if (showPort) {
-    log.info.gray(`port:    ${log.yellow(port)}`);
+    log.info.gray(`• port:      ${log.yellow(port)}`);
   }
   log.info();
 }
