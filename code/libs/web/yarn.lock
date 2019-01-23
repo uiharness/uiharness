@@ -795,11 +795,6 @@
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.1.7.tgz#1b8e33b61a8c09cbe1f85133071baa0dbf9fa71a"
   integrity sha512-2Y8uPt0/jwjhQ6EiluT0XCri1Dbplr0ZxfFXUz+ye13gaqE8u5gL5ppao1JrUYr9cIip5S6MvQzBS7Kke7U9VA==
 
-"@types/filesize@4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@types/filesize/-/filesize-4.0.0.tgz#6022de4ff4440f3d271b2d882b3d3d94c3a0cf14"
-  integrity sha512-5DH3qTisPExFY/07Zu+6Pr6PdBw9BQEl0EKzmHz8qV8IBnWdUoaPbnOGZwjpe4vA2F66R7sxNOa0RWjGiJxMuw==
-
 "@types/fs-extra@5.0.4", "@types/fs-extra@^5.0.4":
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-5.0.4.tgz#b971134d162cc0497d221adde3dbb67502225599"
@@ -1025,20 +1020,21 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.6.tgz#579f95b303d135f0c16928acfbb3550c8a78d4c2"
   integrity sha512-lppGO3m316B4dY4AcbOVOjyOy3EH1M/Y4gMYNvJxricIJ9B72i5ntGJ8s5DJiSiW4t6J2yEByrGOGDEbBBLlVw==
 
-"@uiharness/core@1.0.45":
-  version "1.0.45"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.45.tgz#4574d43b6ce263278f2f67eb418c0ef7682b910e"
-  integrity sha512-sdToDu5BV5MPM5cMYNRxlA0K6nMNhNSNSdM0jY8c7n2AHihmFn28LOjpLAiPb+1GNozqq/BtwtkI/ym+XA/Yzw==
+"@uiharness/core@1.0.46":
+  version "1.0.46"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.46.tgz#257357b628a6be02a7529c20f522e31c8338871f"
+  integrity sha512-kfLwHJBdIdWKe9X4zzMPhlqYWtrM6SnKmQrEpPRJU2pEb3xtnnc49d5/pxSM7qDqJkVDpJkZJjVmqpxRlfKXvA==
   dependencies:
     "@tdb/util" "1.9.26"
     create-tmpl "0.0.28"
+    filesize "^4.0.0"
 
-"@uiharness/web.ui@0.0.11":
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/@uiharness/web.ui/-/web.ui-0.0.11.tgz#524bfaacbbe635934406d1a0b914cff215a2bd00"
-  integrity sha512-lKhXp305nqsOssAyq/nsVFFl1Ufe9HEx+/pMkmC2XZfSv97IfC7Ussivqc0LMVmwbIryyzS/tMYEZZwRuWU/Cw==
+"@uiharness/web.ui@0.0.12":
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/@uiharness/web.ui/-/web.ui-0.0.12.tgz#a19a13dbb681e54507ba75793875477c40b90bbf"
+  integrity sha512-yTM5/HXcBfLdvBTSQYmSMyppJ0PSJlyeL6dqhwTwjIjaXjR4FbZ1z97g3klLv37l2u/DUFpmxWAXQooNZxvj4A==
   dependencies:
-    "@uiharness/core" "1.0.45"
+    "@uiharness/core" "1.0.46"
 
 "@zeit/schemas@2.6.0":
   version "2.6.0"
@@ -2806,15 +2802,15 @@ figures@^2.0.0:
   dependencies:
     escape-string-regexp "^1.0.5"
 
-filesize@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/filesize/-/filesize-4.0.0.tgz#edd45b16247c815ac3bc7265c34cf3dab6b41234"
-  integrity sha512-IGrOTisl83FmbpiL5KCpfF7+6CRcmndNaWxwYWcnSqXtoNUhVO+1l8rKK4GVE7A8f4fEDkSocS9X6+eXHkEhGA==
-
 filesize@^3.6.0:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/filesize/-/filesize-3.6.1.tgz#090bb3ee01b6f801a8a8be99d31710b3422bb317"
   integrity sha512-7KjR1vv6qnicaPMi1iiTcI85CyYwRO/PSFCu6SvqL8jN2Wjt/NIYQTFtFs7fSDCYOstUkEWIQGFUg5YZQfjlcg==
+
+filesize@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/filesize/-/filesize-4.0.0.tgz#edd45b16247c815ac3bc7265c34cf3dab6b41234"
+  integrity sha512-IGrOTisl83FmbpiL5KCpfF7+6CRcmndNaWxwYWcnSqXtoNUhVO+1l8rKK4GVE7A8f4fEDkSocS9X6+eXHkEhGA==
 
 fill-range@^4.0.0:
   version "4.0.0"
