@@ -1,7 +1,6 @@
-import * as filesize from 'filesize';
 import * as ParcelBundler from 'parcel-bundler';
 
-export { filesize, ParcelBundler };
+export { ParcelBundler };
 export {
   config,
   fs,
@@ -11,5 +10,7 @@ export {
   npm,
   file,
   NpmPackage,
+  logging,
+  filesize,
 } from '@uiharness/core/lib/server';
 export * from '../../common';

@@ -16,7 +16,9 @@
     "clean": "uiharness clean",
     "serve": "serve -s .uiharness/dist"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@uiharness/core": "^1.0.45"
+  },
   "devDependencies": {
     "@uiharness/web": "^0.0.47"
   },

@@ -12,4 +12,6 @@ export {
   npm,
   NpmPackage,
   exec,
+  logging,
+  filesize,
 } from './common';

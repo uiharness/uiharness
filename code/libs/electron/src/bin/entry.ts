@@ -18,6 +18,9 @@ const CMD = {
   START_ST: 'st',
   CLEAN: 'clean',
   CLEAN_C: 'c',
+  BUNDLE: 'bundle',
+  BUNDLE_B: 'b',
+  STATS: 'stats',
   DIST: 'dist',
   DIST_D: 'd',
   OPEN: 'open',
@@ -80,6 +83,35 @@ const program = yargs
     'Removes temporary generated files.',
     e => e,
     e => cmds.clean({}),
+  )
+
+  /**
+   * `bundle`
+   */
+  .command(
+    [CMD.BUNDLE, CMD.BUNDLE_B],
+    'Prepare the javascript bundle.',
+    e =>
+      e.option('prod', {
+        alias: 'p',
+        describe: 'Bundle for production.',
+        boolean: true,
+        default: false,
+      }),
+    e => {
+      const { prod: isProd } = e;
+      cmds.bundle({ settings, isProd });
+    },
+  )
+
+  /**
+   * `stats`
+   */
+  .command(
+    [CMD.STATS],
+    'Read size details about the distribution bundle.',
+    e => e,
+    e => cmds.stats({ settings }),
   )
 
   /**

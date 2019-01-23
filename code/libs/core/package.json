@@ -15,11 +15,13 @@
   },
   "dependencies": {
     "@tdb/util": "1.9.26",
-    "create-tmpl": "0.0.28"
+    "create-tmpl": "0.0.28",
+    "filesize": "^4.0.0"
   },
   "devDependencies": {
     "@tdb/test": "1.2.13",
-    "@tdb/typescript": "3.2.8"
+    "@tdb/typescript": "3.2.8",
+    "@types/filesize": "^4.0.0"
   },
   "files": [
     "**/*"
