@@ -330,10 +330,10 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/core@1.0.41":
-  version "1.0.41"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.41.tgz#714ca91c90bdef14170991afce3f0a696815f2ab"
-  integrity sha512-zUPhlgDP2JC/vTIFYlq3rcdGgA+U3CPoTKIiwXeei+LXQdw0X1nEpjnrvBVOtOW0tGWmqm+gKlPYdZpN8FqgrA==
+"@uiharness/core@1.0.42":
+  version "1.0.42"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.42.tgz#469e9c2d2e5637430c9f29c77ea6d2aa1f5eadc8"
+  integrity sha512-ssWXBirK+tT4pVdU81Vgq0ugHtCcvH0hlxkt7iSsQg0ZfU8NV79pxMcuExCNjX9hj3EP6ENxszkle5ck9wqU1w==
   dependencies:
     "@tdb/util" "1.9.26"
     create-tmpl "0.0.27"
