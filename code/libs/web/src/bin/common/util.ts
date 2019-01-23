@@ -1,5 +1,5 @@
 import { constants, fsPath, log, ParcelBundler } from './libs';
-import { NpmPackage, Settings } from './Settings';
+import { Settings } from './Settings';
 
 const { PATH } = constants;
 
@@ -23,12 +23,9 @@ export function createParcelBundler(settings: Settings) {
 /**
  * Logs common information about the module.
  */
-export function logInfo(args: {
-  settings: Settings;
-  pkg: NpmPackage;
-  port?: boolean | number;
-}) {
-  const { settings, pkg } = args;
+export function logInfo(args: { settings: Settings; port?: boolean | number }) {
+  const { settings } = args;
+  const pkg = settings.package;
   const ROOT_DIR = fsPath.resolve('.');
 
   const formatPath = (path: string) => {

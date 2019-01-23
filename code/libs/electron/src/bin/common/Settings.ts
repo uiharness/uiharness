@@ -1,8 +1,7 @@
 import { IUIHarnessElectronConfig } from '../../types';
-import { fs, fsPath, jsYaml, log, NpmPackage, value } from './libs';
+import { fs, fsPath, jsYaml, log, NpmPackage, value, npm } from './libs';
 
 export { NpmPackage };
-
 const UIHARNESS_YAML = 'uiharness.yml';
 
 /**
@@ -44,6 +43,7 @@ export class Settings {
   public readonly dir: string;
   public readonly path: string;
   private readonly _data: IUIHarnessElectronConfig;
+  private _package: NpmPackage | undefined;
 
   /**
    * Constructor.
@@ -62,9 +62,16 @@ export class Settings {
   }
 
   /**
+   * Retrieves the [package.json].
+   */
+  public get package(): NpmPackage {
+    return this._package || (this._package = npm.pkg(this.dir));
+  }
+
+  /**
    * Arguments to pass to the parcel-bundler.
    */
-  public get buildArgs() {
+  public get bundlerArgs() {
     const data = this._data.build || {};
     const sourcemaps = value.defaultValue(data.sourcemaps, true);
     const treeshake = value.defaultValue(data.treeshake, false);

@@ -1,5 +1,5 @@
 import { IUIHarnessConfig } from '../../types';
-import { fs, fsPath, jsYaml, log, NpmPackage, value } from './libs';
+import { fs, fsPath, jsYaml, log, NpmPackage, value, npm } from './libs';
 
 export { NpmPackage };
 const UIHARNESS_YAML = 'uiharness.yml';
@@ -43,6 +43,7 @@ export class Settings {
   public readonly dir: string;
   public readonly path: string;
   private readonly _data: IUIHarnessConfig;
+  private _package: NpmPackage | undefined;
 
   /**
    * Constructor.
@@ -58,6 +59,13 @@ export class Settings {
    */
   public get port() {
     return this._data.port || 1234;
+  }
+
+  /**
+   * Retrieves the [package.json].
+   */
+  public get package(): NpmPackage {
+    return this._package || (this._package = npm.pkg(this.dir));
   }
 
   /**

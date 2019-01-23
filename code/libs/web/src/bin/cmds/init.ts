@@ -1,4 +1,4 @@
-import { constants, log, NpmPackage, Settings, tmpl } from '../common';
+import { constants, log, Settings, tmpl } from '../common';
 import { clean } from './clean';
 
 const { SCRIPTS, PATH } = constants;
@@ -8,20 +8,19 @@ const { SCRIPTS, PATH } = constants;
  */
 export async function init(args: {
   settings: Settings;
-  pkg: NpmPackage;
   force?: boolean;
   reset?: boolean;
 }) {
-  const { settings, pkg, force = false } = args;
+  const { settings, force = false } = args;
   const flags = settings.init;
 
   if (args.reset === true) {
     // Reset instead of initialize.
-    return reset({ pkg });
+    return reset({ settings });
   }
 
   if (flags.scripts) {
-    pkg.addFields('scripts', SCRIPTS).save();
+    settings.package.addFields('scripts', SCRIPTS).save();
   }
 
   if (flags.files) {
@@ -35,9 +34,11 @@ export async function init(args: {
 /**
  * Removes configuration files.
  */
-async function reset(args: { pkg: NpmPackage }) {
-  const { pkg } = args;
-  pkg.removeFields('scripts', SCRIPTS, { exclude: 'postinstall' }).save();
+async function reset(args: { settings: Settings }) {
+  const { settings } = args;
+  settings.package
+    .removeFields('scripts', SCRIPTS, { exclude: 'postinstall' })
+    .save();
 
   await tmpl
     .create(PATH.TEMPLATES)

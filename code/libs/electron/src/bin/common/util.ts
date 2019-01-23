@@ -1,16 +1,16 @@
-import { log, fsPath } from './libs';
-import { Settings, NpmPackage } from './Settings';
+import { fsPath, log } from './libs';
+import { Settings } from './Settings';
 
 /**
  * Logs common information about the module.
  */
 export function logInfo(args: {
   settings: Settings;
-  pkg: NpmPackage;
   port?: boolean | number;
   mainEntry?: string;
 }) {
-  const { settings, pkg, mainEntry } = args;
+  const { settings, mainEntry } = args;
+  const pkg = settings.package;
   const ROOT_DIR = fsPath.resolve('.');
   const formatPath = (path: string) => formatDisplayPath(path, ROOT_DIR);
 

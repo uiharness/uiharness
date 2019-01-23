@@ -7,11 +7,11 @@ const { SCRIPTS, PATH } = constants;
  */
 export async function init(args: {
   settings: Settings;
-  pkg: npm.NpmPackage;
   force?: boolean;
   reset?: boolean;
 }) {
-  const { settings, pkg, force = false } = args;
+  const { settings, force = false } = args;
+  const pkg = settings.package;
   if (args.reset) {
     return reset({ pkg });
   }
