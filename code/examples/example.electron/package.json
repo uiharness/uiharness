@@ -1,6 +1,6 @@
 {
   "name": "example.electron",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Example usage of `@uiharness/electron`",
   "main": ".uiharness/.bundle/main/main.js",
   "scripts": {
@@ -14,11 +14,11 @@
     "clean": "uiharness-electron clean"
   },
   "dependencies": {
-    "@uiharness/electron.ui": "0.0.13"
+    "@uiharness/electron.ui": "0.0.14"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
-    "@uiharness/electron": "0.2.21"
+    "@uiharness/electron": "0.2.22"
   },
   "resolutions": {
     "@types/react": "16.7.17"
