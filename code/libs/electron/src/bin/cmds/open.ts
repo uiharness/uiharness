@@ -35,6 +35,7 @@ export async function open(args: { settings: Settings }) {
     return;
   }
 
+  log.info();
   log.info(`🖐  Opening`);
   log.info(`   ${displayPath}\n`);
 
