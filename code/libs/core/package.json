@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/core",
-  "version": "1.0.50",
+  "version": "1.0.51",
   "description": "Core compentry and logic of the UIHarness.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
