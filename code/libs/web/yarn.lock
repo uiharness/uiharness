@@ -1034,27 +1034,27 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.6.tgz#579f95b303d135f0c16928acfbb3550c8a78d4c2"
   integrity sha512-lppGO3m316B4dY4AcbOVOjyOy3EH1M/Y4gMYNvJxricIJ9B72i5ntGJ8s5DJiSiW4t6J2yEByrGOGDEbBBLlVw==
 
-"@uiharness/core@1.0.58":
-  version "1.0.58"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.58.tgz#6b15a8ecd18bd151587fdc88f3b9dba7d5cdd025"
-  integrity sha512-P978k+EC48/fnGp8g9MSKzxJFQfrAGwevjjVuIsK9U93s4j3lMppTfwI84wgJWlUE5H0Oweev6JRuA7UIuu6DA==
+"@uiharness/core@1.0.59":
+  version "1.0.59"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.59.tgz#a6b2cc8dc8509bd88efea91f5c78bb3a1424fe44"
+  integrity sha512-M1pAFXXNJ0z5oMw6bo5mkYziHZOU6Mn588X8/y9Llm15DP67YmBGzCgBtqwqNxcEZ8WsSXej9t5dP0jLBN+QjQ==
   dependencies:
     "@tdb/util" "1.9.26"
-    "@uiharness/types" "0.0.2"
+    "@uiharness/types" "0.0.3"
     create-tmpl "0.0.33"
     filesize "4.0.0"
 
-"@uiharness/types@0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.2.tgz#4444b6e7e64cc33acf900e66ea466fd172c401ac"
-  integrity sha512-00Wee9RJPUzPXUzF45MFYN4WYxV3Ck994Vy50sTfgRps5AsIIrNm/WSRojrTcVXtL2OZ58pBtwSu+MBkkJICjQ==
+"@uiharness/types@0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.3.tgz#0910795f21bd0c613ecab701aac135a5ea473625"
+  integrity sha512-N/E2dmMu5+zRb14ZoU3eXNhUW5GaxW9A5StIRMXhyXdF65uhbfd/+N4UK/cjXl5J8OhVwKXk+0YK2Ttg3ueI5Q==
 
-"@uiharness/web.ui@0.0.24":
-  version "0.0.24"
-  resolved "https://registry.yarnpkg.com/@uiharness/web.ui/-/web.ui-0.0.24.tgz#4630b691622b85bf87e18c41faefa24bd64e2221"
-  integrity sha512-Vb4+kRHeAFmWbIhOqmK+jbj3SwUHq8EceT3FfcMcVfcGWLttKlK3byXn9LvIRChIBgoVtkOI23Tp4RZadk8qpw==
+"@uiharness/web.ui@0.0.25":
+  version "0.0.25"
+  resolved "https://registry.yarnpkg.com/@uiharness/web.ui/-/web.ui-0.0.25.tgz#20736e0960e3ac2237778e968685882f1a85a58f"
+  integrity sha512-FxfAKY8+2Jr7Yn07s7ZK6MKWC7glZHoIwmMW0T7Aj0s6kJBrLJQ4fK72HUm+oh/kv2h4ruCpBiYK2Yi4d/bWKg==
   dependencies:
-    "@uiharness/core" "1.0.58"
+    "@uiharness/core" "1.0.59"
 
 "@zeit/schemas@2.6.0":
   version "2.6.0"
