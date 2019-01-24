@@ -8,31 +8,7 @@ files:
 directories:
   output: .uiharness/dist
 
-mac:
-  target:
-    - zip
-    - dmg
-  artifactName: '${productName}-mac.${ext}'
-  icon: static/build/app.icns
-
-win:
-  target:
-    - zip
-  artifactName: '${productName}-win.${ext}'
-  icon: static/build/app.ico
-
-linux:
-  target:
-    - zip
-  category: Development
-  artifactName: '${productName}-linux.${ext}'
-
-dmg:
-  title: ${productName} (${version})
-  background: static/build/background.png
-  window:
-    width: 540
-    height: 358
+#--------------------------------------------------------------
 
 publish:
   provider: github
@@ -41,3 +17,35 @@ publish:
   vPrefixedTagName: true
   releaseType: draft
   publishAutoUpdate: true
+
+#--------------------------------------------------------------
+
+mac:
+  target:
+    - zip
+    - dmg
+  artifactName: '${productName}-mac.${ext}'
+  icon: static/build/app.icns
+
+dmg:
+  title: ${productName} (${version})
+  background: static/build/background.png
+  window:
+    width: 540
+    height: 358
+
+#--------------------------------------------------------------
+
+win:
+  target:
+    - zip
+  artifactName: '${productName}-win.${ext}'
+  icon: static/build/app.ico
+
+#--------------------------------------------------------------
+
+linux:
+  target:
+    - zip
+  category: Development
+  artifactName: '${productName}-linux.${ext}'
