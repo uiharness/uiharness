@@ -1,4 +1,5 @@
 import * as tmpl from './tmpl';
+import * as logging from './logging';
 
-export { tmpl };
+export { tmpl, logging };
 export * from './libs';

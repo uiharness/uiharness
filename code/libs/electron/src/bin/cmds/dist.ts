@@ -1,12 +1,11 @@
 import {
   constants,
   electron,
-  fsPath,
   log,
+  logging,
   logInfo,
   parcel,
   Settings,
-  formatDisplayPath,
 } from '../common';
 import { init } from './init';
 
@@ -17,7 +16,6 @@ const { PATH } = constants;
  */
 export async function dist(args: { settings: Settings }) {
   const { settings } = args;
-  const ROOT_DIR = fsPath.resolve('.');
   process.env.NODE_ENV = 'production';
 
   // Ensure the module is initialized.
@@ -33,7 +31,7 @@ export async function dist(args: { settings: Settings }) {
   const config = settings.builderArgs;
   const path =
     config && config.outputDir
-      ? formatDisplayPath(config.outputDir, ROOT_DIR)
+      ? logging.formatPath(config.outputDir, true)
       : 'UNKNOWN';
 
   log.info();

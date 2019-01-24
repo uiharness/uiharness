@@ -1,11 +1,10 @@
-import { log, fs, fsPath, Settings, exec, formatDisplayPath } from '../common';
+import { log, fs, fsPath, Settings, exec, logging } from '../common';
 
 /**
  * Opens a built application.
  */
 export async function open(args: { settings: Settings }) {
   const { settings } = args;
-  const ROOT = fsPath.resolve('.');
 
   // console.log('settings.buildArgs', settings.buildArgs);
   const config = settings.builderArgs;
@@ -22,7 +21,7 @@ export async function open(args: { settings: Settings }) {
   let path = fsPath.join(outputDir, platform, `${productName}.app`);
   path = `./${path.replace(/^\\/, '')}`;
   path = fsPath.resolve(path);
-  const displayPath = formatDisplayPath(path, ROOT);
+  const displayPath = logging.formatPath(path, true);
 
   // Ensure the app has been built.
   if (!(await fs.pathExists(path))) {

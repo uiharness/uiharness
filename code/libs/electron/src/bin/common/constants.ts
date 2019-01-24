@@ -1,29 +1,37 @@
 export * from '../../common/constants';
 
+const DIR = './.uiharness';
+const BUNDLE_DIR = `${DIR}/.bundle`;
+
 export const PATH = {
+  BUNDLE_DIR,
+  CACHE_DIR: `${DIR}/.cache`,
+  TEMPLATES: './node_modules/@uiharness/electron/tmpl',
   MAIN: {
     ENTRY: './src/main.ts',
-    OUT_DIR: './.uiharness/.bundle/main',
+    OUT_DIR: `${BUNDLE_DIR}/main`,
   },
   RENDERER: {
     ENTRY: './src/index.html',
-    OUT_DIR: './.uiharness/.bundle/renderer/development',
-    OUT_DIR_PROD: './.uiharness/.bundle/renderer/production',
+    OUT_DIR: {
+      DEV: `${BUNDLE_DIR}/renderer/development`,
+      PROD: `${BUNDLE_DIR}/renderer/production`,
+    },
   },
-  CACHE_DIR: './.uiharness/.cache',
   CONFIG: {
-    DIR: './.uiharness',
+    DIR,
     FILE: 'config.json',
   },
-  TEMPLATES: './node_modules/@uiharness/electron/tmpl',
 };
 
 export const SCRIPTS = {
   postinstall: 'uiharness-electron init',
   start: 'uiharness-electron start',
+  bundle: 'uiharness-electron bundle',
   dist: 'uiharness-electron dist',
-  clean: 'uiharness-electron clean',
   open: 'uiharness-electron open',
+  stats: 'uiharness-electron stats',
+  clean: 'uiharness-electron clean',
 };
 
 export const PKG = {

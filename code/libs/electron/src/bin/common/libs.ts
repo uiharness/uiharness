@@ -12,6 +12,7 @@ export {
   npm,
   file,
   log,
+  logging,
   NpmPackage,
   exec,
 } from '@uiharness/core/lib/server';

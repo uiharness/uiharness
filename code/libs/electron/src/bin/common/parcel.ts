@@ -32,7 +32,7 @@ export function rendererBundler(
 ) {
   const { isProd = false } = options;
   const RENDERER = PATH.RENDERER;
-  const outDir = isProd ? RENDERER.OUT_DIR_PROD : RENDERER.OUT_DIR;
+  const outDir = isProd ? RENDERER.OUT_DIR.PROD : RENDERER.OUT_DIR.DEV;
   const entry = RENDERER.ENTRY;
   return createBundler(entry, settings, {
     outDir,

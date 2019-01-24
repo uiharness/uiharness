@@ -1066,7 +1066,7 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/core@1.0.45":
+"@uiharness/core@1.0.45", "@uiharness/core@^1.0.45":
   version "1.0.45"
   resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.45.tgz#4574d43b6ce263278f2f67eb418c0ef7682b910e"
   integrity sha512-sdToDu5BV5MPM5cMYNRxlA0K6nMNhNSNSdM0jY8c7n2AHihmFn28LOjpLAiPb+1GNozqq/BtwtkI/ym+XA/Yzw==
@@ -1085,10 +1085,10 @@
     electron-is-dev "1.0.1"
     electron-log "2.2.17"
 
-"@uiharness/electron@0.2.25":
-  version "0.2.25"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.2.25.tgz#3fed143c0fe3ae412baeede5ca39cc8b5274b0dc"
-  integrity sha512-ABe7m2XoXilgVgut4fLkN040CLy2oHpcso2GcEMmOTwQK1hO4/vSrdQ+hlKSgspBqAMfxFoIlAufM0B/xT5TaQ==
+"@uiharness/electron@0.2.30":
+  version "0.2.30"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.2.30.tgz#190a5899c308023746301054f15839e92214c6bf"
+  integrity sha512-uWHep06Mob6qKSm4Z1lvXLMxEyCRdASfidpHkqiht2Z7h3rjOEx7fuWT5EjBoAdtl1tT8m8P9NzzemTRFfr4vA==
   dependencies:
     "@babel/core" "7.2.2"
     "@babel/preset-env" "7.2.3"
