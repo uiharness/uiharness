@@ -19,6 +19,7 @@
     "prepare": "yarn run lint && yarn test && yarn run build"
   },
   "dependencies": {
+    "create-tmpl": "0.0.31",
     "new-file": "^1.2.2"
   },
   "devDependencies": {
