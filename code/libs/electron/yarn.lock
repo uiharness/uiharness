@@ -1056,22 +1056,22 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.5.tgz#f4f85fe198e1e9cedc0bb53a8c2d30fb34299e50"
   integrity sha512-y51XRWWg1GiW4+mV2zmFQUqJT3bX7nuUaXW4j8a2dFvT9ZlaNLjb7ZxcUSDyklt/UBWrW2+31x+hQpRzxaTFzw==
 
-"@uiharness/core@1.0.51":
-  version "1.0.51"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.51.tgz#19d0a4d8cc2c6753711b90f3de5fb3371790e664"
-  integrity sha512-fVSXzzEBl+bmFKC78ZtXBLQ9ydQaHZU8Nj6o2DXn0Fnsx2J1d6WpGvHgoDw5goPNMtMrY3l+2gpMoxAmOJd+dA==
+"@uiharness/core@1.0.52":
+  version "1.0.52"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.52.tgz#7d81c70c9ebfdaeb532962bda25147254accb4a6"
+  integrity sha512-jaRXIMFaGc90XbhJCmPxPPja6/pxPVHNCIQW3KuBFSAiCZVbahnj4s3ldaM6QBDzTqhiap/GxQs/CGSsYAWU6A==
   dependencies:
     "@tdb/util" "1.9.26"
     create-tmpl "0.0.31"
     filesize "4.0.0"
 
-"@uiharness/electron.ui@0.0.23":
-  version "0.0.23"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron.ui/-/electron.ui-0.0.23.tgz#bdde6ba282cec91d284a7cab267d1e1285a49710"
-  integrity sha512-vmlEGn9NuwsaJxeVo5HVyrYR2Cx88nJJ2DmlQ8HzXjFqyBwLsYCpVhKDtk3Z7vRBpBmH02TLUCn6KkgZXi5sXQ==
+"@uiharness/electron.ui@0.0.24":
+  version "0.0.24"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron.ui/-/electron.ui-0.0.24.tgz#9a0af3e9d385ff3635f65170924621346c11621a"
+  integrity sha512-1aY/+4MpDbU+Fm9yPGN6UpzjztZ4BoNjPy4tk58IZ5DhieTv0lOhpgYa1VU3HGrZjJuvrvnBu+tzICfrkuyIvQ==
   dependencies:
     "@types/app-root-path" "1.2.4"
-    "@uiharness/core" "1.0.51"
+    "@uiharness/core" "1.0.52"
     app-root-path "2.1.0"
     electron-is-dev "1.0.1"
     electron-log "2.2.17"
