@@ -23,11 +23,12 @@ export async function bundle(args: { settings: Settings; isProd?: boolean }) {
   // Log results.
   const formatPath = (path: string) => logging.formatPath(path, true);
   const rendererDir = isProd ? RENDERER.OUT_DIR.PROD : RENDERER.OUT_DIR.DEV;
+  const env = isProd ? 'production' : 'development';
 
   log.info();
   log.info(`🤟  Javascript bundling complete.\n`);
   log.info.gray(`   • version:     ${settings.package.version}`);
-  log.info.gray(`   • prod:        ${isProd}`);
+  log.info.gray(`   • env:         ${log.yellow(env)}`);
   log.info.gray(`   • main entry:  ${formatPath(MAIN.ENTRY)}`);
   log.info.gray(`   • output:      ${formatPath(MAIN.OUT_DIR)}`);
   log.info.gray(`                  ${formatPath(rendererDir)}`);

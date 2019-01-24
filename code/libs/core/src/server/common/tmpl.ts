@@ -20,7 +20,7 @@ export function copyFile(
 ): template.TemplateMiddleware {
   const { force = false } = args;
   return async (req, res) => {
-    const path = fsPath.resolve(`.${req.path}`);
+    const path = fsPath.resolve(`.${req.path.target}`);
     const dir = fsPath.dirname(path);
     if (force || !(await fs.pathExists(path))) {
       await fs.ensureDir(dir);
@@ -35,7 +35,7 @@ export function copyFile(
  */
 export function deleteFile(args: {} = {}): template.TemplateMiddleware {
   return async (req, res) => {
-    const path = fsPath.resolve(`.${req.path}`);
+    const path = fsPath.resolve(`.${req.path.target}`);
     await fs.remove(path);
     res.complete();
   };

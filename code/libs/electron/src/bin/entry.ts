@@ -111,14 +111,20 @@ const program = yargs
     [CMD.STATS],
     'Read size details about the distribution bundle.',
     e =>
-      e.option('prod', {
-        alias: 'p',
-        describe: 'Show status for production.',
-        boolean: true,
-        default: false,
-      }),
+      e
+        .option('prod', {
+          alias: 'p',
+          describe: 'Show for production.',
+          boolean: true,
+        })
+        .option('dev', {
+          alias: 'd',
+          describe: 'Show for development.',
+          boolean: true,
+        }),
     e => {
-      const { prod: isProd } = e;
+      const { prod, dev } = e;
+      const isProd = prod && dev ? undefined : dev ? false : prod;
       cmds.stats({ settings, isProd });
     },
   )

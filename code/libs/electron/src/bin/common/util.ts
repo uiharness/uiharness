@@ -19,7 +19,9 @@ export function logInfo(args: {
   log.info();
   log.info.gray(`package:       ${log.magenta(pkg.name)}`);
   log.info.gray(`• version:     ${pkg.version}`);
-  log.info.gray(`• main entry:  ${formatPath(mainEntry || '')}`);
+  if (mainEntry) {
+    log.info.gray(`• main entry:  ${formatPath(mainEntry || '')}`);
+  }
   if (showPort) {
     log.info.gray(`• port:        ${log.yellow(port)}`);
   }

@@ -25,11 +25,11 @@ export async function stats(args: {
 
   await logDir(constants.PATH.MAIN.OUT_DIR);
 
-  if (isProd) {
+  if (isProd === undefined || isProd === false) {
     await logDir(constants.PATH.RENDERER.OUT_DIR.DEV);
   }
 
-  if (!isProd) {
+  if (isProd === undefined || isProd === true) {
     await logDir(constants.PATH.RENDERER.OUT_DIR.PROD);
   }
 
