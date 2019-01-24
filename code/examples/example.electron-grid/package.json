@@ -15,17 +15,18 @@
     "clean": "uiharness-electron clean"
   },
   "devDependencies": {
+    "@uiharness/core": "^1.0.51",
     "@uiharness/electron": "0.2.43"
   },
-  "resolutions": {
-    "@types/react": "16.7.17"
-  },
-  "license": "MIT",
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
     "@tdb/ui.text": "^1.0.87",
     "@tdb/util": "^1.9.26",
     "@uiharness/electron.ui": "0.0.23",
     "handsontable": "^6.2.2"
-  }
+  },
+  "resolutions": {
+    "@types/react": "16.7.17"
+  },
+  "license": "MIT"
 }

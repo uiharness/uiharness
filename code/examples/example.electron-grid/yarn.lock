@@ -1095,30 +1095,30 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/core@1.0.50":
-  version "1.0.50"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.50.tgz#c1838c5e82a85428d724599489450229ff31f9e8"
-  integrity sha512-pbAsvHfUiRRzqETAlrhxzQrkBxCO9YL0okBDI4RVCQs7nUFHbDfi9z6TCeA3Xm4gge8hw6yNg22Tseat7pNgfA==
+"@uiharness/core@1.0.51", "@uiharness/core@^1.0.51":
+  version "1.0.51"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.51.tgz#19d0a4d8cc2c6753711b90f3de5fb3371790e664"
+  integrity sha512-fVSXzzEBl+bmFKC78ZtXBLQ9ydQaHZU8Nj6o2DXn0Fnsx2J1d6WpGvHgoDw5goPNMtMrY3l+2gpMoxAmOJd+dA==
   dependencies:
     "@tdb/util" "1.9.26"
     create-tmpl "0.0.31"
     filesize "4.0.0"
 
-"@uiharness/electron.ui@0.0.22":
-  version "0.0.22"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron.ui/-/electron.ui-0.0.22.tgz#f215f3a3dfd825d89f2fa08bdf7ce2449a64c0f3"
-  integrity sha512-AEj/t6N3/6ptcs4YgijB8VIhf8xX7jgqsZu7RRbfUF2ECTHKxY5OTWo0UPtMpS4dx+H/BsvQ754IrO7sRvk/1g==
+"@uiharness/electron.ui@0.0.23":
+  version "0.0.23"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron.ui/-/electron.ui-0.0.23.tgz#bdde6ba282cec91d284a7cab267d1e1285a49710"
+  integrity sha512-vmlEGn9NuwsaJxeVo5HVyrYR2Cx88nJJ2DmlQ8HzXjFqyBwLsYCpVhKDtk3Z7vRBpBmH02TLUCn6KkgZXi5sXQ==
   dependencies:
     "@types/app-root-path" "1.2.4"
-    "@uiharness/core" "1.0.50"
+    "@uiharness/core" "1.0.51"
     app-root-path "2.1.0"
     electron-is-dev "1.0.1"
     electron-log "2.2.17"
 
-"@uiharness/electron@0.2.42":
-  version "0.2.42"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.2.42.tgz#06fd3ce2d2f036c489454d347547f7976f6f1eee"
-  integrity sha512-pPpHR5Dpc409Dxk3eeaxggBE+p93gLM14s1Yz36otPNeOnpAiHRFVyThA6vJOMoHeXsBdk7G8dY0G52C6jS1sQ==
+"@uiharness/electron@0.2.43":
+  version "0.2.43"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.2.43.tgz#f3dcb3c8f1462c0463a19b1dbfef33fb6f3e9aa9"
+  integrity sha512-ONP1Qh5zVTHYgWv1lpE2OmZjaRa+S/t4YE64TFmgVRTl7inFw/W/xGXKmo3SVIrRhKNukli5gcdkbhgM/vg9Eg==
   dependencies:
     "@babel/core" "7.2.2"
     "@babel/preset-env" "7.2.3"
@@ -1127,8 +1127,8 @@
     "@tdb/log" "1.1.20"
     "@tdb/typescript" "3.2.8"
     "@tdb/util" "1.9.26"
-    "@uiharness/core" "1.0.50"
-    "@uiharness/electron.ui" "0.0.22"
+    "@uiharness/core" "1.0.51"
+    "@uiharness/electron.ui" "0.0.23"
     babel-core "^7.0.0-bridge.0"
     electron "4.0.1"
     electron-builder "20.38.5"
