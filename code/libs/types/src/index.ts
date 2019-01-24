@@ -1,1 +1,1 @@
-export const FOO = 123;
+export type IUIHarness = {}; // Export placeholder.

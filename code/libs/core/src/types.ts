@@ -1,1 +1,1 @@
-export type IUIHarness = {}; // Export placeholder.
+export * from '@uiharness/types';
