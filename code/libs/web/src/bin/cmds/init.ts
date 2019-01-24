@@ -20,7 +20,7 @@ export async function init(args: {
   }
 
   if (flags.scripts) {
-    settings.package.addFields('scripts', SCRIPTS).save();
+    await settings.package.addFields('scripts', SCRIPTS).save();
   }
 
   if (flags.files) {
@@ -36,7 +36,7 @@ export async function init(args: {
  */
 async function reset(args: { settings: Settings }) {
   const { settings } = args;
-  settings.package
+  await settings.package
     .removeFields('scripts', SCRIPTS, { exclude: 'postinstall' })
     .save();
 

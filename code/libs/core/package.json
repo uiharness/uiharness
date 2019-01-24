@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@tdb/util": "1.9.26",
-    "create-tmpl": "0.0.31",
+    "create-tmpl": "0.0.32",
     "filesize": "4.0.0"
   },
   "devDependencies": {
