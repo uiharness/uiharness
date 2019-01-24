@@ -30,7 +30,6 @@ export async function create() {
  */
 function logComplete(args: { dir: string }) {
   const dir = fsPath.basename(args.dir);
-
   log.info.gray(`See ${log.blue('https://uiharness.com')} for more.`);
   log.info.gray('To start your development server:\n');
   log.info.cyan(`   cd ${log.white(dir)}`);
