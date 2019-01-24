@@ -1,4 +1,4 @@
-export type IUIHarnessConfigJson = {
+export type IUIHarnessRuntimeConfig = {
   electron: {
     port: number;
   };

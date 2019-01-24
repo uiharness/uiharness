@@ -6,7 +6,7 @@ import {
   Settings,
   constants,
   npm,
-  IUIHarnessConfigJson,
+  IUIHarnessRuntimeConfig,
   file,
 } from '../common';
 import { clean } from './clean';
@@ -94,7 +94,7 @@ async function saveConfigJson(args: { settings: Settings }) {
   const { port } = args.settings;
   const { CONFIG } = constants.PATH;
 
-  const data: IUIHarnessConfigJson = {
+  const data: IUIHarnessRuntimeConfig = {
     electron: { port },
   };
 
