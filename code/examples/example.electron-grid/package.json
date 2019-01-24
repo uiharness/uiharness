@@ -1,0 +1,28 @@
+{
+  "name": "example.electron-grid",
+  "version": "0.0.0",
+  "main": ".uiharness/.bundle/main/main.js",
+  "scripts": {
+    "postinstall": "uiharness-electron init",
+    "start": "uiharness-electron start",
+    "bundle": "uiharness-electron bundle",
+    "dist": "uiharness-electron dist",
+    "open": "uiharness-electron open",
+    "stats": "uiharness-electron stats",
+    "clean": "uiharness-electron clean"
+  },
+  "devDependencies": {
+    "@uiharness/electron": "0.2.41"
+  },
+  "resolutions": {
+    "@types/react": "16.7.17"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "@tdb/ui.text": "^1.0.87",
+    "@tdb/util": "^1.9.26",
+    "@uiharness/electron.ui": "0.0.21",
+    "handsontable": "^6.2.2"
+  }
+}
