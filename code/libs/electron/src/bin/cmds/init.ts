@@ -16,6 +16,10 @@ export async function init(args: {
     return reset({ pkg });
   }
 
+  // Ensure the JSON configuration used by the app is saved.
+  await saveConfigJson({ settings });
+
+  // Don't continue if already initialized.
   if (!force && (await isInitialized({ settings }))) {
     return;
   }
@@ -41,9 +45,6 @@ export async function init(args: {
       .use(tmpl.copyFile({ force }))
       .execute();
   }
-
-  // Save settings as JSON to local project.
-  await saveConfigJson({ settings });
 }
 
 /**
