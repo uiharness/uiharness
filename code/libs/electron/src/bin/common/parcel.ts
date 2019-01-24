@@ -36,7 +36,6 @@ function createBundler(
     target: 'electron',
     sourceMaps: args.sourcemaps,
     scopeHoist: args.treeshake,
-    cacheDir: PATH.CACHE_DIR,
     ...options,
   });
 }

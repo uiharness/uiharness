@@ -5,7 +5,6 @@ const BUNDLE_DIR = `${DIR}/.bundle`;
 
 export const PATH = {
   BUNDLE_DIR,
-  CACHE_DIR: `${DIR}/.cache`,
   TEMPLATES: './node_modules/@uiharness/electron/tmpl',
   MAIN: {
     ENTRY: './src/main.ts',
