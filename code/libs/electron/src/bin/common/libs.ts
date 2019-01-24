@@ -1,8 +1,9 @@
 import * as ParcelBundler from 'parcel-bundler';
 import * as yargs from 'yargs';
 import * as execa from 'execa';
+import * as Listr from 'listr';
 
-export { ParcelBundler, yargs, execa };
+export { ParcelBundler, yargs, execa, Listr };
 export * from '../../common';
 export {
   config,

@@ -1,5 +1,14 @@
-import { constants, execa, fsPath, logInfo, parcel, Settings } from '../common';
+import {
+  log,
+  constants,
+  execa,
+  fsPath,
+  logInfo,
+  parcel,
+  Settings,
+} from '../common';
 import { init } from './init';
+import { bundle } from './bundle';
 
 /**
  * Starts the development server.
@@ -15,7 +24,14 @@ export async function start(args: { settings: Settings }) {
   logInfo({ settings, port: true, mainEntry });
 
   // Build the main JS.
-  await parcel.buildMain(settings);
+  await bundle({
+    settings,
+    prod: false,
+    main: true,
+    renderer: false,
+    noSummary: true,
+  });
+  log.info();
 
   // Start the renderer JS builder.
   const renderer = parcel.rendererBundler(settings);

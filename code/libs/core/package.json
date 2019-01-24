@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/core",
-  "version": "1.0.49",
+  "version": "1.0.52",
   "description": "Core compentry and logic of the UIHarness.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@tdb/util": "1.9.26",
-    "create-tmpl": "0.0.30",
+    "create-tmpl": "0.0.31",
     "filesize": "4.0.0"
   },
   "devDependencies": {

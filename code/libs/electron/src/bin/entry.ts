@@ -92,15 +92,50 @@ const program = yargs
     [CMD.BUNDLE, CMD.BUNDLE_B],
     'Prepare the javascript bundle.',
     e =>
-      e.option('prod', {
-        alias: 'p',
-        describe: 'Bundle for production.',
+      e
+        .option('prod', {
+          alias: 'p',
+          describe: 'Bundle for production (default: true).',
+          boolean: true,
+        })
+        .option('main', {
+          alias: 'm',
+          describe: 'Bundle the main module (default: true).',
+          boolean: true,
+        })
+        .option('renderer', {
+          alias: 'r',
+          describe: 'Bundle the renderer module (default: true).',
+          boolean: true,
+        })
+        .option('silent', {
+          alias: 's',
+          describe: 'No console output (default: false).',
+          boolean: true,
+        }),
+    async e => {
+      const { prod, main, renderer, silent } = e;
+      await cmds.bundle({ settings, prod, main, renderer, silent });
+      process.exit(0);
+    },
+  )
+
+  /**
+   * `dist`
+   */
+  .command(
+    [CMD.DIST, CMD.DIST_D],
+    'Packages the application ready for distribution.',
+    e =>
+      e.option('silent', {
+        alias: 's',
+        describe: 'No console output (default: false).',
         boolean: true,
-        default: false,
       }),
-    e => {
-      const { prod: isProd } = e;
-      cmds.bundle({ settings, isProd });
+    async e => {
+      const { silent } = e;
+      await cmds.dist({ settings, silent });
+      process.exit(0);
     },
   )
 
@@ -123,20 +158,10 @@ const program = yargs
           boolean: true,
         }),
     e => {
-      const { prod, dev } = e;
-      const isProd = prod && dev ? undefined : dev ? false : prod;
-      cmds.stats({ settings, isProd });
+      const { dev } = e;
+      const prod = e.prod && dev ? undefined : dev ? false : e.prod;
+      cmds.stats({ settings, prod });
     },
-  )
-
-  /**
-   * `dist`
-   */
-  .command(
-    [CMD.DIST, CMD.DIST_D],
-    'Packages the application ready for distribution.',
-    e => e,
-    e => cmds.dist({ settings }),
   )
 
   /**

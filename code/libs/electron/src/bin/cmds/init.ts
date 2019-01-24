@@ -15,17 +15,25 @@ export async function init(args: {
   if (args.reset) {
     return reset({ pkg });
   }
-  const flags = settings.init;
 
+  // Ensure the JSON configuration used by the app is saved.
+  await saveConfigJson({ settings });
+
+  // Don't continue if already initialized.
+  if (!force && (await isInitialized({ settings }))) {
+    return;
+  }
+
+  const flags = settings.init;
   if (flags.scripts) {
-    pkg.addFields('scripts', SCRIPTS).save();
+    await pkg.addFields('scripts', SCRIPTS).save();
   }
 
   if (flags.deps) {
     const PKG = constants.PKG;
     const deps = await npm.getVersions(PKG.dependencies);
     const devDeps = await npm.getVersions(PKG.devDependencies);
-    pkg
+    await pkg
       .addFields('dependencies', deps, { force: true })
       .addFields('devDependencies', devDeps, { force: true })
       .save();
@@ -37,9 +45,6 @@ export async function init(args: {
       .use(tmpl.copyFile({ force }))
       .execute();
   }
-
-  // Save settings as JSON to local project.
-  await saveConfigJson({ settings });
 }
 
 /**
@@ -84,4 +89,20 @@ async function saveConfigJson(args: { settings: Settings }) {
   const json = `${JSON.stringify(data, null, '  ')}\n`;
   await fs.ensureDir(dir);
   await fs.writeFile(path, json);
+}
+
+/**
+ * Determines whether the module has been initialized
+ */
+async function isInitialized(args: { settings: Settings }) {
+  const { settings } = args;
+  const pkg = settings.package;
+  const scripts = { ...SCRIPTS };
+  delete scripts.postinstall;
+
+  const hasAllScripts = Object.keys(scripts).every(
+    key => pkg.scripts[key] === scripts[key],
+  );
+
+  return hasAllScripts;
 }

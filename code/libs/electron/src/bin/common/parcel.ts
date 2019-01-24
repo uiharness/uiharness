@@ -5,25 +5,6 @@ import { Settings } from './Settings';
 export type ParcelOptions = ParcelBundler.ParcelOptions;
 
 /**
- * The parcel bundler for the `main` process.
- */
-export function mainBundler(
-  settings: Settings,
-  options: { parcel?: ParcelOptions; isProd?: boolean } = {},
-) {
-  const { isProd = false } = options;
-  const MAIN = PATH.MAIN;
-  const entry = MAIN.ENTRY;
-  return createBundler(entry, settings, {
-    target: 'electron',
-    outDir: MAIN.OUT_DIR,
-    minify: isProd,
-    watch: !isProd,
-    ...options.parcel,
-  });
-}
-
-/**
  * The parcel bundler for the `renderer` processes.
  */
 export function rendererBundler(
@@ -40,45 +21,6 @@ export function rendererBundler(
     watch: !isProd,
     ...options.parcel,
   });
-}
-
-/**
- * Builds all bundles for distrubtion.
- */
-export async function build(
-  settings: Settings,
-  options: { isProd?: boolean } = {},
-) {
-  const { isProd = false } = options;
-  await buildMain(settings, { isProd });
-  await buildRenderer(settings, { isProd });
-}
-
-/**
- * Builds the bundle for the `main` process.
- */
-export async function buildMain(
-  settings: Settings,
-  options: { isProd?: boolean } = {},
-) {
-  const { isProd = false } = options;
-  const main = mainBundler(settings, { isProd });
-  await main.bundle();
-}
-
-/**
- * Builds the bundle for the `renderer` processes.
- */
-export async function buildRenderer(
-  settings: Settings,
-  options: { isProd?: boolean } = {},
-) {
-  const { isProd = false } = options;
-  const renderer = rendererBundler(settings, {
-    isProd,
-    parcel: { publicUrl: './' },
-  });
-  await renderer.bundle();
 }
 
 /**

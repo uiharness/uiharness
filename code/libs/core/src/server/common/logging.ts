@@ -47,8 +47,13 @@ export async function fileStatsTable(args: {
   const table = log.table({ head });
   sizes.forEach(e => {
     let file = fsPath.basename(e.path);
-    file = file.endsWith('.js') ? log.yellow(file) : file;
-    file = file.endsWith('.css') ? log.cyan(file) : file;
+    if (file.endsWith('.js')) {
+      file = log.yellow(file);
+    } else if (file.endsWith('.css')) {
+      file = log.cyan(file);
+    } else {
+      file = log.magenta(file);
+    }
     table.add([file, e.size]);
   });
 
