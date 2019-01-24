@@ -170,8 +170,16 @@ const program = yargs
   .command(
     [CMD.OPEN, CMD.OPEN_O],
     'Opens a built application.',
-    e => e,
-    e => cmds.open({ settings }),
+    e =>
+      e.option('folder', {
+        alias: 'f',
+        describe: 'Open the dist folder instead of the app (default: false).',
+        boolean: true,
+      }),
+    e => {
+      const { folder } = e;
+      cmds.open({ settings, folder });
+    },
   )
 
   .help('h')
