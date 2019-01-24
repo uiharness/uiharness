@@ -56,10 +56,10 @@
     ramda "0.26.1"
     rxjs "6.3.3"
 
-"@tdb/npm@0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@tdb/npm/-/npm-0.0.5.tgz#e1850a54ee6ec8200dcabd5e169b89540118fae2"
-  integrity sha512-m5CV6mYsy8EfGottCWRQCSMCA7ih7KP7VgQv76n4i+m+XJw4P8lSb02WjIw0S93lZxMx6fEf+VyF2AwDU+ZVPg==
+"@tdb/npm@0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@tdb/npm/-/npm-0.0.6.tgz#e8b98383af5756770c5c37477d19c4a4791ce9da"
+  integrity sha512-1ir6ROoqHsWOcLrPtRxN6K8qRK6tpuqIEeqtI3fZPTPC9UzAzVdnQxyOKxX8DqBPiqVw0rR1lm5E6kujzBTp4A==
   dependencies:
     "@tdb/util" "1.9.26"
     "@types/fs-extra" "^5.0.4"
@@ -707,12 +707,12 @@ core-js@^2.4.0:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.3.tgz#4b70938bdffdaf64931e66e2db158f0892289c49"
   integrity sha512-l00tmFFZOBHtYhN4Cz7k32VM7vTn3rE2ANjQDxdEN6zmXZ/xq1jQuutnmHvMG1ZJ7xd72+TA5YpUK8wz3rWsfQ==
 
-create-tmpl@0.0.32:
-  version "0.0.32"
-  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.0.32.tgz#91b509fdf3a326ba3f62176439a6619ab422ba46"
-  integrity sha512-1x0Qvirtk/NrCqhYtR6HbiBxWrBCpId6dFcdwzbpUGhUTA7VPQUmAtM1YTIpkZt1bXaM1Xq7usgKpEZ6PoqPGw==
+create-tmpl@0.0.33:
+  version "0.0.33"
+  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.0.33.tgz#5d6b70e6557ee8a352ffa048ac3091d14d844ed0"
+  integrity sha512-tHh2j7CZFdlEFIZ9J61zueKy/h2Zj2lxYDCdHpZrDE9OgY2XcR/fdZXyHeN7JbVS8U5bXL3ffa0Bt1vGEWAuSQ==
   dependencies:
-    "@tdb/npm" "0.0.5"
+    "@tdb/npm" "0.0.6"
     "@tdb/util" "1.9.26"
     "@types/inquirer" "0.0.43"
     "@types/js-yaml" "3.12.0"
