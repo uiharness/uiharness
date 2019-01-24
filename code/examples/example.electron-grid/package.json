@@ -1,6 +1,6 @@
 {
   "name": "example.electron-grid",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "main": ".uiharness/.bundle/main/main.js",
   "scripts": {
     "tmp": "yarn sl && uiharness-electron $@",
@@ -14,14 +14,14 @@
     "clean": "uiharness-electron clean"
   },
   "devDependencies": {
-    "@uiharness/core": "^1.0.57",
-    "@uiharness/electron": "0.3.5"
+    "@uiharness/core": "^1.0.58",
+    "@uiharness/electron": "0.3.6"
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
     "@tdb/ui.text": "^1.0.87",
     "@tdb/util": "^1.9.26",
-    "@uiharness/electron.ui": "0.0.29",
+    "@uiharness/electron.ui": "0.0.30",
     "handsontable": "^6.2.2"
   },
   "resolutions": {
