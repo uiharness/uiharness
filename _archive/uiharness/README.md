@@ -1,3 +1,0 @@
-# UIHarness
-
-https://uiharness.com
