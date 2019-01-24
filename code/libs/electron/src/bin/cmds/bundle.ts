@@ -19,8 +19,9 @@ export async function bundle(args: {
   main?: boolean;
   renderer?: boolean;
   silent?: boolean;
+  noSummary?: boolean;
 }) {
-  const { settings, prod, silent = false } = args;
+  const { settings, prod, silent = false, noSummary = false } = args;
   let { main, renderer } = args;
 
   const { PATH } = constants;
@@ -85,13 +86,14 @@ export async function bundle(args: {
       log.warn(`😩  Failed while bundling javascript.`);
       log.error(error.message);
       log.info();
+      return;
     }
   }
 
   // Log results.
   const formatPath = (path: string) => logging.formatPath(path, true);
 
-  if (!silent) {
+  if (!silent && !noSummary) {
     log.info();
     log.info(`🤟  Javascript bundling complete.\n`);
     log.info.gray(`   • version:     ${settings.package.version}`);
@@ -104,7 +106,4 @@ export async function bundle(args: {
     await stats({ settings, prod: prod, moduleInfo: false });
     log.info();
   }
-
-  // Finish up.
-  process.exit(0);
 }

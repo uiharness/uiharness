@@ -3,7 +3,6 @@
   "version": "0.0.2",
   "main": ".uiharness/.bundle/main/main.js",
   "scripts": {
-    "b": "sh ./sh/bundle.sh",
     "tmp": "yarn sl && uiharness-electron $@",
     "sl": "msync sl && sh ./sh/copy-bin.sh",
     "postinstall": "uiharness-electron init",

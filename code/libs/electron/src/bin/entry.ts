@@ -113,9 +113,29 @@ const program = yargs
           describe: 'No console output (default: false).',
           boolean: true,
         }),
-    e => {
+    async e => {
       const { prod, main, renderer, silent } = e;
-      cmds.bundle({ settings, prod, main, renderer, silent });
+      await cmds.bundle({ settings, prod, main, renderer, silent });
+      process.exit(0);
+    },
+  )
+
+  /**
+   * `dist`
+   */
+  .command(
+    [CMD.DIST, CMD.DIST_D],
+    'Packages the application ready for distribution.',
+    e =>
+      e.option('silent', {
+        alias: 's',
+        describe: 'No console output (default: false).',
+        boolean: true,
+      }),
+    async e => {
+      const { silent } = e;
+      await cmds.dist({ settings, silent });
+      process.exit(0);
     },
   )
 
@@ -142,16 +162,6 @@ const program = yargs
       const prod = e.prod && dev ? undefined : dev ? false : e.prod;
       cmds.stats({ settings, prod });
     },
-  )
-
-  /**
-   * `dist`
-   */
-  .command(
-    [CMD.DIST, CMD.DIST_D],
-    'Packages the application ready for distribution.',
-    e => e,
-    e => cmds.dist({ settings }),
   )
 
   /**
