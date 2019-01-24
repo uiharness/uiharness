@@ -361,7 +361,7 @@
     create-tmpl "0.0.33"
     filesize "4.0.0"
 
-"@uiharness/types@0.0.1":
+"@uiharness/types@0.0.1", "@uiharness/types@^0.0.1":
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.1.tgz#8c3b25260887b3c12fec084ff004766d98c31906"
   integrity sha512-XK+1JjeiZg3Cks39pMeSavkzivW0uPzms2FCgf0GWzGEWyStpGjxtm33R62V3gryuT9allWjHb9JoPT1kpHptg==

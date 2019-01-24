@@ -1,1 +1,5 @@
-export type IUIHarness = {}; // Export placeholder.
+export type IUIHarnessConfigJson = {
+  electron: {
+    port: number;
+  };
+};

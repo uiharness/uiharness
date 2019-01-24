@@ -1,3 +1,5 @@
+export * from '@uiharness/types';
+
 /**
  * The `uiharness.yml` configuration file.
  */

@@ -1,4 +1,14 @@
-import { fs, fsPath, log, tmpl, Settings, constants, npm } from '../common';
+import {
+  fs,
+  fsPath,
+  log,
+  tmpl,
+  Settings,
+  constants,
+  npm,
+  IUIHarnessConfigJson,
+  file,
+} from '../common';
 import { clean } from './clean';
 const { SCRIPTS, PATH } = constants;
 
@@ -82,17 +92,20 @@ async function reset(args: { pkg: npm.NpmPackage }) {
  */
 async function saveConfigJson(args: { settings: Settings }) {
   const { port } = args.settings;
-  const { DIR, FILE } = constants.PATH.CONFIG;
-  const data = { port };
-  const dir = fsPath.resolve(DIR);
-  const path = fsPath.join(dir, FILE);
-  const json = `${JSON.stringify(data, null, '  ')}\n`;
-  await fs.ensureDir(dir);
-  await fs.writeFile(path, json);
+  const { CONFIG } = constants.PATH;
+
+  const data: IUIHarnessConfigJson = {
+    electron: { port },
+  };
+
+  // Write the file.
+  const path = fsPath.join(CONFIG.DIR, CONFIG.FILE);
+  await file.stringifyAndSave(path, data);
+  return data;
 }
 
 /**
- * Determines whether the module has been initialized
+ * Determines whether the module has been initialized.
  */
 async function isInitialized(args: { settings: Settings }) {
   const { settings } = args;
@@ -100,6 +113,7 @@ async function isInitialized(args: { settings: Settings }) {
   const scripts = { ...SCRIPTS };
   delete scripts.postinstall;
 
+  // Look to see that all scripts have been inserted.
   const hasAllScripts = Object.keys(scripts).every(
     key => pkg.scripts[key] === scripts[key],
   );

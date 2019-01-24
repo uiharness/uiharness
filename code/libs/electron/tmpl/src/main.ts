@@ -1,8 +1,8 @@
-import { isDev, resolve } from '@uiharness/electron.ui';
+import { isDev, resolve, IUIHarnessConfigJson } from '@uiharness/electron.ui';
 import { app, BrowserWindow } from 'electron';
 import { format } from 'url';
 
-const config = require('../.uiharness/config.json');
+const config = require('../.uiharness/config.json') as IUIHarnessConfigJson;
 
 app.on('ready', async () => {
   const mainWindow = new BrowserWindow({
@@ -18,7 +18,7 @@ app.on('ready', async () => {
     }
   });
 
-  const devPath = `http://localhost:${config.port}`;
+  const devPath = `http://localhost:${config.electron.port}`;
   const prodPath = format({
     pathname: resolve('.uiharness/.bundle/renderer/production/index.html'),
     protocol: 'file:',
