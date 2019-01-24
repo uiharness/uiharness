@@ -332,14 +332,14 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/core@1.0.47":
-  version "1.0.47"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.47.tgz#1847e0cdbb81f40ec96c6b0db48752bfc28c49d6"
-  integrity sha512-zX67kOoU6TePpB2UBWa8Hf6OhksnO8wOe4tQb8E9V1wJ7DLpkhtcsTHxZV1OZeTvDmnzXjjsbEGCCVw9zdZ8mQ==
+"@uiharness/core@1.0.49":
+  version "1.0.49"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.49.tgz#5773cac3eb5e74209a866aaa0f07f0929217782f"
+  integrity sha512-hSbvoxjilqsh0ykV0piI31xvjEvaQDREIzANpoYfmjJJQhvqg0BPvuHTby0L5Je3K/hBbl36+1Zo5B6SwDKGKg==
   dependencies:
     "@tdb/util" "1.9.26"
-    create-tmpl "0.0.28"
-    filesize "^4.0.0"
+    create-tmpl "0.0.30"
+    filesize "4.0.0"
 
 ansi-escapes@^3.0.0:
   version "3.1.0"
@@ -684,10 +684,10 @@ core-js@^2.4.0:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.2.tgz#267988d7268323b349e20b4588211655f0e83944"
   integrity sha512-NdBPF/RVwPW6jr0NCILuyN9RiqLo2b1mddWHkUL+VnvcB7dzlnBJ1bXYntjpTGOgkZiiLWj2JxmOr7eGE3qK6g==
 
-create-tmpl@0.0.28:
-  version "0.0.28"
-  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.0.28.tgz#0223c069ced6bf6dd6bdef4121fbd3cf414b9046"
-  integrity sha512-g5bgnw+j/pVb69/9qUpzY1iwwONfhj1qpj4zrDry/Y6gsY5db+5xwjPZNT/1odydBWZV0Go7FT2oJnKsmgb41w==
+create-tmpl@0.0.30:
+  version "0.0.30"
+  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.0.30.tgz#c4461b3914d4be47ac32844c469cc203e5ac8671"
+  integrity sha512-01LB9mb79IeRScOF4uGQThqZXbR+ANdxlu1gekpAnRxq0cL/mLFTXEIH5zFiai0v652tz7RCkHc4Z6uw5Q2Hlw==
   dependencies:
     "@tdb/npm" "0.0.4"
     "@tdb/util" "1.9.26"
@@ -933,7 +933,7 @@ figures@^2.0.0:
   dependencies:
     escape-string-regexp "^1.0.5"
 
-filesize@^4.0.0:
+filesize@4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/filesize/-/filesize-4.0.0.tgz#edd45b16247c815ac3bc7265c34cf3dab6b41234"
   integrity sha512-IGrOTisl83FmbpiL5KCpfF7+6CRcmndNaWxwYWcnSqXtoNUhVO+1l8rKK4GVE7A8f4fEDkSocS9X6+eXHkEhGA==

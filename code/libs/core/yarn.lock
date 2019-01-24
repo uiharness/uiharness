@@ -122,7 +122,7 @@
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.1.7.tgz#1b8e33b61a8c09cbe1f85133071baa0dbf9fa71a"
   integrity sha512-2Y8uPt0/jwjhQ6EiluT0XCri1Dbplr0ZxfFXUz+ye13gaqE8u5gL5ppao1JrUYr9cIip5S6MvQzBS7Kke7U9VA==
 
-"@types/filesize@^4.0.0":
+"@types/filesize@4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/filesize/-/filesize-4.0.0.tgz#6022de4ff4440f3d271b2d882b3d3d94c3a0cf14"
   integrity sha512-5DH3qTisPExFY/07Zu+6Pr6PdBw9BQEl0EKzmHz8qV8IBnWdUoaPbnOGZwjpe4vA2F66R7sxNOa0RWjGiJxMuw==
@@ -676,14 +676,14 @@ core-js@^1.0.0:
   integrity sha1-ZSKUwUZR2yj6k70tX/KYOk8IxjY=
 
 core-js@^2.4.0:
-  version "2.6.2"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.2.tgz#267988d7268323b349e20b4588211655f0e83944"
-  integrity sha512-NdBPF/RVwPW6jr0NCILuyN9RiqLo2b1mddWHkUL+VnvcB7dzlnBJ1bXYntjpTGOgkZiiLWj2JxmOr7eGE3qK6g==
+  version "2.6.3"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.3.tgz#4b70938bdffdaf64931e66e2db158f0892289c49"
+  integrity sha512-l00tmFFZOBHtYhN4Cz7k32VM7vTn3rE2ANjQDxdEN6zmXZ/xq1jQuutnmHvMG1ZJ7xd72+TA5YpUK8wz3rWsfQ==
 
-create-tmpl@0.0.28:
-  version "0.0.28"
-  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.0.28.tgz#0223c069ced6bf6dd6bdef4121fbd3cf414b9046"
-  integrity sha512-g5bgnw+j/pVb69/9qUpzY1iwwONfhj1qpj4zrDry/Y6gsY5db+5xwjPZNT/1odydBWZV0Go7FT2oJnKsmgb41w==
+create-tmpl@0.0.30:
+  version "0.0.30"
+  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.0.30.tgz#c4461b3914d4be47ac32844c469cc203e5ac8671"
+  integrity sha512-01LB9mb79IeRScOF4uGQThqZXbR+ANdxlu1gekpAnRxq0cL/mLFTXEIH5zFiai0v652tz7RCkHc4Z6uw5Q2Hlw==
   dependencies:
     "@tdb/npm" "0.0.4"
     "@tdb/util" "1.9.26"
@@ -929,7 +929,7 @@ figures@^2.0.0:
   dependencies:
     escape-string-regexp "^1.0.5"
 
-filesize@^4.0.0:
+filesize@4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/filesize/-/filesize-4.0.0.tgz#edd45b16247c815ac3bc7265c34cf3dab6b41234"
   integrity sha512-IGrOTisl83FmbpiL5KCpfF7+6CRcmndNaWxwYWcnSqXtoNUhVO+1l8rKK4GVE7A8f4fEDkSocS9X6+eXHkEhGA==
@@ -1883,9 +1883,9 @@ resolve-url@^0.2.1:
   integrity sha1-LGN/53yJOv0qZj/iGqkIAGjiBSo=
 
 resolve@^1.3.2:
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.9.0.tgz#a14c6fdfa8f92a7df1d996cb7105fa744658ea06"
-  integrity sha512-TZNye00tI67lwYvzxCxHGjwTNlUV70io54/Ed4j6PscB8xVfuBJpRenI/o6dVk0cY0PYTY27AgCoGGxRnYuItQ==
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.10.0.tgz#3bdaaeaf45cc07f375656dfd2e54ed0810b101ba"
+  integrity sha512-3sUr9aq5OfSg2S9pNtPA9hL1FVEAjvfOC4leW0SNf/mpnaakz2a9femSd6LqAww2RaFctwyf1lCqnTHuF1rxDg==
   dependencies:
     path-parse "^1.0.6"
 
