@@ -24,7 +24,8 @@
     "@types/filesize": "4.0.0"
   },
   "files": [
-    "**/*"
+    "lib",
+    "css"
   ],
   "engines": {
     "node": ">=10.x"

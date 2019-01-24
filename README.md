@@ -53,6 +53,7 @@ yarn add    @uiharness/electron.ui  # Client tools (bundled with app as dependen
 - [@uiharness/electron](/code/libs/electron/README.md)
 - [@uiharness/electron.ui](code/libs/electron.ui/README.md)
 - [@uiharness/core](/code/libs/core/README.md)
+- [@uiharness/types](/code/libs/types/README.md)
 
 <p>&nbsp;</p>
 
