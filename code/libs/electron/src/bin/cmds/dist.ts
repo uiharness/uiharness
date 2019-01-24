@@ -1,18 +1,15 @@
 import {
   constants,
-  electron,
+  exec,
+  fsPath,
+  Listr,
   log,
   logging,
   logInfo,
-  parcel,
   Settings,
-  Listr,
-  fsPath,
-  exec,
-  execa,
 } from '../common';
-import { init } from './init';
 import { bundle } from './bundle';
+import { init } from './init';
 
 const { PATH } = constants;
 

@@ -1,4 +1,4 @@
-import { fsPath, log, logging } from './libs';
+import { log, logging } from './libs';
 import { Settings } from './Settings';
 
 /**
