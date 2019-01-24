@@ -17,4 +17,4 @@ import 'handsontable'; // tslint:disable-line
 /**
  * Util
  */
-export { css, color, GlamorValue, events } from '@tdb/util/lib';
+export { css, color, GlamorValue, events, log } from '@tdb/util/lib';

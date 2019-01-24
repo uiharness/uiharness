@@ -92,15 +92,30 @@ const program = yargs
     [CMD.BUNDLE, CMD.BUNDLE_B],
     'Prepare the javascript bundle.',
     e =>
-      e.option('prod', {
-        alias: 'p',
-        describe: 'Bundle for production.',
-        boolean: true,
-        default: false,
-      }),
+      e
+        .option('prod', {
+          alias: 'p',
+          describe: 'Bundle for production (default: true).',
+          boolean: true,
+        })
+        .option('main', {
+          alias: 'm',
+          describe: 'Bundle the main module (default: true).',
+          boolean: true,
+        })
+        .option('renderer', {
+          alias: 'r',
+          describe: 'Bundle the renderer module (default: true).',
+          boolean: true,
+        })
+        .option('silent', {
+          alias: 's',
+          describe: 'No console output (default: false).',
+          boolean: true,
+        }),
     e => {
-      const { prod: isProd } = e;
-      cmds.bundle({ settings, isProd });
+      const { prod, main, renderer, silent } = e;
+      cmds.bundle({ settings, prod, main, renderer, silent });
     },
   )
 
@@ -123,9 +138,9 @@ const program = yargs
           boolean: true,
         }),
     e => {
-      const { prod, dev } = e;
-      const isProd = prod && dev ? undefined : dev ? false : prod;
-      cmds.stats({ settings, isProd });
+      const { dev } = e;
+      const prod = e.prod && dev ? undefined : dev ? false : e.prod;
+      cmds.stats({ settings, prod });
     },
   )
 

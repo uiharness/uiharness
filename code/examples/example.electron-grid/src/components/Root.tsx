@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { color, css } from '../common';
+import { color, css, log } from '../common';
 import { Test } from './Grid/Test';
+
+const img = require('../../static/kitten.png');
 
 export interface IRootProps {}
 
@@ -16,6 +18,7 @@ export class Root extends React.PureComponent<IRootProps> {
         border: `solid 1px ${color.format(-0.1)}`,
       }),
     };
+    log.info(img);
     return (
       <div {...styles.base}>
         <Test style={styles.grid} />
