@@ -1,15 +1,15 @@
 import {
-  fs,
-  fsPath,
-  log,
-  tmpl,
-  Settings,
   constants,
-  npm,
-  IUIHarnessRuntimeConfig,
   file,
+  fsPath,
+  IUIHarnessRuntimeConfig,
+  log,
+  npm,
+  tmpl,
 } from '../common';
+import { Settings } from '../settings';
 import { clean } from './clean';
+
 const { SCRIPTS, PATH } = constants;
 
 /**

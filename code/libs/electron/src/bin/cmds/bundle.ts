@@ -1,13 +1,5 @@
-import {
-  constants,
-  exec,
-  fsPath,
-  log,
-  logInfo,
-  logging,
-  Settings,
-  Listr,
-} from '../common';
+import { constants, exec, fsPath, log, logging, Listr } from '../common';
+import { Settings } from '../settings';
 import { init } from './init';
 import { stats } from './stats';
 

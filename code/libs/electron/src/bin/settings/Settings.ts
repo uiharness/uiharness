@@ -1,5 +1,5 @@
 import { IUIHarnessElectronConfig, IElectronBuilderConfig } from '../../types';
-import { fs, fsPath, file, log, NpmPackage, value, npm } from './libs';
+import { fs, fsPath, file, log, NpmPackage, value, npm } from '../common/libs';
 
 export { NpmPackage };
 const UIHARNESS_YAML = 'uiharness.yml';

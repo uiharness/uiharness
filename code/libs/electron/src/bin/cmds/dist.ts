@@ -6,8 +6,8 @@ import {
   log,
   logging,
   logInfo,
-  Settings,
 } from '../common';
+import { Settings } from '../settings';
 import { bundle } from './bundle';
 import { init } from './init';
 

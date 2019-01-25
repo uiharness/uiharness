@@ -1,5 +1,5 @@
 import { log, logging } from './libs';
-import { Settings } from './Settings';
+import { Settings } from '../settings';
 
 /**
  * Logs common information about the module.

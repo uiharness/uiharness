@@ -1,6 +1,6 @@
 import { PATH } from '../constants';
+import { Settings } from '../Settings';
 import { ParcelBundler } from './libs';
-import { Settings } from './Settings';
 
 export type ParcelOptions = ParcelBundler.ParcelOptions;
 
