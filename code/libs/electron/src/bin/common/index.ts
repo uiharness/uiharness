@@ -1,4 +1,4 @@
-import * as constants from './constants';
+import * as constants from '../constants';
 import * as parcel from './parcel';
 
 export { constants, parcel };

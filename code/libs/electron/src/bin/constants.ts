@@ -1,4 +1,4 @@
-export * from '../../common/constants';
+export * from '../common/constants';
 
 const DIR = './.uiharness';
 const BUNDLE_DIR = `${DIR}/.bundle`;

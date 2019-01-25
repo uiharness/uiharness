@@ -4,5 +4,5 @@
 #
 port: 8888
 build:
-  sourcemaps: true
+  sourcemaps: false
   treeshake: false

@@ -1,4 +1,4 @@
-import { PATH } from './constants';
+import { PATH } from '../constants';
 import { ParcelBundler } from './libs';
 import { Settings } from './Settings';
 
