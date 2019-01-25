@@ -1,12 +1,6 @@
-import {
-  isDev,
-  resolve,
-  IUIHarnessRuntimeConfig,
-} from '@uiharness/electron.ui';
+import { isDev, resolve, config } from '@uiharness/electron.ui';
 import { app, BrowserWindow } from 'electron';
 import { format } from 'url';
-
-const config = require('../.uiharness/config.json') as IUIHarnessRuntimeConfig;
 
 app.on('ready', async () => {
   const mainWindow = new BrowserWindow({
