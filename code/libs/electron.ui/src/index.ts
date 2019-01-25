@@ -1,2 +1,2 @@
-export { resolve, isDev, config } from './common';
+export { resolve, isDev } from './common';
 export * from './types';

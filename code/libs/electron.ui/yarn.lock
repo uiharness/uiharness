@@ -351,20 +351,20 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/core@1.0.59":
-  version "1.0.59"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.59.tgz#a6b2cc8dc8509bd88efea91f5c78bb3a1424fe44"
-  integrity sha512-M1pAFXXNJ0z5oMw6bo5mkYziHZOU6Mn588X8/y9Llm15DP67YmBGzCgBtqwqNxcEZ8WsSXej9t5dP0jLBN+QjQ==
+"@uiharness/core@1.0.61":
+  version "1.0.61"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.61.tgz#90557e35caa82b609d4c8c45d3febb69f37478e8"
+  integrity sha512-ZbMR6hHVbd4c+Lubx6+pvYMURNKrDNb/DAtyzn9NEL878Ic4EtBd8qAbnV+CW1mJ6dpXHR+x1Pub1rVDeuZbUA==
   dependencies:
     "@tdb/util" "1.9.26"
-    "@uiharness/types" "0.0.3"
+    "@uiharness/types" "0.0.5"
     create-tmpl "0.0.33"
     filesize "4.0.0"
 
-"@uiharness/types@0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.3.tgz#0910795f21bd0c613ecab701aac135a5ea473625"
-  integrity sha512-N/E2dmMu5+zRb14ZoU3eXNhUW5GaxW9A5StIRMXhyXdF65uhbfd/+N4UK/cjXl5J8OhVwKXk+0YK2Ttg3ueI5Q==
+"@uiharness/types@0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.5.tgz#beaa569642dffb6f67ed2d9992b02f6d357b4423"
+  integrity sha512-WLPDcsNuLmvv0MNU1UN+nEU62oJ+BEv99tV2Ctm0SElwuRRXZ4f4X7++MwU0pnEqFV0KXkDuZKhIGmi44UtpFw==
 
 ansi-escapes@^3.0.0:
   version "3.1.0"
