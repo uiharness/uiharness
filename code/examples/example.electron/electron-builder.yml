@@ -23,7 +23,6 @@ publish:
 mac:
   target:
     - zip
-    - dmg
   artifactName: '${productName}-mac.${ext}'
   icon: static/build/app.icns
 

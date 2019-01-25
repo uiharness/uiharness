@@ -3,6 +3,7 @@ import {
   exec,
   fsPath,
   log,
+  logInfo,
   logging,
   Settings,
   Listr,
@@ -51,7 +52,7 @@ export async function bundle(args: {
 
   if (main) {
     tasks.add({
-      title: `Bundling ${log.cyan('main')}`,
+      title: `Bundling      ${log.cyan('main')}`,
       task: () => {
         const cmd = `
           ${CMD}
@@ -64,7 +65,7 @@ export async function bundle(args: {
 
   if (renderer) {
     tasks.add({
-      title: `Bundling ${log.cyan('renderer')}`,
+      title: `Bundling      ${log.cyan('renderer')}`,
       task: () => {
         const cmd = `
           ${CMD}

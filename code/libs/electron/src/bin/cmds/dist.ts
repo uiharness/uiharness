@@ -49,7 +49,7 @@ export async function dist(args: { settings: Settings; silent?: boolean }) {
   // Run the electron `build` command.
   const tasks = new Listr([
     {
-      title: `Building ${log.yellow('electron app')} 🌼`,
+      title: `Building      ${log.yellow('electron app')} 🌼`,
       task: () => {
         const cmd = `
           cd ${fsPath.resolve('.')}
