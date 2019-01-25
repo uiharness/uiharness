@@ -7,12 +7,13 @@
     "uiharness-electron": "./lib/bin/entry.js"
   },
   "scripts": {
-    "test": "echo no-op",
+    "test": "sh ./node_modules/@tdb/test/sh/test.sh",
+    "tdd": "yarn run test --reporter min --watch",
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
     "clean": "sh ./sh/clean.sh",
     "nuke": "sh ./sh/nuke.sh",
-    "prepare": "yarn build && yarn lint"
+    "prepare": "yarn build && yarn lint && yarn test"
   },
   "dependencies": {
     "@babel/core": "7.2.2",
@@ -20,6 +21,7 @@
     "@babel/preset-react": "7.0.0",
     "@babel/preset-typescript": "7.1.0",
     "@tdb/log": "1.1.20",
+    "@tdb/test": "^1.2.13",
     "@tdb/typescript": "3.2.8",
     "@tdb/util": "1.9.26",
     "@uiharness/core": "1.0.61",

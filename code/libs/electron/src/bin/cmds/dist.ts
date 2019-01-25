@@ -67,7 +67,7 @@ export async function dist(args: { settings: Settings; silent?: boolean }) {
   }
 
   // Log output
-  const config = settings.builderArgs;
+  const config = settings.____builderArgs;
   const path =
     config && config.outputDir
       ? logging.formatPath(config.outputDir, true)

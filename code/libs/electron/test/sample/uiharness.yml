@@ -1,0 +1,9 @@
+#
+# Sample config for unit-tests.
+# Non-default values.
+#
+electron:
+  port: 1234
+  bundle:
+    sourcemaps: false
+    treeshake: true

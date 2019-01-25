@@ -9,7 +9,7 @@ import { init } from './init';
 export async function start(args: { settings: Settings }) {
   // Setup initial conditions.
   const { settings } = args;
-  const port = settings.port;
+  const port = settings.___port;
   const mainEntry = constants.PATH.MAIN.ENTRY;
 
   // Ensure the module is initialized.
