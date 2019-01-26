@@ -10,10 +10,13 @@ describe('ElectronSettings', () => {
       const res = Settings.create(path).electron;
       expect(res.exists).to.eql(false);
       expect(res.port).to.eql(8888);
-      expect(res.bundlerArgs.sourcemaps).to.eql(true);
-      expect(res.bundlerArgs.treeshake).to.eql(false);
       expect(res.entry.main).to.eql('./src/test/app.main.ts');
       expect(res.entry.renderer).to.eql('./src/test/app.renderer.html');
+
+      const bundler = res.bundlerArgs;
+      expect(bundler.sourcemaps).to.eql(true);
+      expect(bundler.treeshake).to.eql(false);
+      expect(bundler.cmd).to.eql('--no-source-maps');
 
       const builder = res.builderArgs;
       expect(builder.exists).to.eql(false);
@@ -26,10 +29,13 @@ describe('ElectronSettings', () => {
     const res = Settings.create(DIR).electron;
     expect(res.exists).to.eql(true);
     expect(res.port).to.eql(1234);
-    expect(res.bundlerArgs.sourcemaps).to.eql(false);
-    expect(res.bundlerArgs.treeshake).to.eql(true);
     expect(res.entry.main).to.eql('./foo/main/start.ts');
     expect(res.entry.renderer).to.eql('./foo/renderer/index.html');
+
+    const bundler = res.bundlerArgs;
+    expect(bundler.sourcemaps).to.eql(false);
+    expect(bundler.treeshake).to.eql(true);
+    expect(bundler.cmd).to.eql('--experimental-scope-hoisting');
 
     const builder = res.builderArgs;
     expect(builder.exists).to.eql(true);

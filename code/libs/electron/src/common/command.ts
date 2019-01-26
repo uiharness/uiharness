@@ -1,4 +1,4 @@
-import { exec } from './libs';
+import { exec, value as valueUtil } from './libs';
 
 /**
  * Command-line builder.
@@ -12,30 +12,37 @@ export class Command {
     }
   }
 
-  public add(value: string | Command) {
+  public add(value: string | Command, include?: boolean) {
+    include = valueUtil.defaultValue(include, true);
     let cmd = this._cmd;
-    if (!cmd.endsWith('\n')) {
-      cmd += ' ';
+    if (include) {
+      if (!cmd.endsWith('\n')) {
+        cmd += ' ';
+      }
+      cmd += value.toString();
     }
-    cmd += value.toString();
     return new Command(cmd);
   }
 
-  public addLine(value: string) {
-    return this.add(value).newLine();
+  public addLine(value: string, include?: boolean) {
+    return this.add(value, include).newLine(include);
   }
 
-  public newLine() {
-    const cmd = `${this._cmd}\n`;
+  public newLine(include?: boolean) {
+    include = valueUtil.defaultValue(include, true);
+    let cmd = this._cmd;
+    if (include) {
+      cmd = `${this._cmd}\n`;
+    }
     return new Command(cmd);
   }
 
-  public arg(value: string) {
-    return this.add(`--${trimArg(value)}`);
+  public arg(value: string, include?: boolean) {
+    return this.add(`--${trimArg(value)}`, include);
   }
 
-  public alias(value: string) {
-    return this.add(`-${trimArg(value)}`);
+  public alias(value: string, include?: boolean) {
+    return this.add(`-${trimArg(value)}`, include);
   }
 
   public get value() {

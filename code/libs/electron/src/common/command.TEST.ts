@@ -52,6 +52,16 @@ describe('command', () => {
     expect(cmd.toString()).to.eql(`cd ./dir\nrun\n`);
   });
 
+  it('does not add values (include = false)', () => {
+    const cmd = command()
+      .add('foo', false)
+      .addLine('bar', false)
+      .newLine(false)
+      .arg('force', false)
+      .alias('f', false);
+    expect(cmd.toString()).to.eql('');
+  });
+
   it('is immutable', () => {
     const cmd1 = command();
     const cmd2 = cmd1.add('foo');

@@ -43,13 +43,10 @@ export function toBundlerArgs(data: IParcelBuildConfig = {}) {
   // Build command-line arguments.
   // See:
   //    https://parceljs.org/cli.html
-  let cmd = '';
-  cmd = sourcemaps === false ? `${cmd} --no-source-maps` : cmd;
-  cmd = treeshake ? `${cmd} --experimental-scope-hoisting` : cmd;
-
-  console.log(`\nTODO 🐷   use command()`);
-  console.log('have boolean flag on `add` commands to avoid ternary\n');
+  const cmd = command()
+    .add('--no-source-maps', sourcemaps)
+    .add('--experimental-scope-hoisting', treeshake);
 
   // Finish up.
-  return { sourcemaps, treeshake, cmd };
+  return { sourcemaps, treeshake, cmd: cmd.toString() };
 }
