@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import * as cmds from '../cmds';
-import { constants, log, yargs } from '../common';
+import { constants, log, yargs, BundleTarget } from '../common';
 import { Settings } from '../settings';
 
 /**
@@ -112,7 +112,7 @@ const program = yargs
       const { silent, dev = false } = e;
       const target = (typeof e.target === 'string'
         ? e.target.toLowerCase()
-        : 'electron') as cmds.BundleTarget;
+        : 'electron') as BundleTarget;
       const prod = !dev;
 
       if (!targets.includes(target)) {

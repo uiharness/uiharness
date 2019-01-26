@@ -1,10 +1,13 @@
 export * from '@uiharness/types';
 
+export type BundleTarget = 'electron' | 'web';
+
 /**
  * The `uiharness.yml` configuration file.
  */
 export type IUIHarnessConfig = {
   electron?: IUIHarnessElectronConfig;
+  web?: IUIHarnessWebConfig;
 
   /**
    * Flags used to determine what to
@@ -18,6 +21,9 @@ export type IUIHarnessConfig = {
   };
 };
 
+/**
+ * Configuration for the electron app.
+ */
 export type IUIHarnessElectronConfig = {
   port?: number; // Port the dev-server runs on for electron.
   bundle?: IParcelBuildConfig;
@@ -28,15 +34,6 @@ export type IUIHarnessElectronConfig = {
 };
 
 /**
- * Build args for the Parcel bundler.
- * https://parceljs.org/cli.html
- */
-export type IParcelBuildConfig = {
-  sourcemaps?: boolean; // Default: true.
-  treeshake?: boolean; //  Default:  true
-};
-
-/**
  * The `electron-builder.yml` configuration file.
  */
 export type IElectronBuilderConfig = {
@@ -44,4 +41,22 @@ export type IElectronBuilderConfig = {
   appId?: string;
   files?: string[];
   directories?: { output?: string };
+};
+
+/**
+ * Configuration for the web (browser) app.
+ */
+export type IUIHarnessWebConfig = {
+  port?: number; // Port the dev-server runs on for electron.
+  bundle?: IParcelBuildConfig;
+  entry?: string;
+};
+
+/**
+ * Build args for the Parcel bundler.
+ * https://parceljs.org/cli.html
+ */
+export type IParcelBuildConfig = {
+  sourcemaps?: boolean; // Default: true.
+  treeshake?: boolean; //  Default:  true
 };

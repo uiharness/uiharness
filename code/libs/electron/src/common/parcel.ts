@@ -1,39 +1,43 @@
 import { PATH } from './constants';
 import { Settings } from '../Settings';
 import { ParcelBundler } from './libs';
+import { IParcelBuildConfig } from '../types';
+import { toBundlerArgs } from './util';
 
 export type ParcelOptions = ParcelBundler.ParcelOptions;
 
 /**
  * The parcel bundler for the `renderer` processes.
  */
-export function rendererBundler(
+export function electronRendererBundler(
   settings: Settings,
   options: { parcel?: ParcelOptions; isProd?: boolean } = {},
 ) {
   const { isProd = false } = options;
   const RENDERER = PATH.RENDERER;
   const outDir = isProd ? RENDERER.OUT_DIR.PROD : RENDERER.OUT_DIR.DEV;
-  const entry = settings.electron.entry.renderer;
-  return createBundler(entry, settings, {
+  const electron = settings.electron;
+  const entry = electron.entry.renderer;
+  const bundlerArgs = electron.data.bundle;
+  return createBundler(entry, bundlerArgs, {
     outDir,
     minify: isProd,
     watch: !isProd,
+    target: 'electron',
     ...options.parcel,
   });
 }
 
 /**
- * INTERNAL
+ * Creates a bundler.
  */
-function createBundler(
+export function createBundler(
   entry: string,
-  settings: Settings,
+  bundlerConfig: IParcelBuildConfig | undefined,
   options: ParcelBundler.ParcelOptions,
 ) {
-  const args = settings.electron.bundlerArgs;
+  const args = toBundlerArgs(bundlerConfig);
   return new ParcelBundler(entry, {
-    target: 'electron',
     sourceMaps: args.sourcemaps,
     scopeHoist: args.treeshake,
     ...options,

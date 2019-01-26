@@ -1,6 +1,7 @@
 import { file, fs, fsPath, log, npm, NpmPackage, value } from '../common/libs';
 import { IUIHarnessConfig } from '../types';
 import { ElectronSettings } from './ElectronSettings';
+import { WebSettings } from './WebSettings';
 
 export { NpmPackage };
 
@@ -49,6 +50,7 @@ export class Settings {
 
   private _package: NpmPackage;
   private _electron: ElectronSettings;
+  private _web: WebSettings;
 
   /**
    * Constructor.
@@ -68,7 +70,7 @@ export class Settings {
   }
 
   /**
-   * Retrieves the electron speciic settings.
+   * Retrieves the [electron] speciic settings.
    */
   public get electron(): ElectronSettings {
     return (
@@ -76,6 +78,19 @@ export class Settings {
       (this._electron = new ElectronSettings({
         dir: this.dir,
         data: this.data.electron,
+      }))
+    );
+  }
+
+  /**
+   * Retrieves the [web/browser] speciic settings.
+   */
+  public get web(): WebSettings {
+    return (
+      this._web ||
+      (this._web = new WebSettings({
+        dir: this.dir,
+        data: this.data.web,
       }))
     );
   }

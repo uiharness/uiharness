@@ -1,9 +1,15 @@
-import { value, fsPath, Listr, log, logging, command } from '../common';
+import {
+  value,
+  fsPath,
+  Listr,
+  log,
+  logging,
+  command,
+  BundleTarget,
+} from '../common';
 import { Settings } from '../settings';
 import { init } from './init';
 import { stats } from './stats';
-
-export type BundleTarget = 'electron' | 'web';
 
 /**
  * Runs the JS bundler.
@@ -15,28 +21,14 @@ export async function bundle(args: {
   silent?: boolean;
   summary?: boolean;
 }) {
-  const { target, silent = false, prod, settings } = args;
-  const summary = value.defaultValue(args.summary, true);
+  const { target, silent = false, prod, settings, summary } = args;
 
   switch (target) {
     case 'electron':
-      return bundleElectron({
-        settings,
-        prod,
-        main: true,
-        renderer: true,
-        silent,
-        summary,
-      });
+      return bundleElectron({ settings, prod, silent, summary });
 
     case 'web':
-      console.log('🐷  bundle -- target', target);
-      console.log();
-      console.log();
-
-      return { success: true };
-
-      break;
+      return bundleWeb({ settings, prod, silent, summary });
 
     default:
       if (!silent) {
@@ -61,17 +53,13 @@ export async function bundleElectron(args: {
 }) {
   const { settings, prod, silent = false } = args;
   const summary = value.defaultValue(args.summary, true);
+  const env = toEnv(prod);
   let { main, renderer } = args;
   const pkg = settings.package;
   const electron = settings.electron;
   const entry = electron.entry;
   const bundlerArgs = electron.bundlerArgs;
   const out = electron.out(prod);
-
-  const env =
-    prod === true || prod === undefined ? 'production' : 'development';
-
-  const envDisplay = log.gray(`(${env})`);
 
   const all = main === undefined && renderer === undefined;
   main = all ? true : main;
@@ -87,12 +75,12 @@ export async function bundleElectron(args: {
   });
 
   const cmd = command()
-    .addLine(`export NODE_ENV="${env}"`)
+    .addLine(`export NODE_ENV="${env.value}"`)
     .addLine(`cd ${fsPath.resolve('.')}`);
 
   if (main) {
     tasks.add({
-      title: `Bundling      ${log.cyan('main')}     ${envDisplay}`,
+      title: `Bundling      ${log.cyan('main')}     ${env.display}`,
       task: () =>
         cmd
           .add(`parcel`)
@@ -107,7 +95,7 @@ export async function bundleElectron(args: {
 
   if (renderer) {
     tasks.add({
-      title: `Bundling      ${log.cyan('renderer')} ${envDisplay}`,
+      title: `Bundling      ${log.cyan('renderer')} ${env.display}`,
       task: () =>
         cmd
           .add(`parcel`)
@@ -134,12 +122,11 @@ export async function bundleElectron(args: {
   }
 
   // Log results.
-  const formatPath = (path: string) => logging.formatPath(path, true);
-
   if (summary && !silent) {
     log.info();
-    log.info(`🤟  Javascript bundling complete.\n`);
-    log.info.gray(`   • env:         ${log.yellow(env)}`);
+    log.info(
+      `🤟  Javascript bundling for ${log.yellow('electron')} complete.\n`,
+    );
     log.info.gray(`   • package:     ${pkg.name}`);
     log.info.gray(`   • version:     ${pkg.version}`);
     log.info.gray(`   • entry:       ${formatPath(entry.main)}`);
@@ -148,8 +135,101 @@ export async function bundleElectron(args: {
     log.info.gray(`                  ${formatPath(out.renderer.path)}`);
 
     log.info();
-    await stats({ settings, prod: prod, moduleInfo: false });
+    await stats({ settings, prod, moduleInfo: false });
   }
 
   return { success: true };
+}
+
+/**
+ * Runs the JS bundler for web (browser).
+ */
+export async function bundleWeb(args: {
+  settings: Settings;
+  prod?: boolean;
+  silent?: boolean;
+  summary?: boolean;
+}) {
+  const { settings, prod, silent = false } = args;
+  const summary = value.defaultValue(args.summary, true);
+  const env = toEnv(prod);
+  const pkg = settings.package;
+
+  console.log('🐷  bundle -- WEB');
+  console.log();
+  console.log();
+
+  // Ensure the module is initialized.
+  await init({ settings, prod });
+
+  // Build the command.
+  const tasks = new Listr([], {
+    concurrent: true,
+    renderer: silent ? 'silent' : undefined,
+  });
+
+  const cmd = command()
+    .addLine(`export NODE_ENV="${env.value}"`)
+    .addLine(`cd ${fsPath.resolve('.')}`)
+    .add(`parcel`);
+  // .add(`build ${entry.renderer}`)
+  // .add(`--public-url ./`)
+  // .arg(`--out-dir ${out.renderer.dir}`)
+  // .arg(`--out-file ${out.renderer.file}`)
+  // .add(bundlerArgs.cmd);
+
+  console.log(log.blue(cmd));
+
+  tasks.add({
+    title: `Bundling      ${log.cyan('web')} ${env.display}`,
+    task: () => cmd.run({ silent: true }),
+  });
+
+  // Log results.
+  if (summary && !silent) {
+    log.info();
+    log.info(`🤟  Javascript bundling for ${log.yellow('web')} complete.\n`);
+    log.info.gray(`   • package:     ${pkg.name}`);
+    log.info.gray(`   • version:     ${pkg.version}`);
+    // log.info.gray(`   • entry:       ${formatPath(entry.main)}`);
+    // log.info.gray(`                  ${formatPath(entry.renderer)}`);
+    // log.info.gray(`   • output:      ${formatPath(out.main.path)}`);
+    // log.info.gray(`                  ${formatPath(out.renderer.path)}`);
+
+    log.info();
+    await stats({ settings, prod, moduleInfo: false });
+  }
+  return { success: true };
+}
+
+// export async function dist(args: { settings: Settings }) {
+//   // Setup initial conditions.
+//   const { settings } = args;
+//   process.env.NODE_ENV = 'production';
+//   init({ settings });
+//   logInfo({ settings, port: false });
+
+//   // Prepare the bundler.
+//   const bundler = createParcelBundler(settings);
+
+//   // Run the bundler.
+//   await bundler.bundle();
+
+//   // Finish up.
+//   stats({ settings, moduleInfo: false });
+//   log.info(`Run ${log.cyan('yarn serve')} to view in browser.`);
+//   log.info();
+//   process.exit(0);
+// }
+
+/**
+ * INTERNAL
+ */
+const formatPath = (path: string) => logging.formatPath(path, true);
+
+function toEnv(prod?: boolean) {
+  const value =
+    prod === true || prod === undefined ? 'production' : 'development';
+  const display = log.gray(`(${value})`);
+  return { value, display };
 }

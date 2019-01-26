@@ -30,7 +30,7 @@ export async function start(args: { settings: Settings }) {
   log.info();
 
   // Start the renderer JS builder.
-  const renderer = parcel.rendererBundler(settings);
+  const renderer = parcel.electronRendererBundler(settings);
   await (renderer as any).serve(port);
 
   // Start the electron server.

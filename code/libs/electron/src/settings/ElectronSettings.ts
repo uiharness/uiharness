@@ -1,6 +1,5 @@
 import { IElectronBuilderConfig, IUIHarnessElectronConfig } from '../types';
-import { file, fsPath, constants } from '../common';
-import * as util from './util';
+import { toBundlerArgs, file, fsPath, constants } from '../common';
 
 const { PATH } = constants;
 
@@ -65,7 +64,7 @@ export class ElectronSettings {
    * Arguments to pass to the parcel-bundler.
    */
   public get bundlerArgs() {
-    return util.toBundlerArgs(this.data.bundle);
+    return toBundlerArgs(this.data.bundle);
   }
 
   /**
