@@ -95,17 +95,14 @@ const program = yargs
     e =>
       e
         .option('prod', {
-          alias: 'p',
           describe: 'Bundle for production (default: true).',
           boolean: true,
         })
         .option('main', {
-          alias: 'm',
           describe: 'Bundle the main module (default: true).',
           boolean: true,
         })
         .option('renderer', {
-          alias: 'r',
           describe: 'Bundle the renderer module (default: true).',
           boolean: true,
         })
@@ -116,7 +113,13 @@ const program = yargs
         }),
     async e => {
       const { prod, main, renderer, silent } = e;
-      await cmds.bundle({ settings, prod, main, renderer, silent });
+      await cmds.bundle({
+        settings,
+        prod,
+        main,
+        renderer,
+        silent,
+      });
       process.exit(0);
     },
   )

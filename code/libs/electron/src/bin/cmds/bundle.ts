@@ -16,7 +16,7 @@ export async function bundle(args: {
 }) {
   const { settings, prod, silent = false, noSummary = false } = args;
   let { main, renderer } = args;
-
+  const bundlerArgs = settings.electron.bundlerArgs;
   const { PATH } = constants;
   const { MAIN, RENDERER } = PATH;
   const mainDir = MAIN.OUT_DIR;
@@ -46,9 +46,13 @@ export async function bundle(args: {
     tasks.add({
       title: `Bundling      ${log.cyan('main')}`,
       task: () => {
+        let args = '';
+        args += `--out-dir ${mainDir}`;
+        args += ` --target electron `;
+        args += bundlerArgs.cmd;
         const cmd = `
           ${CMD}
-          parcel build src/main.ts --out-dir ${mainDir} --target electron
+          parcel build src/main.ts  ${args}
         `;
         return exec.run(cmd, { silent: true });
       },
@@ -59,9 +63,13 @@ export async function bundle(args: {
     tasks.add({
       title: `Bundling      ${log.cyan('renderer')}`,
       task: () => {
+        let args = '';
+        args += `--public-url ./`;
+        args += ` --out-dir ${rendererDir}`;
+        args += bundlerArgs.cmd;
         const cmd = `
           ${CMD}
-          parcel build src/index.html --public-url ./ --out-dir ${rendererDir}
+          parcel build src/index.html ${args}
         `;
         return exec.run(cmd, { silent: true });
       },

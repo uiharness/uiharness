@@ -5,6 +5,6 @@
 
 electron:
   port: 8881
-  build:
+  bundle:
     sourcemaps: true
     treeshake: false
