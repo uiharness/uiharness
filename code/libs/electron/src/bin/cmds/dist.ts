@@ -1,17 +1,7 @@
-import {
-  constants,
-  exec,
-  fsPath,
-  Listr,
-  log,
-  logging,
-  logInfo,
-} from '../common';
+import { exec, fsPath, Listr, log, logging, logInfo } from '../common';
 import { Settings } from '../settings';
 import { bundle } from './bundle';
 import { init } from './init';
-
-const { PATH } = constants;
 
 /**
  * Bundles the application ready for distribution.
@@ -19,6 +9,8 @@ const { PATH } = constants;
 export async function dist(args: { settings: Settings; silent?: boolean }) {
   const { settings, silent = false } = args;
   const prod = true;
+  const electron = settings.electron;
+  const out = electron.out(prod);
   process.env.NODE_ENV = 'production';
 
   const handleError = (error: Error, step: string) => {
@@ -53,9 +45,13 @@ export async function dist(args: { settings: Settings; silent?: boolean }) {
     {
       title: `Building      ${log.yellow('electron app')} 🌼`,
       task: () => {
+        let args = '';
+        args += ` --x64`;
+        args += ` --publish=never`;
+        args += ` -c.extraMetadata.main="${out.main.path}"`;
         const cmd = `
           cd ${fsPath.resolve('.')}
-          build --x64 --publish=never
+          build ${args}
         `;
         return exec.run(cmd, { silent: true });
       },

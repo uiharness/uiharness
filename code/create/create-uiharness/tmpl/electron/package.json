@@ -1,7 +1,6 @@
 {
   "name": "__NAME__",
   "version": "0.0.0",
-  "main": ".uiharness/.bundle/main/main.js",
   "scripts": {
     "postinstall": "uiharness-electron init"
   },

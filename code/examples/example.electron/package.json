@@ -2,7 +2,6 @@
   "name": "example.electron",
   "version": "0.0.51",
   "description": "Example usage of `@uiharness/electron`",
-  "main": ".uiharness/.bundle/main/main.js",
   "scripts": {
     "tmp": "yarn sl && uiharness-electron $@",
     "sl": "msync sl && sh ./sh/copy-bin.sh",

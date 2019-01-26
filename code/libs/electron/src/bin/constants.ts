@@ -4,6 +4,8 @@ const DIR = './.uiharness';
 const BUNDLE_DIR = `${DIR}/.bundle`;
 
 export const PATH = {
+  UIHARNESS: DIR,
+  PACKAGE: `${DIR}/package.json`,
   BUNDLE_DIR,
   TEMPLATES: './node_modules/@uiharness/electron/tmpl',
   MAIN: {

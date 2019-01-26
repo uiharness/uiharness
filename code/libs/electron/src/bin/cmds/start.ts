@@ -3,6 +3,8 @@ import { Settings } from '../settings';
 import { bundle } from './bundle';
 import { init } from './init';
 
+const { PATH } = constants;
+
 /**
  * Starts the development server.
  */
@@ -32,7 +34,8 @@ export async function start(args: { settings: Settings }) {
   await (renderer as any).serve(port);
 
   // Start the electron server.
-  const cmd = `cd ${fsPath.resolve('.')} && electron .`;
+  const dir = fsPath.resolve(PATH.UIHARNESS);
+  const cmd = `electron ${dir}`;
   const childProcess = execa.shell(cmd);
   childProcess.stdout.pipe(process.stdout);
   await childProcess;
