@@ -14,8 +14,8 @@ export const PATH = {
     OUT_DIR: `${BUNDLE_DIR}/main`,
   },
   RENDERER: {
-    DEFAULT_ENTRY: './src/index.html',
-    OUT_FILE: 'index.html',
+    DEFAULT_ENTRY: './src/renderer.html',
+    OUT_FILE: 'renderer.html',
     OUT_DIR: {
       DEV: `${BUNDLE_DIR}/renderer/development`,
       PROD: `${BUNDLE_DIR}/renderer/production`,

@@ -1,6 +1,6 @@
 {
   "name": "example.electron-grid",
-  "version": "0.0.22",
+  "version": "0.0.25",
   "main": ".uiharness/.bundle/main/main.js",
   "scripts": {
     "tmp": "yarn sl && uiharness-electron $@",
@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@uiharness/core": "^1.0.63",
-    "@uiharness/electron": "0.3.16"
+    "@uiharness/electron": "0.3.19"
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
