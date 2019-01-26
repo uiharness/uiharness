@@ -29,6 +29,7 @@ const CMD = {
 };
 const CMDS = Object.keys(CMD).map(key => CMD[key]);
 const settings = Settings.create('.');
+const TARGETS: BundleTarget[] = ['electron', 'web'];
 
 /**
  * Cheat sheet.
@@ -108,16 +109,14 @@ const program = yargs
           boolean: true,
         }),
     async e => {
-      const targets = ['electron', 'web'];
       const { silent, dev = false } = e;
       const target = (typeof e.target === 'string'
         ? e.target.toLowerCase()
         : 'electron') as BundleTarget;
       const prod = !dev;
 
-      if (!targets.includes(target)) {
-        const list = targets
-          .map(t => `"${log.cyan(t)}"`)
+      if (!TARGETS.includes(target)) {
+        const list = TARGETS.map(t => `"${log.cyan(t)}"`)
           .join(' ')
           .trim();
         let msg = '';
@@ -164,6 +163,10 @@ const program = yargs
           describe: 'Show for production.',
           boolean: true,
         })
+        .option('target', {
+          describe: 'Build for "electron" (default) or "web" browser.',
+          alias: 't',
+        })
         .option('dev', {
           alias: 'd',
           describe: 'Show for development.',
@@ -171,8 +174,13 @@ const program = yargs
         }),
     e => {
       const { dev } = e;
+      const targets: BundleTarget[] = ((e.target || '') as string)
+        .split(',')
+        .map(v => v as BundleTarget)
+        .filter(t => TARGETS.includes(t));
+      const target = targets.length === 0 ? TARGETS : targets;
       const prod = e.prod && dev ? undefined : dev ? false : e.prod;
-      cmds.stats({ settings, prod });
+      cmds.stats({ settings, prod, target });
     },
   )
 

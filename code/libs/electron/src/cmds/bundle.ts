@@ -108,13 +108,13 @@ export async function bundleElectron(args: {
     });
   }
 
-  // Run build scripts.
+  // Run scripts.
   try {
     await tasks.run();
   } catch (error) {
     if (!silent) {
       log.info();
-      log.warn(`😩  Failed while bundling javascript.`);
+      log.warn(`😩  Failed while bundling for ${log.magenta('electron')}.`);
       log.error(error.message);
       log.info();
     }
@@ -135,7 +135,7 @@ export async function bundleElectron(args: {
     log.info.gray(`                  ${formatPath(out.renderer.path)}`);
 
     log.info();
-    await stats({ settings, prod, moduleInfo: false });
+    await stats({ settings, prod, moduleInfo: false, target: 'electron' });
   }
 
   return { success: true };
@@ -154,10 +154,9 @@ export async function bundleWeb(args: {
   const summary = value.defaultValue(args.summary, true);
   const env = toEnv(prod);
   const pkg = settings.package;
-
-  console.log('🐷  bundle -- WEB');
-  console.log();
-  console.log();
+  const web = settings.web;
+  const entry = web.entry;
+  const out = web.out(prod);
 
   // Ensure the module is initialized.
   await init({ settings, prod });
@@ -171,19 +170,30 @@ export async function bundleWeb(args: {
   const cmd = command()
     .addLine(`export NODE_ENV="${env.value}"`)
     .addLine(`cd ${fsPath.resolve('.')}`)
-    .add(`parcel`);
-  // .add(`build ${entry.renderer}`)
-  // .add(`--public-url ./`)
-  // .arg(`--out-dir ${out.renderer.dir}`)
-  // .arg(`--out-file ${out.renderer.file}`)
-  // .add(bundlerArgs.cmd);
-
-  console.log(log.blue(cmd));
+    .add(`parcel`)
+    .add(`build ${entry}`)
+    .add(`--public-url ./`)
+    .arg(`--out-dir ${out.dir}`)
+    .arg(`--out-file ${out.file}`)
+    .add(web.bundlerArgs.cmd);
 
   tasks.add({
     title: `Bundling      ${log.cyan('web')} ${env.display}`,
     task: () => cmd.run({ silent: true }),
   });
+
+  // Run scripts.
+  try {
+    await tasks.run();
+  } catch (error) {
+    if (!silent) {
+      log.info();
+      log.warn(`😩  Failed while bundling for ${log.magenta('web')}.`);
+      log.error(error.message);
+      log.info();
+    }
+    return { success: false, error };
+  }
 
   // Log results.
   if (summary && !silent) {
@@ -191,36 +201,15 @@ export async function bundleWeb(args: {
     log.info(`🤟  Javascript bundling for ${log.yellow('web')} complete.\n`);
     log.info.gray(`   • package:     ${pkg.name}`);
     log.info.gray(`   • version:     ${pkg.version}`);
-    // log.info.gray(`   • entry:       ${formatPath(entry.main)}`);
-    // log.info.gray(`                  ${formatPath(entry.renderer)}`);
-    // log.info.gray(`   • output:      ${formatPath(out.main.path)}`);
-    // log.info.gray(`                  ${formatPath(out.renderer.path)}`);
-
+    log.info.gray(`   • entry:       ${formatPath(entry)}`);
+    log.info.gray(`   • output:      ${formatPath(out.path)}`);
     log.info();
-    await stats({ settings, prod, moduleInfo: false });
+    await stats({ settings, prod, moduleInfo: false, target: 'web' });
+    log.info(`Run ${log.cyan('yarn serve')} to view in browser.`);
+    log.info();
   }
   return { success: true };
 }
-
-// export async function dist(args: { settings: Settings }) {
-//   // Setup initial conditions.
-//   const { settings } = args;
-//   process.env.NODE_ENV = 'production';
-//   init({ settings });
-//   logInfo({ settings, port: false });
-
-//   // Prepare the bundler.
-//   const bundler = createParcelBundler(settings);
-
-//   // Run the bundler.
-//   await bundler.bundle();
-
-//   // Finish up.
-//   stats({ settings, moduleInfo: false });
-//   log.info(`Run ${log.cyan('yarn serve')} to view in browser.`);
-//   log.info();
-//   process.exit(0);
-// }
 
 /**
  * INTERNAL

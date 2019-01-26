@@ -5,8 +5,15 @@
 electron:
   port: 8888
   entry:
-    main: ./src/test/main.ts
-    renderer: ./src/test/renderer.html
+    main: ./src/test/app.main.ts
+    renderer: ./src/test/app.renderer.html
+  bundle:
+    sourcemaps: true
+    treeshake: false
+
+web:
+  port: 1234
+  entry: ./src/test/web.html
   bundle:
     sourcemaps: true
     treeshake: false

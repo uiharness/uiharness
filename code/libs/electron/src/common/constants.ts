@@ -16,12 +16,12 @@ export const PATH = {
   },
   ELECTRON: {
     MAIN: {
-      DEFAULT_ENTRY: './src/test/main.ts',
+      DEFAULT_ENTRY: './src/test/app.main.ts',
       OUT_FILE: 'main.js',
       OUT_DIR: `${BUNDLE_DIR}/main`,
     },
     RENDERER: {
-      DEFAULT_ENTRY: './src/test/renderer.html',
+      DEFAULT_ENTRY: './src/test/app.renderer.html',
       OUT_FILE: 'renderer.html',
       OUT_DIR: {
         DEV: `${BUNDLE_DIR}/renderer/development`,
