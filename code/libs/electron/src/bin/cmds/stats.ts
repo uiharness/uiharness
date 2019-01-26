@@ -24,8 +24,6 @@ export async function stats(args: {
   if (prod === undefined || prod === true) {
     await logDir(constants.PATH.RENDERER.OUT_DIR.PROD);
   }
-
-  log.info();
 }
 
 /**

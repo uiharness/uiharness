@@ -6,7 +6,7 @@ import {
 import { app, BrowserWindow } from 'electron';
 import { format } from 'url';
 
-const config: IUIHarnessRuntimeConfig = require('../.uiharness/config.json');
+const config: IUIHarnessRuntimeConfig = require('../../.uiharness/config.json');
 
 app.on('ready', async () => {
   const mainWindow = new BrowserWindow({

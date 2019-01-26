@@ -1,4 +1,4 @@
-import '../node_modules/@uiharness/core/css/normalize.css';
+import '../../node_modules/@uiharness/core/css/normalize.css';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 

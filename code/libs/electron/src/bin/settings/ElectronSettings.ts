@@ -1,6 +1,8 @@
 import { IElectronBuilderConfig, IUIHarnessElectronConfig } from '../../types';
-import { file, fsPath } from '../common';
+import { file, fsPath, constants } from '../common';
 import * as util from './util';
+
+const { PATH } = constants;
 
 /**
  * Represents the `electron` section of the `uiharness.yml` configuration file.
@@ -26,6 +28,16 @@ export class ElectronSettings {
    */
   public get port() {
     return this.data.port || 8888;
+  }
+
+  /**
+   * Retrieves the entry paths used by the JS bundler.
+   */
+  public get entry() {
+    const entry = typeof this.data.entry === 'object' ? this.data.entry : {};
+    const main = entry.main || PATH.MAIN.DEFAULT_ENTRY;
+    const renderer = entry.renderer || PATH.RENDERER.DEFAULT_ENTRY;
+    return { main, renderer };
   }
 
   /**

@@ -10,11 +10,11 @@ export async function start(args: { settings: Settings }) {
   // Setup initial conditions.
   const { settings } = args;
   const port = settings.electron.port;
-  const mainEntry = constants.PATH.MAIN.ENTRY;
 
   // Ensure the module is initialized.
   await init({ settings });
-  logInfo({ settings, port: true, mainEntry });
+  log.info();
+  logInfo({ settings, port: true });
 
   // Build the main JS.
   await bundle({

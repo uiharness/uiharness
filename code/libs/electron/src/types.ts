@@ -21,6 +21,10 @@ export type IUIHarnessConfig = {
 export type IUIHarnessElectronConfig = {
   port?: number; // Port the dev-server runs on for electron.
   bundle?: IParcelBuildConfig;
+  entry?: {
+    main?: string;
+    renderer?: string;
+  };
 };
 
 /**

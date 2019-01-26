@@ -12,6 +12,8 @@ describe('ElectronSettings', () => {
       expect(res.port).to.eql(8888);
       expect(res.bundlerArgs.sourcemaps).to.eql(true);
       expect(res.bundlerArgs.treeshake).to.eql(false);
+      expect(res.entry.main).to.eql('./src/main.ts');
+      expect(res.entry.renderer).to.eql('./src/index.html');
 
       const builder = res.builderArgs;
       expect(builder.exists).to.eql(false);
@@ -26,6 +28,8 @@ describe('ElectronSettings', () => {
     expect(res.port).to.eql(1234);
     expect(res.bundlerArgs.sourcemaps).to.eql(false);
     expect(res.bundlerArgs.treeshake).to.eql(true);
+    expect(res.entry.main).to.eql('./foo/main/start.ts');
+    expect(res.entry.renderer).to.eql('./foo/renderer/index.html');
 
     const builder = res.builderArgs;
     expect(builder.exists).to.eql(true);

@@ -35,7 +35,8 @@ export async function dist(args: { settings: Settings; silent?: boolean }) {
   // Ensure the module is initialized.
   await init({ settings });
   if (!silent) {
-    logInfo({ settings, port: false, mainEntry: PATH.MAIN.ENTRY });
+    log.info();
+    logInfo({ settings, port: false });
   }
 
   // Build JS bundles and run the electron-builder.

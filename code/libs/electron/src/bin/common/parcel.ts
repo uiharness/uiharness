@@ -14,7 +14,7 @@ export function rendererBundler(
   const { isProd = false } = options;
   const RENDERER = PATH.RENDERER;
   const outDir = isProd ? RENDERER.OUT_DIR.PROD : RENDERER.OUT_DIR.DEV;
-  const entry = RENDERER.ENTRY;
+  const entry = settings.electron.entry.renderer;
   return createBundler(entry, settings, {
     outDir,
     minify: isProd,

@@ -16,11 +16,14 @@ export async function bundle(args: {
 }) {
   const { settings, prod, silent = false, noSummary = false } = args;
   let { main, renderer } = args;
+  const entry = settings.electron.entry;
   const bundlerArgs = settings.electron.bundlerArgs;
   const { PATH } = constants;
   const { MAIN, RENDERER } = PATH;
-  const mainDir = MAIN.OUT_DIR;
-  const rendererDir = prod ? RENDERER.OUT_DIR.PROD : RENDERER.OUT_DIR.DEV;
+  const outDir = {
+    main: MAIN.OUT_DIR,
+    renderer: prod ? RENDERER.OUT_DIR.PROD : RENDERER.OUT_DIR.DEV,
+  };
 
   const env =
     prod === true || prod === undefined ? 'production' : 'development';
@@ -47,12 +50,12 @@ export async function bundle(args: {
       title: `Bundling      ${log.cyan('main')}`,
       task: () => {
         let args = '';
-        args += `--out-dir ${mainDir}`;
+        args += `--out-dir ${outDir.main}`;
         args += ` --target electron `;
         args += bundlerArgs.cmd;
         const cmd = `
           ${CMD}
-          parcel build src/main.ts  ${args}
+          parcel build ${entry.main} ${args}
         `;
         return exec.run(cmd, { silent: true });
       },
@@ -65,11 +68,11 @@ export async function bundle(args: {
       task: () => {
         let args = '';
         args += `--public-url ./`;
-        args += ` --out-dir ${rendererDir}`;
+        args += ` --out-dir ${outDir.renderer}`;
         args += bundlerArgs.cmd;
         const cmd = `
           ${CMD}
-          parcel build src/index.html ${args}
+          parcel build ${entry.renderer} ${args}
         `;
         return exec.run(cmd, { silent: true });
       },
@@ -99,12 +102,12 @@ export async function bundle(args: {
     log.info(`🤟  Javascript bundling complete.\n`);
     log.info.gray(`   • version:     ${settings.package.version}`);
     log.info.gray(`   • env:         ${log.yellow(env)}`);
-    log.info.gray(`   • main entry:  ${formatPath(MAIN.ENTRY)}`);
-    log.info.gray(`   • output:      ${formatPath(MAIN.OUT_DIR)}`);
-    log.info.gray(`                  ${formatPath(rendererDir)}`);
+    log.info.gray(`   • entry:       ${formatPath(entry.main)}`);
+    log.info.gray(`                  ${formatPath(entry.renderer)}`);
+    log.info.gray(`   • output:      ${formatPath(outDir.main)}`);
+    log.info.gray(`                  ${formatPath(outDir.renderer)}`);
 
     log.info();
     await stats({ settings, prod: prod, moduleInfo: false });
-    log.info();
   }
 }
