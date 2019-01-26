@@ -1115,32 +1115,32 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.5.tgz#f4f85fe198e1e9cedc0bb53a8c2d30fb34299e50"
   integrity sha512-y51XRWWg1GiW4+mV2zmFQUqJT3bX7nuUaXW4j8a2dFvT9ZlaNLjb7ZxcUSDyklt/UBWrW2+31x+hQpRzxaTFzw==
 
-"@uiharness/core@1.0.61":
-  version "1.0.61"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.61.tgz#90557e35caa82b609d4c8c45d3febb69f37478e8"
-  integrity sha512-ZbMR6hHVbd4c+Lubx6+pvYMURNKrDNb/DAtyzn9NEL878Ic4EtBd8qAbnV+CW1mJ6dpXHR+x1Pub1rVDeuZbUA==
+"@uiharness/core@1.0.62":
+  version "1.0.62"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.62.tgz#e83f7ce28371a16c6dc0e31a463cbb1169504c43"
+  integrity sha512-GTb9BWt9SznqYbBe/oKtWJC0wV8jL8oOelqJmw1fBTAjWaB0HrgluergIOv5SxKAJazOxqAe8mLgUGzRQtN6qw==
   dependencies:
     "@tdb/util" "1.9.26"
-    "@uiharness/types" "0.0.5"
+    "@uiharness/types" "0.0.6"
     create-tmpl "0.0.33"
     filesize "4.0.0"
 
-"@uiharness/electron.ui@0.0.33":
-  version "0.0.33"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron.ui/-/electron.ui-0.0.33.tgz#1f4087b229b2efb4217f9a70d44cf86c114ed70a"
-  integrity sha512-ByREVMaEXU4nfM95cxIYnkBl36w5kU+Oqo9q3CIOpaHfHcGC1OIQJF8qUVaYmAj8tZU6MmtvVW4+LnvBcbDX9w==
+"@uiharness/electron.ui@0.0.34":
+  version "0.0.34"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron.ui/-/electron.ui-0.0.34.tgz#17e9e0068be5c7344186c4a260217d34eb55afbd"
+  integrity sha512-bRvnGQCuVo1Qdz+1wVwmntos7dj0W8nMko66xKJ5u8isMpXJHnjU6WbSAh4LK7INKPw9s7OLLggrx6bPVo6PWQ==
   dependencies:
     "@types/app-root-path" "1.2.4"
-    "@uiharness/core" "1.0.61"
-    "@uiharness/types" "0.0.5"
+    "@uiharness/core" "1.0.62"
+    "@uiharness/types" "0.0.6"
     app-root-path "2.1.0"
     electron-is-dev "1.0.1"
     electron-log "2.2.17"
 
-"@uiharness/types@0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.5.tgz#beaa569642dffb6f67ed2d9992b02f6d357b4423"
-  integrity sha512-WLPDcsNuLmvv0MNU1UN+nEU62oJ+BEv99tV2Ctm0SElwuRRXZ4f4X7++MwU0pnEqFV0KXkDuZKhIGmi44UtpFw==
+"@uiharness/types@0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.6.tgz#238ca8e06da1a3cb2c9db5ecefcecf178d0e7d15"
+  integrity sha512-a1wEXP2OnxkSTutIA2ZiXqPOgb56daXFK0gaYvhT2zCddHB4XxHHCHvFNTCoYLw7QE85RJqt1YSaozuCfPkoKg==
 
 abbrev@1:
   version "1.1.1"
