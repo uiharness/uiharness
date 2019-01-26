@@ -10,19 +10,21 @@ export async function stats(args: {
   prod?: boolean;
 }) {
   const { settings, prod } = args;
+  const ELECTRON = constants.PATH.ELECTRON;
   const moduleInfo = value.defaultValue(args.moduleInfo, true);
+
   if (moduleInfo) {
     logInfo({ settings, port: false });
   }
 
-  await logDir(constants.PATH.MAIN.OUT_DIR);
+  await logDir(ELECTRON.MAIN.OUT_DIR);
 
   if (prod === undefined || prod === false) {
-    await logDir(constants.PATH.RENDERER.OUT_DIR.DEV);
+    await logDir(ELECTRON.RENDERER.OUT_DIR.DEV);
   }
 
   if (prod === undefined || prod === true) {
-    await logDir(constants.PATH.RENDERER.OUT_DIR.PROD);
+    await logDir(ELECTRON.RENDERER.OUT_DIR.PROD);
   }
 }
 

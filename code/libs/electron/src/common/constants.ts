@@ -10,22 +10,32 @@ export const PATH = {
   PACKAGE: `${DIR}/package.json`,
   BUNDLE_DIR,
   TEMPLATES: './node_modules/@uiharness/electron/tmpl',
-  MAIN: {
-    DEFAULT_ENTRY: './src/main.ts',
-    OUT_FILE: 'main.js',
-    OUT_DIR: `${BUNDLE_DIR}/main`,
-  },
-  RENDERER: {
-    DEFAULT_ENTRY: './src/renderer.html',
-    OUT_FILE: 'renderer.html',
-    OUT_DIR: {
-      DEV: `${BUNDLE_DIR}/renderer/development`,
-      PROD: `${BUNDLE_DIR}/renderer/production`,
-    },
-  },
   CONFIG: {
     DIR,
     FILE: 'config.json',
+  },
+  ELECTRON: {
+    MAIN: {
+      DEFAULT_ENTRY: './src/test/main.ts',
+      OUT_FILE: 'main.js',
+      OUT_DIR: `${BUNDLE_DIR}/main`,
+    },
+    RENDERER: {
+      DEFAULT_ENTRY: './src/test/renderer.html',
+      OUT_FILE: 'renderer.html',
+      OUT_DIR: {
+        DEV: `${BUNDLE_DIR}/renderer/development`,
+        PROD: `${BUNDLE_DIR}/renderer/production`,
+      },
+    },
+  },
+  WEB: {
+    ENTRY: './src/test/web.html',
+    OUT_FILE: 'web.html',
+    OUT_DIR: {
+      DEV: `${BUNDLE_DIR}/web/development`,
+      PROD: `${BUNDLE_DIR}/web/production`,
+    },
   },
 };
 

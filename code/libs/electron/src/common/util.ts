@@ -47,8 +47,8 @@ export function toBundlerArgs(data: IParcelBuildConfig = {}) {
   cmd = sourcemaps === false ? `${cmd} --no-source-maps` : cmd;
   cmd = treeshake ? `${cmd} --experimental-scope-hoisting` : cmd;
 
-  console.log(`\nTODO 🐷   use command()\n`);
-  console.log('have boolean flag on `add` commands to avoid ternary');
+  console.log(`\nTODO 🐷   use command()`);
+  console.log('have boolean flag on `add` commands to avoid ternary\n');
 
   // Finish up.
   return { sourcemaps, treeshake, cmd };

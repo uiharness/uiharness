@@ -33,9 +33,10 @@ export class ElectronSettings {
    * Retrieves the entry paths used by the JS bundler.
    */
   public get entry() {
+    const { MAIN, RENDERER } = PATH.ELECTRON;
     const entry = typeof this.data.entry === 'object' ? this.data.entry : {};
-    const main = entry.main || PATH.MAIN.DEFAULT_ENTRY;
-    const renderer = entry.renderer || PATH.RENDERER.DEFAULT_ENTRY;
+    const main = entry.main || MAIN.DEFAULT_ENTRY;
+    const renderer = entry.renderer || RENDERER.DEFAULT_ENTRY;
     return { main, renderer };
   }
 
@@ -43,7 +44,7 @@ export class ElectronSettings {
    * The paths that JS us bundled to.
    */
   public out(prod?: boolean) {
-    const { MAIN, RENDERER } = PATH;
+    const { MAIN, RENDERER } = PATH.ELECTRON;
     const mainDir = MAIN.OUT_DIR;
     const rendererDir = prod ? RENDERER.OUT_DIR.PROD : RENDERER.OUT_DIR.DEV;
     return {

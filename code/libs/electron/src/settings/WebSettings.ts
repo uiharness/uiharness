@@ -1,4 +1,4 @@
-import { constants, file, fsPath, toBundlerArgs } from '../common';
+import { constants, fsPath, toBundlerArgs } from '../common';
 import { IUIHarnessWebConfig } from '../types';
 
 const { PATH } = constants;
@@ -32,30 +32,20 @@ export class WebSettings {
    * Retrieves the entry paths used by the JS bundler.
    */
   public get entry() {
-    // const entry = typeof this.data.entry === 'object' ? this.data.entry : {};
-    // const main = entry.main || PATH.MAIN.DEFAULT_ENTRY;
-    // const renderer = entry.renderer || PATH.RENDERER.DEFAULT_ENTRY;
-    return '';
+    return this.data.entry || PATH.WEB.ENTRY;
   }
 
   /**
    * The paths that JS us bundled to.
    */
   public out(prod?: boolean) {
-    const { MAIN, RENDERER } = PATH;
-    const mainDir = MAIN.OUT_DIR;
-    const rendererDir = prod ? RENDERER.OUT_DIR.PROD : RENDERER.OUT_DIR.DEV;
+    const WEB = PATH.WEB;
+    const dir = prod ? WEB.OUT_DIR.PROD : WEB.OUT_DIR.DEV;
+    const file = WEB.OUT_FILE;
     return {
-      main: {
-        dir: mainDir,
-        file: MAIN.OUT_FILE,
-        path: fsPath.join(mainDir, MAIN.OUT_FILE),
-      },
-      renderer: {
-        dir: rendererDir,
-        file: RENDERER.OUT_FILE,
-        path: fsPath.join(rendererDir, RENDERER.OUT_FILE),
-      },
+      dir,
+      file,
+      path: fsPath.join(dir, file),
     };
   }
 

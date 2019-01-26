@@ -14,7 +14,7 @@ export function electronRendererBundler(
   options: { parcel?: ParcelOptions; isProd?: boolean } = {},
 ) {
   const { isProd = false } = options;
-  const RENDERER = PATH.RENDERER;
+  const RENDERER = PATH.ELECTRON.RENDERER;
   const outDir = isProd ? RENDERER.OUT_DIR.PROD : RENDERER.OUT_DIR.DEV;
   const electron = settings.electron;
   const entry = electron.entry.renderer;
