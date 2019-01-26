@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/web.ui",
-  "version": "0.0.22",
+  "version": "0.0.28",
   "description": "UIHarness client-tools for the web (include in dependencies).",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -14,7 +14,7 @@
     "prepare": "yarn run build && yarn run lint && yarn test"
   },
   "dependencies": {
-    "@uiharness/core": "1.0.56"
+    "@uiharness/core": "1.0.62"
   },
   "devDependencies": {
     "@tdb/test": "1.2.13",

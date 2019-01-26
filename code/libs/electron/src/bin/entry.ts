@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import * as cmds from './cmds';
-import { constants, log, Settings, yargs } from './common';
+import { constants, log, yargs } from './common';
+import { Settings } from './settings';
 
 /**
  * Makes the script crash on unhandled rejections instead of silently
@@ -93,18 +94,16 @@ const program = yargs
     'Prepare the javascript bundle.',
     e =>
       e
-        .option('prod', {
-          alias: 'p',
-          describe: 'Bundle for production (default: true).',
+        .option('dev', {
+          describe: 'Bundle for development (default: false, production).',
           boolean: true,
+          default: false,
         })
         .option('main', {
-          alias: 'm',
           describe: 'Bundle the main module (default: true).',
           boolean: true,
         })
         .option('renderer', {
-          alias: 'r',
           describe: 'Bundle the renderer module (default: true).',
           boolean: true,
         })
@@ -114,8 +113,14 @@ const program = yargs
           boolean: true,
         }),
     async e => {
-      const { prod, main, renderer, silent } = e;
-      await cmds.bundle({ settings, prod, main, renderer, silent });
+      const { prod, main, renderer, silent, dev } = e;
+      await cmds.bundle({
+        settings,
+        prod: !dev,
+        main,
+        renderer,
+        silent,
+      });
       process.exit(0);
     },
   )

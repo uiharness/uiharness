@@ -1034,21 +1034,27 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.6.tgz#579f95b303d135f0c16928acfbb3550c8a78d4c2"
   integrity sha512-lppGO3m316B4dY4AcbOVOjyOy3EH1M/Y4gMYNvJxricIJ9B72i5ntGJ8s5DJiSiW4t6J2yEByrGOGDEbBBLlVw==
 
-"@uiharness/core@1.0.56":
-  version "1.0.56"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.56.tgz#be68a55a7ce47628de908468a000367b724af162"
-  integrity sha512-QSbeigr6McpgJOvrsexZNLr1tANXpJOonVDhc5ksDDKoP8pw6wc+4PrGwQkxsFqvzRT/zgNRsui6aR7Q4o9tlQ==
+"@uiharness/core@1.0.62":
+  version "1.0.62"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.62.tgz#e83f7ce28371a16c6dc0e31a463cbb1169504c43"
+  integrity sha512-GTb9BWt9SznqYbBe/oKtWJC0wV8jL8oOelqJmw1fBTAjWaB0HrgluergIOv5SxKAJazOxqAe8mLgUGzRQtN6qw==
   dependencies:
     "@tdb/util" "1.9.26"
+    "@uiharness/types" "0.0.6"
     create-tmpl "0.0.33"
     filesize "4.0.0"
 
-"@uiharness/web.ui@0.0.22":
-  version "0.0.22"
-  resolved "https://registry.yarnpkg.com/@uiharness/web.ui/-/web.ui-0.0.22.tgz#3eb1a26674f2c36752aad15b7f19791ff291467a"
-  integrity sha512-snypsMt/Xe553PqIkxOBslf7Z1eU/4LeNVvyvvFkRFwI93kY0qK8W+JHoQOpxYVszaSsMLORWljVfqUu1//pWQ==
+"@uiharness/types@0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.6.tgz#238ca8e06da1a3cb2c9db5ecefcecf178d0e7d15"
+  integrity sha512-a1wEXP2OnxkSTutIA2ZiXqPOgb56daXFK0gaYvhT2zCddHB4XxHHCHvFNTCoYLw7QE85RJqt1YSaozuCfPkoKg==
+
+"@uiharness/web.ui@0.0.28":
+  version "0.0.28"
+  resolved "https://registry.yarnpkg.com/@uiharness/web.ui/-/web.ui-0.0.28.tgz#68937dba95930952c1d802e483ace4fdbade1940"
+  integrity sha512-ujDAwooW6xUtvxzGkjV2qnPHdnzNiuXq9as+HOF8BVtDtXcbfgwVp0r/BK+p2i/s5LBLG9vRzdSsBAbCRv8hSQ==
   dependencies:
-    "@uiharness/core" "1.0.56"
+    "@uiharness/core" "1.0.62"
 
 "@zeit/schemas@2.6.0":
   version "2.6.0"

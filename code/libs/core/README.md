@@ -1,7 +1,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 ![title](https://user-images.githubusercontent.com/185555/51221318-de33b000-199d-11e9-8ad8-b244c1aab3e4.jpg)
 
-Shared logic of the [UIHarness](https://uiharness.com).
+Core shared logic of the [UIHarness](https://uiharness.com).
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -56,9 +56,3 @@ See [parcel/tree-shaking](https://parceljs.org/cli.html#enable-experimental-scop
 
 <p>&nbsp;</p>
 
-## 🔗 Modules
-- [@uiharness/web](/code/libs/web/README.md)
-- [@uiharness/web.ui](/code/libs/web.ui/README.md)
-- [@uiharness/electron](/code/libs/electron/README.md)
-- [@uiharness/electron.ui](code/libs/electron.ui/README.md)
-- [@uiharness/core](/code/libs/core/README.md)

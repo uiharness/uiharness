@@ -1,14 +1,7 @@
-import {
-  log,
-  constants,
-  execa,
-  fsPath,
-  logInfo,
-  parcel,
-  Settings,
-} from '../common';
-import { init } from './init';
+import { constants, execa, fsPath, log, logInfo, parcel } from '../common';
+import { Settings } from '../settings';
 import { bundle } from './bundle';
+import { init } from './init';
 
 /**
  * Starts the development server.
@@ -16,12 +9,13 @@ import { bundle } from './bundle';
 export async function start(args: { settings: Settings }) {
   // Setup initial conditions.
   const { settings } = args;
-  const port = settings.port;
-  const mainEntry = constants.PATH.MAIN.ENTRY;
+  const prod = false;
+  const port = settings.electron.port;
 
   // Ensure the module is initialized.
-  await init({ settings });
-  logInfo({ settings, port: true, mainEntry });
+  await init({ settings, prod });
+  log.info();
+  logInfo({ settings, port: true });
 
   // Build the main JS.
   await bundle({

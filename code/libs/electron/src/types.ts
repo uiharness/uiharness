@@ -1,17 +1,10 @@
+export * from '@uiharness/types';
+
 /**
  * The `uiharness.yml` configuration file.
  */
-export type IUIHarnessElectronConfig = {
-  port?: number;
-
-  /**
-   * Build args.
-   * https://parceljs.org/cli.html
-   */
-  build?: {
-    sourcemaps?: boolean; // Default: true.
-    treeshake?: boolean; // Default:true
-  };
+export type IUIHarnessConfig = {
+  electron?: IUIHarnessElectronConfig;
 
   /**
    * Flags used to determine what to
@@ -25,6 +18,24 @@ export type IUIHarnessElectronConfig = {
   };
 };
 
+export type IUIHarnessElectronConfig = {
+  port?: number; // Port the dev-server runs on for electron.
+  bundle?: IParcelBuildConfig;
+  entry?: {
+    main?: string;
+    renderer?: string;
+  };
+};
+
+/**
+ * Build args for the Parcel bundler.
+ * https://parceljs.org/cli.html
+ */
+export type IParcelBuildConfig = {
+  sourcemaps?: boolean; // Default: true.
+  treeshake?: boolean; //  Default:  true
+};
+
 /**
  * The `electron-builder.yml` configuration file.
  */
@@ -32,7 +43,5 @@ export type IElectronBuilderConfig = {
   productName?: string;
   appId?: string;
   files?: string[];
-  directories?: {
-    output?: string;
-  };
+  directories?: { output?: string };
 };

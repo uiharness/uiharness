@@ -34,9 +34,3 @@ Include in the `devDependencies` of your package.json, along with the correspond
 
 <p>&nbsp;</p>
 
-## 🔗 Modules
-- [@uiharness/web](/code/libs/web/README.md)
-- [@uiharness/web.ui](/code/libs/web.ui/README.md)
-- [@uiharness/electron](/code/libs/electron/README.md)
-- [@uiharness/electron.ui](code/libs/electron.ui/README.md)
-- [@uiharness/core](/code/libs/core/README.md)

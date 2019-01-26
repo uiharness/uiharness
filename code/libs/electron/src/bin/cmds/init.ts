@@ -1,5 +1,15 @@
-import { fs, fsPath, log, tmpl, Settings, constants, npm } from '../common';
+import {
+  constants,
+  file,
+  fsPath,
+  IUIHarnessRuntimeConfig,
+  log,
+  npm,
+  tmpl,
+} from '../common';
+import { Settings } from '../settings';
 import { clean } from './clean';
+
 const { SCRIPTS, PATH } = constants;
 
 /**
@@ -9,15 +19,16 @@ export async function init(args: {
   settings: Settings;
   force?: boolean;
   reset?: boolean;
+  prod?: boolean;
 }) {
-  const { settings, force = false } = args;
+  const { settings, force = false, prod = false } = args;
   const pkg = settings.package;
   if (args.reset) {
     return reset({ pkg });
   }
 
   // Ensure the JSON configuration used by the app is saved.
-  await saveConfigJson({ settings });
+  await saveConfigJson({ settings, prod });
 
   // Don't continue if already initialized.
   if (!force && (await isInitialized({ settings }))) {
@@ -80,19 +91,27 @@ async function reset(args: { pkg: npm.NpmPackage }) {
  * Saves configuration JSON to the target module to be imported
  * by the consuming components.
  */
-async function saveConfigJson(args: { settings: Settings }) {
-  const { port } = args.settings;
-  const { DIR, FILE } = constants.PATH.CONFIG;
-  const data = { port };
-  const dir = fsPath.resolve(DIR);
-  const path = fsPath.join(dir, FILE);
-  const json = `${JSON.stringify(data, null, '  ')}\n`;
-  await fs.ensureDir(dir);
-  await fs.writeFile(path, json);
+async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
+  const electron = args.settings.electron;
+  const { port } = electron;
+  const out = electron.out(args.prod);
+  const data: IUIHarnessRuntimeConfig = {
+    electron: {
+      port,
+      main: out.main.path,
+      renderer: out.renderer.path,
+    },
+  };
+
+  // Write the file.
+  const { CONFIG } = constants.PATH;
+  const path = fsPath.join(CONFIG.DIR, CONFIG.FILE);
+  await file.stringifyAndSave(path, data);
+  return data;
 }
 
 /**
- * Determines whether the module has been initialized
+ * Determines whether the module has been initialized.
  */
 async function isInitialized(args: { settings: Settings }) {
   const { settings } = args;
@@ -100,6 +119,7 @@ async function isInitialized(args: { settings: Settings }) {
   const scripts = { ...SCRIPTS };
   delete scripts.postinstall;
 
+  // Look to see that all scripts have been inserted.
   const hasAllScripts = Object.keys(scripts).every(
     key => pkg.scripts[key] === scripts[key],
   );

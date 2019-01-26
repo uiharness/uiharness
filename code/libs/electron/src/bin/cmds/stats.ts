@@ -1,13 +1,5 @@
-import {
-  constants,
-  log,
-  logging,
-  logInfo,
-  Settings,
-  value,
-  fsPath,
-  fs,
-} from '../common';
+import { constants, fs, fsPath, log, logging, logInfo, value } from '../common';
+import { Settings } from '../settings';
 
 /**
  * Prints stats about the bundle.
@@ -32,8 +24,6 @@ export async function stats(args: {
   if (prod === undefined || prod === true) {
     await logDir(constants.PATH.RENDERER.OUT_DIR.PROD);
   }
-
-  log.info();
 }
 
 /**

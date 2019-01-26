@@ -1,6 +1,6 @@
-import { PATH } from './constants';
+import { PATH } from '../constants';
+import { Settings } from '../Settings';
 import { ParcelBundler } from './libs';
-import { Settings } from './Settings';
 
 export type ParcelOptions = ParcelBundler.ParcelOptions;
 
@@ -14,7 +14,7 @@ export function rendererBundler(
   const { isProd = false } = options;
   const RENDERER = PATH.RENDERER;
   const outDir = isProd ? RENDERER.OUT_DIR.PROD : RENDERER.OUT_DIR.DEV;
-  const entry = RENDERER.ENTRY;
+  const entry = settings.electron.entry.renderer;
   return createBundler(entry, settings, {
     outDir,
     minify: isProd,
@@ -31,7 +31,7 @@ function createBundler(
   settings: Settings,
   options: ParcelBundler.ParcelOptions,
 ) {
-  const args = settings.bundlerArgs;
+  const args = settings.electron.bundlerArgs;
   return new ParcelBundler(entry, {
     target: 'electron',
     sourceMaps: args.sourcemaps,

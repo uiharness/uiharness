@@ -1,0 +1,13 @@
+#
+# Sample config for unit-tests.
+# Non-default values.
+#
+
+electron:
+  port: 1234
+  entry:
+    main: ./foo/main/start.ts
+    renderer: ./foo/renderer/index.html
+  bundle:
+    sourcemaps: false
+    treeshake: true

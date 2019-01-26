@@ -1,5 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![img](https://user-images.githubusercontent.com/185555/51593764-cc32ae00-1f57-11e9-9c49-e86c762be65f.png)](https://uiharness.com)
+[![uiharness](https://user-images.githubusercontent.com/185555/51708395-b4a71280-2088-11e9-95ac-ed659c36476c.png)](https://uiharness.com)
 
 
 
@@ -53,6 +53,7 @@ yarn add    @uiharness/electron.ui  # Client tools (bundled with app as dependen
 - [@uiharness/electron](/code/libs/electron/README.md)
 - [@uiharness/electron.ui](code/libs/electron.ui/README.md)
 - [@uiharness/core](/code/libs/core/README.md)
+- [@uiharness/types](/code/libs/types/README.md)
 
 <p>&nbsp;</p>
 

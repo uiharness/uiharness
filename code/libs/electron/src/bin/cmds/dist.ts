@@ -1,18 +1,15 @@
 import {
   constants,
-  electron,
+  exec,
+  fsPath,
+  Listr,
   log,
   logging,
   logInfo,
-  parcel,
-  Settings,
-  Listr,
-  fsPath,
-  exec,
-  execa,
 } from '../common';
-import { init } from './init';
+import { Settings } from '../settings';
 import { bundle } from './bundle';
+import { init } from './init';
 
 const { PATH } = constants;
 
@@ -21,6 +18,7 @@ const { PATH } = constants;
  */
 export async function dist(args: { settings: Settings; silent?: boolean }) {
   const { settings, silent = false } = args;
+  const prod = true;
   process.env.NODE_ENV = 'production';
 
   const handleError = (error: Error, step: string) => {
@@ -36,9 +34,10 @@ export async function dist(args: { settings: Settings; silent?: boolean }) {
   };
 
   // Ensure the module is initialized.
-  await init({ settings });
+  await init({ settings, prod });
   if (!silent) {
-    logInfo({ settings, port: false, mainEntry: PATH.MAIN.ENTRY });
+    log.info();
+    logInfo({ settings, port: false });
   }
 
   // Build JS bundles and run the electron-builder.
@@ -52,7 +51,7 @@ export async function dist(args: { settings: Settings; silent?: boolean }) {
   // Run the electron `build` command.
   const tasks = new Listr([
     {
-      title: `Building ${log.yellow('electron app')} 🌼`,
+      title: `Building      ${log.yellow('electron app')} 🌼`,
       task: () => {
         const cmd = `
           cd ${fsPath.resolve('.')}
@@ -70,11 +69,10 @@ export async function dist(args: { settings: Settings; silent?: boolean }) {
   }
 
   // Log output
-  const config = settings.builderArgs;
-  const path =
-    config && config.outputDir
-      ? logging.formatPath(config.outputDir, true)
-      : 'UNKNOWN';
+  const config = settings.electron.builderArgs;
+  const path = config.outputDir
+    ? logging.formatPath(config.outputDir, true)
+    : 'UNKNOWN';
 
   if (!silent) {
     log.info();

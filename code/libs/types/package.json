@@ -1,0 +1,31 @@
+{
+  "name": "@uiharness/types",
+  "version": "0.0.6",
+  "description": "Shared types between @uiharness modules.",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "test": "echo no-op",
+    "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
+    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
+    "prepare": "yarn run build && yarn run lint"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@tdb/typescript": "^3.2.8"
+  },
+  "files": [
+    "lib"
+  ],
+  "engines": {
+    "node": ">=10.x"
+  },
+  "keywords": [
+    "design",
+    "test",
+    "react",
+    "typescript",
+    "types"
+  ],
+  "license": "MIT"
+}
