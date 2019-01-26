@@ -1,7 +1,6 @@
-import { IUIHarnessConfig, IElectronBuilderConfig } from '../../types';
-import { fs, fsPath, file, log, NpmPackage, value, npm } from '../common/libs';
+import { file, fs, fsPath, log, npm, NpmPackage, value } from '../common/libs';
+import { IUIHarnessConfig } from '../types';
 import { ElectronSettings } from './ElectronSettings';
-import * as util from './util';
 
 export { NpmPackage };
 

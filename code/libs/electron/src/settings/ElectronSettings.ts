@@ -1,4 +1,4 @@
-import { IElectronBuilderConfig, IUIHarnessElectronConfig } from '../../types';
+import { IElectronBuilderConfig, IUIHarnessElectronConfig } from '../types';
 import { file, fsPath, constants } from '../common';
 import * as util from './util';
 

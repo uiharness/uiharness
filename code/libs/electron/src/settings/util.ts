@@ -1,5 +1,5 @@
 import { value } from '../common';
-import { IParcelBuildConfig } from '../../types';
+import { IParcelBuildConfig } from '../types';
 const defaultValue = value.defaultValue;
 
 /**
