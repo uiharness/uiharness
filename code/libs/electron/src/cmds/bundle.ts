@@ -135,7 +135,7 @@ export async function bundleElectron(args: {
     log.info.gray(`                  ${formatPath(out.renderer.path)}`);
 
     log.info();
-    await stats({ settings, prod, moduleInfo: false, target: 'electron' });
+    await stats({ settings, prod, target: 'electron' });
   }
 
   return { success: true };
@@ -204,7 +204,7 @@ export async function bundleWeb(args: {
     log.info.gray(`   • entry:       ${formatPath(entry)}`);
     log.info.gray(`   • output:      ${formatPath(out.path)}`);
     log.info();
-    await stats({ settings, prod, moduleInfo: false, target: 'web' });
+    await stats({ settings, prod, target: 'web' });
     log.info(`Run ${log.cyan('yarn serve')} to view in browser.`);
     log.info();
   }

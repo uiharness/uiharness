@@ -22,6 +22,8 @@ export async function fileStatsTable(args: {
   const { showHeader = false } = args;
   const dir = fsPath.resolve(args.dir);
 
+  const toSize = (bytes: number) => filesize(bytes, { round: 0, spacer: '' });
+
   const getPaths = (dir: string) => {
     return fs.pathExistsSync(dir)
       ? fs.readdirSync(dir).map(path => fsPath.join(dir, path))
@@ -35,7 +37,7 @@ export async function fileStatsTable(args: {
     .map(path => {
       const stats = fs.statSync(path);
       const bytes = stats.size;
-      const size = filesize(bytes);
+      const size = toSize(bytes);
       return { path, bytes, size };
     });
   sizes = R.sortBy(R.prop('bytes'), sizes);
@@ -57,5 +59,11 @@ export async function fileStatsTable(args: {
     table.add([file, e.size]);
   });
 
-  return { table, dir, paths, isEmpty: paths.length === 0 };
+  const totalBytes = sizes.reduce((acc, next) => acc + next.bytes, 0);
+  const total = {
+    bytes: totalBytes,
+    size: toSize(totalBytes),
+  };
+
+  return { table, dir, paths, isEmpty: paths.length === 0, sizes, total };
 }
