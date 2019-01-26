@@ -346,20 +346,20 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/core@1.0.62":
-  version "1.0.62"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.62.tgz#e83f7ce28371a16c6dc0e31a463cbb1169504c43"
-  integrity sha512-GTb9BWt9SznqYbBe/oKtWJC0wV8jL8oOelqJmw1fBTAjWaB0HrgluergIOv5SxKAJazOxqAe8mLgUGzRQtN6qw==
+"@uiharness/core@1.0.63":
+  version "1.0.63"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.63.tgz#2b340aa69abcda6a16b6b689a9d11465c2f6eadc"
+  integrity sha512-iYnVwb2F6+mYOmBvAX63FT0OEh0C9fq/xnvRrMmmA6f3n8S8MnQyA/tPAc62LBttlM0xoJRgPlnGVF4KzqKSQQ==
   dependencies:
     "@tdb/util" "1.9.26"
-    "@uiharness/types" "0.0.6"
+    "@uiharness/types" "0.0.7"
     create-tmpl "0.0.33"
     filesize "4.0.0"
 
-"@uiharness/types@0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.6.tgz#238ca8e06da1a3cb2c9db5ecefcecf178d0e7d15"
-  integrity sha512-a1wEXP2OnxkSTutIA2ZiXqPOgb56daXFK0gaYvhT2zCddHB4XxHHCHvFNTCoYLw7QE85RJqt1YSaozuCfPkoKg==
+"@uiharness/types@0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.7.tgz#e9a76b207aa73a7de649de561b06f8d75019a85f"
+  integrity sha512-uWse2JTIeeCp/CFs+aTD/4xgjOMmO3XGNpFdghAljfVdmpn5Rf3epUkbqB+dPh9COSRUkjnuMnZpVzZCBMvctQ==
 
 ansi-escapes@^3.0.0:
   version "3.1.0"
