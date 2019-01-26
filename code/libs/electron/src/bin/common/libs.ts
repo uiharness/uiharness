@@ -4,7 +4,9 @@ import * as execa from 'execa';
 import * as Listr from 'listr';
 
 export { ParcelBundler, yargs, execa, Listr };
-export * from '../../common';
+
+export { value } from '@tdb/util';
+
 export {
   config,
   fs,

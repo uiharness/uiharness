@@ -1,4 +1,6 @@
-export * from '../common/constants';
+export const URL = {
+  SITE: 'https://uiharness.com',
+};
 
 const DIR = './.uiharness';
 const BUNDLE_DIR = `${DIR}/.bundle`;
