@@ -1,6 +1,6 @@
 import { constants, execa, fsPath, log, logInfo, parcel } from '../common';
 import { Settings } from '../settings';
-import { bundle } from './bundle';
+import { bundleElectron } from './bundle';
 import { init } from './init';
 
 const { PATH } = constants;
@@ -20,12 +20,12 @@ export async function start(args: { settings: Settings }) {
   logInfo({ settings, port: true });
 
   // Build the main JS.
-  await bundle({
+  await bundleElectron({
     settings,
     prod: false,
     main: true,
     renderer: false,
-    noSummary: true,
+    summary: false,
   });
   log.info();
 

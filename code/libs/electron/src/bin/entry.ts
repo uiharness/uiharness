@@ -28,7 +28,6 @@ const CMD = {
   OPEN_O: 'o',
 };
 const CMDS = Object.keys(CMD).map(key => CMD[key]);
-
 const settings = Settings.create('.');
 
 /**
@@ -96,16 +95,12 @@ const program = yargs
       e
         .option('dev', {
           describe: 'Bundle for development (default: false, production).',
-          boolean: true,
-          default: false,
-        })
-        .option('main', {
-          describe: 'Bundle the main module (default: true).',
+          alias: 'd',
           boolean: true,
         })
-        .option('renderer', {
-          describe: 'Bundle the renderer module (default: true).',
-          boolean: true,
+        .option('target', {
+          describe: 'Build for "electron" (default) or "web" browser.',
+          alias: 't',
         })
         .option('silent', {
           alias: 's',
@@ -113,15 +108,27 @@ const program = yargs
           boolean: true,
         }),
     async e => {
-      const { prod, main, renderer, silent, dev } = e;
-      await cmds.bundle({
-        settings,
-        prod: !dev,
-        main,
-        renderer,
-        silent,
-      });
-      process.exit(0);
+      const targets = ['electron', 'web'];
+      const { silent, dev = false } = e;
+      const target = (typeof e.target === 'string'
+        ? e.target.toLowerCase()
+        : 'electron') as cmds.BundleTarget;
+      const prod = !dev;
+
+      if (!targets.includes(target)) {
+        const list = targets
+          .map(t => `"${log.cyan(t)}"`)
+          .join(' ')
+          .trim();
+        let msg = '';
+        msg += `🖐  Bundle target "${log.yellow(target)}" not supported. `;
+        msg += `Must be one of ${list}.`;
+        log.info(msg);
+        log.info();
+        return process.exit(1);
+      }
+      await cmds.bundle({ settings, prod, silent, target });
+      return process.exit(0);
     },
   )
 

@@ -1,6 +1,6 @@
 import { exec, fsPath, Listr, log, logging, logInfo } from '../common';
 import { Settings } from '../settings';
-import { bundle } from './bundle';
+import { bundleElectron } from './bundle';
 import { init } from './init';
 
 /**
@@ -34,7 +34,7 @@ export async function dist(args: { settings: Settings; silent?: boolean }) {
 
   // Build JS bundles and run the electron-builder.
   try {
-    await bundle({ settings, silent, prod: true, noSummary: true });
+    await bundleElectron({ settings, silent, prod: true, summary: false });
   } catch (error) {
     handleError(error, 'building javascript for electron distribution');
     return;

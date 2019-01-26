@@ -1,20 +1,61 @@
-import { constants, exec, fsPath, log, logging, Listr } from '../common';
+import { value, exec, fsPath, Listr, log, logging } from '../common';
 import { Settings } from '../settings';
 import { init } from './init';
 import { stats } from './stats';
+
+export type BundleTarget = 'electron' | 'web';
 
 /**
  * Runs the JS bundler.
  */
 export async function bundle(args: {
   settings: Settings;
+  target: BundleTarget;
+  prod?: boolean;
+  silent?: boolean;
+  summary?: boolean;
+}) {
+  const { target, silent = false, prod, settings } = args;
+  const summary = value.defaultValue(args.summary, true);
+  console.log('🐷  bundle -- target', target);
+  console.log();
+  console.log();
+
+  switch (target) {
+    case 'electron':
+      return bundleElectron({
+        settings,
+        prod,
+        main: true,
+        renderer: true,
+        silent,
+        summary,
+      });
+      break;
+
+    default:
+      if (!silent) {
+        log.info();
+        log.warn(`😩  The target "${log.yellow(target)}" is not supported.`);
+        log.info();
+      }
+      return { success: false };
+  }
+}
+
+/**
+ * Runs the JS bundler for electron.
+ */
+export async function bundleElectron(args: {
+  settings: Settings;
   prod?: boolean;
   main?: boolean;
   renderer?: boolean;
   silent?: boolean;
-  noSummary?: boolean;
+  summary?: boolean;
 }) {
-  const { settings, prod, silent = false, noSummary = false } = args;
+  const { settings, prod, silent = false } = args;
+  const summary = value.defaultValue(args.summary, true);
   let { main, renderer } = args;
   const pkg = settings.package;
   const electron = settings.electron;
@@ -24,6 +65,8 @@ export async function bundle(args: {
 
   const env =
     prod === true || prod === undefined ? 'production' : 'development';
+
+  const envDisplay = log.gray(`(${env})`);
 
   const all = main === undefined && renderer === undefined;
   main = all ? true : main;
@@ -44,7 +87,7 @@ export async function bundle(args: {
 
   if (main) {
     tasks.add({
-      title: `Bundling      ${log.cyan('main')}`,
+      title: `Bundling      ${log.cyan('main')}     ${envDisplay}`,
       task: () => {
         let args = '';
         args += ` --out-dir ${out.main.dir}`;
@@ -62,7 +105,7 @@ export async function bundle(args: {
 
   if (renderer) {
     tasks.add({
-      title: `Bundling      ${log.cyan('renderer')}`,
+      title: `Bundling      ${log.cyan('renderer')} ${envDisplay}`,
       task: () => {
         let args = '';
         args += ` --public-url ./`;
@@ -82,21 +125,19 @@ export async function bundle(args: {
   try {
     await tasks.run();
   } catch (error) {
-    if (silent) {
-      throw error;
-    } else {
+    if (!silent) {
       log.info();
       log.warn(`😩  Failed while bundling javascript.`);
       log.error(error.message);
       log.info();
-      return;
     }
+    return { success: false, error };
   }
 
   // Log results.
   const formatPath = (path: string) => logging.formatPath(path, true);
 
-  if (!silent && !noSummary) {
+  if (summary && !silent) {
     log.info();
     log.info(`🤟  Javascript bundling complete.\n`);
     log.info.gray(`   • env:         ${log.yellow(env)}`);
@@ -110,4 +151,6 @@ export async function bundle(args: {
     log.info();
     await stats({ settings, prod: prod, moduleInfo: false });
   }
+
+  return { success: true };
 }
