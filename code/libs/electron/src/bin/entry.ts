@@ -121,7 +121,7 @@ const program = yargs
           .join(' ')
           .trim();
         let msg = '';
-        msg += `🖐  Bundle target "${log.yellow(target)}" not supported. `;
+        msg += `😫  Bundle target "${log.yellow(target)}" not supported. `;
         msg += `Must be one of ${list}.`;
         log.info(msg);
         log.info();
