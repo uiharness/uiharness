@@ -1,4 +1,4 @@
-import { value, exec, fsPath, Listr, log, logging } from '../common';
+import { value, fsPath, Listr, log, logging, command } from '../common';
 import { Settings } from '../settings';
 import { init } from './init';
 import { stats } from './stats';
@@ -80,44 +80,38 @@ export async function bundleElectron(args: {
     concurrent: true,
     renderer: silent ? 'silent' : undefined,
   });
-  const CMD = `
-    export NODE_ENV="${env}"
-    cd ${fsPath.resolve('.')}
-  `;
+
+  const cmd = command()
+    .addLine(`export NODE_ENV="${env}"`)
+    .addLine(`cd ${fsPath.resolve('.')}`);
 
   if (main) {
     tasks.add({
       title: `Bundling      ${log.cyan('main')}     ${envDisplay}`,
-      task: () => {
-        let args = '';
-        args += ` --out-dir ${out.main.dir}`;
-        args += ` --out-file ${out.main.file}`;
-        args += ` --target electron `;
-        args += bundlerArgs.cmd;
-        const cmd = `
-          ${CMD}
-          parcel build ${entry.main} ${args}
-        `;
-        return exec.run(cmd, { silent: true });
-      },
+      task: () =>
+        cmd
+          .add(`parcel`)
+          .add(`build ${entry.main}`)
+          .arg(`--out-dir ${out.main.dir}`)
+          .arg(`--out-file ${out.main.file}`)
+          .arg(`--target electron`)
+          .add(bundlerArgs.cmd)
+          .run({ silent: true }),
     });
   }
 
   if (renderer) {
     tasks.add({
       title: `Bundling      ${log.cyan('renderer')} ${envDisplay}`,
-      task: () => {
-        let args = '';
-        args += ` --public-url ./`;
-        args += ` --out-dir ${out.renderer.dir}`;
-        args += ` --out-file ${out.renderer.file}`;
-        args += bundlerArgs.cmd;
-        const cmd = `
-          ${CMD}
-          parcel build ${entry.renderer} ${args}
-        `;
-        return exec.run(cmd, { silent: true });
-      },
+      task: () =>
+        cmd
+          .add(`parcel`)
+          .add(`build ${entry.renderer}`)
+          .add(`--public-url ./`)
+          .arg(`--out-dir ${out.renderer.dir}`)
+          .arg(`--out-file ${out.renderer.file}`)
+          .add(bundlerArgs.cmd)
+          .run({ silent: true }),
     });
   }
 

@@ -1,4 +1,4 @@
-import { exec, fsPath, Listr, log, logging, logInfo } from '../common';
+import { fsPath, Listr, log, logging, logInfo, command } from '../common';
 import { Settings } from '../settings';
 import { bundleElectron } from './bundle';
 import { init } from './init';
@@ -40,21 +40,18 @@ export async function dist(args: { settings: Settings; silent?: boolean }) {
     return;
   }
 
+  const cmd = command()
+    .addLine(`cd ${fsPath.resolve('.')}`)
+    .add(`build`)
+    .arg(`--x64`)
+    .arg(`--publish=never`)
+    .alias(`-c.extraMetadata.main="${out.main.path}"`);
+
   // Run the electron `build` command.
   const tasks = new Listr([
     {
       title: `Building      ${log.yellow('electron app')} 🌼`,
-      task: () => {
-        let args = '';
-        args += ` --x64`;
-        args += ` --publish=never`;
-        args += ` -c.extraMetadata.main="${out.main.path}"`;
-        const cmd = `
-          cd ${fsPath.resolve('.')}
-          build ${args}
-        `;
-        return exec.run(cmd, { silent: true });
-      },
+      task: () => cmd.run({ silent: true }),
     },
   ]);
   try {

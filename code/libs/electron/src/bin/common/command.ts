@@ -1,18 +1,33 @@
+import { exec } from './libs';
+
 /**
  * Command-line builder.
  */
 export class Command {
   private _cmd = '';
 
-  constructor(start?: string) {
+  constructor(start?: string | Command) {
     if (start) {
-      this.add(start);
+      this._cmd = start.toString();
     }
   }
 
-  public add(value: string) {
-    this._cmd = `${this._cmd} ${value}`;
-    return this;
+  public add(value: string | Command) {
+    let cmd = this._cmd;
+    if (!cmd.endsWith('\n')) {
+      cmd += ' ';
+    }
+    cmd += value.toString();
+    return new Command(cmd);
+  }
+
+  public addLine(value: string) {
+    return this.add(value).newLine();
+  }
+
+  public newLine() {
+    const cmd = `${this._cmd}\n`;
+    return new Command(cmd);
   }
 
   public arg(value: string) {
@@ -24,15 +39,28 @@ export class Command {
   }
 
   public get value() {
-    return this._cmd.trim();
+    const newLine = this._cmd.endsWith('\n');
+    let cmd = this._cmd.trim();
+    if (newLine) {
+      cmd += '\n';
+    }
+    return cmd;
   }
 
   public toString() {
     return this.value;
   }
+
+  public clone() {
+    return new Command(this);
+  }
+
+  public run(options: { silent?: boolean } = {}) {
+    return exec.run(this.toString(), options);
+  }
 }
 
-export const command = (start?: string) => new Command(start);
+export const command = (start?: string | Command) => new Command(start);
 
 /**
  * INTERNAL
