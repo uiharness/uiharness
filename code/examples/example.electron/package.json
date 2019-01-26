@@ -8,13 +8,7 @@
     "sl": "msync sl && sh ./sh/copy-bin.sh",
     "reset": "yarn sl && uiharness-electron init --reset",
     "nuke": "sh ./sh/nuke.sh",
-    "postinstall": "uiharness-electron init",
-    "start": "uiharness-electron start",
-    "bundle": "uiharness-electron bundle",
-    "dist": "uiharness-electron dist",
-    "clean": "uiharness-electron clean",
-    "open": "uiharness-electron open",
-    "stats": "uiharness-electron stats"
+    "postinstall": "uiharness-electron init"
   },
   "dependencies": {
     "@uiharness/core": "^1.0.61",
