@@ -31,7 +31,7 @@ function createBundler(
   settings: Settings,
   options: ParcelBundler.ParcelOptions,
 ) {
-  const args = settings.____bundlerArgs;
+  const args = settings.electron.bundlerArgs;
   return new ParcelBundler(entry, {
     target: 'electron',
     sourceMaps: args.sourcemaps,

@@ -2,6 +2,13 @@
 # Web Configuration
 # https://uiharness.com
 #
+
+# TODO - 🐷 convert this over to use the main electron module (as "web").
+# eg:
+    # web:
+    #   port: 3030
+    #   ...  
+
 port: 3030
 
 # Build args.

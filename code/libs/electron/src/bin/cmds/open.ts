@@ -21,8 +21,8 @@ export async function open(args: { settings: Settings; folder?: boolean }) {
   };
 
   // console.log('settings.buildArgs', settings.buildArgs);
-  const config = settings.____builderArgs;
-  if (!config) {
+  const config = settings.electron.builderArgs;
+  if (!config.exists) {
     log.warn(
       `😩  An 'electron-builder.yml' file does not exist in the project.`,
     );

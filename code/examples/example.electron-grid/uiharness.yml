@@ -2,7 +2,9 @@
 # Electron Configuration
 # https://uiharness.com
 #
-port: 8888
-build:
-  sourcemaps: true
-  treeshake: false
+
+electron:
+  port: 8881
+  build:
+    sourcemaps: true
+    treeshake: false

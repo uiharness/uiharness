@@ -1,8 +1,4 @@
-import {
-  IUIHarnessConfig,
-  IElectronBuilderConfig,
-  IUIHarnessElectronConfig,
-} from '../../types';
+import { IUIHarnessConfig, IElectronBuilderConfig } from '../../types';
 import { fs, fsPath, file, log, NpmPackage, value, npm } from '../common/libs';
 import { ElectronSettings } from './ElectronSettings';
 import * as util from './util';
@@ -54,7 +50,6 @@ export class Settings {
 
   private _package: NpmPackage;
   private _electron: ElectronSettings;
-  private _builderConfig: IElectronBuilderConfig;
 
   /**
    * Constructor.
@@ -84,49 +79,6 @@ export class Settings {
         data: this.data.electron,
       }))
     );
-  }
-
-  /**
-   * The port to run the dev-server on.
-   */
-  public get ___port() {
-    return this.data.port || 1234;
-  }
-
-  /**
-   * Arguments to pass to the parcel-bundler.
-   */
-  public get ____bundlerArgs() {
-    return util.toBundlerArgs(this.data.bundle);
-  }
-
-  /**
-   * The raw [electron-builder.yml] configuration data.
-   */
-  public get ____builderArgsJson() {
-    const load = () => {
-      const dir = fsPath.resolve(this.dir);
-      const path = fsPath.join(dir, 'electron-builder.yml');
-      return file.loadAndParseSync<IElectronBuilderConfig>(path, {});
-    };
-    return this._builderConfig || (this._builderConfig = load());
-  }
-
-  /**
-   * Extrapolated [electron-builder.yml] values.
-   */
-  public get ____builderArgs() {
-    const config = this.____builderArgsJson;
-    if (!config) {
-      return {};
-    }
-    const { productName, appId, directories } = config;
-    const outputDir = directories ? directories.output : undefined;
-    return {
-      productName,
-      appId,
-      outputDir,
-    };
   }
 
   /**

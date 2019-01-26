@@ -4,10 +4,7 @@ export * from '@uiharness/types';
  * The `uiharness.yml` configuration file.
  */
 export type IUIHarnessConfig = {
-  port?: number;
   electron?: IUIHarnessElectronConfig;
-
-  bundle?: IParcelBuildConfig;
 
   /**
    * Flags used to determine what to
@@ -32,7 +29,7 @@ export type IUIHarnessElectronConfig = {
  */
 export type IParcelBuildConfig = {
   sourcemaps?: boolean; // Default: true.
-  treeshake?: boolean; // Default:  true
+  treeshake?: boolean; //  Default:  true
 };
 
 /**

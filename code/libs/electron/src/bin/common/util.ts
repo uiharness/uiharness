@@ -14,7 +14,8 @@ export function logInfo(args: {
   const formatPath = (path: string) => logging.formatPath(path, true);
 
   const showPort = Boolean(args.port);
-  const port = typeof args.port === 'number' ? args.port : settings.___port;
+  const port =
+    typeof args.port === 'number' ? args.port : settings.electron.port;
 
   log.info();
   log.info.gray(`package:          ${log.magenta(pkg.name)}`);

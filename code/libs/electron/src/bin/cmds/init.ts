@@ -91,9 +91,8 @@ async function reset(args: { pkg: npm.NpmPackage }) {
  * by the consuming components.
  */
 async function saveConfigJson(args: { settings: Settings }) {
-  const { ___port: port } = args.settings;
+  const port = args.settings.electron.port;
   const { CONFIG } = constants.PATH;
-
   const data: IUIHarnessRuntimeConfig = {
     electron: { port },
   };
