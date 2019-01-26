@@ -16,6 +16,7 @@ export async function bundle(args: {
 }) {
   const { settings, prod, silent = false, noSummary = false } = args;
   let { main, renderer } = args;
+  const pkg = settings.package;
   const electron = settings.electron;
   const entry = electron.entry;
   const bundlerArgs = electron.bundlerArgs;
@@ -98,8 +99,9 @@ export async function bundle(args: {
   if (!silent && !noSummary) {
     log.info();
     log.info(`🤟  Javascript bundling complete.\n`);
-    log.info.gray(`   • version:     ${settings.package.version}`);
     log.info.gray(`   • env:         ${log.yellow(env)}`);
+    log.info.gray(`   • package:     ${pkg.name}`);
+    log.info.gray(`   • version:     ${pkg.version}`);
     log.info.gray(`   • entry:       ${formatPath(entry.main)}`);
     log.info.gray(`                  ${formatPath(entry.renderer)}`);
     log.info.gray(`   • output:      ${formatPath(out.main.path)}`);
