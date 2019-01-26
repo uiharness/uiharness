@@ -16,14 +16,10 @@ export async function bundle(args: {
 }) {
   const { settings, prod, silent = false, noSummary = false } = args;
   let { main, renderer } = args;
-  const entry = settings.electron.entry;
-  const bundlerArgs = settings.electron.bundlerArgs;
-  const { PATH } = constants;
-  const { MAIN, RENDERER } = PATH;
-  const outDir = {
-    main: MAIN.OUT_DIR,
-    renderer: prod ? RENDERER.OUT_DIR.PROD : RENDERER.OUT_DIR.DEV,
-  };
+  const electron = settings.electron;
+  const entry = electron.entry;
+  const bundlerArgs = electron.bundlerArgs;
+  const out = electron.out(prod);
 
   const env =
     prod === true || prod === undefined ? 'production' : 'development';
@@ -33,7 +29,7 @@ export async function bundle(args: {
   renderer = all ? true : renderer;
 
   // Ensure the module is initialized.
-  await init({ settings });
+  await init({ settings, prod });
 
   // Build the command.
   const tasks = new Listr([], {
@@ -50,7 +46,8 @@ export async function bundle(args: {
       title: `Bundling      ${log.cyan('main')}`,
       task: () => {
         let args = '';
-        args += `--out-dir ${outDir.main}`;
+        args += ` --out-dir ${out.main.dir}`;
+        args += ` --out-file ${out.main.file}`;
         args += ` --target electron `;
         args += bundlerArgs.cmd;
         const cmd = `
@@ -67,8 +64,9 @@ export async function bundle(args: {
       title: `Bundling      ${log.cyan('renderer')}`,
       task: () => {
         let args = '';
-        args += `--public-url ./`;
-        args += ` --out-dir ${outDir.renderer}`;
+        args += ` --public-url ./`;
+        args += ` --out-dir ${out.renderer.dir}`;
+        args += ` --out-file ${out.renderer.file}`;
         args += bundlerArgs.cmd;
         const cmd = `
           ${CMD}
@@ -104,8 +102,8 @@ export async function bundle(args: {
     log.info.gray(`   • env:         ${log.yellow(env)}`);
     log.info.gray(`   • entry:       ${formatPath(entry.main)}`);
     log.info.gray(`                  ${formatPath(entry.renderer)}`);
-    log.info.gray(`   • output:      ${formatPath(outDir.main)}`);
-    log.info.gray(`                  ${formatPath(outDir.renderer)}`);
+    log.info.gray(`   • output:      ${formatPath(out.main.path)}`);
+    log.info.gray(`                  ${formatPath(out.renderer.path)}`);
 
     log.info();
     await stats({ settings, prod: prod, moduleInfo: false });

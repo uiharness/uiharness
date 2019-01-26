@@ -41,6 +41,27 @@ export class ElectronSettings {
   }
 
   /**
+   * The paths that JS us bundled to.
+   */
+  public out(prod?: boolean) {
+    const { MAIN, RENDERER } = PATH;
+    const mainDir = MAIN.OUT_DIR;
+    const rendererDir = prod ? RENDERER.OUT_DIR.PROD : RENDERER.OUT_DIR.DEV;
+    return {
+      main: {
+        dir: mainDir,
+        file: MAIN.OUT_FILE,
+        path: fsPath.join(mainDir, MAIN.OUT_FILE),
+      },
+      renderer: {
+        dir: rendererDir,
+        file: RENDERER.OUT_FILE,
+        path: fsPath.join(rendererDir, RENDERER.OUT_FILE),
+      },
+    };
+  }
+
+  /**
    * Arguments to pass to the parcel-bundler.
    */
   public get bundlerArgs() {

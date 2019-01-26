@@ -8,10 +8,12 @@ export const PATH = {
   TEMPLATES: './node_modules/@uiharness/electron/tmpl',
   MAIN: {
     DEFAULT_ENTRY: './src/main.ts',
+    OUT_FILE: 'main.js',
     OUT_DIR: `${BUNDLE_DIR}/main`,
   },
   RENDERER: {
     DEFAULT_ENTRY: './src/index.html',
+    OUT_FILE: 'index.html',
     OUT_DIR: {
       DEV: `${BUNDLE_DIR}/renderer/development`,
       PROD: `${BUNDLE_DIR}/renderer/production`,

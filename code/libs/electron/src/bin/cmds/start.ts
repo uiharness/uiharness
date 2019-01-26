@@ -9,10 +9,11 @@ import { init } from './init';
 export async function start(args: { settings: Settings }) {
   // Setup initial conditions.
   const { settings } = args;
+  const prod = false;
   const port = settings.electron.port;
 
   // Ensure the module is initialized.
-  await init({ settings });
+  await init({ settings, prod });
   log.info();
   logInfo({ settings, port: true });
 

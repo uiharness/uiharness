@@ -24,7 +24,7 @@ app.on('ready', async () => {
 
   const devPath = `http://localhost:${config.electron.port}`;
   const prodPath = format({
-    pathname: resolve('.uiharness/.bundle/renderer/production/index.html'),
+    pathname: resolve(config.electron.renderer),
     protocol: 'file:',
     slashes: true,
   });

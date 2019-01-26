@@ -94,9 +94,10 @@ const program = yargs
     'Prepare the javascript bundle.',
     e =>
       e
-        .option('prod', {
-          describe: 'Bundle for production (default: true).',
+        .option('dev', {
+          describe: 'Bundle for development (default: false, production).',
           boolean: true,
+          default: false,
         })
         .option('main', {
           describe: 'Bundle the main module (default: true).',
@@ -112,10 +113,10 @@ const program = yargs
           boolean: true,
         }),
     async e => {
-      const { prod, main, renderer, silent } = e;
+      const { prod, main, renderer, silent, dev } = e;
       await cmds.bundle({
         settings,
-        prod,
+        prod: !dev,
         main,
         renderer,
         silent,

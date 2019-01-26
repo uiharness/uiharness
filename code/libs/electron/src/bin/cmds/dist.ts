@@ -18,6 +18,7 @@ const { PATH } = constants;
  */
 export async function dist(args: { settings: Settings; silent?: boolean }) {
   const { settings, silent = false } = args;
+  const prod = true;
   process.env.NODE_ENV = 'production';
 
   const handleError = (error: Error, step: string) => {
@@ -33,7 +34,7 @@ export async function dist(args: { settings: Settings; silent?: boolean }) {
   };
 
   // Ensure the module is initialized.
-  await init({ settings });
+  await init({ settings, prod });
   if (!silent) {
     log.info();
     logInfo({ settings, port: false });

@@ -19,15 +19,16 @@ export async function init(args: {
   settings: Settings;
   force?: boolean;
   reset?: boolean;
+  prod?: boolean;
 }) {
-  const { settings, force = false } = args;
+  const { settings, force = false, prod = false } = args;
   const pkg = settings.package;
   if (args.reset) {
     return reset({ pkg });
   }
 
   // Ensure the JSON configuration used by the app is saved.
-  await saveConfigJson({ settings });
+  await saveConfigJson({ settings, prod });
 
   // Don't continue if already initialized.
   if (!force && (await isInitialized({ settings }))) {
@@ -90,14 +91,20 @@ async function reset(args: { pkg: npm.NpmPackage }) {
  * Saves configuration JSON to the target module to be imported
  * by the consuming components.
  */
-async function saveConfigJson(args: { settings: Settings }) {
-  const port = args.settings.electron.port;
-  const { CONFIG } = constants.PATH;
+async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
+  const electron = args.settings.electron;
+  const { port } = electron;
+  const out = electron.out(args.prod);
   const data: IUIHarnessRuntimeConfig = {
-    electron: { port },
+    electron: {
+      port,
+      main: out.main.path,
+      renderer: out.renderer.path,
+    },
   };
 
   // Write the file.
+  const { CONFIG } = constants.PATH;
   const path = fsPath.join(CONFIG.DIR, CONFIG.FILE);
   await file.stringifyAndSave(path, data);
   return data;
