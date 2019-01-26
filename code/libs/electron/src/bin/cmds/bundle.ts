@@ -17,9 +17,6 @@ export async function bundle(args: {
 }) {
   const { target, silent = false, prod, settings } = args;
   const summary = value.defaultValue(args.summary, true);
-  console.log('🐷  bundle -- target', target);
-  console.log();
-  console.log();
 
   switch (target) {
     case 'electron':
@@ -31,6 +28,14 @@ export async function bundle(args: {
         silent,
         summary,
       });
+
+    case 'web':
+      console.log('🐷  bundle -- target', target);
+      console.log();
+      console.log();
+
+      return { success: true };
+
       break;
 
     default:
