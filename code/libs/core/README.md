@@ -1,5 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-![title](https://user-images.githubusercontent.com/185555/51506128-84286400-1e4f-11e9-87a7-42b73457ff1b.jpg)
+![title](https://user-images.githubusercontent.com/185555/51795890-4e202100-224f-11e9-9e8b-cd114f226530.jpg)
 
 [UIHarness](https://uiharness.com) targeting an [electron](https://electronjs.org/) desktop shell using [react](https://reactjs.org/) and [typescript](https://www.typescriptlang.org/).
 
