@@ -25,7 +25,7 @@
     "@uiharness/electron": "^0.3.34",
     "@uiharness/types": "0.0.15",
     "babel-core": "^7.0.0-bridge.0",
-    "create-tmpl": "0.0.33",
+    "create-tmpl": "0.1.0",
     "electron": "4.0.1",
     "electron-builder": "20.38.5",
     "execa": "1.0.0",
