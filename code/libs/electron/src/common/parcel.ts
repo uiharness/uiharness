@@ -11,19 +11,33 @@ export type ParcelOptions = ParcelBundler.ParcelOptions;
  */
 export function electronRendererBundler(
   settings: Settings,
-  options: { parcel?: ParcelOptions; isProd?: boolean } = {},
+  options: { parcel?: ParcelOptions; prod?: boolean } = {},
 ) {
-  const { isProd = false } = options;
-  const RENDERER = PATH.ELECTRON.RENDERER;
-  const outDir = isProd ? RENDERER.OUT_DIR.PROD : RENDERER.OUT_DIR.DEV;
+  const { prod = false } = options;
   const electron = settings.electron;
+  const out = electron.out(prod);
   const entry = electron.entry.renderer;
-  const bundlerArgs = electron.data.bundle;
-  return createBundler(entry, bundlerArgs, {
-    outDir,
-    minify: isProd,
-    watch: !isProd,
+  return createBundler(entry, electron.data.bundle, prod, {
+    outDir: out.renderer.dir,
     target: 'electron',
+    ...options.parcel,
+  });
+}
+
+/**
+ * The parcel bundler for the `web` target.
+ */
+export function webBundler(
+  settings: Settings,
+  options: { parcel?: ParcelOptions; prod?: boolean } = {},
+) {
+  const { prod = false } = options;
+  const web = settings.web;
+  const out = web.out(prod);
+  const entry = web.entry;
+  return createBundler(entry, web.data.bundle, prod, {
+    outDir: out.dir,
+    target: 'browser',
     ...options.parcel,
   });
 }
@@ -31,13 +45,16 @@ export function electronRendererBundler(
 /**
  * Creates a bundler.
  */
-export function createBundler(
+function createBundler(
   entry: string,
   bundlerConfig: IParcelBuildConfig | undefined,
+  prod: boolean,
   options: ParcelBundler.ParcelOptions,
 ) {
   const args = toBundlerArgs(bundlerConfig);
   return new ParcelBundler(entry, {
+    minify: prod,
+    watch: !prod,
     sourceMaps: args.sourcemaps,
     scopeHoist: args.treeshake,
     ...options,

@@ -72,8 +72,18 @@ const program = yargs
   .command(
     [CMD.START, CMD.START_ST],
     'Start the development server.',
-    e => e,
-    e => cmds.start({ settings }),
+    e =>
+      e.option('target', {
+        describe: 'Start "electron" (default) or "web" server.',
+        alias: 't',
+      }),
+    e => {
+      const target = formatTargetOption(e.target);
+      if (!target) {
+        return process.exit(1);
+      }
+      return cmds.start({ settings, target });
+    },
   )
 
   /**
@@ -110,20 +120,9 @@ const program = yargs
         }),
     async e => {
       const { silent, dev = false } = e;
-      const target = (typeof e.target === 'string'
-        ? e.target.toLowerCase()
-        : 'electron') as BundleTarget;
       const prod = !dev;
-
-      if (!TARGETS.includes(target)) {
-        const list = TARGETS.map(t => `"${log.cyan(t)}"`)
-          .join(' ')
-          .trim();
-        let msg = '';
-        msg += `😫  Bundle target "${log.yellow(target)}" not supported. `;
-        msg += `Must be one of ${list}.`;
-        log.info(msg);
-        log.info();
+      const target = formatTargetOption(e.target);
+      if (!target) {
         return process.exit(1);
       }
       await cmds.bundle({ settings, prod, silent, target });
@@ -214,4 +213,26 @@ if (!CMDS.includes(program.argv._[0])) {
   program.showHelp();
   log.info();
   process.exit(0);
+}
+
+/**
+ * INTERNAL
+ */
+function formatTargetOption(value: unknown) {
+  const target = (typeof value === 'string'
+    ? value.toLowerCase()
+    : 'electron') as BundleTarget;
+
+  if (!TARGETS.includes(target)) {
+    const list = TARGETS.map(t => `"${log.cyan(t)}"`)
+      .join(' ')
+      .trim();
+    let msg = '';
+    msg += `😫  Target "${log.yellow(target)}" not supported. `;
+    msg += `Must be one of ${list}.`;
+    log.info(msg);
+    log.info();
+    return undefined;
+  }
+  return target;
 }
