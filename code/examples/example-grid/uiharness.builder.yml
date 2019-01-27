@@ -1,12 +1,5 @@
-productName: __MY_APP__
+productName: MyApp
 appId: '__com.my-app.app__'
-
-files:
-  - .uiharness/.bundle/app.main/**
-  - .uiharness/.bundle/app.renderer/prod/**
-
-directories:
-  output: .uiharness/dist
 
 #--------------------------------------------------------------
 
