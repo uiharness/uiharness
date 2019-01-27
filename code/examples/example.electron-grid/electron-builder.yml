@@ -4,7 +4,7 @@ appId: 'com.uiharness.example.grid'
 
 files:
   - .uiharness/.bundle/main/**
-  - .uiharness/.bundle/renderer/production/**
+  - .uiharness/.bundle/renderer/prod/**
 
 
 directories:

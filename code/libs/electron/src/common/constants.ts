@@ -24,8 +24,8 @@ export const PATH = {
       DEFAULT_ENTRY: './src/test/app.html',
       OUT_FILE: 'app.html',
       OUT_DIR: {
-        DEV: `${BUNDLE_DIR}/app.renderer/development`,
-        PROD: `${BUNDLE_DIR}/app.renderer/production`,
+        DEV: `${BUNDLE_DIR}/app.renderer/dev`,
+        PROD: `${BUNDLE_DIR}/app.renderer/prod`,
       },
     },
   },
@@ -33,8 +33,8 @@ export const PATH = {
     ENTRY: './src/test/web.html',
     OUT_FILE: 'web.html',
     OUT_DIR: {
-      DEV: `${BUNDLE_DIR}/web/development`,
-      PROD: `${BUNDLE_DIR}/web/production`,
+      DEV: `${BUNDLE_DIR}/web/dev`,
+      PROD: `${BUNDLE_DIR}/web/prod`,
     },
   },
 };
