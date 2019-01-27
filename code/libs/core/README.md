@@ -1,13 +1,16 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 ![title](https://user-images.githubusercontent.com/185555/51795890-4e202100-224f-11e9-9e8b-cd114f226530.jpg)
 
-[UIHarness](https://uiharness.com) targeting an [electron](https://electronjs.org/) desktop shell using [react](https://reactjs.org/) and [typescript](https://www.typescriptlang.org/).
+Isolate, develop and test your UI components in [typescript](https://www.typescriptlang.org/) / [react](https://reactjs.org/), targeting [electron](https://electronjs.org/) and the [web](https://developer.mozilla.org).  
+[uiharness.com](https://uiharness.com)
 
-This module contains the development tools to use the UIHarness for both electron and the web, including:
+---
+
+This module contains the [UIHarness](https://uiharness.com) development server and bundler:
 
 - CLI (command line interface)
-- JS bunder and development server.
-- Electron builder.
+- JS bunder, HMR development server.
+- Electron distribution builder.
 - Web server.
 
 ## Installation
@@ -35,6 +38,7 @@ Include in the `devDependencies` of your package.json, along with the correspond
 ## 🔗 Refs
 - https://electronjs.org
 - https://www.electron.build
+- https://parceljs.org
 
 <p>&nbsp;</p>
 
