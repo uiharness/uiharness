@@ -1,15 +1,14 @@
 import {
-  fs,
-  file,
+  BundleTarget,
+  command,
   constants,
+  file,
   fsPath,
+  IElectronBuilderConfig,
   Listr,
   log,
-  logging,
   logElectronInfo,
-  command,
-  BundleTarget,
-  IElectronBuilderConfig,
+  logging,
 } from '../common';
 import { Settings } from '../settings';
 import { bundleElectron, bundleWeb } from './bundle';
@@ -125,8 +124,8 @@ export async function distElectron(args: {
     log.info();
     log.info(`🤟  Application packaging complete.\n`);
     log.info.gray(`   • productName: ${log.yellow(config.productName)}`);
-    log.info.gray(`   • version:     ${settings.package.version}`);
     log.info.gray(`   • appId:       ${config.appId}`);
+    log.info.gray(`   • version:     ${settings.package.version}`);
     log.info.gray(`   • folder:      ${path}`);
     log.info();
     log.info(`👉  Run ${log.cyan('yarn ui open')} to run it.`);

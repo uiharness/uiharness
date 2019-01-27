@@ -3,6 +3,7 @@
 rm -rf lib
 rm -rf src
 rm -rf static
+rm -rf test
 
 yarn reset
 

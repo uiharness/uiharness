@@ -1,4 +1,3 @@
-import { PATH } from './constants';
 import { Settings } from '../Settings';
 import { ParcelBundler } from './libs';
 import { IParcelBuildConfig } from '../types';

@@ -16,6 +16,7 @@ const CMD = {
   INIT: 'init',
   INIT_I: 'i',
   START: 'start [target]',
+  START_S: 's',
   START_ST: 'st',
   CLEAN: 'clean',
   CLEAN_C: 'c',
@@ -73,7 +74,7 @@ const program = yargs
    * `start`
    */
   .command(
-    [CMD.START, CMD.START_ST],
+    [CMD.START, CMD.START_S, CMD.START_ST],
     'Start the development server.',
     e =>
       e.positional('target', {

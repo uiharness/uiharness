@@ -1,4 +1,4 @@
-import { exec, fs, fsPath, log, logging, command } from '../common';
+import { command, fs, fsPath, log, logging } from '../common';
 import { Settings } from '../settings';
 
 /**
@@ -15,7 +15,7 @@ export async function open(args: { settings: Settings; folder?: boolean }) {
 
   const runOpen = (path: string, type: 'app' | 'folder') => {
     log.info();
-    log.info(`🖐  Opening ${type}: ${formatPath(path)}\n`);
+    log.info(`🖐  Open ${formatPath(path)}\n`);
     return command()
       .add(`open "${path}"`)
       .run();
