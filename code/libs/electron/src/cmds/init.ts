@@ -79,9 +79,7 @@ async function reset(args: { settings: Settings }) {
   log.info(
     '👋   The auto-generated files and scripts from `@uiharness/electron` have been removed.',
   );
-  log.info(
-    `    Run \`${log.cyan('uiharness-electron init')}\` to recreate them.`,
-  );
+  log.info(`    Run \`${log.cyan('uiharness init')}\` to recreate them.`);
   log.info('');
 }
 

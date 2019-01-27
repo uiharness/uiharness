@@ -4,7 +4,7 @@
   "version": "0.3.19",
   "main": "./lib/index.js",
   "bin": {
-    "uiharness-electron": "./lib/bin/entry.js"
+    "uiharness": "./lib/bin/entry.js"
   },
   "scripts": {
     "test": "sh ./node_modules/@tdb/test/sh/test.sh",
