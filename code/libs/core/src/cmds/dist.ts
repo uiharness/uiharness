@@ -6,7 +6,7 @@ import {
   Listr,
   log,
   logging,
-  logInfo,
+  logElectronInfo,
   command,
   BundleTarget,
   IElectronBuilderConfig,
@@ -74,7 +74,7 @@ export async function distElectron(args: {
   await init({ settings, prod });
   if (!silent) {
     log.info();
-    logInfo({ settings, port: false });
+    logElectronInfo({ settings, port: false });
   }
 
   // Build JS bundles and run the electron-builder.
@@ -114,9 +114,6 @@ export async function distElectron(args: {
     handleError(error, 'building electron distribution');
     return;
   }
-
-  // Clean up.
-  // await fs.remove(fsPath.resolve(ELECTRON.BUILDER.CONFIG.TARGET));
 
   // Log output
   const config = settings.electron.builderArgs;

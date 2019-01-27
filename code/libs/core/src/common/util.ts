@@ -1,5 +1,5 @@
 import { Settings } from '../settings';
-import { IParcelBuildConfig } from '../types';
+import { IParcelBuildConfig, BundleTarget } from '../types';
 import { command } from './command';
 import { log, value } from './libs';
 import * as logging from './logging';
@@ -9,16 +9,40 @@ const defaultValue = value.defaultValue;
 /**
  * Logs common information about the module.
  */
-export function logInfo(args: { settings: Settings; port?: boolean | number }) {
+export function logInfo(args: {
+  settings: Settings;
+  port?: boolean | number;
+  target: BundleTarget;
+}) {
+  const { target, settings, port } = args;
+
+  switch (target) {
+    case 'electron':
+      return logElectronInfo({ settings, port });
+
+    case 'web':
+      return logWebInfo({ settings, port });
+
+    default:
+      log.warn(`😩  The target "${log.yellow(target)}" is not supported.`);
+  }
+}
+
+/**
+ * Logs common information about the module.
+ */
+export function logElectronInfo(args: {
+  settings: Settings;
+  port?: boolean | number;
+}) {
   const { settings } = args;
   const pkg = settings.package;
   const formatPath = (path: string) => logging.formatPath(path, true);
 
+  const electron = settings.electron;
+  const entry = electron.entry;
   const showPort = Boolean(args.port);
-  const port =
-    typeof args.port === 'number' ? args.port : settings.electron.port;
-
-  const entry = settings.electron.entry;
+  const port = typeof args.port === 'number' ? args.port : electron.port;
 
   log.info.gray(`package:          ${log.magenta(pkg.name)}`);
   log.info.gray(`• version:        ${pkg.version}`);
@@ -29,7 +53,33 @@ export function logInfo(args: { settings: Settings; port?: boolean | number }) {
     log.info.gray(`• entry:          ${formatPath(entry.main)}`);
     log.info.gray(`                  ${formatPath(entry.renderer)}`);
   }
+  log.info();
+}
 
+/**
+ * Logs common information about the module.
+ */
+export function logWebInfo(args: {
+  settings: Settings;
+  port?: boolean | number;
+}) {
+  const { settings } = args;
+  const pkg = settings.package;
+  const formatPath = (path: string) => logging.formatPath(path, true);
+
+  const web = settings.web;
+  const entry = web.entry;
+  const showPort = Boolean(args.port);
+  const port = typeof args.port === 'number' ? args.port : web.port;
+
+  log.info.gray(`package:          ${log.magenta(pkg.name)}`);
+  log.info.gray(`• version:        ${pkg.version}`);
+  if (showPort) {
+    log.info.gray(`• port:           ${port}`);
+  }
+  if (entry) {
+    log.info.gray(`• entry:          ${formatPath(entry)}`);
+  }
   log.info();
 }
 

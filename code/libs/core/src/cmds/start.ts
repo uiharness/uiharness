@@ -3,7 +3,8 @@ import {
   execa,
   fsPath,
   log,
-  logInfo,
+  logElectronInfo,
+  logWebInfo,
   parcel,
   BundleTarget,
 } from '../common';
@@ -47,7 +48,7 @@ export async function startElectron(args: { settings: Settings }) {
   // Ensure the module is initialized.
   await init({ settings, prod });
   log.info();
-  logInfo({ settings, port: true });
+  logElectronInfo({ settings, port: true });
 
   // Build the main JS.
   await bundleElectron({
@@ -83,7 +84,7 @@ export async function startWeb(args: { settings: Settings }) {
   // Ensure the module is initialized.
   await init({ settings, prod });
   log.info();
-  logInfo({ settings, port: true });
+  logWebInfo({ settings, port: true });
 
   // Start the web dev-server
   const renderer = parcel.webBundler(settings);
