@@ -4,10 +4,10 @@
   "scripts": {
     "postinstall": "uiharness init"
   },
+  "dependencies": {},
   "devDependencies": {
     "@uiharness/electron": "__LATEST__"
   },
-  "dependencies": {},
   "resolutions": {
     "@types/react": "16.7.17"
   },
