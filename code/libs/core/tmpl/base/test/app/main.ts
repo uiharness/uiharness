@@ -10,7 +10,7 @@ import { init } from '@uiharness/electron/lib/main';
  *    https://electronjs.org/docs/tutorial/first-app#electron-development-in-a-nutshell
  *
  *  To review the [UIHarness] example entry-point see:
- *    https://github.com/uiharness/uiharness/blob/master/code/libs/core/tmpl/test/app/main.ts
+ *    https://github.com/uiharness/uiharness/blob/master/code/libs/electron/src/main/index.ts
  *
  */
 const config = require('../../.uiharness/config.json');
