@@ -1,5 +1,8 @@
-productName: __MY_APP__
-appId: __com.my-app.app__
+productName: MyApp
+appId: '__com.my-app.app__'
+
+#--------------------------------------------------------------
+
 publish:
   provider: github
   owner: __OWNER__
@@ -7,29 +10,35 @@ publish:
   vPrefixedTagName: true
   releaseType: draft
   publishAutoUpdate: true
+
+#--------------------------------------------------------------
+
 mac:
   target:
     - zip
+    - dmg
   artifactName: '${productName}-mac.${ext}'
   icon: static/build/app.icns
+
 dmg:
-  title: '${productName} (${version})'
+  title: ${productName} (${version})
   background: static/build/background.png
   window:
     width: 540
     height: 358
+
+#--------------------------------------------------------------
+
 win:
   target:
     - zip
   artifactName: '${productName}-win.${ext}'
   icon: static/build/app.ico
+
+#--------------------------------------------------------------
+
 linux:
   target:
     - zip
   category: Development
   artifactName: '${productName}-linux.${ext}'
-files:
-  - .uiharness/.bundle/app.main/**
-  - .uiharness/.bundle/app.renderer/prod/**
-directories:
-  output: .uiharness/dist
