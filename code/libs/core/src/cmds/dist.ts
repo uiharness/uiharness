@@ -99,7 +99,7 @@ export async function distElectron(args: {
     .arg(`--x64`)
     .arg(`--publish=never`)
     .alias(`-c.extraMetadata.main="${out.main.path}"`)
-    .arg(`--config="${ELECTRON.BUILDER.CONFIG.NAME}"`);
+    .arg(`--config="${ELECTRON.BUILDER.CONFIG.FILE_NAME}"`);
 
   // Run the electron `build` command.
   const tasks = new Listr([
@@ -138,12 +138,15 @@ export async function distElectron(args: {
 }
 
 async function updateBuilderYaml(args: { settings: Settings }) {
+  const { settings } = args;
+  const electron = settings.electron;
   const BUILDER = ELECTRON.BUILDER;
-  const name = BUILDER.CONFIG.NAME;
-  const path = fsPath.resolve(fsPath.join('.', name));
+  const filename = BUILDER.CONFIG.FILE_NAME;
+  const path = fsPath.resolve(fsPath.join('.', filename));
 
   // Update the builder YAML with current input/output paths.
   const data = await file.loadAndParse<IElectronBuilderConfig>(path);
+  data.productName = electron.name;
   data.files = BUILDER.FILES;
   data.directories = {
     ...(data.directories || {}),

@@ -30,7 +30,7 @@ export const PATH = {
     },
     BUILDER: {
       CONFIG: {
-        NAME: `uiharness.builder.yml`,
+        FILE_NAME: `uiharness.builder.yml`,
       },
       FILES: [
         '.uiharness/.bundle/app.main/**',

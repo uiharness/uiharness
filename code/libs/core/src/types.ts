@@ -25,6 +25,7 @@ export type IUIHarnessConfig = {
  * Configuration for the electron app.
  */
 export type IUIHarnessElectronConfig = {
+  name?: string;
   port?: number; // Port the dev-server runs on for electron.
   bundle?: IParcelBuildConfig;
   entry?: {

@@ -23,6 +23,13 @@ export class ElectronSettings {
   }
 
   /**
+   * The display name of the app.
+   */
+  public get name() {
+    return this.data.name || 'Unnamed';
+  }
+
+  /**
    * The port to run the dev-server on.
    */
   public get port() {
@@ -74,7 +81,7 @@ export class ElectronSettings {
   public get builderArgsJson() {
     const load = () => {
       const dir = fsPath.resolve(this.dir);
-      const path = fsPath.join(dir, 'electron-builder.yml');
+      const path = fsPath.join(dir, PATH.ELECTRON.BUILDER.CONFIG.FILE_NAME);
       return file.loadAndParseSync<IElectronBuilderConfig>(path, {});
     };
     return this._builderConfig || (this._builderConfig = load());
