@@ -34,7 +34,7 @@ export type IUIHarnessElectronConfig = {
 };
 
 /**
- * The `electron-builder.yml` configuration file.
+ * The shape of the `electron-builder.yml` configuration file.
  */
 export type IElectronBuilderConfig = {
   productName?: string;

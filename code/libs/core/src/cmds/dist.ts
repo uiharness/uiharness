@@ -1,4 +1,7 @@
 import {
+  fs,
+  file,
+  constants,
   fsPath,
   Listr,
   log,
@@ -6,10 +9,14 @@ import {
   logInfo,
   command,
   BundleTarget,
+  IElectronBuilderConfig,
 } from '../common';
 import { Settings } from '../settings';
 import { bundleElectron, bundleWeb } from './bundle';
 import { init } from './init';
+
+const { PATH } = constants;
+const { ELECTRON } = PATH;
 
 /**
  * Bundles the application ready for distribution.
@@ -84,6 +91,8 @@ export async function distElectron(args: {
     return;
   }
 
+  // Construct the `build` command.
+  await updateBuilderYaml({ settings });
   const cmd = command()
     .addLine(`cd ${fsPath.resolve('.')}`)
     .add(`build`)
@@ -105,6 +114,9 @@ export async function distElectron(args: {
     return;
   }
 
+  // Clean up.
+  // await fs.remove(fsPath.resolve(ELECTRON.BUILDER.CONFIG.TARGET));
+
   // Log output
   const config = settings.electron.builderArgs;
   const path = config.outputDir
@@ -122,6 +134,21 @@ export async function distElectron(args: {
     log.info(`👉  Run ${log.cyan('yarn ui open')} to run it.`);
     log.info();
   }
+}
+
+async function updateBuilderYaml(args: { settings: Settings }) {
+  const BUILDER = ELECTRON.BUILDER;
+  const name = BUILDER.CONFIG.NAME;
+  const path = fsPath.resolve(fsPath.join('.', name));
+
+  // Update the builder YAML with current input/output paths.
+  const data = await file.loadAndParse<IElectronBuilderConfig>(path);
+  data.files = BUILDER.FILES;
+  data.directories = {
+    ...(data.directories || {}),
+    output: BUILDER.OUTPUT,
+  };
+  await file.stringifyAndSave<IElectronBuilderConfig>(path, data);
 }
 
 /**

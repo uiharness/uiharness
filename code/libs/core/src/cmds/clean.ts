@@ -4,6 +4,7 @@ import { fs, fsPath } from '../common';
  * Removes temporary generated files.
  */
 export async function clean(args: {}) {
-  await fs.remove(fsPath.resolve('./.cache'));
-  await fs.remove(fsPath.resolve('./.uiharness'));
+  const list = ['./.cache', './.uiharness'];
+  const remove = (path: string) => fs.remove(fsPath.resolve(path));
+  await Promise.all(list.map(path => remove(path)));
 }

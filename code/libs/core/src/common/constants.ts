@@ -28,6 +28,16 @@ export const PATH = {
         PROD: `${BUNDLE_DIR}/app.renderer/prod`,
       },
     },
+    BUILDER: {
+      CONFIG: {
+        NAME: `electron-builder.yml`,
+      },
+      FILES: [
+        '.uiharness/.bundle/app.main/**',
+        '.uiharness/.bundle/app.renderer/prod/**',
+      ],
+      OUTPUT: '.uiharness/dist',
+    },
   },
   WEB: {
     ENTRY: './src/test/web.html',
