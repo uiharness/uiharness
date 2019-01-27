@@ -10,6 +10,7 @@ const settings: IGridSettings = {
   colWidths: 120,
   manualRowResize: true,
   manualColumnResize: true,
+  viewportRowRenderingOffset: 20,
 };
 
 export type IFooProps = {
