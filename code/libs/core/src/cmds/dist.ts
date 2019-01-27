@@ -98,7 +98,8 @@ export async function distElectron(args: {
     .add(`build`)
     .arg(`--x64`)
     .arg(`--publish=never`)
-    .alias(`-c.extraMetadata.main="${out.main.path}"`);
+    .alias(`-c.extraMetadata.main="${out.main.path}"`)
+    .arg(`--config="${ELECTRON.BUILDER.CONFIG.NAME}"`);
 
   // Run the electron `build` command.
   const tasks = new Listr([
