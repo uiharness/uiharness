@@ -3,11 +3,12 @@
 
 [UIHarness](https://uiharness.com) targeting an [electron](https://electronjs.org/) desktop shell using [react](https://reactjs.org/) and [typescript](https://www.typescriptlang.org/).
 
-This module contains the development tools to UIHarness including:
+This module contains the development tools to use the UIHarness for both electron and the web, including:
 
 - CLI (command line interface)
 - JS bunder and development server.
 - Electron builder.
+- Web server.
 
 ## Installation
 
@@ -15,11 +16,14 @@ Include in the `devDependencies` of your package.json, along with the correspond
 
 ```json
 {
+  "scripts": {
+    "postinstall": "uiharness init",
+  },
   "dependencies": {
-    "@uiharness/electron.ui": "x.x.x"
+    "@uiharness/electron": "x.x.x"
   },
   "devDependencies": {
-    "@uiharness/electron": "x.x.x"
+    "@uiharness/core": "x.x.x"
   }
 }
 ```

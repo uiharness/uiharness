@@ -9,7 +9,7 @@ export const PATH = {
   UIHARNESS: DIR,
   PACKAGE: `${DIR}/package.json`,
   BUNDLE_DIR,
-  TEMPLATES: './node_modules/@uiharness/electron/tmpl',
+  TEMPLATES: './node_modules/@uiharness/core/tmpl',
   CONFIG: {
     DIR,
     FILE: 'config.json',

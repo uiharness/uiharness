@@ -16,10 +16,10 @@ Include in the `dependencies` of your package.json, along with the corresponding
 ```json
 {
   "dependencies": {
-    "@uiharness/electron.ui": "x.x.x"
+    "@uiharness/electron": "x.x.x"
   },
   "devDependencies": {
-    "@uiharness/electron": "x.x.x"
+    "@uiharness/core": "x.x.x"
   }
 }
 ```

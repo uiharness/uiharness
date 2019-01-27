@@ -138,10 +138,17 @@ async function copyPackage(args: { settings: Settings; prod: boolean }) {
 async function isInitialized(args: { settings: Settings }) {
   const { settings } = args;
   const pkg = settings.package;
-  const scripts = { ...SCRIPTS };
-  delete scripts.postinstall;
+  const init = settings.init;
+
+  const exists = (path: string) => fs.pathExists(fsPath.resolve(path));
+
+  if (init.files && (!(await exists('./src')) || !(await exists('./static')))) {
+    return false;
+  }
 
   // Look to see that all scripts have been inserted.
+  const scripts = { ...SCRIPTS };
+  delete scripts.postinstall;
   const hasAllScripts = Object.keys(scripts).every(
     key => pkg.scripts[key] === scripts[key],
   );
