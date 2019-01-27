@@ -1,10 +1,19 @@
 #
-# Electron Configuration
-# https://uiharness.com
+# https://uiharness.com/docs/config
 #
 
 electron:
-  port: 8881
+  port: 8888
+  entry:
+    main: ./src/test/app.main.ts
+    renderer: ./src/test/app.html
+  bundle:
+    sourcemaps: true
+    treeshake: false
+
+web:
+  port: 1234
+  entry: ./src/test/web.html
   bundle:
     sourcemaps: true
     treeshake: false
