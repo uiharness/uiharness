@@ -1,0 +1,20 @@
+#
+# https://uiharness.com/docs/config
+#
+
+electron:
+  name: MyApp
+  port: 8888
+  entry:
+    main: ./test/app/main.ts
+    renderer: ./test/app/index.html
+  bundle:
+    sourcemaps: true
+    treeshake: false
+
+web:
+  port: 1234
+  entry: ./test/web/index.html
+  bundle:
+    sourcemaps: true
+    treeshake: false

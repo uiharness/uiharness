@@ -18,11 +18,16 @@ export function create(source?: template.SourceTemplateArg) {
 export function copyFile(
   args: { force?: boolean } = {},
 ): template.TemplateMiddleware {
-  const { force = false } = args;
+  const NO_FORCE = ['.gitignore'];
+
   return async (req, res) => {
+    const { force = false } = args;
     const path = fsPath.resolve(`.${req.path.target}`);
     const dir = fsPath.dirname(path);
-    if (force || !(await fs.pathExists(path))) {
+    const filename = fsPath.basename(path);
+    const exists = await fs.pathExists(path);
+
+    if (!exists || (force && !NO_FORCE.includes(filename))) {
       await fs.ensureDir(dir);
       await fs.writeFile(path, req.buffer);
     }
