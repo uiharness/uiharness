@@ -3,7 +3,7 @@
 #
 
 electron:
-  name: __NAME__
+  name: MyApp
   port: 8888
   entry:
     main: ./src/test/app.main.ts
