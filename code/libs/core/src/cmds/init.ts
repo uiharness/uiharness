@@ -54,7 +54,7 @@ export async function init(args: {
 
   if (flags.files) {
     await tmpl
-      .create(PATH.TEMPLATES)
+      .create(PATH.TEMPLATE.BASE)
       .use(tmpl.copyFile({ force }))
       .execute();
   }
@@ -68,7 +68,7 @@ async function reset(args: { settings: Settings }) {
   pkg.removeFields('scripts', SCRIPTS, { exclude: 'postinstall' }).save();
 
   await tmpl
-    .create(PATH.TEMPLATES)
+    .create(PATH.TEMPLATE.BASE)
     .use(tmpl.deleteFile())
     .execute();
 

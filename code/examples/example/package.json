@@ -5,7 +5,7 @@
     "postinstall": "uiharness init",
     "ui": "yarn sl && uiharness $@",
     "sl": "msync sl && sh ./sh/copy-bin.sh",
-    "reset": "yarn sl && uiharness init --reset",
+    "reset": "sh ./sh/reset.sh",
     "nuke": "sh ./sh/nuke.sh",
     "tmp": "build --help"
   },

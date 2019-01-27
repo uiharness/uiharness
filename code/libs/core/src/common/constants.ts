@@ -4,12 +4,17 @@ export const URL = {
 
 const DIR = './.uiharness';
 const BUNDLE_DIR = `${DIR}/.bundle`;
+const TMPL_DIR = './node_modules/@uiharness/core/tmpl';
 
 export const PATH = {
   UIHARNESS: DIR,
   PACKAGE: `${DIR}/package.json`,
   BUNDLE_DIR,
-  TEMPLATES: './node_modules/@uiharness/core/tmpl',
+  TEMPLATE: {
+    DIR: TMPL_DIR,
+    BASE: `${TMPL_DIR}/base`,
+    ELECTRON: `${TMPL_DIR}/electron`,
+  },
   CONFIG: {
     DIR,
     FILE: 'config.json',
