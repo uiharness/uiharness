@@ -18,14 +18,14 @@ export const PATH = {
     MAIN: {
       DEFAULT_ENTRY: './src/test/app.main.ts',
       OUT_FILE: 'main.js',
-      OUT_DIR: `${BUNDLE_DIR}/main`,
+      OUT_DIR: `${BUNDLE_DIR}/app.main`,
     },
     RENDERER: {
-      DEFAULT_ENTRY: './src/test/app.renderer.html',
-      OUT_FILE: 'renderer.html',
+      DEFAULT_ENTRY: './src/test/app.html',
+      OUT_FILE: 'app.html',
       OUT_DIR: {
-        DEV: `${BUNDLE_DIR}/renderer/development`,
-        PROD: `${BUNDLE_DIR}/renderer/production`,
+        DEV: `${BUNDLE_DIR}/app.renderer/development`,
+        PROD: `${BUNDLE_DIR}/app.renderer/production`,
       },
     },
   },

@@ -205,8 +205,8 @@ export async function bundleWeb(args: {
     log.info.gray(`   • output:      ${formatPath(out.path)}`);
     log.info();
     await stats({ settings, prod, target: 'web' });
-    log.info(`Run ${log.cyan('yarn serve')} to view in browser.`);
-    log.info();
+    // log.info(`Run ${log.cyan('yarn serve')} to view in browser.`);
+    // log.info();
   }
   return { success: true };
 }

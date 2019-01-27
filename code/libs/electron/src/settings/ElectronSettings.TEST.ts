@@ -11,7 +11,7 @@ describe('ElectronSettings', () => {
       expect(res.exists).to.eql(false);
       expect(res.port).to.eql(8888);
       expect(res.entry.main).to.eql('./src/test/app.main.ts');
-      expect(res.entry.renderer).to.eql('./src/test/app.renderer.html');
+      expect(res.entry.renderer).to.eql('./src/test/app.html');
 
       const bundler = res.bundlerArgs;
       expect(bundler.sourcemaps).to.eql(true);
