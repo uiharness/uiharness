@@ -1,5 +1,0 @@
-name: Web
-folder: NAME
-install: true
-variables:
-  NAME: Module name

@@ -1,4 +1,12 @@
-import { fsPath, Listr, log, logging, logInfo, command } from '../common';
+import {
+  fsPath,
+  Listr,
+  log,
+  logging,
+  logInfo,
+  command,
+  BundleTarget,
+} from '../common';
 import { Settings } from '../settings';
 import { bundleElectron } from './bundle';
 import { init } from './init';
@@ -6,7 +14,37 @@ import { init } from './init';
 /**
  * Bundles the application ready for distribution.
  */
-export async function dist(args: { settings: Settings; silent?: boolean }) {
+export async function dist(args: {
+  settings: Settings;
+  target: BundleTarget;
+  silent?: boolean;
+}) {
+  const { target, silent = false, settings } = args;
+
+  switch (target) {
+    case 'electron':
+      return distElectron({ settings, silent });
+
+    case 'web':
+      return distWeb({ settings, silent });
+
+    default:
+      if (!silent) {
+        log.info();
+        log.warn(`😩  The target "${log.yellow(target)}" is not supported.`);
+        log.info();
+      }
+      return { success: false };
+  }
+}
+
+/**
+ * Bundles the [electron] application.
+ */
+export async function distElectron(args: {
+  settings: Settings;
+  silent?: boolean;
+}) {
   const { settings, silent = false } = args;
   const prod = true;
   const electron = settings.electron;
@@ -34,7 +72,13 @@ export async function dist(args: { settings: Settings; silent?: boolean }) {
 
   // Build JS bundles and run the electron-builder.
   try {
-    await bundleElectron({ settings, silent, prod: true, summary: false });
+    await bundleElectron({
+      settings,
+      silent,
+      prod: true,
+      summary: false,
+      stats: false,
+    });
   } catch (error) {
     handleError(error, 'building javascript for electron distribution');
     return;
@@ -75,7 +119,14 @@ export async function dist(args: { settings: Settings; silent?: boolean }) {
     log.info.gray(`   • appId:       ${config.appId}`);
     log.info.gray(`   • folder:      ${path}`);
     log.info();
-    log.info(`👉  Run ${log.cyan('yarn open')} to run it.`);
+    log.info(`👉  Run ${log.cyan('yarn ui open')} to run it.`);
     log.info();
   }
+}
+
+/**
+ * Bundles the [web] application.
+ */
+export async function distWeb(args: { settings: Settings; silent?: boolean }) {
+  console.log('\n\ndist web\n\n');
 }

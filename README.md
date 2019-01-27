@@ -3,7 +3,7 @@
 
 
 
-Isolate, develop and test your UI components in [typescript](https://www.typescriptlang.org/) / [react](https://reactjs.org/), targeting [electron](https://electronjs.org/) or the [web](https://developer.mozilla.org).  
+Isolate, develop and test your UI components in [typescript](https://www.typescriptlang.org/) / [react](https://reactjs.org/), targeting [electron](https://electronjs.org/) and the [web](https://developer.mozilla.org).  
 [uiharness.com](https://uiharness.com)
 
 ----

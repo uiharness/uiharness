@@ -138,7 +138,7 @@ export async function bundleElectron(args: {
     log.info.gray(`                  ${formatPath(out.renderer.path)}`);
     log.info();
   }
-  if (stats) {
+  if (stats && !silent) {
     await renderStats({ settings, prod, target: 'electron' });
   }
 

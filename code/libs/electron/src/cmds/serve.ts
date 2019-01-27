@@ -1,4 +1,4 @@
-import { command, fs, fsPath } from '../common';
+import { command, fs, fsPath, log } from '../common';
 import { Settings } from '../settings';
 import { bundleWeb } from './bundle';
 import { stats as renderStats } from './stats';
@@ -16,6 +16,10 @@ export async function serve(args: { settings: Settings }) {
   // Ensure the distribution has been built.
   if (!exists) {
     await bundleWeb({ settings, prod, stats: false });
+  } else {
+    log.info(`To build a fresh distribution bundle, run:`);
+    log.info(`  ${log.cyan('yarn ui')} ${log.magenta('bundle web')}`);
+    log.info();
   }
 
   renderStats({ settings, prod, target: 'web' });

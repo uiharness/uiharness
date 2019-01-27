@@ -10,7 +10,7 @@ export async function open(args: { settings: Settings; folder?: boolean }) {
   const formatPath = (path: string) => logging.formatPath(path, true);
 
   const logRunDist = () => {
-    log.info(`\n👉  Run ${log.cyan('yarn dist')} to build it.\n`);
+    log.info(`\n👉  Run ${log.cyan('yarn ui dist')} to build it.\n`);
   };
 
   const runOpen = (path: string, type: 'app' | 'folder') => {

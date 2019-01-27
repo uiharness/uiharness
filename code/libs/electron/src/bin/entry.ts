@@ -19,10 +19,10 @@ const CMD = {
   START_ST: 'st',
   CLEAN: 'clean',
   CLEAN_C: 'c',
-  BUNDLE: 'bundle',
+  BUNDLE: 'bundle [target]',
   BUNDLE_B: 'b',
   STATS: 'stats',
-  DIST: 'dist',
+  DIST: 'dist [target]',
   DIST_D: 'd',
   OPEN: 'open',
   OPEN_O: 'o',
@@ -108,14 +108,15 @@ const program = yargs
     'Prepare the javascript bundle.',
     e =>
       e
+        .positional('target', {
+          type: 'string',
+          default: 'electron',
+          describe: 'Build for "electron" (default) or "web" browser.',
+        })
         .option('dev', {
           describe: 'Bundle for development (default: false, production).',
           alias: 'd',
           boolean: true,
-        })
-        .option('target', {
-          describe: 'Build for "electron" (default) or "web" browser.',
-          alias: 't',
         })
         .option('silent', {
           alias: 's',
@@ -141,15 +142,25 @@ const program = yargs
     [CMD.DIST, CMD.DIST_D],
     'Packages the application ready for distribution.',
     e =>
-      e.option('silent', {
-        alias: 's',
-        describe: 'No console output (default: false).',
-        boolean: true,
-      }),
+      e
+        .positional('target', {
+          type: 'string',
+          default: 'electron',
+          describe: 'Build for "electron" (default) or "web" browser.',
+        })
+        .option('silent', {
+          alias: 's',
+          describe: 'No console output (default: false).',
+          boolean: true,
+        }),
     async e => {
       const { silent } = e;
-      await cmds.dist({ settings, silent });
-      process.exit(0);
+      const target = formatTargetOption(e.target);
+      if (!target) {
+        return process.exit(1);
+      }
+      await cmds.dist({ settings, silent, target });
+      return process.exit(0);
     },
   )
 
