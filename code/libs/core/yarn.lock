@@ -836,7 +836,7 @@
     array-from "^2.1.1"
     lodash.get "^4.4.2"
 
-"@tdb/log@1.1.20", "@tdb/log@^1.1.20":
+"@tdb/log@1.1.20":
   version "1.1.20"
   resolved "https://registry.yarnpkg.com/@tdb/log/-/log-1.1.20.tgz#e5bd0f4bfc7d88185851343cdb4d4fd79636aec6"
   integrity sha512-oWq8+SN9o66MWcRU+g7bYwNNTSTZYJQYyQxH5nc8tRccPLrumLXnHsU91eR6PAy+Ik7bOw+hkM3vnhvT47Q46w==
@@ -861,7 +861,7 @@
     js-yaml "^3.12.1"
     semver "^5.6.0"
 
-"@tdb/test@^1.2.13":
+"@tdb/test@1.2.13":
   version "1.2.13"
   resolved "https://registry.yarnpkg.com/@tdb/test/-/test-1.2.13.tgz#b451ff405c33f509db3fbdf57fcf8151e4aa5a21"
   integrity sha512-u1Vri35yomou0BBkz6GzsG8f27OF9u4cfJsuS5zAxDPw420IEqUpfKedqd6yopSeW+ds/dO2lzgeZ8whJa316Q==
@@ -1171,10 +1171,10 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.5.tgz#f4f85fe198e1e9cedc0bb53a8c2d30fb34299e50"
   integrity sha512-y51XRWWg1GiW4+mV2zmFQUqJT3bX7nuUaXW4j8a2dFvT9ZlaNLjb7ZxcUSDyklt/UBWrW2+31x+hQpRzxaTFzw==
 
-"@uiharness/types@0.0.10":
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.10.tgz#7ce76cdfeb12f88e549c97704dd73dbb22944129"
-  integrity sha512-WtMeE82MnmILS+6VfcG6UD2X7taaHV+NEWoEOd3aVOPoxXTX6aDmeDgzUQ6vlFXFYxKv7v+JsdIaA3MND1CRRw==
+"@uiharness/types@0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.11.tgz#04fc5706d2044fadab7c3bb2c38a36c366becd16"
+  integrity sha512-tBS+pn8x9p6hzH/56ZbY2k0hX7Erf/QsMyGUuYJf62u0tYwLvi5N/UsR+VTpCc6dKgdROKu/8kMluocXQ2EFHQ==
 
 "@zeit/schemas@2.6.0":
   version "2.6.0"
@@ -2422,7 +2422,7 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-create-tmpl@^0.0.33:
+create-tmpl@0.0.33:
   version "0.0.33"
   resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.0.33.tgz#5d6b70e6557ee8a352ffa048ac3091d14d844ed0"
   integrity sha512-tHh2j7CZFdlEFIZ9J61zueKy/h2Zj2lxYDCdHpZrDE9OgY2XcR/fdZXyHeN7JbVS8U5bXL3ffa0Bt1vGEWAuSQ==
@@ -3409,15 +3409,15 @@ figures@^2.0.0:
   dependencies:
     escape-string-regexp "^1.0.5"
 
+filesize@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/filesize/-/filesize-4.0.0.tgz#edd45b16247c815ac3bc7265c34cf3dab6b41234"
+  integrity sha512-IGrOTisl83FmbpiL5KCpfF7+6CRcmndNaWxwYWcnSqXtoNUhVO+1l8rKK4GVE7A8f4fEDkSocS9X6+eXHkEhGA==
+
 filesize@^3.6.0:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/filesize/-/filesize-3.6.1.tgz#090bb3ee01b6f801a8a8be99d31710b3422bb317"
   integrity sha512-7KjR1vv6qnicaPMi1iiTcI85CyYwRO/PSFCu6SvqL8jN2Wjt/NIYQTFtFs7fSDCYOstUkEWIQGFUg5YZQfjlcg==
-
-filesize@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/filesize/-/filesize-4.0.0.tgz#edd45b16247c815ac3bc7265c34cf3dab6b41234"
-  integrity sha512-IGrOTisl83FmbpiL5KCpfF7+6CRcmndNaWxwYWcnSqXtoNUhVO+1l8rKK4GVE7A8f4fEDkSocS9X6+eXHkEhGA==
 
 fill-range@^4.0.0:
   version "4.0.0"
