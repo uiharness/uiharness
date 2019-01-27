@@ -1115,32 +1115,32 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.5.tgz#f4f85fe198e1e9cedc0bb53a8c2d30fb34299e50"
   integrity sha512-y51XRWWg1GiW4+mV2zmFQUqJT3bX7nuUaXW4j8a2dFvT9ZlaNLjb7ZxcUSDyklt/UBWrW2+31x+hQpRzxaTFzw==
 
-"@uiharness/core@1.0.63":
-  version "1.0.63"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.63.tgz#2b340aa69abcda6a16b6b689a9d11465c2f6eadc"
-  integrity sha512-iYnVwb2F6+mYOmBvAX63FT0OEh0C9fq/xnvRrMmmA6f3n8S8MnQyA/tPAc62LBttlM0xoJRgPlnGVF4KzqKSQQ==
+"@uiharness/core@1.0.64":
+  version "1.0.64"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.0.64.tgz#b1590a6c584e6166dadf9850e940d161cc78c05f"
+  integrity sha512-72ke6k1A3jFAI7bHi8nvw6v4qjW24Q3DcnxRA1mV2Ipd0Z0wEtrbXIyn3fiwYBqBPlOymO23/edHFi1JmLOlCQ==
   dependencies:
     "@tdb/util" "1.9.26"
-    "@uiharness/types" "0.0.7"
+    "@uiharness/types" "0.0.8"
     create-tmpl "0.0.33"
     filesize "4.0.0"
 
-"@uiharness/electron.ui@0.0.35":
-  version "0.0.35"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron.ui/-/electron.ui-0.0.35.tgz#d2ef425b1076df7e167ba7ee107bcc043bf98774"
-  integrity sha512-+HF6Ftjqs63glGLtJsUBTgD0D2fZN63VPP/nhGaMfUk6NStcGqg9kzkoyc1gfO4z+XdXfBFXxGfEANeXsRE80g==
+"@uiharness/electron.ui@0.0.36":
+  version "0.0.36"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron.ui/-/electron.ui-0.0.36.tgz#0eb5ca9151b17ee3523a523e805073e4a726d658"
+  integrity sha512-m0dxvdh6A/zvF8UvMDdIv/KM2TZUV8QjtIhRVYlJoNSVZv/DM5p03DNXB14hn1dGgSPbmoKPTKpLUdsAt3Lbeg==
   dependencies:
     "@types/app-root-path" "1.2.4"
-    "@uiharness/core" "1.0.63"
-    "@uiharness/types" "0.0.7"
+    "@uiharness/core" "1.0.64"
+    "@uiharness/types" "0.0.8"
     app-root-path "2.1.0"
     electron-is-dev "1.0.1"
     electron-log "2.2.17"
 
-"@uiharness/types@0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.7.tgz#e9a76b207aa73a7de649de561b06f8d75019a85f"
-  integrity sha512-uWse2JTIeeCp/CFs+aTD/4xgjOMmO3XGNpFdghAljfVdmpn5Rf3epUkbqB+dPh9COSRUkjnuMnZpVzZCBMvctQ==
+"@uiharness/types@0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.8.tgz#7a8e187926728aa47cb9e7cfe062b3cf8eef7211"
+  integrity sha512-/IK85Ak9nNc7/PxCLhfnMBfHPW/34K+Lf9gDz+J8xtp7hiwjcTKcX35K8VygXx4ezwOQpjMa82g5AolpD3lruA==
 
 "@zeit/schemas@2.6.0":
   version "2.6.0"
@@ -6833,7 +6833,7 @@ serve-static@^1.12.4:
     parseurl "~1.3.2"
     send "0.16.2"
 
-serve@^10.1.1:
+serve@10.1.1:
   version "10.1.1"
   resolved "https://registry.yarnpkg.com/serve/-/serve-10.1.1.tgz#29a0210fc6fc2d9bbd67e977a0e487deb0e86789"
   integrity sha512-B1ca73zGFRS/bYQkbDw6BVEpRiUKdtnkwtvkMjx598jU5tyieua9lHyqdwUoup4/ek20I74EzncTC0gZuYng4Q==

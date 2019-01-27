@@ -1,6 +1,6 @@
 {
   "name": "example.electron",
-  "version": "0.0.55",
+  "version": "0.0.56",
   "description": "Example usage of `@uiharness/electron`",
   "scripts": {
     "postinstall": "uiharness-electron init",
@@ -10,12 +10,12 @@
     "nuke": "sh ./sh/nuke.sh"
   },
   "dependencies": {
-    "@uiharness/core": "^1.0.63",
-    "@uiharness/electron.ui": "0.0.35"
+    "@uiharness/core": "^1.0.64",
+    "@uiharness/electron.ui": "0.0.36"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
-    "@uiharness/electron": "0.3.19"
+    "@uiharness/electron": "0.3.20"
   },
   "resolutions": {
     "@types/react": "16.7.17"

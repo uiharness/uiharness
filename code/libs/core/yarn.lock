@@ -351,10 +351,10 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/types@0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.7.tgz#e9a76b207aa73a7de649de561b06f8d75019a85f"
-  integrity sha512-uWse2JTIeeCp/CFs+aTD/4xgjOMmO3XGNpFdghAljfVdmpn5Rf3epUkbqB+dPh9COSRUkjnuMnZpVzZCBMvctQ==
+"@uiharness/types@0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.8.tgz#7a8e187926728aa47cb9e7cfe062b3cf8eef7211"
+  integrity sha512-/IK85Ak9nNc7/PxCLhfnMBfHPW/34K+Lf9gDz+J8xtp7hiwjcTKcX35K8VygXx4ezwOQpjMa82g5AolpD3lruA==
 
 ansi-escapes@^3.0.0:
   version "3.1.0"
