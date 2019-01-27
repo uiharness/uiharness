@@ -6,10 +6,10 @@ import {
   logging,
   command,
   BundleTarget,
-} from '../common';
-import { Settings } from '../settings';
-import { init } from './init';
-import { stats as renderStats } from './stats';
+} from '../../common';
+import { Settings } from '../../settings';
+import { init } from '../cmd.init';
+import { stats as renderStats } from '../cmd.stats';
 
 /**
  * Runs the JS bundler.

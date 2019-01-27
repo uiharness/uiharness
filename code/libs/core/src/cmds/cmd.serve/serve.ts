@@ -1,7 +1,7 @@
-import { command, fs, fsPath, log } from '../common';
-import { Settings } from '../settings';
-import { bundleWeb } from './bundle';
-import { stats as renderStats } from './stats';
+import { command, fs, fsPath, log } from '../../common';
+import { Settings } from '../../settings';
+import { bundleWeb } from '../cmd.bundle';
+import { stats as renderStats } from '../cmd.stats';
 
 /**
  * Serve the web distribution.

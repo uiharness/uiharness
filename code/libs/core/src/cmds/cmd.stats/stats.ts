@@ -1,5 +1,12 @@
-import { BundleTarget, constants, fs, fsPath, log, logging } from '../common';
-import { Settings } from '../settings';
+import {
+  BundleTarget,
+  constants,
+  fs,
+  fsPath,
+  log,
+  logging,
+} from '../../common';
+import { Settings } from '../../settings';
 
 const ELECTRON = constants.PATH.ELECTRON;
 const WEB = constants.PATH.WEB;

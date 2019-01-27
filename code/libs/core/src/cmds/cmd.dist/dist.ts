@@ -11,10 +11,10 @@ import {
   logElectronInfo,
   logging,
   tmpl,
-} from '../common';
-import { Settings } from '../settings';
-import { bundleElectron, bundleWeb } from './bundle';
-import { init } from './init';
+} from '../../common';
+import { Settings } from '../../settings';
+import { bundleElectron, bundleWeb } from '../cmd.bundle';
+import { init } from '../cmd.init';
 
 const { PATH } = constants;
 const { ELECTRON } = PATH;

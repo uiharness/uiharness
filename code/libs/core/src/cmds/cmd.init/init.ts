@@ -7,9 +7,9 @@ import {
   npm,
   tmpl,
   fs,
-} from '../common';
-import { Settings } from '../settings';
-import { clean } from './clean';
+} from '../../common';
+import { Settings } from '../../settings';
+import { clean } from '../cmd.clean';
 
 const { SCRIPTS, PATH } = constants;
 

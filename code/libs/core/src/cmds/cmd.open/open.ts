@@ -1,5 +1,5 @@
-import { command, fs, fsPath, log, logging } from '../common';
-import { Settings } from '../settings';
+import { command, fs, fsPath, log, logging } from '../../common';
+import { Settings } from '../../settings';
 
 /**
  * Opens a built application.
