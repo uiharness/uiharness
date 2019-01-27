@@ -11,6 +11,7 @@ import {
   logElectronInfo,
   logging,
   tmpl,
+  time,
 } from '../../common';
 import { Settings } from '../../settings';
 import { bundleElectron, bundleWeb } from '../cmd.bundle';
@@ -73,7 +74,7 @@ export async function distElectron(args: {
 
   // Ensure the module is initialized.
   await init({ settings, prod });
-  await updateBuilderYaml({ settings });
+  await prepareBuilderYaml({ settings });
   if (!silent) {
     log.info();
     logElectronInfo({ settings, port: false });
@@ -151,7 +152,7 @@ export async function distWeb(args: { settings: Settings; silent?: boolean }) {
 /**
  * INTERNAL
  */
-async function updateBuilderYaml(args: { settings: Settings }) {
+async function prepareBuilderYaml(args: { settings: Settings }) {
   const { settings } = args;
   const electron = settings.electron;
   const BUILDER = ELECTRON.BUILDER;
@@ -176,4 +177,8 @@ async function updateBuilderYaml(args: { settings: Settings }) {
     output: BUILDER.OUTPUT,
   };
   await file.stringifyAndSave<IElectronBuilderConfig>(path, data);
+
+  // Pause.
+  // NB: Ensure the builder file is fully available before command is run.
+  await time.wait(300);
 }
