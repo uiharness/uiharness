@@ -33,9 +33,10 @@ export class Grid extends React.PureComponent<IGridProps> {
     const { settings = {} } = this.props;
 
     this.updateSize();
-    events.resize$
-      .pipe(takeUntil(this.unmounted$))
-      .subscribe(() => this.updateSize());
+    events.resize$.pipe(takeUntil(this.unmounted$)).subscribe(() => {
+      this.updateSize();
+      this.table.render();
+    });
 
     this.table = new Handsontable(this.el as Element, settings);
   }

@@ -1,8 +1,4 @@
-import {
-  isDev,
-  resolve,
-  IUIHarnessRuntimeConfig,
-} from '@uiharness/electron.ui';
+import { isDev, resolve, IUIHarnessRuntimeConfig } from '@uiharness/electron';
 import { app, BrowserWindow } from 'electron';
 import { format } from 'url';
 

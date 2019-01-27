@@ -1,8 +1,7 @@
 {
   "extends": "./node_modules/@tdb/typescript/tsconfig.json",
-  "include": ["src"],
   "compilerOptions": {
-    "outDir": "lib",
-    "noUnusedLocals": false
+    "rootDir": "src",
+    "outDir": "lib"
   }
 }

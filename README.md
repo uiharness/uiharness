@@ -29,15 +29,25 @@ yarn create uiharness
 
 ### Installation
 Or manually add the UIHarness to your module.  
-Target the [web](https://developer.mozilla.org) (browser):
-
-
-Target the desktop with [electron](https://electronjs.org):
 
 ```bash
-yarn add -D @uiharness/electron     # Server tools (js bundler, electron builder)
-yarn add    @uiharness/electron.ui  # Client tools (bundled with app as dependency)
+yarn add -D @uiharness/core
 ```
+
+ensure you run `uiharness init` as a post-install step, allowing the UIHarness to flesh out the configuration. 
+
+```json
+{
+  "scripts": {
+    "postinstall": "uiharness init",
+  },
+  "devDependencies": {
+    "@uiharness/core": "x.x.x"
+  }
+}
+```
+
+
 
 
 <p>&nbsp;</p>
@@ -45,9 +55,8 @@ yarn add    @uiharness/electron.ui  # Client tools (bundled with app as dependen
 
 
 ## 🔗 Modules
-- [@uiharness/electron](/code/libs/electron/README.md)
-- [@uiharness/electron.ui](code/libs/electron.ui/README.md)
 - [@uiharness/core](/code/libs/core/README.md)
+- [@uiharness/electron](/code/libs/electron/README.md)
 - [@uiharness/types](/code/libs/types/README.md)
 
 <p>&nbsp;</p>

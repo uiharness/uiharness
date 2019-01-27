@@ -1,58 +1,40 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-![title](https://user-images.githubusercontent.com/185555/51221318-de33b000-199d-11e9-8ad8-b244c1aab3e4.jpg)
+![title](https://user-images.githubusercontent.com/185555/51506128-84286400-1e4f-11e9-87a7-42b73457ff1b.jpg)
 
-Core shared logic of the [UIHarness](https://uiharness.com).
+[UIHarness](https://uiharness.com) targeting an [electron](https://electronjs.org/) desktop shell using [react](https://reactjs.org/) and [typescript](https://www.typescriptlang.org/).
 
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+This module contains the development tools to use the UIHarness for both electron and the web, including:
 
+- CLI (command line interface)
+- JS bunder and development server.
+- Electron builder.
+- Web server.
 
-## Configuration
-The UIHarness looks for a `uiharness.yml` file in the root of the module.
+## Installation
 
-```yaml
-port: 8080
+Include in the `devDependencies` of your package.json, along with the corresponding client-tools as full `dependencies`:
 
-entry:
-  - title: My Title
-    path: src/uiharness.tsx
-
-# Build args.
-sourcemaps: true
-treeshake: false
+```json
+{
+  "scripts": {
+    "postinstall": "uiharness init",
+  },
+  "dependencies": {
+    "@uiharness/electron": "x.x.x"
+  },
+  "devDependencies": {
+    "@uiharness/core": "x.x.x"
+  }
+}
 ```
 
-#### 🌳  port `number`
-The port to run the development server on.
 
 <p>&nbsp;</p>
-
-#### 🌳 entry `string | string[] | object | objects[]`
-Entry points to the files to bundle.
-
-- When `string` (or `string[]`) this represents the path to the `.tsx` files. Default: `/src/uiharness.tsx`.
-
-- When `object` (or `object[]`) this represents the path to the `.tsx` file and the page title.
-
-  ```
-  {
-    title?: string,
-    path?: string
-  }
-  ```
-
 <p>&nbsp;</p>
 
-
-#### 🌳 sourcemaps `boolean`
-Use or disable sourcemaps. Default `true`.
-See [parcel/source-maps](https://parceljs.org/cli.html#disable-source-maps).
-
-<p>&nbsp;</p>
-
-#### 🌳 treeshake `boolean`
-Use or disable (experimental) treeshaking. Default `false`.
-See [parcel/tree-shaking](https://parceljs.org/cli.html#enable-experimental-scope-hoisting/tree-shaking-support).
+## 🔗 Refs
+- https://electronjs.org
+- https://www.electron.build
 
 <p>&nbsp;</p>
 

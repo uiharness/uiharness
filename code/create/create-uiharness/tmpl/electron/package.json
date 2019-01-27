@@ -6,7 +6,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/electron": "__LATEST__"
+    "@uiharness/core": "__LATEST__"
   },
   "resolutions": {
     "@types/react": "16.7.17"
