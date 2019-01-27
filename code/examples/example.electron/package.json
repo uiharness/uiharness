@@ -3,7 +3,7 @@
   "version": "0.0.55",
   "description": "Example usage of `@uiharness/electron`",
   "scripts": {
-    "tmp": "yarn sl && uiharness-electron $@",
+    "ui": "yarn sl && uiharness-electron $@",
     "sl": "msync sl && sh ./sh/copy-bin.sh",
     "reset": "yarn sl && uiharness-electron init --reset",
     "nuke": "sh ./sh/nuke.sh",

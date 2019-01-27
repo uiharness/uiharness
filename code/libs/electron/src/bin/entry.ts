@@ -15,7 +15,7 @@ process.on('unhandledRejection', err => {
 const CMD = {
   INIT: 'init',
   INIT_I: 'i',
-  START: 'start',
+  START: 'start [target]',
   START_ST: 'st',
   CLEAN: 'clean',
   CLEAN_C: 'c',
@@ -27,7 +27,9 @@ const CMD = {
   OPEN: 'open',
   OPEN_O: 'o',
 };
-const CMDS = Object.keys(CMD).map(key => CMD[key]);
+const CMDS = Object.keys(CMD)
+  .map(key => CMD[key])
+  .map(cmd => cmd.split(' ')[0]);
 const settings = Settings.create('.');
 const TARGETS: BundleTarget[] = ['electron', 'web'];
 
@@ -73,9 +75,10 @@ const program = yargs
     [CMD.START, CMD.START_ST],
     'Start the development server.',
     e =>
-      e.option('target', {
+      e.positional('target', {
+        type: 'string',
+        default: 'electron',
         describe: 'Start "electron" (default) or "web" server.',
-        alias: 't',
       }),
     e => {
       const target = formatTargetOption(e.target);
@@ -228,7 +231,7 @@ function formatTargetOption(value: unknown) {
       .join(' ')
       .trim();
     let msg = '';
-    msg += `😫  Target "${log.yellow(target)}" not supported. `;
+    msg += `😫  The target "${log.yellow(target)}" is not supported. `;
     msg += `Must be one of ${list}.`;
     log.info(msg);
     log.info();
