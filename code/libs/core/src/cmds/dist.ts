@@ -3,12 +3,14 @@ import {
   command,
   constants,
   file,
+  fs,
   fsPath,
   IElectronBuilderConfig,
   Listr,
   log,
   logElectronInfo,
   logging,
+  tmpl,
 } from '../common';
 import { Settings } from '../settings';
 import { bundleElectron, bundleWeb } from './bundle';
@@ -71,6 +73,7 @@ export async function distElectron(args: {
 
   // Ensure the module is initialized.
   await init({ settings, prod });
+  await updateBuilderYaml({ settings });
   if (!silent) {
     log.info();
     logElectronInfo({ settings, port: false });
@@ -91,7 +94,6 @@ export async function distElectron(args: {
   }
 
   // Construct the `build` command.
-  await updateBuilderYaml({ settings });
   const cmd = command()
     .addLine(`cd ${fsPath.resolve('.')}`)
     .add(`build`)
@@ -133,24 +135,6 @@ export async function distElectron(args: {
   }
 }
 
-async function updateBuilderYaml(args: { settings: Settings }) {
-  const { settings } = args;
-  const electron = settings.electron;
-  const BUILDER = ELECTRON.BUILDER;
-  const filename = BUILDER.CONFIG.FILE_NAME;
-  const path = fsPath.resolve(fsPath.join('.', filename));
-
-  // Update the builder YAML with current input/output paths.
-  const data = await file.loadAndParse<IElectronBuilderConfig>(path);
-  data.productName = electron.name;
-  data.files = BUILDER.FILES;
-  data.directories = {
-    ...(data.directories || {}),
-    output: BUILDER.OUTPUT,
-  };
-  await file.stringifyAndSave<IElectronBuilderConfig>(path, data);
-}
-
 /**
  * Bundles the [web] application.
  */
@@ -162,4 +146,34 @@ export async function distWeb(args: { settings: Settings; silent?: boolean }) {
 
   log.info(`👉  Run ${log.cyan('yarn ui serve')} to view it in the browser.`);
   log.info();
+}
+
+/**
+ * INTERNAL
+ */
+async function updateBuilderYaml(args: { settings: Settings }) {
+  const { settings } = args;
+  const electron = settings.electron;
+  const BUILDER = ELECTRON.BUILDER;
+  const filename = BUILDER.CONFIG.FILE_NAME;
+  const path = fsPath.resolve(fsPath.join('.', filename));
+  const exists = await fs.pathExists(path);
+
+  // Copy in the template file if it does not yet exist.
+  if (!exists) {
+    await tmpl
+      .create(PATH.TEMPLATE.ELECTRON)
+      .use(tmpl.copyFile({}))
+      .execute();
+  }
+
+  // Update the builder YAML with current input/output paths.
+  const data = await file.loadAndParse<IElectronBuilderConfig>(path);
+  data.productName = electron.name;
+  data.files = BUILDER.FILES;
+  data.directories = {
+    ...(data.directories || {}),
+    output: BUILDER.OUTPUT,
+  };
+  await file.stringifyAndSave<IElectronBuilderConfig>(path, data);
 }
