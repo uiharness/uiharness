@@ -9,7 +9,7 @@ import {
 } from '../common';
 import { Settings } from '../settings';
 import { init } from './init';
-import { stats } from './stats';
+import { stats as renderStats } from './stats';
 
 /**
  * Runs the JS bundler.
@@ -50,9 +50,11 @@ export async function bundleElectron(args: {
   renderer?: boolean;
   silent?: boolean;
   summary?: boolean;
+  stats?: boolean;
 }) {
   const { settings, prod, silent = false } = args;
   const summary = value.defaultValue(args.summary, true);
+  const stats = value.defaultValue(args.stats, true);
   const env = toEnv(prod);
   let { main, renderer } = args;
   const pkg = settings.package;
@@ -129,13 +131,15 @@ export async function bundleElectron(args: {
     );
     log.info.gray(`   • package:     ${pkg.name}`);
     log.info.gray(`   • version:     ${pkg.version}`);
+    log.info.gray(`   • env:         ${env.value}`);
     log.info.gray(`   • entry:       ${formatPath(entry.main)}`);
     log.info.gray(`                  ${formatPath(entry.renderer)}`);
     log.info.gray(`   • output:      ${formatPath(out.main.path)}`);
     log.info.gray(`                  ${formatPath(out.renderer.path)}`);
-
     log.info();
-    await stats({ settings, prod, target: 'electron' });
+  }
+  if (stats) {
+    await renderStats({ settings, prod, target: 'electron' });
   }
 
   return { success: true };
@@ -149,9 +153,11 @@ export async function bundleWeb(args: {
   prod?: boolean;
   silent?: boolean;
   summary?: boolean;
+  stats?: boolean;
 }) {
   const { settings, prod, silent = false } = args;
   const summary = value.defaultValue(args.summary, true);
+  const stats = value.defaultValue(args.stats, true);
   const env = toEnv(prod);
   const pkg = settings.package;
   const web = settings.web;
@@ -201,12 +207,13 @@ export async function bundleWeb(args: {
     log.info(`🤟  Javascript bundling for ${log.yellow('web')} complete.\n`);
     log.info.gray(`   • package:     ${pkg.name}`);
     log.info.gray(`   • version:     ${pkg.version}`);
+    log.info.gray(`   • env:         ${env.value}`);
     log.info.gray(`   • entry:       ${formatPath(entry)}`);
     log.info.gray(`   • output:      ${formatPath(out.path)}`);
     log.info();
-    await stats({ settings, prod, target: 'web' });
-    // log.info(`Run ${log.cyan('yarn serve')} to view in browser.`);
-    // log.info();
+  }
+  if (stats) {
+    await renderStats({ settings, prod, target: 'web' });
   }
   return { success: true };
 }

@@ -5,3 +5,4 @@ export * from './dist';
 export * from './open';
 export * from './start';
 export * from './stats';
+export * from './serve';

@@ -31,7 +31,7 @@ export const PATH = {
   },
   WEB: {
     ENTRY: './src/test/web.html',
-    OUT_FILE: 'web.html',
+    OUT_FILE: 'index.html',
     OUT_DIR: {
       DEV: `${BUNDLE_DIR}/web/dev`,
       PROD: `${BUNDLE_DIR}/web/prod`,
@@ -41,12 +41,13 @@ export const PATH = {
 
 export const SCRIPTS = {
   postinstall: 'uiharness-electron init',
-  start: 'uiharness-electron start',
-  bundle: 'uiharness-electron bundle',
-  dist: 'uiharness-electron dist',
-  open: 'uiharness-electron open',
-  stats: 'uiharness-electron stats',
-  clean: 'uiharness-electron clean',
+  ui: 'uiharness-electron $@',
+  // start: 'uiharness-electron start',
+  // bundle: 'uiharness-electron bundle',
+  // dist: 'uiharness-electron dist',
+  // open: 'uiharness-electron open',
+  // stats: 'uiharness-electron stats',
+  // clean: 'uiharness-electron clean',
 };
 
 export const PKG = {

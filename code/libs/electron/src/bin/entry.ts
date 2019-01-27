@@ -26,6 +26,7 @@ const CMD = {
   DIST_D: 'd',
   OPEN: 'open',
   OPEN_O: 'o',
+  SERVE: 'serve',
 };
 const CMDS = Object.keys(CMD)
   .map(key => CMD[key])
@@ -202,6 +203,16 @@ const program = yargs
       const { folder } = e;
       cmds.open({ settings, folder });
     },
+  )
+
+  /**
+   * `serve`
+   */
+  .command(
+    [CMD.SERVE],
+    'Serve the web distribution.',
+    e => e,
+    e => cmds.serve({ settings }),
   )
 
   .help('h')
