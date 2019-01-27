@@ -1,4 +1,4 @@
-import { fs, fsPath } from '../common';
+import { fs, fsPath } from '../../common';
 
 /**
  * Removes temporary generated files.

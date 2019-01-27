@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/electron",
-  "version": "0.3.33",
+  "version": "0.3.35",
   "description": "UIHarness client-tools for Electron (include in dependencies).",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@types/app-root-path": "1.2.4",
-    "@uiharness/types": "0.0.14",
+    "@uiharness/types": "0.0.16",
     "app-root-path": "2.1.0",
     "electron": "^4.0.2",
     "electron-is-dev": "1.0.1",

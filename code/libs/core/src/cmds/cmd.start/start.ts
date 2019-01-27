@@ -7,10 +7,10 @@ import {
   logWebInfo,
   parcel,
   BundleTarget,
-} from '../common';
-import { Settings } from '../settings';
-import { bundleElectron } from './bundle';
-import { init } from './init';
+} from '../../common';
+import { Settings } from '../../settings';
+import { bundleElectron } from '../cmd.bundle';
+import { init } from '../cmd.init';
 
 const { PATH } = constants;
 

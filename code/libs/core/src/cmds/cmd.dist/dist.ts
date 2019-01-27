@@ -1,19 +1,21 @@
 import {
-  fs,
-  file,
+  BundleTarget,
+  command,
   constants,
+  file,
+  fs,
   fsPath,
+  IElectronBuilderConfig,
   Listr,
   log,
-  logging,
   logElectronInfo,
-  command,
-  BundleTarget,
-  IElectronBuilderConfig,
-} from '../common';
-import { Settings } from '../settings';
-import { bundleElectron, bundleWeb } from './bundle';
-import { init } from './init';
+  logging,
+  tmpl,
+  time,
+} from '../../common';
+import { Settings } from '../../settings';
+import { bundleElectron, bundleWeb } from '../cmd.bundle';
+import { init } from '../cmd.init';
 
 const { PATH } = constants;
 const { ELECTRON } = PATH;
@@ -72,6 +74,7 @@ export async function distElectron(args: {
 
   // Ensure the module is initialized.
   await init({ settings, prod });
+  await prepareBuilderYaml({ settings });
   if (!silent) {
     log.info();
     logElectronInfo({ settings, port: false });
@@ -92,7 +95,6 @@ export async function distElectron(args: {
   }
 
   // Construct the `build` command.
-  await updateBuilderYaml({ settings });
   const cmd = command()
     .addLine(`cd ${fsPath.resolve('.')}`)
     .add(`build`)
@@ -125,31 +127,13 @@ export async function distElectron(args: {
     log.info();
     log.info(`🤟  Application packaging complete.\n`);
     log.info.gray(`   • productName: ${log.yellow(config.productName)}`);
-    log.info.gray(`   • version:     ${settings.package.version}`);
     log.info.gray(`   • appId:       ${config.appId}`);
+    log.info.gray(`   • version:     ${settings.package.version}`);
     log.info.gray(`   • folder:      ${path}`);
     log.info();
     log.info(`👉  Run ${log.cyan('yarn ui open')} to run it.`);
     log.info();
   }
-}
-
-async function updateBuilderYaml(args: { settings: Settings }) {
-  const { settings } = args;
-  const electron = settings.electron;
-  const BUILDER = ELECTRON.BUILDER;
-  const filename = BUILDER.CONFIG.FILE_NAME;
-  const path = fsPath.resolve(fsPath.join('.', filename));
-
-  // Update the builder YAML with current input/output paths.
-  const data = await file.loadAndParse<IElectronBuilderConfig>(path);
-  data.productName = electron.name;
-  data.files = BUILDER.FILES;
-  data.directories = {
-    ...(data.directories || {}),
-    output: BUILDER.OUTPUT,
-  };
-  await file.stringifyAndSave<IElectronBuilderConfig>(path, data);
 }
 
 /**
@@ -163,4 +147,38 @@ export async function distWeb(args: { settings: Settings; silent?: boolean }) {
 
   log.info(`👉  Run ${log.cyan('yarn ui serve')} to view it in the browser.`);
   log.info();
+}
+
+/**
+ * INTERNAL
+ */
+async function prepareBuilderYaml(args: { settings: Settings }) {
+  const { settings } = args;
+  const electron = settings.electron;
+  const BUILDER = ELECTRON.BUILDER;
+  const filename = BUILDER.CONFIG.FILE_NAME;
+  const path = fsPath.resolve(fsPath.join('.', filename));
+  const exists = await fs.pathExists(path);
+
+  // Copy in the template file if it does not yet exist.
+  if (!exists) {
+    await tmpl
+      .create(PATH.TEMPLATE.ELECTRON)
+      .use(tmpl.copyFile({}))
+      .execute();
+  }
+
+  // Update the builder YAML with current input/output paths.
+  const data = await file.loadAndParse<IElectronBuilderConfig>(path);
+  data.productName = electron.name;
+  data.files = BUILDER.FILES;
+  data.directories = {
+    ...(data.directories || {}),
+    output: BUILDER.OUTPUT,
+  };
+  await file.stringifyAndSave<IElectronBuilderConfig>(path, data);
+
+  // Pause.
+  // NB: Ensure the builder file is fully available before command is run.
+  await time.wait(300);
 }
