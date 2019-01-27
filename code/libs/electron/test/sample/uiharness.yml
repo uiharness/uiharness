@@ -11,3 +11,10 @@ electron:
   bundle:
     sourcemaps: false
     treeshake: true
+
+web:
+  port: 3030
+  entry: ./foo/web/hello.html
+  bundle:
+    sourcemaps: false
+    treeshake: true

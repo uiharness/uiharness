@@ -3,7 +3,7 @@ appId: 'com.my-app.app'
 
 files:
   - .uiharness/.bundle/main/**
-  - .uiharness/.bundle/renderer/production/**
+  - .uiharness/.bundle/renderer/prod/**
 
 directories:
   output: .foo/bar/release

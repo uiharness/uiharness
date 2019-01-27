@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-import * as cmds from './cmds';
-import { constants, log, yargs } from './common';
-import { Settings } from './settings';
+import * as cmds from '../cmds';
+import { constants, log, yargs, BundleTarget } from '../common';
+import { Settings } from '../settings';
 
 /**
  * Makes the script crash on unhandled rejections instead of silently
@@ -15,27 +15,30 @@ process.on('unhandledRejection', err => {
 const CMD = {
   INIT: 'init',
   INIT_I: 'i',
-  START: 'start',
+  START: 'start [target]',
   START_ST: 'st',
   CLEAN: 'clean',
   CLEAN_C: 'c',
-  BUNDLE: 'bundle',
+  BUNDLE: 'bundle [target]',
   BUNDLE_B: 'b',
   STATS: 'stats',
-  DIST: 'dist',
+  DIST: 'dist [target]',
   DIST_D: 'd',
   OPEN: 'open',
   OPEN_O: 'o',
+  SERVE: 'serve',
 };
-const CMDS = Object.keys(CMD).map(key => CMD[key]);
-
+const CMDS = Object.keys(CMD)
+  .map(key => CMD[key])
+  .map(cmd => cmd.split(' ')[0]);
 const settings = Settings.create('.');
+const TARGETS: BundleTarget[] = ['electron', 'web'];
 
 /**
  * Cheat sheet.
  * https://devhints.io/yargs
  */
-const SCRIPT = log.magenta('uiharness-electron');
+const SCRIPT = log.magenta('uiharness');
 const COMMAND = log.cyan('<command>');
 const OPTIONS = log.gray('[options]');
 const program = yargs
@@ -72,8 +75,19 @@ const program = yargs
   .command(
     [CMD.START, CMD.START_ST],
     'Start the development server.',
-    e => e,
-    e => cmds.start({ settings }),
+    e =>
+      e.positional('target', {
+        type: 'string',
+        default: 'electron',
+        describe: 'Start "electron" (default) or "web" server.',
+      }),
+    e => {
+      const target = formatTargetOption(e.target);
+      if (!target) {
+        return process.exit(1);
+      }
+      return cmds.start({ settings, target });
+    },
   )
 
   /**
@@ -94,17 +108,14 @@ const program = yargs
     'Prepare the javascript bundle.',
     e =>
       e
+        .positional('target', {
+          type: 'string',
+          default: 'electron',
+          describe: 'Build for "electron" (default) or "web" browser.',
+        })
         .option('dev', {
           describe: 'Bundle for development (default: false, production).',
-          boolean: true,
-          default: false,
-        })
-        .option('main', {
-          describe: 'Bundle the main module (default: true).',
-          boolean: true,
-        })
-        .option('renderer', {
-          describe: 'Bundle the renderer module (default: true).',
+          alias: 'd',
           boolean: true,
         })
         .option('silent', {
@@ -113,15 +124,14 @@ const program = yargs
           boolean: true,
         }),
     async e => {
-      const { prod, main, renderer, silent, dev } = e;
-      await cmds.bundle({
-        settings,
-        prod: !dev,
-        main,
-        renderer,
-        silent,
-      });
-      process.exit(0);
+      const { silent, dev = false } = e;
+      const prod = !dev;
+      const target = formatTargetOption(e.target);
+      if (!target) {
+        return process.exit(1);
+      }
+      await cmds.bundle({ settings, prod, silent, target });
+      return process.exit(0);
     },
   )
 
@@ -132,15 +142,25 @@ const program = yargs
     [CMD.DIST, CMD.DIST_D],
     'Packages the application ready for distribution.',
     e =>
-      e.option('silent', {
-        alias: 's',
-        describe: 'No console output (default: false).',
-        boolean: true,
-      }),
+      e
+        .positional('target', {
+          type: 'string',
+          default: 'electron',
+          describe: 'Build for "electron" (default) or "web" browser.',
+        })
+        .option('silent', {
+          alias: 's',
+          describe: 'No console output (default: false).',
+          boolean: true,
+        }),
     async e => {
       const { silent } = e;
-      await cmds.dist({ settings, silent });
-      process.exit(0);
+      const target = formatTargetOption(e.target);
+      if (!target) {
+        return process.exit(1);
+      }
+      await cmds.dist({ settings, silent, target });
+      return process.exit(0);
     },
   )
 
@@ -157,6 +177,10 @@ const program = yargs
           describe: 'Show for production.',
           boolean: true,
         })
+        .option('target', {
+          describe: 'Build for "electron" (default) or "web" browser.',
+          alias: 't',
+        })
         .option('dev', {
           alias: 'd',
           describe: 'Show for development.',
@@ -164,8 +188,13 @@ const program = yargs
         }),
     e => {
       const { dev } = e;
+      const targets: BundleTarget[] = ((e.target || '') as string)
+        .split(',')
+        .map(v => v as BundleTarget)
+        .filter(t => TARGETS.includes(t));
+      const target = targets.length === 0 ? TARGETS : targets;
       const prod = e.prod && dev ? undefined : dev ? false : e.prod;
-      cmds.stats({ settings, prod });
+      cmds.stats({ settings, prod, target });
     },
   )
 
@@ -187,6 +216,16 @@ const program = yargs
     },
   )
 
+  /**
+   * `serve`
+   */
+  .command(
+    [CMD.SERVE],
+    'Serve the web distribution.',
+    e => e,
+    e => cmds.serve({ settings }),
+  )
+
   .help('h')
   .alias('h', 'help')
   .alias('v', 'version')
@@ -199,4 +238,26 @@ if (!CMDS.includes(program.argv._[0])) {
   program.showHelp();
   log.info();
   process.exit(0);
+}
+
+/**
+ * INTERNAL
+ */
+function formatTargetOption(value: unknown) {
+  const target = (typeof value === 'string'
+    ? value.toLowerCase()
+    : 'electron') as BundleTarget;
+
+  if (!TARGETS.includes(target)) {
+    const list = TARGETS.map(t => `"${log.cyan(t)}"`)
+      .join(' ')
+      .trim();
+    let msg = '';
+    msg += `😫  The target "${log.yellow(target)}" is not supported. `;
+    msg += `Must be one of ${list}.`;
+    log.info(msg);
+    log.info();
+    return undefined;
+  }
+  return target;
 }

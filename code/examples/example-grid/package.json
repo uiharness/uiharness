@@ -1,0 +1,26 @@
+{
+  "name": "example-grid",
+  "version": "0.0.1",
+  "scripts": {
+    "postinstall": "uiharness init",
+    "ui": "yarn sl && uiharness $@",
+    "sl": "msync sl && sh ./sh/copy-bin.sh",
+    "reset": "yarn sl && uiharness init --reset",
+    "nuke": "sh ./sh/nuke.sh"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "@tdb/ui.text": "^1.0.87",
+    "@tdb/util": "^1.9.26",
+    "@uiharness/electron.ui": "0.0.37",
+    "handsontable": "^6.2.2"
+  },
+  "devDependencies": {
+    "@uiharness/electron": "0.3.23"
+  },
+  "resolutions": {
+    "@types/react": "16.7.17"
+  },
+  "license": "MIT",
+  "private": true
+}

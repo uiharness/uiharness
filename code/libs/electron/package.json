@@ -1,10 +1,10 @@
 {
   "name": "@uiharness/electron",
   "description": "UIHarness dev-tools for Electron (include in devDependencies).",
-  "version": "0.3.19",
+  "version": "0.3.23",
   "main": "./lib/index.js",
   "bin": {
-    "uiharness-electron": "./lib/bin/entry.js"
+    "uiharness": "./lib/bin/entry.js"
   },
   "scripts": {
     "test": "sh ./node_modules/@tdb/test/sh/test.sh",
@@ -24,15 +24,16 @@
     "@tdb/test": "^1.2.13",
     "@tdb/typescript": "3.2.8",
     "@tdb/util": "1.9.26",
-    "@uiharness/core": "1.0.63",
-    "@uiharness/electron.ui": "0.0.35",
-    "@uiharness/types": "0.0.7",
+    "@uiharness/core": "1.0.65",
+    "@uiharness/electron.ui": "0.0.37",
+    "@uiharness/types": "0.0.9",
     "babel-core": "^7.0.0-bridge.0",
     "electron": "4.0.1",
     "electron-builder": "20.38.5",
     "execa": "1.0.0",
     "npm-run-all": "4.1.5",
     "parcel-bundler": "1.11.0",
+    "serve": "10.1.1",
     "yargs": "12.0.5"
   },
   "devDependencies": {
