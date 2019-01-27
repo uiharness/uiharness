@@ -1,7 +1,8 @@
-import { log, logging, value } from './libs';
 import { Settings } from '../settings';
 import { IParcelBuildConfig } from '../types';
 import { command } from './command';
+import { log, value } from './libs';
+import * as logging from './logging';
 
 const defaultValue = value.defaultValue;
 

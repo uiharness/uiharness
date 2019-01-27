@@ -1,1 +1,1 @@
-export { IS_BROWSER } from '@tdb/util/lib/constants';
+export const FOO = 123;
