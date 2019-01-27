@@ -58,7 +58,6 @@ ensure you run `uiharness init` as a post-install step, allowing the UIHarness t
 - [npm](https://www.npmjs.com/org/uiharness)
 - [@uiharness/core](/code/libs/core/README.md)
 - [@uiharness/electron](/code/libs/electron/README.md)
-- [@uiharness/types](/code/libs/types/README.md)
 
 <p>&nbsp;</p>
 
