@@ -85,10 +85,10 @@
   resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-7.0.4.tgz#bf641dd1c3a7fce5f30d60a008251e831ff36095"
   integrity sha512-jTDIwFzEFAcEErkbvPeu0XC/6XCImqbLCZdlumwWSCE1eI9R8Y+3Dio3OR/8O1oM39oWZRR/n2AykAlWZPtRgA==
 
-"@uiharness/types@0.0.12":
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.12.tgz#73b02e8ff459a740501deb827aed113c37dbc4cc"
-  integrity sha512-MJunYuzLioyjG2PnGTHS8fO6hR2YpLD6SgdxTU3l1o30T8590lGWM2eOnmbYYutRPuip10SG6g3DKqOLUxHMvA==
+"@uiharness/types@0.0.13":
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.13.tgz#2118f72acbf0b81eaa26936a647f77b852be3454"
+  integrity sha512-39y3VrZPqxVFIwc1zGDGSJb53ncRTB6RIBkd7B5WT3tFMWAIuh2nv4Ck+/UbS6yfW6gweI8EoipBES1X/pEHkQ==
 
 ansi-regex@^2.0.0:
   version "2.1.1"
@@ -620,7 +620,7 @@ ts-node@8.0.1:
     source-map-support "^0.5.6"
     yn "^2.0.0"
 
-tslib@1.9.3, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.3:
+tslib@1.9.3, tslib@^1.8.0, tslib@^1.8.1:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
   integrity sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==
