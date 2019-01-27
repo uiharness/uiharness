@@ -1,7 +1,6 @@
 {
-  "name": "example.electron",
+  "name": "example",
   "version": "0.0.58",
-  "description": "Example usage of `@uiharness/electron`",
   "scripts": {
     "postinstall": "uiharness init",
     "ui": "yarn sl && uiharness $@",

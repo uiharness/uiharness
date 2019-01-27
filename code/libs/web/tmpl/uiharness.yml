@@ -1,8 +1,0 @@
-#
-# Web Configuration
-# https://uiharness.com
-#
-port: 3030
-build:
-  sourcemaps: true
-  treeshake: false

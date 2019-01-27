@@ -31,9 +31,6 @@ yarn create uiharness
 Or manually add the UIHarness to your module.  
 Target the [web](https://developer.mozilla.org) (browser):
 
-```bash
-yarn add -D @uiharness/web
-```
 
 Target the desktop with [electron](https://electronjs.org):
 
@@ -48,8 +45,6 @@ yarn add    @uiharness/electron.ui  # Client tools (bundled with app as dependen
 
 
 ## 🔗 Modules
-- [@uiharness/web](/code/libs/web/README.md)
-- [@uiharness/web.ui](/code/libs/web.ui/README.md)
 - [@uiharness/electron](/code/libs/electron/README.md)
 - [@uiharness/electron.ui](code/libs/electron.ui/README.md)
 - [@uiharness/core](/code/libs/core/README.md)

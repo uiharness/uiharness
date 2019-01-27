@@ -1,5 +1,5 @@
 {
-  "name": "example.electron-grid",
+  "name": "example-grid",
   "version": "0.0.0",
   "scripts": {
     "postinstall": "uiharness init",
