@@ -8,7 +8,7 @@ import {
   BundleTarget,
 } from '../common';
 import { Settings } from '../settings';
-import { bundleElectron } from './bundle';
+import { bundleElectron, bundleWeb } from './bundle';
 import { init } from './init';
 
 /**
@@ -128,5 +128,11 @@ export async function distElectron(args: {
  * Bundles the [web] application.
  */
 export async function distWeb(args: { settings: Settings; silent?: boolean }) {
-  console.log('\n\ndist web\n\n');
+  const { settings, silent } = args;
+  const prod = true;
+
+  await bundleWeb({ settings, prod, silent });
+
+  log.info(`👉  Run ${log.cyan('yarn ui serve')} to view it in the browser.`);
+  log.info();
 }

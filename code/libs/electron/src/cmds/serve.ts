@@ -17,8 +17,8 @@ export async function serve(args: { settings: Settings }) {
   if (!exists) {
     await bundleWeb({ settings, prod, stats: false });
   } else {
-    log.info(`To build a fresh distribution bundle, run:`);
-    log.info(`  ${log.cyan('yarn ui')} ${log.magenta('bundle web')}`);
+    log.info(`👉   To build a fresh distribution bundle, run:`);
+    log.info(`    ${log.cyan('yarn ui')} ${log.magenta('bundle web')}`);
     log.info();
   }
 
