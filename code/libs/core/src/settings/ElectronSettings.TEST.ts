@@ -18,8 +18,8 @@ describe('ElectronSettings', () => {
       const res = Settings.create(path).electron;
       expect(res.exists).to.eql(false);
       expect(res.port).to.eql(8888);
-      expect(res.entry.main).to.eql('test/app/main.ts');
-      expect(res.entry.renderer).to.eql('test/app/renderer.tsx');
+      expect(res.entry.main).to.eql('test/main.ts');
+      expect(res.entry.renderer).to.eql('test/renderer.tsx');
       expect(res.entry.html).to.eql('.uiharness/html/renderer.html');
 
       const bundler = res.bundlerArgs;
@@ -64,6 +64,6 @@ describe('ElectronSettings', () => {
       'utf8',
     );
     expect(text).to.include(`<title>My App</title>`);
-    expect(text).to.include(`<script src="../../../test/app/renderer.tsx">`);
+    expect(text).to.include(`<script src="../../../test/renderer.tsx">`);
   });
 });

@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "scripts": {
     "postinstall": "uiharness init",
     "ui": "yarn sl && uiharness $@",
@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
-    "@uiharness/core": "1.1.19",
+    "@uiharness/core": "1.1.20",
     "typescript": "^3.2.4"
   },
   "resolutions": {
