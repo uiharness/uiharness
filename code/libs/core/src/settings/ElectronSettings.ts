@@ -14,9 +14,6 @@ type IPaths = {
   calculated?: IUIHarnessElectronPaths;
 };
 
-const ROOT = resolve('.');
-const toRelative = (path: string) => path.substr(ROOT.length + 1);
-
 /**
  * Represents the `electron` section of the `uiharness.yml` configuration file.
  */
@@ -186,6 +183,9 @@ export class ElectronSettings {
    * Retrieves file paths.
    */
   public getPaths() {
+    const ROOT = resolve('.');
+    const toRelative = (path: string) => path.substr(ROOT.length + 1);
+
     const parent = this._paths.parent;
     const relative = {
       tmp: toRelative(parent.tmp.dir),

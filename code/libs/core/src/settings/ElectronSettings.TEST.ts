@@ -18,8 +18,8 @@ describe('ElectronSettings', () => {
       const res = Settings.create(path).electron;
       expect(res.exists).to.eql(false);
       expect(res.port).to.eql(8888);
-      expect(res.entry.main).to.eql('./test/app/main.ts');
-      expect(res.entry.renderer).to.eql('./test/app/renderer.tsx');
+      expect(res.entry.main).to.eql('test/app/main.ts');
+      expect(res.entry.renderer).to.eql('test/app/renderer.tsx');
       expect(res.entry.html).to.eql('.uiharness/html/renderer.html');
 
       const bundler = res.bundlerArgs;

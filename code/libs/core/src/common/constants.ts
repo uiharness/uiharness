@@ -4,23 +4,9 @@ export const URL = {
   SITE: 'https://uiharness.com',
 };
 
-const TMP = './.uiharness';
-const DIR = {
-  TMP,
-  BUNDLE: `${TMP}/.bundle`,
-};
-
 export const PATH = {
+  TMP: './.uiharness',
   TEMPLATES: './node_modules/@uiharness/core/tmpl',
-  DIR,
-  WEB: {
-    ENTRY: './src/test/web.html',
-    OUT_FILE: 'index.html',
-    OUT_DIR: {
-      DEV: `${DIR.BUNDLE}/web/dev`,
-      PROD: `${DIR.BUNDLE}/web/prod`,
-    },
-  },
 };
 
 export const SCRIPTS = {

@@ -17,7 +17,7 @@ describe('Settings', () => {
       expect(settings.exists).to.eql(true);
       expect(settings.package.exists).to.eql(true);
       expect(settings.package.name).to.eql('sample');
-      expect(settings.path.tmp.dir).to.eql(fsPath.resolve(PATH.DIR.TMP));
+      expect(settings.path.tmp.dir).to.eql(fsPath.resolve(PATH.TMP));
     });
 
     it('creates from file path', () => {

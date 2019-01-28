@@ -108,3 +108,13 @@ export type IUIHarnessElectronPaths = {
     output: string;
   };
 };
+
+export type IUIHarnessWebPaths = {
+  defaultEntry: {
+    html: string;
+  };
+  out: {
+    file: string;
+    dir: { prod: string; dev: string };
+  };
+};

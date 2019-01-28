@@ -1,14 +1,5 @@
-import {
-  BundleTarget,
-  constants,
-  fs,
-  fsPath,
-  log,
-  logging,
-} from '../../common';
+import { BundleTarget, fs, fsPath, log, logging } from '../../common';
 import { Settings } from '../../settings';
-
-const WEB = constants.PATH.WEB;
 
 /**
  * Prints stats about the bundle.
@@ -20,9 +11,10 @@ export async function stats(args: {
 }) {
   const { prod, settings } = args;
   const targets = Array.isArray(args.target) ? args.target : [args.target];
-  const path = settings.electron.path;
 
   if (targets.includes('electron')) {
+    const path = settings.electron.path;
+
     await logDir(path.main.out.dir);
     if (prod === undefined || prod === false) {
       await logDir(path.renderer.out.dir.dev);
@@ -33,11 +25,12 @@ export async function stats(args: {
   }
 
   if (targets.includes('web')) {
+    const path = settings.web.path;
     if (prod === undefined || prod === false) {
-      await logDir(WEB.OUT_DIR.DEV);
+      await logDir(path.out.dir.dev);
     }
     if (prod === undefined || prod === true) {
-      await logDir(WEB.OUT_DIR.PROD);
+      await logDir(path.out.dir.prod);
     }
   }
 }

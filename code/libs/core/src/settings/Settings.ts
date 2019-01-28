@@ -82,7 +82,7 @@ export class Settings {
     path = isDirectory ? join(path, UIHARNESS_YAML) : path;
 
     // Overridden paths.
-    const tmpDir = options.tmpDir ? options.tmpDir : PATH.DIR.TMP;
+    const tmpDir = options.tmpDir ? options.tmpDir : PATH.TMP;
     const templatesDir = options.templatesDir
       ? options.templatesDir
       : PATH.TEMPLATES;
