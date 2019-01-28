@@ -86,6 +86,7 @@ export async function startWeb(args: { settings: Settings }) {
   logWebInfo({ settings, port: true });
 
   // Start the web dev-server
+  await settings.web.ensureEntries();
   const renderer = parcel.webBundler(settings);
   await (renderer as any).serve(port);
 }

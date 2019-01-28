@@ -60,9 +60,6 @@ export class WebSettings {
    */
   public async ensureEntries() {
     const entry = this.entry;
-
-    console.log('entry', entry);
-
     const name = this._config.name || constants.UNNAMED;
     const htmlPath = entry.html;
     const codePath = entry.code;

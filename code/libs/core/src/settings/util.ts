@@ -16,8 +16,6 @@ export async function ensureEntries(args: {
 }) {
   const { htmlPath, defaultHtmlPath, codePath, pattern } = args;
 
-  console.log('args', args);
-
   const ensureRendererHtml = async () => {
     const isDefault = htmlPath === defaultHtmlPath;
     const entryHtmlFile = resolve(htmlPath);
