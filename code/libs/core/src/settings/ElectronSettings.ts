@@ -1,6 +1,6 @@
 import { join, resolve } from 'path';
 
-import { constants, file, fs, tmpl, toBundlerArgs } from '../common';
+import { constants, file, toBundlerArgs } from '../common';
 import {
   IElectronBuilderConfig,
   IUIHarnessConfig,
@@ -8,6 +8,7 @@ import {
   IUIHarnessElectronPaths,
   IUIHarnessPaths,
 } from '../types';
+import { ensureEntries } from './util';
 
 type IPaths = {
   parent: IUIHarnessPaths;
@@ -66,49 +67,63 @@ export class ElectronSettings {
    */
   public async ensureEntries() {
     const entry = this.entry;
-    const exists = fs.pathExists;
 
-    const ensureRendererHtml = async () => {
-      const isDefault = entry.html === this.path.renderer.defaultEntry.html;
-      const entryHtmlFile = resolve(entry.html);
+    const name = this.config.name || constants.UNNAMED;
+    const htmlPath = entry.html;
+    const defaultHtmlPath = this.path.renderer.defaultEntry.html;
+    const codePath = entry.renderer;
+    const templatesDir = this._paths.parent.templates.html;
+    const targetDir = this._paths.parent.tmp.html;
 
-      // - Always overwrite if this is the default path.
-      // - Don't overwrite if a custom HTML path is set, and it already exists.
-      if (!isDefault || (await exists(entryHtmlFile))) {
-        return;
-      }
+    return ensureEntries({
+      name,
+      htmlPath,
+      defaultHtmlPath,
+      codePath,
+      templatesDir,
+      targetDir,
+    });
 
-      // Prepare paths.
-      // const root = resolve('.');
-      let targetDir = this._paths.parent.tmp.html;
-      targetDir = `/${targetDir.replace(/^\//, '')}`;
-      const hops = targetDir
-        .replace(/^\//, '')
-        .split('/')
-        .map(() => '..')
-        .join('/');
+    // const ensureRendererHtml = async () => {
+    //   const isDefault = entry.html === this.path.renderer.defaultEntry.html;
+    //   const entryHtmlFile = resolve(entry.html);
 
-      // Create template.
-      const template = tmpl
-        .create()
-        .add({
-          dir: resolve(this._paths.parent.templates.html),
-          pattern: 'renderer.html',
-          targetDir,
-        })
-        .use(tmpl.replace({ edge: '__' }))
-        .use(tmpl.copyFile());
+    //   // - Always overwrite if this is the default path.
+    //   // - Don't overwrite if a custom HTML path is set, and it already exists.
+    //   if (!isDefault || (await fs.pathExists(entryHtmlFile))) {
+    //     return;
+    //   }
 
-      // Execute template.
-      const variables = {
-        NAME: this.config.name || constants.UNNAMED,
-        PATH: join(hops, entry.renderer),
-      };
-      await template.execute({ variables });
-    };
+    //   // Prepare paths.
+    //   let targetDir = this._paths.parent.tmp.html;
+    //   targetDir = `/${targetDir.replace(/^\//, '')}`;
+    //   const hops = targetDir
+    //     .replace(/^\//, '')
+    //     .split('/')
+    //     .map(() => '..')
+    //     .join('/');
 
-    // Prepare.
-    await ensureRendererHtml();
+    //   // Create template.
+    //   const template = tmpl
+    //     .create()
+    //     .add({
+    //       dir: resolve(this._paths.parent.templates.html),
+    //       pattern: 'renderer.html',
+    //       targetDir,
+    //     })
+    //     .use(tmpl.replace({ edge: '__' }))
+    //     .use(tmpl.copyFile());
+
+    //   // Execute template.
+    //   const variables = {
+    //     NAME: this.config.name || constants.UNNAMED,
+    //     PATH: join(hops, entry.renderer),
+    //   };
+    //   await template.execute({ variables });
+    // };
+
+    // // Prepare.
+    // await ensureRendererHtml();
   }
 
   /**
@@ -202,10 +217,10 @@ export class ElectronSettings {
       renderer: {
         defaultEntry: {
           code: 'test/app/renderer.tsx',
-          html: join(html, 'renderer.html'),
+          html: join(html, 'index.html'),
         },
         out: {
-          file: 'renderer.html',
+          file: 'index.html',
           dir: {
             dev: join(bundle, 'app.renderer/dev'),
             prod: join(bundle, 'app.renderer/prod'),
