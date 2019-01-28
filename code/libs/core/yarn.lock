@@ -2445,10 +2445,10 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-create-tmpl@0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.1.0.tgz#a3aed8e8c7fd118ff990eefa68e892c77b46cfb1"
-  integrity sha512-wax05GjIjx8r6Ld2c+Pd27lfAkPzJc2kJWT6ki5wH0rQib0YIjB7Uv+jACeLJcczvcRwr0zwTuBpxDdmKz053g==
+create-tmpl@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.1.1.tgz#9457e1b57a1e0ec97ea63e47b828740d0cf18d13"
+  integrity sha512-8Nf8RNNV3g8CCkovxl/vSOLJUMB3ARnIG/8bcdBpx35VzENkgARHmjGDZR6e20MsFLl2zutfHCNOIbQFFOhATA==
   dependencies:
     "@tdb/npm" "0.1.0"
     "@tdb/util" "1.9.26"
