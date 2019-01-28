@@ -1,15 +1,11 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 ![title](https://user-images.githubusercontent.com/185555/51809542-ad8d3800-2306-11e9-8732-a0a971ef4ab8.png)
 
-Isolate, develop and test your UI components in [typescript](https://www.typescriptlang.org/) / [react](https://reactjs.org/), targeting [electron](https://electronjs.org/) and the [web](https://developer.mozilla.org).  
-[uiharness.com](https://uiharness.com)
 
----
-
-This module contains the [UIHarness](https://uiharness.com) development server and bundler:
+This module contains the core [UIHarness](https://uiharness.com) development server:
 
 - CLI (command line interface)
-- JS bunder, HMR development server.
+- JS bunder and HMR development server for web and electron.
 - Electron distribution builder.
 - Web server.
 
