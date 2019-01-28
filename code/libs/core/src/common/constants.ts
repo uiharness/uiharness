@@ -12,6 +12,7 @@ export const PATH = {
 export const SCRIPTS = {
   postinstall: 'uiharness init',
   ui: 'uiharness $@',
+  start: 'uiharness start $@',
 };
 
 export const PKG = {

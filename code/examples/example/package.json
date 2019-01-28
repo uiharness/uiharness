@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "0.0.16",
+  "version": "0.0.18",
   "scripts": {
     "postinstall": "uiharness init",
     "ui": "yarn sl && uiharness $@",
@@ -9,12 +9,12 @@
     "nuke": "sh ./sh/nuke.sh"
   },
   "dependencies": {
-    "@uiharness/electron": "0.3.35",
+    "@uiharness/electron": "0.3.36",
     "create-tmpl": "^0.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
-    "@uiharness/core": "1.1.17",
+    "@uiharness/core": "1.1.19",
     "typescript": "^3.2.4"
   },
   "resolutions": {
