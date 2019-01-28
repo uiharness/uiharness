@@ -1,5 +1,9 @@
 import { constants, fsPath, toBundlerArgs } from '../common';
-import { IUIHarnessWebConfig } from '../types';
+import {
+  IUIHarnessWebConfig,
+  IUIHarnessPaths,
+  IUIHarnessConfig,
+} from '../types';
 
 const { PATH } = constants;
 
@@ -7,24 +11,18 @@ const { PATH } = constants;
  * Represents the `web` section of the `uiharness.yml` configuration file.
  */
 export class WebSettings {
-  public readonly dir: string;
-  public readonly tmpDir: string;
+  public readonly path: IUIHarnessPaths;
   public readonly data: IUIHarnessWebConfig;
   public readonly exists: boolean;
 
   /**
    * Constructor.
    */
-  constructor(args: {
-    dir: string;
-    tmpDir: string;
-    data?: IUIHarnessWebConfig;
-  }) {
-    const { data } = args;
-    this.exists = Boolean(data);
-    this.dir = args.dir;
-    this.tmpDir = args.tmpDir;
-    this.data = data || {};
+  constructor(args: { path: IUIHarnessPaths; config: IUIHarnessConfig }) {
+    const { config } = args;
+    this.path = args.path;
+    this.data = config.web || {};
+    this.exists = Boolean(config.web);
   }
 
   /**

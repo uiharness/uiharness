@@ -17,7 +17,7 @@ describe('Settings', () => {
       expect(settings.exists).to.eql(true);
       expect(settings.package.exists).to.eql(true);
       expect(settings.package.name).to.eql('sample');
-      expect(settings.tmpDir).to.eql(fsPath.resolve(PATH.DIR.TMP));
+      expect(settings.path.tmp.dir).to.eql(fsPath.resolve(PATH.DIR.TMP));
     });
 
     it('creates from file path', () => {
@@ -30,7 +30,14 @@ describe('Settings', () => {
     it('creates with alternate `tmpDir`', () => {
       const tmpDir = './test/.foo';
       const settings = Settings.create(DIR, { tmpDir });
-      expect(settings.tmpDir).to.eql(fsPath.resolve(tmpDir));
+      expect(settings.path.tmp.dir).to.eql(fsPath.resolve(tmpDir));
+    });
+
+    it('creates with alternate `templatesDir`', () => {
+      const templatesDir = './test/my-templates';
+      const settings = Settings.create(DIR, { templatesDir });
+      const base = settings.path.templates.base;
+      expect(base).to.eql(fsPath.resolve(`${templatesDir}/base`));
     });
 
     it('returns default settings if file does not exist', () => {
@@ -51,8 +58,9 @@ describe('Settings', () => {
       const { web, electron } = settings;
       expect(electron).to.be.an.instanceof(ElectronSettings);
       expect(web).to.be.an.instanceof(WebSettings);
-      expect(electron.tmpDir).to.eql(settings.tmpDir);
-      expect(web.tmpDir).to.eql(settings.tmpDir);
+
+      expect(electron.path).to.eql(settings.path);
+      expect(web.path).to.eql(settings.path);
     };
     test();
     test(DIR);

@@ -8,18 +8,20 @@ import {
   value,
   constants,
 } from '../common';
-import { IUIHarnessConfig } from '../types';
+import { IUIHarnessConfig, IUIHarnessPaths } from '../types';
 import { ElectronSettings } from './ElectronSettings';
 import { WebSettings } from './WebSettings';
 
 export { NpmPackage };
 
+const { resolve, join } = fsPath;
 const { PATH } = constants;
 const UIHARNESS_YAML = 'uiharness.yml';
 const defaultValue = value.defaultValue;
 
 export type IUIHarnessSettingsOptions = {
   tmpDir?: string;
+  templatesDir?: string;
 };
 
 /**
@@ -52,14 +54,17 @@ export class Settings {
    * Fields.
    */
   public readonly exists: boolean;
-  public readonly dir: string;
-  public readonly tmpDir: string;
-  public readonly path: string;
   public readonly data: IUIHarnessConfig;
 
   private _package: NpmPackage;
   private _electron: ElectronSettings;
   private _web: WebSettings;
+  private _paths = {
+    file: '',
+    templatesDir: '',
+    tmpDir: '',
+    calculated: undefined as undefined | IUIHarnessPaths,
+  };
 
   /**
    * Constructor.
@@ -71,20 +76,34 @@ export class Settings {
     // Wrangle path.
     path = path ? path : '.';
     path = path.trim();
-    path = fsPath.resolve(path);
+    path = resolve(path);
     const lstat = fs.existsSync(path) ? fs.lstatSync(path) : undefined;
     const isDirectory = lstat && lstat.isDirectory();
-    path = isDirectory ? fsPath.join(path, UIHARNESS_YAML) : path;
+    path = isDirectory ? join(path, UIHARNESS_YAML) : path;
 
-    // Derive [tmpDir] path.
+    // Overridden paths.
     const tmpDir = options.tmpDir ? options.tmpDir : PATH.DIR.TMP;
+    const templatesDir = options.templatesDir
+      ? options.templatesDir
+      : PATH.DIR.TEMPLATES;
 
     // Store values.
-    this.path = path;
-    this.dir = fsPath.dirname(path);
-    this.tmpDir = fsPath.resolve(tmpDir);
+    this._paths.file = path;
+    this._paths.tmpDir = tmpDir;
+    this._paths.templatesDir = templatesDir;
     this.exists = fs.existsSync(path);
     this.data = this.exists ? Settings.load(path) : {};
+  }
+
+  /**
+   * The display name of the app.
+   */
+  public get name() {
+    return this.data.name || constants.UNNAMED;
+  }
+
+  public get dir() {
+    return fsPath.dirname(this._paths.file);
   }
 
   /**
@@ -101,9 +120,8 @@ export class Settings {
     return (
       this._electron ||
       (this._electron = new ElectronSettings({
-        dir: this.dir,
-        tmpDir: this.tmpDir,
-        data: this.data.electron,
+        path: this.path,
+        config: this.data,
       }))
     );
   }
@@ -115,9 +133,8 @@ export class Settings {
     return (
       this._web ||
       (this._web = new WebSettings({
-        dir: this.dir,
-        tmpDir: this.tmpDir,
-        data: this.data.web,
+        path: this.path,
+        config: this.data,
       }))
     );
   }
@@ -133,6 +150,36 @@ export class Settings {
       files: defaultValue(init.files, true),
       html: defaultValue(init.html, true),
       deps: defaultValue(init.deps, true),
+    };
+  }
+
+  /**
+   * Retrieves paths.
+   */
+  public get path() {
+    return this._paths.calculated || (this._paths.calculated = this.getPaths());
+  }
+
+  /**
+   * Retrieves paths.
+   */
+
+  public getPaths(): IUIHarnessPaths {
+    const templates = resolve(this._paths.templatesDir || PATH.DIR.TEMPLATES);
+    const tmp = resolve(this._paths.tmpDir);
+    return {
+      settings: this._paths.file,
+      package: fsPath.join(tmp, 'package.json'),
+      tmp: {
+        dir: tmp,
+        html: join(tmp, 'html'),
+        bundle: join(tmp, '.bundle'),
+      },
+      templates: {
+        base: join(templates, 'base'),
+        electron: join(templates, 'electron'),
+        html: join(templates, 'html'),
+      },
     };
   }
 }

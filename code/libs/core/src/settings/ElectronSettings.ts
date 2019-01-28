@@ -1,38 +1,34 @@
-import { IElectronBuilderConfig, IUIHarnessElectronConfig } from '../types';
-import { toBundlerArgs, file, fsPath, constants } from '../common';
+import {
+  IElectronBuilderConfig,
+  IUIHarnessElectronConfig,
+  IUIHarnessPaths,
+  IUIHarnessConfig,
+} from '../types';
+import { toBundlerArgs, file, fsPath, constants, fs, tmpl } from '../common';
 
 const { PATH } = constants;
+const { join, resolve } = fsPath;
 
 /**
  * Represents the `electron` section of the `uiharness.yml` configuration file.
  */
 export class ElectronSettings {
-  public readonly dir: string;
-  public readonly tmpDir: string;
+  public readonly path: IUIHarnessPaths;
+  private readonly config: IUIHarnessConfig;
   public readonly data: IUIHarnessElectronConfig;
+
   public readonly exists: boolean;
   private _builderConfig: IElectronBuilderConfig;
 
   /**
    * Constructor.
    */
-  constructor(args: {
-    dir: string;
-    tmpDir: string;
-    data?: IUIHarnessElectronConfig;
-  }) {
-    const { data } = args;
-    this.exists = Boolean(data);
-    this.dir = args.dir;
-    this.tmpDir = args.tmpDir;
-    this.data = data || {};
-  }
-
-  /**
-   * The display name of the app.
-   */
-  public get name() {
-    return this.data.name || 'Unnamed';
+  constructor(args: { path: IUIHarnessPaths; config: IUIHarnessConfig }) {
+    const { config } = args;
+    this.path = args.path;
+    this.config = config;
+    this.data = config.electron || {};
+    this.exists = Boolean(config.electron);
   }
 
   /**
@@ -59,6 +55,55 @@ export class ElectronSettings {
   }
 
   /**
+   * Ensures that all entry-points exist, and copies them if necessary.
+   */
+  public async ensureEntries() {
+    const { RENDERER } = PATH.ELECTRON;
+    const entry = this.entry;
+    const exists = fs.pathExists;
+
+    const ensureRendererHtml = async () => {
+      const isDefault = entry.html === RENDERER.HTML_ENTRY;
+      const path = resolve(entry.html);
+
+      // - Always overwrite if this is the default path.
+      // - Don't overwrite if a custom HTML path is set, and it already exists.
+      if (!isDefault || (await exists(path))) {
+        return;
+      }
+
+      // Prepare paths.
+      const root = resolve('.');
+      const targetDir = this.path.tmp.html.substr(root.length);
+      const hops = targetDir
+        .replace(/^\//, '')
+        .split('/')
+        .map(() => '..')
+        .join('/');
+
+      // Create template.
+      const template = tmpl
+        .create()
+        .add({
+          dir: this.path.templates.html,
+          pattern: 'renderer.html',
+          targetDir,
+        })
+        .use(tmpl.replace({ edge: '__' }))
+        .use(tmpl.copyFile());
+
+      // Execute template.
+      const variables = {
+        NAME: this.config.name || constants.UNNAMED,
+        PATH: entry.renderer.replace(/^\./, hops),
+      };
+      await template.execute({ variables });
+    };
+
+    await ensureRendererHtml();
+  }
+
+  /**
    * The paths that JS us bundled to.
    */
   public out(prod?: boolean) {
@@ -69,12 +114,12 @@ export class ElectronSettings {
       main: {
         dir: mainDir,
         file: MAIN.OUT_FILE,
-        path: fsPath.join(mainDir, MAIN.OUT_FILE),
+        path: join(mainDir, MAIN.OUT_FILE),
       },
       renderer: {
         dir: rendererDir,
         file: RENDERER.OUT_FILE,
-        path: fsPath.join(rendererDir, RENDERER.OUT_FILE),
+        path: join(rendererDir, RENDERER.OUT_FILE),
       },
     };
   }
@@ -91,8 +136,8 @@ export class ElectronSettings {
    */
   public get builderArgsJson() {
     const load = () => {
-      const dir = fsPath.resolve(this.dir);
-      const path = fsPath.join(dir, PATH.ELECTRON.BUILDER.CONFIG.FILE_NAME);
+      const dir = resolve(fsPath.dirname(this.path.settings));
+      const path = join(dir, PATH.ELECTRON.BUILDER.CONFIG.FILE_NAME);
       return file.loadAndParseSync<IElectronBuilderConfig>(path, {});
     };
     return this._builderConfig || (this._builderConfig = load());
