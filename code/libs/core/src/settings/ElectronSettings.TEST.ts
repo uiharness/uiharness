@@ -20,7 +20,7 @@ describe('ElectronSettings', () => {
       expect(res.port).to.eql(8888);
       expect(res.entry.main).to.eql('./test/app/main.ts');
       expect(res.entry.renderer).to.eql('./test/app/renderer.tsx');
-      expect(res.entry.html).to.eql('./.uiharness/html/renderer.html');
+      expect(res.entry.html).to.eql('.uiharness/html/renderer.html');
 
       const bundler = res.bundlerArgs;
       expect(bundler.sourcemaps).to.eql(true);

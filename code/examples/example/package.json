@@ -1,7 +1,6 @@
 {
   "name": "example",
   "version": "0.0.16",
-  "main": "./.uiharness/.bundle/app.main/main.js",
   "scripts": {
     "postinstall": "uiharness init",
     "ui": "yarn sl && uiharness $@",

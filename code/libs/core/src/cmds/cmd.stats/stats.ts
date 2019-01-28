@@ -8,7 +8,6 @@ import {
 } from '../../common';
 import { Settings } from '../../settings';
 
-const ELECTRON = constants.PATH.ELECTRON;
 const WEB = constants.PATH.WEB;
 
 /**
@@ -19,16 +18,17 @@ export async function stats(args: {
   prod?: boolean;
   target: BundleTarget | BundleTarget[];
 }) {
-  const { prod } = args;
+  const { prod, settings } = args;
   const targets = Array.isArray(args.target) ? args.target : [args.target];
+  const path = settings.electron.path;
 
   if (targets.includes('electron')) {
-    await logDir(ELECTRON.MAIN.OUT_DIR);
+    await logDir(path.main.out.dir);
     if (prod === undefined || prod === false) {
-      await logDir(ELECTRON.RENDERER.OUT_DIR.DEV);
+      await logDir(path.renderer.out.dir.dev);
     }
     if (prod === undefined || prod === true) {
-      await logDir(ELECTRON.RENDERER.OUT_DIR.PROD);
+      await logDir(path.renderer.out.dir.prod);
     }
   }
 

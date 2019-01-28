@@ -67,6 +67,7 @@ export type IParcelBuildConfig = {
  */
 export type IUIHarnessPaths = {
   self: string;
+  dir: string;
   package: string;
   tmp: {
     dir: string;
@@ -81,4 +82,29 @@ export type IUIHarnessPaths = {
   };
 };
 
-export type IUIHarnessElectronPaths = {};
+/**
+ * The set of paths related to electron.
+ */
+export type IUIHarnessElectronPaths = {
+  main: {
+    defaultEntry: {
+      code: string;
+    };
+    out: { file: string; dir: string };
+  };
+  renderer: {
+    defaultEntry: {
+      code: string;
+      html: string;
+    };
+    out: {
+      file: string;
+      dir: { prod: string; dev: string };
+    };
+  };
+  builder: {
+    configFilename: string;
+    files: string[];
+    output: string;
+  };
+};

@@ -85,7 +85,7 @@ export class Settings {
     const tmpDir = options.tmpDir ? options.tmpDir : PATH.DIR.TMP;
     const templatesDir = options.templatesDir
       ? options.templatesDir
-      : PATH.DIR.TEMPLATES;
+      : PATH.TEMPLATES;
 
     // Store values.
     this._paths.file = path;
@@ -154,21 +154,22 @@ export class Settings {
   }
 
   /**
-   * Retrieves paths.
+   * Retrieves file paths.
    */
   public get path() {
     return this._paths.calculated || (this._paths.calculated = this.getPaths());
   }
 
   /**
-   * Retrieves paths.
+   * Retrieves file paths.
    */
-
   public getPaths(): IUIHarnessPaths {
-    const templates = resolve(this._paths.templatesDir || PATH.DIR.TEMPLATES);
+    const templates = resolve(this._paths.templatesDir || PATH.TEMPLATES);
     const tmp = resolve(this._paths.tmpDir);
+    const self = this._paths.file;
     return {
-      self: this._paths.file,
+      self,
+      dir: fsPath.dirname(self),
       package: fsPath.join(tmp, 'package.json'),
       tmp: {
         dir: tmp,

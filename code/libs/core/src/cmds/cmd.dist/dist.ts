@@ -1,7 +1,6 @@
 import {
   BundleTarget,
   command,
-  constants,
   file,
   fs,
   fsPath,
@@ -15,9 +14,6 @@ import {
 import { Settings } from '../../settings';
 import { bundleElectron, bundleWeb } from '../cmd.bundle';
 import { init } from '../cmd.init';
-
-const { PATH } = constants;
-const { ELECTRON } = PATH;
 
 /**
  * Bundles the application ready for distribution.
@@ -101,7 +97,7 @@ export async function distElectron(args: {
     .arg(`--x64`)
     .arg(`--publish=never`)
     .alias(`-c.extraMetadata.main="${out.main.path}"`)
-    .arg(`--config="${ELECTRON.BUILDER.CONFIG.FILE_NAME}"`);
+    .arg(`--config="${electron.path.builder.configFilename}"`);
 
   // Run the electron `build` command.
   const tasks = new Listr([
@@ -154,9 +150,9 @@ export async function distWeb(args: { settings: Settings; silent?: boolean }) {
  */
 async function prepareBuilderYaml(args: { settings: Settings }) {
   const { settings } = args;
-  const BUILDER = ELECTRON.BUILDER;
-  const filename = BUILDER.CONFIG.FILE_NAME;
-  const path = fsPath.resolve(fsPath.join('.', filename));
+  const electron = settings.electron;
+  const { configFilename, files, output } = electron.path.builder;
+  const path = fsPath.resolve(fsPath.join('.', configFilename));
   const exists = await fs.pathExists(path);
 
   // Copy in the template file if it does not yet exist.
@@ -170,10 +166,10 @@ async function prepareBuilderYaml(args: { settings: Settings }) {
   // Update the builder YAML with current input/output paths.
   const data = await file.loadAndParse<IElectronBuilderConfig>(path);
   data.productName = settings.name;
-  data.files = BUILDER.FILES;
+  data.files = files;
   data.directories = {
     ...(data.directories || {}),
-    output: BUILDER.OUTPUT,
+    output,
   };
   await file.stringifyAndSave<IElectronBuilderConfig>(path, data);
 }

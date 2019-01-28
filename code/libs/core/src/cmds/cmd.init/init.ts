@@ -12,6 +12,7 @@ import { Settings } from '../../settings';
 import { clean } from '../cmd.clean';
 
 const { SCRIPTS } = constants;
+const { resolve, join } = fsPath;
 
 /**
  * Initialize the module.
@@ -125,14 +126,14 @@ async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
 async function copyPackage(args: { settings: Settings; prod: boolean }) {
   const { settings, prod } = args;
   const electron = settings.electron;
-  const out = electron.out(prod);
+  const main = electron.out(prod).main.path;
 
   // Set the "main" entry point for electron.
   const pkg = npm.pkg('.').json;
-  pkg.main = fsPath.join('..', out.main.path);
+  pkg.main = join('..', main);
 
   // Save the [package.json] file.
-  const path = fsPath.resolve(settings.path.package);
+  const path = resolve(settings.path.package);
   await file.stringifyAndSave(path, pkg);
 }
 
@@ -144,7 +145,7 @@ async function isInitialized(args: { settings: Settings }) {
   const pkg = settings.package;
   const init = settings.init;
 
-  const exists = (path: string) => fs.pathExists(fsPath.resolve(path));
+  const exists = (path: string) => fs.pathExists(resolve(path));
 
   if (init.files && (!(await exists('./src')) || !(await exists('./static')))) {
     return false;

@@ -1,13 +1,21 @@
+import { constants, file, fs, fsPath, tmpl, toBundlerArgs } from '../common';
 import {
   IElectronBuilderConfig,
-  IUIHarnessElectronConfig,
-  IUIHarnessPaths,
   IUIHarnessConfig,
+  IUIHarnessElectronConfig,
+  IUIHarnessElectronPaths,
+  IUIHarnessPaths,
 } from '../types';
-import { toBundlerArgs, file, fsPath, constants, fs, tmpl } from '../common';
 
-const { PATH } = constants;
 const { join, resolve } = fsPath;
+
+type IPaths = {
+  parent: IUIHarnessPaths;
+  calculated?: IUIHarnessElectronPaths;
+};
+
+const ROOT = resolve('.');
+const toRelative = (path: string) => path.substr(ROOT.length + 1);
 
 /**
  * Represents the `electron` section of the `uiharness.yml` configuration file.
@@ -18,14 +26,14 @@ export class ElectronSettings {
   public readonly exists: boolean;
 
   private _builderConfig: IElectronBuilderConfig;
-  public readonly _parentPaths: IUIHarnessPaths;
+  private _paths: IPaths;
 
   /**
    * Constructor.
    */
   constructor(args: { path: IUIHarnessPaths; config: IUIHarnessConfig }) {
     const { config } = args;
-    this._parentPaths = args.path;
+    this._paths = { parent: args.path };
     this.config = config;
     this.data = config.electron || {};
     this.exists = Boolean(config.electron);
@@ -42,11 +50,13 @@ export class ElectronSettings {
    * Retrieves the entry paths used by the JS bundler.
    */
   public get entry() {
-    const { MAIN, RENDERER } = PATH.ELECTRON;
+    const path = this.path;
     const entry = typeof this.data.entry === 'object' ? this.data.entry : {};
-    const main = entry.main || MAIN.DEFAULT_ENTRY;
-    const renderer = entry.renderer || RENDERER.DEFAULT_ENTRY;
-    const html = renderer.endsWith('.html') ? renderer : RENDERER.HTML_ENTRY;
+    const main = entry.main || path.main.defaultEntry.code;
+    const renderer = entry.renderer || path.renderer.defaultEntry.code;
+    const html = renderer.endsWith('.html')
+      ? renderer
+      : path.renderer.defaultEntry.html;
     return {
       main,
       renderer,
@@ -58,23 +68,22 @@ export class ElectronSettings {
    * Ensures that all entry-points exist, and copies them if necessary.
    */
   public async ensureEntries() {
-    const { RENDERER } = PATH.ELECTRON;
     const entry = this.entry;
     const exists = fs.pathExists;
 
     const ensureRendererHtml = async () => {
-      const isDefault = entry.html === RENDERER.HTML_ENTRY;
-      const path = resolve(entry.html);
+      const isDefault = entry.html === this.path.renderer.defaultEntry.html;
+      const entryHtmlFile = resolve(entry.html);
 
       // - Always overwrite if this is the default path.
       // - Don't overwrite if a custom HTML path is set, and it already exists.
-      if (!isDefault || (await exists(path))) {
+      if (!isDefault || (await exists(entryHtmlFile))) {
         return;
       }
 
       // Prepare paths.
       const root = resolve('.');
-      const targetDir = this._parentPaths.tmp.html.substr(root.length);
+      const targetDir = this._paths.parent.tmp.html.substr(root.length);
       const hops = targetDir
         .replace(/^\//, '')
         .split('/')
@@ -85,7 +94,7 @@ export class ElectronSettings {
       const template = tmpl
         .create()
         .add({
-          dir: this._parentPaths.templates.html,
+          dir: this._paths.parent.templates.html,
           pattern: 'renderer.html',
           targetDir,
         })
@@ -95,11 +104,12 @@ export class ElectronSettings {
       // Execute template.
       const variables = {
         NAME: this.config.name || constants.UNNAMED,
-        PATH: entry.renderer.replace(/^\./, hops),
+        PATH: join(hops, entry.renderer),
       };
       await template.execute({ variables });
     };
 
+    // Prepare.
     await ensureRendererHtml();
   }
 
@@ -107,19 +117,26 @@ export class ElectronSettings {
    * The paths that JS us bundled to.
    */
   public out(prod?: boolean) {
-    const { MAIN, RENDERER } = PATH.ELECTRON;
-    const mainDir = MAIN.OUT_DIR;
-    const rendererDir = prod ? RENDERER.OUT_DIR.PROD : RENDERER.OUT_DIR.DEV;
+    const path = this.path;
+    const main = {
+      dir: path.main.out.dir,
+      file: path.main.out.file,
+    };
+    const renderer = {
+      dir: prod ? path.renderer.out.dir.prod : path.renderer.out.dir.dev,
+      file: path.renderer.out.file,
+    };
+
     return {
       main: {
-        dir: mainDir,
-        file: MAIN.OUT_FILE,
-        path: join(mainDir, MAIN.OUT_FILE),
+        dir: main.dir,
+        file: main.file,
+        path: join(main.dir, main.file),
       },
       renderer: {
-        dir: rendererDir,
-        file: RENDERER.OUT_FILE,
-        path: join(rendererDir, RENDERER.OUT_FILE),
+        dir: renderer.dir,
+        file: renderer.file,
+        path: join(renderer.dir, renderer.file),
       },
     };
   }
@@ -136,8 +153,8 @@ export class ElectronSettings {
    */
   public get builderArgsJson() {
     const load = () => {
-      const dir = resolve(fsPath.dirname(this._parentPaths.self));
-      const path = join(dir, PATH.ELECTRON.BUILDER.CONFIG.FILE_NAME);
+      const dir = resolve(this._paths.parent.dir);
+      const path = join(dir, this.path.builder.configFilename);
       return file.loadAndParseSync<IElectronBuilderConfig>(path, {});
     };
     return this._builderConfig || (this._builderConfig = load());
@@ -156,5 +173,59 @@ export class ElectronSettings {
       appId,
       outputDir,
     };
+  }
+
+  /**
+   * Retrieves file paths.
+   */
+  public get path() {
+    return this._paths.calculated || (this._paths.calculated = this.getPaths());
+  }
+
+  /**
+   * Retrieves file paths.
+   */
+  public getPaths() {
+    const parent = this._paths.parent;
+    const relative = {
+      tmp: toRelative(parent.tmp.dir),
+      bundle: toRelative(parent.tmp.bundle),
+      html: toRelative(parent.tmp.html),
+    };
+
+    const res: IUIHarnessElectronPaths = {
+      main: {
+        defaultEntry: {
+          code: 'test/app/main.ts',
+        },
+        out: {
+          file: 'main.js',
+          dir: join(relative.bundle, 'app.main'),
+        },
+      },
+      renderer: {
+        defaultEntry: {
+          code: 'test/app/renderer.tsx',
+          html: join(relative.html, 'renderer.html'),
+        },
+        out: {
+          file: 'renderer.html',
+          dir: {
+            dev: join(relative.bundle, 'app.renderer/dev'),
+            prod: join(relative.bundle, 'app.renderer/prod'),
+          },
+        },
+      },
+      builder: {
+        configFilename: `uiharness.builder.yml`,
+        output: join(relative.tmp, 'dist'),
+        files: [
+          join(relative.bundle, 'app.main/**'),
+          join(relative.bundle, 'app.renderer/prod/**'),
+        ],
+      },
+    };
+
+    return res;
   }
 }
