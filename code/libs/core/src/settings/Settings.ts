@@ -174,6 +174,7 @@ export class Settings {
         dir: tmp,
         html: join(tmp, 'html'),
         bundle: join(tmp, '.bundle'),
+        config: join(tmp, 'config.json'),
       },
       templates: {
         base: join(templates, 'base'),

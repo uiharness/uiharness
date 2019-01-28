@@ -13,10 +13,6 @@ const DIR = {
 
 export const PATH = {
   DIR,
-  CONFIG: {
-    DIR: TMP,
-    FILE: 'config.json',
-  },
   ELECTRON: {
     MAIN: {
       DEFAULT_ENTRY: './test/app/main.ts',

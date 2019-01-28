@@ -95,7 +95,8 @@ async function reset(args: { settings: Settings }) {
  * by the consuming components.
  */
 async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
-  const electron = args.settings.electron;
+  const { settings } = args;
+  const electron = settings.electron;
   const { port } = electron;
   const out = electron.out(args.prod);
   const data: IUIHarnessRuntimeConfig = {
@@ -107,8 +108,7 @@ async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
   };
 
   // Write the file.
-  const { CONFIG } = constants.PATH;
-  const path = fsPath.join(CONFIG.DIR, CONFIG.FILE);
+  const path = settings.path.tmp.config;
   await file.stringifyAndSave(path, data);
   return data;
 }

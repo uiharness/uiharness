@@ -72,6 +72,7 @@ export type IUIHarnessPaths = {
     dir: string;
     html: string;
     bundle: string;
+    config: string;
   };
   templates: {
     base: string;
