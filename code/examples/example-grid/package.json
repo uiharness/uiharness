@@ -6,7 +6,8 @@
     "ui": "yarn sl && uiharness $@",
     "sl": "msync sl && sh ./sh/copy-bin.sh",
     "reset": "yarn sl && uiharness init --reset",
-    "nuke": "sh ./sh/nuke.sh"
+    "nuke": "sh ./sh/nuke.sh",
+    "start": "uiharness start $@"
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",

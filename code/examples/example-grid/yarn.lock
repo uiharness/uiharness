@@ -832,10 +832,10 @@
     ramda "0.26.1"
     rxjs "6.3.3"
 
-"@tdb/npm@0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@tdb/npm/-/npm-0.0.6.tgz#e8b98383af5756770c5c37477d19c4a4791ce9da"
-  integrity sha512-1ir6ROoqHsWOcLrPtRxN6K8qRK6tpuqIEeqtI3fZPTPC9UzAzVdnQxyOKxX8DqBPiqVw0rR1lm5E6kujzBTp4A==
+"@tdb/npm@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@tdb/npm/-/npm-0.1.0.tgz#4dffd4414ca52ab440e9f19d00ed6a665d7c2257"
+  integrity sha512-h09modzOJJy5x2/hsG6gFyB4W+e9sViCyXcHGQMEjWQZkmMKaeKuOoTdLBINFUyKEXku1g+MnxMXBv2c8vnZJw==
   dependencies:
     "@tdb/util" "1.9.26"
     "@types/fs-extra" "^5.0.4"
@@ -1081,10 +1081,10 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/core@1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.1.4.tgz#8fe3f8a330103bfe65fbf42c7ff0c0327f766547"
-  integrity sha512-Mwh3Yc1VHPAPrott9thkMzXo2GgYBcKNntqqoFUo45Ox53/dPvZlGuR/57XCkfmkocHMtI9LQ2SUo2E9Uobg6A==
+"@uiharness/core@1.1.19":
+  version "1.1.19"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.1.19.tgz#5e6792c5e681b5e61a9bb1f5ce974c1bfa0bb6c4"
+  integrity sha512-gBRZZJdrWQ/cZB8LtIAaYjWxZZUagGR7wT4hB/0OOgw5isGqccfHmK+UsBIFr7a0YYOc4KISt4TqK7gwb3aYCA==
   dependencies:
     "@babel/core" "7.2.2"
     "@babel/preset-env" "7.2.3"
@@ -1092,10 +1092,10 @@
     "@babel/preset-typescript" "7.1.0"
     "@tdb/log" "1.1.20"
     "@tdb/util" "1.9.26"
-    "@uiharness/electron" "^0.3.29"
-    "@uiharness/types" "0.0.12"
+    "@uiharness/electron" "^0.3.36"
+    "@uiharness/types" "0.0.17"
     babel-core "^7.0.0-bridge.0"
-    create-tmpl "0.0.33"
+    create-tmpl "0.1.1"
     electron "4.0.1"
     electron-builder "20.38.5"
     execa "1.0.0"
@@ -1105,22 +1105,23 @@
     serve "10.1.1"
     yargs "12.0.5"
 
-"@uiharness/electron@0.3.29", "@uiharness/electron@^0.3.29":
-  version "0.3.29"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.29.tgz#481a4d7e73b29ecc00a853eb193938105e6a340b"
-  integrity sha512-Pr2R05lvhoqTsMhuETAip9qCD6AX0Occ4b/nTFSkbg5PYVMJTUuLwzKLTYSxdvatdVnlGxk2a2Tnfmbj7NZ/ug==
+"@uiharness/electron@0.3.36", "@uiharness/electron@^0.3.36":
+  version "0.3.36"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.36.tgz#483755999914de301b0e6fe227bfb88566435f0a"
+  integrity sha512-DWJNTvqtZTGyi0U5hZx/4GK5HmssczGh222QCMAVHgm9ZL+JxMz8GQa2rxsXneNJhoFsebigPxlIS0FIAMgzRg==
   dependencies:
     "@types/app-root-path" "1.2.4"
-    "@uiharness/types" "0.0.12"
+    "@uiharness/types" "0.0.17"
     app-root-path "2.1.0"
+    electron "^4.0.2"
     electron-is-dev "1.0.1"
     electron-log "2.2.17"
-    tslib "^1.9.3"
+    tslib "1.9.3"
 
-"@uiharness/types@0.0.12":
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.12.tgz#73b02e8ff459a740501deb827aed113c37dbc4cc"
-  integrity sha512-MJunYuzLioyjG2PnGTHS8fO6hR2YpLD6SgdxTU3l1o30T8590lGWM2eOnmbYYutRPuip10SG6g3DKqOLUxHMvA==
+"@uiharness/types@0.0.17":
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.17.tgz#583029c109d0e3cb34aa3114650b4c24e2d02a73"
+  integrity sha512-HTdOTvl1Y2L2qfuVzIanhfZv/7YGnOlOGAn6ESFf26Aq68vb5uF2SR88PCLUhnMQh2CpuLyBbWsIUDHd8YZXsA==
 
 "@zeit/schemas@2.6.0":
   version "2.6.0"
@@ -2322,12 +2323,12 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-create-tmpl@0.0.33:
-  version "0.0.33"
-  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.0.33.tgz#5d6b70e6557ee8a352ffa048ac3091d14d844ed0"
-  integrity sha512-tHh2j7CZFdlEFIZ9J61zueKy/h2Zj2lxYDCdHpZrDE9OgY2XcR/fdZXyHeN7JbVS8U5bXL3ffa0Bt1vGEWAuSQ==
+create-tmpl@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.1.1.tgz#9457e1b57a1e0ec97ea63e47b828740d0cf18d13"
+  integrity sha512-8Nf8RNNV3g8CCkovxl/vSOLJUMB3ARnIG/8bcdBpx35VzENkgARHmjGDZR6e20MsFLl2zutfHCNOIbQFFOhATA==
   dependencies:
-    "@tdb/npm" "0.0.6"
+    "@tdb/npm" "0.1.0"
     "@tdb/util" "1.9.26"
     "@types/inquirer" "0.0.43"
     "@types/js-yaml" "3.12.0"
@@ -2939,6 +2940,15 @@ electron@4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/electron/-/electron-4.0.1.tgz#c41eaee9e081c2e5e4a4a4a761b7577a77d2eb18"
   integrity sha512-kBWDLn1Vq8Tm6+/HpQc8gkjX7wJyQI8v/lf2kAirfi0Q4cXh6vBjozFvV1U/9gGCbyKnIDM+m8/wpyJIjg4w7g==
+  dependencies:
+    "@types/node" "^10.12.18"
+    electron-download "^4.1.0"
+    extract-zip "^1.0.3"
+
+electron@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-4.0.2.tgz#b5e074c149841490825d0785aa2bc4f5e29bbea4"
+  integrity sha512-H0pmSvOVuC+Mq/+cYNXbCDBmqq5d1xYUVdBOjqGJuwuwJeP7qDHF35JA3cq+ARzq/CbwlXq98zdW6i6+x3U24g==
   dependencies:
     "@types/node" "^10.12.18"
     electron-download "^4.1.0"
@@ -7395,7 +7405,7 @@ truncate-utf8-bytes@^1.0.0:
   dependencies:
     utf8-byte-length "^1.0.1"
 
-tslib@1.9.3, tslib@^1.9.0, tslib@^1.9.3:
+tslib@1.9.3, tslib@^1.9.0:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
   integrity sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==
