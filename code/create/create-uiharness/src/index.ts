@@ -8,6 +8,7 @@ export type ITemplate = {
 
 export async function create() {
   log.info();
+  log.info('☝️');
 
   const targetDir = fsPath.resolve('.');
   const settingsPath = fsPath.join(__dirname, '../templates.yml');
