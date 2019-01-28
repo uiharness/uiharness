@@ -1,31 +1,20 @@
 import { join, resolve } from 'path';
-import { fs, tmpl } from '../common';
+
+import { tmpl } from '../common';
 
 /**
  * Ensures that all entry-points exist, and copies them if necessary.
  */
-
 export async function ensureEntries(args: {
   name: string;
-  htmlPath: string;
-  defaultHtmlPath: string;
   codePath: string;
   templatesDir: string;
   targetDir: string;
   pattern: string;
 }) {
-  const { htmlPath, defaultHtmlPath, codePath, pattern } = args;
+  const { codePath, pattern } = args;
 
   const ensureRendererHtml = async () => {
-    const isDefault = htmlPath === defaultHtmlPath;
-    const entryHtmlFile = resolve(htmlPath);
-
-    // - Always overwrite if this is the default path.
-    // - Don't overwrite if a custom HTML path is set, and it already exists.
-    if (!isDefault || (await fs.pathExists(entryHtmlFile))) {
-      return;
-    }
-
     // Prepare paths.
     const targetDir = `/${args.targetDir.replace(/^\//, '')}`;
     const hops = targetDir
@@ -43,7 +32,7 @@ export async function ensureEntries(args: {
         targetDir,
       })
       .use(tmpl.replace({ edge: '__' }))
-      .use(tmpl.copyFile());
+      .use(tmpl.copyFile({ force: true }));
 
     // Execute template.
     const variables = {

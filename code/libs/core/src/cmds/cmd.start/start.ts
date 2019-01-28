@@ -45,6 +45,7 @@ export async function startElectron(args: { settings: Settings }) {
 
   // Ensure the module is initialized.
   await init({ settings, prod });
+  await electron.ensureEntries();
   log.info();
   logElectronInfo({ settings, port: true });
 
@@ -77,8 +78,9 @@ export async function startElectron(args: { settings: Settings }) {
 export async function startWeb(args: { settings: Settings }) {
   // Setup initial conditions.
   const { settings } = args;
+  const web = settings.web;
   const prod = false;
-  const port = settings.web.port;
+  const port = web.port;
 
   // Ensure the module is initialized.
   await init({ settings, prod });
@@ -86,7 +88,7 @@ export async function startWeb(args: { settings: Settings }) {
   logWebInfo({ settings, port: true });
 
   // Start the web dev-server
-  await settings.web.ensureEntries();
+  await web.ensureEntries();
   const renderer = parcel.webBundler(settings);
   await (renderer as any).serve(port);
 }

@@ -61,16 +61,12 @@ export class WebSettings {
   public async ensureEntries() {
     const entry = this.entry;
     const name = this._config.name || constants.UNNAMED;
-    const htmlPath = entry.html;
     const codePath = entry.code;
-    const defaultHtmlPath = this.path.defaultEntry.html;
     const templatesDir = this._paths.parent.templates.html;
     const targetDir = this._paths.parent.tmp.html;
 
     return ensureEntries({
       name,
-      htmlPath,
-      defaultHtmlPath,
       codePath,
       templatesDir,
       targetDir,
@@ -115,7 +111,7 @@ export class WebSettings {
     const html = parent.tmp.html;
     return {
       defaultEntry: {
-        code: 'test/web/web.tsx',
+        code: 'test/web.tsx',
         html: join(html, 'web.html'),
       },
       out: {

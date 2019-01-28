@@ -13,5 +13,5 @@ import { init } from '@uiharness/electron/lib/main';
  *    https://github.com/uiharness/uiharness/blob/master/code/libs/electron/src/main/index.ts
  *
  */
-const config = require('../../.uiharness/config.json');
+const config = require('../.uiharness/config.json');
 init(config);

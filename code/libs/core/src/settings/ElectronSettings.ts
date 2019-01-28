@@ -67,18 +67,13 @@ export class ElectronSettings {
    */
   public async ensureEntries() {
     const entry = this.entry;
-
     const name = this._config.name || constants.UNNAMED;
-    const htmlPath = entry.html;
     const codePath = entry.renderer;
-    const defaultHtmlPath = this.path.renderer.defaultEntry.html;
     const templatesDir = this._paths.parent.templates.html;
     const targetDir = this._paths.parent.tmp.html;
 
     return ensureEntries({
       name,
-      htmlPath,
-      defaultHtmlPath,
       codePath,
       templatesDir,
       targetDir,
@@ -167,7 +162,7 @@ export class ElectronSettings {
     return {
       main: {
         defaultEntry: {
-          code: 'test/app/main.ts',
+          code: 'test/main.ts',
         },
         out: {
           file: 'main.js',
@@ -176,7 +171,7 @@ export class ElectronSettings {
       },
       renderer: {
         defaultEntry: {
-          code: 'test/app/renderer.tsx',
+          code: 'test/renderer.tsx',
           html: join(html, 'renderer.html'),
         },
         out: {
