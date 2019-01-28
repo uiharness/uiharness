@@ -153,14 +153,22 @@ const program = yargs
           alias: 's',
           describe: 'No console output (default: false).',
           boolean: true,
+        })
+        .option('open', {
+          alias: 'o',
+          describe: 'Open the application when built (default: false).',
+          boolean: true,
         }),
     async e => {
-      const { silent } = e;
+      const { silent, open } = e;
       const target = formatTargetOption(e.target);
       if (!target) {
         return process.exit(1);
       }
       await cmds.dist({ settings, silent, target });
+      if (open) {
+        await cmds.open({ settings });
+      }
       return process.exit(0);
     },
   )
