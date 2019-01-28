@@ -168,7 +168,7 @@ export class Settings {
     const templates = resolve(this._paths.templatesDir || PATH.DIR.TEMPLATES);
     const tmp = resolve(this._paths.tmpDir);
     return {
-      settings: this._paths.file,
+      self: this._paths.file,
       package: fsPath.join(tmp, 'package.json'),
       tmp: {
         dir: tmp,

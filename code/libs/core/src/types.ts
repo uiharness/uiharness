@@ -66,7 +66,7 @@ export type IParcelBuildConfig = {
  * The set of paths to various assets that make up a UIHarness project.
  */
 export type IUIHarnessPaths = {
-  settings: string;
+  self: string;
   package: string;
   tmp: {
     dir: string;
@@ -81,4 +81,4 @@ export type IUIHarnessPaths = {
   };
 };
 
-// export type IUIHarnessElectronPaths = {};
+export type IUIHarnessElectronPaths = {};

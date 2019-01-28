@@ -58,9 +58,6 @@ describe('Settings', () => {
       const { web, electron } = settings;
       expect(electron).to.be.an.instanceof(ElectronSettings);
       expect(web).to.be.an.instanceof(WebSettings);
-
-      expect(electron.path).to.eql(settings.path);
-      expect(web.path).to.eql(settings.path);
     };
     test();
     test(DIR);

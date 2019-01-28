@@ -13,19 +13,19 @@ const { join, resolve } = fsPath;
  * Represents the `electron` section of the `uiharness.yml` configuration file.
  */
 export class ElectronSettings {
-  public readonly path: IUIHarnessPaths;
-  private readonly config: IUIHarnessConfig;
+  public readonly config: IUIHarnessConfig;
   public readonly data: IUIHarnessElectronConfig;
-
   public readonly exists: boolean;
+
   private _builderConfig: IElectronBuilderConfig;
+  public readonly _parentPaths: IUIHarnessPaths;
 
   /**
    * Constructor.
    */
   constructor(args: { path: IUIHarnessPaths; config: IUIHarnessConfig }) {
     const { config } = args;
-    this.path = args.path;
+    this._parentPaths = args.path;
     this.config = config;
     this.data = config.electron || {};
     this.exists = Boolean(config.electron);
@@ -74,7 +74,7 @@ export class ElectronSettings {
 
       // Prepare paths.
       const root = resolve('.');
-      const targetDir = this.path.tmp.html.substr(root.length);
+      const targetDir = this._parentPaths.tmp.html.substr(root.length);
       const hops = targetDir
         .replace(/^\//, '')
         .split('/')
@@ -85,7 +85,7 @@ export class ElectronSettings {
       const template = tmpl
         .create()
         .add({
-          dir: this.path.templates.html,
+          dir: this._parentPaths.templates.html,
           pattern: 'renderer.html',
           targetDir,
         })
@@ -136,7 +136,7 @@ export class ElectronSettings {
    */
   public get builderArgsJson() {
     const load = () => {
-      const dir = resolve(fsPath.dirname(this.path.settings));
+      const dir = resolve(fsPath.dirname(this._parentPaths.self));
       const path = join(dir, PATH.ELECTRON.BUILDER.CONFIG.FILE_NAME);
       return file.loadAndParseSync<IElectronBuilderConfig>(path, {});
     };
