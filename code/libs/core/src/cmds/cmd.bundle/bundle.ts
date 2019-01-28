@@ -167,6 +167,7 @@ export async function bundleWeb(args: {
 
   // Ensure the module is initialized.
   await init({ settings, prod });
+  await web.ensureEntries();
 
   // Build the command.
   const tasks = new Listr([], {
@@ -178,7 +179,7 @@ export async function bundleWeb(args: {
     .addLine(`export NODE_ENV="${env.value}"`)
     .addLine(`cd ${fsPath.resolve('.')}`)
     .add(`parcel`)
-    .add(`build ${entry}`)
+    .add(`build ${entry.html}`)
     .add(`--public-url ./`)
     .arg(`--out-dir ${out.dir}`)
     .arg(`--out-file ${out.file}`)
@@ -209,7 +210,7 @@ export async function bundleWeb(args: {
     log.info.gray(`   • package:     ${pkg.name}`);
     log.info.gray(`   • version:     ${pkg.version}`);
     log.info.gray(`   • env:         ${env.value}`);
-    log.info.gray(`   • entry:       ${formatPath(entry)}`);
+    log.info.gray(`   • entry:       ${formatPath(entry.code)}`);
     log.info.gray(`   • output:      ${formatPath(out.path)}`);
     log.info();
   }

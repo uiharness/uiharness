@@ -1,12 +1,13 @@
 import { join } from 'path';
 
-import { toBundlerArgs } from '../common';
+import { toBundlerArgs, constants } from '../common';
 import {
   IUIHarnessConfig,
   IUIHarnessPaths,
   IUIHarnessWebConfig,
   IUIHarnessWebPaths,
 } from '../types';
+import { ensureEntries } from './util';
 
 type IPaths = {
   parent: IUIHarnessPaths;
@@ -19,6 +20,8 @@ type IPaths = {
 export class WebSettings {
   public readonly data: IUIHarnessWebConfig;
   public readonly exists: boolean;
+
+  private readonly _config: IUIHarnessConfig;
   private _paths: IPaths;
 
   /**
@@ -27,6 +30,7 @@ export class WebSettings {
   constructor(args: { path: IUIHarnessPaths; config: IUIHarnessConfig }) {
     const { config } = args;
     this._paths = { parent: args.path };
+    this._config = config;
     this.data = config.web || {};
     this.exists = Boolean(config.web);
   }
@@ -42,7 +46,39 @@ export class WebSettings {
    * Retrieves the entry paths used by the JS bundler.
    */
   public get entry() {
-    return this.data.entry || this.path.defaultEntry.html;
+    const path = this.path;
+    const code = this.data.entry || path.defaultEntry.code;
+    const html = code.endsWith('.html') ? code : path.defaultEntry.html;
+    return {
+      code,
+      html,
+    };
+  }
+
+  /**
+   * Ensures that all entry-points exist, and copies them if necessary.
+   */
+  public async ensureEntries() {
+    const entry = this.entry;
+
+    console.log('entry', entry);
+
+    const name = this._config.name || constants.UNNAMED;
+    const htmlPath = entry.html;
+    const codePath = entry.code;
+    const defaultHtmlPath = this.path.defaultEntry.html;
+    const templatesDir = this._paths.parent.templates.html;
+    const targetDir = this._paths.parent.tmp.html;
+
+    return ensureEntries({
+      name,
+      htmlPath,
+      defaultHtmlPath,
+      codePath,
+      templatesDir,
+      targetDir,
+      pattern: 'web.html',
+    });
   }
 
   /**
@@ -79,9 +115,11 @@ export class WebSettings {
   public getPaths(): IUIHarnessWebPaths {
     const parent = this._paths.parent;
     const bundle = parent.tmp.bundle;
+    const html = parent.tmp.html;
     return {
       defaultEntry: {
-        html: 'src/test/web.html',
+        code: 'test/web/web.tsx',
+        html: join(html, 'web.html'),
       },
       out: {
         file: 'index.html',

@@ -12,4 +12,4 @@ electron:
 
 web:
   port: 1234
-  entry: ./test/web/index.html
+  entry: ./test/web/web.tsx

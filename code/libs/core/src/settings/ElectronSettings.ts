@@ -19,10 +19,10 @@ type IPaths = {
  * Represents the `electron` section of the `uiharness.yml` configuration file.
  */
 export class ElectronSettings {
-  public readonly config: IUIHarnessConfig;
   public readonly data: IUIHarnessElectronConfig;
   public readonly exists: boolean;
 
+  private readonly _config: IUIHarnessConfig;
   private _builderConfig: IElectronBuilderConfig;
   private _paths: IPaths;
 
@@ -32,7 +32,7 @@ export class ElectronSettings {
   constructor(args: { path: IUIHarnessPaths; config: IUIHarnessConfig }) {
     const { config } = args;
     this._paths = { parent: args.path };
-    this.config = config;
+    this._config = config;
     this.data = config.electron || {};
     this.exists = Boolean(config.electron);
   }
@@ -68,10 +68,10 @@ export class ElectronSettings {
   public async ensureEntries() {
     const entry = this.entry;
 
-    const name = this.config.name || constants.UNNAMED;
+    const name = this._config.name || constants.UNNAMED;
     const htmlPath = entry.html;
-    const defaultHtmlPath = this.path.renderer.defaultEntry.html;
     const codePath = entry.renderer;
+    const defaultHtmlPath = this.path.renderer.defaultEntry.html;
     const templatesDir = this._paths.parent.templates.html;
     const targetDir = this._paths.parent.tmp.html;
 
@@ -82,48 +82,8 @@ export class ElectronSettings {
       codePath,
       templatesDir,
       targetDir,
+      pattern: 'renderer.html',
     });
-
-    // const ensureRendererHtml = async () => {
-    //   const isDefault = entry.html === this.path.renderer.defaultEntry.html;
-    //   const entryHtmlFile = resolve(entry.html);
-
-    //   // - Always overwrite if this is the default path.
-    //   // - Don't overwrite if a custom HTML path is set, and it already exists.
-    //   if (!isDefault || (await fs.pathExists(entryHtmlFile))) {
-    //     return;
-    //   }
-
-    //   // Prepare paths.
-    //   let targetDir = this._paths.parent.tmp.html;
-    //   targetDir = `/${targetDir.replace(/^\//, '')}`;
-    //   const hops = targetDir
-    //     .replace(/^\//, '')
-    //     .split('/')
-    //     .map(() => '..')
-    //     .join('/');
-
-    //   // Create template.
-    //   const template = tmpl
-    //     .create()
-    //     .add({
-    //       dir: resolve(this._paths.parent.templates.html),
-    //       pattern: 'renderer.html',
-    //       targetDir,
-    //     })
-    //     .use(tmpl.replace({ edge: '__' }))
-    //     .use(tmpl.copyFile());
-
-    //   // Execute template.
-    //   const variables = {
-    //     NAME: this.config.name || constants.UNNAMED,
-    //     PATH: join(hops, entry.renderer),
-    //   };
-    //   await template.execute({ variables });
-    // };
-
-    // // Prepare.
-    // await ensureRendererHtml();
   }
 
   /**
@@ -217,10 +177,10 @@ export class ElectronSettings {
       renderer: {
         defaultEntry: {
           code: 'test/app/renderer.tsx',
-          html: join(html, 'index.html'),
+          html: join(html, 'renderer.html'),
         },
         out: {
-          file: 'index.html',
+          file: 'renderer.html',
           dir: {
             dev: join(bundle, 'app.renderer/dev'),
             prod: join(bundle, 'app.renderer/prod'),

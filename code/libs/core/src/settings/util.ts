@@ -12,8 +12,11 @@ export async function ensureEntries(args: {
   codePath: string;
   templatesDir: string;
   targetDir: string;
+  pattern: string;
 }) {
-  const { htmlPath, defaultHtmlPath, codePath } = args;
+  const { htmlPath, defaultHtmlPath, codePath, pattern } = args;
+
+  console.log('args', args);
 
   const ensureRendererHtml = async () => {
     const isDefault = htmlPath === defaultHtmlPath;
@@ -38,7 +41,7 @@ export async function ensureEntries(args: {
       .create()
       .add({
         dir: resolve(args.templatesDir),
-        pattern: 'index.html',
+        pattern,
         targetDir,
       })
       .use(tmpl.replace({ edge: '__' }))

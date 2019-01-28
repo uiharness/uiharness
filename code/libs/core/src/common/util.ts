@@ -68,7 +68,7 @@ export function logWebInfo(args: {
   const formatPath = (path: string) => logging.formatPath(path, true);
 
   const web = settings.web;
-  const entry = web.entry;
+  const entry = web.entry.code;
   const showPort = Boolean(args.port);
   const port = typeof args.port === 'number' ? args.port : web.port;
 

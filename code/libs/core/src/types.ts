@@ -111,6 +111,7 @@ export type IUIHarnessElectronPaths = {
 
 export type IUIHarnessWebPaths = {
   defaultEntry: {
+    code: string;
     html: string;
   };
   out: {
