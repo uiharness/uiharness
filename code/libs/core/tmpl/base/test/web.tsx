@@ -1,6 +1,5 @@
-import '../node_modules/@uiharness/core/css/normalize.css';
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-
-const el = <div style={{ padding: 20 }}>Hello Web!</div>;
-ReactDOM.render(el, document.getElementById('root'));
+/**
+ * Use the electron [renderer] view in the browser.
+ * Or replace this entry-point with a [web] specific one.
+ */
+import './renderer';
