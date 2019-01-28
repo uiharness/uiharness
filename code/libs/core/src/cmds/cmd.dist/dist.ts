@@ -11,7 +11,6 @@ import {
   logElectronInfo,
   logging,
   tmpl,
-  time,
 } from '../../common';
 import { Settings } from '../../settings';
 import { bundleElectron, bundleWeb } from '../cmd.bundle';
@@ -75,6 +74,7 @@ export async function distElectron(args: {
   // Ensure the module is initialized.
   await init({ settings, prod });
   await prepareBuilderYaml({ settings });
+
   if (!silent) {
     log.info();
     logElectronInfo({ settings, port: false });
@@ -117,7 +117,7 @@ export async function distElectron(args: {
     return;
   }
 
-  // Log output
+  // Log output.
   const config = settings.electron.builderArgs;
   const path = config.outputDir
     ? logging.formatPath(config.outputDir, true)
@@ -154,7 +154,6 @@ export async function distWeb(args: { settings: Settings; silent?: boolean }) {
  */
 async function prepareBuilderYaml(args: { settings: Settings }) {
   const { settings } = args;
-  const electron = settings.electron;
   const BUILDER = ELECTRON.BUILDER;
   const filename = BUILDER.CONFIG.FILE_NAME;
   const path = fsPath.resolve(fsPath.join('.', filename));
@@ -163,22 +162,18 @@ async function prepareBuilderYaml(args: { settings: Settings }) {
   // Copy in the template file if it does not yet exist.
   if (!exists) {
     await tmpl
-      .create(PATH.TEMPLATE.ELECTRON)
+      .create(settings.path.templates.electron)
       .use(tmpl.copyFile({}))
       .execute();
   }
 
   // Update the builder YAML with current input/output paths.
   const data = await file.loadAndParse<IElectronBuilderConfig>(path);
-  data.productName = electron.name;
+  data.productName = settings.name;
   data.files = BUILDER.FILES;
   data.directories = {
     ...(data.directories || {}),
     output: BUILDER.OUTPUT,
   };
   await file.stringifyAndSave<IElectronBuilderConfig>(path, data);
-
-  // Pause.
-  // NB: Ensure the builder file is fully available before command is run.
-  await time.wait(300);
 }

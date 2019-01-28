@@ -1,3 +1,5 @@
+export const UNNAMED = 'Unnamed';
+
 export const URL = {
   SITE: 'https://uiharness.com',
 };
@@ -11,10 +13,6 @@ const DIR = {
 
 export const PATH = {
   DIR,
-  TEMPLATE: {
-    BASE: `${DIR.TEMPLATES}/base`,
-    ELECTRON: `${DIR.TEMPLATES}/electron`,
-  },
   CONFIG: {
     DIR: TMP,
     FILE: 'config.json',

@@ -15,10 +15,7 @@ export function electronRendererBundler(
   const { prod = false } = options;
   const electron = settings.electron;
   const out = electron.out(prod);
-  const entry = electron.entry.renderer;
-
-  console.log('entry', entry);
-
+  const entry = electron.entry.html;
   return createBundler(entry, electron.data.bundle, prod, {
     outDir: out.renderer.dir,
     target: 'electron',

@@ -43,7 +43,8 @@ export async function startElectron(args: { settings: Settings }) {
   // Setup initial conditions.
   const { settings } = args;
   const prod = false;
-  const port = settings.electron.port;
+  const electron = settings.electron;
+  const port = electron.port;
 
   // Ensure the module is initialized.
   await init({ settings, prod });
@@ -57,6 +58,7 @@ export async function startElectron(args: { settings: Settings }) {
     main: true,
     renderer: false,
     summary: false,
+    stats: false,
   });
   log.info();
 
