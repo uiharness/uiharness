@@ -9,7 +9,7 @@ const tmpDir = './test/.uiharness.tmp';
 const templatesDir = './tmpl';
 
 describe('ElectronSettings', () => {
-  beforeEach(async () => {
+  afterEach(async () => {
     await fs.remove(fsPath.resolve(tmpDir));
   });
 

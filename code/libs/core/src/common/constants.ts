@@ -5,8 +5,8 @@ export const URL = {
 };
 
 export const PATH = {
-  TMP: './.uiharness',
-  TEMPLATES: './node_modules/@uiharness/core/tmpl',
+  TMP: '.uiharness',
+  TEMPLATES: 'node_modules/@uiharness/core/tmpl',
 };
 
 export const SCRIPTS = {

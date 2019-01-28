@@ -79,8 +79,9 @@ export class ElectronSettings {
       }
 
       // Prepare paths.
-      const root = resolve('.');
-      const targetDir = this._paths.parent.tmp.html.substr(root.length);
+      // const root = resolve('.');
+      let targetDir = this._paths.parent.tmp.html;
+      targetDir = `/${targetDir.replace(/^\//, '')}`;
       const hops = targetDir
         .replace(/^\//, '')
         .split('/')
@@ -91,7 +92,7 @@ export class ElectronSettings {
       const template = tmpl
         .create()
         .add({
-          dir: this._paths.parent.templates.html,
+          dir: resolve(this._paths.parent.templates.html),
           pattern: 'renderer.html',
           targetDir,
         })
@@ -183,15 +184,10 @@ export class ElectronSettings {
    * Retrieves file paths.
    */
   public getPaths() {
-    const ROOT = resolve('.');
-    const toRelative = (path: string) => path.substr(ROOT.length + 1);
-
     const parent = this._paths.parent;
-    const relative = {
-      tmp: toRelative(parent.tmp.dir),
-      bundle: toRelative(parent.tmp.bundle),
-      html: toRelative(parent.tmp.html),
-    };
+    const tmp = parent.tmp.dir;
+    const bundle = parent.tmp.bundle;
+    const html = parent.tmp.html;
 
     const res: IUIHarnessElectronPaths = {
       main: {
@@ -200,28 +196,28 @@ export class ElectronSettings {
         },
         out: {
           file: 'main.js',
-          dir: join(relative.bundle, 'app.main'),
+          dir: join(bundle, 'app.main'),
         },
       },
       renderer: {
         defaultEntry: {
           code: 'test/app/renderer.tsx',
-          html: join(relative.html, 'renderer.html'),
+          html: join(html, 'renderer.html'),
         },
         out: {
           file: 'renderer.html',
           dir: {
-            dev: join(relative.bundle, 'app.renderer/dev'),
-            prod: join(relative.bundle, 'app.renderer/prod'),
+            dev: join(bundle, 'app.renderer/dev'),
+            prod: join(bundle, 'app.renderer/prod'),
           },
         },
       },
       builder: {
         configFilename: `uiharness.builder.yml`,
-        output: join(relative.tmp, 'dist'),
+        output: join(tmp, 'dist'),
         files: [
-          join(relative.bundle, 'app.main/**'),
-          join(relative.bundle, 'app.renderer/prod/**'),
+          join(bundle, 'app.main/**'),
+          join(bundle, 'app.renderer/prod/**'),
         ],
       },
     };

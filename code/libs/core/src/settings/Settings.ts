@@ -76,7 +76,6 @@ export class Settings {
     // Wrangle path.
     path = path ? path : '.';
     path = path.trim();
-    path = resolve(path);
     const lstat = fs.existsSync(path) ? fs.lstatSync(path) : undefined;
     const isDirectory = lstat && lstat.isDirectory();
     path = isDirectory ? join(path, UIHARNESS_YAML) : path;
@@ -164,9 +163,18 @@ export class Settings {
    * Retrieves file paths.
    */
   public getPaths(): IUIHarnessPaths {
-    const templates = resolve(this._paths.templatesDir || PATH.TEMPLATES);
-    const tmp = resolve(this._paths.tmpDir);
-    const self = this._paths.file;
+    const ROOT = resolve('.');
+
+    const fromRoot = (path: string) => {
+      if (path.startsWith(ROOT)) {
+        path = path.substr(ROOT.length + 1);
+      }
+      return path;
+    };
+
+    const templates = this._paths.templatesDir || PATH.TEMPLATES;
+    const tmp = this._paths.tmpDir;
+    const self = fromRoot(this._paths.file);
     return {
       self,
       dir: fsPath.dirname(self),
