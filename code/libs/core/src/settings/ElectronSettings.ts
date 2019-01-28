@@ -1,4 +1,6 @@
-import { constants, file, fs, fsPath, tmpl, toBundlerArgs } from '../common';
+import { join, resolve } from 'path';
+
+import { constants, file, fs, tmpl, toBundlerArgs } from '../common';
 import {
   IElectronBuilderConfig,
   IUIHarnessConfig,
@@ -6,8 +8,6 @@ import {
   IUIHarnessElectronPaths,
   IUIHarnessPaths,
 } from '../types';
-
-const { join, resolve } = fsPath;
 
 type IPaths = {
   parent: IUIHarnessPaths;
@@ -183,13 +183,13 @@ export class ElectronSettings {
   /**
    * Retrieves file paths.
    */
-  public getPaths() {
+  public getPaths(): IUIHarnessElectronPaths {
     const parent = this._paths.parent;
     const tmp = parent.tmp.dir;
     const bundle = parent.tmp.bundle;
     const html = parent.tmp.html;
 
-    const res: IUIHarnessElectronPaths = {
+    return {
       main: {
         defaultEntry: {
           code: 'test/app/main.ts',
@@ -221,7 +221,5 @@ export class ElectronSettings {
         ],
       },
     };
-
-    return res;
   }
 }

@@ -1,20 +1,12 @@
-import {
-  file,
-  fs,
-  fsPath,
-  log,
-  npm,
-  NpmPackage,
-  value,
-  constants,
-} from '../common';
+import { dirname, join, resolve } from 'path';
+
+import { constants, file, fs, log, npm, NpmPackage, value } from '../common';
 import { IUIHarnessConfig, IUIHarnessPaths } from '../types';
 import { ElectronSettings } from './ElectronSettings';
 import { WebSettings } from './WebSettings';
 
 export { NpmPackage };
 
-const { resolve, join } = fsPath;
 const { PATH } = constants;
 const UIHARNESS_YAML = 'uiharness.yml';
 const defaultValue = value.defaultValue;
@@ -102,7 +94,7 @@ export class Settings {
   }
 
   public get dir() {
-    return fsPath.dirname(this._paths.file);
+    return dirname(this._paths.file);
   }
 
   /**
@@ -177,8 +169,8 @@ export class Settings {
     const self = fromRoot(this._paths.file);
     return {
       self,
-      dir: fsPath.dirname(self),
-      package: fsPath.join(tmp, 'package.json'),
+      dir: dirname(self),
+      package: join(tmp, 'package.json'),
       tmp: {
         dir: tmp,
         html: join(tmp, 'html'),

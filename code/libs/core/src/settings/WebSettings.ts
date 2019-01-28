@@ -1,12 +1,12 @@
-import { fsPath, toBundlerArgs } from '../common';
+import { join } from 'path';
+
+import { toBundlerArgs } from '../common';
 import {
   IUIHarnessConfig,
   IUIHarnessPaths,
   IUIHarnessWebConfig,
   IUIHarnessWebPaths,
 } from '../types';
-
-const { resolve, join } = fsPath;
 
 type IPaths = {
   parent: IUIHarnessPaths;
@@ -55,7 +55,7 @@ export class WebSettings {
     return {
       dir,
       file,
-      path: fsPath.join(dir, file),
+      path: join(dir, file),
     };
   }
 
@@ -76,16 +76,12 @@ export class WebSettings {
   /**
    * Retrieves file paths.
    */
-  public getPaths() {
-    const ROOT = resolve('.');
-    const toRelative = (path: string) => path.substr(ROOT.length + 1);
-
+  public getPaths(): IUIHarnessWebPaths {
     const parent = this._paths.parent;
-    const bundle = toRelative(parent.tmp.bundle);
-
-    const res: IUIHarnessWebPaths = {
+    const bundle = parent.tmp.bundle;
+    return {
       defaultEntry: {
-        html: './src/test/web.html',
+        html: 'src/test/web.html',
       },
       out: {
         file: 'index.html',
@@ -95,7 +91,5 @@ export class WebSettings {
         },
       },
     };
-
-    return res;
   }
 }
