@@ -1,15 +1,5 @@
-import {
-  BundleTarget,
-  constants,
-  fs,
-  fsPath,
-  log,
-  logging,
-} from '../../common';
+import { BundleTarget, fs, fsPath, log, logging } from '../../common';
 import { Settings } from '../../settings';
-
-const ELECTRON = constants.PATH.ELECTRON;
-const WEB = constants.PATH.WEB;
 
 /**
  * Prints stats about the bundle.
@@ -19,25 +9,28 @@ export async function stats(args: {
   prod?: boolean;
   target: BundleTarget | BundleTarget[];
 }) {
-  const { prod } = args;
+  const { prod, settings } = args;
   const targets = Array.isArray(args.target) ? args.target : [args.target];
 
   if (targets.includes('electron')) {
-    await logDir(ELECTRON.MAIN.OUT_DIR);
+    const path = settings.electron.path;
+
+    await logDir(path.main.out.dir);
     if (prod === undefined || prod === false) {
-      await logDir(ELECTRON.RENDERER.OUT_DIR.DEV);
+      await logDir(path.renderer.out.dir.dev);
     }
     if (prod === undefined || prod === true) {
-      await logDir(ELECTRON.RENDERER.OUT_DIR.PROD);
+      await logDir(path.renderer.out.dir.prod);
     }
   }
 
   if (targets.includes('web')) {
+    const path = settings.web.path;
     if (prod === undefined || prod === false) {
-      await logDir(WEB.OUT_DIR.DEV);
+      await logDir(path.out.dir.dev);
     }
     if (prod === undefined || prod === true) {
-      await logDir(WEB.OUT_DIR.PROD);
+      await logDir(path.out.dir.prod);
     }
   }
 }

@@ -1176,23 +1176,23 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.5.tgz#f4f85fe198e1e9cedc0bb53a8c2d30fb34299e50"
   integrity sha512-y51XRWWg1GiW4+mV2zmFQUqJT3bX7nuUaXW4j8a2dFvT9ZlaNLjb7ZxcUSDyklt/UBWrW2+31x+hQpRzxaTFzw==
 
-"@uiharness/electron@^0.3.35":
-  version "0.3.35"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.35.tgz#11b78b59e522e62e199a6dfddc2e749403a9e4f5"
-  integrity sha512-Ni6Oo8ojYNS0On6yntLz2dcte+L6kf6XsYN+CiwvQfo9X2xhpjxE07bQHn4o/wU+GZfrAMD8nWUkS/ume5aSjA==
+"@uiharness/electron@^0.3.36":
+  version "0.3.36"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.36.tgz#483755999914de301b0e6fe227bfb88566435f0a"
+  integrity sha512-DWJNTvqtZTGyi0U5hZx/4GK5HmssczGh222QCMAVHgm9ZL+JxMz8GQa2rxsXneNJhoFsebigPxlIS0FIAMgzRg==
   dependencies:
     "@types/app-root-path" "1.2.4"
-    "@uiharness/types" "0.0.16"
+    "@uiharness/types" "0.0.17"
     app-root-path "2.1.0"
     electron "^4.0.2"
     electron-is-dev "1.0.1"
     electron-log "2.2.17"
     tslib "1.9.3"
 
-"@uiharness/types@0.0.16":
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.16.tgz#e5a1d173093b92af7f17077807ee3bdf12c1c6ad"
-  integrity sha512-a1rgC1x3/6y9SgC/dgOhv8AuIvOUc4faqLTIyIkxd2BU0xxSj51nXixxSGf6ONEPJTS6oLvzrrsoj7uaQMsk1Q==
+"@uiharness/types@0.0.17":
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.17.tgz#583029c109d0e3cb34aa3114650b4c24e2d02a73"
+  integrity sha512-HTdOTvl1Y2L2qfuVzIanhfZv/7YGnOlOGAn6ESFf26Aq68vb5uF2SR88PCLUhnMQh2CpuLyBbWsIUDHd8YZXsA==
 
 "@zeit/schemas@2.6.0":
   version "2.6.0"
@@ -2445,10 +2445,10 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-create-tmpl@0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.1.0.tgz#a3aed8e8c7fd118ff990eefa68e892c77b46cfb1"
-  integrity sha512-wax05GjIjx8r6Ld2c+Pd27lfAkPzJc2kJWT6ki5wH0rQib0YIjB7Uv+jACeLJcczvcRwr0zwTuBpxDdmKz053g==
+create-tmpl@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.1.1.tgz#9457e1b57a1e0ec97ea63e47b828740d0cf18d13"
+  integrity sha512-8Nf8RNNV3g8CCkovxl/vSOLJUMB3ARnIG/8bcdBpx35VzENkgARHmjGDZR6e20MsFLl2zutfHCNOIbQFFOhATA==
   dependencies:
     "@tdb/npm" "0.1.0"
     "@tdb/util" "1.9.26"

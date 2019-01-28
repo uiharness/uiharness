@@ -69,6 +69,7 @@ export async function bundleElectron(args: {
 
   // Ensure the module is initialized.
   await init({ settings, prod });
+  await electron.ensureEntries();
 
   // Build the command.
   const tasks = new Listr([], {
@@ -101,7 +102,7 @@ export async function bundleElectron(args: {
       task: () =>
         cmd
           .add(`parcel`)
-          .add(`build ${entry.renderer}`)
+          .add(`build ${entry.html}`)
           .add(`--public-url ./`)
           .arg(`--out-dir ${out.renderer.dir}`)
           .arg(`--out-file ${out.renderer.file}`)

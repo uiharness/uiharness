@@ -1,18 +1,15 @@
 import {
-  constants,
+  BundleTarget,
   execa,
   fsPath,
   log,
   logElectronInfo,
   logWebInfo,
   parcel,
-  BundleTarget,
 } from '../../common';
 import { Settings } from '../../settings';
 import { bundleElectron } from '../cmd.bundle';
 import { init } from '../cmd.init';
-
-const { PATH } = constants;
 
 /**
  * Starts the development server for the given target.
@@ -43,7 +40,8 @@ export async function startElectron(args: { settings: Settings }) {
   // Setup initial conditions.
   const { settings } = args;
   const prod = false;
-  const port = settings.electron.port;
+  const electron = settings.electron;
+  const port = electron.port;
 
   // Ensure the module is initialized.
   await init({ settings, prod });
@@ -57,6 +55,7 @@ export async function startElectron(args: { settings: Settings }) {
     main: true,
     renderer: false,
     summary: false,
+    stats: false,
   });
   log.info();
 
@@ -64,8 +63,8 @@ export async function startElectron(args: { settings: Settings }) {
   const renderer = parcel.electronRendererBundler(settings);
   await (renderer as any).serve(port);
 
-  // Start the electron server.
-  const dir = fsPath.resolve(PATH.UIHARNESS);
+  // Start the electron process.
+  const dir = fsPath.resolve(settings.path.tmp.dir);
   const cmd = `electron ${dir}`;
   const childProcess = execa.shell(cmd);
   childProcess.stdout.pipe(process.stdout);

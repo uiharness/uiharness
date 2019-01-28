@@ -12,7 +12,7 @@ describe('WebSettings', () => {
       expect(res.port).to.eql(1234);
       expect(res.bundlerArgs.sourcemaps).to.eql(true);
       expect(res.bundlerArgs.treeshake).to.eql(false);
-      expect(res.entry).to.eql('./src/test/web.html');
+      expect(res.entry).to.eql('src/test/web.html');
     };
     test('/NO_EXIST');
     test(fsPath.join(DIR, 'empty.yml'));
@@ -24,6 +24,6 @@ describe('WebSettings', () => {
     expect(res.port).to.eql(3030);
     expect(res.bundlerArgs.sourcemaps).to.eql(false);
     expect(res.bundlerArgs.treeshake).to.eql(true);
-    expect(res.entry).to.eql('./foo/web/hello.html');
+    expect(res.entry).to.eql('./foo/web.html');
   });
 });

@@ -21,7 +21,6 @@ export async function open(args: { settings: Settings; folder?: boolean }) {
       .run();
   };
 
-  // console.log('settings.buildArgs', settings.buildArgs);
   const config = settings.electron.builderArgs;
   if (!config.exists) {
     log.warn(
@@ -44,8 +43,6 @@ export async function open(args: { settings: Settings; folder?: boolean }) {
   if (args.folder) {
     return runOpen(outputDir, 'folder');
   }
-
-  // let path = outputDir
 
   let path = fsPath.join(outputDir, platform, `${productName}.app`);
   path = `./${path.replace(/^\\/, '')}`;

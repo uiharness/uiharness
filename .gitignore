@@ -5,6 +5,7 @@ lib
 node_modules
 .cache
 tmp 
+.uiharness.tmp
 
 .env
 .env*

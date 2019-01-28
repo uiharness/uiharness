@@ -6,6 +6,7 @@ export type BundleTarget = 'electron' | 'web';
  * The `uiharness.yml` configuration file.
  */
 export type IUIHarnessConfig = {
+  name?: string;
   electron?: IUIHarnessElectronConfig;
   web?: IUIHarnessWebConfig;
 
@@ -25,7 +26,6 @@ export type IUIHarnessConfig = {
  * Configuration for the electron app.
  */
 export type IUIHarnessElectronConfig = {
-  name?: string;
   port?: number; // Port the dev-server runs on for electron.
   bundle?: IParcelBuildConfig;
   entry?: {
@@ -60,4 +60,61 @@ export type IUIHarnessWebConfig = {
 export type IParcelBuildConfig = {
   sourcemaps?: boolean; // Default: true.
   treeshake?: boolean; //  Default:  true
+};
+
+/**
+ * The set of paths to various assets that make up a UIHarness project.
+ */
+export type IUIHarnessPaths = {
+  self: string;
+  dir: string;
+  package: string;
+  tmp: {
+    dir: string;
+    html: string;
+    bundle: string;
+    config: string;
+  };
+  templates: {
+    base: string;
+    electron: string;
+    html: string;
+  };
+};
+
+/**
+ * The set of paths related to electron.
+ */
+export type IUIHarnessElectronPaths = {
+  main: {
+    defaultEntry: {
+      code: string;
+    };
+    out: { file: string; dir: string };
+  };
+  renderer: {
+    defaultEntry: {
+      code: string;
+      html: string;
+    };
+    out: {
+      file: string;
+      dir: { prod: string; dev: string };
+    };
+  };
+  builder: {
+    configFilename: string;
+    files: string[];
+    output: string;
+  };
+};
+
+export type IUIHarnessWebPaths = {
+  defaultEntry: {
+    html: string;
+  };
+  out: {
+    file: string;
+    dir: { prod: string; dev: string };
+  };
 };

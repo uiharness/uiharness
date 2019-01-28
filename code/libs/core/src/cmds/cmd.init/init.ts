@@ -1,17 +1,18 @@
 import {
   constants,
   file,
+  fs,
   fsPath,
   IUIHarnessRuntimeConfig,
   log,
   npm,
   tmpl,
-  fs,
 } from '../../common';
 import { Settings } from '../../settings';
 import { clean } from '../cmd.clean';
 
-const { SCRIPTS, PATH } = constants;
+const { SCRIPTS } = constants;
+const { resolve, join } = fsPath;
 
 /**
  * Initialize the module.
@@ -53,9 +54,11 @@ export async function init(args: {
   }
 
   if (flags.files) {
+    const noForce = ['.gitignore'];
     await tmpl
-      .create(PATH.TEMPLATE.BASE)
-      .use(tmpl.copyFile({ force }))
+      .create()
+      .add(settings.path.templates.base)
+      .use(tmpl.copyFile({ force, noForce }))
       .execute();
   }
 }
@@ -64,11 +67,12 @@ export async function init(args: {
  * Removes configuration files.
  */
 async function reset(args: { settings: Settings }) {
-  const pkg = args.settings.package;
+  const { settings } = args;
+  const pkg = settings.package;
   pkg.removeFields('scripts', SCRIPTS, { exclude: 'postinstall' }).save();
 
   await tmpl
-    .create(PATH.TEMPLATE.BASE)
+    .create(settings.path.templates.base)
     .use(tmpl.deleteFile())
     .execute();
 
@@ -92,7 +96,8 @@ async function reset(args: { settings: Settings }) {
  * by the consuming components.
  */
 async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
-  const electron = args.settings.electron;
+  const { settings } = args;
+  const electron = settings.electron;
   const { port } = electron;
   const out = electron.out(args.prod);
   const data: IUIHarnessRuntimeConfig = {
@@ -104,14 +109,13 @@ async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
   };
 
   // Write the file.
-  const { CONFIG } = constants.PATH;
-  const path = fsPath.join(CONFIG.DIR, CONFIG.FILE);
+  const path = settings.path.tmp.config;
   await file.stringifyAndSave(path, data);
   return data;
 }
 
 /**
- * Save a copy of the with the 'main' set to the entry point.
+ *  * Save a copy of the with the 'main' set to the entry point.
  *
  *   NOTE:  This is done so that the module does not have to have the
  *          UIHarness entry-point as it's actual entry point if being
@@ -122,14 +126,15 @@ async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
 async function copyPackage(args: { settings: Settings; prod: boolean }) {
   const { settings, prod } = args;
   const electron = settings.electron;
-  const out = electron.out(prod);
+  const main = electron.out(prod).main.path;
 
   // Set the "main" entry point for electron.
   const pkg = npm.pkg('.').json;
-  pkg.main = fsPath.join('..', out.main.path);
+  pkg.main = join('..', main);
 
   // Save the [package.json] file.
-  await file.stringifyAndSave(fsPath.resolve(PATH.PACKAGE), pkg);
+  const path = resolve(settings.path.package);
+  await file.stringifyAndSave(path, pkg);
 }
 
 /**
@@ -140,7 +145,7 @@ async function isInitialized(args: { settings: Settings }) {
   const pkg = settings.package;
   const init = settings.init;
 
-  const exists = (path: string) => fs.pathExists(fsPath.resolve(path));
+  const exists = (path: string) => fs.pathExists(resolve(path));
 
   if (init.files && (!(await exists('./src')) || !(await exists('./static')))) {
     return false;

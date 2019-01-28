@@ -1,24 +1,34 @@
-import { constants, fsPath, toBundlerArgs } from '../common';
-import { IUIHarnessWebConfig } from '../types';
+import { join } from 'path';
 
-const { PATH } = constants;
+import { toBundlerArgs } from '../common';
+import {
+  IUIHarnessConfig,
+  IUIHarnessPaths,
+  IUIHarnessWebConfig,
+  IUIHarnessWebPaths,
+} from '../types';
+
+type IPaths = {
+  parent: IUIHarnessPaths;
+  calculated?: IUIHarnessWebPaths;
+};
 
 /**
  * Represents the `web` section of the `uiharness.yml` configuration file.
  */
 export class WebSettings {
-  public dir: string;
-  public data: IUIHarnessWebConfig;
-  public exists: boolean;
+  public readonly data: IUIHarnessWebConfig;
+  public readonly exists: boolean;
+  private _paths: IPaths;
 
   /**
    * Constructor.
    */
-  constructor(args: { dir: string; data?: IUIHarnessWebConfig }) {
-    const { data, dir } = args;
-    this.exists = Boolean(data);
-    this.dir = dir;
-    this.data = data || {};
+  constructor(args: { path: IUIHarnessPaths; config: IUIHarnessConfig }) {
+    const { config } = args;
+    this._paths = { parent: args.path };
+    this.data = config.web || {};
+    this.exists = Boolean(config.web);
   }
 
   /**
@@ -32,20 +42,20 @@ export class WebSettings {
    * Retrieves the entry paths used by the JS bundler.
    */
   public get entry() {
-    return this.data.entry || PATH.WEB.ENTRY;
+    return this.data.entry || this.path.defaultEntry.html;
   }
 
   /**
    * The paths that JS us bundled to.
    */
   public out(prod?: boolean) {
-    const WEB = PATH.WEB;
-    const dir = prod ? WEB.OUT_DIR.PROD : WEB.OUT_DIR.DEV;
-    const file = WEB.OUT_FILE;
+    const out = this.path.out;
+    const dir = prod ? out.dir.prod : out.dir.dev;
+    const file = out.file;
     return {
       dir,
       file,
-      path: fsPath.join(dir, file),
+      path: join(dir, file),
     };
   }
 
@@ -54,5 +64,32 @@ export class WebSettings {
    */
   public get bundlerArgs() {
     return toBundlerArgs(this.data.bundle);
+  }
+
+  /**
+   * Retrieves file paths.
+   */
+  public get path() {
+    return this._paths.calculated || (this._paths.calculated = this.getPaths());
+  }
+
+  /**
+   * Retrieves file paths.
+   */
+  public getPaths(): IUIHarnessWebPaths {
+    const parent = this._paths.parent;
+    const bundle = parent.tmp.bundle;
+    return {
+      defaultEntry: {
+        html: 'src/test/web.html',
+      },
+      out: {
+        file: 'index.html',
+        dir: {
+          dev: join(bundle, 'web/dev'),
+          prod: join(bundle, 'web/prod'),
+        },
+      },
+    };
   }
 }
