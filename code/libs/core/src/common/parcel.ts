@@ -16,6 +16,9 @@ export function electronRendererBundler(
   const electron = settings.electron;
   const out = electron.out(prod);
   const entry = electron.entry.renderer;
+
+  console.log('entry', entry);
+
   return createBundler(entry, electron.data.bundle, prod, {
     outDir: out.renderer.dir,
     target: 'electron',

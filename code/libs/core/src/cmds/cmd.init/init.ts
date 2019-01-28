@@ -30,7 +30,6 @@ export async function init(args: {
 
   // Ensure the latest configuration files exist within the [.uiharness] folder.
   await saveConfigJson({ settings, prod });
-  await copyPackage({ settings, prod });
 
   // Don't continue if already initialized.
   if (!force && (await isInitialized({ settings }))) {
@@ -108,28 +107,6 @@ async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
   const path = fsPath.join(CONFIG.DIR, CONFIG.FILE);
   await file.stringifyAndSave(path, data);
   return data;
-}
-
-/**
- * Save a copy of the with the 'main' set to the entry point.
- *
- *   NOTE:  This is done so that the module does not have to have the
- *          UIHarness entry-point as it's actual entry point if being
- *          published to NPM and used as an actual NPM module,
- *          but [electron] can still find the correct startup location in [main].
- *
- */
-async function copyPackage(args: { settings: Settings; prod: boolean }) {
-  const { settings, prod } = args;
-  const electron = settings.electron;
-  const out = electron.out(prod);
-
-  // Set the "main" entry point for electron.
-  const pkg = npm.pkg('.').json;
-  pkg.main = fsPath.join('..', out.main.path);
-
-  // Save the [package.json] file.
-  await file.stringifyAndSave(fsPath.resolve(PATH.PACKAGE), pkg);
 }
 
 /**

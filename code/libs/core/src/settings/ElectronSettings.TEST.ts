@@ -10,8 +10,9 @@ describe('ElectronSettings', () => {
       const res = Settings.create(path).electron;
       expect(res.exists).to.eql(false);
       expect(res.port).to.eql(8888);
-      expect(res.entry.main).to.eql('./src/test/app.main.ts');
-      expect(res.entry.renderer).to.eql('./src/test/app.html');
+      expect(res.entry.main).to.eql('./test/app/main.ts');
+      expect(res.entry.renderer).to.eql('./test/app/renderer.tsx');
+      expect(res.entry.html).to.eql('./.uiharness/html/renderer.html');
 
       const bundler = res.bundlerArgs;
       expect(bundler.sourcemaps).to.eql(true);
@@ -21,6 +22,7 @@ describe('ElectronSettings', () => {
       const builder = res.builderArgs;
       expect(builder.exists).to.eql(false);
     };
+
     test('/NO_EXIST');
     test(fsPath.join(DIR, 'empty.yml'));
   });
@@ -29,8 +31,8 @@ describe('ElectronSettings', () => {
     const res = Settings.create(DIR).electron;
     expect(res.exists).to.eql(true);
     expect(res.port).to.eql(1234);
-    expect(res.entry.main).to.eql('./foo/main/start.ts');
-    expect(res.entry.renderer).to.eql('./foo/renderer/index.html');
+    expect(res.entry.main).to.eql('./foo/start.ts');
+    expect(res.entry.renderer).to.eql('./foo/render.html');
 
     const bundler = res.bundlerArgs;
     expect(bundler.sourcemaps).to.eql(false);

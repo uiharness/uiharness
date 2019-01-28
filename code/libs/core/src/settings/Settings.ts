@@ -1,12 +1,26 @@
-import { file, fs, fsPath, log, npm, NpmPackage, value } from '../common/libs';
+import {
+  file,
+  fs,
+  fsPath,
+  log,
+  npm,
+  NpmPackage,
+  value,
+  constants,
+} from '../common';
 import { IUIHarnessConfig } from '../types';
 import { ElectronSettings } from './ElectronSettings';
 import { WebSettings } from './WebSettings';
 
 export { NpmPackage };
 
+const { PATH } = constants;
 const UIHARNESS_YAML = 'uiharness.yml';
 const defaultValue = value.defaultValue;
+
+export type IUIHarnessSettingsOptions = {
+  tmpDir?: string;
+};
 
 /**
  * Represents the `uiharness.yml` configuration file.
@@ -16,14 +30,8 @@ export class Settings {
    * Looks for the settings file within the given directory
    * and creates a new instance.
    */
-  public static create(path?: string) {
-    path = path ? path : '.';
-    path = path.trim();
-    path = fsPath.resolve(path);
-    const lstat = fs.existsSync(path) ? fs.lstatSync(path) : undefined;
-    path =
-      lstat && lstat.isDirectory() ? fsPath.join(path, UIHARNESS_YAML) : path;
-    return new Settings(path);
+  public static create(path?: string, options: IUIHarnessSettingsOptions = {}) {
+    return new Settings(path, options);
   }
 
   /**
@@ -45,6 +53,7 @@ export class Settings {
    */
   public readonly exists: boolean;
   public readonly dir: string;
+  public readonly tmpDir: string;
   public readonly path: string;
   public readonly data: IUIHarnessConfig;
 
@@ -55,9 +64,25 @@ export class Settings {
   /**
    * Constructor.
    */
-  private constructor(path: string) {
+  private constructor(
+    path: string | undefined,
+    options: IUIHarnessSettingsOptions,
+  ) {
+    // Wrangle path.
+    path = path ? path : '.';
+    path = path.trim();
+    path = fsPath.resolve(path);
+    const lstat = fs.existsSync(path) ? fs.lstatSync(path) : undefined;
+    const isDirectory = lstat && lstat.isDirectory();
+    path = isDirectory ? fsPath.join(path, UIHARNESS_YAML) : path;
+
+    // Derive [tmpDir] path.
+    const tmpDir = options.tmpDir ? options.tmpDir : PATH.DIR.TMP;
+
+    // Store values.
     this.path = path;
     this.dir = fsPath.dirname(path);
+    this.tmpDir = fsPath.resolve(tmpDir);
     this.exists = fs.existsSync(path);
     this.data = this.exists ? Settings.load(path) : {};
   }
@@ -77,6 +102,7 @@ export class Settings {
       this._electron ||
       (this._electron = new ElectronSettings({
         dir: this.dir,
+        tmpDir: this.tmpDir,
         data: this.data.electron,
       }))
     );
@@ -90,6 +116,7 @@ export class Settings {
       this._web ||
       (this._web = new WebSettings({
         dir: this.dir,
+        tmpDir: this.tmpDir,
         data: this.data.web,
       }))
     );

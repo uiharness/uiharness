@@ -2,35 +2,36 @@ export const URL = {
   SITE: 'https://uiharness.com',
 };
 
-const DIR = './.uiharness';
-const BUNDLE_DIR = `${DIR}/.bundle`;
-const TMPL_DIR = './node_modules/@uiharness/core/tmpl';
+const TMP = './.uiharness';
+const DIR = {
+  TMP,
+  BUNDLE: `${TMP}/.bundle`,
+  TEMPLATES: './node_modules/@uiharness/core/tmpl',
+};
 
 export const PATH = {
-  UIHARNESS: DIR,
-  PACKAGE: `${DIR}/package.json`,
-  BUNDLE_DIR,
+  DIR,
   TEMPLATE: {
-    DIR: TMPL_DIR,
-    BASE: `${TMPL_DIR}/base`,
-    ELECTRON: `${TMPL_DIR}/electron`,
+    BASE: `${DIR.TEMPLATES}/base`,
+    ELECTRON: `${DIR.TEMPLATES}/electron`,
   },
   CONFIG: {
-    DIR,
+    DIR: TMP,
     FILE: 'config.json',
   },
   ELECTRON: {
     MAIN: {
-      DEFAULT_ENTRY: './src/test/app.main.ts',
+      DEFAULT_ENTRY: './test/app/main.ts',
       OUT_FILE: 'main.js',
-      OUT_DIR: `${BUNDLE_DIR}/app.main`,
+      OUT_DIR: `${DIR.BUNDLE}/app.main`,
     },
     RENDERER: {
-      DEFAULT_ENTRY: './src/test/app.html',
+      DEFAULT_ENTRY: './test/app/renderer.tsx',
+      HTML_ENTRY: './.uiharness/html/renderer.html',
       OUT_FILE: 'app.html',
       OUT_DIR: {
-        DEV: `${BUNDLE_DIR}/app.renderer/dev`,
-        PROD: `${BUNDLE_DIR}/app.renderer/prod`,
+        DEV: `${DIR.BUNDLE}/app.renderer/dev`,
+        PROD: `${DIR.BUNDLE}/app.renderer/prod`,
       },
     },
     BUILDER: {
@@ -48,8 +49,8 @@ export const PATH = {
     ENTRY: './src/test/web.html',
     OUT_FILE: 'index.html',
     OUT_DIR: {
-      DEV: `${BUNDLE_DIR}/web/dev`,
-      PROD: `${BUNDLE_DIR}/web/prod`,
+      DEV: `${DIR.BUNDLE}/web/dev`,
+      PROD: `${DIR.BUNDLE}/web/prod`,
     },
   },
 };

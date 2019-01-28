@@ -64,8 +64,8 @@ export async function startElectron(args: { settings: Settings }) {
   const renderer = parcel.electronRendererBundler(settings);
   await (renderer as any).serve(port);
 
-  // Start the electron server.
-  const dir = fsPath.resolve(PATH.UIHARNESS);
+  // Start the electron process.
+  const dir = fsPath.resolve(PATH.DIR.TMP);
   const cmd = `electron ${dir}`;
   const childProcess = execa.shell(cmd);
   childProcess.stdout.pipe(process.stdout);

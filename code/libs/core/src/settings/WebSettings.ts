@@ -7,17 +7,23 @@ const { PATH } = constants;
  * Represents the `web` section of the `uiharness.yml` configuration file.
  */
 export class WebSettings {
-  public dir: string;
-  public data: IUIHarnessWebConfig;
-  public exists: boolean;
+  public readonly dir: string;
+  public readonly tmpDir: string;
+  public readonly data: IUIHarnessWebConfig;
+  public readonly exists: boolean;
 
   /**
    * Constructor.
    */
-  constructor(args: { dir: string; data?: IUIHarnessWebConfig }) {
-    const { data, dir } = args;
+  constructor(args: {
+    dir: string;
+    tmpDir: string;
+    data?: IUIHarnessWebConfig;
+  }) {
+    const { data } = args;
     this.exists = Boolean(data);
-    this.dir = dir;
+    this.dir = args.dir;
+    this.tmpDir = args.tmpDir;
     this.data = data || {};
   }
 

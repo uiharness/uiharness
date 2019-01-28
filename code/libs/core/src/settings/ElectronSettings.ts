@@ -7,18 +7,24 @@ const { PATH } = constants;
  * Represents the `electron` section of the `uiharness.yml` configuration file.
  */
 export class ElectronSettings {
-  public dir: string;
-  public data: IUIHarnessElectronConfig;
-  public exists: boolean;
+  public readonly dir: string;
+  public readonly tmpDir: string;
+  public readonly data: IUIHarnessElectronConfig;
+  public readonly exists: boolean;
   private _builderConfig: IElectronBuilderConfig;
 
   /**
    * Constructor.
    */
-  constructor(args: { dir: string; data?: IUIHarnessElectronConfig }) {
-    const { data, dir } = args;
+  constructor(args: {
+    dir: string;
+    tmpDir: string;
+    data?: IUIHarnessElectronConfig;
+  }) {
+    const { data } = args;
     this.exists = Boolean(data);
-    this.dir = dir;
+    this.dir = args.dir;
+    this.tmpDir = args.tmpDir;
     this.data = data || {};
   }
 
@@ -44,7 +50,12 @@ export class ElectronSettings {
     const entry = typeof this.data.entry === 'object' ? this.data.entry : {};
     const main = entry.main || MAIN.DEFAULT_ENTRY;
     const renderer = entry.renderer || RENDERER.DEFAULT_ENTRY;
-    return { main, renderer };
+    const html = renderer.endsWith('.html') ? renderer : RENDERER.HTML_ENTRY;
+    return {
+      main,
+      renderer,
+      html,
+    };
   }
 
   /**

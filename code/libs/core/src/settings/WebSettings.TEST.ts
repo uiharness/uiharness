@@ -24,6 +24,6 @@ describe('WebSettings', () => {
     expect(res.port).to.eql(3030);
     expect(res.bundlerArgs.sourcemaps).to.eql(false);
     expect(res.bundlerArgs.treeshake).to.eql(true);
-    expect(res.entry).to.eql('./foo/web/hello.html');
+    expect(res.entry).to.eql('./foo/web.html');
   });
 });
