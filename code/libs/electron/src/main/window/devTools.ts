@@ -5,8 +5,13 @@ import { IWindowRefs } from '../types';
 
 /**
  * Control the position of the detached dev-tools.
+ *
  * Source:
  *    https://stackoverflow.com/questions/53678438/dev-tools-size-and-position-in-electron
+ *
+ * Docs for dev-tools:
+ *    https://github.com/electron/electron/blob/master/docs/tutorial/devtools-extension.md
+ *
  */
 export function showDevTools(refs: IWindowRefs) {
   const window = refs.window;
