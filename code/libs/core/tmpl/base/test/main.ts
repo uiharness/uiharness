@@ -14,4 +14,4 @@ import { init } from '@uiharness/electron/lib/main';
  *
  */
 const config = require('../.uiharness/config.json');
-init(config);
+init({ config });
