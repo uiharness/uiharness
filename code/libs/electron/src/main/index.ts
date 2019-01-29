@@ -41,8 +41,6 @@ export function init(args: IMainInitArgs) {
       window.setMenu(null);
       window.loadURL(paths.url);
 
-      // window.on('')
-
       // Finish up.
       resolve({
         window: { primary },

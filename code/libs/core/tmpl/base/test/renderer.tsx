@@ -9,5 +9,13 @@ import * as ReactDOM from 'react-dom';
  * visual testing host.
  */
 
-const el = <div style={{ padding: 20 }}>Hello World!</div>;
-ReactDOM.render(el, document.getElementById('root'));
+try {
+  const el = (
+    <div style={{ padding: 20 }}>
+      <h1>Hello World!</h1>
+    </div>
+  );
+  ReactDOM.render(el, document.getElementById('root'));
+} catch (error) {
+  // 🐷 TODO - do something with the error.
+}
