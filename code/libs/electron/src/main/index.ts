@@ -1,12 +1,12 @@
-import { isDev, resolve, IUIHarnessRuntimeConfig } from '../common';
+import { is, path, IUIHarnessRuntimeConfig } from '../common';
 import { app, BrowserWindow } from 'electron';
 import { format } from 'url';
 import { Log } from '@tdb/log';
 
-let window: BrowserWindow | undefined;
+let win: BrowserWindow | undefined;
 
 export type IMainInitResponse = {
-  window: { primary: BrowserWindow };
+  window: BrowserWindow;
 };
 
 export type IMainInitArgs = {
@@ -23,32 +23,30 @@ export function init(args: IMainInitArgs) {
 
   return new Promise<IMainInitResponse>((resolve, reject) => {
     app.on('ready', async () => {
-      const primary = new BrowserWindow({
+      const window = new BrowserWindow({
         width: 1200,
         height: 800,
         show: false,
       });
-      window = primary;
+      win = window;
 
-      primary.once('ready-to-show', () => {
-        primary.show();
-        if (isDev) {
-          primary.webContents.openDevTools();
+      window.once('ready-to-show', () => {
+        window.show();
+        if (is.dev()) {
+          window.webContents.openDevTools();
         }
       });
 
       const paths = getPaths(config);
-      window.setMenu(null);
-      window.loadURL(paths.url);
+      win.setMenu(null);
+      win.loadURL(paths.url);
 
       // Finish up.
-      resolve({
-        window: { primary },
-      });
+      resolve({ window });
     });
 
     app.on('window-all-closed', () => {
-      window = undefined;
+      win = undefined;
       app.quit();
     });
   });
@@ -61,10 +59,10 @@ export function init(args: IMainInitArgs) {
 function getPaths(config: IUIHarnessRuntimeConfig) {
   const dev = `http://localhost:${config.electron.port}`;
   const prod = format({
-    pathname: resolve(config.electron.renderer),
     protocol: 'file:',
+    pathname: path.resolve(config.electron.renderer),
     slashes: true,
   });
-  const url = isDev ? dev : prod;
+  const url = is.dev() ? dev : prod;
   return { dev, prod, url };
 }
