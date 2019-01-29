@@ -25,10 +25,10 @@
     array-from "^2.1.1"
     lodash.get "^4.4.2"
 
-"@tdb/log@1.1.20":
-  version "1.1.20"
-  resolved "https://registry.yarnpkg.com/@tdb/log/-/log-1.1.20.tgz#e5bd0f4bfc7d88185851343cdb4d4fd79636aec6"
-  integrity sha512-oWq8+SN9o66MWcRU+g7bYwNNTSTZYJQYyQxH5nc8tRccPLrumLXnHsU91eR6PAy+Ik7bOw+hkM3vnhvT47Q46w==
+"@tdb/log@1.1.21":
+  version "1.1.21"
+  resolved "https://registry.yarnpkg.com/@tdb/log/-/log-1.1.21.tgz#a9cf4abe6c1c19a4b1f4853e76b84ebeedd7de16"
+  integrity sha512-S5HPt71csUFN/mwhG+NdhpzIe1QGJYPgyuwoqAgy4XQoLzdckprxEwgeOuuPILXzcEuhkL0cCG6cp9a1bAw6lg==
   dependencies:
     "@types/ramda" "0.25.47"
     chalk "2.4.2"
@@ -64,12 +64,12 @@
     tslint-react "3.6.0"
     typescript "3.2.4"
 
-"@tdb/util@1.9.26":
-  version "1.9.26"
-  resolved "https://registry.yarnpkg.com/@tdb/util/-/util-1.9.26.tgz#9d8f24232b8bcee803317d1a2b0c1ced3bbbacf2"
-  integrity sha512-FkBkJ621PBt1wJZ8FK0ynYOtVu9p9xIUrm9GksdORtSsUK6qmM3FDY+oFhyd5QdLPclO9Mbzs5Won0AedaVUCw==
+"@tdb/util@1.9.28":
+  version "1.9.28"
+  resolved "https://registry.yarnpkg.com/@tdb/util/-/util-1.9.28.tgz#345781638d1bc2cdd4c85e4ce33bdb7e18a74276"
+  integrity sha512-muAQaZ31XlZV+Wq/Hi2GZ9QSiGYg6+tkXM8ecAu6z3TcNv3NEGR9XJBS+h4gAfNEGiXf/7pT403hsKfyaaSEDw==
   dependencies:
-    "@tdb/log" "1.1.20"
+    "@tdb/log" "1.1.21"
     "@types/react" "16.7.17"
     "@types/react-dom" "16.0.11"
     "@types/string" "0.0.29"
@@ -81,8 +81,8 @@
     fastclick "1.0.6"
     glamor "2.20.40"
     js-cookie "2.2.0"
-    moment "2.23.0"
-    path-to-regexp "2.4.0"
+    moment "2.24.0"
+    path-to-regexp "3.0.0"
     react "16.7.0"
     react-dom "16.7.0"
     react-inspector "2.3.1"
@@ -119,7 +119,12 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@10.12.18", "@types/node@^10.12.18":
+"@types/node@*", "@types/node@^10.12.18":
+  version "10.12.19"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.19.tgz#ca1018c26be01f07e66ac7fefbeb6407e4490c61"
+  integrity sha512-2NVovndCjJQj6fUUn9jCgpP4WSqr+u1SoUZMZyJkhGeBFsm6dE46l31S7lPUYt9uQ28XI+ibrJA1f5XyH5HNtA==
+
+"@types/node@10.12.18":
   version "10.12.18"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.18.tgz#1d3ca764718915584fcd9f6344621b7672665c67"
   integrity sha512-fh+pAqt4xRzPfqA6eh3Z2y6fyZavRIumvjhaCL753+TVkGKGhpPeyrJG2JftD0T9q4GF00KjefsQ+PQNDdWQaQ==
@@ -482,9 +487,9 @@ css-in-js-utils@^2.0.0:
     isobject "^3.0.1"
 
 csstype@^2.2.0:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.1.tgz#4cfbf637a577497036ebcd7e32647ef19a0b8076"
-  integrity sha512-wv7IRqCGsL7WGKB8gPvrl+++HlFM9kxAM6jL1EXNPNTshEJYilMkbfS2SnuHha77uosp/YVK0wAp2jmlBzn1tg==
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.2.tgz#3043d5e065454579afc7478a18de41909c8a2f01"
+  integrity sha512-Rl7PvTae0pflc1YtxtKbiSqq20Ts6vpIYOD5WBafl4y123DyHUeLrRdQP66sQW8/6gmX8jrYJLXwNeMqYVJcow==
 
 cuid@2.1.4:
   version "2.1.4"
@@ -624,7 +629,16 @@ electron-window-state@5.0.3:
     jsonfile "^4.0.0"
     mkdirp "^0.5.1"
 
-electron@*, electron@4.0.2:
+electron@*:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-4.0.3.tgz#0d45a4bcfb63b3e39daf44aeb599b89e95d2a055"
+  integrity sha512-wOBYnlv3Xgbwh9DAHBktP3sQcbCBuXMQi1NzPH3EMnbdYNqj+FnTzVLq0RYp0uSzdjR3fhAZ/E6wFSMLaAc5iw==
+  dependencies:
+    "@types/node" "^10.12.18"
+    electron-download "^4.1.0"
+    extract-zip "^1.0.3"
+
+electron@4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/electron/-/electron-4.0.2.tgz#b5e074c149841490825d0785aa2bc4f5e29bbea4"
   integrity sha512-H0pmSvOVuC+Mq/+cYNXbCDBmqq5d1xYUVdBOjqGJuwuwJeP7qDHF35JA3cq+ARzq/CbwlXq98zdW6i6+x3U24g==
@@ -1178,10 +1192,10 @@ mocha@5.2.0:
     mkdirp "0.5.1"
     supports-color "5.4.0"
 
-moment@2.23.0:
-  version "2.23.0"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.23.0.tgz#759ea491ac97d54bac5ad776996e2a58cc1bc225"
-  integrity sha512-3IE39bHVqFbWWaPOMHZF98Q9c3LDKGTmypMiTM2QygGXXElkFWIH7GxfmlwmY2vwa+wmNsoYZmG2iusf1ZjJoA==
+moment@2.24.0:
+  version "2.24.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
+  integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
 
 ms@2.0.0:
   version "2.0.0"
@@ -1306,10 +1320,10 @@ path-parse@^1.0.6:
   resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.6.tgz#d62dbb5679405d72c4737ec58600e9ddcf06d24c"
   integrity sha512-GSmOT2EbHrINBf9SR7CDELwlJ8AENk3Qn7OikK4nFYAu3Ote2+JYNVvkpAEQm3/TLNEJFD/xZJjzyxg3KBWOzw==
 
-path-to-regexp@2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-2.4.0.tgz#35ce7f333d5616f1c1e1bfe266c3aba2e5b2e704"
-  integrity sha512-G6zHoVqC6GGTQkZwF4lkuEyMbVOjoBKAEybQUypI1WTkqinCOrq2x6U2+phkJ1XsEMTy4LjtwPI7HW+NVrRR2w==
+path-to-regexp@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-3.0.0.tgz#c981a218f3df543fa28696be2f88e0c58d2e012a"
+  integrity sha512-ZOtfhPttCrqp2M1PBBH4X13XlvnfhIwD7yCLx+GoGoXRPQyxGOTdQMpIzPSPKXAJT/JQrdfFrgdJOyAzvgpQ9A==
 
 path-to-regexp@^1.7.0:
   version "1.7.0"
