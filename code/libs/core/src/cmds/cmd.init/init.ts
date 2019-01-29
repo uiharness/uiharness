@@ -101,6 +101,7 @@ async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
   const { port } = electron;
   const out = electron.out(args.prod);
   const data: IUIHarnessRuntimeConfig = {
+    name: settings.name,
     electron: {
       port,
       main: out.main.path,
