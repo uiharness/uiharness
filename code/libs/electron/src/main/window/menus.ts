@@ -1,12 +1,16 @@
 import { app, Menu, MenuItemConstructorOptions } from 'electron';
 
-import { IWindowRefs } from '../types';
+import { IWindowRefs, IUIHarnessRuntimeConfig } from '../types';
 import { showDevTools } from './devTools';
 
 /**
  * Handles the creation of menus.
  */
-export function createMenus(refs: IWindowRefs) {
+export function createMenus(args: {
+  refs: IWindowRefs;
+  config: IUIHarnessRuntimeConfig;
+}) {
+  const { refs, config } = args;
   const template: MenuItemConstructorOptions[] = [
     {
       label: 'Edit',
@@ -32,7 +36,7 @@ export function createMenus(refs: IWindowRefs) {
           label: 'Show Developer Tools',
           click: () => {
             if (!refs.devTools || !refs.devTools.isVisible()) {
-              showDevTools(refs);
+              showDevTools({ refs, config });
             }
           },
         },

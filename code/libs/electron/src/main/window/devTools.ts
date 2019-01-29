@@ -1,7 +1,7 @@
 import { BrowserWindow } from 'electron';
 import * as WindowState from 'electron-window-state';
 
-import { IWindowRefs } from '../types';
+import { IWindowRefs, IUIHarnessRuntimeConfig } from '../types';
 
 /**
  * Control the position of the detached dev-tools.
@@ -13,7 +13,11 @@ import { IWindowRefs } from '../types';
  *    https://github.com/electron/electron/blob/master/docs/tutorial/devtools-extension.md
  *
  */
-export function showDevTools(refs: IWindowRefs) {
+export function showDevTools(args: {
+  refs: IWindowRefs;
+  config: IUIHarnessRuntimeConfig;
+}) {
+  const { refs, config } = args;
   const window = refs.window;
   if (!window) {
     return;
@@ -28,8 +32,9 @@ export function showDevTools(refs: IWindowRefs) {
   const state = WindowState({
     defaultWidth: bounds.width / 2,
     defaultHeight: bounds.height,
-    file: 'uiharness.window.devTools.json',
+    file: `[uih.${config.name.replace(/\s/g, '_')}].devTools-window.json`,
   });
+  const saveState = () => state.saveState(devTools);
 
   const devTools = (refs.devTools = new BrowserWindow({
     show: false,
@@ -37,7 +42,6 @@ export function showDevTools(refs: IWindowRefs) {
     width: state.width,
     height: state.height,
   }));
-  state.manage(devTools);
 
   const webContents = window.webContents;
   webContents.setDevToolsWebContents(devTools.webContents);
@@ -56,6 +60,11 @@ export function showDevTools(refs: IWindowRefs) {
   devTools.on('close', e => {
     e.preventDefault();
     devTools.hide();
+    saveState();
+  });
+
+  devTools.on('resize', () => {
+    saveState(); // NB: Should be debounced.
   });
 
   webContents.once('did-finish-load', () => {

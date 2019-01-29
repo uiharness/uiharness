@@ -1,5 +1,7 @@
 import { BrowserWindow } from 'electron';
 import * as WindowState from 'electron-window-state';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { format } from 'url';
 
 import { is, IUIHarnessRuntimeConfig, path } from '../../common';
@@ -21,8 +23,12 @@ export function create(args: { config: IUIHarnessRuntimeConfig }) {
   const state = WindowState({
     defaultWidth: 1200,
     defaultHeight: 800,
-    file: 'uiharness.window.main.json',
+    file: `[uih.${config.name.replace(/\s/g, '_')}].main-window.json`,
   });
+
+  const state$ = new Subject();
+  const saveState = () => state.saveState(window);
+  state$.pipe(debounceTime(200)).subscribe(() => saveState());
 
   const window = (refs.window = new BrowserWindow({
     show: false, // NB: Hidden until ready-to-show.
@@ -32,18 +38,19 @@ export function create(args: { config: IUIHarnessRuntimeConfig }) {
     height: state.height,
   }));
 
-  state.manage(window);
-  createMenus(refs);
+  createMenus({ refs, config });
 
   // Show the window when it's ready.
   window.once('ready-to-show', () => {
     window.show();
     if (is.dev()) {
-      showDevTools(refs);
+      showDevTools({ refs, config });
     }
   });
 
+  window.on('moved', () => state$.next());
   window.on('closed', () => {
+    saveState();
     refs.window = undefined;
   });
 
