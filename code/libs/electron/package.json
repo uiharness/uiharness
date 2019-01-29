@@ -14,6 +14,7 @@
     "prepare": "yarn run build && yarn run lint && yarn test"
   },
   "dependencies": {
+    "@tdb/log": "^1.1.20",
     "@types/app-root-path": "1.2.4",
     "@uiharness/types": "0.0.17",
     "app-root-path": "2.1.0",
