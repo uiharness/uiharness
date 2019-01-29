@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 /**
- * Renderer entry point.
+ * [Renderer] entry-point.
  *
  * Reference your component(s) here or pull in the [UIHarness]
  * visual testing host.
@@ -11,11 +11,15 @@ import * as ReactDOM from 'react-dom';
 
 try {
   const el = (
-    <div style={{ padding: 20 }}>
+    <div style={{ paddingLeft: 20 }}>
       <h1>Hello World!</h1>
     </div>
   );
   ReactDOM.render(el, document.getElementById('root'));
 } catch (error) {
-  // 🐷 TODO - do something with the error.
+  /**
+   * 🐷 TODO  Do something with the error, like:
+   *          - log it
+   *          - alert the main process, etc
+   */
 }

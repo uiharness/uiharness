@@ -836,7 +836,7 @@
     array-from "^2.1.1"
     lodash.get "^4.4.2"
 
-"@tdb/log@1.1.20":
+"@tdb/log@1.1.20", "@tdb/log@^1.1.20":
   version "1.1.20"
   resolved "https://registry.yarnpkg.com/@tdb/log/-/log-1.1.20.tgz#e5bd0f4bfc7d88185851343cdb4d4fd79636aec6"
   integrity sha512-oWq8+SN9o66MWcRU+g7bYwNNTSTZYJQYyQxH5nc8tRccPLrumLXnHsU91eR6PAy+Ik7bOw+hkM3vnhvT47Q46w==
@@ -1176,17 +1176,20 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.8.tgz#0b45bf0607a5509b921335658d87489c12955176"
   integrity sha512-OMSKUmZ09gbzITzx4nxnJqhprWC7JqsmlrEsVtb+cv3GXHNpv0kktqxhboKX52FnMggkQvT5ezt8pxTWyKpJHA==
 
-"@uiharness/electron@^0.3.36":
-  version "0.3.36"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.36.tgz#483755999914de301b0e6fe227bfb88566435f0a"
-  integrity sha512-DWJNTvqtZTGyi0U5hZx/4GK5HmssczGh222QCMAVHgm9ZL+JxMz8GQa2rxsXneNJhoFsebigPxlIS0FIAMgzRg==
+"@uiharness/electron@^0.3.37":
+  version "0.3.37"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.37.tgz#c9599cb7a17f121f4276b397e2e65455ecdfe514"
+  integrity sha512-K7JCrmB8iE4vpuxFuSe+bO6FRwWJiQ/pKdMgXFFMAxcQ4Ta9sp1ONbDbX0nhfe3CQhlVaa5MloTwhkDUzJnWcA==
   dependencies:
+    "@tdb/log" "^1.1.20"
     "@types/app-root-path" "1.2.4"
     "@uiharness/types" "0.0.17"
     app-root-path "2.1.0"
     electron "^4.0.2"
+    electron-is "^3.0.0"
     electron-is-dev "1.0.1"
     electron-log "2.2.17"
+    electron-window-state "^5.0.3"
     tslib "1.9.3"
 
 "@uiharness/types@0.0.17":
@@ -3047,6 +3050,19 @@ electron-is-dev@1.0.1:
   resolved "https://registry.yarnpkg.com/electron-is-dev/-/electron-is-dev-1.0.1.tgz#6e0a184736fe7aea77d18210b0b0f6a02402c4bc"
   integrity sha512-iwM3EotA9HTXqMGpQRkR/kT8OZqBbdfHTnlwcxsjSLYqY8svvsq0MuujsWCn3/vtgRmDv/PC/gKUUpoZvi5C1w==
 
+electron-is-dev@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/electron-is-dev/-/electron-is-dev-0.3.0.tgz#14e6fda5c68e9e4ecbeff9ccf037cbd7c05c5afe"
+  integrity sha1-FOb9pcaOnk7L7/nM8DfL18BcWv4=
+
+electron-is@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/electron-is/-/electron-is-3.0.0.tgz#bd4c27651fbe03f243f3607c2a098be884f9ed50"
+  integrity sha512-aQv1y3WrDZ+mtO8acbhiiip/8fa0Et7cvZyvlqJm2H7fih4hiJWEFRyYxzLgDG2kmiLdF8l3y5tbek5JFOPQkQ==
+  dependencies:
+    electron-is-dev "^0.3.0"
+    semver "^5.5.0"
+
 electron-log@2.2.17:
   version "2.2.17"
   resolved "https://registry.yarnpkg.com/electron-log/-/electron-log-2.2.17.tgz#e71e2ebb949fc96ded7cdb99eeee7202e48981d2"
@@ -3081,6 +3097,14 @@ electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.103:
   version "1.3.108"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.108.tgz#2e79a6fcaa4b3e7c75abf871505bda8e268c910e"
   integrity sha512-/QI4hMpAh48a1Sea6PALGv+kuVne9A2EWGd8HrWHMdYhIzGtbhVVHh6heL5fAzGaDnZuPyrlWJRl8WPm4RyiQQ==
+
+electron-window-state@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/electron-window-state/-/electron-window-state-5.0.3.tgz#4f36d09e3f953d87aff103bf010f460056050aa8"
+  integrity sha512-1mNTwCfkolXl3kMf50yW3vE2lZj0y92P/HYWFBrb+v2S/pCka5mdwN3cagKm458A7NjndSwijynXgcLWRodsVg==
+  dependencies:
+    jsonfile "^4.0.0"
+    mkdirp "^0.5.1"
 
 electron@4.0.2, electron@^4.0.2:
   version "4.0.2"

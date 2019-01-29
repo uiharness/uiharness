@@ -1,7 +1,8 @@
-import { is, path, IUIHarnessRuntimeConfig } from '../common';
-import { app, BrowserWindow } from 'electron';
-import { format } from 'url';
 import { Log } from '@tdb/log';
+import { app, BrowserWindow } from 'electron';
+
+import { IUIHarnessRuntimeConfig } from '../common';
+import * as mainWindow from './mainWindow';
 
 let win: BrowserWindow | undefined;
 
@@ -19,29 +20,11 @@ export type IMainInitArgs = {
  * @param config: The `.uiharess/config.json` file.
  */
 export function init(args: IMainInitArgs) {
-  const { config } = args;
-
   return new Promise<IMainInitResponse>((resolve, reject) => {
+    const { config } = args;
+
     app.on('ready', async () => {
-      const window = new BrowserWindow({
-        width: 1200,
-        height: 800,
-        show: false,
-      });
-      win = window;
-
-      window.once('ready-to-show', () => {
-        window.show();
-        if (is.dev()) {
-          window.webContents.openDevTools();
-        }
-      });
-
-      const paths = getPaths(config);
-      win.setMenu(null);
-      win.loadURL(paths.url);
-
-      // Finish up.
+      const window = (win = mainWindow.create({ config }));
       resolve({ window });
     });
 
@@ -50,19 +33,4 @@ export function init(args: IMainInitArgs) {
       app.quit();
     });
   });
-}
-
-/**
- * INTERNAL
- */
-
-function getPaths(config: IUIHarnessRuntimeConfig) {
-  const dev = `http://localhost:${config.electron.port}`;
-  const prod = format({
-    protocol: 'file:',
-    pathname: path.resolve(config.electron.renderer),
-    slashes: true,
-  });
-  const url = is.dev() ? dev : prod;
-  return { dev, prod, url };
 }
