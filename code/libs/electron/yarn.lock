@@ -64,7 +64,7 @@
     tslint-react "3.6.0"
     typescript "3.2.4"
 
-"@tdb/util@^1.9.26":
+"@tdb/util@1.9.26":
   version "1.9.26"
   resolved "https://registry.yarnpkg.com/@tdb/util/-/util-1.9.26.tgz#9d8f24232b8bcee803317d1a2b0c1ced3bbbacf2"
   integrity sha512-FkBkJ621PBt1wJZ8FK0ynYOtVu9p9xIUrm9GksdORtSsUK6qmM3FDY+oFhyd5QdLPclO9Mbzs5Won0AedaVUCw==

@@ -29,7 +29,7 @@ export function createMenus(refs: IWindowRefs) {
         { role: 'forcereload' },
         // { role: 'toggledevtools' },
         {
-          label: 'Show developer tools',
+          label: 'Show Developer Tools',
           click: () => {
             if (!refs.devTools || !refs.devTools.isVisible()) {
               showDevTools(refs);
