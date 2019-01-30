@@ -1,0 +1,20 @@
+{
+  "name": "ui",
+  "version": "0.0.0",
+  "scripts": {
+    "postinstall": "uiharness init",
+    "ui": "uiharness $@",
+    "start": "uiharness start $@"
+  },
+  "dependencies": {
+    "@uiharness/electron": "0.3.41"
+  },
+  "devDependencies": {
+    "@uiharness/core": "1.1.30",
+    "typescript": "^3.2.4"
+  },
+  "resolutions": {
+    "@types/react": "16.7.17"
+  },
+  "license": "MIT"
+}
