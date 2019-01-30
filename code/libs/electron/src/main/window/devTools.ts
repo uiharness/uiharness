@@ -40,10 +40,10 @@ export function showDevTools(
     .getTitle()
     .replace(/\s/g, '_')}.devTools.json`;
 
-  const bounds = window.getBounds();
+  const windowBounds = window.getBounds();
   const state = WindowState({
-    defaultWidth: bounds.width / 2,
-    defaultHeight: bounds.height,
+    defaultWidth: windowBounds.width / 2,
+    defaultHeight: windowBounds.height,
     file,
   });
   const saveState = () => state.saveState(devTools);
@@ -51,7 +51,7 @@ export function showDevTools(
   const devTools = (refs.devTools = new BrowserWindow({
     title,
     width: state.width,
-    height: state.height,
+    height: windowBounds.height,
     parent: window,
     opacity: 0,
     show: false,

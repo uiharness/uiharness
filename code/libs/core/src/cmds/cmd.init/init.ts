@@ -41,7 +41,9 @@ const toFlags = (args: IInitFlags) => {
  */
 export async function prepare(args: { settings: Settings; prod: boolean }) {
   const { settings, prod } = args;
-  return init({ settings, prod, files: false });
+  const isInitialized = await getIsInitialized({ settings });
+  const files = !isInitialized;
+  return init({ settings, prod, files });
 }
 
 /**
@@ -66,7 +68,7 @@ export async function init(
   await copyPackage({ settings, prod });
 
   // Don't continue if already initialized.
-  if (!force && (await isInitialized({ settings }))) {
+  if (!force && (await getIsInitialized({ settings }))) {
     return;
   }
 
@@ -174,25 +176,41 @@ async function copyPackage(args: { settings: Settings; prod: boolean }) {
 /**
  * Determines whether the module has been initialized.
  */
-async function isInitialized(args: { settings: Settings }) {
+async function getIsInitialized(args: { settings: Settings }) {
+  const state = await getInitializedState(args);
+  return Object.keys(state).every(key => state[key] === true);
+}
+
+/**
+ * Gets a set of values that determine whether initialization has been run.
+ */
+async function getInitializedState(args: { settings: Settings }) {
   const { settings } = args;
-  const pkg = settings.package;
-  const exists = (path: string) => fs.pathExists(resolve(path));
+  const electron = settings.electron;
+  const electronEntry = electron.entry;
+  const web = settings.web;
 
-  if (!(await exists('./src')) || !(await exists('./uiharness.yml'))) {
-    return false;
-  }
-
-  // Look to see that all scripts have been inserted.
   const scripts = { ...SCRIPTS };
   delete scripts.postinstall;
-  const hasAllScripts = Object.keys(scripts).every(
-    key => pkg.scripts[key] === scripts[key],
-  );
-  if (!hasAllScripts) {
-    return false;
-  }
+
+  const exists = (path: string) => fs.pathExists(resolve(path));
+
+  const hasConfig = await exists('./uiharness.yml');
+  const hasSrcFolder = await exists('./src');
+  const hasElectronMainEntry = await exists(electronEntry.main);
+  const hasElectronRendererEntry = await exists(electronEntry.renderer);
+  const hasWebEntry = await exists(web.entry.code);
+  const hasAllScripts = Object.keys(scripts).every(key => scripts[key]);
+
+  const result = {
+    hasConfig,
+    hasSrcFolder,
+    hasElectronMainEntry,
+    hasElectronRendererEntry,
+    hasWebEntry,
+    hasAllScripts,
+  };
 
   // Finish up.
-  return true;
+  return result;
 }
