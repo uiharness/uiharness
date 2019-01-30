@@ -5,25 +5,32 @@ import { debounceTime } from 'rxjs/operators';
 import { format } from 'url';
 
 import { is, IUIHarnessRuntimeConfig, path } from '../../common';
-import { IWindowRefs } from '../types';
+import { IWindowRefs, IContext } from '../types';
 import { showDevTools } from './devTools';
 import { createMenus } from './menus';
 
 /**
  * Creates the main window.
  */
-export function create(args: { config: IUIHarnessRuntimeConfig }) {
-  const { config } = args;
+export function create(
+  args: IContext & {
+    name: string;
+  },
+) {
+  const { config, log } = args;
+  const context: IContext = { config, log };
 
   const refs: IWindowRefs = {
     window: undefined,
     devTools: undefined,
   };
 
+  const title = args.name || config.name;
+
   const state = WindowState({
     defaultWidth: 1200,
     defaultHeight: 800,
-    file: `[uih.${config.name.replace(/\s/g, '_')}].main-window.json`,
+    file: `[uih.window].${title.replace(/\s/g, '_')}.json`,
   });
 
   const state$ = new Subject();
@@ -31,6 +38,7 @@ export function create(args: { config: IUIHarnessRuntimeConfig }) {
   state$.pipe(debounceTime(200)).subscribe(() => saveState());
 
   const window = (refs.window = new BrowserWindow({
+    title,
     show: false, // NB: Hidden until ready-to-show.
     x: state.x,
     y: state.y,
@@ -38,20 +46,21 @@ export function create(args: { config: IUIHarnessRuntimeConfig }) {
     height: state.height,
   }));
 
-  createMenus({ refs, config });
+  createMenus({ refs, ...context });
 
   // Show the window when it's ready.
   window.once('ready-to-show', () => {
     window.show();
+    window.setTitle(title);
     if (is.dev()) {
-      showDevTools({ refs, config });
+      showDevTools({ refs, ...context });
     }
   });
 
   window.on('moved', () => state$.next());
   window.on('closed', () => {
-    saveState();
     refs.window = undefined;
+    saveState();
   });
 
   const paths = getPaths(config);

@@ -1,7 +1,12 @@
 import { BrowserWindow } from 'electron';
 import * as WindowState from 'electron-window-state';
 
-import { IWindowRefs, IUIHarnessRuntimeConfig } from '../types';
+import { IContext, IWindowRefs } from '../types';
+
+const OPACITY = {
+  FULL: 1,
+  DIM: 0.9,
+};
 
 /**
  * Control the position of the detached dev-tools.
@@ -13,11 +18,14 @@ import { IWindowRefs, IUIHarnessRuntimeConfig } from '../types';
  *    https://github.com/electron/electron/blob/master/docs/tutorial/devtools-extension.md
  *
  */
-export function showDevTools(args: {
-  refs: IWindowRefs;
-  config: IUIHarnessRuntimeConfig;
-}) {
-  const { refs, config } = args;
+export function showDevTools(
+  args: IContext & {
+    refs: IWindowRefs;
+    title?: string;
+  },
+) {
+  const { refs, title = 'UIHarness' } = args;
+
   const window = refs.window;
   if (!window) {
     return;
@@ -28,19 +36,25 @@ export function showDevTools(args: {
     return;
   }
 
+  const file = `[uih.window].${window
+    .getTitle()
+    .replace(/\s/g, '_')}.devTools.json`;
+
   const bounds = window.getBounds();
   const state = WindowState({
     defaultWidth: bounds.width / 2,
     defaultHeight: bounds.height,
-    file: `[uih.${config.name.replace(/\s/g, '_')}].devTools-window.json`,
+    file,
   });
   const saveState = () => state.saveState(devTools);
 
   const devTools = (refs.devTools = new BrowserWindow({
-    show: false,
-    title: 'Dev Tools',
+    title,
     width: state.width,
     height: state.height,
+    parent: window,
+    opacity: 0,
+    show: false,
   }));
 
   const webContents = window.webContents;
@@ -52,8 +66,15 @@ export function showDevTools(args: {
     devTools.setPosition(bounds.x + bounds.width + 10, bounds.y);
   };
 
+  const updateOpacity = () => {
+    const isFocused = window.isFocused() || devTools.isFocused();
+    const opacity = isFocused ? OPACITY.FULL : OPACITY.DIM;
+    devTools.setOpacity(opacity);
+  };
+
   devTools.once('ready-to-show', () => {
     updatePosition();
+    updateOpacity();
     devTools.show();
   });
 
@@ -72,5 +93,15 @@ export function showDevTools(args: {
     updatePosition();
   });
 
+  window.on('close', () => {
+    refs.devTools = undefined;
+    devTools.close();
+  });
+
   window.on('move', () => updatePosition());
+
+  window.on('focus', () => updateOpacity());
+  window.on('blur', () => updateOpacity());
+  devTools.on('focus', () => updateOpacity());
+  devTools.on('blur', () => updateOpacity());
 }

@@ -19,7 +19,7 @@ try {
 } catch (error) {
   /**
    * 🐷 TODO  Do something with the error, like:
-   *          - log it
-   *          - alert the main process, etc
+   *          - Log it somewhere.
+   *          - Alert the main process, etc.
    */
 }
