@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "0.0.29",
+  "version": "0.0.31",
   "scripts": {
     "postinstall": "uiharness init",
     "ui": "yarn sl && uiharness $@",
@@ -10,10 +10,10 @@
     "start": "uiharness start $@"
   },
   "dependencies": {
-    "@uiharness/electron": "0.3.41"
+    "@uiharness/electron": "0.3.43"
   },
   "devDependencies": {
-    "@uiharness/core": "1.1.30",
+    "@uiharness/core": "1.1.32",
     "typescript": "^3.2.4"
   },
   "resolutions": {

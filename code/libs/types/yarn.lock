@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@tdb/typescript@^3.2.8":
+"@tdb/typescript@3.2.8":
   version "3.2.8"
   resolved "https://registry.yarnpkg.com/@tdb/typescript/-/typescript-3.2.8.tgz#e5bc58cfd1a479d908493c37d05c95fe32d14f44"
   integrity sha512-1GWOh6y3Z3/OCcKrEVgC6wBAxbW6mKGFmIZo0xRctFfgGCDHcwuhKFlMOMLkVpS1l6erhiICrSuIQEPqmO57JA==

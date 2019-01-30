@@ -1,20 +1,39 @@
 {
-  "name": "ui",
-  "version": "0.0.0",
+  "name": "@uiharness/ui",
+  "version": "0.0.1",
   "scripts": {
     "postinstall": "uiharness init",
     "ui": "uiharness $@",
-    "start": "uiharness start $@"
+    "start": "uiharness start $@",
+    "test": "sh ./node_modules/@tdb/test/sh/test.sh",
+    "tdd": "yarn run test --reporter min --watch",
+    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
+    "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
+    "prepare": "yarn build && yarn lint && yarn test"
   },
   "dependencies": {
-    "@uiharness/electron": "0.3.41"
+    "@uiharness/electron": "0.3.43"
   },
   "devDependencies": {
-    "@uiharness/core": "1.1.30",
-    "typescript": "^3.2.4"
+    "@tdb/test": "1.2.14",
+    "@uiharness/core": "1.1.32"
   },
   "resolutions": {
     "@types/react": "16.7.17"
   },
+  "files": [
+    "lib"
+  ],
+  "engines": {
+    "node": ">=10.x"
+  },
+  "keywords": [
+    "design",
+    "test",
+    "react",
+    "typescript",
+    "types",
+    "ui"
+  ],
   "license": "MIT"
 }
