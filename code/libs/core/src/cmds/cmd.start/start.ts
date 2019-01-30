@@ -10,7 +10,7 @@ import {
 } from '../../common';
 import { Settings } from '../../settings';
 import { bundleElectron } from '../cmd.bundle';
-import { init } from '../cmd.init';
+import * as init from '../cmd.init';
 
 /**
  * Starts the development server for the given target.
@@ -45,7 +45,7 @@ export async function startElectron(args: { settings: Settings }) {
   const port = electron.port;
 
   // Ensure the module is initialized.
-  await init({ settings, prod });
+  await init.prepare({ settings, prod });
   await electron.ensureEntries();
   log.info();
   logElectronInfo({ settings, port: true });
@@ -85,7 +85,7 @@ export async function startWeb(args: { settings: Settings }) {
   const port = web.port;
 
   // Ensure the module is initialized.
-  await init({ settings, prod });
+  await init.prepare({ settings, prod });
   log.info();
   logWebInfo({ settings, port: true });
 

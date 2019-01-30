@@ -1,4 +1,4 @@
-productName: My App Name
+productName: My App
 appId: __com.my-app.app__
 publish:
   provider: github
@@ -10,15 +10,8 @@ publish:
 mac:
   target:
     - zip
-    - dmg
   artifactName: '${productName}-mac.${ext}'
   icon: static/build/app.icns
-dmg:
-  title: '${productName} (${version})'
-  background: static/build/background.png
-  window:
-    width: 540
-    height: 358
 win:
   target:
     - zip

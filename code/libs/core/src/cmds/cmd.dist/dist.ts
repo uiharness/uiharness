@@ -13,7 +13,7 @@ import {
 } from '../../common';
 import { Settings } from '../../settings';
 import { bundleElectron, bundleWeb } from '../cmd.bundle';
-import { init } from '../cmd.init';
+import * as init from '../cmd.init';
 
 /**
  * Bundles the application ready for distribution.
@@ -68,7 +68,7 @@ export async function distElectron(args: {
   };
 
   // Ensure the module is initialized.
-  await init({ settings, prod });
+  await init.prepare({ settings, prod });
   await prepareBuilderYaml({ settings });
 
   if (!silent) {

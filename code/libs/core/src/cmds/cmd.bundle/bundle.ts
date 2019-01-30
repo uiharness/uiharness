@@ -8,7 +8,7 @@ import {
   BundleTarget,
 } from '../../common';
 import { Settings } from '../../settings';
-import { init } from '../cmd.init';
+import * as init from '../cmd.init';
 import { stats as renderStats } from '../cmd.stats';
 
 /**
@@ -52,9 +52,10 @@ export async function bundleElectron(args: {
   summary?: boolean;
   stats?: boolean;
 }) {
-  const { settings, prod, silent = false } = args;
+  const { settings, silent = false } = args;
   const summary = value.defaultValue(args.summary, true);
   const stats = value.defaultValue(args.stats, true);
+  const prod = value.defaultValue(args.prod, true);
   const env = toEnv(prod);
   let { main, renderer } = args;
   const pkg = settings.package;
@@ -68,7 +69,7 @@ export async function bundleElectron(args: {
   renderer = all ? true : renderer;
 
   // Ensure the module is initialized.
-  await init({ settings, prod });
+  await init.prepare({ settings, prod });
   await electron.ensureEntries();
 
   // Build the command.
@@ -156,9 +157,10 @@ export async function bundleWeb(args: {
   summary?: boolean;
   stats?: boolean;
 }) {
-  const { settings, prod, silent = false } = args;
+  const { settings, silent = false } = args;
   const summary = value.defaultValue(args.summary, true);
   const stats = value.defaultValue(args.stats, true);
+  const prod = value.defaultValue(args.prod, true);
   const env = toEnv(prod);
   const pkg = settings.package;
   const web = settings.web;
@@ -166,7 +168,7 @@ export async function bundleWeb(args: {
   const out = web.out(prod);
 
   // Ensure the module is initialized.
-  await init({ settings, prod });
+  await init.prepare({ settings, prod });
   await web.ensureEntries();
 
   // Build the command.

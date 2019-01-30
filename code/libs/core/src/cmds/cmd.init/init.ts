@@ -37,6 +37,14 @@ const toFlags = (args: IInitFlags) => {
 };
 
 /**
+ * Prepares the module for execution.
+ */
+export async function prepare(args: { settings: Settings; prod: boolean }) {
+  const { settings, prod } = args;
+  return init({ settings, prod, files: false });
+}
+
+/**
  * Initialize the module.
  */
 export async function init(
