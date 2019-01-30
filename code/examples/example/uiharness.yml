@@ -2,7 +2,7 @@
 # https://uiharness.com/docs/config
 #
 
-name: My App Name
+name: My App
 
 electron:
   port: 8888
