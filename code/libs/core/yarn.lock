@@ -847,6 +847,17 @@
     ramda "0.26.1"
     rxjs "6.3.3"
 
+"@tdb/log@1.1.21":
+  version "1.1.21"
+  resolved "https://registry.yarnpkg.com/@tdb/log/-/log-1.1.21.tgz#a9cf4abe6c1c19a4b1f4853e76b84ebeedd7de16"
+  integrity sha512-S5HPt71csUFN/mwhG+NdhpzIe1QGJYPgyuwoqAgy4XQoLzdckprxEwgeOuuPILXzcEuhkL0cCG6cp9a1bAw6lg==
+  dependencies:
+    "@types/ramda" "0.25.47"
+    chalk "2.4.2"
+    cli-table "0.3.1"
+    ramda "0.26.1"
+    rxjs "6.3.3"
+
 "@tdb/npm@0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@tdb/npm/-/npm-0.1.0.tgz#4dffd4414ca52ab440e9f19d00ed6a665d7c2257"
@@ -908,6 +919,32 @@
     js-cookie "2.2.0"
     moment "2.23.0"
     path-to-regexp "2.4.0"
+    react "16.7.0"
+    react-dom "16.7.0"
+    react-inspector "2.3.1"
+    tinycolor2 "1.4.1"
+    tslib "1.9.3"
+    underscore.string "3.3.5"
+
+"@tdb/util@1.9.28":
+  version "1.9.28"
+  resolved "https://registry.yarnpkg.com/@tdb/util/-/util-1.9.28.tgz#345781638d1bc2cdd4c85e4ce33bdb7e18a74276"
+  integrity sha512-muAQaZ31XlZV+Wq/Hi2GZ9QSiGYg6+tkXM8ecAu6z3TcNv3NEGR9XJBS+h4gAfNEGiXf/7pT403hsKfyaaSEDw==
+  dependencies:
+    "@tdb/log" "1.1.21"
+    "@types/react" "16.7.17"
+    "@types/react-dom" "16.0.11"
+    "@types/string" "0.0.29"
+    "@types/tinycolor2" "1.4.1"
+    "@types/underscore.string" "0.0.33"
+    cuid "2.1.4"
+    dynamics.js "1.1.5"
+    escape-string-regexp "1.0.5"
+    fastclick "1.0.6"
+    glamor "2.20.40"
+    js-cookie "2.2.0"
+    moment "2.24.0"
+    path-to-regexp "3.0.0"
     react "16.7.0"
     react-dom "16.7.0"
     react-inspector "2.3.1"
@@ -1176,15 +1213,15 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.8.tgz#0b45bf0607a5509b921335658d87489c12955176"
   integrity sha512-OMSKUmZ09gbzITzx4nxnJqhprWC7JqsmlrEsVtb+cv3GXHNpv0kktqxhboKX52FnMggkQvT5ezt8pxTWyKpJHA==
 
-"@uiharness/electron@^0.3.39":
-  version "0.3.39"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.39.tgz#905460d41ccbec8651e62a483efacd9da5d1ac8b"
-  integrity sha512-DQ3n4EampD4BiOTbnuKenfKEqBIAxgxoNErcO2YxiF/Vk/e65lwuZX/NgAD2CP1lScyT9KLUcaIQgIz3Xj/o2w==
+"@uiharness/electron@^0.3.40":
+  version "0.3.40"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.40.tgz#aaebe251dc48b026b89bf2947bd0418789a3cf23"
+  integrity sha512-ccO1UkOVeMvZWQPJ4xFHlX2KLsoGksInG1avkkTAgUt3sLe7Ye76kr0MXWOCnt2L7SEZ5LB7iD8GFNL29w9J5w==
   dependencies:
-    "@tdb/log" "1.1.20"
-    "@tdb/util" "1.9.26"
+    "@tdb/log" "1.1.21"
+    "@tdb/util" "1.9.28"
     "@types/app-root-path" "1.2.4"
-    "@uiharness/types" "0.0.17"
+    "@uiharness/types" "0.0.18"
     app-root-path "2.1.0"
     electron "4.0.2"
     electron-is "3.0.0"
@@ -1193,10 +1230,10 @@
     electron-window-state "5.0.3"
     tslib "1.9.3"
 
-"@uiharness/types@0.0.17":
-  version "0.0.17"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.17.tgz#583029c109d0e3cb34aa3114650b4c24e2d02a73"
-  integrity sha512-HTdOTvl1Y2L2qfuVzIanhfZv/7YGnOlOGAn6ESFf26Aq68vb5uF2SR88PCLUhnMQh2CpuLyBbWsIUDHd8YZXsA==
+"@uiharness/types@0.0.18":
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.18.tgz#44ba81fe7e7c80d2b736bd1b17e88e79b913c59c"
+  integrity sha512-5lWJ51kIz3w/4vr9I0iMN1fBixXG/LgcQRpVyQaV/fr97acOCFg0+tdfH4+D0uiAvh6bU4cYo+XyDc9r9ZCYsg==
 
 "@zeit/schemas@2.6.0":
   version "2.6.0"
@@ -5037,6 +5074,11 @@ moment@2.23.0:
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.23.0.tgz#759ea491ac97d54bac5ad776996e2a58cc1bc225"
   integrity sha512-3IE39bHVqFbWWaPOMHZF98Q9c3LDKGTmypMiTM2QygGXXElkFWIH7GxfmlwmY2vwa+wmNsoYZmG2iusf1ZjJoA==
 
+moment@2.24.0:
+  version "2.24.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
+  integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -5708,6 +5750,11 @@ path-to-regexp@2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-2.4.0.tgz#35ce7f333d5616f1c1e1bfe266c3aba2e5b2e704"
   integrity sha512-G6zHoVqC6GGTQkZwF4lkuEyMbVOjoBKAEybQUypI1WTkqinCOrq2x6U2+phkJ1XsEMTy4LjtwPI7HW+NVrRR2w==
+
+path-to-regexp@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-3.0.0.tgz#c981a218f3df543fa28696be2f88e0c58d2e012a"
+  integrity sha512-ZOtfhPttCrqp2M1PBBH4X13XlvnfhIwD7yCLx+GoGoXRPQyxGOTdQMpIzPSPKXAJT/JQrdfFrgdJOyAzvgpQ9A==
 
 path-to-regexp@^1.7.0:
   version "1.7.0"
