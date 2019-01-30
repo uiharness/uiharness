@@ -44,11 +44,6 @@ describe('Settings', () => {
       const settings = Settings.create('/NO_EXIST');
       expect(settings.exists).to.eql(false);
       expect(settings.package.exists).to.eql(false);
-
-      expect(settings.init.scripts).to.eql(true);
-      expect(settings.init.files).to.eql(true);
-      expect(settings.init.html).to.eql(true);
-      expect(settings.init.deps).to.eql(true);
     });
   });
 

@@ -9,17 +9,6 @@ export type IUIHarnessConfig = {
   name?: string;
   electron?: IUIHarnessElectronConfig;
   web?: IUIHarnessWebConfig;
-
-  /**
-   * Flags used to determine what to
-   * inclue/exclude within the `init` script.
-   */
-  init?: {
-    scripts?: boolean;
-    files?: boolean;
-    html?: boolean;
-    deps?: boolean;
-  };
 };
 
 /**

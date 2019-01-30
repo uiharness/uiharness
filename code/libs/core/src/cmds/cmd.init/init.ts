@@ -7,27 +7,51 @@ import {
   log,
   npm,
   tmpl,
+  value,
 } from '../../common';
 import { Settings } from '../../settings';
 import { clean } from '../cmd.clean';
 
 const { SCRIPTS } = constants;
 const { resolve, join } = fsPath;
+const { defaultValue } = value;
+
+type IInitFlags = {
+  force?: boolean;
+  prod?: boolean;
+  scripts?: boolean;
+  files?: boolean;
+  html?: boolean;
+  deps?: boolean;
+};
+
+const toFlags = (args: IInitFlags) => {
+  return {
+    force: defaultValue(args.force, false),
+    prod: defaultValue(args.prod, false),
+    scripts: defaultValue(args.scripts, true),
+    files: defaultValue(args.files, true),
+    html: defaultValue(args.html, true),
+    deps: defaultValue(args.deps, true),
+  };
+};
 
 /**
  * Initialize the module.
  */
-export async function init(args: {
-  settings: Settings;
-  force?: boolean;
-  reset?: boolean;
-  prod?: boolean;
-}) {
-  const { settings, force = false, prod = false } = args;
+export async function init(
+  args: IInitFlags & {
+    settings: Settings;
+    reset?: boolean;
+  },
+) {
+  const { settings } = args;
   const pkg = settings.package;
   if (args.reset) {
     return reset({ settings });
   }
+  const flags = toFlags(args);
+  const { force, prod } = flags;
 
   // Ensure the latest configuration files exist within the [.uiharness] folder.
   await saveConfigJson({ settings, prod });
@@ -38,7 +62,8 @@ export async function init(args: {
     return;
   }
 
-  const flags = settings.init;
+  // const flags = settings.init();
+
   if (flags.scripts) {
     await pkg.addFields('scripts', SCRIPTS).save();
   }
@@ -144,11 +169,9 @@ async function copyPackage(args: { settings: Settings; prod: boolean }) {
 async function isInitialized(args: { settings: Settings }) {
   const { settings } = args;
   const pkg = settings.package;
-  const init = settings.init;
-
   const exists = (path: string) => fs.pathExists(resolve(path));
 
-  if (init.files && (!(await exists('./src')) || !(await exists('./static')))) {
+  if (!(await exists('./src')) || !(await exists('./uiharness.yml'))) {
     return false;
   }
 
@@ -158,6 +181,10 @@ async function isInitialized(args: { settings: Settings }) {
   const hasAllScripts = Object.keys(scripts).every(
     key => pkg.scripts[key] === scripts[key],
   );
+  if (!hasAllScripts) {
+    return false;
+  }
 
-  return hasAllScripts;
+  // Finish up.
+  return true;
 }
