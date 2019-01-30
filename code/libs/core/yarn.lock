@@ -1213,15 +1213,15 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.8.tgz#0b45bf0607a5509b921335658d87489c12955176"
   integrity sha512-OMSKUmZ09gbzITzx4nxnJqhprWC7JqsmlrEsVtb+cv3GXHNpv0kktqxhboKX52FnMggkQvT5ezt8pxTWyKpJHA==
 
-"@uiharness/electron@^0.3.40":
-  version "0.3.40"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.40.tgz#aaebe251dc48b026b89bf2947bd0418789a3cf23"
-  integrity sha512-ccO1UkOVeMvZWQPJ4xFHlX2KLsoGksInG1avkkTAgUt3sLe7Ye76kr0MXWOCnt2L7SEZ5LB7iD8GFNL29w9J5w==
+"@uiharness/electron@^0.3.41":
+  version "0.3.41"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.41.tgz#68094d42300749835b4fbf712958364eab1e3560"
+  integrity sha512-4N86irvu9rU3Hg+3mqxwitWAalnk6YzFhv5m/xBQFNx8zI1kqT9nJQmqYYBrLliS1NJkRejyGzh/XJbTd2G8rA==
   dependencies:
     "@tdb/log" "1.1.21"
     "@tdb/util" "1.9.28"
     "@types/app-root-path" "1.2.4"
-    "@uiharness/types" "0.0.18"
+    "@uiharness/types" "0.0.19"
     app-root-path "2.1.0"
     electron "4.0.2"
     electron-is "3.0.0"
@@ -1230,10 +1230,10 @@
     electron-window-state "5.0.3"
     tslib "1.9.3"
 
-"@uiharness/types@0.0.18":
-  version "0.0.18"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.18.tgz#44ba81fe7e7c80d2b736bd1b17e88e79b913c59c"
-  integrity sha512-5lWJ51kIz3w/4vr9I0iMN1fBixXG/LgcQRpVyQaV/fr97acOCFg0+tdfH4+D0uiAvh6bU4cYo+XyDc9r9ZCYsg==
+"@uiharness/types@0.0.19":
+  version "0.0.19"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.19.tgz#d13a1f02d723c09bdeb8f5ed361429e6739341e7"
+  integrity sha512-7Ce76jWxHZ3UmqMzevhFrWQ5lLvIgi/A3NDL6tVNf5Hf35CBoMX3xH8yyMfS53Wb1b9WnxVyg5mGRtTF7s/O0A==
 
 "@zeit/schemas@2.6.0":
   version "2.6.0"

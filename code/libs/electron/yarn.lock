@@ -189,10 +189,10 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/types@0.0.18":
-  version "0.0.18"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.18.tgz#44ba81fe7e7c80d2b736bd1b17e88e79b913c59c"
-  integrity sha512-5lWJ51kIz3w/4vr9I0iMN1fBixXG/LgcQRpVyQaV/fr97acOCFg0+tdfH4+D0uiAvh6bU4cYo+XyDc9r9ZCYsg==
+"@uiharness/types@0.0.19":
+  version "0.0.19"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.19.tgz#d13a1f02d723c09bdeb8f5ed361429e6739341e7"
+  integrity sha512-7Ce76jWxHZ3UmqMzevhFrWQ5lLvIgi/A3NDL6tVNf5Hf35CBoMX3xH8yyMfS53Wb1b9WnxVyg5mGRtTF7s/O0A==
 
 ajv@^6.5.5:
   version "6.7.0"
