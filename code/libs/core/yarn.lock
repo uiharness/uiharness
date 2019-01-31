@@ -813,10 +813,10 @@
   dependencies:
     any-observable "^0.3.0"
 
-"@tdb/electron@0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@tdb/electron/-/electron-0.0.8.tgz#089d1565a91e418c99f866d9e7d4a4175d407d10"
-  integrity sha512-vDP+yYoUKbWpdf4TAbLSOXSU27tnb1oxV0baIUBV6Qa7VKXfi/uNaex7Kg5lSHjgy4kQlEpgqAuj4RPfZtnaIw==
+"@tdb/electron@0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@tdb/electron/-/electron-0.0.9.tgz#2dbfff34be3ca60cdeab870c4521f482973028c2"
+  integrity sha512-9bx+4sWlFHl+TIhpGUH8zxWTZrS7ZiricU6eI46foI6k8L+vq69aYKgNFpOEiAlSdS2LGo2hy3eV7WvLddpFJw==
   dependencies:
     "@tdb/log" "1.1.21"
     "@tdb/util" "1.9.29"
@@ -1193,12 +1193,12 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.8.tgz#0b45bf0607a5509b921335658d87489c12955176"
   integrity sha512-OMSKUmZ09gbzITzx4nxnJqhprWC7JqsmlrEsVtb+cv3GXHNpv0kktqxhboKX52FnMggkQvT5ezt8pxTWyKpJHA==
 
-"@uiharness/electron@0.3.48":
-  version "0.3.48"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.48.tgz#471ed29e2c5a921fe62b70c7cc3bc7aefadebcfb"
-  integrity sha512-YBKqHq+Q+vfo+W5EsibncHFYtIkTUe5Rdsmzt1NyQixexffm33u+tKJ/52zmKyCC0OPIA6u+uVPpzXCdapRyxA==
+"@uiharness/electron@0.3.49":
+  version "0.3.49"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.49.tgz#3a6743409fb5c77ed736bb7276f6a8ab9f449b01"
+  integrity sha512-NKkmEwiSa1DsfJ3DNlTdnfVLijkf1IeDfJ0Agahjc0NrCG+9D34YmbNnMIXtlwVA8ki4N2cj0CrMqlFjuK5FUQ==
   dependencies:
-    "@tdb/electron" "0.0.8"
+    "@tdb/electron" "0.0.9"
     "@tdb/log" "1.1.21"
     "@tdb/util" "1.9.29"
     "@types/app-root-path" "1.2.4"
