@@ -1,6 +1,6 @@
 {
   "name": "example-grid",
-  "version": "0.0.37",
+  "version": "0.0.39",
   "scripts": {
     "postinstall": "uiharness init",
     "ui": "yarn sl && uiharness $@",
@@ -13,11 +13,11 @@
     "@babel/polyfill": "^7.2.5",
     "@tdb/ui.text": "^1.0.90",
     "@tdb/util": "^1.9.29",
-    "@uiharness/electron": "0.3.46",
+    "@uiharness/electron": "0.3.48",
     "handsontable": "^6.2.2"
   },
   "devDependencies": {
-    "@uiharness/core": "1.1.35",
+    "@uiharness/core": "1.1.37",
     "typescript": "^3.2.4"
   },
   "resolutions": {

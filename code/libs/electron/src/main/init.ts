@@ -1,4 +1,4 @@
-import electron from '@tdb/electron/lib/main';
+import * as main from '@tdb/electron/lib/main';
 import { app, BrowserWindow } from 'electron';
 
 import { IUIHarnessRuntimeConfig } from '../common';
@@ -23,7 +23,7 @@ export function init<M extends IpcMessage>(args: {
 }) {
   return new Promise<IResponse<M>>((resolve, reject) => {
     const { config } = args;
-    const { log, ipc } = electron.init<M>();
+    const { log, ipc } = main.init<M>();
     const context: IContext = {
       config,
       log,

@@ -1,4 +1,4 @@
-import uiharness from '@uiharness/electron/lib/main';
+import * as uiharness from '@uiharness/electron/lib/main';
 
 /**
  * Initialize the default [main] window process with the [UIHarness].
