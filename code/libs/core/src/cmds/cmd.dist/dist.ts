@@ -121,7 +121,7 @@ export async function distElectron(args: {
 
   if (!silent) {
     log.info();
-    log.info(`🤟  Application packaging complete.\n`);
+    log.info(`🤟  Application distribution complete.\n`);
     log.info.gray(`   • productName: ${log.yellow(config.productName)}`);
     log.info.gray(`   • appId:       ${config.appId}`);
     log.info.gray(`   • version:     ${settings.package.version}`);
