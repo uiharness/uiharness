@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@tdb/electron@0.0.11":
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/@tdb/electron/-/electron-0.0.11.tgz#b0840cfb8a4ebf38de86f242a84152bb5118f1e0"
-  integrity sha512-9rseeY5WiAQWKmZu1sVTnGnuTB2HmIEqLlUBuobieI7W4xx1RbOBtQJxWboHRQxgH6jTz62RoA2yu96uU/TWSA==
+"@tdb/electron@0.0.14":
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/@tdb/electron/-/electron-0.0.14.tgz#1f7fcd810e9e66954839e6243092cfd0ae097eca"
+  integrity sha512-BVkVaBIf8X2gFeKWM9h+NVdq/w1OXTLOS6AEETZuPEEzVt/ujmQr6eDpmOBXFGp3V1wvH4hml2+2+fMf4/ZMYg==
   dependencies:
     "@tdb/log" "1.1.21"
     "@tdb/util" "1.9.29"
@@ -13,6 +13,7 @@
     app-root-path "2.1.0"
     electron-is "3.0.0"
     electron-log "2.2.17"
+    electron-window-state "^5.0.3"
     fs-extra "7.0.1"
     is-electron "2.2.0"
 
@@ -164,10 +165,10 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/types@0.0.21":
-  version "0.0.21"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.21.tgz#74ef38d459c96e30c85f9ab0ce1391d7e270f5ed"
-  integrity sha512-qLj1RhgQD4FX7YBDiP2FGpH/1MTms3Sc98JyePIMlrqrnFldBIWSGr2OfGYlgZulnjgrVgPuX+8acqTmazJLuQ==
+"@uiharness/types@0.0.22":
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.22.tgz#87baa7acbad103c840d131c86347daf218e0ef94"
+  integrity sha512-k2TGVDGuNokUhDSwMN4Vg6ybLX8mlGnO8UJuY1KUXrdi1EFdGCcQsY2EYOE2yy0QxL2wdA19IHHwZn+9Aklf8A==
 
 ajv@^6.5.5:
   version "6.7.0"
@@ -574,7 +575,7 @@ electron-log@2.2.17:
   resolved "https://registry.yarnpkg.com/electron-log/-/electron-log-2.2.17.tgz#e71e2ebb949fc96ded7cdb99eeee7202e48981d2"
   integrity sha512-v+Af5W5z99ehhaLOfE9eTSXUwjzh2wFlQjz51dvkZ6ZIrET6OB/zAZPvsuwT6tm3t5x+M1r+Ed3U3xtPZYAyuQ==
 
-electron-window-state@5.0.3:
+electron-window-state@5.0.3, electron-window-state@^5.0.3:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/electron-window-state/-/electron-window-state-5.0.3.tgz#4f36d09e3f953d87aff103bf010f460056050aa8"
   integrity sha512-1mNTwCfkolXl3kMf50yW3vE2lZj0y92P/HYWFBrb+v2S/pCka5mdwN3cagKm458A7NjndSwijynXgcLWRodsVg==

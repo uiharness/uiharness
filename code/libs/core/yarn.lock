@@ -813,10 +813,10 @@
   dependencies:
     any-observable "^0.3.0"
 
-"@tdb/electron@0.0.11":
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/@tdb/electron/-/electron-0.0.11.tgz#b0840cfb8a4ebf38de86f242a84152bb5118f1e0"
-  integrity sha512-9rseeY5WiAQWKmZu1sVTnGnuTB2HmIEqLlUBuobieI7W4xx1RbOBtQJxWboHRQxgH6jTz62RoA2yu96uU/TWSA==
+"@tdb/electron@0.0.14":
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/@tdb/electron/-/electron-0.0.14.tgz#1f7fcd810e9e66954839e6243092cfd0ae097eca"
+  integrity sha512-BVkVaBIf8X2gFeKWM9h+NVdq/w1OXTLOS6AEETZuPEEzVt/ujmQr6eDpmOBXFGp3V1wvH4hml2+2+fMf4/ZMYg==
   dependencies:
     "@tdb/log" "1.1.21"
     "@tdb/util" "1.9.29"
@@ -824,6 +824,7 @@
     app-root-path "2.1.0"
     electron-is "3.0.0"
     electron-log "2.2.17"
+    electron-window-state "^5.0.3"
     fs-extra "7.0.1"
     is-electron "2.2.0"
 
@@ -1193,16 +1194,16 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.8.tgz#0b45bf0607a5509b921335658d87489c12955176"
   integrity sha512-OMSKUmZ09gbzITzx4nxnJqhprWC7JqsmlrEsVtb+cv3GXHNpv0kktqxhboKX52FnMggkQvT5ezt8pxTWyKpJHA==
 
-"@uiharness/electron@0.3.50":
-  version "0.3.50"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.50.tgz#dd50802062cae901a78491424adcc148bc0b36ef"
-  integrity sha512-/3oM4geFeXVk4nO+zxhu8vvyHFYvPtqJrigxVf0eF6xEucJjs4GDCyYY0UD72NhEPB+zC7h5QkpsgbQHz1V3tA==
+"@uiharness/electron@0.3.54":
+  version "0.3.54"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.54.tgz#184b3c7a5728bab66b20310eb7db665810c59b0c"
+  integrity sha512-feerFSvd7K2oDnAf9Wqrn3zUCfbALf6+MJ7gG6a+B4uxptoz9D7ZVNrA6c33330VWvX0srKxdOt+UIoT1LsEYA==
   dependencies:
-    "@tdb/electron" "0.0.11"
+    "@tdb/electron" "0.0.14"
     "@tdb/log" "1.1.21"
     "@tdb/util" "1.9.29"
     "@types/app-root-path" "1.2.4"
-    "@uiharness/types" "0.0.21"
+    "@uiharness/types" "0.0.22"
     app-root-path "2.1.0"
     electron "4.0.3"
     electron-is "3.0.0"
@@ -1211,10 +1212,10 @@
     electron-window-state "5.0.3"
     tslib "1.9.3"
 
-"@uiharness/types@0.0.21":
-  version "0.0.21"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.21.tgz#74ef38d459c96e30c85f9ab0ce1391d7e270f5ed"
-  integrity sha512-qLj1RhgQD4FX7YBDiP2FGpH/1MTms3Sc98JyePIMlrqrnFldBIWSGr2OfGYlgZulnjgrVgPuX+8acqTmazJLuQ==
+"@uiharness/types@0.0.22":
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.22.tgz#87baa7acbad103c840d131c86347daf218e0ef94"
+  integrity sha512-k2TGVDGuNokUhDSwMN4Vg6ybLX8mlGnO8UJuY1KUXrdi1EFdGCcQsY2EYOE2yy0QxL2wdA19IHHwZn+9Aklf8A==
 
 "@zeit/schemas@2.6.0":
   version "2.6.0"
@@ -3102,7 +3103,7 @@ electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.103:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.108.tgz#2e79a6fcaa4b3e7c75abf871505bda8e268c910e"
   integrity sha512-/QI4hMpAh48a1Sea6PALGv+kuVne9A2EWGd8HrWHMdYhIzGtbhVVHh6heL5fAzGaDnZuPyrlWJRl8WPm4RyiQQ==
 
-electron-window-state@5.0.3:
+electron-window-state@5.0.3, electron-window-state@^5.0.3:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/electron-window-state/-/electron-window-state-5.0.3.tgz#4f36d09e3f953d87aff103bf010f460056050aa8"
   integrity sha512-1mNTwCfkolXl3kMf50yW3vE2lZj0y92P/HYWFBrb+v2S/pCka5mdwN3cagKm458A7NjndSwijynXgcLWRodsVg==
