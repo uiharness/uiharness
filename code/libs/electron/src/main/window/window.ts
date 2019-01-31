@@ -4,10 +4,17 @@ import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { format } from 'url';
 
-import { is, IUIHarnessRuntimeConfig, path } from '../../common';
+import {
+  is,
+  IUIHarnessRuntimeConfig,
+  path,
+  value,
+  constants,
+} from '../../common';
 import { IWindowRefs, IContext } from '../types';
-import { showDevTools } from './devTools';
 import { createMenus } from './menus';
+
+import main from '@tdb/electron/lib/main';
 
 /**
  * Creates the main window.
@@ -15,10 +22,16 @@ import { createMenus } from './menus';
 export function create(
   args: IContext & {
     name: string;
+    devTools?: boolean;
+    defaultWidth?: number;
+    defaultHeight?: number;
   },
 ) {
   const { config, log, ipc } = args;
   const context: IContext = { config, log, ipc };
+  const devTools = value.defaultValue(args.devTools, true);
+  const defaultWidth = value.defaultValue(args.defaultWidth, 1000);
+  const defaultHeight = value.defaultValue(args.defaultHeight, 800);
 
   const refs: IWindowRefs = {
     window: undefined,
@@ -26,11 +39,11 @@ export function create(
   };
 
   const title = args.name || config.name;
-
+  const file = `[uih.window].${title.replace(/\s/g, '_')}.json`;
   const state = WindowState({
-    defaultWidth: 1200,
-    defaultHeight: 800,
-    file: `[uih.window].${title.replace(/\s/g, '_')}.json`,
+    defaultWidth,
+    defaultHeight,
+    file,
   });
 
   const state$ = new Subject();
@@ -52,8 +65,8 @@ export function create(
   window.once('ready-to-show', () => {
     window.show();
     window.setTitle(title);
-    if (is.dev()) {
-      showDevTools({ refs, ...context });
+    if (devTools && is.dev()) {
+      main.devTools.create({ parent: window, title: constants.NAME });
     }
   });
 

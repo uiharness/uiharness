@@ -1,7 +1,7 @@
 import * as main from '@tdb/electron/lib/main';
 import { app, BrowserWindow } from 'electron';
 
-import { IUIHarnessRuntimeConfig } from '../common';
+import { IUIHarnessRuntimeConfig, value } from '../common';
 import { Log } from '../types';
 import { IContext, IpcClient, IpcMessage, UIHarnessIpc } from './types';
 import * as mainWindow from './window';
@@ -15,15 +15,18 @@ type IResponse<M extends IpcMessage> = {
 
 /**
  * Default loader for a UIHarness [main] process.
- * @param config: The `.uiharess/config.json` file.
  */
 export function init<M extends IpcMessage>(args: {
-  config: IUIHarnessRuntimeConfig;
-  name?: string;
+  config: IUIHarnessRuntimeConfig; //   The [.uiharess/config.json] file.
+  name?: string; //                     The display name of the window.
+  ipc?: IpcClient; //                   Existing IPC client if aleady initialized.
+  log?: Log; //                         Existing log if already initialized.
+  devTools?: boolean; //                Show dev tools on load in running in development (default: true)
 }) {
   return new Promise<IResponse<M>>((resolve, reject) => {
-    const { config } = args;
-    const { log, ipc } = main.init<M>();
+    const { config, devTools } = args;
+    const { log, ipc } = main.init<M>({ ipc: args.ipc, log: args.log });
+
     const context: IContext = {
       config,
       log,
@@ -32,7 +35,7 @@ export function init<M extends IpcMessage>(args: {
 
     app.on('ready', () => {
       const name = args.name || app.getName();
-      const window = mainWindow.create({ name, ...context });
+      const window = mainWindow.create({ name, devTools, ...context });
       resolve({
         window,
         newWindow: e => mainWindow.create({ name: e.name, ...context }),

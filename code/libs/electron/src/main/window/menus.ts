@@ -1,7 +1,5 @@
 import { app, Menu, MenuItemConstructorOptions } from 'electron';
-
 import { IWindowRefs, IContext } from '../types';
-import { showDevTools } from './devTools';
 
 /**
  * Handles the creation of menus.
@@ -38,8 +36,9 @@ export function createMenus(
         {
           label: 'Show Developer Tools',
           click: () => {
+            console.log(`\nTODO 🐷   show dev tools \n`);
             if (!refs.devTools || !refs.devTools.isVisible()) {
-              showDevTools({ refs, ...context });
+              // showDevTools({ refs, ...context });
             }
           },
         },
