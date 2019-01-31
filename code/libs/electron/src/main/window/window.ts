@@ -17,8 +17,8 @@ export function create(
     name: string;
   },
 ) {
-  const { config, log } = args;
-  const context: IContext = { config, log };
+  const { config, log, ipc } = args;
+  const context: IContext = { config, log, ipc };
 
   const refs: IWindowRefs = {
     window: undefined,

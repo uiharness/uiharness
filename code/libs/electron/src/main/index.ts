@@ -1,1 +1,2 @@
-export { init } from './init';
+import * as main from './main';
+export default main;

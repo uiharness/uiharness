@@ -23,8 +23,8 @@
     "new-file": "^1.2.2"
   },
   "devDependencies": {
-    "@tdb/test": "1.2.13",
-    "@tdb/typescript": "3.2.8"
+    "@tdb/test": "1.2.14",
+    "@tdb/typescript": "3.2.9"
   },
   "engines": {
     "node": ">=10.x"

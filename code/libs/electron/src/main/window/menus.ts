@@ -11,8 +11,8 @@ export function createMenus(
     refs: IWindowRefs;
   },
 ) {
-  const { refs, config, log } = args;
-  const context: IContext = { config, log };
+  const { refs, config, log, ipc } = args;
+  const context: IContext = { config, log, ipc };
 
   const template: MenuItemConstructorOptions[] = [
     {
