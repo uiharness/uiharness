@@ -813,10 +813,10 @@
   dependencies:
     any-observable "^0.3.0"
 
-"@tdb/electron@0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@tdb/electron/-/electron-0.0.8.tgz#089d1565a91e418c99f866d9e7d4a4175d407d10"
-  integrity sha512-vDP+yYoUKbWpdf4TAbLSOXSU27tnb1oxV0baIUBV6Qa7VKXfi/uNaex7Kg5lSHjgy4kQlEpgqAuj4RPfZtnaIw==
+"@tdb/electron@0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@tdb/electron/-/electron-0.0.11.tgz#b0840cfb8a4ebf38de86f242a84152bb5118f1e0"
+  integrity sha512-9rseeY5WiAQWKmZu1sVTnGnuTB2HmIEqLlUBuobieI7W4xx1RbOBtQJxWboHRQxgH6jTz62RoA2yu96uU/TWSA==
   dependencies:
     "@tdb/log" "1.1.21"
     "@tdb/util" "1.9.29"
@@ -1117,10 +1117,10 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/core@1.1.36":
-  version "1.1.36"
-  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.1.36.tgz#5b6de673ea3d4a08968a313fcb557d6582a44a46"
-  integrity sha512-qKUFyZYzNny4EfnSEpG4PJ4GOGLBg9M+WTc5Cdd5YQsgmndiEfnwJzYPNW7SaPej8Ght5dgKcycEasP+Q/31yw==
+"@uiharness/core@1.1.39":
+  version "1.1.39"
+  resolved "https://registry.yarnpkg.com/@uiharness/core/-/core-1.1.39.tgz#451f3100179525368af97ad52e49646ec44981b1"
+  integrity sha512-9leUSH7VQaMUg59go9FPlqFROSkCogaRxC3egX8D8Ejp/bukoZjVv2hwD1+7G8k3Q4HooFa4uXGWad+r/TtXGA==
   dependencies:
     "@babel/core" "7.2.2"
     "@babel/preset-env" "7.2.3"
@@ -1128,7 +1128,7 @@
     "@babel/preset-typescript" "7.1.0"
     "@tdb/log" "1.1.21"
     "@tdb/util" "1.9.29"
-    "@uiharness/electron" "0.3.47"
+    "@uiharness/electron" "0.3.50"
     "@uiharness/types" "0.0.21"
     babel-core "^7.0.0-bridge.0"
     create-tmpl "0.1.1"
@@ -1141,12 +1141,12 @@
     serve "10.1.1"
     yargs "12.0.5"
 
-"@uiharness/electron@0.3.47":
-  version "0.3.47"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.47.tgz#0214024031d7553ef42b65a9c10dda042f860025"
-  integrity sha512-KcLYt67HgSDHkgDZlr18KSA6KVczO16cyNCOCBDULl8LAcEkQjA8reFHUMc5qmg7fhIG+I1vuvbv/NLj0aFs4w==
+"@uiharness/electron@0.3.50":
+  version "0.3.50"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.50.tgz#dd50802062cae901a78491424adcc148bc0b36ef"
+  integrity sha512-/3oM4geFeXVk4nO+zxhu8vvyHFYvPtqJrigxVf0eF6xEucJjs4GDCyYY0UD72NhEPB+zC7h5QkpsgbQHz1V3tA==
   dependencies:
-    "@tdb/electron" "0.0.8"
+    "@tdb/electron" "0.0.11"
     "@tdb/log" "1.1.21"
     "@tdb/util" "1.9.29"
     "@types/app-root-path" "1.2.4"
@@ -1871,14 +1871,14 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
-  version "1.0.30000932"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000932.tgz#5f8958b18985aaab007f766648f6f9c2f4cc7b9d"
-  integrity sha512-nc4jIhwpajQCvADmBo3F1fj8ySvE2+dw0lXAmYmtYJi1l7CvfdZVTkrwD60SrQHDC1mddgYtLyAcwrtYVtiMSQ==
+  version "1.0.30000933"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000933.tgz#4afa8456c968173ebfcaf6d67afccf78a6bf5267"
+  integrity sha512-DdIlPHIGtjUS2sH/yioeS9CS0JsWk8zGqid0OdfYhwJvufYZKZPcgerEX9E7PWOnshDc9IndnEJDoqauv+JUHA==
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000929:
-  version "1.0.30000932"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000932.tgz#d01763e9ce77810962ca7391ff827b5949ce4272"
-  integrity sha512-4bghJFItvzz8m0T3lLZbacmEY9X1Z2AtIzTr7s7byqZIOumASfr4ynDx7rtm0J85nDmx8vsgR6vnaSoeU8Oh0A==
+  version "1.0.30000933"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000933.tgz#5871ff54b3177675ae1c2a275b2aae7abf2b9222"
+  integrity sha512-d3QXv7eFTU40DSedSP81dV/ajcGSKpT+GW+uhtWmLvQm9bPk0KK++7i1e2NSW/CXGZhWFt2mFbFtCJ5I5bMuVA==
 
 capture-stack-trace@^1.0.0:
   version "1.0.1"
