@@ -1,7 +1,8 @@
 import * as main from '@tdb/electron/lib/main';
 import { app, BrowserWindow } from 'electron';
+import { join } from 'path';
 
-import { IUIHarnessRuntimeConfig, value } from '../common';
+import { IUIHarnessRuntimeConfig } from '../common';
 import { Log } from '../types';
 import { IContext, IpcClient, IpcMessage, UIHarnessIpc } from './types';
 import * as mainWindow from './window';
@@ -25,7 +26,10 @@ export function init<M extends IpcMessage>(args: {
 }) {
   return new Promise<IResponse<M>>((resolve, reject) => {
     const { config, devTools } = args;
-    const { log, ipc } = main.init<M>({ ipc: args.ipc, log: args.log });
+    const { log, ipc } = main.init<M>({
+      ipc: args.ipc,
+      log: args.log || getLogDir({ config }),
+    });
 
     const context: IContext = {
       config,
@@ -51,4 +55,24 @@ export function init<M extends IpcMessage>(args: {
       app.quit();
     });
   });
+}
+
+export function getLogDir(args: { config: IUIHarnessRuntimeConfig }) {
+  const { config } = args;
+  const os = require('os');
+  const platform = os.platform();
+  const home = os.homedir();
+  const appName = config.name.replace(/\s/g, '-').toLowerCase();
+
+  switch (platform) {
+    case 'darwin':
+      return join(home, 'Library/Logs', appName);
+
+    case 'win32':
+      return join(home, 'AppData\\Roaming', appName);
+
+    default:
+      // Assume Linux.
+      return join(home, '.config', appName);
+  }
 }
