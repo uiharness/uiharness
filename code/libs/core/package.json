@@ -21,7 +21,7 @@
     "@tdb/electron": "0.0.17",
     "@tdb/log": "1.1.21",
     "@tdb/util": "1.9.29",
-    "@uiharness/electron": "0.3.57",
+    "@uiharness/electron": "0.3.58",
     "@uiharness/types": "0.0.22",
     "babel-core": "^7.0.0-bridge.0",
     "create-tmpl": "0.1.1",

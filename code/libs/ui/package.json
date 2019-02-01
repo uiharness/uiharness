@@ -12,12 +12,12 @@
     "prepare": "yarn build && yarn lint && yarn test"
   },
   "dependencies": {
-    "@uiharness/electron": "0.3.56"
+    "@uiharness/electron": "0.3.58"
   },
   "devDependencies": {
     "@tdb/test": "1.2.14",
     "@tdb/typescript": "^3.2.9",
-    "@uiharness/core": "1.1.45"
+    "@uiharness/core": "1.1.46"
   },
   "resolutions": {
     "@types/react": "16.7.17"
