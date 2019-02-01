@@ -10,8 +10,8 @@
     "nuke": "sh ./sh/nuke.sh"
   },
   "dependencies": {
-    "@tdb/electron": "^0.0.16",
-    "@uiharness/electron": "0.3.57"
+    "@tdb/electron": "^0.0.17",
+    "@uiharness/electron": "0.3.58"
   },
   "devDependencies": {
     "@uiharness/core": "1.1.46",
