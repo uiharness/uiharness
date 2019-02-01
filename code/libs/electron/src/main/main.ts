@@ -1,3 +1,4 @@
+import * as os from 'os';
 import * as main from '@tdb/electron/lib/main';
 import { app, BrowserWindow } from 'electron';
 import { join } from 'path';
@@ -61,7 +62,6 @@ export function init<M extends IpcMessage>(args: {
  * Determines the path to the logs for the app.
  */
 export function logDir(args: { appName: string }) {
-  const os = require('os');
   const platform = os.platform();
   const home = os.homedir();
   const appName = args.appName.replace(/\s/g, '-').toLowerCase();
@@ -73,9 +73,13 @@ export function logDir(args: { appName: string }) {
     case 'win32':
       return join(home, 'AppData\\Roaming', appName);
 
-    default:
-      // Assume Linux.
+    case 'linux':
       return join(home, '.config', appName);
+
+    default:
+      throw new Error(
+        `Platorm '${platform}' not supported. Must be Mac/OSX, Windows or Linux.`,
+      );
   }
 }
 

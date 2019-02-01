@@ -1,4 +1,5 @@
 import main from '@uiharness/electron/lib/main';
+import * as os from 'os';
 
 import { command, fs, fsPath, log, logging } from '../../common';
 import { Settings } from '../../settings';
@@ -41,8 +42,24 @@ export async function open(args: { settings: Settings; folder?: boolean }) {
     return;
   }
 
+  const getPlatformDir = () => {
+    const platform = os.platform();
+    switch (platform) {
+      case 'darwin':
+        return 'mac';
+      case 'win32':
+        return 'win';
+      case 'linux':
+        return 'linux';
+      default:
+        throw new Error(
+          `Platorm '${platform}' not supported. Must be Mac/OSX, Windows or Linux.`,
+        );
+    }
+  };
+
   // Derive the path to the app.
-  const platform = 'mac'; // TODO 🐷 - make this platform aware.
+  const platform = getPlatformDir();
   const { outputDir = '', productName = 'UNKNOWN' } = config;
 
   if (!(await fs.pathExists(outputDir))) {
