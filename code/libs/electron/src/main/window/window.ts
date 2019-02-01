@@ -57,6 +57,7 @@ export function create(
     y: state.y,
     width: state.width,
     height: state.height,
+    acceptFirstMouse: true,
   }));
 
   createMenus({ refs, ...context });
