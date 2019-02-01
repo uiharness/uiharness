@@ -1,3 +1,5 @@
+import main from '@uiharness/electron/lib/main';
+
 import { command, fs, fsPath, log, logging } from '../../common';
 import { Settings } from '../../settings';
 
@@ -13,9 +15,19 @@ export async function open(args: { settings: Settings; folder?: boolean }) {
     log.info(`\n👉  Run ${log.cyan('yarn ui dist')} to build it.\n`);
   };
 
+  const tailCommand = (dir: string, file: string) => {
+    let msg = log.white('tail -f');
+    msg = `${msg} ${dir}/${log.cyan(file)}`;
+    return log.gray(msg);
+  };
+
   const runOpen = (path: string, type: 'app' | 'folder') => {
+    const logPaths = main.logPaths({ appName: settings.name });
+    const logCmd = tailCommand(logPaths.dir, logPaths.prod.filename);
     log.info();
-    log.info(`🖐  Open ${formatPath(path)}\n`);
+    log.info(`🖐  Open   ${formatPath(path)}`);
+    log.info.gray(`   logs:  ${logCmd}`);
+    log.info();
     return command()
       .add(`open "${path}"`)
       .run();

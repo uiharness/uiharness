@@ -28,7 +28,7 @@ export function init<M extends IpcMessage>(args: {
     const { config, devTools } = args;
     const { log, ipc } = main.init<M>({
       ipc: args.ipc,
-      log: args.log || getLogDir({ config }),
+      log: args.log || logDir({ appName: config.name }),
     });
 
     const context: IContext = {
@@ -57,12 +57,14 @@ export function init<M extends IpcMessage>(args: {
   });
 }
 
-export function getLogDir(args: { config: IUIHarnessRuntimeConfig }) {
-  const { config } = args;
+/**
+ * Determines the path to the logs for the app.
+ */
+export function logDir(args: { appName: string }) {
   const os = require('os');
   const platform = os.platform();
   const home = os.homedir();
-  const appName = config.name.replace(/\s/g, '-').toLowerCase();
+  const appName = args.appName.replace(/\s/g, '-').toLowerCase();
 
   switch (platform) {
     case 'darwin':
@@ -75,4 +77,13 @@ export function getLogDir(args: { config: IUIHarnessRuntimeConfig }) {
       // Assume Linux.
       return join(home, '.config', appName);
   }
+}
+
+/**
+ * Derives the set of log related paths for the app.
+ */
+export function logPaths(args: { appName: string }) {
+  const { appName } = args;
+  const dir = logDir({ appName });
+  return main.logger.getPaths({ dir });
 }
