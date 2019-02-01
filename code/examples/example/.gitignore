@@ -4,3 +4,6 @@ node_modules
 static
 src
 test
+yarn.lock
+uiharness.yml
+uiharness.builder.yml
