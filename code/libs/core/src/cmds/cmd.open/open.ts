@@ -1,5 +1,6 @@
 import { command, fs, fsPath, log, logging } from '../../common';
 import { Settings } from '../../settings';
+import { logger } from '@tdb/electron/lib/main';
 
 /**
  * Opens a built application.
