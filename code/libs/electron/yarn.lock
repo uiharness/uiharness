@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@tdb/electron@^0.0.16":
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/@tdb/electron/-/electron-0.0.16.tgz#f1c17403ccd189d77946ed75bce24cd08adda927"
-  integrity sha512-7z5OGQiKy2M1Mtaka3TZCBNlOJDosN5kmx9ZNivOYZHyfdcYchkxz6fG0JdN1Hu6vw5DGxk6G17zBlIFNCzdoA==
+"@tdb/electron@^0.0.17":
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/@tdb/electron/-/electron-0.0.17.tgz#1616cfe15c0463fd212561794ca36c889b6b46bd"
+  integrity sha512-ODcRK4AsQtLA6B9QtGZCG7FcjLxr79s3vBhLeFxEPEDiT9cf1uImzDfEqgHFjBSukMLlMRnjiEPt1H4M5OYJFQ==
   dependencies:
     "@tdb/log" "1.1.21"
     "@tdb/util" "1.9.29"
