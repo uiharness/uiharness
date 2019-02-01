@@ -34,14 +34,17 @@ export function init<M extends IpcMessage>(args: {
     };
 
     app.on('ready', () => {
-      const name = args.name || app.getName();
+      const name = args.name || config.name || app.getName();
       const window = mainWindow.create({ name, devTools, ...context });
-      resolve({
+
+      const res: IResponse<M> = {
         window,
         newWindow: e => mainWindow.create({ name: e.name, ...context }),
         log,
         ipc,
-      });
+      };
+
+      resolve(res);
     });
 
     app.on('window-all-closed', () => {
