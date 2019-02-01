@@ -1,7 +1,7 @@
 {
   "name": "@uiharness/core",
   "description": "The core UIHarness dev-tools for Electron and the Web (include in devDependencies).",
-  "version": "1.1.44",
+  "version": "1.1.45",
   "main": "./lib/index.js",
   "bin": {
     "uiharness": "./lib/bin.js"
@@ -18,10 +18,10 @@
     "@babel/preset-env": "7.2.3",
     "@babel/preset-react": "7.0.0",
     "@babel/preset-typescript": "7.1.0",
-    "@tdb/electron": "0.0.15",
+    "@tdb/electron": "0.0.16",
     "@tdb/log": "1.1.21",
     "@tdb/util": "1.9.29",
-    "@uiharness/electron": "0.3.55",
+    "@uiharness/electron": "0.3.56",
     "@uiharness/types": "0.0.22",
     "babel-core": "^7.0.0-bridge.0",
     "create-tmpl": "0.1.1",
