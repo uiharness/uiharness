@@ -1,1 +1,1 @@
-// Module entry.
+export * from './Root';

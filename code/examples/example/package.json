@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "@tdb/electron": "^0.0.16",
-    "@uiharness/electron": "0.3.56"
+    "@uiharness/electron": "0.3.57"
   },
   "devDependencies": {
-    "@uiharness/core": "1.1.45",
+    "@uiharness/core": "1.1.46",
     "typescript": "^3.2.4"
   },
   "resolutions": {
