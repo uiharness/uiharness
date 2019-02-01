@@ -37,7 +37,7 @@ export function createMenus(
           label: 'Show Developer Tools',
           click: () => {
             //
-            console.log(`\nTODO 🐷   show/hide dev tools on focused window \n`);
+            // console.log(`\nTODO 🐷   show/hide dev tools on focused window \n`);
 
             if (!refs.devTools || !refs.devTools.isVisible()) {
               // showDevTools({ refs, ...context });

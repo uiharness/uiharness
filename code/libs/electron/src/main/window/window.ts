@@ -66,7 +66,11 @@ export function create(
     window.show();
     window.setTitle(title);
     if (devTools && is.dev()) {
-      main.devTools.create({ parent: window, title: constants.NAME });
+      main.devTools.create({
+        parent: window,
+        title: constants.NAME,
+        ...context,
+      });
     }
   });
 
