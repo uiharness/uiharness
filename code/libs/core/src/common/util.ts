@@ -47,6 +47,7 @@ export function logElectronInfo(args: {
 
   log.info.gray(`package:          ${log.magenta(pkg.name)}`);
   log.info.gray(`• version:        ${pkg.version}`);
+  log.info.gray(`• target:         electron`);
   if (showPort) {
     log.info.gray(`• port:           ${port}`);
   }
@@ -75,6 +76,7 @@ export function logWebInfo(args: {
 
   log.info.gray(`package:          ${log.magenta(pkg.name)}`);
   log.info.gray(`• version:        ${pkg.version}`);
+  log.info.gray(`• target:         web browser`);
   if (showPort) {
     log.info.gray(`• port:           ${port}`);
   }

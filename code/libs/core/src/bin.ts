@@ -33,7 +33,7 @@ const CMDS = Object.keys(CMD)
   .map(key => CMD[key])
   .map(cmd => cmd.split(' ')[0]);
 const settings = Settings.create('.');
-const TARGETS: BundleTarget[] = ['electron', 'web'];
+const BUNDLE_TARGETS: BundleTarget[] = ['electron', 'web'];
 
 /**
  * Cheat sheet.
@@ -83,7 +83,7 @@ const program = yargs
         describe: 'Start "electron" (default) or "web" server.',
       }),
     e => {
-      const target = formatTargetOption(e.target);
+      const target = formatBundleTargetOption(e.target);
       if (!target) {
         return process.exit(1);
       }
@@ -127,7 +127,7 @@ const program = yargs
     async e => {
       const { silent, dev = false } = e;
       const prod = !dev;
-      const target = formatTargetOption(e.target);
+      const target = formatBundleTargetOption(e.target);
       if (!target) {
         return process.exit(1);
       }
@@ -161,7 +161,7 @@ const program = yargs
         }),
     async e => {
       const { silent, open } = e;
-      const target = formatTargetOption(e.target);
+      const target = formatBundleTargetOption(e.target);
       if (!target) {
         return process.exit(1);
       }
@@ -200,8 +200,8 @@ const program = yargs
       const targets: BundleTarget[] = ((e.target || '') as string)
         .split(',')
         .map(v => v as BundleTarget)
-        .filter(t => TARGETS.includes(t));
-      const target = targets.length === 0 ? TARGETS : targets;
+        .filter(t => BUNDLE_TARGETS.includes(t));
+      const target = targets.length === 0 ? BUNDLE_TARGETS : targets;
       const prod = e.prod && dev ? undefined : dev ? false : e.prod;
       cmds.stats({ settings, prod, target });
     },
@@ -252,13 +252,10 @@ if (!CMDS.includes(program.argv._[0])) {
 /**
  * INTERNAL
  */
-function formatTargetOption(value: unknown) {
-  const target = (typeof value === 'string'
-    ? value.toLowerCase()
-    : 'electron') as BundleTarget;
-
-  if (!TARGETS.includes(target)) {
-    const list = TARGETS.map(t => `"${log.cyan(t)}"`)
+function formatBundleTargetOption(value: unknown) {
+  const target = toBundleTarget(value);
+  if (!target) {
+    const list = BUNDLE_TARGETS.map(t => `"${log.cyan(t)}"`)
       .join(' ')
       .trim();
     let msg = '';
@@ -269,4 +266,24 @@ function formatTargetOption(value: unknown) {
     return undefined;
   }
   return target;
+}
+
+/**
+ * Converts a value to a known bundle target.
+ */
+function toBundleTarget(value: unknown) {
+  const includes = (value: BundleTarget) => BUNDLE_TARGETS.includes(value);
+
+  let target = (typeof value === 'string'
+    ? value.toLowerCase()
+    : 'electron') as BundleTarget;
+
+  if (!includes(target)) {
+    const partial = BUNDLE_TARGETS.find(name => name.startsWith(target));
+    if (partial) {
+      target = partial;
+    }
+  }
+
+  return includes(target) ? target : undefined;
 }
