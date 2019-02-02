@@ -1,7 +1,8 @@
 #!/usr/bin/env node
-import * as cmds from './cmds';
-import { constants, log, yargs, BundleTarget } from './common';
-import { Settings } from './settings';
+import * as cmds from '../cmds';
+import { constants, log, yargs, BundleTarget } from '../common';
+import { Settings } from '../settings';
+import { toBundleTarget, BUNDLE_TARGETS } from './util';
 
 /**
  * Makes the script crash on unhandled rejections instead of silently
@@ -33,7 +34,6 @@ const CMDS = Object.keys(CMD)
   .map(key => CMD[key])
   .map(cmd => cmd.split(' ')[0]);
 const settings = Settings.create('.');
-const BUNDLE_TARGETS: BundleTarget[] = ['electron', 'web'];
 
 /**
  * Cheat sheet.
@@ -252,7 +252,7 @@ if (!CMDS.includes(program.argv._[0])) {
 /**
  * INTERNAL
  */
-function formatBundleTargetOption(value: unknown) {
+export function formatBundleTargetOption(value: unknown) {
   const target = toBundleTarget(value);
   if (!target) {
     const list = BUNDLE_TARGETS.map(t => `"${log.cyan(t)}"`)
@@ -266,24 +266,4 @@ function formatBundleTargetOption(value: unknown) {
     return undefined;
   }
   return target;
-}
-
-/**
- * Converts a value to a known bundle target.
- */
-function toBundleTarget(value: unknown) {
-  const includes = (value: BundleTarget) => BUNDLE_TARGETS.includes(value);
-
-  let target = (typeof value === 'string'
-    ? value.toLowerCase()
-    : 'electron') as BundleTarget;
-
-  if (!includes(target)) {
-    const partial = BUNDLE_TARGETS.find(name => name.startsWith(target));
-    if (partial) {
-      target = partial;
-    }
-  }
-
-  return includes(target) ? target : undefined;
 }
