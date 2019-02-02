@@ -1,6 +1,6 @@
 import { join, resolve } from 'path';
 
-import { constants, file, toBundlerArgs, value } from '../common';
+import { constants, file, value, toBundlerArgs } from '../common';
 import {
   IElectronBuilderConfig,
   IUIHarnessConfig,
@@ -10,6 +10,8 @@ import {
   LogLevel,
 } from '../types';
 import { ensureEntries } from './util';
+
+const { DEFAULT } = constants;
 
 type IPaths = {
   parent: IUIHarnessPaths;
@@ -52,7 +54,7 @@ export class ElectronSettings {
   public get logLevel(): LogLevel {
     const bundle = this.data.bundle;
     const logLevel = bundle ? bundle.logLevel : undefined;
-    return value.defaultValue(logLevel, 1);
+    return value.defaultValue(logLevel, DEFAULT.LOG_LEVEL);
   }
 
   /**

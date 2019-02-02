@@ -18,7 +18,7 @@ describe('ElectronSettings', () => {
       const electron = Settings.create(path).electron;
       expect(electron.exists).to.eql(false);
       expect(electron.port).to.eql(8888);
-      expect(electron.logLevel).to.eql(1);
+      expect(electron.logLevel).to.eql(3);
 
       expect(electron.entry.main).to.eql('test/main.ts');
       expect(electron.entry.renderer).to.eql('test/renderer.tsx');
@@ -27,7 +27,7 @@ describe('ElectronSettings', () => {
       const bundler = electron.bundlerArgs;
       expect(bundler.sourcemaps).to.eql(true);
       expect(bundler.treeshake).to.eql(false);
-      expect(bundler.cmd).to.eql('--no-source-maps --log-level 1');
+      expect(bundler.cmd).to.eql('--no-source-maps --log-level 3');
 
       const builder = electron.builderArgs;
       expect(builder.exists).to.eql(false);
@@ -41,7 +41,7 @@ describe('ElectronSettings', () => {
     const electron = Settings.create(DIR).electron;
     expect(electron.exists).to.eql(true);
     expect(electron.port).to.eql(1234);
-    expect(electron.logLevel).to.eql(3);
+    expect(electron.logLevel).to.eql(1);
 
     expect(electron.entry.main).to.eql('./foo/start.ts');
     expect(electron.entry.renderer).to.eql('./foo/render.html');
@@ -49,7 +49,7 @@ describe('ElectronSettings', () => {
     const bundler = electron.bundlerArgs;
     expect(bundler.sourcemaps).to.eql(false);
     expect(bundler.treeshake).to.eql(true);
-    expect(bundler.cmd).to.eql('--experimental-scope-hoisting --log-level 3');
+    expect(bundler.cmd).to.eql('--experimental-scope-hoisting --log-level 1');
 
     const builder = electron.builderArgs;
     expect(builder.exists).to.eql(true);

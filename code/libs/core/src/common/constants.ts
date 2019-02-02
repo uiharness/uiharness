@@ -1,4 +1,10 @@
+import { LogLevel } from '../types';
+
 export const UNNAMED = 'Unnamed';
+
+export const DEFAULT = {
+  LOG_LEVEL: 3 as LogLevel,
+};
 
 export const URL = {
   SITE: 'https://uiharness.com',

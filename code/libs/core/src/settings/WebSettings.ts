@@ -1,6 +1,6 @@
 import { join } from 'path';
 
-import { constants, toBundlerArgs, value } from '../common';
+import { constants, value, toBundlerArgs } from '../common';
 import {
   IUIHarnessConfig,
   IUIHarnessPaths,
@@ -9,6 +9,8 @@ import {
   LogLevel,
 } from '../types';
 import { ensureEntries } from './util';
+
+const { DEFAULT } = constants;
 
 type IPaths = {
   parent: IUIHarnessPaths;
@@ -50,7 +52,7 @@ export class WebSettings {
   public get logLevel(): LogLevel {
     const bundle = this.data.bundle;
     const logLevel = bundle ? bundle.logLevel : undefined;
-    return value.defaultValue(logLevel, 1);
+    return value.defaultValue(logLevel, DEFAULT.LOG_LEVEL);
   }
 
   /**

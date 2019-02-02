@@ -1,8 +1,9 @@
+import { DEFAULT } from './constants';
 import { Settings } from '../settings';
-import { IParcelBuildConfig, BundleTarget } from '../types';
-import { command } from './command';
+import { BundleTarget, IParcelBuildConfig } from '../types';
 import { log, value } from './libs';
 import * as logging from './logging';
+import { command } from './command';
 
 const defaultValue = value.defaultValue;
 
@@ -90,7 +91,7 @@ export function toBundlerArgs(data: IParcelBuildConfig = {}) {
   // Default values.
   const sourcemaps = defaultValue(data.sourcemaps, true);
   const treeshake = defaultValue(data.treeshake, false);
-  const logLevel = value.defaultValue(data.logLevel, 1);
+  const logLevel = value.defaultValue(data.logLevel, DEFAULT.LOG_LEVEL);
 
   // Build command-line arguments.
   // See:
