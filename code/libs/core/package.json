@@ -4,7 +4,7 @@
   "version": "1.1.52",
   "main": "./lib/index.js",
   "bin": {
-    "uiharness": "./lib/bin.js"
+    "ui": "./lib/bin.js"
   },
   "scripts": {
     "test": "sh ./node_modules/@tdb/test/sh/test.sh",

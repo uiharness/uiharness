@@ -39,7 +39,7 @@ const BUNDLE_TARGETS: BundleTarget[] = ['electron', 'web'];
  * Cheat sheet.
  * https://devhints.io/yargs
  */
-const SCRIPT = log.magenta('uiharness');
+const SCRIPT = log.magenta('ui');
 const COMMAND = log.cyan('<command>');
 const OPTIONS = log.gray('[options]');
 const program = yargs
