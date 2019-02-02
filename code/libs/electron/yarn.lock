@@ -2,13 +2,13 @@
 # yarn lockfile v1
 
 
-"@tdb/electron@^0.0.18":
-  version "0.0.18"
-  resolved "https://registry.yarnpkg.com/@tdb/electron/-/electron-0.0.18.tgz#c8b99ad7e09fbcdbecf38044bbb98be064415e44"
-  integrity sha512-7UkwC8SaDH9qdlwuRUe//ZKvMaWC8FMmiEiRd2IdjJM1upn9AluWQZOshN9oeQ4rcioEw0kpsjsqXGoraJkpEA==
+"@tdb/electron@^0.0.20":
+  version "0.0.20"
+  resolved "https://registry.yarnpkg.com/@tdb/electron/-/electron-0.0.20.tgz#36ca5fa448f94cfd436cfa03f17ba5319c703f4f"
+  integrity sha512-Ht1pcKAejpYWCbyyV54T8IrjvzGNjO6mGVBZStpVm3/WatVB9KITegNgNz/42ScmDnY5eju1aHflnFIa4kaK7w==
   dependencies:
-    "@tdb/log" "1.1.21"
-    "@tdb/util" "1.9.29"
+    "@tdb/log" "1.1.23"
+    "@tdb/util" "1.9.31"
     "@types/app-root-path" "1.2.4"
     app-root-path "2.1.0"
     electron-is "3.0.0"
@@ -17,10 +17,10 @@
     fs-extra "7.0.1"
     is-electron "2.2.0"
 
-"@tdb/log@1.1.21":
-  version "1.1.21"
-  resolved "https://registry.yarnpkg.com/@tdb/log/-/log-1.1.21.tgz#a9cf4abe6c1c19a4b1f4853e76b84ebeedd7de16"
-  integrity sha512-S5HPt71csUFN/mwhG+NdhpzIe1QGJYPgyuwoqAgy4XQoLzdckprxEwgeOuuPILXzcEuhkL0cCG6cp9a1bAw6lg==
+"@tdb/log@1.1.23":
+  version "1.1.23"
+  resolved "https://registry.yarnpkg.com/@tdb/log/-/log-1.1.23.tgz#f77b68dba990478641ecfe9dee5a0843330f6ecc"
+  integrity sha512-fTPNjNUpWap9pwM8uK4TEYAW1as+hJFIfRx3UOJ/1T0fxKuXgYDv7gmTEtisPAyKuLYXrAm/Ev3f6YI/iFZclg==
   dependencies:
     "@types/ramda" "0.25.47"
     chalk "2.4.2"
@@ -28,20 +28,20 @@
     ramda "0.26.1"
     rxjs "6.3.3"
 
-"@tdb/test@1.2.14":
-  version "1.2.14"
-  resolved "https://registry.yarnpkg.com/@tdb/test/-/test-1.2.14.tgz#8ecf9075c512ae758d4c253f4e12027c4b14039b"
-  integrity sha512-xwfye+Uos4uO+E6bY2YxPhyHIjlsbTV7oW6fntwzzVV8syWkKr+wMK//b324rZXh1d9ByoCEtNwDLcwS2hdnGg==
+"@tdb/test@1.2.15":
+  version "1.2.15"
+  resolved "https://registry.yarnpkg.com/@tdb/test/-/test-1.2.15.tgz#d15dfee48d0018654ff7eb7fa5933282574839eb"
+  integrity sha512-nFRH4b50tTUvi/fKBCrzr0MIY4G+XUKsq0fjM6C8Siz8gL6XDh5qOAljuKSxzRoJjzFV/ozbWxKKKa8pIK6V0A==
   dependencies:
     "@types/chai" "4.1.7"
     "@types/mocha" "5.2.5"
     chai "4.2.0"
     mocha "5.2.0"
 
-"@tdb/typescript@3.2.9":
-  version "3.2.9"
-  resolved "https://registry.yarnpkg.com/@tdb/typescript/-/typescript-3.2.9.tgz#88563a30a43a81aa5d383a43f66492cae20508b0"
-  integrity sha512-JIv5C8vCAHzYAI8Pm0avYZokngVom/BXFBFnA8/e+Y+rsn2Zh8nQRAF5OhpvkQ/vOkhWirag3rb7Apb770pVvQ==
+"@tdb/typescript@3.2.10":
+  version "3.2.10"
+  resolved "https://registry.yarnpkg.com/@tdb/typescript/-/typescript-3.2.10.tgz#ff870a42f6e17cfcb5560a08057821e9732c9297"
+  integrity sha512-F3UjVDwPzciQT16GbdcX9NuVUyougVQ0USlOO19DTFUHGWh292tikrRJ2pH6Rq5pTt2AGjVe8KxoI4oHh5Pgng==
   dependencies:
     "@types/node" "10.12.19"
     prettier "1.16.1"
@@ -52,12 +52,12 @@
     tslint-react "3.6.0"
     typescript "3.2.4"
 
-"@tdb/util@1.9.29":
-  version "1.9.29"
-  resolved "https://registry.yarnpkg.com/@tdb/util/-/util-1.9.29.tgz#12e66aa32dc3ed96fc5f8620a8be9191517ef8a1"
-  integrity sha512-aL/WzKdphqKlpU0qvv1eXNWJ/0p6a5ytlH1JivtgZjSxL8xclvvpPbx/kwrE4uIfnHOFNpLcRhJV43xGJZ2zWg==
+"@tdb/util@1.9.31":
+  version "1.9.31"
+  resolved "https://registry.yarnpkg.com/@tdb/util/-/util-1.9.31.tgz#e3c8d990997f7c5219bf50156082ba341ffa82a4"
+  integrity sha512-y4KuRnaf4j/HIfCUQWWDXp4cUohcU1GDDOf/ARvh50GpbhVyTdX1A0jHCn5IPvEhfXZasB0XxGyWbdq+w9XVWQ==
   dependencies:
-    "@tdb/log" "1.1.21"
+    "@tdb/log" "1.1.23"
     "@types/react" "16.7.17"
     "@types/react-dom" "16.0.11"
     "@types/string" "0.0.29"
