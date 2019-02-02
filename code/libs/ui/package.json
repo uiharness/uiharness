@@ -1,10 +1,10 @@
 {
   "name": "@uiharness/ui",
-  "version": "0.0.14",
+  "version": "0.0.16",
   "scripts": {
-    "postinstall": "uiharness init",
-    "ui": "uiharness $@",
-    "start": "uiharness start $@",
+    "postinstall": "ui init",
+    "ui": "ui $@",
+    "start": "ui start $@",
     "test": "sh ./node_modules/@tdb/test/sh/test.sh",
     "tdd": "yarn run test --reporter min --watch",
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
@@ -17,7 +17,7 @@
   "devDependencies": {
     "@tdb/test": "1.2.14",
     "@tdb/typescript": "^3.2.9",
-    "@uiharness/core": "1.1.52"
+    "@uiharness/core": "1.1.54"
   },
   "resolutions": {
     "@types/react": "16.7.17"
