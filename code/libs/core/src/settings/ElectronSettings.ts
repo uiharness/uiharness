@@ -1,12 +1,13 @@
 import { join, resolve } from 'path';
 
-import { constants, file, toBundlerArgs } from '../common';
+import { constants, file, toBundlerArgs, value } from '../common';
 import {
   IElectronBuilderConfig,
   IUIHarnessConfig,
   IUIHarnessElectronConfig,
   IUIHarnessElectronPaths,
   IUIHarnessPaths,
+  LogLevel,
 } from '../types';
 import { ensureEntries } from './util';
 
@@ -41,7 +42,17 @@ export class ElectronSettings {
    * The port to run the dev-server on.
    */
   public get port() {
-    return this.data.port || 8888;
+    return value.defaultValue(this.data.port, 8888);
+  }
+
+  /**
+   * The level of logging to include.
+   * https://parceljs.org/cli.html#change-log-level
+   */
+  public get logLevel(): LogLevel {
+    const bundle = this.data.bundle;
+    const logLevel = bundle ? bundle.logLevel : undefined;
+    return value.defaultValue(logLevel, 1);
   }
 
   /**

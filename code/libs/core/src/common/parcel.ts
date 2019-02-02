@@ -19,6 +19,7 @@ export function electronRendererBundler(
   return createBundler(entry, electron.data.bundle, prod, {
     outDir: out.renderer.dir,
     target: 'electron',
+    logLevel: electron.logLevel,
     ...options.parcel,
   });
 }
@@ -37,6 +38,7 @@ export function webBundler(
   return createBundler(entry, web.data.bundle, prod, {
     outDir: out.dir,
     target: 'browser',
+    logLevel: web.logLevel,
     ...options.parcel,
   });
 }

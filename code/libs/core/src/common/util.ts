@@ -90,13 +90,15 @@ export function toBundlerArgs(data: IParcelBuildConfig = {}) {
   // Default values.
   const sourcemaps = defaultValue(data.sourcemaps, true);
   const treeshake = defaultValue(data.treeshake, false);
+  const logLevel = value.defaultValue(data.logLevel, 1);
 
   // Build command-line arguments.
   // See:
   //    https://parceljs.org/cli.html
   const cmd = command()
     .add('--no-source-maps', sourcemaps)
-    .add('--experimental-scope-hoisting', treeshake);
+    .add('--experimental-scope-hoisting', treeshake)
+    .add(`--log-level ${logLevel}`);
 
   // Finish up.
   return { sourcemaps, treeshake, cmd: cmd.toString() };

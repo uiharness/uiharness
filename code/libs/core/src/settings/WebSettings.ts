@@ -1,11 +1,12 @@
 import { join } from 'path';
 
-import { toBundlerArgs, constants } from '../common';
+import { constants, toBundlerArgs, value } from '../common';
 import {
   IUIHarnessConfig,
   IUIHarnessPaths,
   IUIHarnessWebConfig,
   IUIHarnessWebPaths,
+  LogLevel,
 } from '../types';
 import { ensureEntries } from './util';
 
@@ -39,7 +40,17 @@ export class WebSettings {
    * The port to run the dev-server on.
    */
   public get port() {
-    return this.data.port || 1234;
+    return value.defaultValue(this.data.port, 1234);
+  }
+
+  /**
+   * The level of logging to include.
+   * https://parceljs.org/cli.html#change-log-level
+   */
+  public get logLevel(): LogLevel {
+    const bundle = this.data.bundle;
+    const logLevel = bundle ? bundle.logLevel : undefined;
+    return value.defaultValue(logLevel, 1);
   }
 
   /**

@@ -1,6 +1,7 @@
 export * from '@uiharness/types';
 
 export type BundleTarget = 'electron' | 'web';
+export type LogLevel = 3 | 2 | 1;
 
 /**
  * The `uiharness.yml` configuration file.
@@ -49,6 +50,7 @@ export type IUIHarnessWebConfig = {
 export type IParcelBuildConfig = {
   sourcemaps?: boolean; // Default: true.
   treeshake?: boolean; //  Default:  true
+  logLevel?: LogLevel; // Default = 1 (errors only). https://parceljs.org/cli.html#change-log-level
 };
 
 /**
