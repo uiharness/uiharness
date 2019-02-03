@@ -631,10 +631,10 @@ core-js@^2.4.0:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.3.tgz#4b70938bdffdaf64931e66e2db158f0892289c49"
   integrity sha512-l00tmFFZOBHtYhN4Cz7k32VM7vTn3rE2ANjQDxdEN6zmXZ/xq1jQuutnmHvMG1ZJ7xd72+TA5YpUK8wz3rWsfQ==
 
-create-tmpl@0.1.3:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.1.3.tgz#44d2eb46b49cc1cd80919702c420ec0fca45e609"
-  integrity sha512-vhiK4IQepYB5BoiLrPjPQTG40Brivkv27fmqWAEWq/dv2Wru5WzC0+22aXnCUw6+kxr86s8g7pttC/cVXASbQg==
+create-tmpl@0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.1.4.tgz#b2ec99bd65819ebf734af000d8f069c01e9506c4"
+  integrity sha512-YBI0A3GwofdqiDqwnRmCyJma8oR2Bx3/r0mzL6ET9siM7l9ALgEz1rqEHllk7KMZoozNzTOe5pwpzuBZz3ZDQw==
   dependencies:
     "@tdb/npm" "0.1.0"
     "@tdb/util" "1.9.26"

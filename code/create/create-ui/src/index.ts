@@ -1,6 +1,26 @@
-import { log, prompt, IPrompt, Template, Platform, IVariables } from './common';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import {
+  takeUntil,
+  take,
+  takeWhile,
+  map,
+  filter,
+  share,
+  delay,
+  distinctUntilChanged,
+} from 'rxjs/operators';
+
+import {
+  log,
+  prompt,
+  IPrompt,
+  Template,
+  Platform,
+  IVariables,
+  Listr,
+} from './common';
 export * from './types';
-import * as middleware from './middleware';
+import * as middleware from './tmpl.middleware';
 
 type TargetOption = 'ALL' | 'ELECTRON' | 'WEB';
 
@@ -13,13 +33,41 @@ export async function init() {
   log.info.gray('----------------------------------------------');
 
   // Prompt for target platform.
-  const { tmpl, variables } = await buildTemplate({});
+  const { tmpl, variables } = await prepareTemplate({});
   if (!tmpl) {
     return;
   }
 
   // Run the template.
-  await tmpl.execute<IVariables>({ variables });
+  const tasks = new Listr([
+    {
+      title: 'Installing',
+      task: async () =>
+        new Observable(observer => {
+          observer.next('Foo');
+
+          setTimeout(() => {
+            observer.next('Bar');
+          }, 2000);
+
+          setTimeout(() => {
+            // observer.complete();
+
+            tmpl
+              .execute<IVariables>({ variables })
+              .then(() => observer.complete());
+          }, 4000);
+        }),
+    },
+  ]);
+
+  try {
+    tasks.run();
+  } catch (error) {
+    log.error(error);
+  }
+
+  // Finish up.
   log.info();
 }
 
@@ -27,7 +75,7 @@ export async function init() {
  * Builds a template based on the given parameters,
  * or prompts the user for input if parameter is not specified.
  */
-async function buildTemplate(args: { target?: Platform[] }) {
+async function prepareTemplate(args: { target?: Platform[] }) {
   let target = args.target;
 
   if (!target) {
