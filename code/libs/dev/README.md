@@ -22,7 +22,7 @@ Include in the `devDependencies` of your package.json, along with the correspond
     "@uiharness/electron": "x.x.x"
   },
   "devDependencies": {
-    "@uiharness/core": "x.x.x"
+    "@uiharness/dev": "x.x.x"
   }
 }
 ```

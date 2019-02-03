@@ -31,20 +31,7 @@ yarn create uiharness
 Or manually add the UIHarness to your module.  
 
 ```bash
-yarn add -D @uiharness/core
-```
-
-ensure you run `uiharness init` as a post-install step, allowing the UIHarness to flesh out the configuration. 
-
-```json
-{
-  "scripts": {
-    "postinstall": "uiharness init",
-  },
-  "devDependencies": {
-    "@uiharness/core": "x.x.x"
-  }
-}
+yarn add -D @uiharness/dev
 ```
 
 
@@ -56,7 +43,7 @@ ensure you run `uiharness init` as a post-install step, allowing the UIHarness t
 
 ## 🔗 Modules
 - [npm](https://www.npmjs.com/org/uiharness)
-- [@uiharness/core](/code/libs/core/README.md)
+- [@uiharness/dev](/code/libs/dev/README.md)
 - [@uiharness/electron](/code/libs/electron/README.md)
 
 <p>&nbsp;</p>

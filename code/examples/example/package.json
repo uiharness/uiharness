@@ -10,11 +10,10 @@
     "nuke": "sh ./sh/nuke.sh"
   },
   "dependencies": {
-    "@tdb/electron": "^0.0.20",
     "@uiharness/electron": "0.3.62"
   },
   "devDependencies": {
-    "@uiharness/core": "1.1.57",
+    "@uiharness/dev": "0.0.0",
     "typescript": "^3.2.4"
   },
   "resolutions": {

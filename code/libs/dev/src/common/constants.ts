@@ -12,7 +12,7 @@ export const URL = {
 
 export const PATH = {
   TMP: '.uiharness',
-  TEMPLATES: 'node_modules/@uiharness/core/tmpl',
+  TEMPLATES: 'node_modules/@uiharness/dev/tmpl',
 };
 
 export const SCRIPTS = {
@@ -26,6 +26,6 @@ export const PKG = {
     '@uiharness/electron': '__LATEST__',
   },
   devDependencies: {
-    '@uiharness/core': '__LATEST__',
+    '@uiharness/dev': '__LATEST__',
   },
 };

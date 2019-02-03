@@ -17,7 +17,7 @@
   "devDependencies": {
     "@tdb/test": "1.2.14",
     "@tdb/typescript": "3.2.9",
-    "@uiharness/core": "1.1.57"
+    "@uiharness/dev": "0.0.0"
   },
   "resolutions": {
     "@types/react": "16.7.17"

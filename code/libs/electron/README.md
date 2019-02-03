@@ -4,8 +4,8 @@
 
 This module contains the client tools of the [UIHarness](https://uiharness.com) running in [electron](https://electronjs.org/) including:
 
-- Electron specific modules, helpers and utilities
-- Electron speciic UI.
+- Electron specific modules, helpers and utilities.
+- Electron specific UI components.
 
 <p>&nbsp;</p>
 
@@ -20,7 +20,7 @@ Include in the `dependencies` of your **package.json**, along with the correspon
     "@uiharness/electron": "x.x.x"
   },
   "devDependencies": {
-    "@uiharness/core": "x.x.x"
+    "@uiharness/dev": "x.x.x"
   }
 }
 ```
