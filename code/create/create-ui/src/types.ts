@@ -1,6 +1,8 @@
-export type TemplateId = 'ALL' | 'ELECTRON' | 'WEB';
+export type Platform = 'ELECTRON' | 'WEB';
 
-export interface ITemplate {
-  id: TemplateId;
-  name: string;
-}
+export type IPrompt<T extends string = any> = {
+  id: T;
+  label?: string;
+};
+
+export type IVariables = { target: Platform[] };

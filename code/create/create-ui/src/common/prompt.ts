@@ -1,15 +1,21 @@
 import { inquirer } from './libs';
-import { ITemplate } from '../types';
+import { IPrompt } from '../types';
 
 /**
  * Prompts for a template.
  */
-export async function forTemplate(templates: ITemplate[]) {
-  const choices = templates.map(item => ({ name: item.name, value: item.id }));
+export async function forOption<T extends IPrompt>(
+  title: string,
+  templates: T[],
+) {
+  const choices = templates.map(({ label, id }) => ({
+    name: label,
+    value: id,
+  }));
   const confirm = {
     type: 'list',
     name: 'id',
-    message: 'Select your target platform',
+    message: title,
     choices,
   };
   const { id } = (await inquirer.prompt(confirm)) as { id: string };
