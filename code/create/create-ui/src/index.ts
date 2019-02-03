@@ -1,7 +1,27 @@
-import { log } from '@tdb/log/lib/server';
+import { log, prompt, ITemplate } from './common';
+export * from './types';
 
-export function init() {
+/**
+ * Initializes a new module.
+ */
+export async function init() {
   log.info();
-  log.info(`👋  Please use ${log.cyan('yarn create uiharness')} instead.`);
+
+  const templates: ITemplate[] = [
+    { id: 'ALL', name: 'Electron & Web' },
+    { id: 'ELECTRON', name: 'Electron' },
+    { id: 'WEB', name: 'Web' },
+  ];
+
+  const res = await prompt.forTemplate(templates);
+
+  console.log('-------------------------------------------');
+  console.log('res', res);
+
+  // log.info(`👋  Please use ${log.cyan('yarn create uiharness')} instead.`);
   log.info();
 }
+
+/**
+ * INTERNAL
+ */
