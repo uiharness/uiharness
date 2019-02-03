@@ -1,7 +1,8 @@
 {
+  "extends": "./node_modules/@tdb/typescript/tsconfig.json",
+  "include": ["src"],
   "compilerOptions": {
     "outDir": "lib",
-    "moduleResolution": "node",
     "target": "esnext",
     "jsx": "preserve"
   }

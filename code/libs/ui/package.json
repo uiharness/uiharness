@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/ui",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "scripts": {
     "postinstall": "ui init",
     "ui": "ui $@",
@@ -12,12 +12,12 @@
     "prepare": "yarn build && yarn lint && yarn test"
   },
   "dependencies": {
-    "@uiharness/electron": "0.3.61"
+    "@uiharness/electron": "0.3.62"
   },
   "devDependencies": {
     "@tdb/test": "1.2.14",
-    "@tdb/typescript": "^3.2.9",
-    "@uiharness/core": "1.1.54"
+    "@tdb/typescript": "3.2.9",
+    "@uiharness/core": "1.1.55"
   },
   "resolutions": {
     "@types/react": "16.7.17"

@@ -1,4 +1,5 @@
 import * as uiharness from '@uiharness/electron/lib/main';
+const config = require('../.uiharness/config.json');
 
 /**
  * Initialize the default [main] window process with the [UIHarness].
@@ -14,6 +15,5 @@ import * as uiharness from '@uiharness/electron/lib/main';
  *
  */
 (async () => {
-  const config = require('../.uiharness/config.json');
   const res = await uiharness.init({ config });
 })();

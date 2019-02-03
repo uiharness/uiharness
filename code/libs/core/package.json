@@ -1,7 +1,7 @@
 {
   "name": "@uiharness/core",
   "description": "The core UIHarness dev-tools for Electron and the Web (include in devDependencies).",
-  "version": "1.1.54",
+  "version": "1.1.55",
   "main": "lib/index.js",
   "bin": {
     "ui": "lib/bin/index.js",
@@ -22,8 +22,8 @@
     "@tdb/electron": "0.0.20",
     "@tdb/log": "1.1.23",
     "@tdb/util": "1.9.31",
-    "@uiharness/electron": "0.3.61",
-    "@uiharness/types": "0.0.22",
+    "@uiharness/electron": "0.3.62",
+    "@uiharness/types": "0.0.23",
     "create-tmpl": "0.1.1",
     "electron": "4.0.3",
     "electron-builder": "20.38.5",
