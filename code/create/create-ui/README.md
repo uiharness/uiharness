@@ -1,11 +1,11 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![title](https://user-images.githubusercontent.com/185555/52174769-b21d8900-27fd-11e9-83c4-f967ca1cb2b7.png)](https://uiharness.com)
 
 # create-ui
 
 A simple [UIHarness](https://uiharness.com) module bootstrapper.
-Create a powerful ui module using the UIHarness with a single command.
-
-https://uiharness.com
+Create a powerful ui module using the UIHarness with a single command.  
+[uiharness.com](https://uiharness.com)
 
 ## Usage
 
@@ -19,4 +19,4 @@ or
 npx create-ui
 ```
 
-then follow the prompts to generate your new module.
+then follow the simple prompts to generate your new module.
