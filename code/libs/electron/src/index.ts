@@ -1,2 +1,2 @@
-export { resolve, isDev } from './common';
+export { is, path } from './common';
 export * from './types';

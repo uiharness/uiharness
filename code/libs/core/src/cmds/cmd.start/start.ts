@@ -1,15 +1,17 @@
+import { spawn } from 'child_process';
+
 import {
   BundleTarget,
-  execa,
   fsPath,
   log,
   logElectronInfo,
+  logNoConfig,
   logWebInfo,
   parcel,
 } from '../../common';
 import { Settings } from '../../settings';
 import { bundleElectron } from '../cmd.bundle';
-import { init } from '../cmd.init';
+import * as init from '../cmd.init';
 
 /**
  * Starts the development server for the given target.
@@ -23,6 +25,7 @@ export async function start(args: {
   switch (target) {
     case 'electron':
       return startElectron({ settings });
+
     case 'web':
       return startWeb({ settings });
 
@@ -43,8 +46,13 @@ export async function startElectron(args: { settings: Settings }) {
   const electron = settings.electron;
   const port = electron.port;
 
+  if (!electron.exists) {
+    logNoConfig({ target: 'electron' });
+    return;
+  }
+
   // Ensure the module is initialized.
-  await init({ settings, prod });
+  await init.prepare({ settings, prod });
   await electron.ensureEntries();
   log.info();
   logElectronInfo({ settings, port: true });
@@ -65,11 +73,12 @@ export async function startElectron(args: { settings: Settings }) {
   await (renderer as any).serve(port);
 
   // Start the electron process.
+  // NB: Spawn used to preserve colors in CLI (which execa does not do).
   const dir = fsPath.resolve(settings.path.tmp.dir);
-  const cmd = `electron ${dir}`;
-  const childProcess = execa.shell(cmd);
-  childProcess.stdout.pipe(process.stdout);
-  await childProcess;
+  spawn('electron', [dir], {
+    shell: true,
+    stdio: 'inherit',
+  });
 }
 
 /**
@@ -82,8 +91,13 @@ export async function startWeb(args: { settings: Settings }) {
   const prod = false;
   const port = web.port;
 
+  if (!web.exists) {
+    logNoConfig({ target: 'web' });
+    return;
+  }
+
   // Ensure the module is initialized.
-  await init({ settings, prod });
+  await init.prepare({ settings, prod });
   log.info();
   logWebInfo({ settings, port: true });
 

@@ -1,1 +1,1 @@
-// Module entry.
+// module-entry.

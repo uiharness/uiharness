@@ -13,7 +13,7 @@ import {
 } from '../../common';
 import { Settings } from '../../settings';
 import { bundleElectron, bundleWeb } from '../cmd.bundle';
-import { init } from '../cmd.init';
+import * as init from '../cmd.init';
 
 /**
  * Bundles the application ready for distribution.
@@ -63,12 +63,12 @@ export async function distElectron(args: {
       log.warn(`😩  Failed while ${step}.`);
       log.error(error.message);
       log.info();
-      return;
+      return { success: false };
     }
   };
 
   // Ensure the module is initialized.
-  await init({ settings, prod });
+  await init.prepare({ settings, prod });
   await prepareBuilderYaml({ settings });
 
   if (!silent) {
@@ -78,16 +78,19 @@ export async function distElectron(args: {
 
   // Build JS bundles and run the electron-builder.
   try {
-    await bundleElectron({
+    const res = await bundleElectron({
       settings,
       silent,
       prod: true,
       summary: false,
       stats: false,
     });
+
+    if (!res.success) {
+      return { success: false };
+    }
   } catch (error) {
-    handleError(error, 'building javascript for electron distribution');
-    return;
+    return handleError(error, 'building javascript for electron distribution');
   }
 
   // Construct the `build` command.
@@ -110,7 +113,7 @@ export async function distElectron(args: {
     await tasks.run();
   } catch (error) {
     handleError(error, 'building electron distribution');
-    return;
+    return { success: false };
   }
 
   // Log output.
@@ -121,7 +124,7 @@ export async function distElectron(args: {
 
   if (!silent) {
     log.info();
-    log.info(`🤟  Application packaging complete.\n`);
+    log.info(`🤟  Application distribution complete.\n`);
     log.info.gray(`   • productName: ${log.yellow(config.productName)}`);
     log.info.gray(`   • appId:       ${config.appId}`);
     log.info.gray(`   • version:     ${settings.package.version}`);
@@ -130,6 +133,8 @@ export async function distElectron(args: {
     log.info(`👉  Run ${log.cyan('yarn ui open')} to run it.`);
     log.info();
   }
+
+  return { success: true };
 }
 
 /**
@@ -139,10 +144,15 @@ export async function distWeb(args: { settings: Settings; silent?: boolean }) {
   const { settings, silent } = args;
   const prod = true;
 
-  await bundleWeb({ settings, prod, silent });
+  const res = await bundleWeb({ settings, prod, silent });
+  if (!res.success) {
+    return { success: false };
+  }
 
   log.info(`👉  Run ${log.cyan('yarn ui serve')} to view it in the browser.`);
   log.info();
+
+  return { success: true };
 }
 
 /**

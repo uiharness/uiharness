@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/types",
-  "version": "0.0.17",
+  "version": "0.0.23",
   "description": "Shared types between @uiharness modules.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -12,10 +12,11 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@tdb/typescript": "^3.2.8"
+    "@tdb/typescript": "3.2.9"
   },
   "files": [
-    "lib"
+    "lib",
+    "src"
   ],
   "engines": {
     "node": ">=10.x"

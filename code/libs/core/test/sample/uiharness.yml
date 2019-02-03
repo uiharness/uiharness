@@ -11,6 +11,7 @@ electron:
   bundle:
     sourcemaps: false
     treeshake: true
+    logLevel: 1
 
 web:
   port: 3030
@@ -18,3 +19,4 @@ web:
   bundle:
     sourcemaps: false
     treeshake: true
+    logLevel: 1

@@ -1,0 +1,14 @@
+#
+# Sample config for unit-tests.
+# Only contains [web] settings.
+#
+
+electron:
+  port: 1234
+  entry:
+    main: ./foo/start.ts
+    renderer: ./foo/render.html
+  bundle:
+    sourcemaps: false
+    treeshake: true
+    logLevel: 1

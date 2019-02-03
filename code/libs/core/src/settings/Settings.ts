@@ -1,6 +1,6 @@
 import { dirname, join, resolve } from 'path';
 
-import { constants, file, fs, log, npm, NpmPackage, value } from '../common';
+import { constants, file, fs, log, npm, NpmPackage } from '../common';
 import { IUIHarnessConfig, IUIHarnessPaths } from '../types';
 import { ElectronSettings } from './ElectronSettings';
 import { WebSettings } from './WebSettings';
@@ -9,7 +9,6 @@ export { NpmPackage };
 
 const { PATH } = constants;
 const UIHARNESS_YAML = 'uiharness.yml';
-const defaultValue = value.defaultValue;
 
 export type IUIHarnessSettingsOptions = {
   tmpDir?: string;
@@ -128,20 +127,6 @@ export class Settings {
         config: this.data,
       }))
     );
-  }
-
-  /**
-   * Flags used to determine what to inclue/exclude
-   * within the `init` script.
-   */
-  public get init() {
-    const init = this.data.init || {};
-    return {
-      scripts: defaultValue(init.scripts, true),
-      files: defaultValue(init.files, true),
-      html: defaultValue(init.html, true),
-      deps: defaultValue(init.deps, true),
-    };
   }
 
   /**

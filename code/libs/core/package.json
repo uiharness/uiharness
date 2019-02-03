@@ -1,18 +1,17 @@
 {
   "name": "@uiharness/core",
   "description": "The core UIHarness dev-tools for Electron and the Web (include in devDependencies).",
-  "version": "1.1.22",
-  "main": "./lib/index.js",
+  "version": "1.1.57",
+  "main": "lib/index.js",
   "bin": {
-    "uiharness": "./lib/bin.js"
+    "ui": "lib/bin/index.js",
+    "uiharness": "lib/bin/index.js"
   },
   "scripts": {
-    "test": "sh ./node_modules/@tdb/test/sh/test.sh",
+    "test": "sh node_modules/@tdb/test/sh/test.sh",
     "tdd": "yarn run test --reporter min --watch",
-    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
-    "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
-    "clean": "sh ./sh/clean.sh",
-    "nuke": "sh ./sh/nuke.sh",
+    "build": "sh node_modules/@tdb/typescript/sh/build.sh $@",
+    "lint": "sh node_modules/@tdb/typescript/sh/lint.sh $@",
     "prepare": "yarn build && yarn lint && yarn test"
   },
   "dependencies": {
@@ -20,35 +19,35 @@
     "@babel/preset-env": "7.2.3",
     "@babel/preset-react": "7.0.0",
     "@babel/preset-typescript": "7.1.0",
-    "@tdb/log": "1.1.20",
-    "@tdb/util": "1.9.26",
-    "@uiharness/electron": "^0.3.36",
-    "@uiharness/types": "0.0.17",
-    "babel-core": "^7.0.0-bridge.0",
+    "@tdb/electron": "0.0.20",
+    "@tdb/log": "1.1.23",
+    "@tdb/util": "1.9.31",
+    "@uiharness/electron": "0.3.62",
+    "@uiharness/types": "0.0.23",
     "create-tmpl": "0.1.1",
-    "electron": "4.0.2",
+    "electron": "4.0.3",
     "electron-builder": "20.38.5",
     "execa": "1.0.0",
     "filesize": "4.0.0",
-    "npm-run-all": "4.1.5",
     "parcel-bundler": "1.11.0",
     "serve": "10.1.1",
-    "yargs": "^12.0.5"
+    "yargs": "12.0.5"
   },
   "devDependencies": {
-    "@tdb/test": "1.2.13",
-    "@tdb/typescript": "3.2.8",
+    "@tdb/test": "1.2.15",
+    "@tdb/typescript": "3.2.10",
     "@types/electron-builder": "2.8.0",
     "@types/execa": "0.9.0",
-    "@types/filesize": "^4.0.0",
+    "@types/filesize": "4.0.0",
     "@types/parcel-bundler": "1.10.1",
-    "@types/yargs": "^12.0.8"
+    "@types/yargs": "12.0.8"
   },
   "engines": {
     "node": ">=10.x"
   },
   "files": [
     "lib",
+    "src",
     "tmpl",
     "css"
   ],

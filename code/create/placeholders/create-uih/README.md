@@ -1,6 +1,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-# create-harness
+# create-uih
 Please use `create-uiharness` instead:
 
 ```bash

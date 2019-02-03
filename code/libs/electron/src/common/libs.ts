@@ -1,5 +1,5 @@
-import * as log from 'electron-log';
-const isDev = require('electron-is-dev') as boolean;
+import * as is from 'electron-is';
+import * as path from 'app-root-path';
 
-export { log, isDev };
-export { resolve } from 'app-root-path';
+export { is, path };
+export { time, value } from '@tdb/util';

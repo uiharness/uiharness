@@ -1,4 +1,10 @@
+import { LogLevel } from '../types';
+
 export const UNNAMED = 'Unnamed';
+
+export const DEFAULT = {
+  LOG_LEVEL: 3 as LogLevel,
+};
 
 export const URL = {
   SITE: 'https://uiharness.com',
@@ -10,9 +16,9 @@ export const PATH = {
 };
 
 export const SCRIPTS = {
-  postinstall: 'uiharness init',
-  ui: 'uiharness $@',
-  start: 'uiharness start $@',
+  postinstall: 'ui init',
+  ui: 'ui $@',
+  start: 'ui start $@',
 };
 
 export const PKG = {

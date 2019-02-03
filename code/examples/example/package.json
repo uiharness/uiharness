@@ -1,19 +1,21 @@
 {
   "name": "example",
-  "version": "0.0.21",
+  "version": "0.0.49",
   "scripts": {
-    "postinstall": "uiharness init",
-    "ui": "yarn sl && uiharness $@",
+    "postinstall": "ui init",
+    "ui": "yarn sl && ui $@",
+    "start": "ui start $@",
     "sl": "msync sl && sh ./sh/copy-bin.sh",
     "reset": "sh ./sh/reset.sh",
-    "nuke": "sh ./sh/nuke.sh",
-    "start": "uiharness start $@"
+    "nuke": "sh ./sh/nuke.sh"
   },
   "dependencies": {
-    "@uiharness/electron": "0.3.36"
+    "@tdb/electron": "^0.0.20",
+    "@uiharness/electron": "0.3.62"
   },
   "devDependencies": {
-    "@uiharness/core": "1.1.22"
+    "@uiharness/core": "1.1.57",
+    "typescript": "^3.2.4"
   },
   "resolutions": {
     "@types/react": "16.7.17"

@@ -7,38 +7,73 @@ import {
   log,
   npm,
   tmpl,
+  value,
 } from '../../common';
 import { Settings } from '../../settings';
 import { clean } from '../cmd.clean';
 
 const { SCRIPTS } = constants;
 const { resolve, join } = fsPath;
+const { defaultValue } = value;
+
+type IInitFlags = {
+  force?: boolean;
+  prod?: boolean;
+  scripts?: boolean;
+  files?: boolean;
+  html?: boolean;
+  deps?: boolean;
+};
+
+const toFlags = (args: IInitFlags) => {
+  return {
+    force: defaultValue(args.force, false),
+    prod: defaultValue(args.prod, false),
+    scripts: defaultValue(args.scripts, true),
+    files: defaultValue(args.files, true),
+    html: defaultValue(args.html, true),
+    deps: defaultValue(args.deps, true),
+  };
+};
+
+/**
+ * Prepares the module for execution.
+ */
+export async function prepare(args: { settings: Settings; prod: boolean }) {
+  const { settings, prod } = args;
+  const isInitialized = await getIsInitialized({ settings });
+  const files = !isInitialized;
+  return init({ settings, prod, files });
+}
 
 /**
  * Initialize the module.
  */
-export async function init(args: {
-  settings: Settings;
-  force?: boolean;
-  reset?: boolean;
-  prod?: boolean;
-}) {
-  const { settings, force = false, prod = false } = args;
+export async function init(
+  args: IInitFlags & {
+    settings: Settings;
+    reset?: boolean;
+  },
+) {
+  const { settings } = args;
   const pkg = settings.package;
   if (args.reset) {
     return reset({ settings });
   }
+  const flags = toFlags(args);
+  const { force, prod } = flags;
 
   // Ensure the latest configuration files exist within the [.uiharness] folder.
   await saveConfigJson({ settings, prod });
   await copyPackage({ settings, prod });
 
   // Don't continue if already initialized.
-  if (!force && (await isInitialized({ settings }))) {
+  if (!force && (await getIsInitialized({ settings }))) {
     return;
   }
 
-  const flags = settings.init;
+  // const flags = settings.init();
+
   if (flags.scripts) {
     await pkg.addFields('scripts', SCRIPTS).save();
   }
@@ -83,7 +118,7 @@ async function reset(args: { settings: Settings }) {
   log.info(
     '👋   The auto-generated files and scripts from `@uiharness/electron` have been removed.',
   );
-  log.info(`    Run \`${log.cyan('uiharness init')}\` to recreate them.`);
+  log.info(`    Run \`${log.cyan('ui init')}\` to recreate them.`);
   log.info('');
 }
 
@@ -101,6 +136,7 @@ async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
   const { port } = electron;
   const out = electron.out(args.prod);
   const data: IUIHarnessRuntimeConfig = {
+    name: settings.name,
     electron: {
       port,
       main: out.main.path,
@@ -140,23 +176,41 @@ async function copyPackage(args: { settings: Settings; prod: boolean }) {
 /**
  * Determines whether the module has been initialized.
  */
-async function isInitialized(args: { settings: Settings }) {
+async function getIsInitialized(args: { settings: Settings }) {
+  const state = await getInitializedState(args);
+  return Object.keys(state).every(key => state[key] === true);
+}
+
+/**
+ * Gets a set of values that determine whether initialization has been run.
+ */
+async function getInitializedState(args: { settings: Settings }) {
   const { settings } = args;
-  const pkg = settings.package;
-  const init = settings.init;
+  const electron = settings.electron;
+  const electronEntry = electron.entry;
+  const web = settings.web;
+
+  const scripts = { ...SCRIPTS };
+  delete scripts.postinstall;
 
   const exists = (path: string) => fs.pathExists(resolve(path));
 
-  if (init.files && (!(await exists('./src')) || !(await exists('./static')))) {
-    return false;
-  }
+  const hasConfig = await exists('./uiharness.yml');
+  const hasSrcFolder = await exists('./src');
+  const hasElectronMainEntry = await exists(electronEntry.main);
+  const hasElectronRendererEntry = await exists(electronEntry.renderer);
+  const hasWebEntry = await exists(web.entry.code);
+  const hasAllScripts = Object.keys(scripts).every(key => scripts[key]);
 
-  // Look to see that all scripts have been inserted.
-  const scripts = { ...SCRIPTS };
-  delete scripts.postinstall;
-  const hasAllScripts = Object.keys(scripts).every(
-    key => pkg.scripts[key] === scripts[key],
-  );
+  const result = {
+    hasConfig,
+    hasSrcFolder,
+    hasElectronMainEntry,
+    hasElectronRendererEntry,
+    hasWebEntry,
+    hasAllScripts,
+  };
 
-  return hasAllScripts;
+  // Finish up.
+  return result;
 }

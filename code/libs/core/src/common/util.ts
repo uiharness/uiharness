@@ -1,8 +1,9 @@
+import { DEFAULT } from './constants';
 import { Settings } from '../settings';
-import { IParcelBuildConfig, BundleTarget } from '../types';
-import { command } from './command';
+import { BundleTarget, IParcelBuildConfig } from '../types';
 import { log, value } from './libs';
 import * as logging from './logging';
+import { command } from './command';
 
 const defaultValue = value.defaultValue;
 
@@ -29,6 +30,20 @@ export function logInfo(args: {
 }
 
 /**
+ * Logs that an operation cannot run because the required configuration
+ * is not present with the YAML.
+ */
+export function logNoConfig(args: { target: BundleTarget }) {
+  const { target } = args;
+  let msg = '';
+  msg += `😵  The "${log.yellow(target)}" configuration `;
+  msg += `does not exist in ${log.cyan('uiharness.yml')}.`;
+  log.info(msg);
+  log.info();
+  return;
+}
+
+/**
  * Logs common information about the module.
  */
 export function logElectronInfo(args: {
@@ -46,6 +61,7 @@ export function logElectronInfo(args: {
 
   log.info.gray(`package:          ${log.magenta(pkg.name)}`);
   log.info.gray(`• version:        ${pkg.version}`);
+  log.info.gray(`• target:         electron`);
   if (showPort) {
     log.info.gray(`• port:           ${port}`);
   }
@@ -74,6 +90,7 @@ export function logWebInfo(args: {
 
   log.info.gray(`package:          ${log.magenta(pkg.name)}`);
   log.info.gray(`• version:        ${pkg.version}`);
+  log.info.gray(`• target:         web browser`);
   if (showPort) {
     log.info.gray(`• port:           ${port}`);
   }
@@ -90,13 +107,15 @@ export function toBundlerArgs(data: IParcelBuildConfig = {}) {
   // Default values.
   const sourcemaps = defaultValue(data.sourcemaps, true);
   const treeshake = defaultValue(data.treeshake, false);
+  const logLevel = value.defaultValue(data.logLevel, DEFAULT.LOG_LEVEL);
 
   // Build command-line arguments.
   // See:
   //    https://parceljs.org/cli.html
   const cmd = command()
     .add('--no-source-maps', sourcemaps)
-    .add('--experimental-scope-hoisting', treeshake);
+    .add('--experimental-scope-hoisting', treeshake)
+    .add(`--log-level ${logLevel}`);
 
   // Finish up.
   return { sourcemaps, treeshake, cmd: cmd.toString() };

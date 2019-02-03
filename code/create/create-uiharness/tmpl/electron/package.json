@@ -2,7 +2,8 @@
   "name": "__NAME__",
   "version": "0.0.0",
   "scripts": {
-    "postinstall": "uiharness init"
+    "ui": "ui $@",
+    "start": "ui start $@"
   },
   "dependencies": {},
   "devDependencies": {

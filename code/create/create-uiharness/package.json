@@ -1,6 +1,6 @@
 {
   "name": "create-uiharness",
-  "version": "1.2.10",
+  "version": "1.2.11",
   "description": "Create a minimal starting module using the UIHarness with a single command.",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -23,8 +23,8 @@
     "new-file": "^1.2.2"
   },
   "devDependencies": {
-    "@tdb/test": "1.2.13",
-    "@tdb/typescript": "3.2.8"
+    "@tdb/test": "1.2.14",
+    "@tdb/typescript": "3.2.9"
   },
   "engines": {
     "node": ">=10.x"

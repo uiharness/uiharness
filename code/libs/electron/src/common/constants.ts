@@ -1,1 +1,1 @@
-export const FOO = 123;
+export const NAME = 'UIHarness';

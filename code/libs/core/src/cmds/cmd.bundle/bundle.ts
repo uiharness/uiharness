@@ -6,9 +6,10 @@ import {
   logging,
   command,
   BundleTarget,
+  logNoConfig,
 } from '../../common';
 import { Settings } from '../../settings';
-import { init } from '../cmd.init';
+import * as init from '../cmd.init';
 import { stats as renderStats } from '../cmd.stats';
 
 /**
@@ -52,13 +53,21 @@ export async function bundleElectron(args: {
   summary?: boolean;
   stats?: boolean;
 }) {
-  const { settings, prod, silent = false } = args;
+  const { settings, silent = false } = args;
+  const electron = settings.electron;
+
+  if (!electron.exists) {
+    logNoConfig({ target: 'electron' });
+    const error = new Error(`Electron configuration not specified.`);
+    return { success: false, error };
+  }
+
   const summary = value.defaultValue(args.summary, true);
   const stats = value.defaultValue(args.stats, true);
+  const prod = value.defaultValue(args.prod, true);
   const env = toEnv(prod);
   let { main, renderer } = args;
   const pkg = settings.package;
-  const electron = settings.electron;
   const entry = electron.entry;
   const bundlerArgs = electron.bundlerArgs;
   const out = electron.out(prod);
@@ -68,7 +77,7 @@ export async function bundleElectron(args: {
   renderer = all ? true : renderer;
 
   // Ensure the module is initialized.
-  await init({ settings, prod });
+  await init.prepare({ settings, prod });
   await electron.ensureEntries();
 
   // Build the command.
@@ -156,17 +165,25 @@ export async function bundleWeb(args: {
   summary?: boolean;
   stats?: boolean;
 }) {
-  const { settings, prod, silent = false } = args;
+  const { settings, silent = false } = args;
   const summary = value.defaultValue(args.summary, true);
+  const web = settings.web;
+
+  if (!web.exists) {
+    logNoConfig({ target: 'web' });
+    const error = new Error(`Web configuration not specified.`);
+    return { success: false, error };
+  }
+
   const stats = value.defaultValue(args.stats, true);
+  const prod = value.defaultValue(args.prod, true);
   const env = toEnv(prod);
   const pkg = settings.package;
-  const web = settings.web;
   const entry = web.entry;
   const out = web.out(prod);
 
   // Ensure the module is initialized.
-  await init({ settings, prod });
+  await init.prepare({ settings, prod });
   await web.ensureEntries();
 
   // Build the command.

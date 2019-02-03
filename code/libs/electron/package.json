@@ -1,12 +1,10 @@
 {
   "name": "@uiharness/electron",
-  "version": "0.3.36",
+  "version": "0.3.62",
   "description": "UIHarness client-tools for Electron (include in dependencies).",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "start": "node .",
-    "watch": "nodemon .",
     "test": "sh ./node_modules/@tdb/test/sh/test.sh",
     "tdd": "yarn run test --reporter min --watch",
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
@@ -14,21 +12,27 @@
     "prepare": "yarn run build && yarn run lint && yarn test"
   },
   "dependencies": {
-    "@tdb/log": "^1.1.20",
+    "@tdb/electron": "^0.0.20",
+    "@tdb/log": "1.1.23",
+    "@tdb/util": "1.9.31",
     "@types/app-root-path": "1.2.4",
-    "@uiharness/types": "0.0.17",
+    "@uiharness/types": "0.0.23",
     "app-root-path": "2.1.0",
-    "electron": "^4.0.2",
+    "electron": "4.0.3",
+    "electron-is": "3.0.0",
     "electron-is-dev": "1.0.1",
     "electron-log": "2.2.17",
+    "electron-window-state": "5.0.3",
     "tslib": "1.9.3"
   },
   "devDependencies": {
-    "@tdb/test": "1.2.13",
-    "@tdb/typescript": "3.2.8"
+    "@tdb/test": "1.2.15",
+    "@tdb/typescript": "3.2.10",
+    "@types/electron-window-state": "2.0.33"
   },
   "files": [
-    "lib"
+    "lib",
+    "src"
   ],
   "license": "MIT"
 }
