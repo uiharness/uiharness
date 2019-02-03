@@ -1,5 +1,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![uiharness](https://user-images.githubusercontent.com/185555/51708395-b4a71280-2088-11e9-95ac-ed659c36476c.png)](https://uiharness.com)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fuiharness%2Fuiharness.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fuiharness%2Fuiharness?ref=badge_shield)
 
 
 
@@ -70,3 +71,7 @@ Proudly sponsored by [Hypersheet](https://hypersheet.io):
 ## See also
 - [github/create-tmpl](https://github.com/philcockfield/create-tmpl)
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fuiharness%2Fuiharness.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fuiharness%2Fuiharness?ref=badge_large)
