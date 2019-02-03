@@ -6,6 +6,8 @@ export * from './types';
  */
 export async function init() {
   log.info();
+  log.info.gray(`👋`);
+  log.info.gray('----------------------------------------------');
 
   const templates: ITemplate[] = [
     { id: 'ALL', name: 'Electron & Web' },

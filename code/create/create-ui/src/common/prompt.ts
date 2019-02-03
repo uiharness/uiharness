@@ -9,7 +9,7 @@ export async function forTemplate(templates: ITemplate[]) {
   const confirm = {
     type: 'list',
     name: 'id',
-    message: 'Select a template',
+    message: 'Select your target platform',
     choices,
   };
   const { id } = (await inquirer.prompt(confirm)) as { id: string };
