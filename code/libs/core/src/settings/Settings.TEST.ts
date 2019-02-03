@@ -58,4 +58,16 @@ describe('Settings', () => {
     test(DIR);
     test('/NO_EXIST');
   });
+
+  it('has [web] settings only', () => {
+    const settings = Settings.create(fsPath.join(DIR, 'only-web.yml'));
+    expect(settings.web.exists).to.eql(true);
+    expect(settings.electron.exists).to.eql(false);
+  });
+
+  it('has [electron] settings only', () => {
+    const settings = Settings.create(fsPath.join(DIR, 'only-electron.yml'));
+    expect(settings.web.exists).to.eql(false);
+    expect(settings.electron.exists).to.eql(true);
+  });
 });
