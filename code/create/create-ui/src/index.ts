@@ -15,13 +15,9 @@ export async function init() {
 
   const res = await prompt.forTemplate(templates);
 
-  console.log('-------------------------------------------');
-  console.log('res', res);
+  log.info('-------------------------------------------');
+  log.info('res', res);
 
   // log.info(`👋  Please use ${log.cyan('yarn create uiharness')} instead.`);
   log.info();
 }
-
-/**
- * INTERNAL
- */
