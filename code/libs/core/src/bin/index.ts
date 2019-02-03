@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import * as cmds from '../cmds';
-import { constants, log, yargs, BundleTarget } from '../common';
+import { constants, log, yargs, BundleTarget, Environment } from '../common';
 import { Settings } from '../settings';
-import { toBundleTarget, BUNDLE_TARGETS } from './util';
+import { wrangleAndLog, BUNDLE_TARGETS, ENVIRONMENTS } from './util';
 
 /**
  * Makes the script crash on unhandled rejections instead of silently
@@ -29,6 +29,8 @@ const CMD = {
   OPEN: 'open',
   OPEN_O: 'o',
   SERVE: 'serve',
+  LOGS: 'logs [env]',
+  LOGS_L: 'l',
 };
 const CMDS = Object.keys(CMD)
   .map(key => CMD[key])
@@ -83,7 +85,7 @@ const program = yargs
         describe: 'Start "electron" (default) or "web" server.',
       }),
     e => {
-      const target = formatBundleTargetOption(e.target);
+      const target = wrangleBundleTarget(e.target);
       if (!target) {
         return process.exit(1);
       }
@@ -127,7 +129,7 @@ const program = yargs
     async e => {
       const { silent, dev = false } = e;
       const prod = !dev;
-      const target = formatBundleTargetOption(e.target);
+      const target = wrangleBundleTarget(e.target);
       if (!target) {
         return process.exit(1);
       }
@@ -161,7 +163,7 @@ const program = yargs
         }),
     async e => {
       const { silent, open } = e;
-      const target = formatBundleTargetOption(e.target);
+      const target = wrangleBundleTarget(e.target);
       if (!target) {
         return process.exit(1);
       }
@@ -226,6 +228,34 @@ const program = yargs
   )
 
   /**
+   * `logs`
+   */
+  .command(
+    [CMD.LOGS, CMD.LOGS_L],
+    'Show application logs.',
+    e =>
+      e
+        .positional('env', {
+          type: 'string',
+          default: 'prod',
+          describe: 'Show "production" or "development" logs.',
+        })
+        .option('tail', {
+          alias: 't',
+          describe: 'Tail the log.',
+          boolean: true,
+        }),
+    async e => {
+      const { tail } = e;
+      const env = wrangleEnvironment(e.env, 'production');
+      if (!env) {
+        return process.exit(1);
+      }
+      await cmds.logs({ settings, env, tail });
+    },
+  )
+
+  /**
    * `serve`
    */
   .command(
@@ -238,7 +268,7 @@ const program = yargs
   .help('h')
   .alias('h', 'help')
   .alias('v', 'version')
-  .epilog(`See ${constants.URL.SITE}`);
+  .epilog(`See ${log.cyan(constants.URL.SITE)}`);
 
 /**
  * Show full list of commands if none was provided.
@@ -252,18 +282,15 @@ if (!CMDS.includes(program.argv._[0])) {
 /**
  * INTERNAL
  */
-export function formatBundleTargetOption(value: unknown) {
-  const target = toBundleTarget(value);
-  if (!target) {
-    const list = BUNDLE_TARGETS.map(t => `"${log.cyan(t)}"`)
-      .join(' ')
-      .trim();
-    let msg = '';
-    msg += `😫  The target "${log.yellow(target)}" is not supported. `;
-    msg += `Must be one of ${list}.`;
-    log.info(msg);
-    log.info();
-    return undefined;
-  }
-  return target;
+export function wrangleBundleTarget(value: unknown) {
+  return wrangleAndLog<BundleTarget>(
+    'target',
+    value,
+    'electron',
+    BUNDLE_TARGETS,
+  );
+}
+
+export function wrangleEnvironment(value: unknown, defaultValue: Environment) {
+  return wrangleAndLog<Environment>('env', value, defaultValue, ENVIRONMENTS);
 }

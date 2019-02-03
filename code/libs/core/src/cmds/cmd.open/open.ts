@@ -1,7 +1,6 @@
-import main from '@uiharness/electron/lib/main';
 import * as os from 'os';
 
-import { command, fs, fsPath, log, logging } from '../../common';
+import { command, fs, fsPath, log, logging, main } from '../../common';
 import { Settings } from '../../settings';
 
 /**
@@ -23,7 +22,8 @@ export async function open(args: { settings: Settings; folder?: boolean }) {
   };
 
   const runOpen = (path: string, type: 'app' | 'folder') => {
-    const logPaths = main.logPaths({ appName: settings.name });
+    const appName = settings.name;
+    const logPaths = main.logPaths({ appName });
     const logCmd = tailCommand(logPaths.dir, logPaths.prod.filename);
     log.info();
     log.info(`🖐  Open   ${formatPath(path)}`);
