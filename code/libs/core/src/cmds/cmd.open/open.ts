@@ -37,7 +37,9 @@ export async function open(args: { settings: Settings; folder?: boolean }) {
   const config = settings.electron.builderArgs;
   if (!config.exists) {
     log.warn(
-      `😩  An 'electron-builder.yml' file does not exist in the project.`,
+      `😩  A ${log.cyan(
+        'uiharness.builder.yml',
+      )} file does not exist in the project.`,
     );
     return;
   }

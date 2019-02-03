@@ -6,6 +6,7 @@ import {
   logging,
   command,
   BundleTarget,
+  logNoConfig,
 } from '../../common';
 import { Settings } from '../../settings';
 import * as init from '../cmd.init';
@@ -53,13 +54,20 @@ export async function bundleElectron(args: {
   stats?: boolean;
 }) {
   const { settings, silent = false } = args;
+  const electron = settings.electron;
+
+  if (!electron.exists) {
+    logNoConfig({ target: 'electron' });
+    const error = new Error(`Electron configuration not specified.`);
+    return { success: false, error };
+  }
+
   const summary = value.defaultValue(args.summary, true);
   const stats = value.defaultValue(args.stats, true);
   const prod = value.defaultValue(args.prod, true);
   const env = toEnv(prod);
   let { main, renderer } = args;
   const pkg = settings.package;
-  const electron = settings.electron;
   const entry = electron.entry;
   const bundlerArgs = electron.bundlerArgs;
   const out = electron.out(prod);
@@ -159,11 +167,18 @@ export async function bundleWeb(args: {
 }) {
   const { settings, silent = false } = args;
   const summary = value.defaultValue(args.summary, true);
+  const web = settings.web;
+
+  if (!web.exists) {
+    logNoConfig({ target: 'web' });
+    const error = new Error(`Web configuration not specified.`);
+    return { success: false, error };
+  }
+
   const stats = value.defaultValue(args.stats, true);
   const prod = value.defaultValue(args.prod, true);
   const env = toEnv(prod);
   const pkg = settings.package;
-  const web = settings.web;
   const entry = web.entry;
   const out = web.out(prod);
 

@@ -1,4 +1,4 @@
-import { command, fs, fsPath, log } from '../../common';
+import { command, fs, fsPath, log, logNoConfig } from '../../common';
 import { Settings } from '../../settings';
 import { bundleWeb } from '../cmd.bundle';
 import { stats as renderStats } from '../cmd.stats';
@@ -8,6 +8,13 @@ import { stats as renderStats } from '../cmd.stats';
  */
 export async function serve(args: { settings: Settings }) {
   const { settings } = args;
+  const web = settings.web;
+
+  if (!web.exists) {
+    logNoConfig({ target: 'web' });
+    return;
+  }
+
   const prod = true;
   const out = settings.web.out(prod);
   const dir = fsPath.resolve(out.dir);

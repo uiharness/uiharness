@@ -133,7 +133,10 @@ const program = yargs
       if (!target) {
         return process.exit(1);
       }
-      await cmds.bundle({ settings, prod, silent, target });
+      const res = await cmds.bundle({ settings, prod, silent, target });
+      if (!res.success) {
+        return process.exit(1);
+      }
       return process.exit(0);
     },
   )
@@ -167,8 +170,11 @@ const program = yargs
       if (!target) {
         return process.exit(1);
       }
-      await cmds.dist({ settings, silent, target });
-      if (open) {
+      const res = await cmds.dist({ settings, silent, target });
+      if (!res.success) {
+        return process.exit(1);
+      }
+      if (open && target === 'electron') {
         await cmds.open({ settings });
       }
       return process.exit(0);

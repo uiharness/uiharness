@@ -30,6 +30,20 @@ export function logInfo(args: {
 }
 
 /**
+ * Logs that an operation cannot run because the required configuration
+ * is not present with the YAML.
+ */
+export function logNoConfig(args: { target: BundleTarget }) {
+  const { target } = args;
+  let msg = '';
+  msg += `😵  The "${log.yellow(target)}" configuration `;
+  msg += `does not exist in ${log.cyan('uiharness.yml')}.`;
+  log.info(msg);
+  log.info();
+  return;
+}
+
+/**
  * Logs common information about the module.
  */
 export function logElectronInfo(args: {

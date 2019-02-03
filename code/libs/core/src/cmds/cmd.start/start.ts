@@ -5,6 +5,7 @@ import {
   fsPath,
   log,
   logElectronInfo,
+  logNoConfig,
   logWebInfo,
   parcel,
 } from '../../common';
@@ -24,6 +25,7 @@ export async function start(args: {
   switch (target) {
     case 'electron':
       return startElectron({ settings });
+
     case 'web':
       return startWeb({ settings });
 
@@ -43,6 +45,11 @@ export async function startElectron(args: { settings: Settings }) {
   const prod = false;
   const electron = settings.electron;
   const port = electron.port;
+
+  if (!electron.exists) {
+    logNoConfig({ target: 'electron' });
+    return;
+  }
 
   // Ensure the module is initialized.
   await init.prepare({ settings, prod });
@@ -83,6 +90,11 @@ export async function startWeb(args: { settings: Settings }) {
   const web = settings.web;
   const prod = false;
   const port = web.port;
+
+  if (!web.exists) {
+    logNoConfig({ target: 'web' });
+    return;
+  }
 
   // Ensure the module is initialized.
   await init.prepare({ settings, prod });
