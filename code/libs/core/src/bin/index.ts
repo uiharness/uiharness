@@ -251,7 +251,7 @@ const program = yargs
       if (!env) {
         return process.exit(1);
       }
-      await cmds.logs({ settings, env, tail });
+      return cmds.logs({ settings, env, tail });
     },
   )
 
