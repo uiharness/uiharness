@@ -19,12 +19,12 @@
     "prepare": "yarn run lint && yarn test && yarn run build"
   },
   "dependencies": {
-    "create-tmpl": "0.1.1",
+    "create-tmpl": "0.1.5",
     "new-file": "^1.2.2"
   },
   "devDependencies": {
-    "@tdb/test": "1.2.14",
-    "@tdb/typescript": "3.2.9"
+    "@tdb/test": "1.2.15",
+    "@tdb/typescript": "3.2.10"
   },
   "engines": {
     "node": ">=10.x"

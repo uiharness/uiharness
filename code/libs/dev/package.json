@@ -24,7 +24,7 @@
     "@tdb/util": "1.9.31",
     "@uiharness/electron": "0.3.62",
     "@uiharness/types": "0.0.23",
-    "create-tmpl": "0.1.1",
+    "create-tmpl": "0.1.5",
     "electron": "4.0.3",
     "electron-builder": "20.38.5",
     "execa": "1.0.0",

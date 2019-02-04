@@ -9,14 +9,14 @@
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
     "prepare": "yarn build && yarn lint",
-    "tmp": "node ."
+    "tmp": "node . $@"
   },
   "dependencies": {
-    "@tdb/log": "1.1.17",
-    "create-tmpl": "0.1.4"
+    "@tdb/log": "1.1.23",
+    "create-tmpl": "0.1.5"
   },
   "devDependencies": {
-    "@tdb/typescript": "3.2.5"
+    "@tdb/typescript": "3.2.10"
   },
   "repository": "github.com/uiharness/uiharness",
   "license": "MIT"
