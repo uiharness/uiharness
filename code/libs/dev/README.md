@@ -24,7 +24,16 @@ Include in the `devDependencies` of your package.json, along with the correspond
 }
 ```
 
-Ensure the `ui init` command runs after installation complete to fully configure your UIHarness.
+Ensure the `ui init` command runs after installation complete to fully configure your UIHarness.  
+You might do this by running it as a [post-install](https://docs.npmjs.com/misc/scripts.html) step:
+
+```json
+{
+  "scripts": {
+    "postinstall": "ui init"
+  }
+}
+```
 
 
 

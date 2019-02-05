@@ -3,9 +3,8 @@
 
 # create-ui
 
-A simple [UIHarness](https://uiharness.com) module bootstrapper.
-Create a powerful ui module using the UIHarness with a single command.  
-[uiharness.com](https://uiharness.com)
+A simple [UIHarness](https://uiharness.com) bootstrapper.  
+Create a powerful user-interface module using the [UIHarness](https://uiharness.com) with a single command.  
 
 ## Usage
 

@@ -1,21 +1,14 @@
-import { fs, fsPath, template } from './libs';
-
-/**
- * Utility helpers for working with NPM.
- */
-export const npm = template.npm;
+import { fs, fsPath, TemplateMiddleware, Template } from './libs';
 
 /**
  * Initializes a new template.
  */
-export function create(source?: template.SourceTemplateArg) {
-  return template.create(source);
-}
+export const create = Template.create;
 
 /**
  * Performs template variable replacement.
  */
-export function replace(args: { edge?: string }): template.TemplateMiddleware {
+export function replace(args: { edge?: string }): TemplateMiddleware {
   return async (req, res) => {
     const { edge } = args;
     Object.keys(req.variables)
@@ -33,7 +26,7 @@ export function replace(args: { edge?: string }): template.TemplateMiddleware {
  */
 export function copyFile(
   args: { force?: boolean; noForce?: string[] } = {},
-): template.TemplateMiddleware {
+): TemplateMiddleware {
   return async (req, res) => {
     const { force = false, noForce = [] } = args;
     const path = fsPath.resolve(`.${req.path.target}`);
@@ -53,7 +46,7 @@ export function copyFile(
 /**
  * A template processor for deleting files.
  */
-export function deleteFile(args: {} = {}): template.TemplateMiddleware {
+export function deleteFile(args: {} = {}): TemplateMiddleware {
   return async (req, res) => {
     const path = fsPath.resolve(`.${req.path.target}`);
     await fs.remove(path);

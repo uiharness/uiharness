@@ -12,7 +12,7 @@ import {
   prompt,
   Template,
 } from './common';
-import * as middleware from './tmpl.middleware';
+import * as middleware from './middleware';
 
 export * from './types';
 type TargetOption = 'ALL' | 'ELECTRON' | 'WEB';

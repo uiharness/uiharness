@@ -7,7 +7,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@uiharness/dev": "0.0.0"
+    "@uiharness/dev": "0.0.1"
   },
   "resolutions": {
     "@types/react": "16.7.17"

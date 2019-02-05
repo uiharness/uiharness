@@ -20,7 +20,7 @@ export function processPackage(
     }
 
     // Get latest NPM versions.
-    alert(res, `Retrieving latest versions from NPM`);
+    alert(res, `Retrieving latest version information...`);
     const pkg = npm.pkg({ json: JSON.parse(req.text || '') });
     await pkg.updateVersions({
       filter: (name, version) => version === 'latest',

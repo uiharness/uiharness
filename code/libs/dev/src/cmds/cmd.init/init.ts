@@ -75,7 +75,7 @@ export async function init(
   // const flags = settings.init();
 
   if (flags.scripts) {
-    await pkg.addFields('scripts', SCRIPTS).save();
+    await pkg.setFields('scripts', SCRIPTS).save();
   }
 
   if (flags.deps) {
@@ -83,8 +83,8 @@ export async function init(
     const deps = await npm.getVersions(PKG.dependencies);
     const devDeps = await npm.getVersions(PKG.devDependencies);
     await pkg
-      .addFields('dependencies', deps, { force: true })
-      .addFields('devDependencies', devDeps, { force: true })
+      .setFields('dependencies', deps, { force: true })
+      .setFields('devDependencies', devDeps, { force: true })
       .save();
   }
 

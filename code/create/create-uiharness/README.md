@@ -2,15 +2,8 @@
 
 # create-uiharness
 
-A simple UIHarness module bootstrapper.
-Create a module using the UIHarness with a single command.
-
-https://uiharness.com
-
-## Usage
+Please use `create-ui` instead:
 
 ```bash
 yarn create ui
 ```
-
-then follow the prompts to generate your new module.
