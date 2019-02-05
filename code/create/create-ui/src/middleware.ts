@@ -87,7 +87,7 @@ export function runInitCommand(
   return async (req, res) => {
     const { dir } = req.variables;
 
-    alert(res, `Running UIHarness initialization...`);
+    alert(res, `Initializing...`);
     const cmd = `cd ${dir} && node node_modules/.bin/ui init`;
     await exec.run(cmd, { silent: true });
 
