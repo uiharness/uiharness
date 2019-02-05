@@ -2,5 +2,8 @@
   "name": "@uiharness/core",
   "version": "1.2.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "echo no-op"
+  }
 }

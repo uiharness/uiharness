@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "reset": "sh ./sh/reset.sh",
-    "test": "echo no-op"
+    "test": "sh sh/test.sh"
   },
   "keywords": [
     "design",
