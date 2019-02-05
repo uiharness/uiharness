@@ -1,6 +1,6 @@
 import { join } from 'path';
 
-import { fs, IVariables, npm, TemplateMiddleware, time, exec } from './common';
+import { fs, IVariables, npm, TemplateMiddleware, exec, time } from './common';
 import { AfterTemplateMiddleware, IAlert, ITemplateResponse } from './types';
 
 const alert = (res: ITemplateResponse, message: string) =>
@@ -65,8 +65,11 @@ export function npmInstall(
 ): TemplateMiddleware<IVariables> {
   return async (req, res) => {
     const { dir } = req.variables;
+    const pkg = npm.pkg(dir);
+    const ver = pkg.devDependencies['@uiharness/dev'];
+    const msg = `Installing v${ver} of the UIHarness...`;
+    alert(res, msg);
 
-    alert(res, `Installing NPM modules...`);
     const cmd = (await npm.yarn.isInstalled()) ? 'yarn install' : 'npm install';
     await exec.run(`cd ${dir} && ${cmd}`, { silent: true });
 
@@ -85,7 +88,7 @@ export function runInitCommand(
   return async (req, res) => {
     const { dir } = req.variables;
 
-    alert(res, `Initializing UIHarness...`);
+    alert(res, `Running UIHarness initialization...`);
     const cmd = `cd ${dir} && node node_modules/.bin/ui init`;
     await exec.run(cmd, { silent: true });
 
