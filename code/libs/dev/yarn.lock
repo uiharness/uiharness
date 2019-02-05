@@ -1157,10 +1157,10 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.8.tgz#0b45bf0607a5509b921335658d87489c12955176"
   integrity sha512-OMSKUmZ09gbzITzx4nxnJqhprWC7JqsmlrEsVtb+cv3GXHNpv0kktqxhboKX52FnMggkQvT5ezt8pxTWyKpJHA==
 
-"@uiharness/electron@0.3.63":
-  version "0.3.63"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.63.tgz#28b986401458aa47a94fca5918457c5b79b11da2"
-  integrity sha512-fujaYphL18h9zzhbZT/FKjC85mcBjUPXe2Y5ZLBNsValR9t2+tC70mujkLihxjQ5Fiih7z1Sr/PM6rRUU3VKaw==
+"@uiharness/electron@0.3.64":
+  version "0.3.64"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.64.tgz#e3e7977ffc125690c9e1c2c957a81e9d385476ee"
+  integrity sha512-TOn/9ai+oX+IxlikkiOMmWvhLo1mC1rzSIKIOgiGqTgxkl1CvjNJAZ6Cq/J3UYul4IcL0FDOu/LLUXIx2kdWcA==
   dependencies:
     "@tdb/electron" "^0.0.21"
     "@tdb/log" "1.1.24"
@@ -1173,6 +1173,7 @@
     electron-is-dev "1.0.1"
     electron-log "2.2.17"
     electron-window-state "5.0.3"
+    rxjs "6.4.0"
     tslib "1.9.3"
 
 "@uiharness/types@0.0.23":
@@ -6727,7 +6728,7 @@ rxjs@6.3.3, rxjs@^6.3.3:
   dependencies:
     tslib "^1.9.0"
 
-rxjs@^6.4.0:
+rxjs@6.4.0, rxjs@^6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.4.0.tgz#f3bb0fe7bda7fb69deac0c16f17b50b0b8790504"
   integrity sha512-Z9Yfa11F6B9Sg/BK9MnqnQ+aQYicPLtilXBp2yUtDt2JRCE0h26d33EnfO3ZxoNxG0T92OUucP3Ct7cpfkdFfw==

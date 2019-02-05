@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/electron",
-  "version": "0.3.63",
+  "version": "0.3.64",
   "description": "UIHarness client-tools for Electron (include in dependencies).",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -23,6 +23,7 @@
     "electron-is-dev": "1.0.1",
     "electron-log": "2.2.17",
     "electron-window-state": "5.0.3",
+    "rxjs": "6.4.0",
     "tslib": "1.9.3"
   },
   "devDependencies": {

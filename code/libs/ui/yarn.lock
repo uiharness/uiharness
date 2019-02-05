@@ -1120,10 +1120,10 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/dev@0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@uiharness/dev/-/dev-0.0.1.tgz#30855d18f56e0c0958f21caa530a2a6d735141d9"
-  integrity sha512-cAKLKZG7JZx4IEjFoxmM2fFi+yS9y/w666dBV8hqt4aOGKSolXeIm6mvjjwFIggdQXoWWN3rirAT5hja099OMA==
+"@uiharness/dev@0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@uiharness/dev/-/dev-0.0.2.tgz#d073c4d101370a5af5bc832f7054655eec87bfda"
+  integrity sha512-rBz/XCKamLR3I3h2AppC9Z+EANht69zp4kBP4cAa+7Cd5Fl7e4IQfUox9Mddb3q1ls15q8u9YkwW1UfetBBxkg==
   dependencies:
     "@babel/core" "7.2.2"
     "@babel/preset-env" "7.2.3"
@@ -1132,7 +1132,7 @@
     "@tdb/electron" "0.0.21"
     "@tdb/log" "1.1.24"
     "@tdb/util" "1.9.32"
-    "@uiharness/electron" "0.3.63"
+    "@uiharness/electron" "0.3.64"
     "@uiharness/types" "0.0.23"
     create-tmpl "0.1.9"
     electron "4.0.3"
@@ -1143,10 +1143,10 @@
     serve "10.1.1"
     yargs "12.0.5"
 
-"@uiharness/electron@0.3.63":
-  version "0.3.63"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.63.tgz#28b986401458aa47a94fca5918457c5b79b11da2"
-  integrity sha512-fujaYphL18h9zzhbZT/FKjC85mcBjUPXe2Y5ZLBNsValR9t2+tC70mujkLihxjQ5Fiih7z1Sr/PM6rRUU3VKaw==
+"@uiharness/electron@0.3.64":
+  version "0.3.64"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.64.tgz#e3e7977ffc125690c9e1c2c957a81e9d385476ee"
+  integrity sha512-TOn/9ai+oX+IxlikkiOMmWvhLo1mC1rzSIKIOgiGqTgxkl1CvjNJAZ6Cq/J3UYul4IcL0FDOu/LLUXIx2kdWcA==
   dependencies:
     "@tdb/electron" "^0.0.21"
     "@tdb/log" "1.1.24"
@@ -1159,6 +1159,7 @@
     electron-is-dev "1.0.1"
     electron-log "2.2.17"
     electron-window-state "5.0.3"
+    rxjs "6.4.0"
     tslib "1.9.3"
 
 "@uiharness/types@0.0.23":
@@ -6646,7 +6647,7 @@ rxjs@6.3.3:
   dependencies:
     tslib "^1.9.0"
 
-rxjs@^6.3.3, rxjs@^6.4.0:
+rxjs@6.4.0, rxjs@^6.3.3, rxjs@^6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.4.0.tgz#f3bb0fe7bda7fb69deac0c16f17b50b0b8790504"
   integrity sha512-Z9Yfa11F6B9Sg/BK9MnqnQ+aQYicPLtilXBp2yUtDt2JRCE0h26d33EnfO3ZxoNxG0T92OUucP3Ct7cpfkdFfw==
