@@ -6,6 +6,7 @@
     "create-ui": "./lib/bin.js"
   },
   "scripts": {
+    "test": "echo no-op",
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
     "prepare": "yarn build && yarn lint",
