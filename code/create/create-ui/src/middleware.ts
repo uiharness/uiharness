@@ -1,6 +1,6 @@
 import { join } from 'path';
 
-import { fs, IVariables, npm, TemplateMiddleware, exec, time } from './common';
+import { exec, fs, IVariables, npm, TemplateMiddleware } from './common';
 import { AfterTemplateMiddleware, IAlert, ITemplateResponse } from './types';
 
 const alert = (res: ITemplateResponse, message: string) =>
@@ -70,8 +70,7 @@ export function npmInstall(
     const msg = `Installing v${ver} of the UIHarness...`;
     alert(res, msg);
 
-    const cmd = (await npm.yarn.isInstalled()) ? 'yarn install' : 'npm install';
-    await exec.run(`cd ${dir} && ${cmd}`, { silent: true });
+    await npm.install({ dir });
 
     res.done(args.done);
   };

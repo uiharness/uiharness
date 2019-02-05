@@ -23,7 +23,6 @@ type TargetOption = 'ALL' | 'ELECTRON' | 'WEB';
 export async function init() {
   log.info();
   log.info.gray(`👋`);
-  // log.info.gray('----------------------------------------------');
 
   // Prompt for target platform.
   const { tmpl, variables, dir } = await prepareTemplate({});

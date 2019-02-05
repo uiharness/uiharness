@@ -33,12 +33,37 @@
     ramda "0.26.1"
     rxjs "6.3.3"
 
+"@tdb/log@1.1.27":
+  version "1.1.27"
+  resolved "https://registry.yarnpkg.com/@tdb/log/-/log-1.1.27.tgz#44d3b7dc0230b61d0a5cec34133c6968a68bfc6f"
+  integrity sha512-1HgSt/u1ezCsxM9KW3HPQh1YYLWjuQZ9ltn2ANSvQY16wSOIYpNKOe3NxIntVrtRY5UBORr2W4q3j3H9F2CnUA==
+  dependencies:
+    "@types/ramda" "0.25.47"
+    chalk "2.4.2"
+    cli-table "0.3.1"
+    ramda "0.26.1"
+    rxjs "6.3.3"
+
 "@tdb/npm@0.1.14":
   version "0.1.14"
   resolved "https://registry.yarnpkg.com/@tdb/npm/-/npm-0.1.14.tgz#c647046c701b21553e09de5e4e56d4d24e3731f4"
   integrity sha512-dq9vcUkgyybZ9HVdbUsJZuUbQ0H2D3ydQtCaUP9yqAJ9AXHdWhnCpYmRzurOj8XnIMBZdFmJgFOttcYjWGBEUg==
   dependencies:
     "@tdb/util" "1.9.32"
+    "@types/fs-extra" "5.0.4"
+    "@types/js-yaml" "3.12.0"
+    "@types/semver" "5.5.0"
+    execa "1.0.0"
+    fs-extra "7.0.1"
+    js-yaml "3.12.1"
+    semver "5.6.0"
+
+"@tdb/npm@^0.1.17":
+  version "0.1.17"
+  resolved "https://registry.yarnpkg.com/@tdb/npm/-/npm-0.1.17.tgz#6ef01f1ef8aa83c799518ef5662b5589c5370a91"
+  integrity sha512-WbkHv5e68gMylrk5gclBorGzlsLRic+FZDNkdIOzxubMYS+9sPrEQ6DJSUs7Qpt+DwSFzlPy4phWAKQORmiJUw==
+  dependencies:
+    "@tdb/util" "1.9.35"
     "@types/fs-extra" "5.0.4"
     "@types/js-yaml" "3.12.0"
     "@types/semver" "5.5.0"
@@ -67,6 +92,32 @@
   integrity sha512-GUFXueGpwRvMaFCjcfYLh0hef/lCDa/uncJ+nrIu9VFonm7NzNkUCcX/XTjiNT/IyPwR9eCvqcP/TaCaGWdpuQ==
   dependencies:
     "@tdb/log" "1.1.24"
+    "@types/react" "16.7.17"
+    "@types/react-dom" "16.0.11"
+    "@types/string" "0.0.29"
+    "@types/tinycolor2" "1.4.1"
+    "@types/underscore.string" "0.0.33"
+    cuid "2.1.4"
+    dynamics.js "1.1.5"
+    escape-string-regexp "1.0.5"
+    fastclick "1.0.6"
+    glamor "2.20.40"
+    js-cookie "2.2.0"
+    moment "2.24.0"
+    path-to-regexp "3.0.0"
+    react "16.7.0"
+    react-dom "16.7.0"
+    react-inspector "2.3.1"
+    tinycolor2 "1.4.1"
+    tslib "1.9.3"
+    underscore.string "3.3.5"
+
+"@tdb/util@1.9.35":
+  version "1.9.35"
+  resolved "https://registry.yarnpkg.com/@tdb/util/-/util-1.9.35.tgz#6efc1ae60bb5a35dd715dff2ca9c57ac032344a0"
+  integrity sha512-0gvEZmUlpbb3pVwx2NUdGQ9+oh/0TUBohwPDTx8wSW8LWZb1y4icI+jfVxUAwys2Vs6pQdqNSBOmttE6EsGVsw==
+  dependencies:
+    "@tdb/log" "1.1.27"
     "@types/react" "16.7.17"
     "@types/react-dom" "16.0.11"
     "@types/string" "0.0.29"
