@@ -839,12 +839,23 @@
     ramda "0.26.1"
     rxjs "6.3.3"
 
-"@tdb/npm@0.1.14":
-  version "0.1.14"
-  resolved "https://registry.yarnpkg.com/@tdb/npm/-/npm-0.1.14.tgz#c647046c701b21553e09de5e4e56d4d24e3731f4"
-  integrity sha512-dq9vcUkgyybZ9HVdbUsJZuUbQ0H2D3ydQtCaUP9yqAJ9AXHdWhnCpYmRzurOj8XnIMBZdFmJgFOttcYjWGBEUg==
+"@tdb/log@1.1.27":
+  version "1.1.27"
+  resolved "https://registry.yarnpkg.com/@tdb/log/-/log-1.1.27.tgz#44d3b7dc0230b61d0a5cec34133c6968a68bfc6f"
+  integrity sha512-1HgSt/u1ezCsxM9KW3HPQh1YYLWjuQZ9ltn2ANSvQY16wSOIYpNKOe3NxIntVrtRY5UBORr2W4q3j3H9F2CnUA==
   dependencies:
-    "@tdb/util" "1.9.32"
+    "@types/ramda" "0.25.47"
+    chalk "2.4.2"
+    cli-table "0.3.1"
+    ramda "0.26.1"
+    rxjs "6.3.3"
+
+"@tdb/npm@0.1.18":
+  version "0.1.18"
+  resolved "https://registry.yarnpkg.com/@tdb/npm/-/npm-0.1.18.tgz#940ccf0b8f7c049854558d0b19e116ff6264f9c9"
+  integrity sha512-gx8MRkxB9j8/GgBItdXQ+UdEDXF9bN5qbwq0Kap4LB+wd2HNp7CvSqfFwdQgIG7lRV1pj76aiClYxwsyWE75GQ==
+  dependencies:
+    "@tdb/util" "1.9.35"
     "@types/fs-extra" "5.0.4"
     "@types/js-yaml" "3.12.0"
     "@types/semver" "5.5.0"
@@ -883,6 +894,32 @@
   integrity sha512-GUFXueGpwRvMaFCjcfYLh0hef/lCDa/uncJ+nrIu9VFonm7NzNkUCcX/XTjiNT/IyPwR9eCvqcP/TaCaGWdpuQ==
   dependencies:
     "@tdb/log" "1.1.24"
+    "@types/react" "16.7.17"
+    "@types/react-dom" "16.0.11"
+    "@types/string" "0.0.29"
+    "@types/tinycolor2" "1.4.1"
+    "@types/underscore.string" "0.0.33"
+    cuid "2.1.4"
+    dynamics.js "1.1.5"
+    escape-string-regexp "1.0.5"
+    fastclick "1.0.6"
+    glamor "2.20.40"
+    js-cookie "2.2.0"
+    moment "2.24.0"
+    path-to-regexp "3.0.0"
+    react "16.7.0"
+    react-dom "16.7.0"
+    react-inspector "2.3.1"
+    tinycolor2 "1.4.1"
+    tslib "1.9.3"
+    underscore.string "3.3.5"
+
+"@tdb/util@1.9.35":
+  version "1.9.35"
+  resolved "https://registry.yarnpkg.com/@tdb/util/-/util-1.9.35.tgz#6efc1ae60bb5a35dd715dff2ca9c57ac032344a0"
+  integrity sha512-0gvEZmUlpbb3pVwx2NUdGQ9+oh/0TUBohwPDTx8wSW8LWZb1y4icI+jfVxUAwys2Vs6pQdqNSBOmttE6EsGVsw==
+  dependencies:
+    "@tdb/log" "1.1.27"
     "@types/react" "16.7.17"
     "@types/react-dom" "16.0.11"
     "@types/string" "0.0.29"
@@ -2407,12 +2444,12 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-create-tmpl@0.1.9:
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.1.9.tgz#5fb7674b310b6dc74dda96991d4c047987736223"
-  integrity sha512-O986246p3wf7VDZtibfViSuLziMZd+TB1VUhqMZ4mvpByksI61fg9piHuH6/rR2Mr7c07OoUpojINqJ/6FCVQg==
+create-tmpl@0.1.10:
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.1.10.tgz#7a9e90e7ee4f99d92767713fee4b5a6f0a9e4550"
+  integrity sha512-/bdzOD2GsED8QJPNgKihhatLH3yu6r4E0VMa0sv5BaGl4c8Q3EpFPRWcBE2E1FmQPsz/NQtHbUWGw83KxXtQXw==
   dependencies:
-    "@tdb/npm" "0.1.14"
+    "@tdb/npm" "0.1.18"
     "@tdb/util" "1.9.32"
     "@types/inquirer" "0.0.43"
     "@types/js-yaml" "3.12.0"
