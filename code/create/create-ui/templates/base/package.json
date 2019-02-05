@@ -1,0 +1,16 @@
+{
+  "name": "__NAME__",
+  "version": "0.0.0",
+  "scripts": {
+    "ui": "ui $@",
+    "start": "ui start $@"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@uiharness/dev": "latest"
+  },
+  "resolutions": {
+    "@types/react": "16.7.17"
+  },
+  "license": "MIT"
+}

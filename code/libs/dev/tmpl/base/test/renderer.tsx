@@ -1,6 +1,9 @@
 import '../node_modules/@uiharness/dev/css/normalize.css';
+
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+
+import { Root } from '../src/components/Root';
 
 /**
  * [Renderer] entry-point.
@@ -10,16 +13,12 @@ import * as ReactDOM from 'react-dom';
  */
 
 try {
-  const el = (
-    <div style={{ paddingLeft: 20 }}>
-      <h1>Hello World!</h1>
-    </div>
-  );
-  ReactDOM.render(el, document.getElementById('root'));
+  ReactDOM.render(<Root />, document.getElementById('root'));
 } catch (error) {
   /**
    * 🐷 TODO  Do something with the error, like:
-   *          - Log it somewhere.
-   *          - Alert the main process, etc.
+   *          - log it somewhere.
+   *          - alert the main process,
+   *          - etc.
    */
 }

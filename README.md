@@ -1,5 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![uiharness](https://user-images.githubusercontent.com/185555/51708395-b4a71280-2088-11e9-95ac-ed659c36476c.png)](https://uiharness.com)
+[![uiharness](https://user-images.githubusercontent.com/185555/52250326-2ff7a680-295c-11e9-9471-8a45b1e6b909.png)](https://uiharness.com)
 
 
 
@@ -23,7 +23,7 @@ API's will change (probably radically 🐷 ).
 Be up and running with a scaffold for [electron](https://electronjs.org/) or the [web](https://developer.mozilla.org) in less than 30 seconds (recommended):
 
 ```bash
-yarn create uiharness
+yarn create ui
 ```
 
 
@@ -31,20 +31,7 @@ yarn create uiharness
 Or manually add the UIHarness to your module.  
 
 ```bash
-yarn add -D @uiharness/core
-```
-
-ensure you run `uiharness init` as a post-install step, allowing the UIHarness to flesh out the configuration. 
-
-```json
-{
-  "scripts": {
-    "postinstall": "uiharness init",
-  },
-  "devDependencies": {
-    "@uiharness/core": "x.x.x"
-  }
-}
+yarn add -D @uiharness/dev
 ```
 
 
@@ -56,7 +43,7 @@ ensure you run `uiharness init` as a post-install step, allowing the UIHarness t
 
 ## 🔗 Modules
 - [npm](https://www.npmjs.com/org/uiharness)
-- [@uiharness/core](/code/libs/core/README.md)
+- [@uiharness/dev](/code/libs/dev/README.md)
 - [@uiharness/electron](/code/libs/electron/README.md)
 
 <p>&nbsp;</p>
