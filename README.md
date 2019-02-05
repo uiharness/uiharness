@@ -1,4 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/uiharness/uiharness.svg?branch=master)](https://travis-ci.org/uiharness/uiharness)
 [![uiharness](https://user-images.githubusercontent.com/185555/52250326-2ff7a680-295c-11e9-9471-8a45b1e6b909.png)](https://uiharness.com)
 
 
