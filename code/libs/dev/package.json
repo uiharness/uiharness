@@ -8,6 +8,7 @@
     "uiharness": "lib/bin/index.js"
   },
   "scripts": {
+    "postinstall": "ui init",
     "test": "sh node_modules/@tdb/test/sh/test.sh",
     "tdd": "yarn run test --reporter min --watch",
     "build": "sh node_modules/@tdb/typescript/sh/build.sh $@",

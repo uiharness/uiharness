@@ -1,5 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-![title](https://user-images.githubusercontent.com/185555/51809542-ad8d3800-2306-11e9-8732-a0a971ef4ab8.png)
+![title](https://user-images.githubusercontent.com/185555/52250333-3be36880-295c-11e9-8314-238744e14d79.png)
 
 
 This module contains the core [UIHarness](https://uiharness.com) development server:
@@ -15,9 +15,6 @@ Include in the `devDependencies` of your package.json, along with the correspond
 
 ```json
 {
-  "scripts": {
-    "postinstall": "uiharness init",
-  },
   "dependencies": {
     "@uiharness/electron": "x.x.x"
   },
@@ -26,6 +23,10 @@ Include in the `devDependencies` of your package.json, along with the correspond
   }
 }
 ```
+
+Ensure the `ui init` command runs after installation complete to fully configure your UIHarness.
+
+
 
 
 <p>&nbsp;</p>
