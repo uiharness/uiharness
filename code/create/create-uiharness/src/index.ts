@@ -37,7 +37,7 @@ function logComplete(args: { dir: string }) {
   log.info.cyan(`     cd ${log.white(dir)}`);
   log.info.cyan(`     yarn start`);
   log.info();
-  log.info.gray('👉  To see all available UIHarness commands:\n');
+  log.info.gray('👉  To see all your UIHarness commands:\n');
   log.info.cyan(`     cd ${log.white(dir)}`);
   log.info.cyan(`     yarn ui`);
   log.info();

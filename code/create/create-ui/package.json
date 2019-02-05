@@ -9,11 +9,13 @@
     "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
     "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
     "prepare": "yarn build && yarn lint",
-    "tmp": "node . $@"
+    "tmp": "mkdir -p tmp && cd tmp && node ../lib/bin.js",
+    "reset": "rm -rf tmp"
   },
   "dependencies": {
-    "@tdb/log": "1.1.23",
-    "create-tmpl": "0.1.5"
+    "@tdb/log": "1.1.24",
+    "@tdb/npm": "0.1.11",
+    "create-tmpl": "0.1.8"
   },
   "devDependencies": {
     "@tdb/typescript": "3.2.10"

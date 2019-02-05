@@ -1,8 +1,15 @@
+export {
+  IPrompt,
+  AfterTemplateMiddleware,
+  ITemplateResponse,
+} from 'create-tmpl';
+
+export type IAlert = { message: string };
+
 export type Platform = 'ELECTRON' | 'WEB';
 
-export type IPrompt<T extends string = any> = {
-  id: T;
-  label?: string;
+export type IVariables = {
+  target: Platform[];
+  moduleName: string;
+  dir: string;
 };
-
-export type IVariables = { target: Platform[] };

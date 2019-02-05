@@ -16,7 +16,6 @@ export const PATH = {
 };
 
 export const SCRIPTS = {
-  postinstall: 'ui init',
   ui: 'ui $@',
   start: 'ui start $@',
 };

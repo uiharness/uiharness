@@ -10,7 +10,7 @@ https://uiharness.com
 ## Usage
 
 ```bash
-yarn create uiharness
+yarn create ui
 ```
 
 then follow the prompts to generate your new module.

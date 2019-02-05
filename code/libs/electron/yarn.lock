@@ -2,13 +2,13 @@
 # yarn lockfile v1
 
 
-"@tdb/electron@^0.0.20":
-  version "0.0.20"
-  resolved "https://registry.yarnpkg.com/@tdb/electron/-/electron-0.0.20.tgz#36ca5fa448f94cfd436cfa03f17ba5319c703f4f"
-  integrity sha512-Ht1pcKAejpYWCbyyV54T8IrjvzGNjO6mGVBZStpVm3/WatVB9KITegNgNz/42ScmDnY5eju1aHflnFIa4kaK7w==
+"@tdb/electron@^0.0.21":
+  version "0.0.21"
+  resolved "https://registry.yarnpkg.com/@tdb/electron/-/electron-0.0.21.tgz#ccdde1457e4aec5b352691aa42ff2d0c93560648"
+  integrity sha512-8Pq5U8l7tWY2Y804j82jigtR4keCttONHT25T5pF++IwbfJSq+OM925R8WktpTFW/EIupdmLabU7x18bUKdrbg==
   dependencies:
-    "@tdb/log" "1.1.23"
-    "@tdb/util" "1.9.31"
+    "@tdb/log" "1.1.24"
+    "@tdb/util" "1.9.32"
     "@types/app-root-path" "1.2.4"
     app-root-path "2.1.0"
     electron-is "3.0.0"
@@ -17,10 +17,10 @@
     fs-extra "7.0.1"
     is-electron "2.2.0"
 
-"@tdb/log@1.1.23":
-  version "1.1.23"
-  resolved "https://registry.yarnpkg.com/@tdb/log/-/log-1.1.23.tgz#f77b68dba990478641ecfe9dee5a0843330f6ecc"
-  integrity sha512-fTPNjNUpWap9pwM8uK4TEYAW1as+hJFIfRx3UOJ/1T0fxKuXgYDv7gmTEtisPAyKuLYXrAm/Ev3f6YI/iFZclg==
+"@tdb/log@1.1.24":
+  version "1.1.24"
+  resolved "https://registry.yarnpkg.com/@tdb/log/-/log-1.1.24.tgz#4ec710ed3b0e46dd5ab38d1cc09548171f08fe71"
+  integrity sha512-RYfnFCoF1DsQfS5q5pmbNKMsmmQ2s3fT+BJ4/D8q2F4ZTVI06ZT4dPzeqCWtmnYxUqPHgpmSO4n0YgtJkPd1LQ==
   dependencies:
     "@types/ramda" "0.25.47"
     chalk "2.4.2"
@@ -28,10 +28,10 @@
     ramda "0.26.1"
     rxjs "6.3.3"
 
-"@tdb/test@1.2.15":
-  version "1.2.15"
-  resolved "https://registry.yarnpkg.com/@tdb/test/-/test-1.2.15.tgz#d15dfee48d0018654ff7eb7fa5933282574839eb"
-  integrity sha512-nFRH4b50tTUvi/fKBCrzr0MIY4G+XUKsq0fjM6C8Siz8gL6XDh5qOAljuKSxzRoJjzFV/ozbWxKKKa8pIK6V0A==
+"@tdb/test@1.2.16":
+  version "1.2.16"
+  resolved "https://registry.yarnpkg.com/@tdb/test/-/test-1.2.16.tgz#2672d8943ddf04cd8904e20b8c45e5565de1cc51"
+  integrity sha512-riWrLrwDd5ANqvE+n/7NqbabXlKL40ByxA3WIeQ6gV4EOd07yQMHUyApYTwIHw98i+2dkSHmpWlBvJ8xAdyMgw==
   dependencies:
     "@types/chai" "4.1.7"
     "@types/mocha" "5.2.5"
@@ -52,12 +52,12 @@
     tslint-react "3.6.0"
     typescript "3.2.4"
 
-"@tdb/util@1.9.31":
-  version "1.9.31"
-  resolved "https://registry.yarnpkg.com/@tdb/util/-/util-1.9.31.tgz#e3c8d990997f7c5219bf50156082ba341ffa82a4"
-  integrity sha512-y4KuRnaf4j/HIfCUQWWDXp4cUohcU1GDDOf/ARvh50GpbhVyTdX1A0jHCn5IPvEhfXZasB0XxGyWbdq+w9XVWQ==
+"@tdb/util@1.9.32":
+  version "1.9.32"
+  resolved "https://registry.yarnpkg.com/@tdb/util/-/util-1.9.32.tgz#6e05a79d8aa56992e3fc7b42b3f05840ec929446"
+  integrity sha512-GUFXueGpwRvMaFCjcfYLh0hef/lCDa/uncJ+nrIu9VFonm7NzNkUCcX/XTjiNT/IyPwR9eCvqcP/TaCaGWdpuQ==
   dependencies:
-    "@tdb/log" "1.1.23"
+    "@tdb/log" "1.1.24"
     "@types/react" "16.7.17"
     "@types/react-dom" "16.0.11"
     "@types/string" "0.0.29"

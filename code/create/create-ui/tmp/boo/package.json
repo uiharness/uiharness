@@ -1,0 +1,19 @@
+{
+  "name": "boo",
+  "version": "0.0.0",
+  "scripts": {
+    "ui": "ui $@",
+    "start": "ui start $@",
+    "postinstall": "ui init"
+  },
+  "dependencies": {
+    "@uiharness/electron": "0.3.63"
+  },
+  "devDependencies": {
+    "@uiharness/dev": "0.0.0"
+  },
+  "resolutions": {
+    "@types/react": "16.7.17"
+  },
+  "license": "MIT"
+}

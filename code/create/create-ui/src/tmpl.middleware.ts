@@ -1,36 +1,94 @@
-// import { TemplateMiddleware } from 'create-tmpl';
-import { TemplateMiddleware, IVariables } from './common';
-import { resolve } from 'path';
+import { join } from 'path';
+
+import { fs, IVariables, npm, TemplateMiddleware, time, exec } from './common';
+import { AfterTemplateMiddleware, IAlert, ITemplateResponse } from './types';
+
+const alert = (res: ITemplateResponse, message: string) =>
+  res.alert<IAlert>({ message });
 
 /**
  * Processes a [package.json] file.
  */
-export const processPackage: TemplateMiddleware<IVariables> = async (
-  req,
-  res,
-) => {
-  if (!req.path.source.endsWith('package.json')) {
-    return res.next();
-  }
+export function processPackage(
+  args: {
+    done?: AfterTemplateMiddleware;
+  } = {},
+): TemplateMiddleware<IVariables> {
+  return async (req, res) => {
+    if (!req.path.source.endsWith('package.json')) {
+      return res.next();
+    }
 
-  console.group('\n🌳 process');
+    // Get latest NPM versions.
+    alert(res, `Retrieving latest versions from NPM`);
+    const pkg = npm.pkg({ json: JSON.parse(req.text || '') });
+    await pkg.updateVersions({
+      filter: (name, version) => version === 'latest',
+    });
 
-  console.log('path', req.path);
-  console.log('req.variables', req.variables);
-  console.groupEnd();
+    // Update the package JSON.
+    alert(res, 'Updating [package.json] file');
+    pkg.json.name = req.variables.moduleName;
+    res.text = pkg.toJson();
 
-  res.next();
-};
+    // Finish up.
+    res.done(args.done);
+  };
+}
 
 /**
  * Saves a template file.
  */
-export const saveFile: TemplateMiddleware<IVariables> = async (req, res) => {
-  const dir = resolve('.');
-  console.group('\n🌳 save');
+export function saveFile(
+  args: {
+    done?: AfterTemplateMiddleware;
+  } = {},
+): TemplateMiddleware<IVariables> {
+  return async (req, res) => {
+    const { dir } = req.variables;
+    const path = join(dir, req.path.target);
+    alert(res, `Saving: ${path}`);
 
-  console.log('dir', dir);
-  console.groupEnd();
+    await fs.ensureDir(dir);
+    await fs.writeFile(path, req.buffer);
+    res.done(args.done);
+  };
+}
 
-  res.complete();
-};
+/**
+ * Run NPM install on the package.
+ */
+export function npmInstall(
+  args: {
+    done?: AfterTemplateMiddleware;
+  } = {},
+): TemplateMiddleware<IVariables> {
+  return async (req, res) => {
+    const { dir } = req.variables;
+
+    alert(res, `Installing NPM modules...`);
+    const cmd = (await npm.yarn.isInstalled()) ? 'yarn install' : 'npm install';
+    await exec.run(`cd ${dir} && ${cmd}`, { silent: true });
+
+    res.done(args.done);
+  };
+}
+
+/**
+ * Run `ui init` command.
+ */
+export function runInitCommand(
+  args: {
+    done?: AfterTemplateMiddleware;
+  } = {},
+): TemplateMiddleware<IVariables> {
+  return async (req, res) => {
+    const { dir } = req.variables;
+
+    alert(res, `Initializing UIHarness...`);
+    const cmd = `cd ${dir} && node node_modules/.bin/ui init`;
+    await exec.run(cmd, { silent: true });
+
+    res.done(args.done);
+  };
+}

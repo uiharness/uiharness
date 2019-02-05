@@ -12,10 +12,10 @@
     "prepare": "yarn build && yarn lint && yarn test"
   },
   "dependencies": {
-    "@uiharness/electron": "0.3.62"
+    "@uiharness/electron": "0.3.63"
   },
   "devDependencies": {
-    "@tdb/test": "1.2.15",
+    "@tdb/test": "1.2.16",
     "@tdb/typescript": "3.2.10",
     "@uiharness/dev": "0.0.0"
   },

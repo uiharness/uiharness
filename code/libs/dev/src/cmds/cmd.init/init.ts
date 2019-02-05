@@ -104,7 +104,7 @@ export async function init(
 async function reset(args: { settings: Settings }) {
   const { settings } = args;
   const pkg = settings.package;
-  pkg.removeFields('scripts', SCRIPTS, { exclude: 'postinstall' }).save();
+  pkg.removeFields('scripts', SCRIPTS).save();
 
   await tmpl
     .create(settings.path.templates.base)
@@ -189,9 +189,7 @@ async function getInitializedState(args: { settings: Settings }) {
   const electron = settings.electron;
   const electronEntry = electron.entry;
   const web = settings.web;
-
   const scripts = { ...SCRIPTS };
-  delete scripts.postinstall;
 
   const exists = (path: string) => fs.pathExists(resolve(path));
 

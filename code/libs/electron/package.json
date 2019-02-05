@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/electron",
-  "version": "0.3.62",
+  "version": "0.3.63",
   "description": "UIHarness client-tools for Electron (include in dependencies).",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -12,9 +12,9 @@
     "prepare": "yarn run build && yarn run lint && yarn test"
   },
   "dependencies": {
-    "@tdb/electron": "^0.0.20",
-    "@tdb/log": "1.1.23",
-    "@tdb/util": "1.9.31",
+    "@tdb/electron": "^0.0.21",
+    "@tdb/log": "1.1.24",
+    "@tdb/util": "1.9.32",
     "@types/app-root-path": "1.2.4",
     "@uiharness/types": "0.0.23",
     "app-root-path": "2.1.0",
@@ -26,7 +26,7 @@
     "tslib": "1.9.3"
   },
   "devDependencies": {
-    "@tdb/test": "1.2.15",
+    "@tdb/test": "1.2.16",
     "@tdb/typescript": "3.2.10",
     "@types/electron-window-state": "2.0.33"
   },

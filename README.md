@@ -23,7 +23,7 @@ API's will change (probably radically 🐷 ).
 Be up and running with a scaffold for [electron](https://electronjs.org/) or the [web](https://developer.mozilla.org) in less than 30 seconds (recommended):
 
 ```bash
-yarn create uiharness
+yarn create ui
 ```
 
 

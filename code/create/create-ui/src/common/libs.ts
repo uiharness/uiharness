@@ -1,4 +1,4 @@
 export { log } from '@tdb/log/lib/server';
-
-export { fs, npm, NpmPackage, Listr, inquirer } from 'create-tmpl';
-export { Template, TemplateMiddleware } from 'create-tmpl';
+export { time } from '@tdb/util';
+export { npm, NpmPackage, INpmPackageFields, exec } from '@tdb/npm';
+export { fs, Listr, prompt, Template, TemplateMiddleware } from 'create-tmpl';
