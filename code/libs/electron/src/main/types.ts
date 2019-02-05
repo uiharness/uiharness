@@ -1,6 +1,7 @@
-import { BrowserWindow } from 'electron';
-import { IUIHarnessRuntimeConfig, Log, IUIHarnessEvents } from '../types';
 import { IpcClient, IpcMessage } from '@tdb/electron';
+import { BrowserWindow } from 'electron';
+
+import { IUIHarnessContext, IUIHarnessEvents } from '../types';
 
 export { IpcMessage, IpcClient };
 export * from '../types';
@@ -12,8 +13,4 @@ export type IWindowRefs = {
   devTools?: BrowserWindow;
 };
 
-export type IContext = {
-  config: IUIHarnessRuntimeConfig;
-  log: Log;
-  ipc: UIHarnessIpc;
-};
+export type IContext = IUIHarnessContext<IUIHarnessEvents>;

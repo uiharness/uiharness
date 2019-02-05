@@ -1157,10 +1157,10 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.8.tgz#0b45bf0607a5509b921335658d87489c12955176"
   integrity sha512-OMSKUmZ09gbzITzx4nxnJqhprWC7JqsmlrEsVtb+cv3GXHNpv0kktqxhboKX52FnMggkQvT5ezt8pxTWyKpJHA==
 
-"@uiharness/electron@0.3.64":
-  version "0.3.64"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.64.tgz#e3e7977ffc125690c9e1c2c957a81e9d385476ee"
-  integrity sha512-TOn/9ai+oX+IxlikkiOMmWvhLo1mC1rzSIKIOgiGqTgxkl1CvjNJAZ6Cq/J3UYul4IcL0FDOu/LLUXIx2kdWcA==
+"@uiharness/electron@0.3.65":
+  version "0.3.65"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.65.tgz#38ab78824d3640ff87487404ce443dfc9f1cb0f6"
+  integrity sha512-MUMp19urejB6nmN08V4rkqH9PdRz3MYtJ0aCcI7O51D5lNh0izYn6pvPIMDNy23qg/Bmi24OHvMh7T7ropEPyQ==
   dependencies:
     "@tdb/electron" "^0.0.21"
     "@tdb/log" "1.1.24"

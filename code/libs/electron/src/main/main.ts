@@ -32,11 +32,7 @@ export function init<M extends IpcMessage>(args: {
       log: args.log || logDir({ appName: config.name }),
     });
 
-    const context: IContext = {
-      config,
-      log,
-      ipc: ipc as UIHarnessIpc,
-    };
+    const context: IContext = { config, log, ipc };
 
     app.on('ready', () => {
       const name = args.name || config.name || app.getName();
