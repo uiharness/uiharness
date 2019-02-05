@@ -813,13 +813,28 @@
   dependencies:
     any-observable "^0.3.0"
 
-"@tdb/electron@0.0.21", "@tdb/electron@^0.0.21":
+"@tdb/electron@0.0.21":
   version "0.0.21"
   resolved "https://registry.yarnpkg.com/@tdb/electron/-/electron-0.0.21.tgz#ccdde1457e4aec5b352691aa42ff2d0c93560648"
   integrity sha512-8Pq5U8l7tWY2Y804j82jigtR4keCttONHT25T5pF++IwbfJSq+OM925R8WktpTFW/EIupdmLabU7x18bUKdrbg==
   dependencies:
     "@tdb/log" "1.1.24"
     "@tdb/util" "1.9.32"
+    "@types/app-root-path" "1.2.4"
+    app-root-path "2.1.0"
+    electron-is "3.0.0"
+    electron-log "2.2.17"
+    electron-window-state "^5.0.3"
+    fs-extra "7.0.1"
+    is-electron "2.2.0"
+
+"@tdb/electron@^0.0.24":
+  version "0.0.24"
+  resolved "https://registry.yarnpkg.com/@tdb/electron/-/electron-0.0.24.tgz#8e559455f6e25d043416e79dc7e0ea89d11e4682"
+  integrity sha512-dOiXbNhaF5NTgdXYNorPHGfk9sIv/4f7s2QgSZRFfKqJhY/jREq7kQR99D/Xm5FeXPICZx/h/Kw8qqquBetzrw==
+  dependencies:
+    "@tdb/log" "1.1.27"
+    "@tdb/util" "1.9.35"
     "@types/app-root-path" "1.2.4"
     app-root-path "2.1.0"
     electron-is "3.0.0"
@@ -1194,14 +1209,14 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.8.tgz#0b45bf0607a5509b921335658d87489c12955176"
   integrity sha512-OMSKUmZ09gbzITzx4nxnJqhprWC7JqsmlrEsVtb+cv3GXHNpv0kktqxhboKX52FnMggkQvT5ezt8pxTWyKpJHA==
 
-"@uiharness/electron@0.3.65":
-  version "0.3.65"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.65.tgz#38ab78824d3640ff87487404ce443dfc9f1cb0f6"
-  integrity sha512-MUMp19urejB6nmN08V4rkqH9PdRz3MYtJ0aCcI7O51D5lNh0izYn6pvPIMDNy23qg/Bmi24OHvMh7T7ropEPyQ==
+"@uiharness/electron@0.3.69":
+  version "0.3.69"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.69.tgz#c66ae8550cf85805cb7bf023aeb10f34849b065a"
+  integrity sha512-oOytK16hl41fHvBdzsMLV0bTA+UX+zVJ38Ce2eG8EEPapoJ8I6dS+lwYCh2h4loqZKAiZmBkuD29tB5ih7cO3g==
   dependencies:
-    "@tdb/electron" "^0.0.21"
-    "@tdb/log" "1.1.24"
-    "@tdb/util" "1.9.32"
+    "@tdb/electron" "^0.0.24"
+    "@tdb/log" "1.1.27"
+    "@tdb/util" "1.9.35"
     "@types/app-root-path" "1.2.4"
     "@uiharness/types" "0.0.23"
     app-root-path "2.1.0"
