@@ -14,6 +14,6 @@ export async function clean(args: {}) {
   await Promise.all(list.map(path => remove(path)));
 
   log.info();
-  log.info(`🌳  All clean.`);
+  log.info(`🌳  All clean now.`);
   log.info();
 }
