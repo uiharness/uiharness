@@ -19,6 +19,7 @@
     "@babel/preset-env": "7.2.3",
     "@babel/preset-react": "7.0.0",
     "@babel/preset-typescript": "7.1.0",
+    "@platform/fs": "0.0.0",
     "@tdb/electron": "0.0.27",
     "@tdb/log": "1.2.1",
     "@tdb/util": "1.9.38",

@@ -1,4 +1,4 @@
-import { command, fs, fsPath, log, logNoConfig } from '../../common';
+import { command, fs, log, logNoConfig } from '../../common';
 import { Settings } from '../../settings';
 import { bundleWeb } from '../cmd.bundle';
 import { stats as renderStats } from '../cmd.stats';
@@ -17,7 +17,7 @@ export async function serve(args: { settings: Settings }) {
 
   const prod = true;
   const out = settings.web.out(prod);
-  const dir = fsPath.resolve(out.dir);
+  const dir = fs.resolve(out.dir);
   const exists = await fs.pathExists(dir);
 
   // Ensure the distribution has been built.

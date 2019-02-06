@@ -1,6 +1,6 @@
 import * as os from 'os';
 
-import { command, fs, fsPath, log, logging, main } from '../../common';
+import { command, fs, log, logging, main } from '../../common';
 import { Settings } from '../../settings';
 
 /**
@@ -75,9 +75,9 @@ export async function open(args: { settings: Settings; folder?: boolean }) {
     return runOpen(outputDir, 'folder');
   }
 
-  let path = fsPath.join(outputDir, platform, `${productName}.app`);
+  let path = fs.join(outputDir, platform, `${productName}.app`);
   path = `./${path.replace(/^\\/, '')}`;
-  path = fsPath.resolve(path);
+  path = fs.resolve(path);
 
   // Ensure the app has been built.
   if (!(await fs.pathExists(path))) {

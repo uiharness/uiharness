@@ -2,7 +2,6 @@ import {
   constants,
   file,
   fs,
-  fsPath,
   IUIHarnessRuntimeConfig,
   log,
   npm,
@@ -13,7 +12,6 @@ import { Settings } from '../../settings';
 import { clean } from '../cmd.clean';
 
 const { SCRIPTS } = constants;
-const { resolve, join } = fsPath;
 const { defaultValue } = value;
 
 type IInitFlags = {
@@ -166,10 +164,10 @@ async function copyPackage(args: { settings: Settings; prod: boolean }) {
 
   // Set the "main" entry point for electron.
   const pkg = npm.pkg('.').json;
-  pkg.main = join('..', main);
+  pkg.main = fs.join('..', main);
 
   // Save the [package.json] file.
-  const path = resolve(settings.path.package);
+  const path = fs.resolve(settings.path.package);
   await file.stringifyAndSave(path, pkg);
 }
 
@@ -191,7 +189,7 @@ async function getInitializedState(args: { settings: Settings }) {
   const web = settings.web;
   const scripts = { ...SCRIPTS };
 
-  const exists = (path: string) => fs.pathExists(resolve(path));
+  const exists = (path: string) => fs.pathExists(fs.resolve(path));
 
   const hasConfig = await exists('./uiharness.yml');
   const hasSrcFolder = await exists('./src');

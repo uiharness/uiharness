@@ -1,4 +1,4 @@
-import { fs, fsPath, TemplateMiddleware, Template } from './libs';
+import { fs, TemplateMiddleware, Template } from './libs';
 
 /**
  * Initializes a new template.
@@ -29,9 +29,9 @@ export function copyFile(
 ): TemplateMiddleware {
   return async (req, res) => {
     const { force = false, noForce = [] } = args;
-    const path = fsPath.resolve(`.${req.path.target}`);
-    const dir = fsPath.dirname(path);
-    const filename = fsPath.basename(path);
+    const path = fs.resolve(`.${req.path.target}`);
+    const dir = fs.dirname(path);
+    const filename = fs.basename(path);
     const exists = await fs.pathExists(path);
 
     if (!exists || (force && !noForce.includes(filename))) {
@@ -48,7 +48,7 @@ export function copyFile(
  */
 export function deleteFile(args: {} = {}): TemplateMiddleware {
   return async (req, res) => {
-    const path = fsPath.resolve(`.${req.path.target}`);
+    const path = fs.resolve(`.${req.path.target}`);
     await fs.remove(path);
     res.complete();
   };

@@ -3,7 +3,6 @@ import {
   command,
   file,
   fs,
-  fsPath,
   IElectronBuilderConfig,
   Listr,
   log,
@@ -95,7 +94,7 @@ export async function distElectron(args: {
 
   // Construct the `build` command.
   const cmd = command()
-    .addLine(`cd ${fsPath.resolve('.')}`)
+    .addLine(`cd ${fs.resolve('.')}`)
     .add(`build`)
     .arg(`--x64`)
     .arg(`--publish=never`)
@@ -162,7 +161,7 @@ async function prepareBuilderYaml(args: { settings: Settings }) {
   const { settings } = args;
   const electron = settings.electron;
   const { configFilename, files, output } = electron.path.builder;
-  const path = fsPath.resolve(fsPath.join('.', configFilename));
+  const path = fs.resolve(fs.join('.', configFilename));
   const exists = await fs.pathExists(path);
 
   // Copy in the template file if it does not yet exist.

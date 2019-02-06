@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import { Settings } from '.';
-import { fsPath } from '../common';
+import { fs } from '../common';
 
-const DIR = fsPath.resolve('./test/sample');
+const DIR = fs.resolve('./test/sample');
 
 describe('WebSettings', () => {
   it('default values', () => {
@@ -22,7 +22,7 @@ describe('WebSettings', () => {
       expect(bundler.cmd).to.eql('--no-source-maps --log-level 3');
     };
     test('/NO_EXIST');
-    test(fsPath.join(DIR, 'empty.yml'));
+    test(fs.join(DIR, 'empty.yml'));
   });
 
   it('specified values (from file)', () => {

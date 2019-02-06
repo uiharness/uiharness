@@ -1,4 +1,4 @@
-import { BundleTarget, fs, fsPath, log, logging } from '../../common';
+import { BundleTarget, fs, log, logging } from '../../common';
 import { Settings } from '../../settings';
 
 /**
@@ -39,7 +39,7 @@ export async function stats(args: {
  * internal
  */
 async function logDir(dir: string) {
-  dir = fsPath.resolve(dir);
+  dir = fs.resolve(dir);
   if (!(await fs.pathExists(dir))) {
     return;
   }

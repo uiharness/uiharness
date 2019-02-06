@@ -5,10 +5,10 @@ import {
   WebSettings,
   IUIHarnessSettingsOptions,
 } from '.';
-import { fsPath, constants } from '../common';
+import { fs, constants } from '../common';
 
 const { PATH } = constants;
-const DIR = fsPath.resolve('./test/sample');
+const DIR = fs.resolve('./test/sample');
 
 describe('Settings', () => {
   describe('create', () => {
@@ -21,7 +21,7 @@ describe('Settings', () => {
     });
 
     it('creates from file path', () => {
-      const path = fsPath.join(DIR, 'uiharness.yml');
+      const path = fs.join(DIR, 'uiharness.yml');
       const settings = Settings.create(path);
       expect(settings.exists).to.eql(true);
       expect(settings.package.name).to.eql('sample');
@@ -60,13 +60,13 @@ describe('Settings', () => {
   });
 
   it('has [web] settings only', () => {
-    const settings = Settings.create(fsPath.join(DIR, 'only-web.yml'));
+    const settings = Settings.create(fs.join(DIR, 'only-web.yml'));
     expect(settings.web.exists).to.eql(true);
     expect(settings.electron.exists).to.eql(false);
   });
 
   it('has [electron] settings only', () => {
-    const settings = Settings.create(fsPath.join(DIR, 'only-electron.yml'));
+    const settings = Settings.create(fs.join(DIR, 'only-electron.yml'));
     expect(settings.web.exists).to.eql(false);
     expect(settings.electron.exists).to.eql(true);
   });
