@@ -14,10 +14,10 @@
     "reset": "rm -rf tmp"
   },
   "dependencies": {
-    "create-tmpl": "0.1.10"
+    "create-tmpl": "0.1.13"
   },
   "devDependencies": {
-    "@tdb/typescript": "3.2.10"
+    "@tdb/typescript": "3.3.1"
   },
   "repository": "github.com/uiharness/uiharness",
   "files": [
