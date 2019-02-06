@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/ui",
-  "version": "0.0.33",
+  "version": "0.0.34",
   "scripts": {
     "postinstall": "ui init",
     "ui": "ui $@",
@@ -12,12 +12,12 @@
     "prepare": "ts prepare"
   },
   "dependencies": {
-    "@uiharness/electron": "0.3.74"
+    "@uiharness/electron": "0.3.75"
   },
   "devDependencies": {
-    "@platform/test": "0.0.2",
-    "@platform/ts": "3.3.20",
-    "@uiharness/dev": "0.0.14"
+    "@platform/test": "0.0.4",
+    "@platform/ts": "3.3.22",
+    "@uiharness/dev": "0.0.15"
   },
   "resolutions": {
     "@types/react": "16.7.17"
