@@ -25,9 +25,12 @@ export async function open(args: { settings: Settings; folder?: boolean }) {
     const appName = settings.name;
     const logPaths = main.logPaths({ appName });
     const logCmd = tailCommand(logPaths.dir, logPaths.prod.filename);
+
+    const action = type === 'app' ? 'Open  ' : 'Folder';
+
     log.info();
-    log.info(`🖐  Open   ${formatPath(path)}`);
-    log.info.gray(`   logs:  ${logCmd}`);
+    log.info(`🖐  ${action}  ${formatPath(path)}`);
+    log.info.gray(`   logs:   ${logCmd}`);
     log.info();
     return command()
       .add(`open "${path}"`)
@@ -36,11 +39,8 @@ export async function open(args: { settings: Settings; folder?: boolean }) {
 
   const config = settings.electron.builderArgs;
   if (!config.exists) {
-    log.warn(
-      `😩  A ${log.cyan(
-        'uiharness.builder.yml',
-      )} file does not exist in the project.`,
-    );
+    const filename = log.cyan('uiharness.builder.yml');
+    log.warn(`😩  A ${filename} file does not exist in the project.`);
     return;
   }
 
