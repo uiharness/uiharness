@@ -1,6 +1,7 @@
 import { fs } from '@platform/fs';
 
 export type IRemoveSourceMapsResponse = {
+  total: number;
   changed: Array<{ path: string }>;
 };
 
@@ -19,16 +20,19 @@ export type IRemoveSourceMapsResponse = {
  *    await utils.removeSourceMapRefs('node_modules/rxjs');
  *
  */
-export async function removeSourceMapRefs(dir: string) {
-  const result: IRemoveSourceMapsResponse = { changed: [] };
-  const paths = await fs.glob.find(fs.join(dir, '**/*.js'));
-  for (const path of paths) {
-    const wasRemoved = await removeSourceMapRef(path);
-    if (wasRemoved) {
-      result.changed = [...result.changed, { path }];
+export async function removeSourceMapRefs(...dirs: string[]) {
+  const result: IRemoveSourceMapsResponse = { total: 0, changed: [] };
+  const remove = async (dir: string) => {
+    const paths = await fs.glob.find(fs.join(dir, '**/*.js'));
+    for (const path of paths) {
+      const wasRemoved = await removeSourceMapRef(path);
+      if (wasRemoved) {
+        result.changed = [...result.changed, { path }];
+      }
     }
-  }
-  return result;
+  };
+  await Promise.all(dirs.map(dir => remove(dir)));
+  return { ...result, total: result.changed.length };
 }
 
 /**

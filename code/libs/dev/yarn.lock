@@ -806,7 +806,7 @@
     "@parcel/utils" "^1.11.0"
     physical-cpu-count "^2.0.0"
 
-"@platform/fs@^0.0.0":
+"@platform/fs@0.0.0":
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/@platform/fs/-/fs-0.0.0.tgz#1f49ac99ab3f55f56abd5d150392348cb9f84c26"
   integrity sha512-ouMs4xoGDUHOjZYiU/Tt4y7ldeexQEkjdnO5k5qaNUYSR1uLeyPZLobQJCDskAbCYQvnoUq2Fi7mjDRZrAockw==
