@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/ui",
-  "version": "0.0.29",
+  "version": "0.0.30",
   "scripts": {
     "postinstall": "ui init",
     "ui": "ui $@",
@@ -17,7 +17,7 @@
   "devDependencies": {
     "@tdb/test": "1.2.20",
     "@tdb/typescript": "3.3.1",
-    "@uiharness/dev": "0.0.10"
+    "@uiharness/dev": "0.0.11"
   },
   "resolutions": {
     "@types/react": "16.7.17"

@@ -1115,10 +1115,10 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/dev@0.0.10":
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/@uiharness/dev/-/dev-0.0.10.tgz#3a1b04d1cf5432017f4ba68d10d89c0cc5b24f07"
-  integrity sha512-rY3btWfIeK6XvcoWiekSfRLPZIfa7/cl21ntg9tBrINAI4Gx1GxQEA0NjCsbmt6whJOw/z4QFcOe6SqtgpF5Tw==
+"@uiharness/dev@0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@uiharness/dev/-/dev-0.0.11.tgz#ffbbe46eab6db8622af439b7f882ca9a263ccf3f"
+  integrity sha512-c6bndRKD2DxFl09VRrO+N9TA1YW3D+HXydCvtpQs6vdz6iUzn9rSZUWLzo34Lj5nxQj2YDfl5FEItJ96L5Lc6A==
   dependencies:
     "@babel/core" "7.2.2"
     "@babel/preset-env" "7.2.3"
