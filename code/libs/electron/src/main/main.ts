@@ -21,18 +21,18 @@ type IResponse<M extends IpcMessage> = {
 export function init<M extends IpcMessage>(args: {
   config: IUIHarnessRuntimeConfig; //   The [.uiharess/config.json] file.
   name?: string; //                     The display name of the window.
-  ipc?: IpcClient; //                   Existing IPC client if aleady initialized.
+  ipc?: IpcClient<M>; //                   Existing IPC client if aleady initialized.
   log?: Log; //                         Existing log if already initialized.
   devTools?: boolean; //                Show dev tools on load in running in development (default: true)
 }) {
   return new Promise<IResponse<M>>((resolve, reject) => {
     const { config, devTools } = args;
     const { log, ipc } = main.init<M>({
-      ipc: args.ipc,
       log: args.log || logDir({ appName: config.name }),
+      ipc: args.ipc,
     });
 
-    const context: IContext = { config, log, ipc };
+    const context: IContext = { config, log, ipc: ipc as IpcClient };
 
     app.on('ready', () => {
       const name = args.name || config.name || app.getName();

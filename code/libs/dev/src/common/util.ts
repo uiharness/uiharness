@@ -30,8 +30,8 @@ export function logInfo(args: {
 }
 
 /**
- * Logs that an operation cannot run because the required configuration
- * is not present with the YAML.
+ * Logs that an operation cannot run because the required
+ * configuration is not present with the YAML.
  */
 export function logNoConfig(args: { target: BundleTarget }) {
   const { target } = args;
