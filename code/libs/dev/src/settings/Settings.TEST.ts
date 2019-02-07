@@ -70,4 +70,18 @@ describe('Settings', () => {
     expect(settings.web.exists).to.eql(false);
     expect(settings.electron.exists).to.eql(true);
   });
+
+  describe('sourcemaps', () => {
+    it('has no sourcemaps configuration', () => {
+      const settings = Settings.create(DIR);
+      expect(settings.sourcemaps.strip).to.eql([]);
+    });
+
+    it('has paths to strip of sourcemaps', () => {
+      const settings = Settings.create(fs.join(DIR, 'sourcemaps.yml'));
+      const strip = settings.sourcemaps.strip;
+      expect(strip[0]).to.eql('node_modules/rxjs/**/*.js');
+      expect(strip[1]).to.eql('node_modules/foo/*/*.js');
+    });
+  });
 });

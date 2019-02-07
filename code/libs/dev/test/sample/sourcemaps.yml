@@ -1,0 +1,9 @@
+#
+# Sample config for unit-tests.
+# Runs the `removeSourceMapRefs` on the following folders.
+#
+
+sourcemaps:
+  strip:
+    - node_modules/rxjs/**/*.js
+    - node_modules/foo/*/*.js

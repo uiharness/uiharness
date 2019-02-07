@@ -1,7 +1,11 @@
 import { dirname, join, resolve } from 'path';
 
 import { constants, file, fs, log, npm, NpmPackage } from '../common';
-import { IUIHarnessConfig, IUIHarnessPaths } from '../types';
+import {
+  IUIHarnessConfig,
+  IUIHarnessPaths,
+  IUIHarnessSourcemapsConfig,
+} from '../types';
 import { ElectronSettings } from './ElectronSettings';
 import { WebSettings } from './WebSettings';
 
@@ -168,5 +172,14 @@ export class Settings {
         html: join(templates, 'html'),
       },
     };
+  }
+
+  /**
+   * Retrieves optinoal configuration for dealing with source-maps.
+   */
+  public get sourcemaps(): IUIHarnessSourcemapsConfig {
+    const data = this.data.sourcemaps || {};
+    const strip = data.strip || [];
+    return { strip };
   }
 }
