@@ -10,6 +10,7 @@ import {
 } from '../../common';
 import { Settings } from '../../settings';
 import { clean } from '../cmd.clean';
+import { removeSourceMapRefs } from '../../utils';
 
 const { SCRIPTS } = constants;
 const { defaultValue } = value;
@@ -41,6 +42,9 @@ export async function prepare(args: { settings: Settings; prod: boolean }) {
   const { settings, prod } = args;
   const isInitialized = await getIsInitialized({ settings });
   const files = !isInitialized;
+  if (settings.sourcemaps.strip.length > 0) {
+    await removeSourceMapRefs(...settings.sourcemaps.strip);
+  }
   return init({ settings, prod, files });
 }
 

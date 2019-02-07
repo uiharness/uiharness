@@ -80,8 +80,8 @@ describe('Settings', () => {
     it('has paths to strip of sourcemaps', () => {
       const settings = Settings.create(fs.join(DIR, 'sourcemaps.yml'));
       const strip = settings.sourcemaps.strip;
-      expect(strip[0]).to.eql('node_modules/rxjs/**/*.js');
-      expect(strip[1]).to.eql('node_modules/foo/*/*.js');
+      expect(strip[0]).to.eql('node_modules/rxjs');
+      expect(strip[1]).to.eql('node_modules/foo');
     });
   });
 });

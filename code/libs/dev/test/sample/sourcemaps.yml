@@ -5,5 +5,5 @@
 
 sourcemaps:
   strip:
-    - node_modules/rxjs/**/*.js
-    - node_modules/foo/*/*.js
+    - node_modules/rxjs
+    - node_modules/foo
