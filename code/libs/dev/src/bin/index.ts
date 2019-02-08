@@ -47,6 +47,7 @@ const OPTIONS = log.gray('[options]');
 const program = yargs
   .scriptName('')
   .usage(`${'Usage:'} ${SCRIPT} ${COMMAND} ${OPTIONS}`)
+  .recommendCommands()
 
   /**
    * `init`
@@ -87,7 +88,7 @@ const program = yargs
     e => {
       const target = wrangleBundleTarget(e.target);
       if (!target) {
-        return process.exit(1);
+        return exit(1);
       }
       return cmds.start({ settings, target });
     },
@@ -131,13 +132,13 @@ const program = yargs
       const prod = !dev;
       const target = wrangleBundleTarget(e.target);
       if (!target) {
-        return process.exit(1);
+        return exit(1);
       }
       const res = await cmds.bundle({ settings, prod, silent, target });
       if (!res.success) {
-        return process.exit(1);
+        return exit(1);
       }
-      return process.exit(0);
+      return exit(0);
     },
   )
 
@@ -168,16 +169,16 @@ const program = yargs
       const { silent, open } = e;
       const target = wrangleBundleTarget(e.target);
       if (!target) {
-        return process.exit(1);
+        return exit(1);
       }
       const res = await cmds.dist({ settings, silent, target });
       if (!res.success) {
-        return process.exit(1);
+        return exit(1);
       }
       if (open && target === 'electron') {
         await cmds.open({ settings });
       }
-      return process.exit(0);
+      return exit(0);
     },
   )
 
@@ -255,7 +256,7 @@ const program = yargs
       const { tail } = e;
       const env = wrangleEnvironment(e.env, 'production');
       if (!env) {
-        return process.exit(1);
+        return exit(1);
       }
       return cmds.logs({ settings, env, tail });
     },
@@ -281,8 +282,7 @@ const program = yargs
  */
 if (!CMDS.includes(program.argv._[0])) {
   program.showHelp();
-  log.info();
-  process.exit(0);
+  exit(0);
 }
 
 /**
@@ -299,4 +299,9 @@ export function wrangleBundleTarget(value: unknown) {
 
 export function wrangleEnvironment(value: unknown, defaultValue: Environment) {
   return wrangleAndLog<Environment>('env', value, defaultValue, ENVIRONMENTS);
+}
+
+export function exit(code: number) {
+  log.info();
+  process.exit(code);
 }
