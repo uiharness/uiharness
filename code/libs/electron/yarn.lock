@@ -27,10 +27,10 @@
     typescript "3.3.1"
     yargs "^12.0.5"
 
-"@tdb/electron@0.0.33":
-  version "0.0.33"
-  resolved "https://registry.yarnpkg.com/@tdb/electron/-/electron-0.0.33.tgz#3d1dc7191d22663dfc1e5bdbb3969baaaab948ae"
-  integrity sha512-akCjvjagAQnMETrhqd0hDDorwo/yfIEG10WJ80achaVshvVSzxe9KVdk2x9E61hcL/uW6eke7soL79KeqkIsDA==
+"@tdb/electron@0.0.34":
+  version "0.0.34"
+  resolved "https://registry.yarnpkg.com/@tdb/electron/-/electron-0.0.34.tgz#70c6c536880d1adc37ad28d75787e826ab5a6b15"
+  integrity sha512-v9PoPd3HG8VYMjRDh/QaOUQ1IV5J2UXWOjp9yv7/dGGBB/4iJA3/ZkNvttXu/Acmoi2rm6agZ3TMSs+aGOkZPA==
   dependencies:
     "@tdb/log" "1.2.1"
     "@tdb/util" "1.9.38"
