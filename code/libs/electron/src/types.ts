@@ -1,5 +1,5 @@
-import { Log } from '@tdb/log/lib/types';
-export { Log };
+import { ILog } from '@platform/log/lib/types';
+export { ILog };
 export * from '@uiharness/types';
 
 import { IpcClient, IpcMessage } from '@platform/electron';
@@ -11,7 +11,7 @@ import { IUIHarnessRuntimeConfig } from '@uiharness/types';
  */
 export type IUIHarnessContext<E extends IpcMessage = any> = {
   config: IUIHarnessRuntimeConfig;
-  log: Log;
+  log: ILog;
   ipc: IpcClient<E>;
 };
 

@@ -815,6 +815,25 @@
     fast-glob "^2.2.6"
     fs-extra "^7.0.1"
 
+"@platform/libs@0.0.0":
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/@platform/libs/-/libs-0.0.0.tgz#c90cabee2753690ac10671a628a12eef18d5e290"
+  integrity sha512-KbldYgIkew9HMKYFAOFQtIdX4qcb6YghFl39md7eFvTBjcf5zhSMmIBETNMftD+pxEPfsJm+BNkqXDRjVhMzPQ==
+  dependencies:
+    "@types/ramda" "0.25.47"
+    ramda "0.26.1"
+    rxjs "6.4.0"
+    tslib "1.9.3"
+
+"@platform/log@0.0.12":
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/@platform/log/-/log-0.0.12.tgz#f8c07e698b954a5cea1270b1baee0f8e67407991"
+  integrity sha512-pzOM4/FpUrmGsdK5za/aEOk8rBLbolkALiKbBQhXdZGrcaZ/HjTWvK3u92kJUS0lDFl9w92LXf8rgw3AhcXMmw==
+  dependencies:
+    "@platform/libs" "0.0.0"
+    chalk "2.4.2"
+    cli-table "0.3.1"
+
 "@platform/test@0.0.6":
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/@platform/test/-/test-0.0.6.tgz#412b2c6728b29cc7e2852f92dd3997869a2f97a3"

@@ -4,14 +4,14 @@ import * as os from 'os';
 import { join } from 'path';
 
 import { IUIHarnessRuntimeConfig } from '../common';
-import { Log } from '../types';
+import { ILog } from '../types';
 import { IContext, IpcClient, IpcMessage } from './types';
 import * as mainWindow from './window';
 
 type IResponse<M extends IpcMessage> = {
   window: BrowserWindow;
   newWindow: (args: { name: string }) => BrowserWindow;
-  log: Log;
+  log: ILog;
   ipc: IpcClient<M>;
 };
 
@@ -22,7 +22,7 @@ export function init<M extends IpcMessage>(args: {
   config: IUIHarnessRuntimeConfig; //   The [.uiharess/config.json] file.
   name?: string; //                     The display name of the window.
   ipc?: IpcClient<M>; //                   Existing IPC client if aleady initialized.
-  log?: Log; //                         Existing log if already initialized.
+  log?: ILog; //                         Existing log if already initialized.
   devTools?: boolean; //                Show dev tools on load in running in development (default: true)
 }) {
   return new Promise<IResponse<M>>((resolve, reject) => {

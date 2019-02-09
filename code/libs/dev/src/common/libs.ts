@@ -12,6 +12,6 @@ export { main };
 
 export { ParcelBundler, yargs, execa, Listr, filesize };
 export { R, value, time } from '@tdb/util';
-export { log } from '@tdb/log/lib/server';
+export { log } from '@platform/log/lib/server';
 export { npm, NpmPackage, yaml, file, exec } from '@tdb/npm';
 export { Template, TemplateMiddleware } from 'create-tmpl';
