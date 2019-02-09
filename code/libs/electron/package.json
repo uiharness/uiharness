@@ -12,7 +12,7 @@
     "prepare": "ts prepare"
   },
   "dependencies": {
-    "@tdb/electron": "0.0.34",
+    "@platform/electron": "0.0.1",
     "@tdb/log": "1.2.1",
     "@tdb/util": "1.9.38",
     "@types/app-root-path": "1.2.4",
@@ -26,10 +26,10 @@
     "tslib": "1.9.3"
   },
   "devDependencies": {
-    "electron": "4.0.3",
     "@platform/test": "0.0.6",
     "@platform/ts": "3.3.25",
-    "@types/electron-window-state": "2.0.33"
+    "@types/electron-window-state": "2.0.33",
+    "electron": "4.0.3"
   },
   "files": [
     "lib",

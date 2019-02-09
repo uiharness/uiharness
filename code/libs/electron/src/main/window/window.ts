@@ -14,7 +14,7 @@ import {
 import { IWindowRefs, IContext } from '../types';
 import { createMenus } from './menus';
 
-import main from '@tdb/electron/lib/main';
+import main from '@platform/electron/lib/main';
 
 /**
  * Creates the main window.

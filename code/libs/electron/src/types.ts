@@ -2,7 +2,7 @@ import { Log } from '@tdb/log/lib/types';
 export { Log };
 export * from '@uiharness/types';
 
-import { IpcClient, IpcMessage } from '@tdb/electron';
+import { IpcClient, IpcMessage } from '@platform/electron';
 import { IUIHarnessRuntimeConfig } from '@uiharness/types';
 
 /**

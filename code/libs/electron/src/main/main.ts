@@ -1,11 +1,11 @@
-import * as os from 'os';
-import * as main from '@tdb/electron/lib/main';
+import * as main from '@platform/electron/lib/main';
 import { app, BrowserWindow } from 'electron';
+import * as os from 'os';
 import { join } from 'path';
 
 import { IUIHarnessRuntimeConfig } from '../common';
 import { Log } from '../types';
-import { IContext, IpcClient, IpcMessage, UIHarnessIpc } from './types';
+import { IContext, IpcClient, IpcMessage } from './types';
 import * as mainWindow from './window';
 
 type IResponse<M extends IpcMessage> = {

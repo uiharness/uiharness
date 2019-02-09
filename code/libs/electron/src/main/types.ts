@@ -1,4 +1,4 @@
-import { IpcClient, IpcMessage } from '@tdb/electron';
+import { IpcClient, IpcMessage } from '@platform/electron';
 import { BrowserWindow } from 'electron';
 
 import { IUIHarnessContext, IUIHarnessEvents } from '../types';
