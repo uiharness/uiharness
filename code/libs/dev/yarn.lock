@@ -1187,10 +1187,10 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.8.tgz#0b45bf0607a5509b921335658d87489c12955176"
   integrity sha512-OMSKUmZ09gbzITzx4nxnJqhprWC7JqsmlrEsVtb+cv3GXHNpv0kktqxhboKX52FnMggkQvT5ezt8pxTWyKpJHA==
 
-"@uiharness/electron@0.3.80":
-  version "0.3.80"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.80.tgz#ec74dcfd093ac95a772246e0893d56553c24f7ca"
-  integrity sha512-g5zHWy2PuYa16S4aRdCMTbefbbw3VJKrBqPXiZKHs32I4vHRWT+OuoyRcHi2KHwZBhfMOT9duH8h7o6de6RhFQ==
+"@uiharness/electron@0.3.81":
+  version "0.3.81"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.81.tgz#fc5558f8ca1d73ff9a2fc015efcf061cfc94522d"
+  integrity sha512-zAwV8KQluEk3AnExQPx6HiweP7vWKGIbZ5GMnyPRxe0Q0F7BCSL9bGdjqhmJTIAVvguQQsSmEt9g0GO+OncOuQ==
   dependencies:
     "@platform/electron" "0.0.1"
     "@platform/libs" "0.0.0"
