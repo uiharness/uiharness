@@ -4,8 +4,8 @@
 
 
 
+[UIHarness]((https://uiharness.com)) is the 🔥 blazing fast development environment to make your UI development truly heroic. 🚀  
 Isolate, develop and test your UI components in [typescript](https://www.typescriptlang.org/) / [react](https://reactjs.org/), targeting [electron](https://electronjs.org/) and the [web](https://developer.mozilla.org).  
-[uiharness.com](https://uiharness.com)
 
 ----
 
