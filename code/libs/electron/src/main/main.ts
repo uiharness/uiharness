@@ -3,17 +3,20 @@ import { app, BrowserWindow } from 'electron';
 import * as os from 'os';
 import { join } from 'path';
 
-import { IUIHarnessRuntimeConfig } from '../common';
+import { IUIHarnessRuntimeConfig, is } from '../common';
 import { ILog } from '../types';
 import { IContext, IpcClient, IpcMessage } from './types';
 import * as mainWindow from './window';
+import { value as valueUtil } from '@tdb/util';
 
 type IResponse<M extends IpcMessage> = {
   window: BrowserWindow;
-  newWindow: (args: { name: string }) => BrowserWindow;
+  newWindow: NewWindowFactory;
   log: ILog;
   ipc: IpcClient<M>;
 };
+type INewWindowArgs = { name: string; devTools?: boolean };
+type NewWindowFactory = (e: INewWindowArgs) => BrowserWindow;
 
 /**
  * Default loader for a UIHarness [main] process.
@@ -21,9 +24,9 @@ type IResponse<M extends IpcMessage> = {
 export function init<M extends IpcMessage>(args: {
   config: IUIHarnessRuntimeConfig; //   The [.uiharess/config.json] file.
   name?: string; //                     The display name of the window.
-  ipc?: IpcClient<M>; //                   Existing IPC client if aleady initialized.
-  log?: ILog; //                         Existing log if already initialized.
-  devTools?: boolean; //                Show dev tools on load in running in development (default: true)
+  ipc?: IpcClient<M>; //                Existing IPC client if aleady initialized.
+  log?: ILog; //                        Existing log if already initialized.
+  devTools?: boolean; //                Show dev tools on load when running in development (default: true)
 }) {
   return new Promise<IResponse<M>>((resolve, reject) => {
     const { config, devTools } = args;
@@ -38,9 +41,17 @@ export function init<M extends IpcMessage>(args: {
       const name = args.name || config.name || app.getName();
       const window = mainWindow.create({ name, devTools, ...context });
 
+      const newWindow: NewWindowFactory = e => {
+        const devTools = valueUtil.defaultValue(
+          e.devTools,
+          is.dev() ? args.devTools : undefined,
+        );
+        return mainWindow.create({ name: e.name, devTools, ...context });
+      };
+
       const res: IResponse<M> = {
         window,
-        newWindow: e => mainWindow.create({ name: e.name, ...context }),
+        newWindow,
         log,
         ipc,
       };
