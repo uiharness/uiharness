@@ -15,8 +15,8 @@
     "@tdb/util": "1.9.38"
   },
   "devDependencies": {
-    "@platform/test": "0.0.6",
-    "@platform/ts": "3.3.25"
+    "@platform/test": "0.0.15",
+    "@platform/ts": "3.3.33"
   },
   "files": [
     "lib",

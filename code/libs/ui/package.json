@@ -15,8 +15,8 @@
     "@uiharness/electron": "0.3.81"
   },
   "devDependencies": {
-    "@platform/test": "0.0.6",
-    "@platform/ts": "3.3.25",
+    "@platform/test": "0.0.15",
+    "@platform/ts": "3.3.33",
     "@uiharness/dev": "0.0.22"
   },
   "resolutions": {

@@ -12,9 +12,9 @@
     "prepare": "ts prepare"
   },
   "dependencies": {
-    "@platform/electron": "0.0.1",
+    "@platform/electron": "0.0.12",
     "@platform/libs": "0.0.0",
-    "@platform/log": "0.0.12",
+    "@platform/log": "0.0.21",
     "@tdb/util": "1.9.38",
     "@types/app-root-path": "1.2.4",
     "@uiharness/types": "0.0.29",
@@ -26,8 +26,8 @@
     "tslib": "1.9.3"
   },
   "devDependencies": {
-    "@platform/test": "0.0.6",
-    "@platform/ts": "3.3.25",
+    "@platform/test": "0.0.15",
+    "@platform/ts": "3.3.33",
     "@types/electron-window-state": "2.0.33",
     "electron": "4.0.3"
   },
