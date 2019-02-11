@@ -5,14 +5,15 @@
   "main": "./lib/index",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "test": "echo no-op",
-    "lint": "ts lint",
-    "build": "ts build",
-    "prepare": "ts prepare"
+    "test": "yarn chmod && echo no-op",
+    "lint": "yarn chmod && ts lint",
+    "build": "yarn chmod && ts build",
+    "prepare": "yarn chmod && ts prepare",
+    "chmod": "chmod 777 node_modules/.bin/ts"
   },
   "dependencies": {},
   "devDependencies": {
-    "@platform/ts.cli": "3.3.23"
+    "@platform/ts.cli": "3.3.24"
   },
   "files": [
     "lib",

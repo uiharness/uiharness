@@ -1,18 +1,19 @@
 {
   "name": "@uiharness/dev",
   "description": "The common UIHarness dev-tools (include in your devDependencies).",
-  "version": "0.0.33",
+  "version": "0.0.35",
   "main": "lib/index",
   "bin": {
     "ui": "lib/bin/index.js",
     "uiharness": "lib/bin/index.js"
   },
   "scripts": {
-    "test": "ts chmod && sh node_modules/@platform/test/test.sh",
-    "tdd": "ts test --watch",
-    "lint": "ts lint",
-    "build": "ts build",
-    "prepare": "ts prepare"
+    "test": "yarn chmod && ts test",
+    "tdd": "yarn chmod && ts test --watch",
+    "lint": "yarn chmod && ts lint",
+    "build": "yarn chmod && ts build",
+    "prepare": "yarn chmod && ts prepare",
+    "chmod": "chmod 777 node_modules/.bin/ts"
   },
   "dependencies": {
     "@babel/core": "7.2.2",
@@ -22,7 +23,7 @@
     "@platform/fs": "0.0.31",
     "@platform/log": "0.0.47",
     "@tdb/util": "1.9.38",
-    "@uiharness/electron": "0.3.91",
+    "@uiharness/electron": "0.3.93",
     "@uiharness/types": "0.0.38",
     "create-tmpl": "0.1.21",
     "electron": "4.0.4",
@@ -35,7 +36,7 @@
   },
   "devDependencies": {
     "@platform/test": "0.0.25",
-    "@platform/ts.cli": "3.3.23",
+    "@platform/ts.cli": "3.3.24",
     "@types/electron-builder": "2.8.0",
     "@types/execa": "0.9.0",
     "@types/filesize": "4.0.0",

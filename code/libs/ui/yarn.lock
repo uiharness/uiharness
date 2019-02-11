@@ -1176,10 +1176,10 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/dev@0.0.33":
-  version "0.0.33"
-  resolved "https://registry.yarnpkg.com/@uiharness/dev/-/dev-0.0.33.tgz#939fb35f1410e499946e37171f6d6031982ed6b8"
-  integrity sha512-3HVfQex3ugxAX+HkD14BaYYUjYFnlKD56d87TSBAclT8t1I2u7LQQl6zIeZCA0W9corBVcsyTd9D9YtPSk9jDA==
+"@uiharness/dev@0.0.35":
+  version "0.0.35"
+  resolved "https://registry.yarnpkg.com/@uiharness/dev/-/dev-0.0.35.tgz#85e7f0e369a9b2001fd9a28b79a2cd05405a4beb"
+  integrity sha512-jciIGEWvvxD5V/171zveeReew3OZL7zbAyxA0NYMWKWan/KwhZaPR0lWa1207z0qq9saatDnQZAd3yx/kGNSeA==
   dependencies:
     "@babel/core" "7.2.2"
     "@babel/preset-env" "7.2.3"
@@ -1188,7 +1188,7 @@
     "@platform/fs" "0.0.31"
     "@platform/log" "0.0.47"
     "@tdb/util" "1.9.38"
-    "@uiharness/electron" "0.3.91"
+    "@uiharness/electron" "0.3.93"
     "@uiharness/types" "0.0.38"
     create-tmpl "0.1.21"
     electron "4.0.4"
@@ -1199,10 +1199,10 @@
     serve "10.1.2"
     yargs "12.0.5"
 
-"@uiharness/electron@0.3.91":
-  version "0.3.91"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.91.tgz#215eb97ee2b9b6567e543fd75e72233d7ba6ce5e"
-  integrity sha512-clhQTKAPqI9wOTXi67/uLi+Ctht8EDeVhmlF3jhGVpua38jdH3b6UZjfynbob7XZ3KbW62ZVA806agkfCIQw6A==
+"@uiharness/electron@0.3.93":
+  version "0.3.93"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.93.tgz#a3befc4c7ac7100d7703eee229f1696fb814e461"
+  integrity sha512-RFUX2f3+FAqzYnjPdqMgG+V10Ff1vVHzXCpfOdzZlXX/QNt4j+fpc9DgyLvFF+ptlXhdkw9ZhVPvYIkKi9fasg==
   dependencies:
     "@platform/electron" "0.0.37"
     "@platform/libs" "0.0.2"

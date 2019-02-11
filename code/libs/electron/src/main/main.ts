@@ -9,10 +9,12 @@ import { IContext, IpcClient, IpcMessage } from './types';
 import * as mainWindow from './window';
 import { value as valueUtil } from '@tdb/util';
 
+export * from '../types';
+
 type IResponse<M extends IpcMessage> = {
   window: BrowserWindow;
   newWindow: NewWindowFactory;
-  log: ILog;
+  log: main.IMainLog;
   ipc: IpcClient<M>;
 };
 type INewWindowArgs = { name: string; devTools?: boolean };
@@ -25,7 +27,7 @@ export function init<M extends IpcMessage>(args: {
   config: IUIHarnessRuntimeConfig; //   The [.uiharess/config.json] file.
   name?: string; //                     The display name of the window.
   ipc?: IpcClient<M>; //                Existing IPC client if aleady initialized.
-  log?: ILog; //                        Existing log if already initialized.
+  log?: main.IMainLog; //                        Existing log if already initialized.
   devTools?: boolean; //                Show dev tools on load when running in development (default: true)
 }) {
   return new Promise<IResponse<M>>((resolve, reject) => {

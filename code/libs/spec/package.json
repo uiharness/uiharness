@@ -5,18 +5,19 @@
   "main": "./lib/index",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "test": "ts test",
-    "tdd": "ts test --watch",
-    "lint": "ts lint",
-    "build": "ts build",
-    "prepare": "ts prepare"
+    "test": "yarn chmod && ts test",
+    "tdd": "yarn chmod && ts test --watch",
+    "lint": "yarn chmod && ts lint",
+    "build": "yarn chmod && ts build",
+    "prepare": "yarn chmod && ts prepare",
+    "chmod": "chmod 777 node_modules/.bin/ts"
   },
   "dependencies": {
     "@tdb/util": "1.9.38"
   },
   "devDependencies": {
     "@platform/test": "0.0.25",
-    "@platform/ts.cli": "3.3.23"
+    "@platform/ts.cli": "3.3.24"
   },
   "files": [
     "lib",
