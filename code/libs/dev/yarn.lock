@@ -806,33 +806,23 @@
     "@parcel/utils" "^1.11.0"
     physical-cpu-count "^2.0.0"
 
-"@platform/cli@0.0.30":
-  version "0.0.30"
-  resolved "https://registry.yarnpkg.com/@platform/cli/-/cli-0.0.30.tgz#e1acb3723df7a12eeee9da0066131c831452dd1c"
-  integrity sha512-5cwll946xGqgcseZLWB784O0Aaa1hkuYCx8nEJiRP8J9ay8v0n0jFVaM2KYNSqoLAsrIRyfVV+DlYZWTUxJ4pg==
+"@platform/cli@0.0.32":
+  version "0.0.32"
+  resolved "https://registry.yarnpkg.com/@platform/cli/-/cli-0.0.32.tgz#61c6595c6c60e21a9bf55075eeeacc401175edd9"
+  integrity sha512-8+3J/X1G43Bp2XHouK1L7oKD0h+OzNFLmVBcBJPPwJlKKtgYMNQJxCuWgxt2iq8kelL2FupgyyfE+/cRNePhlw==
   dependencies:
-    "@platform/fs" "0.0.29"
+    "@platform/fs" "0.0.31"
     "@types/listr" "0.13.0"
     listr "0.14.3"
     yargs "12.0.5"
 
-"@platform/cli@0.0.31":
-  version "0.0.31"
-  resolved "https://registry.yarnpkg.com/@platform/cli/-/cli-0.0.31.tgz#f2eef2a2d42a1c6b5dab00836595d900e982458e"
-  integrity sha512-nJSpnLM6H9I16giwWOuq0BNA0fJ602qLmtQYxZ156RaLUX9iy1xXmpHLetUqNVvF3QjtYByd3yY7x2oK3ImxDA==
+"@platform/electron@0.0.37":
+  version "0.0.37"
+  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.0.37.tgz#6dc5f940208e98e478b8dbe138dccff3a2434c4a"
+  integrity sha512-EGIF/220D2bw4Lb2/M066XtelajC+h23Sx4PXBlrjdlCI5dW+9I8w0BDkClvTSBXs0BUhJY4KQ21HqgD2VXErA==
   dependencies:
-    "@platform/fs" "0.0.30"
-    "@types/listr" "0.13.0"
-    listr "0.14.3"
-    yargs "12.0.5"
-
-"@platform/electron@0.0.35":
-  version "0.0.35"
-  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.0.35.tgz#25faeabd608c238e37ad03b2ee60f25c6083e441"
-  integrity sha512-5nbgiNDcgmikOnRgPcEv4hQRRAcIHxCDoNWoRTAaNdgjAEhxm3/MCQ7kCY6aGM8Th+up/G8k/jbZ2nJrnJQJiA==
-  dependencies:
-    "@platform/fs" "0.0.30"
-    "@platform/log" "0.0.45"
+    "@platform/fs" "0.0.31"
+    "@platform/log" "0.0.47"
     "@tdb/util" "1.9.38"
     "@types/app-root-path" "1.2.4"
     app-root-path "2.1.0"
@@ -842,20 +832,10 @@
     electron-window-state "5.0.3"
     is-electron "2.2.0"
 
-"@platform/fs@0.0.29":
-  version "0.0.29"
-  resolved "https://registry.yarnpkg.com/@platform/fs/-/fs-0.0.29.tgz#630044fb5fbd54a956d28a53312b32b615bc06bd"
-  integrity sha512-ax4IgcvsqoDIbr2i1bAX9B8ZEf4FZNMD9pcgQYTwkj/0OekmhRzawXs+lgXRkIgpE0z1e3V6Lwwsh3i2+eAvRg==
-  dependencies:
-    "@types/fs-extra" "5.0.4"
-    fast-glob "2.2.6"
-    fs-extra "7.0.1"
-    js-yaml "3.12.1"
-
-"@platform/fs@0.0.30":
-  version "0.0.30"
-  resolved "https://registry.yarnpkg.com/@platform/fs/-/fs-0.0.30.tgz#250e4c8540183347984227ceed0c9acae4e0cc05"
-  integrity sha512-qxZqPOcMZ+q4dKlYagruB7hd+4NgIHtcMwdG10vuQIdUPdSCQIB6TPJMfVYiKMU3kc+3yKZPmha+JXv7DuB4qw==
+"@platform/fs@0.0.31":
+  version "0.0.31"
+  resolved "https://registry.yarnpkg.com/@platform/fs/-/fs-0.0.31.tgz#dd9726b641bb3a1e310fcd05d813a5be9480556c"
+  integrity sha512-VSStDLbqA2fMmHXokqBuJHYzQ+vQWRUO8/6+AnVAReYWJbSD2rlF0zKEyCWtrxrwEGlWuHDVHAjOMu0AnNK5ug==
   dependencies:
     "@types/fs-extra" "5.0.4"
     fast-glob "2.2.6"
@@ -872,10 +852,10 @@
     rxjs "6.4.0"
     tslib "1.9.3"
 
-"@platform/log@0.0.45":
-  version "0.0.45"
-  resolved "https://registry.yarnpkg.com/@platform/log/-/log-0.0.45.tgz#b25f0de5331d7f5d933c0a859337f996232af889"
-  integrity sha512-qf0xIJvEgsKAN2+2k0n8w4u6uBJHk4KR5CeRSND8j1TXApEvdlK5jVcf/DOgpWCKg/PfusHgK0nTgFz6mVHn9Q==
+"@platform/log@0.0.47":
+  version "0.0.47"
+  resolved "https://registry.yarnpkg.com/@platform/log/-/log-0.0.47.tgz#724fdf669f029a5ce1804e5054379908530f2ab9"
+  integrity sha512-MIluuH1RXh+nxla/fH/Ae9pLsQzzlWSh0b1nraLnEHsTM6swCXXNFf8Zpy7+BF5sjUlXJ9j+gYStGR8UMZeIEA==
   dependencies:
     "@platform/libs" "0.0.2"
     chalk "2.4.2"
@@ -891,13 +871,13 @@
     chai "4.2.0"
     mocha "5.2.0"
 
-"@platform/ts.cli@3.3.21":
-  version "3.3.21"
-  resolved "https://registry.yarnpkg.com/@platform/ts.cli/-/ts.cli-3.3.21.tgz#88c27dc24f288fd493dd0f1959df50e431b37e3b"
-  integrity sha512-r5Q+5pBrGxNqF5q+NR0KiEDV5LHzAK/FJAfVZL4YAKxPubn0Br0DnKlRGhRYjIDt+fHWEH5WwjQpamZOVbZJBA==
+"@platform/ts.cli@3.3.23":
+  version "3.3.23"
+  resolved "https://registry.yarnpkg.com/@platform/ts.cli/-/ts.cli-3.3.23.tgz#f5e7b2cda5d392d3da7779a4a4908c28085750ad"
+  integrity sha512-4pqnv/NyG8APbPzmfulSqgMkyd5P2LJY0o+/Hx2pHpcrbtFIDMpBouKGrvmEW9in1aL6T47bgJpgAkHDZAXRKw==
   dependencies:
-    "@platform/cli" "0.0.31"
-    "@platform/fs" "0.0.30"
+    "@platform/cli" "0.0.32"
+    "@platform/fs" "0.0.31"
     "@platform/libs" "0.0.2"
     "@platform/ts" "3.3.40"
     yargs "12.0.5"
@@ -1228,17 +1208,17 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.8.tgz#0b45bf0607a5509b921335658d87489c12955176"
   integrity sha512-OMSKUmZ09gbzITzx4nxnJqhprWC7JqsmlrEsVtb+cv3GXHNpv0kktqxhboKX52FnMggkQvT5ezt8pxTWyKpJHA==
 
-"@uiharness/electron@0.3.89":
-  version "0.3.89"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.89.tgz#66c854c62b404d23e0dec3cf2b5acd49b5014042"
-  integrity sha512-siU4E8EOQJK1uuOebJeKoqx+ZWhWmYN3XyhJkBNtcuHbRe5FBvgLytLYv/KpUfu7lnvrv7iIzaMeoRHTRh6CyQ==
+"@uiharness/electron@0.3.91":
+  version "0.3.91"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.91.tgz#215eb97ee2b9b6567e543fd75e72233d7ba6ce5e"
+  integrity sha512-clhQTKAPqI9wOTXi67/uLi+Ctht8EDeVhmlF3jhGVpua38jdH3b6UZjfynbob7XZ3KbW62ZVA806agkfCIQw6A==
   dependencies:
-    "@platform/electron" "0.0.35"
+    "@platform/electron" "0.0.37"
     "@platform/libs" "0.0.2"
-    "@platform/log" "0.0.45"
+    "@platform/log" "0.0.47"
     "@tdb/util" "1.9.38"
     "@types/app-root-path" "1.2.4"
-    "@uiharness/types" "0.0.36"
+    "@uiharness/types" "0.0.38"
     app-root-path "2.1.0"
     electron-is "3.0.0"
     electron-is-dev "1.0.1"
@@ -1246,10 +1226,10 @@
     electron-window-state "5.0.3"
     tslib "1.9.3"
 
-"@uiharness/types@0.0.36":
-  version "0.0.36"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.36.tgz#d525d91f967d373e18e1ffd427d1a00ba6b06918"
-  integrity sha512-qyW7pz9SPGEX/aZyo8Z6XvbKQY7Wjn2+GtQAlFpRqdri/eVnZZQsoxWRlhPlaGT4ubglebJ9GRyJzkSTbVlj3A==
+"@uiharness/types@0.0.38":
+  version "0.0.38"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.38.tgz#123ce8ec223aca8e6d374e6e38c1deff9ce637aa"
+  integrity sha512-RAa4hPuUI9sk0taihLGZLpECMz92MpCMt0MAij1zhXzet20L6TmTwHlMmMRFW4dh95w9QsW9N0jIx+ntpLSpFA==
 
 "@zeit/schemas@2.6.0":
   version "2.6.0"
@@ -2482,13 +2462,13 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-create-tmpl@0.1.19:
-  version "0.1.19"
-  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.1.19.tgz#370e46dafac5e321a3f85129b37d4899c4b59167"
-  integrity sha512-jsWpuYsSkXye/Ad9HXgO1pL+BUczV/erVeoibvY6DQrswGOvy2awm27VFH5rfOUTNudQdFASuDd/pL9nWJmIvg==
+create-tmpl@0.1.21:
+  version "0.1.21"
+  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.1.21.tgz#4956aa762bf461689b3f80e1efb5ab97a3122201"
+  integrity sha512-F6o47t2RX6zwRlhxZYOlRzP/F+sGrKYC7J9fNKCgn2n73z6XTx17HwY0Ba7W2h+MZkPNw7ZItdgWebdW+E+wlg==
   dependencies:
-    "@platform/cli" "0.0.30"
-    "@platform/fs" "0.0.29"
+    "@platform/cli" "0.0.32"
+    "@platform/fs" "0.0.31"
     "@tdb/npm" "0.1.21"
     "@tdb/util" "1.9.38"
     "@types/inquirer" "0.0.43"
