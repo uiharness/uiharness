@@ -1,4 +1,4 @@
-import { main, command, log, logging } from '../../common';
+import { main, command, log, logging, fs } from '../../common';
 import { Settings } from '../../settings';
 import { Environment } from '../../types';
 
@@ -14,6 +14,27 @@ export async function logs(args: {
   const paths = main.logPaths({ appName: settings.name });
   const path = env === 'production' ? paths.prod.path : paths.dev.path;
 
+  /**
+   * Ensure the log exists.
+   */
+  if (!(await fs.pathExists(path))) {
+    log.info();
+    log.info(`A ${log.magenta(env)} log does not exist yet.`);
+    log.info.gray(`${logging.formatPath(path)} (404)`);
+    log.info();
+    return;
+  }
+
+  /**
+   * Header
+   */
+  log.info();
+  log.info(logging.formatPath(path));
+  log.info();
+
+  /**
+   * Display the log contents.
+   */
   if (tail) {
     await command()
       .add('tail')
@@ -28,6 +49,5 @@ export async function logs(args: {
     log.info();
     log.info(logging.formatPath(path, false));
   }
-
   log.info();
 }
