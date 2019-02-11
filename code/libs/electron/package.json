@@ -1,10 +1,11 @@
 {
   "name": "@uiharness/electron",
-  "version": "0.3.81",
+  "version": "0.3.87",
   "description": "UIHarness client-tools for Electron (include in dependencies).",
-  "main": "./lib/index.js",
+  "main": "./lib/index",
   "types": "./lib/index.d.ts",
   "scripts": {
+    "test__": "mocha --require ts-node/register --watch-extensions ts,tsx 'src/**/*.{test,TEST}.ts{,x}'",
     "test": "ts test",
     "tdd": "ts test --watch",
     "lint": "ts lint",
@@ -12,12 +13,12 @@
     "prepare": "ts prepare"
   },
   "dependencies": {
-    "@platform/electron": "0.0.12",
-    "@platform/libs": "0.0.0",
-    "@platform/log": "0.0.21",
+    "@platform/electron": "0.0.32",
+    "@platform/libs": "0.0.2",
+    "@platform/log": "0.0.42",
     "@tdb/util": "1.9.38",
     "@types/app-root-path": "1.2.4",
-    "@uiharness/types": "0.0.29",
+    "@uiharness/types": "0.0.34",
     "app-root-path": "2.1.0",
     "electron-is": "3.0.0",
     "electron-is-dev": "1.0.1",
@@ -26,10 +27,10 @@
     "tslib": "1.9.3"
   },
   "devDependencies": {
-    "@platform/test": "0.0.15",
-    "@platform/ts": "3.3.33",
+    "@platform/test": "0.0.25",
+    "@platform/ts.cli": "3.3.18",
     "@types/electron-window-state": "2.0.33",
-    "electron": "4.0.3"
+    "electron": "4.0.4"
   },
   "files": [
     "lib",
