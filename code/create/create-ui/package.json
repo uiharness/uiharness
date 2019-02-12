@@ -14,7 +14,7 @@
     "reset": "rm -rf tmp"
   },
   "dependencies": {
-    "create-tmpl": "0.1.23"
+    "create-tmpl": "0.1.24"
   },
   "devDependencies": {
     "@tdb/typescript": "3.3.1"
