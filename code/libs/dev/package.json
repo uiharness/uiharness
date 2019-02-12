@@ -1,7 +1,7 @@
 {
   "name": "@uiharness/dev",
   "description": "The common UIHarness dev-tools (include in your devDependencies).",
-  "version": "0.0.37",
+  "version": "0.0.41",
   "main": "lib/index",
   "bin": {
     "ui": "lib/bin/index.js",
@@ -17,14 +17,16 @@
   },
   "dependencies": {
     "@babel/core": "7.2.2",
-    "@babel/preset-env": "7.2.3",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "7.3.1",
     "@babel/preset-react": "7.0.0",
     "@babel/preset-typescript": "7.1.0",
+    "@platform/electron": "0.0.46",
     "@platform/fs": "0.0.31",
     "@platform/log": "0.0.52",
     "@tdb/util": "1.9.38",
-    "@uiharness/electron": "0.3.96",
-    "@uiharness/types": "0.0.39",
+    "@uiharness/electron": "0.3.100",
+    "@uiharness/types": "0.0.40",
     "create-tmpl": "0.1.23",
     "electron": "4.0.4",
     "electron-builder": "20.38.5",

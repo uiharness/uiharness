@@ -2,6 +2,14 @@
 # yarn lockfile v1
 
 
+"@babel/polyfill@7.2.5":
+  version "7.2.5"
+  resolved "https://registry.yarnpkg.com/@babel/polyfill/-/polyfill-7.2.5.tgz#6c54b964f71ad27edddc567d065e57e87ed7fa7d"
+  integrity sha512-8Y/t3MWThtMLYr0YNC/Q76tqN1w30+b0uQMeFUYauG2UGTR19zyUtFrAzT23zNtBxPp+LbE5E/nwV/q/r3y6ug==
+  dependencies:
+    core-js "^2.5.7"
+    regenerator-runtime "^0.12.0"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -25,17 +33,17 @@
     listr "0.14.3"
     yargs "12.0.5"
 
-"@platform/electron@0.0.42":
-  version "0.0.42"
-  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.0.42.tgz#011323a2cc3c1bad368eb5260c1a139ef508d723"
-  integrity sha512-Eu/4hS6tYlypTF3ULHSjyO56BEjoQNM+NaX0WAYshPr/+JVBs3HwpaDYaS8JTNW8/qJ+XTi9peAtUWqVv4qFJA==
+"@platform/electron@0.0.46":
+  version "0.0.46"
+  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.0.46.tgz#26cc07f9783a65af1206eb397ccbf401de0ef253"
+  integrity sha512-UUz9gGq4dFzaVjO7df/zfSlrQBeSBqIgzo4VqQJAIlUv+Z/1h7voW6R63YVA8itDeOMjqPi+tXsKKlhAC7hLZg==
   dependencies:
+    "@babel/polyfill" "7.2.5"
     "@platform/fs" "0.0.31"
     "@platform/log" "0.0.52"
     "@tdb/util" "1.9.38"
     "@types/app-root-path" "1.2.4"
     app-root-path "2.1.0"
-    babel-polyfill "6.26.0"
     electron-is "3.0.0"
     electron-log "2.2.17"
     electron-store "2.0.0"
@@ -251,10 +259,10 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/types@0.0.39":
-  version "0.0.39"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.39.tgz#890ad0c8c7f5c5ecd6aad86c5f6e3480be4100ad"
-  integrity sha512-jf/KGBA0FkVH8KaTa0iHP0c7MzH2loio/80yQupvvfMMxSGBi5X3QompVqbCmp06uoIfuConLDIujiEH0RCPAw==
+"@uiharness/types@0.0.40":
+  version "0.0.40"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.40.tgz#6634a4d2f7f1a1617b46cb13ca7c22797147f4bd"
+  integrity sha512-WqFH2I8BfaQVEInCyEKAWW0bWLPG42RVXl8qXrPdNYUZngiwko2dgSiPTgkWvkIm418XtVTkDDRQ9bXMPmOtpA==
 
 ajv@^6.5.5:
   version "6.9.1"
@@ -395,15 +403,6 @@ babel-code-frame@^6.22.0:
     chalk "^1.1.3"
     esutils "^2.0.2"
     js-tokens "^3.0.2"
-
-babel-polyfill@6.26.0:
-  version "6.26.0"
-  resolved "https://registry.yarnpkg.com/babel-polyfill/-/babel-polyfill-6.26.0.tgz#379937abc67d7895970adc621f284cd966cf2153"
-  integrity sha1-N5k3q8Z9eJWXCtxiHyhM2WbPIVM=
-  dependencies:
-    babel-runtime "^6.26.0"
-    core-js "^2.5.0"
-    regenerator-runtime "^0.10.5"
 
 babel-runtime@^6.26.0:
   version "6.26.0"
@@ -691,7 +690,7 @@ core-js@^1.0.0:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
   integrity sha1-ZSKUwUZR2yj6k70tX/KYOk8IxjY=
 
-core-js@^2.4.0, core-js@^2.5.0:
+core-js@^2.4.0, core-js@^2.5.7:
   version "2.6.4"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.4.tgz#b8897c062c4d769dd30a0ac5c73976c47f92ea0d"
   integrity sha512-05qQ5hXShcqGkPZpXEFLIpxayZscVD2kuMBZewxiIPPEagukO4mqgPA9CWhUvFBJfy3ODdK2p9xyHh7FTU9/7A==
@@ -2425,15 +2424,15 @@ redent@^1.0.0:
     indent-string "^2.1.0"
     strip-indent "^1.0.1"
 
-regenerator-runtime@^0.10.5:
-  version "0.10.5"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz#336c3efc1220adcedda2c9fab67b5a7955a33658"
-  integrity sha1-M2w+/BIgrc7dosn6tntaeVWjNlg=
-
 regenerator-runtime@^0.11.0:
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
   integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
+
+regenerator-runtime@^0.12.0:
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.12.1.tgz#fa1a71544764c036f8c49b13a08b2594c9f8a0de"
+  integrity sha512-odxIc1/vDlo4iZcfXqRYFj0vpXFNoGdKMAUieAlFYO6m/nl5e9KR/beGf41z4a1FI+aQgtjhuaSlDxQ0hmkrHg==
 
 regex-not@^1.0.0, regex-not@^1.0.2:
   version "1.0.2"
