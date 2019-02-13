@@ -24,7 +24,7 @@
     "@platform/electron": "0.0.52",
     "@platform/fs": "0.0.32",
     "@platform/log": "0.0.54",
-    "@tdb/util": "1.9.38",
+    "@platform/util.value": "0.0.6",
     "@uiharness/electron": "0.3.104",
     "@uiharness/types": "0.0.42",
     "create-tmpl": "0.1.25",

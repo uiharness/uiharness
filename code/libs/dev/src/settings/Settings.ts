@@ -1,6 +1,6 @@
 import { dirname, join, resolve } from 'path';
 
-import { constants, file, fs, log, npm, NpmPackage } from '../common';
+import { constants, fs, log, npm, NpmPackage } from '../common';
 import {
   IUIHarnessConfig,
   IUIHarnessPaths,
@@ -36,7 +36,7 @@ export class Settings {
    */
   public static load(path: string) {
     try {
-      return file.loadAndParseSync<IUIHarnessConfig>(path, {});
+      return fs.file.loadAndParseSync<IUIHarnessConfig>(path, {});
     } catch (error) {
       log.error('💥  ERROR UIHarness');
       log.info.yellow(`Failed to load UIHarness congfig at path '${path}'.`);

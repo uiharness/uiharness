@@ -10,8 +10,12 @@ import * as filesize from 'filesize';
 
 export { main };
 
+import * as R from 'ramda';
+export { R };
+
 export { ParcelBundler, yargs, execa, Listr, filesize };
-export { R, value, time } from '@tdb/util';
+export { value, time } from '@platform/util.value';
+
 export { log } from '@platform/log/lib/server';
-export { npm, NpmPackage, yaml, file, exec } from '@tdb/npm';
+export { npm, NpmPackage, yaml, exec } from '@tdb/npm';
 export { Template, TemplateMiddleware } from 'create-tmpl';

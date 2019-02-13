@@ -1,6 +1,6 @@
 import { join, resolve } from 'path';
 
-import { constants, file, value, toBundlerArgs } from '../common';
+import { constants, fs, value, toBundlerArgs } from '../common';
 import {
   IElectronBuilderConfig,
   IUIHarnessConfig,
@@ -136,7 +136,7 @@ export class ElectronSettings {
     const load = () => {
       const dir = resolve(this._paths.parent.dir);
       const path = join(dir, this.path.builder.configFilename);
-      return file.loadAndParseSync<IElectronBuilderConfig>(path, {});
+      return fs.file.loadAndParseSync<IElectronBuilderConfig>(path, {});
     };
     return this._builderConfig || (this._builderConfig = load());
   }

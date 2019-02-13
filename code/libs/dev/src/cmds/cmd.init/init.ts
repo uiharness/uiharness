@@ -1,6 +1,5 @@
 import {
   constants,
-  file,
   fs,
   IUIHarnessRuntimeConfig,
   log,
@@ -148,7 +147,7 @@ async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
 
   // Write the file.
   const path = settings.path.tmp.config;
-  await file.stringifyAndSave(path, data);
+  await fs.file.stringifyAndSave(path, data);
   return data;
 }
 
@@ -172,7 +171,7 @@ async function copyPackage(args: { settings: Settings; prod: boolean }) {
 
   // Save the [package.json] file.
   const path = fs.resolve(settings.path.package);
-  await file.stringifyAndSave(path, pkg);
+  await fs.file.stringifyAndSave(path, pkg);
 }
 
 /**

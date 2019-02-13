@@ -1,7 +1,6 @@
 import {
   BundleTarget,
   command,
-  file,
   fs,
   IElectronBuilderConfig,
   Listr,
@@ -173,12 +172,12 @@ async function prepareBuilderYaml(args: { settings: Settings }) {
   }
 
   // Update the builder YAML with current input/output paths.
-  const data = await file.loadAndParse<IElectronBuilderConfig>(path);
+  const data = await fs.file.loadAndParse<IElectronBuilderConfig>(path);
   data.productName = settings.name;
   data.files = files;
   data.directories = {
     ...(data.directories || {}),
     output,
   };
-  await file.stringifyAndSave<IElectronBuilderConfig>(path, data);
+  await fs.file.stringifyAndSave<IElectronBuilderConfig>(path, data);
 }
