@@ -592,7 +592,7 @@
     "@babel/helper-regex" "^7.0.0"
     regexpu-core "^4.1.3"
 
-"@babel/polyfill@7.2.5", "@babel/polyfill@^7.2.5":
+"@babel/polyfill@7.2.5":
   version "7.2.5"
   resolved "https://registry.yarnpkg.com/@babel/polyfill/-/polyfill-7.2.5.tgz#6c54b964f71ad27edddc567d065e57e87ed7fa7d"
   integrity sha512-8Y/t3MWThtMLYr0YNC/Q76tqN1w30+b0uQMeFUYauG2UGTR19zyUtFrAzT23zNtBxPp+LbE5E/nwV/q/r3y6ug==
@@ -777,10 +777,10 @@
     listr "0.14.3"
     yargs "12.0.5"
 
-"@platform/electron@0.0.47":
-  version "0.0.47"
-  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.0.47.tgz#48aa0edc25f46b835e8f7baceb9371589b6d8726"
-  integrity sha512-bkquaoENS3Usbso5abYr4Cn7fMm1sInEIyei2pFD4XINDuASqPQwbEW59I4xG1bz5kbcuweXcayNr7Bt+E6uBA==
+"@platform/electron@0.0.51":
+  version "0.0.51"
+  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.0.51.tgz#bd06c622a5383c76b7c154d7d470d4c6483bfe26"
+  integrity sha512-1B3CxwKb5Mq5tTgRcvWFeaoQk4K+1n2DjOfQYgkLI+dEZX3yxzROoK1RiCn7XWxI5RsgEkFnNAg8ZgVOoeYgwg==
   dependencies:
     "@babel/polyfill" "7.2.5"
     "@platform/fs" "0.0.32"
@@ -1138,21 +1138,21 @@
   resolved "https://registry.yarnpkg.com/@types/underscore/-/underscore-1.8.9.tgz#fef41f800cd23db1b4f262ddefe49cd952d82323"
   integrity sha512-vfzZGgZKRFy7KEWcBGfIFk+h6B+thDCLfkD1exMBMRlUsx2icA+J6y4kAbZs/TjSTeY1duw89QUU133TSzr60Q==
 
-"@uiharness/dev@0.0.42":
-  version "0.0.42"
-  resolved "https://registry.yarnpkg.com/@uiharness/dev/-/dev-0.0.42.tgz#0d32e56d4c7a77ade0d199e2afc0e84fdf062c92"
-  integrity sha512-XPWNE4jQ+U6N2ymUVJs69o3HXslIf35BwcAzw+X5zABmyQ1pbJosGVVU1gMtYUHH/mdItQlyuhNhQwMiZ2+Vkw==
+"@uiharness/dev@0.0.44":
+  version "0.0.44"
+  resolved "https://registry.yarnpkg.com/@uiharness/dev/-/dev-0.0.44.tgz#82392d78bae616b3f40b79a6450e3db0ca59fb91"
+  integrity sha512-qoMbhIF0JivlwDb6r2zGrls9aWTBib1Adya58wKP2JslxCH/41k/Stjm5JNzJWl3oSui6XdCyK3elcTRRDNmtg==
   dependencies:
     "@babel/core" "7.2.2"
-    "@babel/polyfill" "^7.2.5"
+    "@babel/polyfill" "7.2.5"
     "@babel/preset-env" "7.3.1"
     "@babel/preset-react" "7.0.0"
     "@babel/preset-typescript" "7.1.0"
-    "@platform/electron" "0.0.47"
+    "@platform/electron" "0.0.51"
     "@platform/fs" "0.0.32"
     "@platform/log" "0.0.53"
     "@tdb/util" "1.9.38"
-    "@uiharness/electron" "0.3.101"
+    "@uiharness/electron" "0.3.103"
     "@uiharness/types" "0.0.41"
     create-tmpl "0.1.24"
     electron "4.0.4"
@@ -1163,12 +1163,12 @@
     serve "10.1.2"
     yargs "12.0.5"
 
-"@uiharness/electron@0.3.101":
-  version "0.3.101"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.101.tgz#6f96d3535015387703a19b2e71d77fa9a46e59bc"
-  integrity sha512-Ud5TBZk7WmrDiEClyuD9sa7y6ge/hCyN//G4nKsQiCvS45++flA7NMzphEuddlW7rvIdK9n6VvydJQmT+ssfbQ==
+"@uiharness/electron@0.3.103":
+  version "0.3.103"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.103.tgz#3ce53885d27fbed17ed034ab44468139f492765f"
+  integrity sha512-C29uzrrE221eJ+JHGYCCY1PkqBFejVWrLlW2YflCT6STcyiHopQKj3ymJblEbQTGXkB5jJp3M7d3gSS1M3x0tA==
   dependencies:
-    "@platform/electron" "0.0.47"
+    "@platform/electron" "0.0.51"
     "@platform/libs" "0.0.2"
     "@platform/log" "0.0.53"
     "@tdb/util" "1.9.38"

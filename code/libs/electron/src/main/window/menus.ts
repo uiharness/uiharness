@@ -9,8 +9,8 @@ export function createMenus(
     refs: IWindowRefs;
   },
 ) {
-  const { refs, config, log, ipc } = args;
-  const context: IContext = { config, log, ipc };
+  const { refs, config, id, store, log, ipc } = args;
+  const context: IContext = { config, id, store, log, ipc };
 
   const template: MenuItemConstructorOptions[] = [
     {

@@ -1,13 +1,12 @@
 import * as main from '@platform/electron/lib/main';
+import { value as valueUtil } from '@tdb/util';
 import { app, BrowserWindow } from 'electron';
 import * as os from 'os';
 import { join } from 'path';
 
-import { IUIHarnessRuntimeConfig, is } from '../common';
-import { ILog } from '../types';
+import { is, IUIHarnessRuntimeConfig } from '../common';
 import { IContext, IpcClient, IpcMessage } from './types';
 import * as mainWindow from './window';
-import { value as valueUtil } from '@tdb/util';
 
 export * from '../types';
 
@@ -30,14 +29,14 @@ export function init<M extends IpcMessage>(args: {
   log?: main.IMainLog; //                        Existing log if already initialized.
   devTools?: boolean; //                Show dev tools on load when running in development (default: true)
 }) {
-  return new Promise<IResponse<M>>((resolve, reject) => {
+  return new Promise<IResponse<M>>(async (resolve, reject) => {
     const { config, devTools } = args;
-    const { log, ipc } = main.init<M>({
+    const { log, ipc, id, store } = await main.init<M>({
       log: args.log || logDir({ appName: config.name }),
       ipc: args.ipc,
     });
 
-    const context: IContext = { config, log, ipc: ipc as IpcClient };
+    const context: IContext = { config, id, store, log, ipc: ipc as IpcClient };
 
     app.on('ready', () => {
       const name = args.name || config.name || app.getName();
@@ -51,13 +50,7 @@ export function init<M extends IpcMessage>(args: {
         return mainWindow.create({ name: e.name, devTools, ...context });
       };
 
-      const res: IResponse<M> = {
-        window,
-        newWindow,
-        log,
-        ipc,
-      };
-
+      const res: IResponse<M> = { window, newWindow, log, ipc };
       resolve(res);
     });
 

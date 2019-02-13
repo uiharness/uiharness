@@ -27,8 +27,8 @@ export function create(
     defaultHeight?: number;
   },
 ) {
-  const { config, log, ipc } = args;
-  const context: IContext = { config, log, ipc };
+  const { id, store, config, log, ipc } = args;
+  const context: IContext = { config, id, store, log, ipc };
   const devTools = value.defaultValue(args.devTools, true);
   const defaultWidth = value.defaultValue(args.defaultWidth, 1000);
   const defaultHeight = value.defaultValue(args.defaultHeight, 800);
