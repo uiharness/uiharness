@@ -114,6 +114,21 @@
     tslint-react "3.6.0"
     typescript "3.3.3"
 
+"@platform/util.is@0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@platform/util.is/-/util.is-0.0.5.tgz#88ed91732fbf5ad08de84d1127b700874e060232"
+  integrity sha512-tEKqMwI/m4UBulT+eBBZXD1EY+k6VdsjW/f1+3cLufm9F7dcmhsXjy8q+uB+VrXJuTYdd7n2dr9d18GxsLpX0g==
+
+"@platform/util.value@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@platform/util.value/-/util.value-0.0.6.tgz#f6b4174e6036ed25d0445a0654ec692c3143daee"
+  integrity sha512-OjPgaWOWYU85Fiv7EVmisZa6r+vZ4KUIGvU7cd9d3KnwVuBJwJPL/95smSvYx5/WAfr230dbiUtwTB36YjBcag==
+  dependencies:
+    "@platform/libs" "0.0.3"
+    "@platform/util.is" "0.0.5"
+    cuid "2.1.6"
+    dayjs "1.8.5"
+
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@samverschueren/stream-to-observable/-/stream-to-observable-0.3.0.tgz#ecdf48d532c58ea477acfcab80348424f8d0662f"
@@ -739,6 +754,11 @@ cuid@2.1.4:
   resolved "https://registry.yarnpkg.com/cuid/-/cuid-2.1.4.tgz#e1178eb92a05ef9364b29a9942feed36d3604cdd"
   integrity sha512-l1vrCiWOwBpu85bfm939Hg3MQh2alxAMoGZnjcJOYkgN7wzy9yi3vQhRzwcTr9mdIlfTp8DP9G5ZgIIPyaQEvg==
 
+cuid@2.1.6:
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/cuid/-/cuid-2.1.6.tgz#dc3a20b5a7497d36d32c0bf8a2997524c9c796c4"
+  integrity sha512-ZFp7PS6cSYMJNch9fc3tyHdE4T8TDo3Y5qAxb0KSA9mpiYDo7z9ql1CznFuuzxea9STVIDy0tJWm2lYiX2ZU1Q==
+
 currently-unhandled@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/currently-unhandled/-/currently-unhandled-0.4.1.tgz#988df33feab191ef799a61369dd76c17adf957ea"
@@ -757,6 +777,11 @@ date-fns@^1.27.2:
   version "1.30.1"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
   integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
+
+dayjs@1.8.5:
+  version "1.8.5"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.8.5.tgz#0b066770f89a20022218544989f3d23e5e8db29a"
+  integrity sha512-jo5sEFdsT43RqXxoqQVEuD7XL6iSIRxcjTgheJdlV0EHKObKP3pb9JcJEv/KStVMy25ABNQrFnplKcCit05vOA==
 
 debug@2.6.9, debug@^2.1.3, debug@^2.2.0, debug@^2.3.3:
   version "2.6.9"

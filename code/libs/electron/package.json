@@ -16,7 +16,7 @@
     "@platform/electron": "0.0.52",
     "@platform/libs": "0.0.3",
     "@platform/log": "0.0.54",
-    "@tdb/util": "1.9.38",
+    "@platform/util.value": "^0.0.6",
     "@types/app-root-path": "1.2.4",
     "@uiharness/types": "0.0.42",
     "app-root-path": "2.1.0",

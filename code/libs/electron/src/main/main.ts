@@ -1,5 +1,5 @@
 import * as main from '@platform/electron/lib/main';
-import { value as valueUtil } from '@tdb/util';
+import { value as valueUtil } from '@platform/util.value';
 import { app, BrowserWindow } from 'electron';
 import * as os from 'os';
 import { join } from 'path';

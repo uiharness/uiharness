@@ -13,7 +13,7 @@
     "chmod": "chmod 777 node_modules/.bin/ts"
   },
   "dependencies": {
-    "@tdb/util": "1.9.38"
+    "@platform/util.value": "0.0.6"
   },
   "devDependencies": {
     "@platform/test": "0.0.26",
