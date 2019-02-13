@@ -80,11 +80,17 @@ const program = yargs
     [CMD.START, CMD.START_S, CMD.START_ST],
     'Start the development server.',
     e =>
-      e.positional('target', {
-        type: 'string',
-        default: 'electron',
-        describe: 'Start "electron" (default) or "web" server.',
-      }),
+      e
+        .positional('target', {
+          type: 'string',
+          default: 'electron',
+          describe: 'Start "electron" (default) or "web" server.',
+        })
+        .option('bundle', {
+          alias: 'b',
+          describe: 'Re-bundle the module (production).',
+          boolean: true,
+        }),
     e => {
       const target = wrangleBundleTarget(e.target);
       if (!target) {
