@@ -131,7 +131,7 @@
     tslint-react "3.6.0"
     typescript "3.3.3"
 
-"@platform/ui.object@^0.0.7":
+"@platform/ui.object@0.0.7":
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/@platform/ui.object/-/ui.object-0.0.7.tgz#03ef569f3c7c265afb03a9af4d29a3345ad50753"
   integrity sha512-n6EUCIWl5xNR/DEALl6fjU55cuB5py59N/KHlVRReJqKK/BXfOuRP9UXSGKV1jL3YXcOJI4wqlTkeDr57fvm0Q==
