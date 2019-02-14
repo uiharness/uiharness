@@ -1,5 +1,5 @@
-import * as is from 'electron-is';
 import * as path from 'app-root-path';
 
-export { is, path };
+export { path };
+export { is } from '@platform/util.is';
 export { time, value } from '@platform/util.value';

@@ -67,7 +67,7 @@ export function create(
   window.once('ready-to-show', () => {
     window.show();
     window.setTitle(title);
-    if (devTools && is.dev()) {
+    if (devTools && is.dev) {
       main.devTools.create({
         ...context,
         parent: window,
@@ -101,6 +101,6 @@ function getPaths(config: IUIHarnessRuntimeConfig) {
     pathname: path.resolve(config.electron.renderer),
     slashes: true,
   });
-  const url = is.dev() ? dev : prod;
+  const url = is.dev ? dev : prod;
   return { dev, prod, url };
 }

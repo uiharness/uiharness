@@ -48,7 +48,7 @@ export function init<M extends IpcMessage>(args: {
       const newWindow: NewWindowFactory = e => {
         const devTools = valueUtil.defaultValue(
           e.devTools,
-          is.dev() ? args.devTools : undefined,
+          is.dev ? args.devTools : undefined,
         );
         return mainWindow.create({
           ...context,
