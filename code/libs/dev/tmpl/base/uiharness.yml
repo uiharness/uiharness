@@ -13,3 +13,8 @@ electron:
 web:
   port: 1234
   entry: test/web.tsx
+
+sourcemaps:
+  strip:
+    - node_modules/rxjs
+
