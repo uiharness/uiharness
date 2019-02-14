@@ -1,5 +1,6 @@
 import { app, Menu, MenuItemConstructorOptions } from 'electron';
 import { IWindowRefs, IContext } from '../types';
+import main from '@platform/electron/lib/main';
 
 /**
  * Handles the creation of menus.
@@ -7,6 +8,7 @@ import { IWindowRefs, IContext } from '../types';
 export function createMenus(
   args: IContext & {
     refs: IWindowRefs;
+    windows?: main.IWindows;
   },
 ) {
   const { refs, config, id, store, log, ipc } = args;

@@ -25,9 +25,10 @@ export function create(
     devTools?: boolean;
     defaultWidth?: number;
     defaultHeight?: number;
+    windows?: main.IWindows;
   },
 ) {
-  const { id, store, config, log, ipc } = args;
+  const { id, store, config, log, ipc, windows } = args;
   const context: IContext = { config, id, store, log, ipc };
   const devTools = value.defaultValue(args.devTools, true);
   const defaultWidth = value.defaultValue(args.defaultWidth, 1000);
@@ -39,7 +40,7 @@ export function create(
   };
 
   const title = args.name || config.name;
-  const file = `[uih.window].${title.replace(/\s/g, '_')}.json`;
+  const file = `window-state/[uih].${title.replace(/\s/g, '_')}.json`;
   const state = WindowState({
     defaultWidth,
     defaultHeight,
@@ -60,7 +61,7 @@ export function create(
     acceptFirstMouse: true,
   }));
 
-  createMenus({ refs, ...context });
+  createMenus({ ...context, refs, windows });
 
   // Show the window when it's ready.
   window.once('ready-to-show', () => {
@@ -68,9 +69,10 @@ export function create(
     window.setTitle(title);
     if (devTools && is.dev()) {
       main.devTools.create({
+        ...context,
         parent: window,
         title: constants.NAME,
-        ...context,
+        windows,
       });
     }
   });

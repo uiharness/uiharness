@@ -15,6 +15,7 @@ type IResponse<M extends IpcMessage> = {
   newWindow: NewWindowFactory;
   log: main.IMainLog;
   ipc: IpcClient<M>;
+  windows: main.IWindows;
 };
 type INewWindowArgs = { name: string; devTools?: boolean };
 type NewWindowFactory = (e: INewWindowArgs) => BrowserWindow;
@@ -26,8 +27,9 @@ export function init<M extends IpcMessage>(args: {
   config: IUIHarnessRuntimeConfig; //   The [.uiharess/config.json] file.
   name?: string; //                     The display name of the window.
   ipc?: IpcClient<M>; //                Existing IPC client if aleady initialized.
-  log?: main.IMainLog; //                        Existing log if already initialized.
+  log?: main.IMainLog; //               Existing log if already initialized.
   devTools?: boolean; //                Show dev tools on load when running in development (default: true)
+  windows?: main.IWindows; //           The gloal windows manager.
 }) {
   return new Promise<IResponse<M>>(async (resolve, reject) => {
     const { config, devTools } = args;
@@ -37,20 +39,26 @@ export function init<M extends IpcMessage>(args: {
     });
 
     const context: IContext = { config, id, store, log, ipc: ipc as IpcClient };
+    const windows = args.windows || main.createWindows({ ipc });
 
     app.on('ready', () => {
       const name = args.name || config.name || app.getName();
-      const window = mainWindow.create({ name, devTools, ...context });
+      const window = mainWindow.create({ ...context, name, devTools, windows });
 
       const newWindow: NewWindowFactory = e => {
         const devTools = valueUtil.defaultValue(
           e.devTools,
           is.dev() ? args.devTools : undefined,
         );
-        return mainWindow.create({ name: e.name, devTools, ...context });
+        return mainWindow.create({
+          ...context,
+          name: e.name,
+          devTools,
+          windows,
+        });
       };
 
-      const res: IResponse<M> = { window, newWindow, log, ipc };
+      const res: IResponse<M> = { window, newWindow, log, ipc, windows };
       resolve(res);
     });
 
