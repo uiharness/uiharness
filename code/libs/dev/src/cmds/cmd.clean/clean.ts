@@ -8,7 +8,7 @@ export async function clean(args: {}) {
 
   log.info.gray('Removing:\n');
   const remove = (path: string) => {
-    log.info.gray(`   🧹  ${path}`);
+    log.info.gray(`   🐷  ${path}`);
     return fs.remove(fs.resolve(path));
   };
   await Promise.all(list.map(path => remove(path)));
