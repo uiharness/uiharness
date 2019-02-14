@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "0.0.91",
+  "version": "0.0.92",
   "scripts": {
     "postinstall": "ui init",
     "ui": "yarn sl && ui $@",
@@ -10,10 +10,10 @@
     "nuke": "sh ./sh/nuke.sh"
   },
   "dependencies": {
-    "@uiharness/electron": "0.3.107"
+    "@uiharness/electron": "0.3.109"
   },
   "devDependencies": {
-    "@uiharness/dev": "0.1.4",
+    "@uiharness/dev": "0.1.6",
     "typescript": "^3.2.4"
   },
   "resolutions": {

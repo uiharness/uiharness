@@ -33,10 +33,10 @@
     "@types/yargs" "12.0.8"
     yargs "13.1.0"
 
-"@platform/electron@0.0.61":
-  version "0.0.61"
-  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.0.61.tgz#384ddaeb3937f454b363d4801d1b7711a4d4b88f"
-  integrity sha512-v8NaC4mM6feROC0SBvA5kswIV+0R3jLRKQ8Y0O4lqgCboF5Jh9MXtY1zZ/khn1jO1kGI4suhJajbPBieLQQYvQ==
+"@platform/electron@0.0.62":
+  version "0.0.62"
+  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.0.62.tgz#acd2fd31a67724bf1e0ab39f6c6fea3c370b264c"
+  integrity sha512-IK6Kf6DahMLhaeU9Prnm4mcWfR1iZKRx+wsNfm8dZN8/+MMn3p9Gc0aaxhpU+YgF9Qph8CSFYiVVq/T73s823w==
   dependencies:
     "@babel/polyfill" "7.2.5"
     "@platform/fs" "0.0.33"
