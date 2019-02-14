@@ -9,7 +9,7 @@ import * as React from 'react';
  *    - [.uiharness.yml]
  *
  */
-export const Root = () => {
+export const Test = () => {
   return (
     <div style={{ paddingLeft: 20 }}>
       <h1>Hello World!</h1>
