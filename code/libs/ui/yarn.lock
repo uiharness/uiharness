@@ -794,16 +794,16 @@
     electron-window-state "5.0.3"
     is-electron "2.2.0"
 
-"@platform/electron@0.0.63":
-  version "0.0.63"
-  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.0.63.tgz#00f598c8edb9f9f89ad43d66bab86059da275720"
-  integrity sha512-TuUUuRC0OGR8sv1rk/soDnsVJA7Of7ruj3zrOSTu5EweTHiBdEoKWQyontGOJBWaBZ7SSOxnE4U2JlUagKAhgg==
+"@platform/electron@0.0.64":
+  version "0.0.64"
+  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.0.64.tgz#538a55adb1f7fc85fe7cbc3bda5236eb18329e80"
+  integrity sha512-wg0uMt0PYB+eiQj3tL5qcNlUTg+hKB9XdgjfEcTnN9F3cl1z/F+MC2+o5DKdgd0DKuXGIhijGslNIj8xtjAnvQ==
   dependencies:
     "@babel/polyfill" "7.2.5"
     "@platform/fs" "0.0.33"
     "@platform/log" "0.0.59"
-    "@platform/util.is" "^0.0.10"
-    "@platform/util.react" "^0.0.13"
+    "@platform/util.is" "0.0.10"
+    "@platform/util.react" "0.0.13"
     "@types/app-root-path" "1.2.4"
     app-root-path "2.1.0"
     electron-log "2.2.17"
@@ -1250,21 +1250,21 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.8.tgz#0b45bf0607a5509b921335658d87489c12955176"
   integrity sha512-OMSKUmZ09gbzITzx4nxnJqhprWC7JqsmlrEsVtb+cv3GXHNpv0kktqxhboKX52FnMggkQvT5ezt8pxTWyKpJHA==
 
-"@uiharness/dev@0.1.10":
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/@uiharness/dev/-/dev-0.1.10.tgz#923eee4a4ad0fd0267b1f80b948492ccc1d5071e"
-  integrity sha512-2jrbm87ARVnXVJIZXvZxb8uMlzzr5hvvkse+i9mIHb7FVTSx7q0sQru0NEYni4Yj7S8OfhvenzuBNsCfyKGV4w==
+"@uiharness/dev@0.1.11":
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/@uiharness/dev/-/dev-0.1.11.tgz#5e8dd371432293e6797739aef25573b9bc078cb5"
+  integrity sha512-NDGeDve6gKIHDtIPBHAOGJWATwZa2DxOMTfGsS7oATrNIz5xHkoCCAAos+sLwFqxSXbXfyZpaV77GgIAKaQaJQ==
   dependencies:
     "@babel/core" "7.2.2"
     "@babel/polyfill" "7.2.5"
     "@babel/preset-env" "7.3.1"
     "@babel/preset-react" "7.0.0"
     "@babel/preset-typescript" "7.1.0"
-    "@platform/electron" "0.0.63"
+    "@platform/electron" "0.0.64"
     "@platform/fs" "0.0.33"
     "@platform/log" "0.0.59"
     "@platform/util.value" "0.0.11"
-    "@uiharness/electron" "0.3.113"
+    "@uiharness/electron" "0.3.114"
     "@uiharness/types" "0.0.44"
     create-tmpl "0.1.28"
     electron "4.0.4"
@@ -1291,12 +1291,12 @@
     electron-window-state "5.0.3"
     tslib "1.9.3"
 
-"@uiharness/electron@0.3.113":
-  version "0.3.113"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.113.tgz#60625c84699435eba9116bcffe1a3fcb5c81e6c9"
-  integrity sha512-pUaI+jAHGhT8Gjabz5WaYkak+f3uM6gs6u3QVfXbnohc5b/xjzd9LQWD6I+lALZLnfDCRsfnulnXBlPm3djxkg==
+"@uiharness/electron@0.3.114":
+  version "0.3.114"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.114.tgz#bb297a619e65102411e42d20a1eb047812c428ee"
+  integrity sha512-UYD4V1wTCqXJTOK4o4lmqoKKJm1ryfd9UMCceQzpzA8s0JXwY0J2Td6CvCEvdCvaj/yNNIGxZUwA/ArQ4APkXg==
   dependencies:
-    "@platform/electron" "0.0.63"
+    "@platform/electron" "0.0.64"
     "@platform/libs" "0.0.3"
     "@platform/log" "0.0.59"
     "@platform/ui.object" "0.0.7"

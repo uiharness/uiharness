@@ -50,16 +50,16 @@
     electron-window-state "5.0.3"
     is-electron "2.2.0"
 
-"@platform/electron@0.0.63":
-  version "0.0.63"
-  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.0.63.tgz#00f598c8edb9f9f89ad43d66bab86059da275720"
-  integrity sha512-TuUUuRC0OGR8sv1rk/soDnsVJA7Of7ruj3zrOSTu5EweTHiBdEoKWQyontGOJBWaBZ7SSOxnE4U2JlUagKAhgg==
+"@platform/electron@0.0.64":
+  version "0.0.64"
+  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.0.64.tgz#538a55adb1f7fc85fe7cbc3bda5236eb18329e80"
+  integrity sha512-wg0uMt0PYB+eiQj3tL5qcNlUTg+hKB9XdgjfEcTnN9F3cl1z/F+MC2+o5DKdgd0DKuXGIhijGslNIj8xtjAnvQ==
   dependencies:
     "@babel/polyfill" "7.2.5"
     "@platform/fs" "0.0.33"
     "@platform/log" "0.0.59"
-    "@platform/util.is" "^0.0.10"
-    "@platform/util.react" "^0.0.13"
+    "@platform/util.is" "0.0.10"
+    "@platform/util.react" "0.0.13"
     "@types/app-root-path" "1.2.4"
     app-root-path "2.1.0"
     electron-log "2.2.17"
