@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/ui",
-  "version": "0.0.72",
+  "version": "0.0.74",
   "scripts": {
     "postinstall": "ui init",
     "ui": "yarn chmod && ui $@",
@@ -13,12 +13,12 @@
     "chmod": "chmod 777 node_modules/.bin/ts"
   },
   "dependencies": {
-    "@uiharness/electron": "0.3.114"
+    "@uiharness/electron": "0.3.116"
   },
   "devDependencies": {
     "@platform/test": "0.0.26",
-    "@platform/ts.cli": "3.3.32",
-    "@uiharness/dev": "0.1.11"
+    "@platform/ts.cli": "3.3.33",
+    "@uiharness/dev": "0.1.13"
   },
   "resolutions": {
     "@types/react": "16.7.17"
