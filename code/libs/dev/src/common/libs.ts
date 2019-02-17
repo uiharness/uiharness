@@ -8,12 +8,12 @@ import * as execa from 'execa';
 import * as Listr from 'listr';
 import * as filesize from 'filesize';
 
-export { main };
+export { main, Listr };
 
 import * as R from 'ramda';
 export { R };
 
-export { ParcelBundler, yargs, execa, Listr, filesize };
+export { ParcelBundler, yargs, execa, filesize };
 export { value, time } from '@platform/util.value';
 
 export { log } from '@platform/log/lib/server';
