@@ -31,25 +31,41 @@ describe('Command', () => {
     test();
   });
 
-  it('clones - deep (default)', () => {
-    const child = new Command({ title: 'child' });
-    const cmd1 = new Command({ title: 'foo', children: [child] });
-    const cmd2 = cmd1.clone();
-    expect(cmd1).to.eql(cmd2);
-    expect(cmd1).to.not.equal(cmd2);
+  describe('clone', () => {
+    it('clones - deep (default)', () => {
+      const child = new Command({ title: 'child' });
+      const cmd1 = new Command({ title: 'foo', children: [child] });
+      const cmd2 = cmd1.clone();
+      expect(cmd1).to.eql(cmd2);
+      expect(cmd1).to.not.equal(cmd2);
 
-    expect(cmd2.children).to.eql([child]);
-    expect(cmd2.children[0]).to.not.equal(child);
+      expect(cmd2.children).to.eql([child]);
+      expect(cmd2.children[0]).to.not.equal(child);
+    });
+
+    it('clones - shallow (deep: false)', () => {
+      const child = new Command({ title: 'child' });
+      const cmd1 = new Command({ title: 'foo', children: [child] });
+      const cmd2 = cmd1.clone({ deep: false });
+      expect(cmd1).to.eql(cmd2);
+      expect(cmd1).to.not.equal(cmd2);
+
+      expect(cmd2.children).to.eql([child]);
+      expect(cmd2.children[0]).to.equal(child);
+    });
   });
 
-  it('clones - shallow (deep: false)', () => {
-    const child = new Command({ title: 'child' });
-    const cmd1 = new Command({ title: 'foo', children: [child] });
-    const cmd2 = cmd1.clone({ deep: false });
-    expect(cmd1).to.eql(cmd2);
-    expect(cmd1).to.not.equal(cmd2);
+  describe('describe (static)', () => {
+    it('with args object', () => {
+      const cmd = Command.describe({ title: 'foo' });
+      expect(cmd.title).to.eql('foo');
+    });
 
-    expect(cmd2.children).to.eql([child]);
-    expect(cmd2.children[0]).to.equal(child);
+    it('with title/handler', () => {
+      const handler = () => null;
+      const cmd = Command.describe('foo', handler);
+      expect(cmd.title).to.eql('foo');
+      expect(cmd.handler).to.eql(handler);
+    });
   });
 });
