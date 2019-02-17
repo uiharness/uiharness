@@ -106,20 +106,30 @@ describe('Command', () => {
 
   describe('toObject', () => {
     it('deep', () => {
-      const cmd = Command.describe('root')
-        .add('a')
-        .add('b');
-      cmd.children[1].add('b1');
+      const myHandler = () => true;
+      const cmd = Command.describe('root', myHandler)
+        .add('a', myHandler)
+        .add('b', myHandler);
+      cmd.children[1].add('b1', myHandler);
 
-      expect(cmd.title).to.eql('root');
-      expect(cmd.children[0].title).to.eql('a');
-      expect(cmd.children[1].title).to.eql('b');
-      expect(cmd.children[1].children[0].title).to.eql('b1');
+      const obj = cmd.toObject();
 
-      const any: any = cmd;
-      expect(any.handler).to.eql(undefined);
-      expect(any.children[0].handler).to.eql(undefined);
-      expect(any.children[1].handler).to.eql(undefined);
+      expect(obj.title).to.eql('root');
+      expect(obj.children[0].title).to.eql('a');
+      expect(obj.children[1].title).to.eql('b');
+      expect(obj.children[1].children[0].title).to.eql('b1');
+
+      expect(obj.handler).to.eql(myHandler);
+      expect(obj.children[0].handler).to.eql(myHandler);
+      expect(obj.children[1].handler).to.eql(myHandler);
+      expect(obj.children[1].children[0].handler).to.eql(myHandler);
+
+      // NB: Function stripped from new object.
+      const any: any = obj;
+      expect(any.add).to.eql(undefined);
+      expect(any.clone).to.eql(undefined);
+      expect(any.children[0].add).to.eql(undefined);
+      expect(any.children[0].clone).to.eql(undefined);
     });
   });
 });
