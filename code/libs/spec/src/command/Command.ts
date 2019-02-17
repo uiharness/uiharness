@@ -36,7 +36,7 @@ export class Command implements ICommandBuilder {
   /**
    * [Constructor]
    */
-  constructor(args: Partial<IConstructorArgs>) {
+  private constructor(args: Partial<IConstructorArgs>) {
     const title = (args.title || '').trim();
     const handler = args.handler || DEFAULT.HANDLER;
     const children = args.children || [];

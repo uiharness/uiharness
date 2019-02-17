@@ -4,7 +4,7 @@ import { DEFAULT } from './Command';
 
 describe('Command', () => {
   it('minimal construction', () => {
-    const cmd = new Command({ title: '  Foo  ' });
+    const cmd = Command.describe({ title: '  Foo  ' });
     expect(cmd.title).to.eql('Foo'); // NB: trims title.
     expect(cmd.handler).to.eql(DEFAULT.HANDLER);
     expect(cmd.children).to.eql([]);
@@ -12,19 +12,19 @@ describe('Command', () => {
 
   it('takes handler in constructor', () => {
     const handler = () => true;
-    const cmd = new Command({ title: 'Foo', handler });
+    const cmd = Command.describe({ title: 'Foo', handler });
     expect(cmd.handler).to.eql(handler);
   });
 
   it('takes children in constructor', () => {
-    const child = new Command({ title: 'child' });
-    const parent = new Command({ title: 'parent', children: [child] });
+    const child = Command.describe({ title: 'child' });
+    const parent = Command.describe({ title: 'parent', children: [child] });
     expect(parent.children).to.eql([child]);
   });
 
   it('throws if a title is not passed', () => {
     const test = (title?: any) => {
-      const fn = () => new Command({ title, handler: () => null });
+      const fn = () => Command.describe({ title, handler: () => null });
       expect(fn).to.throw();
     };
     test('');
@@ -34,8 +34,8 @@ describe('Command', () => {
 
   describe('clone', () => {
     it('clones - deep (default)', () => {
-      const child = new Command({ title: 'child' });
-      const cmd1 = new Command({ title: 'foo', children: [child] });
+      const child = Command.describe({ title: 'child' });
+      const cmd1 = Command.describe({ title: 'foo', children: [child] });
       const cmd2 = cmd1.clone();
       expect(cmd1).to.eql(cmd2);
       expect(cmd1).to.not.equal(cmd2);
@@ -45,8 +45,8 @@ describe('Command', () => {
     });
 
     it('clones - shallow (deep: false)', () => {
-      const child = new Command({ title: 'child' });
-      const cmd1 = new Command({ title: 'foo', children: [child] });
+      const child = Command.describe({ title: 'child' });
+      const cmd1 = Command.describe({ title: 'foo', children: [child] });
       const cmd2 = cmd1.clone({ deep: false });
       expect(cmd1).to.eql(cmd2);
       expect(cmd1).to.not.equal(cmd2);

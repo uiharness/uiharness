@@ -16,6 +16,7 @@ export type ICommandBuilder = ICommand & {
   add(title: string, handler?: CommandHandler): ICommandBuilder;
   add(args: IDescribeArgs): ICommandBuilder;
   toObject(): ICommand;
+  clone(options?: { deep?: boolean }): ICommandBuilder;
 };
 
 /**
