@@ -4,6 +4,8 @@
  */
 export type ICommand = {
   title: string;
+  handler: CommandHandler;
+  children: ICommand[];
 };
 
 /**

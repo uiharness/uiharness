@@ -1,9 +1,6 @@
-import { ICommand, CommandHandler } from '../common';
+import { ICommand, value } from '../common';
 
-type ICommandArgs = {
-  title: string;
-  handler: CommandHandler;
-};
+type ICommandArgs = ICommand & {};
 
 /**
  * Represents a single [command] which is a named unit of
@@ -15,15 +12,16 @@ export class Command implements ICommand {
   /**
    * [Constructor]
    */
-  constructor(args: ICommandArgs) {
-    args = { ...args };
-    args.title = (args.title || '').trim();
+  constructor(args: Partial<ICommandArgs>) {
+    const title = (args.title || '').trim();
+    const handler = args.handler || (() => null);
+    const children = args.children || [];
 
-    if (!args.title) {
+    if (!title) {
       throw new Error(`A command title must be specified.`);
     }
 
-    this._ = args;
+    this._ = { title, handler, children };
   }
 
   /**
@@ -35,5 +33,26 @@ export class Command implements ICommand {
 
   public get handler() {
     return this._.handler;
+  }
+
+  public get children() {
+    return this._.children;
+  }
+
+  /**
+   * [Methods]
+   */
+  public clone(options: { deep?: boolean } = {}) {
+    const deep = value.defaultValue(options.deep, true);
+    let args = { ...this._ };
+
+    if (deep) {
+      const children: ICommand[] = this.children
+        .map(child => child as Command)
+        .map(child => child.clone());
+      args = { ...args, children };
+    }
+
+    return new Command(args);
   }
 }
