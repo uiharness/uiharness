@@ -16,7 +16,7 @@
     "@platform/electron": "0.0.65",
     "@platform/libs": "0.0.3",
     "@platform/log": "0.0.60",
-    "@platform/ui.object": "0.0.10",
+    "@platform/ui.object": "0.0.17",
     "@platform/util.value": "0.0.12",
     "@types/app-root-path": "1.2.4",
     "@uiharness/types": "0.0.46",

@@ -70,6 +70,16 @@
     rxjs "6.4.0"
     tslib "1.9.3"
 
+"@platform/libs@0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@platform/libs/-/libs-0.0.4.tgz#62cadbc18fff3ffaeec2d88d486b39a6ad6b52ca"
+  integrity sha512-AP+tU9aAnQbBCVdGQC/WLKicLwN1kiDE7zjKXNk2n1/o4A42dNZxJiWYyZI5JfmNxp8Lvf9bMfN4GgMecksmQA==
+  dependencies:
+    "@types/ramda" "0.25.50"
+    ramda "0.26.1"
+    rxjs "6.4.0"
+    tslib "1.9.3"
+
 "@platform/log@0.0.60":
   version "0.0.60"
   resolved "https://registry.yarnpkg.com/@platform/log/-/log-0.0.60.tgz#3f866e663697f4a35c16cef8f519e7397688bc9d"
@@ -114,12 +124,12 @@
     tslint-react "3.6.0"
     typescript "3.3.3"
 
-"@platform/ui.object@0.0.10":
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/@platform/ui.object/-/ui.object-0.0.10.tgz#d9bafaf8b6435978364826214a0fb92f12c7bd6f"
-  integrity sha512-VO+wzcK+9cssB+rsEjvCK3wH7jtFILLmgMTDvGV5N2bH8UNc0u0S1DGAHja7lifyN6gva7ZqYw3TQRVkXaNo4g==
+"@platform/ui.object@0.0.17":
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/@platform/ui.object/-/ui.object-0.0.17.tgz#578ce28f34b93937b9bee4e8af3250fc96874229"
+  integrity sha512-+FqTFjgCNWsvhEtBqLHsCQTauVa2N8pkVJ0wUYWQOXI5iBAZivXBE7JWfuR/4lfKb7JKqct+TBMvczpNI3VFlw==
   dependencies:
-    "@platform/util.react" "0.0.14"
+    "@platform/util.react" "0.0.20"
     react-inspector "2.3.1"
 
 "@platform/util.css@0.0.12":
@@ -130,6 +140,18 @@
     "@platform/libs" "0.0.3"
     "@platform/util.is" "0.0.11"
     "@platform/util.value" "0.0.12"
+    "@types/tinycolor2" "^1.4.1"
+    glamor "2.20.40"
+    tinycolor2 "^1.4.1"
+
+"@platform/util.css@0.0.18":
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/@platform/util.css/-/util.css-0.0.18.tgz#72ba9147628e42a6efe6897a6b7f5fdd0013d8b1"
+  integrity sha512-m6lvfAqQ2qnl5apj1LB+6kF7x/t1cbFXURGJ/sVo0N0Ls+Rvgmg7X45psguJPi+SrV7YlI92Nv6KRmy/GJ2g9A==
+  dependencies:
+    "@platform/libs" "0.0.4"
+    "@platform/util.is" "0.0.17"
+    "@platform/util.value" "0.0.18"
     "@types/tinycolor2" "^1.4.1"
     glamor "2.20.40"
     tinycolor2 "^1.4.1"
@@ -148,6 +170,11 @@
   resolved "https://registry.yarnpkg.com/@platform/util.is/-/util.is-0.0.11.tgz#ed7eb190140608ae120e23a814cf0887083eaa40"
   integrity sha512-CSBtpmJOjIob7K5nSHgMhSKCNE6HYBSDAVtwArRx097+ZsJ8g2DuX9FlegZEeWC7QUB02fxQp1B4ij0EFQ2noQ==
 
+"@platform/util.is@0.0.17":
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/@platform/util.is/-/util.is-0.0.17.tgz#7636259fc11ab8d1c5edb26c67a296b89260d0d1"
+  integrity sha512-U3aLAtRsmLaYUQTWHsJAfJ37C9gpbEtyCurcKHE2iqjFSPNajOi/6TlbLnqOBE1C3gpErM57dqrF2PT9Esafpg==
+
 "@platform/util.react@0.0.14":
   version "0.0.14"
   resolved "https://registry.yarnpkg.com/@platform/util.react/-/util.react-0.0.14.tgz#11b0ff7822a753953bbe20cd643d8ce56c86e626"
@@ -160,6 +187,18 @@
     react "16.8.1"
     react-dom "16.8.1"
 
+"@platform/util.react@0.0.20":
+  version "0.0.20"
+  resolved "https://registry.yarnpkg.com/@platform/util.react/-/util.react-0.0.20.tgz#91c45446c5ece70a481bf45564e422fb6b2d7980"
+  integrity sha512-F91iY5bTm2+qTuikksUVUt5GhZaX8R1PEoraysDfptYEvNY1/iBTsc6VEFXM0nVEZGkcm4MPMEfAgOkhzLkc3w==
+  dependencies:
+    "@platform/util.css" "0.0.18"
+    "@platform/util.is" "0.0.17"
+    "@types/react" "16.7.17"
+    "@types/react-dom" "16.8.1"
+    react "16.8.2"
+    react-dom "16.8.2"
+
 "@platform/util.value@0.0.12":
   version "0.0.12"
   resolved "https://registry.yarnpkg.com/@platform/util.value/-/util.value-0.0.12.tgz#c208ea6107157e142359c52cfe6130e2879629d9"
@@ -171,6 +210,18 @@
     cuid "2.1.6"
     dayjs "1.8.5"
     semver "^5.6.0"
+
+"@platform/util.value@0.0.18":
+  version "0.0.18"
+  resolved "https://registry.yarnpkg.com/@platform/util.value/-/util.value-0.0.18.tgz#9a5f1368bb907ffa8a276f4137bb2980303b6ec9"
+  integrity sha512-i+3Sijsgmb4LvdznT4/0gBQJkhvYEjZgwkx7l87506UrmVQEc9LJquZSlbQ2aGjtyLO0K+u9D1YfnhYp86W70w==
+  dependencies:
+    "@platform/libs" "0.0.4"
+    "@platform/util.is" "0.0.17"
+    "@types/semver" "5.5.0"
+    cuid "2.1.6"
+    dayjs "1.8.6"
+    semver "5.6.0"
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
@@ -233,10 +284,22 @@
   resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.25.49.tgz#8da318f54c1acb908e723b9a2103f7c38f90ca4d"
   integrity sha512-d8QG8fd2Pzml+mzgv3VO4UxvYwjDPw4mv8P/NyCKUBdjIXo35o+4Ndpavr+t5kQ6QGu84wuvFydMaXZgZhnRWw==
 
+"@types/ramda@0.25.50":
+  version "0.25.50"
+  resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.25.50.tgz#7f21d47c650f85b8a61c2b608adf8aa0f1a8fccf"
+  integrity sha512-hkGWVWyPEXkXSh7rxJIGg6ELG1/WlR2BB8JemZW8v2l50bfMUw6CjrETJpgd9i3jUxaxOE/X57DvclWd9wkZhg==
+
 "@types/react-dom@16.8.0":
   version "16.8.0"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.8.0.tgz#c565f43f9d2ec911f9e0b8f3b74e25e67879aa3f"
   integrity sha512-Jp4ufcEEjVJEB0OHq2MCZcE1u3KYUKO6WnSuiU/tZeYeiZxUoQavfa/TZeiIT+1XoN6l0lQVNM30VINZFDeolQ==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-dom@16.8.1":
+  version "16.8.1"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.8.1.tgz#e43810a5e44b37854a9c7cd99e6c43e4f522c7c6"
+  integrity sha512-Vyo4LqUvpjNC9RMXV6kXcsvW6U/WKOuHbz+mtY43Fu8AslHjQ5/Yx+sj0agGLkbnqOlQgyIgosewcxdjMirVXA==
   dependencies:
     "@types/react" "*"
 
@@ -256,7 +319,7 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
-"@types/semver@^5.5.0":
+"@types/semver@5.5.0", "@types/semver@^5.5.0":
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-5.5.0.tgz#146c2a29ee7d3bae4bf2fcb274636e264c813c45"
   integrity sha512-41qEJgBH/TWgo5NFSvBCJ1qkoi3Q6ONSF2avrHq1LVEZfYpdHmj0y9SuTK+u9ZhG1sYQKBL1AWXKyLWP4RaUoQ==
@@ -769,6 +832,11 @@ dayjs@1.8.5:
   version "1.8.5"
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.8.5.tgz#0b066770f89a20022218544989f3d23e5e8db29a"
   integrity sha512-jo5sEFdsT43RqXxoqQVEuD7XL6iSIRxcjTgheJdlV0EHKObKP3pb9JcJEv/KStVMy25ABNQrFnplKcCit05vOA==
+
+dayjs@1.8.6:
+  version "1.8.6"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.8.6.tgz#b7a8ccfef173dae03e83a05a58788c9dbe948a35"
+  integrity sha512-NLhaSS1/wWLRFy0Kn/VmsAExqll2zxRUPmPbqJoeMKQrFxG+RT94VMSE+cVljB6A76/zZkR0Xub4ihTHQ5HgGg==
 
 debug@2.6.9, debug@^2.1.3, debug@^2.2.0, debug@^2.3.3:
   version "2.6.9"
@@ -2359,6 +2427,16 @@ react-dom@16.8.1:
     prop-types "^15.6.2"
     scheduler "^0.13.1"
 
+react-dom@16.8.2:
+  version "16.8.2"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.8.2.tgz#7c8a69545dd554d45d66442230ba04a6a0a3c3d3"
+  integrity sha512-cPGfgFfwi+VCZjk73buu14pYkYBR1b/SRMSYqkLDdhSEHnSwcuYTPu6/Bh6ZphJFIk80XLvbSe2azfcRzNF+Xg==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+    scheduler "^0.13.2"
+
 react-inspector@2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/react-inspector/-/react-inspector-2.3.1.tgz#f0eb7f520669b545b441af9d38ec6d706e5f649c"
@@ -2382,6 +2460,16 @@ react@16.8.1:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     scheduler "^0.13.1"
+
+react@16.8.2:
+  version "16.8.2"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.8.2.tgz#83064596feaa98d9c2857c4deae1848b542c9c0c"
+  integrity sha512-aB2ctx9uQ9vo09HVknqv3DGRpI7OIGJhCx3Bt0QqoRluEjHSaObJl+nG12GDdYH6sTgE7YiPJ6ZUyMx9kICdXw==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+    scheduler "^0.13.2"
 
 read-pkg-up@^1.0.1:
   version "1.0.1"
@@ -2564,7 +2652,15 @@ scheduler@^0.13.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-"semver@2 || 3 || 4 || 5", semver@^5.3.0, semver@^5.4.1, semver@^5.5.0, semver@^5.6.0:
+scheduler@^0.13.2:
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.13.2.tgz#969eaee2764a51d2e97b20a60963b2546beff8fa"
+  integrity sha512-qK5P8tHS7vdEMCW5IPyt8v9MJOHqTrOUgPXib7tqm9vh834ibBX5BNhwkplX/0iOzHW5sXyluehYfS9yrkz9+w==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+
+"semver@2 || 3 || 4 || 5", semver@5.6.0, semver@^5.3.0, semver@^5.4.1, semver@^5.5.0, semver@^5.6.0:
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.6.0.tgz#7e74256fbaa49c75aa7c7a205cc22799cac80004"
   integrity sha512-RS9R6R35NYgQn++fkDWaOmqGoj4Ek9gGs+DPxNUZKuwE183xjJroKvyo1IzVFeXvUrvmALy6FWD5xrdJT25gMg==

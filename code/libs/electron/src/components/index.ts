@@ -1,2 +1,2 @@
 export * from '@platform/electron/lib/components/Button';
-export * from '@platform/ui.object/lib/components/ObjectView';
+export * from '@platform/ui.object';
