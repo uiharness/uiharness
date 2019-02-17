@@ -1,12 +1,12 @@
 import {
-  value,
+  BundleTarget,
+  command,
   fs,
   Listr,
   log,
   logging,
-  command,
-  BundleTarget,
   logNoConfig,
+  value,
 } from '../../common';
 import { Settings } from '../../settings';
 import * as init from '../cmd.init';
