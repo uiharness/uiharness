@@ -14,7 +14,7 @@
     "reset": "rm -rf tmp"
   },
   "dependencies": {
-    "create-tmpl": "0.1.29"
+    "create-tmpl": "0.1.30"
   },
   "devDependencies": {
     "@platform/ts.cli": "3.3.33"
