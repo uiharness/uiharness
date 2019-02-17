@@ -1,37 +1,44 @@
-import { ICommand, value, CommandHandler } from '../common';
+import {
+  ICommand,
+  value,
+  CommandHandler,
+  IDescribeArgs,
+  ICommandBuilder,
+} from '../common';
 
-type ICommandArgs = ICommand & {};
-type IDescribeArgs = { title: string } & Partial<ICommand>;
+type IConstructorArgs = ICommand & {
+  children: ICommandBuilder[];
+};
+
+export const DEFAULT = {
+  HANDLER: (() => null) as CommandHandler,
+};
 
 /**
  * Represents a single [command] which is a named unit of
  * functionality that can optionally take parameter input.
  */
-export class Command implements ICommand {
-  private _: ICommandArgs;
+export class Command implements ICommandBuilder {
+  private _: IConstructorArgs;
 
   /**
    * [Static]
    */
-  public static describe(args: IDescribeArgs): ICommand;
-  public static describe(title: string, handler: CommandHandler): ICommand;
-  public static describe(...args: any): ICommand {
-    if (typeof args[0] === 'string') {
-      const [title, handler] = args;
-      return new Command({ title, handler });
-    }
-    if (typeof args[0] === 'object') {
-      return new Command(args[0]);
-    }
-    throw new Error(`Args could not be interpreted.`);
+  public static describe(
+    title: string,
+    handler?: CommandHandler,
+  ): ICommandBuilder;
+  public static describe(args: IDescribeArgs): ICommandBuilder;
+  public static describe(...args: any): ICommandBuilder {
+    return new Command(toConstuctorArgs(args));
   }
 
   /**
    * [Constructor]
    */
-  constructor(args: Partial<ICommandArgs>) {
+  constructor(args: Partial<IConstructorArgs>) {
     const title = (args.title || '').trim();
-    const handler = args.handler || (() => null);
+    const handler = args.handler || DEFAULT.HANDLER;
     const children = args.children || [];
 
     if (!title) {
@@ -63,17 +70,47 @@ export class Command implements ICommand {
   /**
    * [Methods]
    */
+
+  /**
+   * Creates an immutable clone of the object.
+   */
   public clone(options: { deep?: boolean } = {}) {
     const deep = value.defaultValue(options.deep, true);
     let args = { ...this._ };
-
     if (deep) {
-      const children: ICommand[] = this.children
-        .map(child => child as Command)
-        .map(child => child.clone());
-      args = { ...args, children };
+      args = { ...args, children: cloneChildren(this) };
     }
-
     return new Command(args);
   }
+
+  /**
+   * Adds a child command.
+   */
+  public add(title: string, handler: CommandHandler): ICommandBuilder;
+  public add(args: IDescribeArgs): ICommandBuilder;
+  public add(...args: any): ICommandBuilder {
+    const child = new Command(toConstuctorArgs(args));
+    args = { ...this._, children: [...cloneChildren(this), child] };
+    return new Command(args);
+  }
+}
+
+/**
+ * [INTERNAL]
+ */
+function toConstuctorArgs(args: any): IConstructorArgs {
+  if (typeof args[0] === 'string') {
+    const [title, handler] = args;
+    return { title, handler, children: [] };
+  }
+  if (typeof args[0] === 'object') {
+    return args[0] as IConstructorArgs;
+  }
+  throw new Error(`Args could not be interpreted.`);
+}
+
+export function cloneChildren(builder: ICommandBuilder): ICommandBuilder[] {
+  return builder.children
+    .map(child => child as Command)
+    .map(child => child.clone());
 }

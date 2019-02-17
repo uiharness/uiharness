@@ -1,3 +1,5 @@
+export type IDescribeArgs = { title: string } & Partial<ICommand>;
+
 /**
  * Represents a single [command] which is a named unit of
  * functionality that can optionally take parameter input.
@@ -6,6 +8,12 @@ export type ICommand = {
   title: string;
   handler: CommandHandler;
   children: ICommand[];
+};
+
+export type ICommandBuilder = ICommand & {
+  children: ICommandBuilder[];
+  add(title: string, handler?: CommandHandler): ICommandBuilder;
+  add(args: IDescribeArgs): ICommandBuilder;
 };
 
 /**
