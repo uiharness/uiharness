@@ -67,6 +67,10 @@ export class Command implements ICommandBuilder {
     return this._.children;
   }
 
+  public get length() {
+    return this.children.length;
+  }
+
   /**
    * [Methods]
    */
@@ -90,8 +94,8 @@ export class Command implements ICommandBuilder {
   public add(args: IDescribeArgs): ICommandBuilder;
   public add(...args: any): ICommandBuilder {
     const child = new Command(toConstuctorArgs(args));
-    args = { ...this._, children: [...cloneChildren(this), child] };
-    return new Command(args);
+    this._.children = [...this._.children, child];
+    return this;
   }
 }
 
@@ -112,5 +116,5 @@ function toConstuctorArgs(args: any): IConstructorArgs {
 export function cloneChildren(builder: ICommandBuilder): ICommandBuilder[] {
   return builder.children
     .map(child => child as Command)
-    .map(child => child.clone());
+    .map(child => child.clone({ deep: true }));
 }

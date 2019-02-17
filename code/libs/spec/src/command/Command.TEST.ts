@@ -82,12 +82,25 @@ describe('Command', () => {
       const cmd1 = Command.describe('foo');
       const cmd2 = cmd1.add('child');
 
-      expect(cmd1).to.not.equal(cmd2);
-      expect(cmd1.title).to.eql(cmd2.title);
+      expect(cmd1).to.equal(cmd2);
+      expect(cmd1.length).to.eql(1);
 
-      expect(cmd1.children.length).to.eql(0);
-      expect(cmd2.children.length).to.eql(1);
       expect(cmd2.children[0].title).to.eql('child');
+    });
+
+    it('adds a child to a child', () => {
+      const cmd = Command.describe('root')
+        .add('a')
+        .add('b')
+        .add('c');
+
+      expect(cmd.length).to.eql(3);
+      expect(cmd.children[0].length).to.eql(0);
+
+      const a1 = cmd.children[0].add('a1');
+      expect(cmd.length).to.eql(3);
+      expect(cmd.children[0].length).to.eql(1);
+      expect(cmd.children[0]).to.equal(a1);
     });
   });
 });
