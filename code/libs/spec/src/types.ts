@@ -15,6 +15,7 @@ export type ICommandBuilder = ICommand & {
   children: ICommandBuilder[];
   add(title: string, handler?: CommandHandler): ICommandBuilder;
   add(args: IDescribeArgs): ICommandBuilder;
+  toObject(): ICommand;
 };
 
 /**

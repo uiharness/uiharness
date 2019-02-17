@@ -63,7 +63,7 @@ export class Command implements ICommandBuilder {
     return this._.handler;
   }
 
-  public get children() {
+  public get children(): ICommandBuilder[] {
     return this._.children;
   }
 
@@ -96,6 +96,16 @@ export class Command implements ICommandBuilder {
     const child = new Command(toConstuctorArgs(args));
     this._.children = [...this._.children, child];
     return this;
+  }
+
+  /**
+   * Converts the builder to a simple object.
+   */
+  public toObject(): ICommand {
+    const children = this.children.map(child => child.toObject());
+    const title = this.title;
+    const handler = this.handler;
+    return { title, handler, children };
   }
 }
 

@@ -103,4 +103,23 @@ describe('Command', () => {
       expect(cmd.children[0]).to.equal(a1);
     });
   });
+
+  describe('toObject', () => {
+    it('deep', () => {
+      const cmd = Command.describe('root')
+        .add('a')
+        .add('b');
+      cmd.children[1].add('b1');
+
+      expect(cmd.title).to.eql('root');
+      expect(cmd.children[0].title).to.eql('a');
+      expect(cmd.children[1].title).to.eql('b');
+      expect(cmd.children[1].children[0].title).to.eql('b1');
+
+      const any: any = cmd;
+      expect(any.handler).to.eql(undefined);
+      expect(any.children[0].handler).to.eql(undefined);
+      expect(any.children[1].handler).to.eql(undefined);
+    });
+  });
 });
