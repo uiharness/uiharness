@@ -16,8 +16,7 @@
     "@platform/ts.cli": "3.3.33"
   },
   "files": [
-    "lib",
-    "src"
+    "lib"
   ],
   "engines": {
     "node": ">=10.x"
