@@ -1,35 +1,32 @@
 {
   "name": "@uiharness/electron",
-  "version": "0.3.74",
+  "version": "0.3.116",
   "description": "UIHarness client-tools for Electron (include in dependencies).",
-  "main": "./lib/index.js",
+  "main": "./lib/index",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "test": "sh ./node_modules/@tdb/test/sh/test.sh",
-    "tdd": "yarn run test --reporter min --watch",
-    "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
-    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
-    "prepare": "yarn run build && yarn run lint && yarn test"
+    "test": "yarn chmod && ts test",
+    "tdd": "yarn chmod && ts test --watch",
+    "lint": "yarn chmod && ts lint",
+    "build": "yarn chmod && ts build",
+    "prepare": "yarn chmod && ts prepare",
+    "chmod": "chmod 777 node_modules/.bin/ts"
   },
   "dependencies": {
-    "@tdb/electron": "^0.0.27",
-    "@tdb/log": "1.2.1",
-    "@tdb/util": "1.9.38",
+    "@platform/electron": "0.0.65",
+    "@platform/libs": "0.0.3",
+    "@platform/log": "0.0.60",
+    "@platform/ui.object": "0.0.10",
+    "@platform/util.value": "0.0.12",
     "@types/app-root-path": "1.2.4",
-    "@uiharness/types": "0.0.26",
-    "app-root-path": "2.1.0",
-    "electron": "4.0.3",
-    "electron-is": "3.0.0",
-    "electron-is-dev": "1.0.1",
-    "electron-log": "2.2.17",
-    "electron-window-state": "5.0.3",
-    "rxjs": "6.4.0",
+    "@uiharness/types": "0.0.46",
     "tslib": "1.9.3"
   },
   "devDependencies": {
-    "@tdb/test": "1.2.20",
-    "@tdb/typescript": "3.3.1",
-    "@types/electron-window-state": "2.0.33"
+    "@platform/test": "0.0.26",
+    "@platform/ts.cli": "3.3.33",
+    "@types/electron-window-state": "2.0.33",
+    "electron": "4.0.5"
   },
   "files": [
     "lib",

@@ -2,21 +2,22 @@
   "name": "@uiharness/spec",
   "version": "0.0.1",
   "description": "Isolated UIHarness data-structures for specifying test specifications.",
-  "main": "./lib/index.js",
+  "main": "./lib/index",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "test": "sh node_modules/@tdb/test/sh/test.sh",
-    "tdd": "yarn run test --reporter min --watch",
-    "lint": "sh node_modules/@tdb/typescript/sh/lint.sh $@",
-    "build": "sh node_modules/@tdb/typescript/sh/build.sh $@",
-    "prepare": "yarn run build && yarn run lint && yarn test"
+    "test": "yarn chmod && ts test",
+    "tdd": "yarn chmod && ts test --watch",
+    "lint": "yarn chmod && ts lint",
+    "build": "yarn chmod && ts build",
+    "prepare": "yarn chmod && ts prepare",
+    "chmod": "chmod 777 node_modules/.bin/ts"
   },
   "dependencies": {
-    "@tdb/util": "^1.9.38"
+    "@platform/util.value": "0.0.12"
   },
   "devDependencies": {
-    "@tdb/test": "1.2.20",
-    "@tdb/typescript": "3.3.1"
+    "@platform/test": "0.0.26",
+    "@platform/ts.cli": "3.3.33"
   },
   "files": [
     "lib",

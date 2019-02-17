@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { Settings } from '.';
-import { fsPath, fs } from '../common';
+import { fs } from '../common';
 
 const DIR = './test/sample';
 const EMPTY = './test/sample/empty.yml';
@@ -10,7 +10,7 @@ const templatesDir = './tmpl';
 
 describe('ElectronSettings', () => {
   afterEach(async () => {
-    await fs.remove(fsPath.resolve(tmpDir));
+    await fs.remove(fs.resolve(tmpDir));
   });
 
   it('default values', () => {
@@ -64,7 +64,7 @@ describe('ElectronSettings', () => {
     await electron.ensureEntries();
 
     const text = fs.readFileSync(
-      fsPath.join(tmpDir, 'html', 'renderer.html'),
+      fs.join(tmpDir, 'html', 'renderer.html'),
       'utf8',
     );
     expect(text).to.include(`<title>My App</title>`);

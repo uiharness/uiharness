@@ -1,6 +1,6 @@
 import main from '@uiharness/electron/lib/main';
 
-import * as fsPath from 'path';
+export { fs } from '@platform/fs';
 
 import * as ParcelBundler from 'parcel-bundler';
 import * as yargs from 'yargs';
@@ -10,8 +10,12 @@ import * as filesize from 'filesize';
 
 export { main };
 
-export { fsPath, ParcelBundler, yargs, execa, Listr, filesize };
-export { R, value, time } from '@tdb/util';
-export { log } from '@tdb/log/lib/server';
-export { npm, NpmPackage, fs, yaml, file, exec } from '@tdb/npm';
+import * as R from 'ramda';
+export { R };
+
+export { ParcelBundler, yargs, execa, Listr, filesize };
+export { value, time } from '@platform/util.value';
+
+export { log } from '@platform/log/lib/server';
+export { npm, NpmPackage, yaml, exec } from '@tdb/npm';
 export { Template, TemplateMiddleware } from 'create-tmpl';

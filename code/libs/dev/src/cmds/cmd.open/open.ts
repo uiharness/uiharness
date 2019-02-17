@@ -1,6 +1,6 @@
 import * as os from 'os';
 
-import { command, fs, fsPath, log, logging, main } from '../../common';
+import { command, fs, log, logging, main } from '../../common';
 import { Settings } from '../../settings';
 
 /**
@@ -25,9 +25,12 @@ export async function open(args: { settings: Settings; folder?: boolean }) {
     const appName = settings.name;
     const logPaths = main.logPaths({ appName });
     const logCmd = tailCommand(logPaths.dir, logPaths.prod.filename);
+
+    const action = type === 'app' ? 'Open  ' : 'Folder';
+
     log.info();
-    log.info(`🖐  Open   ${formatPath(path)}`);
-    log.info.gray(`   logs:  ${logCmd}`);
+    log.info(`🖐  ${action}  ${formatPath(path)}`);
+    log.info.gray(`   logs:   ${logCmd}`);
     log.info();
     return command()
       .add(`open "${path}"`)
@@ -36,11 +39,8 @@ export async function open(args: { settings: Settings; folder?: boolean }) {
 
   const config = settings.electron.builderArgs;
   if (!config.exists) {
-    log.warn(
-      `😩  A ${log.cyan(
-        'uiharness.builder.yml',
-      )} file does not exist in the project.`,
-    );
+    const filename = log.cyan('uiharness.builder.yml');
+    log.warn(`😩  A ${filename} file does not exist in the project.`);
     return;
   }
 
@@ -75,9 +75,9 @@ export async function open(args: { settings: Settings; folder?: boolean }) {
     return runOpen(outputDir, 'folder');
   }
 
-  let path = fsPath.join(outputDir, platform, `${productName}.app`);
+  let path = fs.join(outputDir, platform, `${productName}.app`);
   path = `./${path.replace(/^\\/, '')}`;
-  path = fsPath.resolve(path);
+  path = fs.resolve(path);
 
   // Ensure the app has been built.
   if (!(await fs.pathExists(path))) {

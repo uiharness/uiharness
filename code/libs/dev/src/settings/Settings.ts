@@ -1,7 +1,11 @@
 import { dirname, join, resolve } from 'path';
 
-import { constants, file, fs, log, npm, NpmPackage } from '../common';
-import { IUIHarnessConfig, IUIHarnessPaths } from '../types';
+import { constants, fs, log, npm, NpmPackage } from '../common';
+import {
+  IUIHarnessConfig,
+  IUIHarnessPaths,
+  IUIHarnessSourcemapsConfig,
+} from '../types';
 import { ElectronSettings } from './ElectronSettings';
 import { WebSettings } from './WebSettings';
 
@@ -32,7 +36,7 @@ export class Settings {
    */
   public static load(path: string) {
     try {
-      return file.loadAndParseSync<IUIHarnessConfig>(path, {});
+      return fs.file.loadAndParseSync<IUIHarnessConfig>(path, {});
     } catch (error) {
       log.error('💥  ERROR UIHarness');
       log.info.yellow(`Failed to load UIHarness congfig at path '${path}'.`);
@@ -168,5 +172,14 @@ export class Settings {
         html: join(templates, 'html'),
       },
     };
+  }
+
+  /**
+   * Retrieves optinoal configuration for dealing with source-maps.
+   */
+  public get sourcemaps(): IUIHarnessSourcemapsConfig {
+    const data = this.data.sourcemaps || {};
+    const strip = data.strip || [];
+    return { strip };
   }
 }

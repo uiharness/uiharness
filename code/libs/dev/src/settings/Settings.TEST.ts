@@ -5,10 +5,10 @@ import {
   WebSettings,
   IUIHarnessSettingsOptions,
 } from '.';
-import { fsPath, constants } from '../common';
+import { fs, constants } from '../common';
 
 const { PATH } = constants;
-const DIR = fsPath.resolve('./test/sample');
+const DIR = fs.resolve('./test/sample');
 
 describe('Settings', () => {
   describe('create', () => {
@@ -21,7 +21,7 @@ describe('Settings', () => {
     });
 
     it('creates from file path', () => {
-      const path = fsPath.join(DIR, 'uiharness.yml');
+      const path = fs.join(DIR, 'uiharness.yml');
       const settings = Settings.create(path);
       expect(settings.exists).to.eql(true);
       expect(settings.package.name).to.eql('sample');
@@ -60,14 +60,28 @@ describe('Settings', () => {
   });
 
   it('has [web] settings only', () => {
-    const settings = Settings.create(fsPath.join(DIR, 'only-web.yml'));
+    const settings = Settings.create(fs.join(DIR, 'only-web.yml'));
     expect(settings.web.exists).to.eql(true);
     expect(settings.electron.exists).to.eql(false);
   });
 
   it('has [electron] settings only', () => {
-    const settings = Settings.create(fsPath.join(DIR, 'only-electron.yml'));
+    const settings = Settings.create(fs.join(DIR, 'only-electron.yml'));
     expect(settings.web.exists).to.eql(false);
     expect(settings.electron.exists).to.eql(true);
+  });
+
+  describe('sourcemaps', () => {
+    it('has no sourcemaps configuration', () => {
+      const settings = Settings.create(DIR);
+      expect(settings.sourcemaps.strip).to.eql([]);
+    });
+
+    it('has paths to strip of sourcemaps', () => {
+      const settings = Settings.create(fs.join(DIR, 'sourcemaps.yml'));
+      const strip = settings.sourcemaps.strip;
+      expect(strip[0]).to.eql('node_modules/rxjs');
+      expect(strip[1]).to.eql('node_modules/foo');
+    });
   });
 });

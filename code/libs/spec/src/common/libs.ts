@@ -1,1 +1,1 @@
-export {} from '@tdb/util/lib';
+export { is, value } from '@platform/util.value';

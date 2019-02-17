@@ -1,6 +1,6 @@
 import {
   value,
-  fsPath,
+  fs,
   Listr,
   log,
   logging,
@@ -88,7 +88,7 @@ export async function bundleElectron(args: {
 
   const cmd = command()
     .addLine(`export NODE_ENV="${env.value}"`)
-    .addLine(`cd ${fsPath.resolve('.')}`);
+    .addLine(`cd ${fs.resolve('.')}`);
 
   if (main) {
     tasks.add({
@@ -194,7 +194,7 @@ export async function bundleWeb(args: {
 
   const cmd = command()
     .addLine(`export NODE_ENV="${env.value}"`)
-    .addLine(`cd ${fsPath.resolve('.')}`)
+    .addLine(`cd ${fs.resolve('.')}`)
     .add(`parcel`)
     .add(`build ${entry.html}`)
     .add(`--public-url ./`)

@@ -2,7 +2,7 @@ import { spawn } from 'child_process';
 
 import {
   BundleTarget,
-  fsPath,
+  fs,
   log,
   logElectronInfo,
   logNoConfig,
@@ -74,7 +74,7 @@ export async function startElectron(args: { settings: Settings }) {
 
   // Start the electron process.
   // NB: Spawn used to preserve colors in CLI (which execa does not do).
-  const dir = fsPath.resolve(settings.path.tmp.dir);
+  const dir = fs.resolve(settings.path.tmp.dir);
   spawn('electron', [dir], {
     shell: true,
     stdio: 'inherit',

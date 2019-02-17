@@ -14,7 +14,7 @@ import {
 import { IWindowRefs, IContext } from '../types';
 import { createMenus } from './menus';
 
-import main from '@tdb/electron/lib/main';
+import main from '@platform/electron/lib/main';
 
 /**
  * Creates the main window.
@@ -25,10 +25,11 @@ export function create(
     devTools?: boolean;
     defaultWidth?: number;
     defaultHeight?: number;
+    windows?: main.IWindows;
   },
 ) {
-  const { config, log, ipc } = args;
-  const context: IContext = { config, log, ipc };
+  const { id, store, config, log, ipc, windows } = args;
+  const context: IContext = { config, id, store, log, ipc };
   const devTools = value.defaultValue(args.devTools, true);
   const defaultWidth = value.defaultValue(args.defaultWidth, 1000);
   const defaultHeight = value.defaultValue(args.defaultHeight, 800);
@@ -39,7 +40,7 @@ export function create(
   };
 
   const title = args.name || config.name;
-  const file = `[uih.window].${title.replace(/\s/g, '_')}.json`;
+  const file = `window-state/[uih].${title.replace(/\s/g, '_')}.json`;
   const state = WindowState({
     defaultWidth,
     defaultHeight,
@@ -60,17 +61,18 @@ export function create(
     acceptFirstMouse: true,
   }));
 
-  createMenus({ refs, ...context });
+  createMenus({ ...context, refs, windows });
 
   // Show the window when it's ready.
   window.once('ready-to-show', () => {
     window.show();
     window.setTitle(title);
-    if (devTools && is.dev()) {
+    if (devTools && is.dev) {
       main.devTools.create({
+        ...context,
         parent: window,
         title: constants.NAME,
-        ...context,
+        windows,
       });
     }
   });
@@ -99,6 +101,6 @@ function getPaths(config: IUIHarnessRuntimeConfig) {
     pathname: path.resolve(config.electron.renderer),
     slashes: true,
   });
-  const url = is.dev() ? dev : prod;
+  const url = is.dev ? dev : prod;
   return { dev, prod, url };
 }

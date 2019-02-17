@@ -1,23 +1,24 @@
 {
   "name": "@uiharness/ui",
-  "version": "0.0.30",
+  "version": "0.0.74",
   "scripts": {
     "postinstall": "ui init",
-    "ui": "ui $@",
-    "start": "ui start $@",
-    "test": "sh ./node_modules/@tdb/test/sh/test.sh",
-    "tdd": "yarn run test --reporter min --watch",
-    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
-    "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
-    "prepare": "yarn build && yarn lint && yarn test"
+    "ui": "yarn chmod && ui $@",
+    "start": "yarn chmod && ui start $@",
+    "test": "yarn chmod && ts test",
+    "tdd": "yarn chmod && ts test --watch",
+    "lint": "yarn chmod && ts lint",
+    "build": "yarn chmod && ts build",
+    "prepare": "yarn chmod && ts prepare",
+    "chmod": "chmod 777 node_modules/.bin/ts"
   },
   "dependencies": {
-    "@uiharness/electron": "0.3.74"
+    "@uiharness/electron": "0.3.116"
   },
   "devDependencies": {
-    "@tdb/test": "1.2.20",
-    "@tdb/typescript": "3.3.1",
-    "@uiharness/dev": "0.0.11"
+    "@platform/test": "0.0.26",
+    "@platform/ts.cli": "3.3.33",
+    "@uiharness/dev": "0.1.13"
   },
   "resolutions": {
     "@types/react": "16.7.17"

@@ -1,22 +1,29 @@
-import { Log } from '@tdb/log/lib/types';
-export { Log };
+import { ILog } from '@platform/log/lib/types';
+export { ILog };
 export * from '@uiharness/types';
 
-import { IpcClient, IpcMessage } from '@tdb/electron';
+import {
+  IRendererContext,
+  IpcMessage,
+  IContext,
+  StoreJson,
+} from '@platform/electron';
 import { IUIHarnessRuntimeConfig } from '@uiharness/types';
 
 /**
  * Standard context for a running UIHarness instance that is
  * typically passed as a set of values to functions.
  */
-export type IUIHarnessContext<E extends IpcMessage = any> = {
+
+export type IUIHarnessContext<
+  E extends IpcMessage = any,
+  S extends StoreJson = any
+> = IContext<E, S> & {
   config: IUIHarnessRuntimeConfig;
-  log: Log;
-  ipc: IpcClient<E>;
 };
 
 /**
  * IPC Events.
  */
-export type IUIHarnessEvents = IFooEvent;
+export type IUihEvents = IFooEvent;
 type IFooEvent = { type: 'UIH/foo'; payload: {} }; // TEMP placeholder 🐷

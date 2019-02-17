@@ -1,9 +1,7 @@
 import {
   BundleTarget,
   command,
-  file,
   fs,
-  fsPath,
   IElectronBuilderConfig,
   Listr,
   log,
@@ -95,7 +93,7 @@ export async function distElectron(args: {
 
   // Construct the `build` command.
   const cmd = command()
-    .addLine(`cd ${fsPath.resolve('.')}`)
+    .addLine(`cd ${fs.resolve('.')}`)
     .add(`build`)
     .arg(`--x64`)
     .arg(`--publish=never`)
@@ -162,7 +160,7 @@ async function prepareBuilderYaml(args: { settings: Settings }) {
   const { settings } = args;
   const electron = settings.electron;
   const { configFilename, files, output } = electron.path.builder;
-  const path = fsPath.resolve(fsPath.join('.', configFilename));
+  const path = fs.resolve(fs.join('.', configFilename));
   const exists = await fs.pathExists(path);
 
   // Copy in the template file if it does not yet exist.
@@ -174,12 +172,12 @@ async function prepareBuilderYaml(args: { settings: Settings }) {
   }
 
   // Update the builder YAML with current input/output paths.
-  const data = await file.loadAndParse<IElectronBuilderConfig>(path);
+  const data = await fs.file.loadAndParse<IElectronBuilderConfig>(path);
   data.productName = settings.name;
   data.files = files;
   data.directories = {
     ...(data.directories || {}),
     output,
   };
-  await file.stringifyAndSave<IElectronBuilderConfig>(path, data);
+  await fs.file.stringifyAndSave<IElectronBuilderConfig>(path, data);
 }

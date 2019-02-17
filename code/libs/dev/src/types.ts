@@ -2,7 +2,6 @@ export * from '@uiharness/types';
 
 export type BundleTarget = 'electron' | 'web';
 export type Environment = 'production' | 'development';
-
 export type LogLevel = 3 | 2 | 1;
 
 /**
@@ -12,6 +11,11 @@ export type IUIHarnessConfig = {
   name?: string;
   electron?: IUIHarnessElectronConfig;
   web?: IUIHarnessWebConfig;
+  sourcemaps?: Partial<IUIHarnessSourcemapsConfig>;
+};
+
+export type IUIHarnessSourcemapsConfig = {
+  strip: string[];
 };
 
 /**

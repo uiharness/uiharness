@@ -1,46 +1,48 @@
 {
   "name": "@uiharness/dev",
   "description": "The common UIHarness dev-tools (include in your devDependencies).",
-  "version": "0.0.11",
-  "main": "lib/index.js",
+  "version": "0.1.13",
+  "main": "lib/index",
   "bin": {
     "ui": "lib/bin/index.js",
     "uiharness": "lib/bin/index.js"
   },
   "scripts": {
-    "test": "sh node_modules/@tdb/test/sh/test.sh",
-    "tdd": "yarn run test --reporter min --watch",
-    "build": "sh node_modules/@tdb/typescript/sh/build.sh $@",
-    "lint": "sh node_modules/@tdb/typescript/sh/lint.sh $@",
-    "prepare": "yarn build && yarn lint && yarn test"
+    "test": "yarn chmod && ts test",
+    "tdd": "yarn chmod && ts test --watch",
+    "lint": "yarn chmod && ts lint",
+    "build": "yarn chmod && ts build",
+    "prepare": "yarn chmod && ts prepare",
+    "chmod": "chmod 777 node_modules/.bin/ts"
   },
   "dependencies": {
-    "@babel/core": "7.2.2",
-    "@babel/preset-env": "7.2.3",
+    "@babel/core": "7.3.3",
+    "@babel/polyfill": "7.2.5",
+    "@babel/preset-env": "7.3.1",
     "@babel/preset-react": "7.0.0",
-    "@babel/preset-typescript": "7.1.0",
-    "@tdb/electron": "0.0.27",
-    "@tdb/log": "1.2.1",
-    "@tdb/util": "1.9.38",
-    "@uiharness/electron": "0.3.74",
-    "@uiharness/types": "0.0.26",
-    "create-tmpl": "0.1.13",
-    "electron": "4.0.3",
+    "@babel/preset-typescript": "7.3.3",
+    "@platform/cli": "0.0.40",
+    "@platform/electron": "0.0.65",
+    "@platform/fs": "0.0.33",
+    "@platform/log": "0.0.60",
+    "@platform/util.value": "0.0.12",
+    "@uiharness/electron": "0.3.116",
+    "@uiharness/types": "0.0.46",
+    "create-tmpl": "0.1.29",
+    "electron": "4.0.5",
     "electron-builder": "20.38.5",
     "execa": "1.0.0",
-    "filesize": "4.0.0",
+    "filesize": "4.1.2",
     "parcel-bundler": "1.11.0",
-    "serve": "10.1.1",
-    "yargs": "12.0.5"
+    "serve": "10.1.2"
   },
   "devDependencies": {
-    "@tdb/test": "1.2.20",
-    "@tdb/typescript": "3.3.1",
+    "@platform/test": "0.0.26",
+    "@platform/ts.cli": "3.3.33",
     "@types/electron-builder": "2.8.0",
     "@types/execa": "0.9.0",
-    "@types/filesize": "4.0.0",
-    "@types/parcel-bundler": "1.10.1",
-    "@types/yargs": "12.0.8"
+    "@types/filesize": "4.0.1",
+    "@types/parcel-bundler": "1.10.1"
   },
   "engines": {
     "node": ">=10.x"

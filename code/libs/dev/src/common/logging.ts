@@ -1,14 +1,14 @@
-import { R, fs, fsPath, log, filesize } from './libs';
+import { R, fs, log, filesize } from './libs';
 
 /**
  * Formats a path to be a display path.
  */
 export function formatPath(path: string, rootDir?: string | boolean) {
-  path = fsPath.resolve(path);
-  rootDir = rootDir === true ? fsPath.resolve('.') : rootDir;
-  let dir = fsPath.dirname(path);
+  path = fs.resolve(path);
+  rootDir = rootDir === true ? fs.resolve('.') : rootDir;
+  let dir = fs.dirname(path);
   dir = typeof rootDir === 'string' ? dir.substr(rootDir.length) : dir;
-  const file = fsPath.basename(path);
+  const file = fs.basename(path);
   return log.gray(`${dir}/${log.cyan(file)}`);
 }
 
@@ -20,13 +20,13 @@ export async function fileStatsTable(args: {
   showHeader?: boolean;
 }) {
   const { showHeader = false } = args;
-  const dir = fsPath.resolve(args.dir);
+  const dir = fs.resolve(args.dir);
 
   const toSize = (bytes: number) => filesize(bytes, { round: 0, spacer: '' });
 
   const getPaths = (dir: string) => {
     return fs.pathExistsSync(dir)
-      ? fs.readdirSync(dir).map(path => fsPath.join(dir, path))
+      ? fs.readdirSync(dir).map(path => fs.join(dir, path))
       : [];
   };
   const paths = getPaths(dir);
@@ -48,7 +48,7 @@ export async function fileStatsTable(args: {
     : undefined;
   const table = log.table({ head });
   sizes.forEach(e => {
-    let file = fsPath.basename(e.path);
+    let file = fs.basename(e.path);
     if (file.endsWith('.js')) {
       file = log.yellow(file);
     } else if (file.endsWith('.css')) {

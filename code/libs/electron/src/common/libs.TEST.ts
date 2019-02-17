@@ -3,9 +3,7 @@ import { is } from '.';
 
 describe('libs', () => {
   it('is', () => {
-    expect(is.dev()).to.eql(false);
-    expect(is.production()).to.eql(true);
-    expect(is.main()).to.eql(false);
-    expect(is.renderer()).to.eql(false);
+    expect(is.dev).to.eql(true);
+    expect(is.prod).to.eql(false);
   });
 });

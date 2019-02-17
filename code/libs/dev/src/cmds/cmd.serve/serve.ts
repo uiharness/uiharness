@@ -1,4 +1,4 @@
-import { command, fs, fsPath, log, logNoConfig } from '../../common';
+import { command, fs, log, logNoConfig } from '../../common';
 import { Settings } from '../../settings';
 import { bundleWeb } from '../cmd.bundle';
 import { stats as renderStats } from '../cmd.stats';
@@ -6,7 +6,7 @@ import { stats as renderStats } from '../cmd.stats';
 /**
  * Serve the web distribution.
  */
-export async function serve(args: { settings: Settings }) {
+export async function serve(args: { settings: Settings; bundle?: boolean }) {
   const { settings } = args;
   const web = settings.web;
 
@@ -17,11 +17,11 @@ export async function serve(args: { settings: Settings }) {
 
   const prod = true;
   const out = settings.web.out(prod);
-  const dir = fsPath.resolve(out.dir);
+  const dir = fs.resolve(out.dir);
   const exists = await fs.pathExists(dir);
 
   // Ensure the distribution has been built.
-  if (!exists) {
+  if (!exists || args.bundle === true) {
     await bundleWeb({ settings, prod, stats: false });
   } else {
     log.info(`👉   To build a fresh distribution bundle, run:`);

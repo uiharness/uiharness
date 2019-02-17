@@ -1,8 +1,6 @@
 import {
   constants,
-  file,
   fs,
-  fsPath,
   IUIHarnessRuntimeConfig,
   log,
   npm,
@@ -11,9 +9,9 @@ import {
 } from '../../common';
 import { Settings } from '../../settings';
 import { clean } from '../cmd.clean';
+import { removeSourceMapRefs } from '../../utils';
 
 const { SCRIPTS } = constants;
-const { resolve, join } = fsPath;
 const { defaultValue } = value;
 
 type IInitFlags = {
@@ -43,6 +41,9 @@ export async function prepare(args: { settings: Settings; prod: boolean }) {
   const { settings, prod } = args;
   const isInitialized = await getIsInitialized({ settings });
   const files = !isInitialized;
+  if (settings.sourcemaps.strip.length > 0) {
+    await removeSourceMapRefs(...settings.sourcemaps.strip);
+  }
   return init({ settings, prod, files });
 }
 
@@ -146,7 +147,7 @@ async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
 
   // Write the file.
   const path = settings.path.tmp.config;
-  await file.stringifyAndSave(path, data);
+  await fs.file.stringifyAndSave(path, data);
   return data;
 }
 
@@ -166,11 +167,11 @@ async function copyPackage(args: { settings: Settings; prod: boolean }) {
 
   // Set the "main" entry point for electron.
   const pkg = npm.pkg('.').json;
-  pkg.main = join('..', main);
+  pkg.main = fs.join('..', main);
 
   // Save the [package.json] file.
-  const path = resolve(settings.path.package);
-  await file.stringifyAndSave(path, pkg);
+  const path = fs.resolve(settings.path.package);
+  await fs.file.stringifyAndSave(path, pkg);
 }
 
 /**
@@ -191,7 +192,7 @@ async function getInitializedState(args: { settings: Settings }) {
   const web = settings.web;
   const scripts = { ...SCRIPTS };
 
-  const exists = (path: string) => fs.pathExists(resolve(path));
+  const exists = (path: string) => fs.pathExists(fs.resolve(path));
 
   const hasConfig = await exists('./uiharness.yml');
   const hasSrcFolder = await exists('./src');
