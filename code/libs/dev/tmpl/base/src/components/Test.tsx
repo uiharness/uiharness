@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, ObjectView } from '@uiharness/electron/lib/renderer';
+import { Button, ObjectView } from '@uiharness/electron/lib/components';
 
 /**
  * Sample component.
