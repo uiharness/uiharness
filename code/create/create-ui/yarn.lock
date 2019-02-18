@@ -25,6 +25,16 @@
     "@types/yargs" "12.0.9"
     yargs "13.2.0"
 
+"@platform/cli@0.0.50":
+  version "0.0.50"
+  resolved "https://registry.yarnpkg.com/@platform/cli/-/cli-0.0.50.tgz#357583db0eddde0dce6b4cf1a46f4bce7b3a36fd"
+  integrity sha512-htGk674+/NCCQzveBncpW+O0z+dmqUsfuX6Q6+XKM8lalsBjPpcADwU1H965QC0H0IHkXpq4qRmIJ6y5GOP3VA==
+  dependencies:
+    "@platform/fs" "0.0.34"
+    "@platform/util.exec" "0.0.11"
+    "@types/yargs" "12.0.9"
+    yargs "13.2.0"
+
 "@platform/fs@0.0.34":
   version "0.0.34"
   resolved "https://registry.yarnpkg.com/@platform/fs/-/fs-0.0.34.tgz#5ab3737b224c4b3ac766763c1007c0f7342428e9"
@@ -45,16 +55,16 @@
     rxjs "6.4.0"
     tslib "1.9.3"
 
-"@platform/ts.cli@3.3.42":
-  version "3.3.42"
-  resolved "https://registry.yarnpkg.com/@platform/ts.cli/-/ts.cli-3.3.42.tgz#27d6341a42c41da52a1517b30f94328940337b27"
-  integrity sha512-+eSDhHSiKwJRtnbrDn3v17c15xYCqCVdtN/1xcqJM+wxjYKxn8QnQCKt/MKLXMg+YH6Q/aHxKXBIipnDm9VyAA==
+"@platform/ts.cli@3.3.44":
+  version "3.3.44"
+  resolved "https://registry.yarnpkg.com/@platform/ts.cli/-/ts.cli-3.3.44.tgz#883c8a03c7cfc5f059be22f981ec6b04512b5cdf"
+  integrity sha512-8AnNKI8ay6IVrqCkijdQ7o6Xw1FYXFH5DAbHq11oRqpcx/q5TiHX/NUfcRPKiksTNUOLTFwTYTVT+hfcuOXEoQ==
   dependencies:
-    "@platform/cli" "0.0.48"
+    "@platform/cli" "0.0.50"
     "@platform/fs" "0.0.34"
     "@platform/libs" "0.0.4"
     "@platform/ts" "3.3.42"
-    "@platform/util.exec" "0.0.9"
+    "@platform/util.exec" "0.0.11"
 
 "@platform/ts@3.3.42":
   version "3.3.42"
@@ -69,6 +79,18 @@
     tslint-config-prettier "1.18.0"
     tslint-react "3.6.0"
     typescript "3.3.3"
+
+"@platform/util.exec@0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@platform/util.exec/-/util.exec-0.0.11.tgz#485165bfbbb251c1ecfef28ff179b3d5a7ca7851"
+  integrity sha512-iO9sXTrQtEoBY8QpzblKfNbEzQmNOiApoflX6u5s4HyTisAJnzCL0p4D24lx5tLESdZjUYi8e+o27SljSyamVg==
+  dependencies:
+    "@platform/libs" "0.0.4"
+    "@types/chalk" "2.2.0"
+    "@types/listr" "0.13.0"
+    ansi-regex "4.0.0"
+    chalk "2.4.2"
+    listr "0.14.3"
 
 "@platform/util.exec@0.0.9":
   version "0.0.9"
