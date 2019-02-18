@@ -13,7 +13,7 @@
     "chmod": "chmod 777 node_modules/.bin/ts"
   },
   "dependencies": {
-    "@uiharness/electron": "0.3.118"
+    "@uiharness/electron": "0.3.119"
   },
   "devDependencies": {
     "@platform/test": "0.0.27",

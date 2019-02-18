@@ -10,7 +10,7 @@
     "nuke": "sh ./sh/nuke.sh"
   },
   "dependencies": {
-    "@uiharness/electron": "0.3.118"
+    "@uiharness/electron": "0.3.119"
   },
   "devDependencies": {
     "@uiharness/dev": "0.1.16",

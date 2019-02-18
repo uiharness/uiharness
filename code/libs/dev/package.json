@@ -23,7 +23,7 @@
     "@babel/preset-typescript": "7.3.3",
     "@platform/cli": "0.0.48",
     "@platform/fs": "0.0.34",
-    "@uiharness/electron": "0.3.118",
+    "@uiharness/electron": "0.3.119",
     "@uiharness/types": "0.0.47",
     "create-tmpl": "0.1.32",
     "electron": "4.0.5",
