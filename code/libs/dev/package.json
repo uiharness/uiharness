@@ -21,7 +21,7 @@
     "@babel/preset-env": "7.3.1",
     "@babel/preset-react": "7.0.0",
     "@babel/preset-typescript": "7.3.3",
-    "@platform/cli": "0.0.50",
+    "@platform/cli": "0.0.51",
     "@platform/fs": "0.0.34",
     "@uiharness/electron": "0.3.125",
     "@uiharness/types": "0.0.48",
@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@platform/test": "0.0.27",
-    "@platform/ts.cli": "3.3.44",
+    "@platform/ts.cli": "3.3.45",
     "@types/electron-builder": "2.8.0",
     "@types/execa": "0.9.0",
     "@types/filesize": "4.0.1",

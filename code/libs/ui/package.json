@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@platform/test": "0.0.27",
-    "@platform/ts.cli": "3.3.44",
+    "@platform/ts.cli": "3.3.45",
     "@uiharness/dev": "0.1.22"
   },
   "resolutions": {
