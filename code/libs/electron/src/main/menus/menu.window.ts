@@ -1,5 +1,5 @@
 import main from '@platform/electron/lib/main';
-import { MenuItemConstructorOptions, BrowserWindow } from 'electron';
+import { BrowserWindow, MenuItemConstructorOptions } from 'electron';
 import { filter } from 'rxjs/operators';
 
 import { TAG } from '../../common';
@@ -17,7 +17,7 @@ export function current(
   type MenuItem = MenuItemConstructorOptions;
   const { newWindow, windows, include = [] } = args;
 
-  // Monitor changes.
+  // Monitor for changes that require a redraw of the menu.
   windows.change$
     .pipe(filter(e => ['CREATED', 'CLOSED', 'FOCUS'].includes(e.type)))
     .subscribe(() => args.changed$.next());
@@ -26,6 +26,8 @@ export function current(
   const refs = windows.byTag(...include);
   const all = BrowserWindow.getAllWindows();
 
+  const getWindow = (id: number) => all.find(window => window.id === id);
+
   const isDevTools = (id: number) => {
     return windows
       .byTag(TAG.DEV_TOOLS.key, TAG.DEV_TOOLS.value)
@@ -33,7 +35,7 @@ export function current(
   };
 
   const getChildDevToolsId = (id: number) => {
-    const window = all.find(window => window.id === id);
+    const window = getWindow(id);
     const children = window ? window.getChildWindows() : [];
     const devTools = children.find(window => isDevTools(window.id));
     return devTools ? devTools.id : undefined;
@@ -45,15 +47,33 @@ export function current(
     return focusId === id || focusId === getChildDevToolsId(id);
   };
 
-  const list = refs
+  const selectWindowHandler = (id: number) => () => {
+    const window = getWindow(id);
+    if (window) {
+      window.show();
+    }
+  };
+
+  const windowsList = refs
     .map(ref => {
-      const window = all.find(window => window.id === ref.id);
+      const window = getWindow(ref.id);
       const label = window ? window.getTitle() : '';
-      const checked = isFocused(ref.id);
-      const item: MenuItem = { label, checked, type: 'checkbox' };
+      const item: MenuItem = {
+        label,
+        type: 'checkbox',
+        checked: isFocused(ref.id),
+        click: selectWindowHandler(ref.id),
+      };
       return item;
     })
-    .filter(({ label }) => Boolean(label));
+    .filter(({ label }) => Boolean(label))
+    .map((item, i) => {
+      // Append index numbers when more than one UIHarness window.
+      // NB: This is to avoid a list of window names all the same.
+      return refs.length > 1
+        ? { ...item, label: `${i + 1}. ${item.label}` }
+        : item;
+    });
 
   // Construct the menu.
   const menu: MenuItem = {
@@ -65,7 +85,7 @@ export function current(
       { type: 'separator' },
       { role: 'front' },
       { type: 'separator' },
-      ...list,
+      ...windowsList,
     ],
   };
 
