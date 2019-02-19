@@ -56,8 +56,6 @@ export function init<M extends t.IpcMessage>(args: {
        */
       const newWindow: t.NewWindowFactory = (options = {}) => {
         const { x, y } = getNewWindowPosition(20);
-        console.log('x', x);
-        console.log('y', y);
         return mainWindow.create({
           name: options.name || name,
           defaultX: x,
@@ -126,7 +124,6 @@ export function logPaths(args: { appName: string }) {
 function getNewWindowPosition(offset: number) {
   const window = BrowserWindow.getFocusedWindow();
   const bounds = window && window.getBounds();
-  console.log('bounds', bounds);
   const x = bounds ? bounds.x + offset : undefined;
   const y = bounds ? bounds.y + offset : undefined;
   return { x, y };

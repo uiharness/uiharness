@@ -10,11 +10,10 @@ import {
   is,
   IUIHarnessRuntimeConfig,
   path,
+  TAG,
   value,
 } from '../../common';
 import * as t from '../types';
-
-const TAG = constants.TAG.WINDOW;
 
 /**
  * Creates the main window.
@@ -26,7 +25,7 @@ export function create(args: t.IContext & t.INewWindowArgs) {
   const devTools = value.defaultValue(args.devTools, true);
   const defaultWidth = value.defaultValue(args.defaultWidth, 1000);
   const defaultHeight = value.defaultValue(args.defaultHeight, 800);
-  const index = windows.byTag(TAG.key, TAG.value).length;
+  const index = windows.byTag(TAG.WINDOW.key, TAG.WINDOW.value).length;
 
   /**
    * Setup window state manager (bounds).
@@ -56,7 +55,7 @@ export function create(args: t.IContext & t.INewWindowArgs) {
     acceptFirstMouse: true,
     fullscreenable: false,
   });
-  windows.tag(window.id, { tag: TAG.key, value: TAG.value });
+  windows.tag(window.id, { tag: TAG.WINDOW.key, value: TAG.WINDOW.value });
 
   /**
    * Show when ready.

@@ -1,4 +1,17 @@
-import { Menu, MenuItemConstructorOptions } from 'electron';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import {
+  takeUntil,
+  take,
+  takeWhile,
+  map,
+  filter,
+  share,
+  delay,
+  distinctUntilChanged,
+  debounceTime,
+} from 'rxjs/operators';
+
+import { Menu, MenuItemConstructorOptions, app } from 'electron';
 
 import * as t from './types';
 import * as about from './menu.about';
@@ -10,23 +23,54 @@ import * as window from './menu.window';
 /**
  * Handles the creation of menus.
  */
-export function manage(
-  args: t.IMenuContext & { newWindow: t.NewWindowFactory },
-) {
+export function manage(args: t.IContext & { newWindow: t.NewWindowFactory }) {
   const { config, id, store, log, ipc, windows, newWindow } = args;
-  const context: t.IMenuContext = { config, id, store, log, ipc, windows };
 
-  const template: MenuItemConstructorOptions[] = [
-    edit.current(context),
-    view.current(context),
-    window.current({ ...context, newWindow }),
-    help.current(context),
-  ];
+  const dispose$ = new Subject();
+  const changed$ = new Subject();
 
-  if (process.platform === 'darwin') {
-    template.unshift(about.current(context));
-  }
+  app.once('quit', () => dispose$.next());
 
-  const menu = Menu.buildFromTemplate(template);
-  Menu.setApplicationMenu(menu);
+  const context: t.IMenuContext = {
+    config,
+    id,
+    store,
+    log,
+    ipc,
+    windows,
+    changed$,
+  };
+
+  const getTemplate = () => {
+    const template: MenuItemConstructorOptions[] = [
+      edit.current(context),
+      view.current(context),
+      window.current({ ...context, newWindow }),
+      help.current(context),
+    ];
+
+    if (process.platform === 'darwin') {
+      template.unshift(about.current(context));
+    }
+
+    return template;
+  };
+
+  const syncMenu = () => {
+    console.log('-------------------------------------------');
+    console.log('sync menu');
+    const menu = Menu.buildFromTemplate(getTemplate());
+    Menu.setApplicationMenu(menu);
+  };
+
+  // Redraw menus on change.
+  changed$
+    .pipe(
+      takeUntil(dispose$),
+      debounceTime(0),
+    )
+    .subscribe(() => syncMenu());
+
+  // Finish up.
+  syncMenu();
 }
