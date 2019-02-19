@@ -26,7 +26,7 @@ export function create(args: t.IContext & t.INewWindowArgs) {
   const devTools = value.defaultValue(args.devTools, true);
   const defaultWidth = value.defaultValue(args.defaultWidth, 1000);
   const defaultHeight = value.defaultValue(args.defaultHeight, 800);
-  const index = getIndex(windows);
+  const index = windows.byTag(TAG.key, TAG.value).length;
 
   /**
    * Setup window state manager (bounds).
@@ -98,12 +98,4 @@ function getPaths(config: IUIHarnessRuntimeConfig) {
   });
   const url = is.dev ? dev : prod;
   return { dev, prod, url };
-}
-
-function getIndex(windows: main.IWindows) {
-  const matches = windows.refs.filter(ref =>
-    ref.tags.some(({ tag, value }) => tag === TAG.key && value === TAG.value),
-  );
-
-  return matches.length;
 }
