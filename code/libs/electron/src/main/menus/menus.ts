@@ -8,6 +8,7 @@ import * as help from './menu.help';
 import * as view from './menu.view';
 import * as window from './menu.window';
 import * as t from './types';
+import { TAG } from '../../common';
 
 /**
  * Handles the creation of menus.
@@ -29,34 +30,40 @@ export function manage(args: t.IContext & { newWindow: t.NewWindowFactory }) {
     changed$,
   };
 
-  const getTemplate = () => {
-    const template: MenuItemConstructorOptions[] = [
+  const template = () => {
+    const result: MenuItemConstructorOptions[] = [
       edit.current(context),
       view.current(context),
-      window.current({ ...context, newWindow }),
+      window.current({
+        ...context,
+        newWindow,
+        include: [{ tag: TAG.WINDOW.key, value: TAG.WINDOW.value }],
+      }),
       help.current(context),
     ];
 
     if (process.platform === 'darwin') {
-      template.unshift(about.current(context));
+      result.unshift(about.current(context));
     }
 
-    return template;
+    return result;
   };
 
   // Redraw menus on change.
-  const syncMenu = () => {
-    const menu = Menu.buildFromTemplate(getTemplate());
-    Menu.setApplicationMenu(menu);
-  };
-  syncMenu();
-  changed$.pipe(debounceTime(0)).subscribe(syncMenu);
+  const menu = () => Menu.buildFromTemplate(template());
+  const sync = () => Menu.setApplicationMenu(menu());
+  changed$.pipe(debounceTime(0)).subscribe(sync);
+  sync();
 
   // Finish up.
   return {
     stop,
-    get current() {
-      return getTemplate();
+    sync,
+    get template() {
+      return template();
+    },
+    get menu() {
+      return menu();
     },
   };
 }
