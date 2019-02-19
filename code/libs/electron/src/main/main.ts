@@ -1,13 +1,12 @@
 import * as main from '@platform/electron/lib/main';
-import { value as valueUtil } from '@platform/util.value';
 import { app, BrowserWindow } from 'electron';
 import * as os from 'os';
 import { join } from 'path';
 
-import { is, IUIHarnessRuntimeConfig } from '../common';
+import { IUIHarnessRuntimeConfig } from '../common';
+import * as menus from './menus';
 import * as t from './types';
 import * as mainWindow from './window';
-import * as menus from './menus';
 
 export * from '../types';
 
@@ -56,15 +55,15 @@ export function init<M extends t.IpcMessage>(args: {
        * Factory for spawning a new window.
        */
       const newWindow: t.NewWindowFactory = (options = {}) => {
-        const devTools = valueUtil.defaultValue(
-          options.devTools,
-          is.dev ? args.devTools : undefined,
-        );
+        const { x, y } = getNewWindowPosition(20);
+        console.log('x', x);
+        console.log('y', y);
         return mainWindow.create({
-          ...context,
           name: options.name || name,
-          devTools,
-          windows,
+          defaultX: x,
+          defaultY: y,
+          ...context,
+          ...options,
         });
       };
 
@@ -119,4 +118,16 @@ export function logPaths(args: { appName: string }) {
   const { appName } = args;
   const dir = logDir({ appName });
   return main.logger.getPaths({ dir });
+}
+
+/**
+ * [INTERNAL]
+ */
+function getNewWindowPosition(offset: number) {
+  const window = BrowserWindow.getFocusedWindow();
+  const bounds = window && window.getBounds();
+  console.log('bounds', bounds);
+  const x = bounds ? bounds.x + offset : undefined;
+  const y = bounds ? bounds.y + offset : undefined;
+  return { x, y };
 }
