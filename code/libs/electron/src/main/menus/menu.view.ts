@@ -1,10 +1,21 @@
-import { MenuItemConstructorOptions } from 'electron';
+import main from '@platform/electron/lib/main';
+
+import { MenuItemConstructorOptions, BrowserWindow } from 'electron';
 import * as t from './types';
+import { TAG } from '../../common';
 
 /**
  * Current [view] menu state.
  */
 export function current(args: t.IMenuContext) {
+  const { windows } = args;
+
+  const allDevToolsVisible = (isVisible: boolean) => {
+    windows
+      .byTag(TAG.DEV_TOOLS.key, TAG.DEV_TOOLS.value)
+      .forEach(ref => setWindowVisibility(ref.id, isVisible));
+  };
+
   const menu: MenuItemConstructorOptions = {
     label: 'View',
     submenu: [
@@ -12,22 +23,33 @@ export function current(args: t.IMenuContext) {
       { role: 'forcereload' },
       { type: 'separator' },
       {
-        label: 'Show Developer Tools',
-        click: () => {
-          console.log('show dev tools');
-          //
-          // console.log(`\nTODO 🐷   show/hide dev tools on focused window \n`);
-          // if (!refs.devTools || !refs.devTools.isVisible()) {
-          //   // showDevTools({ refs, ...context });
-          // }
-        },
+        label: 'Show All Developer Tools',
+        click: () => allDevToolsVisible(true),
       },
-      // { type: 'separator' },
-      // { role: 'resetzoom' },
-      // { role: 'zoomin' },
-      // { role: 'zoomout' },
+      {
+        label: 'Hide All Developer Tools',
+        click: () => allDevToolsVisible(false),
+      },
     ],
   };
 
   return menu;
 }
+
+/**
+ * INTERNAL
+ */
+
+const getWindow = (id: number) =>
+  BrowserWindow.getAllWindows().find(window => window.id === id);
+
+const setWindowVisibility = (id: number, isVisible: boolean) => {
+  const window = getWindow(id);
+  if (window) {
+    if (isVisible) {
+      window.show();
+    } else {
+      window.hide();
+    }
+  }
+};

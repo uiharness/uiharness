@@ -19,12 +19,27 @@ export function current(
 
   // Monitor for changes that require a redraw of the menu.
   windows.change$
-    .pipe(filter(e => ['CREATED', 'CLOSED', 'FOCUS'].includes(e.type)))
+    .pipe(
+      filter(e =>
+        ['CREATED', 'CLOSED', 'FOCUS', 'VISIBILITY'].includes(e.type),
+      ),
+    )
     .subscribe(() => args.changed$.next());
 
   // Build list of active windows.
   const refs = windows.byTag(...include);
   const all = BrowserWindow.getAllWindows();
+
+  const setWindowVisibility = (id: number, isVisible: boolean) => {
+    const window = getWindow(id);
+    if (window) {
+      if (isVisible) {
+        window.show();
+      } else {
+        window.hide();
+      }
+    }
+  };
 
   const getWindow = (id: number) => all.find(window => window.id === id);
 
@@ -34,10 +49,14 @@ export function current(
       .some(ref => ref.id === id);
   };
 
-  const getChildDevToolsId = (id: number) => {
-    const window = getWindow(id);
+  const getChildDevTools = (parentId: number) => {
+    const window = getWindow(parentId);
     const children = window ? window.getChildWindows() : [];
-    const devTools = children.find(window => isDevTools(window.id));
+    return children.find(window => isDevTools(window.id));
+  };
+
+  const getChildDevToolsId = (parentId: number) => {
+    const devTools = getChildDevTools(parentId);
     return devTools ? devTools.id : undefined;
   };
 
@@ -58,11 +77,49 @@ export function current(
     .map(ref => {
       const window = getWindow(ref.id);
       const label = window ? window.getTitle() : '';
+
+      let submenu: MenuItem[] = [
+        {
+          label: 'Bring to Front',
+          click: () => setWindowVisibility(ref.id, true),
+        },
+      ];
+
+      const devToolsId = getChildDevToolsId(ref.id);
+      const devToolsRef = devToolsId
+        ? windows.refs.find(ref => ref.id === devToolsId)
+        : undefined;
+
+      if (devToolsRef && devToolsRef.isVisible) {
+        submenu = [
+          ...submenu,
+          {
+            label: 'Hide Developer Tools',
+            click: () => setWindowVisibility(devToolsRef.id, false),
+          },
+        ];
+      }
+
+      if (!devToolsRef || !devToolsRef.isVisible) {
+        submenu = [
+          ...submenu,
+          {
+            label: 'Show Developer Tools',
+            click: () => {
+              const parent = window;
+              if (parent) {
+                main.devTools.create({ parent, windows });
+              }
+            },
+          },
+        ];
+      }
+
       const item: MenuItem = {
         label,
-        type: 'checkbox',
         checked: isFocused(ref.id),
         click: selectWindowHandler(ref.id),
+        submenu,
       };
       return item;
     })
@@ -82,8 +139,6 @@ export function current(
       { label: 'New Window', click: () => newWindow() },
       { role: 'close' },
       { role: 'minimize' },
-      { type: 'separator' },
-      { role: 'front' },
       { type: 'separator' },
       ...windowsList,
     ],
