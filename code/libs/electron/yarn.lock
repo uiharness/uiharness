@@ -33,10 +33,10 @@
     "@types/yargs" "12.0.9"
     yargs "13.2.0"
 
-"@platform/electron@0.0.84":
-  version "0.0.84"
-  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.0.84.tgz#10c439c6c199056cc80e600d918f342a44c8e3df"
-  integrity sha512-a98V1WH/RTee9c3O8iNbhk4LOy4gqJZ1SmfjNeavSk3t8kaJAbENdqzbenSUXCZvdHvVEZurzrEuqu/vRg/VyA==
+"@platform/electron@0.0.85":
+  version "0.0.85"
+  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.0.85.tgz#b6e2d63dab2464e3ff0b1c114ed2ebd491e31581"
+  integrity sha512-KdPPV+FM5+KvhfNygIfsuu9wZmugQao5UEGIa2DMQB4wVHhwpuq7V39oJhDjYBEmjbzHuGY4oQ3x2GBZMmFjwA==
   dependencies:
     "@babel/polyfill" "7.2.5"
     "@platform/fs" "0.0.34"
@@ -114,10 +114,10 @@
     tslint-react "3.6.0"
     typescript "3.3.3"
 
-"@platform/ui.object@0.0.30":
-  version "0.0.30"
-  resolved "https://registry.yarnpkg.com/@platform/ui.object/-/ui.object-0.0.30.tgz#b033ba8fc45c9d1f9bfa77dc24648626c8066f52"
-  integrity sha512-hC0wU90gyJ+JCiq21lNZOG2qUU4DcjQ7Qvw5iS7zxPU5mfPllGY3NYGpiF7j7V6RffOddNtzXnFzgcNDlHvNpw==
+"@platform/ui.object@0.0.31":
+  version "0.0.31"
+  resolved "https://registry.yarnpkg.com/@platform/ui.object/-/ui.object-0.0.31.tgz#87d8d516a917341a78f0ea0f516ec2f2e9321db5"
+  integrity sha512-tiN4pLv9C25hWsp61vaNpy/YNpJQkP4rpjcRLSSGBAxhseLFlonOrgtYkX/M0PN453Mp4AHo2zLIR8Dv35izXQ==
   dependencies:
     "@platform/util.react" "0.0.25"
     react-inspector "2.3.1"

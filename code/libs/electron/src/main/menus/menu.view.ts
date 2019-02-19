@@ -39,7 +39,6 @@ export function current(args: t.IMenuContext) {
 /**
  * INTERNAL
  */
-
 const getWindow = (id: number) =>
   BrowserWindow.getAllWindows().find(window => window.id === id);
 

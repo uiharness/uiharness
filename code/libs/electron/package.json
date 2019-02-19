@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/electron",
-  "version": "0.3.123",
+  "version": "0.3.124",
   "description": "UIHarness client-tools for Electron (include in dependencies).",
   "main": "./lib/index",
   "types": "./lib/index.d.ts",
@@ -13,9 +13,9 @@
     "chmod": "chmod 777 node_modules/.bin/ts"
   },
   "dependencies": {
-    "@platform/electron": "0.0.84",
+    "@platform/electron": "0.0.85",
     "@platform/log": "0.0.73",
-    "@platform/ui.object": "0.0.30",
+    "@platform/ui.object": "0.0.31",
     "@platform/util.react": "0.0.25",
     "@platform/util.value": "0.0.23",
     "@types/app-root-path": "1.2.4",
