@@ -1,15 +1,16 @@
-import { MenuItemConstructorOptions, app } from 'electron';
-import { IContext } from '../types';
+import { MenuItemConstructorOptions } from 'electron';
+
+import { IMenuContext } from './types';
 
 /**
  * Current [app] menu state (OSX).
  */
-export function current(args: IContext) {
+export function current(args: IMenuContext) {
   const { config } = args;
   const menu: MenuItemConstructorOptions = {
     label: config.name,
     submenu: [
-      { role: 'about' },
+      // { role: 'about' },
       // { label: 'About UIHarness' },
       { type: 'separator' },
       { role: 'services' },

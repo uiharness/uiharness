@@ -1,10 +1,10 @@
 import { MenuItemConstructorOptions } from 'electron';
-import { IContext } from '../types';
+import { IMenuContext } from './types';
 
 /**
  * Current [edit] menu state.
  */
-export function current(args: IContext) {
+export function current(args: IMenuContext) {
   const menu: MenuItemConstructorOptions = {
     label: 'Edit',
     submenu: [

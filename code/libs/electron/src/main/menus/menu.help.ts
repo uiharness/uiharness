@@ -1,10 +1,10 @@
 import { MenuItemConstructorOptions, shell } from 'electron';
-import { IContext } from '../types';
+import { IMenuContext } from './types';
 
 /**
  * Current [help] menu state.
  */
-export function current(args: IContext) {
+export function current(args: IMenuContext) {
   const menu: MenuItemConstructorOptions = {
     role: 'help',
     submenu: [

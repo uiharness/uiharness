@@ -1,22 +1,19 @@
 import { MenuItemConstructorOptions, shell } from 'electron';
-import { IContext } from '../types';
+import { IMenuContext } from './types';
 
 /**
  * Current [window] menu state.
  */
-export function current(args: IContext) {
+export function current(args: IMenuContext) {
   const menu: MenuItemConstructorOptions = {
     role: 'window',
-    submenu: [{ role: 'minimize' }, { role: 'close' }],
+    submenu: [
+      { role: 'close' },
+      { role: 'minimize' },
+      { type: 'separator' },
+      { role: 'front' },
+    ],
   };
-
-  menu.submenu = [
-    { role: 'close' },
-    { role: 'minimize' },
-    { role: 'zoom' },
-    { type: 'separator' },
-    { role: 'front' },
-  ];
 
   return menu;
 }
