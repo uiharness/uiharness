@@ -33,10 +33,10 @@
     "@types/yargs" "12.0.9"
     yargs "13.2.0"
 
-"@platform/electron@0.0.81":
-  version "0.0.81"
-  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.0.81.tgz#244ba22591469e93b145e026b4c0ea76b54b17f6"
-  integrity sha512-NTR8dAOft3EbJrTDLXuXLrnNYQLTx8Lor/wguxtfRSEm72L9oIkUiY6jhaASL+zkjXQmp6mVEsYeXrbi+Cztpg==
+"@platform/electron@0.0.82":
+  version "0.0.82"
+  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.0.82.tgz#78f073e6410bcc8cb0ba881a5414251618459038"
+  integrity sha512-rsvfvWZnP4ACSVWTHQYup2WH+zvfUUwE/BNxsqgP4dTxrDoAZFPCpQ51fPq63ffKytHMxyURh8lcX8/c83DzMQ==
   dependencies:
     "@babel/polyfill" "7.2.5"
     "@platform/fs" "0.0.34"
@@ -114,10 +114,10 @@
     tslint-react "3.6.0"
     typescript "3.3.3"
 
-"@platform/ui.object@0.0.27":
-  version "0.0.27"
-  resolved "https://registry.yarnpkg.com/@platform/ui.object/-/ui.object-0.0.27.tgz#ffdad255aa773840450ec5d1192cb1b21ffe0a88"
-  integrity sha512-uA9CKgt+guSHoFXKQcG2Rmjn1EBjjK8j9GISH5LwS839Fr/3b/7+VR86cJOvyew3OkKMG+yWzYdEsYLpZGS3hg==
+"@platform/ui.object@0.0.28":
+  version "0.0.28"
+  resolved "https://registry.yarnpkg.com/@platform/ui.object/-/ui.object-0.0.28.tgz#a1429cd9dd1286fa55a8a350838d6267d96b9716"
+  integrity sha512-zz7lFBkxOMgLr9VrVcRTn58qgq2qAoOg7ySh0tJKfXKfWeE89mW/DT54rD4mgsNXES7rnMgWJBQvm34XCbzdbg==
   dependencies:
     "@platform/util.react" "0.0.25"
     react-inspector "2.3.1"
@@ -151,7 +151,7 @@
   resolved "https://registry.yarnpkg.com/@platform/util.is/-/util.is-0.0.22.tgz#c1f2091b7a38da5bf9404278c41576258710a1e8"
   integrity sha512-gx9dDvjXa/bwBk2BKePhGb3mcUfKbCMVBsGX7mArbss3KhdJHZ2zRoWmzeKXx5Ew8jdYDJBb1Kk4NaGUQkt9Fw==
 
-"@platform/util.react@0.0.25", "@platform/util.react@^0.0.25":
+"@platform/util.react@0.0.25":
   version "0.0.25"
   resolved "https://registry.yarnpkg.com/@platform/util.react/-/util.react-0.0.25.tgz#639364d72830802c126fc9a70e17a4cc170e3979"
   integrity sha512-WMzJA+XMwIrADBwV8zcP9MqipA0C0hSQ02sxn7dW1yk2ehisqYgOeu10jcLUepDKCPq+YsrWAinJkE2kmKFQKQ==

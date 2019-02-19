@@ -13,10 +13,10 @@
     "chmod": "chmod 777 node_modules/.bin/ts"
   },
   "dependencies": {
-    "@platform/electron": "0.0.81",
+    "@platform/electron": "0.0.82",
     "@platform/log": "0.0.73",
-    "@platform/ui.object": "0.0.27",
-    "@platform/util.react": "^0.0.25",
+    "@platform/ui.object": "0.0.28",
+    "@platform/util.react": "0.0.25",
     "@platform/util.value": "0.0.23",
     "@types/app-root-path": "1.2.4",
     "@uiharness/types": "0.0.48",
