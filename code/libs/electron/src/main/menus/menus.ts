@@ -10,7 +10,7 @@ import * as window from './menu.window';
 /**
  * Handles the creation of menus.
  */
-export function createMenus(args: IMenuContext) {
+export function manage(args: IMenuContext) {
   const { config, id, store, log, ipc, windows } = args;
   const context: IMenuContext = { config, id, store, log, ipc, windows };
 

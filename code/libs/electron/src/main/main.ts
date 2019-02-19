@@ -7,6 +7,7 @@ import { join } from 'path';
 import { is, IUIHarnessRuntimeConfig } from '../common';
 import { IContext, IpcClient, IpcMessage } from './types';
 import * as mainWindow from './window';
+import * as menus from './menus';
 
 export * from '../types';
 
@@ -33,42 +34,48 @@ export function init<M extends IpcMessage>(args: {
 }) {
   return new Promise<IResponse<M>>(async (resolve, reject) => {
     const { config, devTools } = args;
-    const { log, ipc, id, store, windows } = await main.init<M>({
-      log: args.log || logDir({ appName: config.name }),
+
+    /**
+     * Initialize [@platform/electron] module.
+     */
+    const appName = config.name;
+    const res = await main.init<M>({
+      log: args.log || logDir({ appName }),
       ipc: args.ipc,
       windows: args.windows,
     });
+    const { log, ipc, id, store, windows } = res;
+    const context: IContext = { config, id, store, log, ipc, windows };
 
-    const context: IContext = {
-      config,
-      id,
-      store,
-      log,
-      ipc: ipc as IpcClient,
-      windows,
-    };
-
+    /**
+     * Initialize application when `ready`.
+     */
     app.on('ready', () => {
       const name = args.name || config.name || app.getName();
       const window = mainWindow.create({ ...context, name, devTools, windows });
 
       const newWindow: NewWindowFactory = e => {
+        const name = e.name;
         const devTools = valueUtil.defaultValue(
           e.devTools,
           is.dev ? args.devTools : undefined,
         );
-        return mainWindow.create({
-          ...context,
-          name: e.name,
-          devTools,
-          windows,
-        });
+        return mainWindow.create({ ...context, name, devTools, windows });
       };
 
+      /**
+       * Start the menu manager.
+       */
+      menus.manage(context);
+
+      // Finish up.
       const res: IResponse<M> = { window, newWindow, log, ipc, windows };
       resolve(res);
     });
 
+    /**
+     * [Quit] when all windows are closed.
+     */
     app.on('window-all-closed', () => {
       app.quit();
     });

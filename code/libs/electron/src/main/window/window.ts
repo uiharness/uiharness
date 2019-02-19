@@ -12,7 +12,6 @@ import {
   constants,
 } from '../../common';
 import { IContext } from '../types';
-import { createMenus } from '../menus';
 
 import main from '@platform/electron/lib/main';
 
@@ -55,7 +54,6 @@ export function create(
     acceptFirstMouse: true,
   });
 
-  createMenus({ ...context, windows });
 
   // Show the window when it's ready.
   window.once('ready-to-show', () => {
