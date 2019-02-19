@@ -339,10 +339,10 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.9.tgz#693e76a52f61a2f1e7fb48c0eef167b95ea4ffd0"
   integrity sha512-sCZy4SxP9rN2w30Hlmg5dtdRwgYQfYRiLo9usw8X9cxlf+H4FqM1xX7+sNH7NNKVdbXMJWqva7iyy+fxh/V7fA==
 
-"@uiharness/types@0.0.48":
-  version "0.0.48"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.48.tgz#f5e6cd1cec31977a83cf5de1fc6b02d4f8c5a1ec"
-  integrity sha512-ruYogNcIeaLe7paHI0mkk+qNhLgbqs8KnJsIGyawpRFHEBDJUbvDqt46ECb/4cs7zEgRhSnqt1dviP4p9MHrnA==
+"@uiharness/types@0.0.49":
+  version "0.0.49"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.49.tgz#1beabb718a4940a5037092ae59c1f145733eeec8"
+  integrity sha512-U9q3Vvx66h5g8me3hOg2GH8AmiGlhT4lxNmKc4f1dt4fUbkPCbvZ2cFje/Xgq/Ky1CYQ/KIxH6Xo8GLQZpfVPQ==
 
 ajv@^6.5.5:
   version "6.9.1"
