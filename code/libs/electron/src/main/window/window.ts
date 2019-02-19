@@ -11,8 +11,8 @@ import {
   value,
   constants,
 } from '../../common';
-import { IWindowRefs, IContext } from '../types';
-import { createMenus } from './menus';
+import { IContext } from '../types';
+import { createMenus } from '../menus';
 
 import main from '@platform/electron/lib/main';
 
@@ -25,19 +25,13 @@ export function create(
     devTools?: boolean;
     defaultWidth?: number;
     defaultHeight?: number;
-    windows?: main.IWindows;
   },
 ) {
   const { id, store, config, log, ipc, windows } = args;
-  const context: IContext = { config, id, store, log, ipc };
+  const context: IContext = { config, id, store, log, ipc, windows };
   const devTools = value.defaultValue(args.devTools, true);
   const defaultWidth = value.defaultValue(args.defaultWidth, 1000);
   const defaultHeight = value.defaultValue(args.defaultHeight, 800);
-
-  const refs: IWindowRefs = {
-    window: undefined,
-    devTools: undefined,
-  };
 
   const title = args.name || config.name;
   const file = `window-state/[uih].${title.replace(/\s/g, '_')}.json`;
@@ -51,7 +45,7 @@ export function create(
   const saveState = () => state.saveState(window);
   state$.pipe(debounceTime(200)).subscribe(() => saveState());
 
-  const window = (refs.window = new BrowserWindow({
+  const window = new BrowserWindow({
     title,
     show: false, // NB: Hidden until ready-to-show.
     x: state.x,
@@ -59,9 +53,9 @@ export function create(
     width: state.width,
     height: state.height,
     acceptFirstMouse: true,
-  }));
+  });
 
-  createMenus({ ...context, refs, windows });
+  createMenus({ ...context, windows });
 
   // Show the window when it's ready.
   window.once('ready-to-show', () => {
@@ -78,10 +72,7 @@ export function create(
   });
 
   window.on('moved', () => state$.next());
-  window.on('closed', () => {
-    refs.window = undefined;
-    saveState();
-  });
+  window.on('closed', () => saveState());
 
   const paths = getPaths(config);
   window.loadURL(paths.url);

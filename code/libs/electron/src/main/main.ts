@@ -33,13 +33,20 @@ export function init<M extends IpcMessage>(args: {
 }) {
   return new Promise<IResponse<M>>(async (resolve, reject) => {
     const { config, devTools } = args;
-    const { log, ipc, id, store } = await main.init<M>({
+    const { log, ipc, id, store, windows } = await main.init<M>({
       log: args.log || logDir({ appName: config.name }),
       ipc: args.ipc,
+      windows: args.windows,
     });
 
-    const context: IContext = { config, id, store, log, ipc: ipc as IpcClient };
-    const windows = args.windows || main.createWindows({ ipc });
+    const context: IContext = {
+      config,
+      id,
+      store,
+      log,
+      ipc: ipc as IpcClient,
+      windows,
+    };
 
     app.on('ready', () => {
       const name = args.name || config.name || app.getName();
