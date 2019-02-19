@@ -1,10 +1,10 @@
 import { MenuItemConstructorOptions } from 'electron';
-import { IMenuContext } from './types';
+import * as t from './types';
 
 /**
  * Current [view] menu state.
  */
-export function current(args: IMenuContext) {
+export function current(args: t.IMenuContext) {
   const menu: MenuItemConstructorOptions = {
     label: 'View',
     submenu: [

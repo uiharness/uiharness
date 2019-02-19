@@ -12,3 +12,6 @@ export * from '../types';
 
 export type UIHarnessIpc = IpcClient<IUihEvents>;
 export type IContext = IUIHarnessContext<IUihEvents>;
+
+export type INewWindowArgs = { name?: string; devTools?: boolean };
+export type NewWindowFactory = (options?: INewWindowArgs) => BrowserWindow;

@@ -5,29 +5,27 @@ import * as os from 'os';
 import { join } from 'path';
 
 import { is, IUIHarnessRuntimeConfig } from '../common';
-import { IContext, IpcClient, IpcMessage } from './types';
+import * as t from './types';
 import * as mainWindow from './window';
 import * as menus from './menus';
 
 export * from '../types';
 
-type IResponse<M extends IpcMessage> = {
+type IResponse<M extends t.IpcMessage> = {
   window: BrowserWindow;
-  newWindow: NewWindowFactory;
+  newWindow: t.NewWindowFactory;
   log: main.IMainLog;
-  ipc: IpcClient<M>;
+  ipc: t.IpcClient<M>;
   windows: main.IWindows;
 };
-type INewWindowArgs = { name: string; devTools?: boolean };
-type NewWindowFactory = (e: INewWindowArgs) => BrowserWindow;
 
 /**
  * Default loader for a UIHarness [main] process.
  */
-export function init<M extends IpcMessage>(args: {
+export function init<M extends t.IpcMessage>(args: {
   config: IUIHarnessRuntimeConfig; //   The [.uiharess/config.json] file.
   name?: string; //                     The display name of the window.
-  ipc?: IpcClient<M>; //                Existing IPC client if aleady initialized.
+  ipc?: t.IpcClient<M>; //                Existing IPC client if aleady initialized.
   log?: main.IMainLog; //               Existing log if already initialized.
   devTools?: boolean; //                Show dev tools on load when running in development (default: true)
   windows?: main.IWindows; //           The gloal windows manager.
@@ -45,7 +43,7 @@ export function init<M extends IpcMessage>(args: {
       windows: args.windows,
     });
     const { log, ipc, id, store, windows } = res;
-    const context: IContext = { config, id, store, log, ipc, windows };
+    const context: t.IContext = { config, id, store, log, ipc, windows };
 
     /**
      * Initialize application when `ready`.
@@ -54,19 +52,26 @@ export function init<M extends IpcMessage>(args: {
       const name = args.name || config.name || app.getName();
       const window = mainWindow.create({ ...context, name, devTools, windows });
 
-      const newWindow: NewWindowFactory = e => {
-        const name = e.name;
+      /**
+       * Factory for spawning a new window.
+       */
+      const newWindow: t.NewWindowFactory = (options = {}) => {
         const devTools = valueUtil.defaultValue(
-          e.devTools,
+          options.devTools,
           is.dev ? args.devTools : undefined,
         );
-        return mainWindow.create({ ...context, name, devTools, windows });
+        return mainWindow.create({
+          ...context,
+          name: options.name || name,
+          devTools,
+          windows,
+        });
       };
 
       /**
        * Start the menu manager.
        */
-      menus.manage(context);
+      menus.manage({ ...context, newWindow });
 
       // Finish up.
       const res: IResponse<M> = { window, newWindow, log, ipc, windows };

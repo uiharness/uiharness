@@ -1,11 +1,10 @@
 import { MenuItemConstructorOptions } from 'electron';
-
-import { IMenuContext } from './types';
+import * as t from './types';
 
 /**
  * Current [app] menu state (OSX).
  */
-export function current(args: IMenuContext) {
+export function current(args: t.IMenuContext) {
   const { config } = args;
   const menu: MenuItemConstructorOptions = {
     label: config.name,
