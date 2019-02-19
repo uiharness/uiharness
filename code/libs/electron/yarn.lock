@@ -151,7 +151,7 @@
   resolved "https://registry.yarnpkg.com/@platform/util.is/-/util.is-0.0.22.tgz#c1f2091b7a38da5bf9404278c41576258710a1e8"
   integrity sha512-gx9dDvjXa/bwBk2BKePhGb3mcUfKbCMVBsGX7mArbss3KhdJHZ2zRoWmzeKXx5Ew8jdYDJBb1Kk4NaGUQkt9Fw==
 
-"@platform/util.react@0.0.25":
+"@platform/util.react@0.0.25", "@platform/util.react@^0.0.25":
   version "0.0.25"
   resolved "https://registry.yarnpkg.com/@platform/util.react/-/util.react-0.0.25.tgz#639364d72830802c126fc9a70e17a4cc170e3979"
   integrity sha512-WMzJA+XMwIrADBwV8zcP9MqipA0C0hSQ02sxn7dW1yk2ehisqYgOeu10jcLUepDKCPq+YsrWAinJkE2kmKFQKQ==
