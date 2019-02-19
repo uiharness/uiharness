@@ -11,10 +11,17 @@ export { IpcMessage, IpcClient, IUIHarnessRuntimeConfig };
 export * from '../types';
 
 export type UIHarnessIpc = IpcClient<IUihEvents>;
-
-export type IWindowRefs = {
-  window?: BrowserWindow;
-  devTools?: BrowserWindow;
-};
-
 export type IContext = IUIHarnessContext<IUihEvents>;
+
+/**
+ * New window.
+ */
+export type NewWindowFactory = (options?: INewWindowArgs) => BrowserWindow;
+export type INewWindowArgs = {
+  name?: string;
+  devTools?: boolean;
+  defaultWidth?: number;
+  defaultHeight?: number;
+  defaultX?: number;
+  defaultY?: number;
+};

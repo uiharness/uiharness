@@ -1,3 +1,4 @@
+import main from '@platform/electron/lib/main';
 import { BrowserWindow } from 'electron';
 import * as WindowState from 'electron-window-state';
 import { Subject } from 'rxjs';
@@ -5,65 +6,60 @@ import { debounceTime } from 'rxjs/operators';
 import { format } from 'url';
 
 import {
+  constants,
   is,
   IUIHarnessRuntimeConfig,
   path,
+  TAG,
   value,
-  constants,
 } from '../../common';
-import { IWindowRefs, IContext } from '../types';
-import { createMenus } from './menus';
-
-import main from '@platform/electron/lib/main';
+import * as t from '../types';
 
 /**
  * Creates the main window.
  */
-export function create(
-  args: IContext & {
-    name: string;
-    devTools?: boolean;
-    defaultWidth?: number;
-    defaultHeight?: number;
-    windows?: main.IWindows;
-  },
-) {
+export function create(args: t.IContext & t.INewWindowArgs) {
   const { id, store, config, log, ipc, windows } = args;
-  const context: IContext = { config, id, store, log, ipc };
+  const context: t.IContext = { config, id, store, log, ipc, windows };
+  const title = args.name || config.name;
   const devTools = value.defaultValue(args.devTools, true);
   const defaultWidth = value.defaultValue(args.defaultWidth, 1000);
   const defaultHeight = value.defaultValue(args.defaultHeight, 800);
+  const index = windows.byTag(TAG.WINDOW.key, TAG.WINDOW.value).length;
 
-  const refs: IWindowRefs = {
-    window: undefined,
-    devTools: undefined,
-  };
-
-  const title = args.name || config.name;
-  const file = `window-state/[uih].${title.replace(/\s/g, '_')}.json`;
+  /**
+   * Setup window state manager (bounds).
+   */
+  const file = `window-state/uiharness-${index}.json`;
   const state = WindowState({
     defaultWidth,
     defaultHeight,
     file,
   });
-
   const state$ = new Subject();
   const saveState = () => state.saveState(window);
   state$.pipe(debounceTime(200)).subscribe(() => saveState());
 
-  const window = (refs.window = new BrowserWindow({
+  /**
+   * Create the window.
+   */
+  const x = value.defaultValue(state.x, args.defaultX);
+  const y = value.defaultValue(state.y, args.defaultY);
+  const window = new BrowserWindow({
     title,
     show: false, // NB: Hidden until ready-to-show.
-    x: state.x,
-    y: state.y,
+    x,
+    y,
     width: state.width,
     height: state.height,
     acceptFirstMouse: true,
-  }));
+    fullscreenable: false,
+  });
+  windows.tag(window.id, { tag: TAG.WINDOW.key, value: TAG.WINDOW.value });
 
-  createMenus({ ...context, refs, windows });
-
-  // Show the window when it's ready.
+  /**
+   * Show when ready.
+   */
   window.once('ready-to-show', () => {
     window.show();
     window.setTitle(title);
@@ -77,21 +73,19 @@ export function create(
     }
   });
 
+  /**
+   * Update state on change.
+   */
   window.on('moved', () => state$.next());
-  window.on('closed', () => {
-    refs.window = undefined;
-    saveState();
-  });
-
-  const paths = getPaths(config);
-  window.loadURL(paths.url);
+  window.on('closed', () => saveState());
 
   // Finish up.
+  window.loadURL(getPaths(config).url);
   return window;
 }
 
 /**
- * INTERNAL
+ * [INTERNAL]
  */
 function getPaths(config: IUIHarnessRuntimeConfig) {
   const port = config.electron.port;

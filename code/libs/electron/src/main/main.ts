@@ -1,67 +1,83 @@
 import * as main from '@platform/electron/lib/main';
-import { value as valueUtil } from '@platform/util.value';
 import { app, BrowserWindow } from 'electron';
 import * as os from 'os';
 import { join } from 'path';
 
-import { is, IUIHarnessRuntimeConfig } from '../common';
-import { IContext, IpcClient, IpcMessage } from './types';
+import { IUIHarnessRuntimeConfig } from '../common';
+import * as menus from './menus';
+import * as t from './types';
 import * as mainWindow from './window';
 
 export * from '../types';
 
-type IResponse<M extends IpcMessage> = {
+type IResponse<M extends t.IpcMessage> = {
   window: BrowserWindow;
-  newWindow: NewWindowFactory;
+  newWindow: t.NewWindowFactory;
   log: main.IMainLog;
-  ipc: IpcClient<M>;
+  ipc: t.IpcClient<M>;
   windows: main.IWindows;
 };
-type INewWindowArgs = { name: string; devTools?: boolean };
-type NewWindowFactory = (e: INewWindowArgs) => BrowserWindow;
 
 /**
  * Default loader for a UIHarness [main] process.
  */
-export function init<M extends IpcMessage>(args: {
+export function init<M extends t.IpcMessage>(args: {
   config: IUIHarnessRuntimeConfig; //   The [.uiharess/config.json] file.
   name?: string; //                     The display name of the window.
-  ipc?: IpcClient<M>; //                Existing IPC client if aleady initialized.
+  ipc?: t.IpcClient<M>; //                Existing IPC client if aleady initialized.
   log?: main.IMainLog; //               Existing log if already initialized.
   devTools?: boolean; //                Show dev tools on load when running in development (default: true)
   windows?: main.IWindows; //           The gloal windows manager.
 }) {
   return new Promise<IResponse<M>>(async (resolve, reject) => {
     const { config, devTools } = args;
-    const { log, ipc, id, store } = await main.init<M>({
-      log: args.log || logDir({ appName: config.name }),
+
+    /**
+     * Initialize [@platform/electron] module.
+     */
+    const appName = config.name;
+    const res = await main.init<M>({
+      log: args.log || logDir({ appName }),
       ipc: args.ipc,
+      windows: args.windows,
     });
+    const { log, ipc, id, store, windows } = res;
+    const context: t.IContext = { config, id, store, log, ipc, windows };
 
-    const context: IContext = { config, id, store, log, ipc: ipc as IpcClient };
-    const windows = args.windows || main.createWindows({ ipc });
-
+    /**
+     * Initialize application when `ready`.
+     */
     app.on('ready', () => {
       const name = args.name || config.name || app.getName();
       const window = mainWindow.create({ ...context, name, devTools, windows });
 
-      const newWindow: NewWindowFactory = e => {
-        const devTools = valueUtil.defaultValue(
-          e.devTools,
-          is.dev ? args.devTools : undefined,
-        );
+      /**
+       * Factory for spawning a new window.
+       */
+      const newWindow: t.NewWindowFactory = (options = {}) => {
+        const { x, y } = getNewWindowPosition(20);
         return mainWindow.create({
+          name: options.name || name,
+          defaultX: x,
+          defaultY: y,
           ...context,
-          name: e.name,
-          devTools,
-          windows,
+          ...options,
         });
       };
 
+      /**
+       * Start the menu manager.
+       */
+      menus.manage({ ...context, newWindow });
+
+      // Finish up.
       const res: IResponse<M> = { window, newWindow, log, ipc, windows };
       resolve(res);
     });
 
+    /**
+     * [Quit] when all windows are closed.
+     */
     app.on('window-all-closed', () => {
       app.quit();
     });
@@ -100,4 +116,15 @@ export function logPaths(args: { appName: string }) {
   const { appName } = args;
   const dir = logDir({ appName });
   return main.logger.getPaths({ dir });
+}
+
+/**
+ * [INTERNAL]
+ */
+function getNewWindowPosition(offset: number) {
+  const window = BrowserWindow.getFocusedWindow();
+  const bounds = window && window.getBounds();
+  const x = bounds ? bounds.x + offset : undefined;
+  const y = bounds ? bounds.y + offset : undefined;
+  return { x, y };
 }

@@ -94,7 +94,7 @@ export class Command implements ICommandBuilder {
   public add(args: IDescribeArgs): ICommandBuilder;
   public add(...args: any): ICommandBuilder {
     const child = new Command(toConstuctorArgs(args));
-    this._.children = [...this._.children, child];
+    this._.children = [...this._.children, child] as ICommandBuilder[];
     return this;
   }
 

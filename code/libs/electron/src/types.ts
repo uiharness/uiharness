@@ -2,12 +2,7 @@ import { ILog } from '@platform/log/lib/types';
 export { ILog };
 export * from '@uiharness/types';
 
-import {
-  IRendererContext,
-  IpcMessage,
-  IContext,
-  StoreJson,
-} from '@platform/electron';
+import { IpcMessage, IContext, StoreJson } from '@platform/electron';
 import { IUIHarnessRuntimeConfig } from '@uiharness/types';
 
 /**
