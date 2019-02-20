@@ -1,10 +1,4 @@
-import {
-  ICommand,
-  value,
-  CommandHandler,
-  IDescribeArgs,
-  ICommandBuilder,
-} from '../common';
+import { ICommand, value, CommandHandler, IDescribeArgs, ICommandBuilder } from '../common';
 
 type IConstructorArgs = ICommand & {
   children: ICommandBuilder[];
@@ -24,10 +18,7 @@ export class Command implements ICommandBuilder {
   /**
    * [Static]
    */
-  public static describe(
-    title: string,
-    handler?: CommandHandler,
-  ): ICommandBuilder;
+  public static describe(title: string, handler?: CommandHandler): ICommandBuilder;
   public static describe(args: IDescribeArgs): ICommandBuilder;
   public static describe(...args: any): ICommandBuilder {
     return new Command(toConstuctorArgs(args));
@@ -124,7 +115,5 @@ function toConstuctorArgs(args: any): IConstructorArgs {
 }
 
 export function cloneChildren(builder: ICommandBuilder): ICommandBuilder[] {
-  return builder.children
-    .map(child => child as Command)
-    .map(child => child.clone({ deep: true }));
+  return builder.children.map(child => child as Command).map(child => child.clone({ deep: true }));
 }

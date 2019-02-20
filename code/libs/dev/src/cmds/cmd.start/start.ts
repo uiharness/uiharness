@@ -16,10 +16,7 @@ import * as init from '../cmd.init';
 /**
  * Starts the development server for the given target.
  */
-export async function start(args: {
-  settings: Settings;
-  target: BundleTarget;
-}) {
+export async function start(args: { settings: Settings; target: BundleTarget }) {
   const { target, settings } = args;
 
   switch (target) {

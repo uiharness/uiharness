@@ -1,12 +1,4 @@
-import {
-  constants,
-  fs,
-  IUIHarnessRuntimeConfig,
-  log,
-  npm,
-  tmpl,
-  value,
-} from '../../common';
+import { constants, fs, IUIHarnessRuntimeConfig, log, npm, tmpl, value } from '../../common';
 import { Settings } from '../../settings';
 import { clean } from '../cmd.clean';
 import { removeSourceMapRefs } from '../../utils';

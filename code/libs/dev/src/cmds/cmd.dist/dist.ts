@@ -16,11 +16,7 @@ import * as init from '../cmd.init';
 /**
  * Bundles the application ready for distribution.
  */
-export async function dist(args: {
-  settings: Settings;
-  target: BundleTarget;
-  silent?: boolean;
-}) {
+export async function dist(args: { settings: Settings; target: BundleTarget; silent?: boolean }) {
   const { target, silent = false, settings } = args;
 
   switch (target) {
@@ -43,10 +39,7 @@ export async function dist(args: {
 /**
  * Bundles the [electron] application.
  */
-export async function distElectron(args: {
-  settings: Settings;
-  silent?: boolean;
-}) {
+export async function distElectron(args: { settings: Settings; silent?: boolean }) {
   const { settings, silent = false } = args;
   const prod = true;
   const electron = settings.electron;
@@ -116,9 +109,7 @@ export async function distElectron(args: {
 
   // Log output.
   const config = settings.electron.builderArgs;
-  const path = config.outputDir
-    ? logging.formatPath(config.outputDir, true)
-    : 'UNKNOWN';
+  const path = config.outputDir ? logging.formatPath(config.outputDir, true) : 'UNKNOWN';
 
   if (!silent) {
     log.info();

@@ -5,11 +5,7 @@ import { Environment } from '../../types';
 /**
  * Displays the logs
  */
-export async function logs(args: {
-  settings: Settings;
-  env: Environment;
-  tail?: boolean;
-}) {
+export async function logs(args: { settings: Settings; env: Environment; tail?: boolean }) {
   const { settings, env, tail } = args;
   const paths = main.logPaths({ appName: settings.name });
   const path = env === 'production' ? paths.prod.path : paths.dev.path;

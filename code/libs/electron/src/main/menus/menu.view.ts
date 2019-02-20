@@ -39,8 +39,7 @@ export function current(args: t.IMenuContext) {
 /**
  * INTERNAL
  */
-const getWindow = (id: number) =>
-  BrowserWindow.getAllWindows().find(window => window.id === id);
+const getWindow = (id: number) => BrowserWindow.getAllWindows().find(window => window.id === id);
 
 const setWindowVisibility = (id: number, isVisible: boolean) => {
   const window = getWindow(id);

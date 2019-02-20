@@ -1,11 +1,7 @@
 import { dirname, join, resolve } from 'path';
 
 import { constants, fs, log, npm, NpmPackage } from '../common';
-import {
-  IUIHarnessConfig,
-  IUIHarnessPaths,
-  IUIHarnessSourcemapsConfig,
-} from '../types';
+import { IUIHarnessConfig, IUIHarnessPaths, IUIHarnessSourcemapsConfig } from '../types';
 import { ElectronSettings } from './ElectronSettings';
 import { WebSettings } from './WebSettings';
 
@@ -64,10 +60,7 @@ export class Settings {
   /**
    * Constructor.
    */
-  private constructor(
-    path: string | undefined,
-    options: IUIHarnessSettingsOptions,
-  ) {
+  private constructor(path: string | undefined, options: IUIHarnessSettingsOptions) {
     // Wrangle path.
     path = path ? path : '.';
     path = path.trim();
@@ -77,9 +70,7 @@ export class Settings {
 
     // Overridden paths.
     const tmpDir = options.tmpDir ? options.tmpDir : PATH.TMP;
-    const templatesDir = options.templatesDir
-      ? options.templatesDir
-      : PATH.TEMPLATES;
+    const templatesDir = options.templatesDir ? options.templatesDir : PATH.TEMPLATES;
 
     // Store values.
     this._paths.file = path;

@@ -271,12 +271,7 @@ const program = yargs
   /**
    * `serve`
    */
-  .command(
-    [CMD.SERVE],
-    'Serve the web distribution.',
-    e => e,
-    e => cmds.serve({ settings }),
-  )
+  .command([CMD.SERVE], 'Serve the web distribution.', e => e, e => cmds.serve({ settings }))
 
   .help('h')
   .alias('h', 'help')
@@ -295,12 +290,7 @@ if (!CMDS.includes(program.argv._[0])) {
  * INTERNAL
  */
 export function wrangleBundleTarget(value: unknown) {
-  return wrangleAndLog<BundleTarget>(
-    'target',
-    value,
-    'electron',
-    BUNDLE_TARGETS,
-  );
+  return wrangleAndLog<BundleTarget>('target', value, 'electron', BUNDLE_TARGETS);
 }
 
 export function wrangleEnvironment(value: unknown, defaultValue: Environment) {

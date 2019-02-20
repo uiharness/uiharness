@@ -46,10 +46,7 @@ export function logNoConfig(args: { target: BundleTarget }) {
 /**
  * Logs common information about the module.
  */
-export function logElectronInfo(args: {
-  settings: Settings;
-  port?: boolean | number;
-}) {
+export function logElectronInfo(args: { settings: Settings; port?: boolean | number }) {
   const { settings } = args;
   const pkg = settings.package;
   const formatPath = (path: string) => logging.formatPath(path, true);
@@ -75,10 +72,7 @@ export function logElectronInfo(args: {
 /**
  * Logs common information about the module.
  */
-export function logWebInfo(args: {
-  settings: Settings;
-  port?: boolean | number;
-}) {
+export function logWebInfo(args: { settings: Settings; port?: boolean | number }) {
   const { settings } = args;
   const pkg = settings.package;
   const formatPath = (path: string) => logging.formatPath(path, true);

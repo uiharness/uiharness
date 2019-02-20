@@ -1,10 +1,5 @@
 import { expect } from 'chai';
-import {
-  Settings,
-  ElectronSettings,
-  WebSettings,
-  IUIHarnessSettingsOptions,
-} from '.';
+import { Settings, ElectronSettings, WebSettings, IUIHarnessSettingsOptions } from '.';
 import { fs, constants } from '../common';
 
 const { PATH } = constants;

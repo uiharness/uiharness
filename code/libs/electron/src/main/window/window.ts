@@ -5,14 +5,7 @@ import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { format } from 'url';
 
-import {
-  constants,
-  is,
-  IUIHarnessRuntimeConfig,
-  path,
-  TAG,
-  value,
-} from '../../common';
+import { constants, is, IUIHarnessRuntimeConfig, path, TAG, value } from '../../common';
 import * as t from '../types';
 
 /**

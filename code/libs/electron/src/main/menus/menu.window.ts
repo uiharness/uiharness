@@ -19,11 +19,7 @@ export function current(
 
   // Monitor for changes that require a redraw of the menu.
   windows.change$
-    .pipe(
-      filter(e =>
-        ['CREATED', 'CLOSED', 'FOCUS', 'VISIBILITY'].includes(e.type),
-      ),
-    )
+    .pipe(filter(e => ['CREATED', 'CLOSED', 'FOCUS', 'VISIBILITY'].includes(e.type)))
     .subscribe(() => args.changed$.next());
 
   // Build list of active windows.
@@ -33,9 +29,7 @@ export function current(
   const getWindow = (id: number) => all.find(window => window.id === id);
 
   const isDevTools = (id: number) => {
-    return windows
-      .byTag(TAG.DEV_TOOLS.key, TAG.DEV_TOOLS.value)
-      .some(ref => ref.id === id);
+    return windows.byTag(TAG.DEV_TOOLS.key, TAG.DEV_TOOLS.value).some(ref => ref.id === id);
   };
 
   const getChildDevTools = (parentId: number) => {
@@ -65,9 +59,7 @@ export function current(
     ];
 
     const devToolsId = getChildDevToolsId(windowId);
-    const devToolsRef = devToolsId
-      ? windows.refs.find(ref => windowId === devToolsId)
-      : undefined;
+    const devToolsRef = devToolsId ? windows.refs.find(ref => windowId === devToolsId) : undefined;
 
     if (devToolsRef && devToolsRef.isVisible) {
       submenu = [
@@ -111,9 +103,7 @@ export function current(
     .map((item, i) => {
       // Append index numbers when more than one UIHarness window.
       // NB: This is to avoid a list of window names all the same.
-      return refs.length > 1
-        ? { ...item, label: `${i + 1}. ${item.label}` }
-        : item;
+      return refs.length > 1 ? { ...item, label: `${i + 1}. ${item.label}` } : item;
     });
 
   // Construct the menu.

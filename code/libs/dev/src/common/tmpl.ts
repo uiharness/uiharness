@@ -24,9 +24,7 @@ export function replace(args: { edge?: string }): TemplateMiddleware {
 /**
  * A template processor for copying files.
  */
-export function copyFile(
-  args: { force?: boolean; noForce?: string[] } = {},
-): TemplateMiddleware {
+export function copyFile(args: { force?: boolean; noForce?: string[] } = {}): TemplateMiddleware {
   return async (req, res) => {
     const { force = false, noForce = [] } = args;
     const path = fs.resolve(`.${req.path.target}`);

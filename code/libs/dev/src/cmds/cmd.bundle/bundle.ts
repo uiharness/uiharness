@@ -1,13 +1,4 @@
-import {
-  BundleTarget,
-  command,
-  fs,
-  Listr,
-  log,
-  logging,
-  logNoConfig,
-  value,
-} from '../../common';
+import { BundleTarget, command, fs, Listr, log, logging, logNoConfig, value } from '../../common';
 import { Settings } from '../../settings';
 import * as init from '../cmd.init';
 import { stats as renderStats } from '../cmd.stats';
@@ -136,9 +127,7 @@ export async function bundleElectron(args: {
   // Log results.
   if (summary && !silent) {
     log.info();
-    log.info(
-      `🤟  Javascript bundling for ${log.yellow('electron')} complete.\n`,
-    );
+    log.info(`🤟  Javascript bundling for ${log.yellow('electron')} complete.\n`);
     log.info.gray(`   • package:     ${pkg.name}`);
     log.info.gray(`   • version:     ${pkg.version}`);
     log.info.gray(`   • env:         ${env.value}`);
@@ -243,8 +232,7 @@ export async function bundleWeb(args: {
 const formatPath = (path: string) => logging.formatPath(path, true);
 
 function toEnv(prod?: boolean) {
-  const value =
-    prod === true || prod === undefined ? 'production' : 'development';
+  const value = prod === true || prod === undefined ? 'production' : 'development';
   const display = log.gray(`(${value})`);
   return { value, display };
 }

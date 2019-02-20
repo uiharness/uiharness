@@ -103,9 +103,7 @@ export function logDir(args: { appName: string }) {
       return join(home, '.config', appName);
 
     default:
-      throw new Error(
-        `Platorm '${platform}' not supported. Must be Mac/OSX, Windows or Linux.`,
-      );
+      throw new Error(`Platorm '${platform}' not supported. Must be Mac/OSX, Windows or Linux.`);
   }
 }
 

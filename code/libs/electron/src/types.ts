@@ -10,10 +10,10 @@ import { IUIHarnessRuntimeConfig } from '@uiharness/types';
  * typically passed as a set of values to functions.
  */
 
-export type IUIHarnessContext<
-  E extends IpcMessage = any,
-  S extends StoreJson = any
-> = IContext<E, S> & {
+export type IUIHarnessContext<E extends IpcMessage = any, S extends StoreJson = any> = IContext<
+  E,
+  S
+> & {
   config: IUIHarnessRuntimeConfig;
 };
 

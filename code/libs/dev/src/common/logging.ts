@@ -15,19 +15,14 @@ export function formatPath(path: string, rootDir?: string | boolean) {
 /**
  * Logs file stats for the given directory
  */
-export async function fileStatsTable(args: {
-  dir: string;
-  showHeader?: boolean;
-}) {
+export async function fileStatsTable(args: { dir: string; showHeader?: boolean }) {
   const { showHeader = false } = args;
   const dir = fs.resolve(args.dir);
 
   const toSize = (bytes: number) => filesize(bytes, { round: 0, spacer: '' });
 
   const getPaths = (dir: string) => {
-    return fs.pathExistsSync(dir)
-      ? fs.readdirSync(dir).map(path => fs.join(dir, path))
-      : [];
+    return fs.pathExistsSync(dir) ? fs.readdirSync(dir).map(path => fs.join(dir, path)) : [];
   };
   const paths = getPaths(dir);
 
@@ -43,9 +38,7 @@ export async function fileStatsTable(args: {
   sizes = R.sortBy(R.prop('bytes'), sizes);
   sizes.reverse();
 
-  const head = showHeader
-    ? ['file', 'size'].map(label => log.gray(label))
-    : undefined;
+  const head = showHeader ? ['file', 'size'].map(label => log.gray(label)) : undefined;
   const table = log.table({ head });
   sizes.forEach(e => {
     let file = fs.basename(e.path);

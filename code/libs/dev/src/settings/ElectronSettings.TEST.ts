@@ -63,10 +63,7 @@ describe('ElectronSettings', () => {
     const electron = settings.electron;
     await electron.ensureEntries();
 
-    const text = fs.readFileSync(
-      fs.join(tmpDir, 'html', 'renderer.html'),
-      'utf8',
-    );
+    const text = fs.readFileSync(fs.join(tmpDir, 'html', 'renderer.html'), 'utf8');
     expect(text).to.include(`<title>My App</title>`);
     expect(text).to.include(`<script src="../../../test/renderer.tsx">`);
   });

@@ -53,16 +53,10 @@ export function wrangleAndLog<T extends string>(
 /**
  * Wrangles an incoming arbument into a supported type.
  */
-export function wrangle<T extends string>(
-  value: unknown,
-  defaultValue: T,
-  supported: T[],
-) {
+export function wrangle<T extends string>(value: unknown, defaultValue: T, supported: T[]) {
   const includes = (value: T) => supported.includes(value);
 
-  let target = (typeof value === 'string'
-    ? value.toLowerCase()
-    : defaultValue) as T;
+  let target = (typeof value === 'string' ? value.toLowerCase() : defaultValue) as T;
 
   if (!includes(target)) {
     const partial = supported.find(name => name.startsWith(target));

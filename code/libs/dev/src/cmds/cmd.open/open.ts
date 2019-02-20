@@ -54,9 +54,7 @@ export async function open(args: { settings: Settings; folder?: boolean }) {
       case 'linux':
         return 'linux';
       default:
-        throw new Error(
-          `Platorm '${platform}' not supported. Must be Mac/OSX, Windows or Linux.`,
-        );
+        throw new Error(`Platorm '${platform}' not supported. Must be Mac/OSX, Windows or Linux.`);
     }
   };
 

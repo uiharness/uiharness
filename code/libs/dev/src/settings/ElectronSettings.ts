@@ -65,9 +65,7 @@ export class ElectronSettings {
     const entry = typeof this.data.entry === 'object' ? this.data.entry : {};
     const main = entry.main || path.main.defaultEntry.code;
     const renderer = entry.renderer || path.renderer.defaultEntry.code;
-    const html = renderer.endsWith('.html')
-      ? renderer
-      : path.renderer.defaultEntry.html;
+    const html = renderer.endsWith('.html') ? renderer : path.renderer.defaultEntry.html;
     return {
       main,
       renderer,
@@ -198,10 +196,7 @@ export class ElectronSettings {
       builder: {
         configFilename: `uiharness.builder.yml`,
         output: join(tmp, 'dist'),
-        files: [
-          join(bundle, 'app.main/**'),
-          join(bundle, 'app.renderer/prod/**'),
-        ],
+        files: [join(bundle, 'app.main/**'), join(bundle, 'app.renderer/prod/**')],
       },
     };
   }
