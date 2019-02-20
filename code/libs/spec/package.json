@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/spec",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Isolated UIHarness data-structures for specifying test specifications.",
   "main": "./lib/index",
   "types": "./lib/index.d.ts",
@@ -13,11 +13,11 @@
     "chmod": "chmod 777 node_modules/.bin/ts"
   },
   "dependencies": {
-    "@platform/util.value": "0.0.24",
-    "@uiharness/types": "0.0.49"
+    "@platform/util.value": "0.0.27",
+    "@uiharness/types": "0.0.50"
   },
   "devDependencies": {
-    "@platform/test": "0.0.27",
+    "@platform/test": "0.0.28",
     "@platform/ts.cli": "3.3.45"
   },
   "files": [
