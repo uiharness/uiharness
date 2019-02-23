@@ -1,13 +1,13 @@
 import { IpcClient, IpcMessage } from '@platform/electron';
 import { BrowserWindow } from 'electron';
 
-import { IUIHarnessContext, IUihEvents, IUIHarnessRuntimeConfig } from '../types';
+import { IUihContext, IUihEvents, IRuntimeConfig } from '../types';
 
-export { IpcMessage, IpcClient, IUIHarnessRuntimeConfig };
+export { IpcMessage, IpcClient, IRuntimeConfig };
 export * from '../types';
 
 export type UIHarnessIpc = IpcClient<IUihEvents>;
-export type IContext = IUIHarnessContext<IUihEvents>;
+export type IContext = IUihContext<IUihEvents>;
 
 /**
  * New window.

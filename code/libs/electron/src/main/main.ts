@@ -3,7 +3,7 @@ import { app, BrowserWindow } from 'electron';
 import * as os from 'os';
 import { join } from 'path';
 
-import { IUIHarnessRuntimeConfig } from '../common';
+import { IRuntimeConfig } from '../common';
 import * as menus from './menus';
 import * as t from './types';
 import * as mainWindow from './window';
@@ -13,9 +13,9 @@ export * from '../types';
 type IResponse<M extends t.IpcMessage> = {
   window: BrowserWindow;
   newWindow: t.NewWindowFactory;
+  windows: main.IWindows;
   log: main.IMainLog;
   ipc: t.IpcClient<M>;
-  windows: main.IWindows;
   store: main.IStoreClient;
 };
 
@@ -23,7 +23,7 @@ type IResponse<M extends t.IpcMessage> = {
  * Default loader for a UIHarness [main] process.
  */
 export function init<M extends t.IpcMessage>(args: {
-  config: IUIHarnessRuntimeConfig; //   The [.uiharess/config.json] file.
+  config: IRuntimeConfig; //   The [.uiharess/config.json] file.
   name?: string; //                     The display name of the window.
   ipc?: t.IpcClient<M>; //                Existing IPC client if aleady initialized.
   log?: main.IMainLog; //               Existing log if already initialized.

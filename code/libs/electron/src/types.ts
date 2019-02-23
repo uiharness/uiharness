@@ -3,18 +3,15 @@ export { ILog };
 export * from '@uiharness/types';
 
 import { IpcMessage, IContext, StoreJson } from '@platform/electron';
-import { IUIHarnessRuntimeConfig } from '@uiharness/types';
+import { IRuntimeConfig } from '@uiharness/types';
 
 /**
  * Standard context for a running UIHarness instance that is
  * typically passed as a set of values to functions.
  */
 
-export type IUIHarnessContext<E extends IpcMessage = any, S extends StoreJson = any> = IContext<
-  E,
-  S
-> & {
-  config: IUIHarnessRuntimeConfig;
+export type IUihContext<E extends IpcMessage = any, S extends StoreJson = any> = IContext<E, S> & {
+  config: IRuntimeConfig;
 };
 
 /**
