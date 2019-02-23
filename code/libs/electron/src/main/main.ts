@@ -16,6 +16,7 @@ type IResponse<M extends t.IpcMessage> = {
   log: main.IMainLog;
   ipc: t.IpcClient<M>;
   windows: main.IWindows;
+  store: main.IStoreClient;
 };
 
 /**
@@ -71,7 +72,7 @@ export function init<M extends t.IpcMessage>(args: {
       menus.manage({ ...context, newWindow });
 
       // Finish up.
-      const res: IResponse<M> = { window, newWindow, log, ipc, windows };
+      const res: IResponse<M> = { window, newWindow, log, ipc, windows, store };
       resolve(res);
     });
 
