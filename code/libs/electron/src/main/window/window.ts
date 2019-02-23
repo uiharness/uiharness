@@ -29,8 +29,8 @@ export function create(args: t.IContext & t.INewWindowArgs) {
     defaultHeight,
     file,
   });
-  const state$ = new Subject();
   const saveState = () => state.saveState(window);
+  const state$ = new Subject();
   state$.pipe(debounceTime(200)).subscribe(() => saveState());
 
   /**
@@ -70,6 +70,7 @@ export function create(args: t.IContext & t.INewWindowArgs) {
    * Update state on change.
    */
   window.on('moved', () => state$.next());
+  window.on('resize', () => state$.next());
   window.on('closed', () => saveState());
 
   // Finish up.
