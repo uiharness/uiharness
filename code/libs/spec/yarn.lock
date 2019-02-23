@@ -172,10 +172,10 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.9.tgz#693e76a52f61a2f1e7fb48c0eef167b95ea4ffd0"
   integrity sha512-sCZy4SxP9rN2w30Hlmg5dtdRwgYQfYRiLo9usw8X9cxlf+H4FqM1xX7+sNH7NNKVdbXMJWqva7iyy+fxh/V7fA==
 
-"@uiharness/types@0.0.51":
-  version "0.0.51"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.51.tgz#c8991162d1df4bb7af658fb14471111523784214"
-  integrity sha512-za/M1p6BeDKLcgHKJpQmVZgba+em3+V+cVqfKg4EZxGBNVX2FhxLt0F5j1Gf31Uws4xg8TJMre4bVHva0oQ6VQ==
+"@uiharness/types@0.0.52":
+  version "0.0.52"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.52.tgz#20f991d746f900916690fbdc612a0c0522705871"
+  integrity sha512-2m5papJ+s7mcWXsFpcqqcg+fhCFJm1joDjKgOvGMNPRk866iVCJ9I3FLNizZUeUk8RNx2Je1AGy2Qqdl6WlZ+w==
 
 ansi-escapes@^3.0.0:
   version "3.2.0"
