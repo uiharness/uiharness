@@ -29,7 +29,8 @@
     "electron": "4.0.5"
   },
   "files": [
-    "lib"
+    "lib",
+    "css"
   ],
   "license": "MIT"
 }

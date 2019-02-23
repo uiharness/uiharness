@@ -46,8 +46,7 @@
   },
   "files": [
     "lib",
-    "tmpl",
-    "css"
+    "tmpl"
   ],
   "keywords": [
     "design",
