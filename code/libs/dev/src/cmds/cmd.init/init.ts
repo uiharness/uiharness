@@ -61,11 +61,10 @@ export async function init(
   await copyPackage({ settings, prod });
 
   // Don't continue if already initialized.
-  if (!force && (await getIsInitialized({ settings }))) {
+  const isInitialized = await getIsInitialized({ settings });
+  if (!force && isInitialized) {
     return;
   }
-
-  // const flags = settings.init();
 
   if (flags.scripts) {
     await pkg.setFields('scripts', SCRIPTS).save();
@@ -83,16 +82,29 @@ export async function init(
 
   if (flags.files) {
     const noForce = ['.gitignore'];
+
+    const filter = (path: string) => {
+      // Don't write files for platforms that are not configured within the settings.
+      const { electron, web } = settings;
+      if (path.endsWith(electron.entry.main) || path.endsWith(electron.entry.renderer)) {
+        return electron.exists;
+      }
+      if (path.endsWith(web.entry.code)) {
+        return web.exists;
+      }
+      return true;
+    };
+
     await tmpl
       .create()
       .add(settings.path.templates.base)
-      .use(tmpl.copyFile({ force, noForce }))
+      .use(tmpl.copyFile({ force, noForce, filter }))
       .execute();
   }
 }
 
 /**
- * Removes configuration files.
+ * Removes files.
  */
 async function reset(args: { settings: Settings }) {
   const { settings } = args;
@@ -171,7 +183,7 @@ async function copyPackage(args: { settings: Settings; prod: boolean }) {
  */
 async function getIsInitialized(args: { settings: Settings }) {
   const state = await getInitializedState(args);
-  return Object.keys(state).every(key => state[key] === true);
+  return Object.keys(state).every(key => state[key] !== false);
 }
 
 /**
@@ -188,9 +200,9 @@ async function getInitializedState(args: { settings: Settings }) {
 
   const hasConfig = await exists('./uiharness.yml');
   const hasSrcFolder = await exists('./src');
-  const hasElectronMainEntry = await exists(electronEntry.main);
-  const hasElectronRendererEntry = await exists(electronEntry.renderer);
-  const hasWebEntry = await exists(web.entry.code);
+  const hasElectronMainEntry = electron.exists ? await exists(electronEntry.main) : null;
+  const hasElectronRendererEntry = electron.exists ? await exists(electronEntry.renderer) : null;
+  const hasWebEntry = web.exists ? await exists(web.entry.code) : null;
   const hasAllScripts = Object.keys(scripts).every(key => scripts[key]);
 
   const result = {
