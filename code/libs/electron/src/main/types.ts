@@ -1,9 +1,9 @@
-import { IpcClient, IpcMessage } from '@platform/electron';
+import { IpcClient, IpcMessage, IStoreClient } from '@platform/electron';
 import { BrowserWindow } from 'electron';
 
-import { IUihContext, IUihEvents, IRuntimeConfig } from '../types';
+import { IUihContext, IUihEvents, IUihRuntimeConfig } from '../types';
 
-export { IpcMessage, IpcClient, IRuntimeConfig };
+export { IpcMessage, IpcClient, IUihRuntimeConfig, IStoreClient };
 export * from '../types';
 
 export type UIHarnessIpc = IpcClient<IUihEvents>;

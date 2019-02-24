@@ -1,4 +1,4 @@
-export type IRuntimeConfig = {
+export type IUihRuntimeConfig = {
   name: string;
   electron: {
     port: number;

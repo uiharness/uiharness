@@ -1,9 +1,9 @@
-import { ILog } from '@platform/log/lib/types';
-export { ILog };
+export { IStoreClient, IpcClient, ILog } from '@platform/electron/lib/types';
+
 export * from '@uiharness/types';
 
-import { IpcMessage, IContext, StoreJson } from '@platform/electron';
-import { IRuntimeConfig } from '@uiharness/types';
+import { IpcMessage, IContext, StoreJson } from '@platform/electron/lib/types';
+import { IUihRuntimeConfig } from '@uiharness/types';
 
 /**
  * Standard context for a running UIHarness instance that is
@@ -11,7 +11,7 @@ import { IRuntimeConfig } from '@uiharness/types';
  */
 
 export type IUihContext<E extends IpcMessage = any, S extends StoreJson = any> = IContext<E, S> & {
-  config: IRuntimeConfig;
+  config: IUihRuntimeConfig;
 };
 
 /**
