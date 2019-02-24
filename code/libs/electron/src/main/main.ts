@@ -1,15 +1,16 @@
 import * as main from '@platform/electron/lib/main';
+import { fs } from '@platform/fs';
 import { app, BrowserWindow } from 'electron';
 import * as os from 'os';
-import { join } from 'path';
 
-import { IRuntimeConfig } from '../common';
+import { is, IUihRuntimeConfig, value } from '../common';
 import * as menus from './menus';
 import * as t from './types';
 import * as mainWindow from './window';
 
 export * from '../types';
 
+type Env = 'prod' | 'dev';
 type IResponse<M extends t.IpcMessage> = {
   window: BrowserWindow;
   newWindow: t.NewWindowFactory;
@@ -23,7 +24,7 @@ type IResponse<M extends t.IpcMessage> = {
  * Default loader for a UIHarness [main] process.
  */
 export function init<M extends t.IpcMessage>(args: {
-  config: IRuntimeConfig; //   The [.uiharess/config.json] file.
+  config: IUihRuntimeConfig; //   The [.uiharess/config.json] file.
   name?: string; //                     The display name of the window.
   ipc?: t.IpcClient<M>; //                Existing IPC client if aleady initialized.
   log?: main.IMainLog; //               Existing log if already initialized.
@@ -88,20 +89,26 @@ export function init<M extends t.IpcMessage>(args: {
 /**
  * Determines the path to the logs for the app.
  */
-export function logDir(args: { appName: string }) {
-  const platform = os.platform();
-  const home = os.homedir();
+export function logDir(args: { appName: string; env?: Env }) {
+  const env = toEnv(args.env);
   const appName = args.appName.replace(/\s/g, '-').toLowerCase();
 
+  if (env === 'dev') {
+    return fs.join(fs.resolve('./.dev/log'), appName);
+  }
+
+  // Platform specific paths.
+  const platform = os.platform();
+  const home = os.homedir();
   switch (platform) {
     case 'darwin':
-      return join(home, 'Library/Logs', appName);
+      return fs.join(home, 'Library/Logs', appName);
 
     case 'win32':
-      return join(home, 'AppData\\Roaming', appName);
+      return fs.join(home, 'AppData\\Roaming', appName);
 
     case 'linux':
-      return join(home, '.config', appName);
+      return fs.join(home, '.config', appName);
 
     default:
       throw new Error(`Platorm '${platform}' not supported. Must be Mac/OSX, Windows or Linux.`);
@@ -111,15 +118,20 @@ export function logDir(args: { appName: string }) {
 /**
  * Derives the set of log related paths for the app.
  */
-export function logPaths(args: { appName: string }) {
+export function paths(args: { appName: string; env?: Env }) {
   const { appName } = args;
-  const dir = logDir({ appName });
-  return main.logger.getPaths({ dir });
+  const env = toEnv(args.env);
+  const log = main.logger.getPaths({ dir: logDir({ appName, env }) });
+  return { env, log };
 }
 
 /**
  * [INTERNAL]
  */
+function toEnv(env?: Env) {
+  return value.defaultValue(env, is.prod ? 'prod' : 'dev');
+}
+
 function getNewWindowPosition(offset: number) {
   const window = BrowserWindow.getFocusedWindow();
   const bounds = window && window.getBounds();
