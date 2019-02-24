@@ -23,8 +23,8 @@ export async function open(args: { settings: Settings; folder?: boolean }) {
 
   const runOpen = (path: string, type: 'app' | 'folder') => {
     const appName = settings.name;
-    const logPaths = main.logPaths({ appName });
-    const logCmd = tailCommand(logPaths.dir, logPaths.prod.filename);
+    const paths = main.paths({ appName });
+    const logCmd = tailCommand(paths.log.dir, paths.log.prod.filename);
 
     const action = type === 'app' ? 'Open  ' : 'Folder';
 
