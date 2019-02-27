@@ -1,6 +1,5 @@
 import '@babel/polyfill';
 import '../node_modules/@uiharness/electron/css/normalize.css';
-
 import * as React from 'react';
 import { renderer } from '@platform/electron/lib/renderer';
 import { Test } from '../src/components/Test';
