@@ -8,5 +8,6 @@ rm -rf static
 rm -rf test
 rm -rf .cache
 rm -rf .uiharness
+rm -rf .dev
 
 yarn sl
