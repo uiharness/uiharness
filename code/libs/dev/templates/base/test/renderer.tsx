@@ -1,5 +1,5 @@
-import '../node_modules/@uiharness/dev/css/normalize.css';
-
+import '@babel/polyfill';
+import '../node_modules/@uiharness/electron/css/normalize.css';
 import * as React from 'react';
 import { renderer } from '@platform/electron/lib/renderer';
 import { Test } from '../src/components/Test';
@@ -24,6 +24,4 @@ export class App extends React.PureComponent {
  * Reference your component(s) here or pull in the [UIHarness]
  * visual testing host.
  */
-renderer
-  .render(<Test />, 'root')
-  .then(context => context.log.info('renderer loaded!'));
+renderer.render(<Test />, 'root').then(context => context.log.info('renderer loaded!'));

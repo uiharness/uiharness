@@ -24,7 +24,11 @@ export function replace(args: { edge?: string }): TemplateMiddleware {
 /**
  * A template processor for copying files.
  */
-export function copyFile(args: { force?: boolean; noForce?: string[] } = {}): TemplateMiddleware {
+export function copyFile(
+  args: { force?: boolean; noForce?: string[]; filter?: (path: string) => boolean } = {},
+): TemplateMiddleware {
+  const filter = (path: string) => (args.filter ? args.filter(path) : true);
+
   return async (req, res) => {
     const { force = false, noForce = [] } = args;
     const path = fs.resolve(`.${req.path.target}`);
@@ -33,8 +37,10 @@ export function copyFile(args: { force?: boolean; noForce?: string[] } = {}): Te
     const exists = await fs.pathExists(path);
 
     if (!exists || (force && !noForce.includes(filename))) {
-      await fs.ensureDir(dir);
-      await fs.writeFile(path, req.buffer);
+      if (filter(path)) {
+        await fs.ensureDir(dir);
+        await fs.writeFile(path, req.buffer);
+      }
     }
 
     res.complete();

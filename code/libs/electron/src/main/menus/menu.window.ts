@@ -110,7 +110,7 @@ export function current(
   const menu: MenuItem = {
     label: 'Window',
     submenu: [
-      { label: 'New Window', click: () => newWindow() },
+      { label: 'New Window', accelerator: 'CommandOrControl+N', click: () => newWindow() },
       { role: 'close' },
       { role: 'minimize' },
       { type: 'separator' },

@@ -4,6 +4,7 @@
     "outDir": "lib",
     "moduleResolution": "node",
     "target": "esnext",
-    "jsx": "react"
+    "jsx": "react",
+    "skipLibCheck": true
   }
 }
