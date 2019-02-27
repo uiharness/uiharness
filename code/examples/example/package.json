@@ -6,6 +6,7 @@
     "ui": "yarn sl && ui $@",
     "start": "ui start $@",
     "sl": "msync sl && sh ./sh/copy-bin.sh",
+    "build": "tsc $@",
     "reset": "sh ./sh/reset.sh",
     "nuke": "sh ./sh/nuke.sh"
   },

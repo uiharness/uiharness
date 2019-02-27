@@ -7,3 +7,4 @@ test
 yarn.lock
 uiharness.yml
 uiharness.builder.yml
+tsconfig.json
