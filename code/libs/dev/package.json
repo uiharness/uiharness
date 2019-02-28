@@ -4,8 +4,7 @@
   "version": "0.1.32",
   "main": "lib/index",
   "bin": {
-    "ui": "lib/bin/index.js",
-    "uiharness": "lib/bin/index.js"
+    "ui": "lib/bin/index.js"
   },
   "scripts": {
     "test": "yarn chmod && ts test",
@@ -46,7 +45,7 @@
   },
   "files": [
     "lib",
-    "tmpl"
+    "templates"
   ],
   "keywords": [
     "design",
