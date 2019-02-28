@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { format } from 'url';
 
-import { constants, is, IUihRuntimeConfig, path, TAG, value } from '../../common';
+import { constants, IUihRuntimeConfig, path, TAG, value } from '../../common';
 import * as t from '../types';
 
 /**
@@ -13,6 +13,7 @@ import * as t from '../types';
  */
 export function create(args: t.IContext & t.INewWindowArgs) {
   const { id, store, config, log, ipc, windows } = args;
+
   const context: t.IContext = { config, id, store, log, ipc, windows };
   const title = args.name || config.name;
   const devTools = value.defaultValue(args.devTools, true);
@@ -56,7 +57,7 @@ export function create(args: t.IContext & t.INewWindowArgs) {
   window.once('ready-to-show', () => {
     window.show();
     window.setTitle(title);
-    if (devTools && is.dev) {
+    if (devTools && main.is.dev) {
       main.devTools.create({
         ...context,
         parent: window,
@@ -73,8 +74,13 @@ export function create(args: t.IContext & t.INewWindowArgs) {
   window.on('resize', () => state$.next());
   window.on('closed', () => saveState());
 
+  /**
+   * Load the window URL.
+   */
+  const paths = getPaths(config);
+  window.loadURL(paths.url);
+
   // Finish up.
-  window.loadURL(getPaths(config).url);
   return window;
 }
 
@@ -89,6 +95,6 @@ function getPaths(config: IUihRuntimeConfig) {
     pathname: path.resolve(config.electron.renderer),
     slashes: true,
   });
-  const url = is.dev ? dev : prod;
+  const url = main.is.dev ? dev : prod;
   return { dev, prod, url };
 }

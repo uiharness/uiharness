@@ -1,2 +1,2 @@
-export { is, path } from './common';
+export { path } from './common';
 export * from './types';

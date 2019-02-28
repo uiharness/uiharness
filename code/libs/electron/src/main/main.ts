@@ -3,7 +3,7 @@ import { fs } from '@platform/fs';
 import { app, BrowserWindow } from 'electron';
 import * as os from 'os';
 
-import { is, IUihRuntimeConfig, value } from '../common';
+import { IUihRuntimeConfig, value } from '../common';
 import * as menus from './menus';
 import * as t from './types';
 import * as mainWindow from './window';
@@ -129,7 +129,7 @@ export function paths(args: { appName: string; env?: Env }) {
  * [INTERNAL]
  */
 function toEnv(env?: Env) {
-  return value.defaultValue(env, is.prod ? 'prod' : 'dev');
+  return value.defaultValue(env, main.is.prod ? 'prod' : 'dev');
 }
 
 function getNewWindowPosition(offset: number) {
