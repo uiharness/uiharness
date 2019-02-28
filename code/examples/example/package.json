@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "0.0.117",
+  "version": "0.0.120",
   "scripts": {
     "postinstall": "ui init",
     "ui": "yarn sl && ui $@",
@@ -12,11 +12,11 @@
   },
   "dependencies": {
     "@platform/electron": "0.0.98",
-    "@uiharness/electron": "0.3.134",
+    "@uiharness/electron": "0.3.135",
     "react": "^16.8.3"
   },
   "devDependencies": {
-    "@uiharness/dev": "0.1.32",
+    "@uiharness/dev": "0.1.35",
     "typescript": "3.3.3"
   },
   "license": "MIT",
