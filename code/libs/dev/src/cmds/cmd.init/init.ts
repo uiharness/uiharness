@@ -33,9 +33,7 @@ export async function prepare(args: { settings: Settings; prod: boolean }) {
   const { settings, prod } = args;
   const isInitialized = await getIsInitialized({ settings });
   const files = !isInitialized;
-  if (settings.sourcemaps.strip.length > 0) {
-    await removeSourceMapRefs(...settings.sourcemaps.strip);
-  }
+  await stripSourceMaps({ settings });
   return init({ settings, prod, files });
 }
 
@@ -65,6 +63,8 @@ export async function init(
   if (!force && isInitialized) {
     return;
   }
+
+  await stripSourceMaps({ settings });
 
   if (flags.scripts) {
     await pkg.setFields('scripts', SCRIPTS).save();
@@ -128,7 +128,7 @@ async function reset(args: { settings: Settings }) {
 }
 
 /**
- * INTERNAL
+ * [INTERNAL]
  */
 
 /**
@@ -216,4 +216,14 @@ async function getInitializedState(args: { settings: Settings }) {
 
   // Finish up.
   return result;
+}
+
+/**
+ * Removes any source-maps that are declared within the config.
+ */
+async function stripSourceMaps(args: { settings: Settings }) {
+  const { settings } = args;
+  if (settings.sourcemaps.strip.length > 0) {
+    await removeSourceMapRefs(...settings.sourcemaps.strip);
+  }
 }

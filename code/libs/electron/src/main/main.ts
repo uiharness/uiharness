@@ -10,7 +10,6 @@ import * as mainWindow from './window';
 
 export * from '../types';
 
-type Env = 'prod' | 'dev';
 type IResponse<M extends t.IpcMessage> = {
   window: BrowserWindow;
   newWindow: t.NewWindowFactory;
@@ -97,11 +96,11 @@ export function init<M extends t.IpcMessage>(args: {
 /**
  * Determines the path to the logs for the app.
  */
-export function logDir(args: { appName: string; env?: Env }) {
+export function logDir(args: { appName: string; env?: t.Environment }) {
   const env = toEnv(args.env);
   const appName = args.appName.replace(/\s/g, '-').toLowerCase();
 
-  if (env === 'dev') {
+  if (env === 'development') {
     return fs.join(fs.resolve('./.dev/log'), appName);
   }
 
@@ -126,7 +125,7 @@ export function logDir(args: { appName: string; env?: Env }) {
 /**
  * Derives the set of log related paths for the app.
  */
-export function paths(args: { appName: string; env?: Env }) {
+export function paths(args: { appName: string; env?: t.Environment }) {
   const { appName } = args;
   const env = toEnv(args.env);
   const log = main.logger.getPaths({ dir: logDir({ appName, env }) });
@@ -136,8 +135,8 @@ export function paths(args: { appName: string; env?: Env }) {
 /**
  * [INTERNAL]
  */
-function toEnv(env?: Env) {
-  return value.defaultValue(env, main.is.prod ? 'prod' : 'dev');
+function toEnv(env?: t.Environment) {
+  return value.defaultValue(env, main.is.prod ? 'production' : 'development');
 }
 
 function getNewWindowPosition(offset: number) {
