@@ -13,7 +13,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@platform/ts": "3.3.55"
+    "@platform/ts": "3.3.56"
   },
   "files": [
     "lib"

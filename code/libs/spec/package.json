@@ -13,12 +13,12 @@
     "chmod": "chmod 777 node_modules/.bin/ts"
   },
   "dependencies": {
-    "@platform/util.value": "0.0.29",
+    "@platform/util.value": "0.0.30",
     "@uiharness/types": "0.0.57"
   },
   "devDependencies": {
     "@platform/test": "0.0.29",
-    "@platform/ts": "3.3.55"
+    "@platform/ts": "3.3.56"
   },
   "files": [
     "lib"
