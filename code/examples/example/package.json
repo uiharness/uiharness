@@ -6,12 +6,12 @@
     "ui": "yarn sl && ui $@",
     "start": "ui start $@",
     "sl": "msync sl && sh ./sh/copy-bin.sh",
-    "build__": "tsc $@",
+    "build": "tsc $@",
     "reset": "sh ./sh/reset.sh",
     "nuke": "sh ./sh/nuke.sh"
   },
   "dependencies": {
-    "@platform/electron": "0.0.97",
+    "@platform/electron": "0.0.98",
     "@uiharness/electron": "0.3.132"
   },
   "devDependencies": {

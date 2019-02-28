@@ -13,9 +13,9 @@
     "chmod": "chmod 777 node_modules/.bin/ts"
   },
   "dependencies": {
-    "@platform/electron": "0.0.97",
+    "@platform/electron": "0.0.98",
     "@platform/log": "0.0.78",
-    "@platform/ui.object": "0.0.41",
+    "@platform/ui.object": "0.0.44",
     "@platform/react": "0.0.8",
     "@platform/util.value": "0.0.28",
     "@types/app-root-path": "1.2.4",

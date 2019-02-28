@@ -45,16 +45,15 @@
     glamor "2.20.40"
     tinycolor2 "1.4.1"
 
-"@platform/electron@0.0.97":
-  version "0.0.97"
-  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.0.97.tgz#f1a06d4f89343b212b39daa9c1e7b1ac93d88bf2"
-  integrity sha512-lsoygtv1F7fYs/Ym+KqMXLEbwDEo8zlAZPeL4wSBtWn3VY+Ap1KPUzA13ysGDsjFj8l7Zv8zf6+fGpIhQW0chg==
+"@platform/electron@0.0.98":
+  version "0.0.98"
+  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.0.98.tgz#75ae7f57180641ab00c2ca7ca01fdf12b8161b9b"
+  integrity sha512-TUKCGaEvhqRxOrRxP9WV66liAGlSYes+A3eivVQuLvBEZ6TaX5R2GY5MYPV+pPWr1B96QGp6xyRVIHsrU78DJA==
   dependencies:
     "@babel/polyfill" "7.2.5"
     "@platform/fs" "0.0.36"
     "@platform/log" "0.0.78"
     "@platform/react" "0.0.8"
-    "@platform/util.is" "0.0.27"
     "@types/app-root-path" "1.2.4"
     app-root-path "2.1.0"
     electron-log "3.0.1"
@@ -138,10 +137,10 @@
     "@platform/ts.libs" "3.3.2"
     "@platform/util.exec" "0.0.15"
 
-"@platform/ui.object@0.0.41":
-  version "0.0.41"
-  resolved "https://registry.yarnpkg.com/@platform/ui.object/-/ui.object-0.0.41.tgz#97286c23aa1729cd395a7f67f2eaffe00533b772"
-  integrity sha512-LyshGSq7jzx9gRi+NPfLbcHO2vQIyv5weWNgQb7tnUS6Zk30IF40VVBWhPuUk0iS1NlTlWbwkY1+jEG1nQNiYw==
+"@platform/ui.object@0.0.44":
+  version "0.0.44"
+  resolved "https://registry.yarnpkg.com/@platform/ui.object/-/ui.object-0.0.44.tgz#4aa9fbc695eddd467f17096c4cbf28a55d3d7079"
+  integrity sha512-HMo+0GctI5dlgfwZOWXg5OnDvWDTi3EEpfUnfutX4mIUwHta+ZZ+UtNjxHKg3dSQoUqqVcoregmObMww/1Fagw==
   dependencies:
     "@platform/react" "0.0.8"
     react-inspector "2.3.1"
