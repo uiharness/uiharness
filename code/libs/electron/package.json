@@ -13,10 +13,10 @@
     "chmod": "chmod 777 node_modules/.bin/ts"
   },
   "dependencies": {
-    "@platform/electron": "0.0.93",
+    "@platform/electron": "0.0.97",
     "@platform/log": "0.0.78",
-    "@platform/ui.object": "0.0.39",
-    "@platform/react": "0.0.6",
+    "@platform/ui.object": "0.0.41",
+    "@platform/react": "0.0.8",
     "@platform/util.value": "0.0.28",
     "@types/app-root-path": "1.2.4",
     "@uiharness/types": "0.0.54",
@@ -26,11 +26,11 @@
     "@platform/test": "0.0.29",
     "@platform/ts": "3.3.54",
     "@types/electron-window-state": "2.0.33",
-    "electron": "4.0.5"
+    "electron": "4.0.6"
   },
   "files": [
     "lib",
-    "css"
+    "reset.css"
   ],
   "license": "MIT"
 }
