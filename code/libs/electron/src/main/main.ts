@@ -32,57 +32,65 @@ export function init<M extends t.IpcMessage>(args: {
   windows?: main.IWindows; //           The gloal windows manager.
 }) {
   return new Promise<IResponse<M>>(async (resolve, reject) => {
-    const { config, devTools } = args;
-
-    /**
-     * Initialize [@platform/electron] module.
-     */
-    const appName = config.name;
-    const res = await main.init<M>({
-      log: args.log || logDir({ appName }),
-      ipc: args.ipc,
-      windows: args.windows,
-    });
-    const { log, ipc, id, store, windows } = res;
-    const context: t.IContext = { config, id, store, log, ipc, windows };
-
-    /**
-     * Initialize application when `ready`.
-     */
-    app.on('ready', () => {
-      const name = args.name || config.name || app.getName();
-      const window = mainWindow.create({ ...context, name, devTools, windows });
+    try {
+      const { config, devTools } = args;
 
       /**
-       * Factory for spawning a new window.
+       * Initialize [@platform/electron] module.
        */
-      const newWindow: t.NewWindowFactory = (options = {}) => {
-        const { x, y } = getNewWindowPosition(20);
-        return mainWindow.create({
-          name: options.name || name,
-          defaultX: x,
-          defaultY: y,
-          ...context,
-          ...options,
-        });
-      };
+      const appName = config.name;
+      const res = await main.init<M>({
+        log: args.log || logDir({ appName }),
+        ipc: args.ipc,
+        windows: args.windows,
+      });
+      const { log, ipc, id, store, windows } = res;
+      const context: t.IContext = { config, id, store, log, ipc, windows };
 
       /**
-       * Start the menu manager.
+       * Initialize application when `ready`.
        */
-      menus.manage({ ...context, newWindow });
+      app.on('ready', () => {
+        try {
+          const name = args.name || config.name || app.getName();
+          const window = mainWindow.create({ ...context, name, devTools, windows });
 
-      // Finish up.
-      const res: IResponse<M> = { window, newWindow, log, ipc, windows, store };
-      resolve(res);
-    });
+          /**
+           * Factory for spawning a new window.
+           */
+          const newWindow: t.NewWindowFactory = (options = {}) => {
+            const { x, y } = getNewWindowPosition(20);
+            return mainWindow.create({
+              name: options.name || name,
+              defaultX: x,
+              defaultY: y,
+              ...context,
+              ...options,
+            });
+          };
 
-    /**
-     * [Quit] when all windows are closed.
-     */
-    app.on('window-all-closed', () => {
-      app.quit();
-    });
+          /**
+           * Start the menu manager.
+           */
+          menus.manage({ ...context, newWindow });
+
+          // Finish up.
+          const res: IResponse<M> = { window, newWindow, log, ipc, windows, store };
+          resolve(res);
+        } catch (error) {
+          reject(error);
+        }
+      });
+
+      /**
+       * [Quit] when all windows are closed.
+       */
+      app.on('window-all-closed', () => {
+        app.quit();
+      });
+    } catch (error) {
+      reject(error);
+    }
   });
 }
 
