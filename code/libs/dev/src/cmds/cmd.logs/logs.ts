@@ -1,4 +1,4 @@
-import { main, command, log, logging, fs } from '../../common';
+import { main, exec, log, logging, fs } from '../../common';
 import { Settings } from '../../settings';
 import { Environment } from '../../types';
 
@@ -32,13 +32,15 @@ export async function logs(args: { settings: Settings; env: Environment; tail?: 
    * Display the log contents.
    */
   if (tail) {
-    await command()
+    await exec.cmd
+      .create()
       .add('tail')
-      .alias('-f')
+      .add('-f')
       .add(path)
       .run();
   } else {
-    await command()
+    await exec.cmd
+      .create()
       .add('cat')
       .add(path)
       .run();

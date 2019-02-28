@@ -1,6 +1,6 @@
 import * as os from 'os';
 
-import { command, fs, log, logging, main } from '../../common';
+import { exec, fs, log, logging, main } from '../../common';
 import { Settings } from '../../settings';
 
 /**
@@ -32,7 +32,8 @@ export async function open(args: { settings: Settings; folder?: boolean }) {
     log.info(`🖐  ${action}  ${formatPath(path)}`);
     log.info.gray(`   logs:   ${logCmd}`);
     log.info();
-    return command()
+    return exec.cmd
+      .create()
       .add(`open "${path}"`)
       .run();
   };

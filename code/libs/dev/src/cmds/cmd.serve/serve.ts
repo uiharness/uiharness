@@ -1,4 +1,4 @@
-import { command, fs, log, logNoConfig } from '../../common';
+import { exec, fs, log, logNoConfig } from '../../common';
 import { Settings } from '../../settings';
 import { bundleWeb } from '../cmd.bundle';
 import { stats as renderStats } from '../cmd.stats';
@@ -32,8 +32,10 @@ export async function serve(args: { settings: Settings; bundle?: boolean }) {
   renderStats({ settings, prod, target: 'web' });
 
   // Start the server.
-  await command()
-    .addLine(`cd ${dir}`)
+  await exec.cmd
+    .create()
+    .add(`cd ${dir}`)
+    .newLine()
     .add(`serve`)
     .run();
 }

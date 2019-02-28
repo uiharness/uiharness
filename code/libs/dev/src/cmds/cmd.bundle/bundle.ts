@@ -1,4 +1,4 @@
-import { BundleTarget, command, fs, Listr, log, logging, logNoConfig, value } from '../../common';
+import { BundleTarget, exec, fs, Listr, log, logging, logNoConfig, value } from '../../common';
 import { Settings } from '../../settings';
 import * as init from '../cmd.init';
 import { stats as renderStats } from '../cmd.stats';
@@ -77,20 +77,24 @@ export async function bundleElectron(args: {
     renderer: silent ? 'silent' : undefined,
   });
 
-  const cmd = command()
-    .addLine(`export NODE_ENV="${env.value}"`)
-    .addLine(`cd ${fs.resolve('.')}`);
+  const cmd = exec.cmd
+    .create()
+    .add(`export NODE_ENV="${env.value}"`)
+    .newLine()
+    .add(`cd ${fs.resolve('.')}`)
+    .newLine();
 
   if (main) {
     tasks.add({
       title: `Bundling      ${log.cyan('main')}     ${env.display}`,
       task: () =>
         cmd
+          .clone()
           .add(`parcel`)
           .add(`build ${entry.main}`)
-          .arg(`--out-dir ${out.main.dir}`)
-          .arg(`--out-file ${out.main.file}`)
-          .arg(`--target electron`)
+          .add(`--out-dir ${out.main.dir}`)
+          .add(`--out-file ${out.main.file}`)
+          .add(`--target electron`)
           .add(bundlerArgs.cmd)
           .run({ silent: true }),
     });
@@ -101,12 +105,13 @@ export async function bundleElectron(args: {
       title: `Bundling      ${log.cyan('renderer')} ${env.display}`,
       task: () =>
         cmd
+          .clone()
           .add(`parcel`)
           .add(`build ${entry.html}`)
           .add(`--public-url ./`)
-          .arg(`--out-dir ${out.renderer.dir}`)
-          .arg(`--out-file ${out.renderer.file}`)
-          .arg(`--target electron`)
+          .add(`--out-dir ${out.renderer.dir}`)
+          .add(`--out-file ${out.renderer.file}`)
+          .add(`--target electron`)
           .add(bundlerArgs.cmd)
           .run({ silent: true }),
     });
@@ -182,14 +187,17 @@ export async function bundleWeb(args: {
     renderer: silent ? 'silent' : undefined,
   });
 
-  const cmd = command()
-    .addLine(`export NODE_ENV="${env.value}"`)
-    .addLine(`cd ${fs.resolve('.')}`)
+  const cmd = exec.cmd
+    .create()
+    .add(`export NODE_ENV="${env.value}"`)
+    .newLine()
+    .add(`cd ${fs.resolve('.')}`)
+    .newLine()
     .add(`parcel`)
     .add(`build ${entry.html}`)
     .add(`--public-url ./`)
-    .arg(`--out-dir ${out.dir}`)
-    .arg(`--out-file ${out.file}`)
+    .add(`--out-dir ${out.dir}`)
+    .add(`--out-file ${out.file}`)
     .add(web.bundlerArgs.cmd);
 
   tasks.add({
