@@ -1,5 +1,3 @@
-import { spawn } from 'child_process';
-
 import {
   BundleTarget,
   fs,
@@ -8,6 +6,7 @@ import {
   logNoConfig,
   logWebInfo,
   parcel,
+  exec,
 } from '../../common';
 import { Settings } from '../../settings';
 import { bundleElectron } from '../cmd.bundle';
@@ -71,7 +70,10 @@ export async function startElectron(args: { settings: Settings }) {
 
   // Start the electron process.
   const dir = fs.resolve(settings.path.tmp.dir);
-  spawn('electron', [dir], { shell: true, stdio: 'inherit' });
+  exec.cmd
+    .create('electron')
+    .add(dir)
+    .run();
 }
 
 /**

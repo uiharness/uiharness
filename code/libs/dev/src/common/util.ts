@@ -1,9 +1,8 @@
 import { DEFAULT } from './constants';
 import { Settings } from '../settings';
 import { BundleTarget, IParcelBuildConfig } from '../types';
-import { log, value } from './libs';
+import { log, value, exec } from './libs';
 import * as logging from './logging';
-import { command } from './command';
 
 const defaultValue = value.defaultValue;
 
@@ -95,7 +94,7 @@ export function logWebInfo(args: { settings: Settings; port?: boolean | number }
 }
 
 /**
- * Extract JS bundler args (Parcel-JS) or deaults.
+ * Extract JS bundler args (Parcel-JS) or defaults.
  */
 export function toBundlerArgs(data: IParcelBuildConfig = {}) {
   // Default values.
@@ -106,7 +105,8 @@ export function toBundlerArgs(data: IParcelBuildConfig = {}) {
   // Build command-line arguments.
   // See:
   //    https://parceljs.org/cli.html
-  const cmd = command()
+  const cmd = exec.cmd
+    .create()
     .add('--no-source-maps', sourcemaps)
     .add('--experimental-scope-hoisting', treeshake)
     .add(`--log-level ${logLevel}`);

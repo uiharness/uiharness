@@ -1,6 +1,6 @@
 import {
   BundleTarget,
-  command,
+  exec,
   fs,
   IElectronBuilderConfig,
   Listr,
@@ -85,13 +85,15 @@ export async function distElectron(args: { settings: Settings; silent?: boolean 
   }
 
   // Construct the `build` command.
-  const cmd = command()
-    .addLine(`cd ${fs.resolve('.')}`)
+  const cmd = exec.cmd
+    .create()
+    .add(`cd ${fs.resolve('.')}`)
+    .newLine()
     .add(`build`)
-    .arg(`--x64`)
-    .arg(`--publish=never`)
-    .alias(`-c.extraMetadata.main="${out.main.path}"`)
-    .arg(`--config="${electron.path.builder.configFilename}"`);
+    .add(`--x64`)
+    .add(`--publish=never`)
+    .add(`-c.extraMetadata.main="${out.main.path}"`)
+    .add(`--config="${electron.path.builder.configFilename}"`);
 
   // Run the electron `build` command.
   const tasks = new Listr([
