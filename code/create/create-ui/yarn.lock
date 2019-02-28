@@ -25,6 +25,16 @@
     "@types/yargs" "12.0.9"
     yargs "13.2.0"
 
+"@platform/cli@0.0.55":
+  version "0.0.55"
+  resolved "https://registry.yarnpkg.com/@platform/cli/-/cli-0.0.55.tgz#afec3e2edf82d66a2f7a4fc5ccd5152c484ca81d"
+  integrity sha512-G28e7YckthBogtYhzFyOf9Qzb3lvA/TfaKWYXmZuGlG0T6ptoGGDigGNlAxl95UWZy6iEvx9uCW1Cs02RE5kxg==
+  dependencies:
+    "@platform/fs" "0.0.36"
+    "@platform/util.exec" "0.0.16"
+    "@types/yargs" "12.0.9"
+    yargs "13.2.1"
+
 "@platform/fs@0.0.36":
   version "0.0.36"
   resolved "https://registry.yarnpkg.com/@platform/fs/-/fs-0.0.36.tgz#034218116dff7a5d57cca3be651e40c09764c69c"
@@ -59,21 +69,33 @@
     tslint-react "3.6.0"
     typescript "3.3.3"
 
-"@platform/ts@3.3.54":
-  version "3.3.54"
-  resolved "https://registry.yarnpkg.com/@platform/ts/-/ts-3.3.54.tgz#24b31c694c5733d730d3151d647425c0b435add6"
-  integrity sha512-Jmh9SEBuYHxkq0EDfMOJksbhmIuqsvMb+7j2oTYBPoQb6wcXmmbQRBrz6+ZvqJVN0kKjQk1B+WQRLbZsGenWpA==
+"@platform/ts@3.3.55":
+  version "3.3.55"
+  resolved "https://registry.yarnpkg.com/@platform/ts/-/ts-3.3.55.tgz#4abec6a083a0d6c462ee42fb987b0f8ba685fcd1"
+  integrity sha512-3wAYo9LrrAj/VAsvCAcvW6YiM8A1Tvl7NlnzNNxCt4cks8ZKuohQ0kEkusWkNnnKS2qrtzQrQqCu2oKgFK9ySA==
   dependencies:
-    "@platform/cli" "0.0.54"
+    "@platform/cli" "0.0.55"
     "@platform/fs" "0.0.36"
     "@platform/libs" "0.0.6"
     "@platform/ts.libs" "3.3.2"
-    "@platform/util.exec" "0.0.15"
+    "@platform/util.exec" "0.0.16"
 
 "@platform/util.exec@0.0.15":
   version "0.0.15"
   resolved "https://registry.yarnpkg.com/@platform/util.exec/-/util.exec-0.0.15.tgz#7ced84c317e0b8eb915baf11d897e9b573a65ccd"
   integrity sha512-J+wzgx/L/7EKnaBzDf069pvwjDhUAQ716mje7VHj1FsbwdlpBM4Y2qdh1cfg9XT3EH5s3hAXmWN2+4a2Dk1Dbw==
+  dependencies:
+    "@platform/libs" "0.0.6"
+    "@types/chalk" "2.2.0"
+    "@types/listr" "0.13.0"
+    ansi-regex "4.0.0"
+    chalk "2.4.2"
+    listr "0.14.3"
+
+"@platform/util.exec@0.0.16":
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/@platform/util.exec/-/util.exec-0.0.16.tgz#7de0023ca62b6b6e26792f7dbc4cb121641120a2"
+  integrity sha512-Iit0NDLvpY1Jyj8BE/ph9i82DpMGUkYqalR7H/+giOOgYDM0xTWg4OgYQF6geewfMeRdMsjWYbDNB4Y3YzYGrQ==
   dependencies:
     "@platform/libs" "0.0.6"
     "@types/chalk" "2.2.0"
@@ -2315,6 +2337,23 @@ yargs@13.2.0:
   version "13.2.0"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-13.2.0.tgz#8b749168defffe473ec1e7980634aa360518d7e7"
   integrity sha512-C+2y+DJwm9JIyZqeZtBnXQWAwltzeaWWtWmLdC7mBvs46PZu8a3WOyiKfJX+pEqOfzwH7OljABNwU2XJqftk6g==
+  dependencies:
+    cliui "^4.0.0"
+    find-up "^3.0.0"
+    get-caller-file "^2.0.1"
+    os-locale "^3.1.0"
+    require-directory "^2.1.1"
+    require-main-filename "^2.0.0"
+    set-blocking "^2.0.0"
+    string-width "^3.0.0"
+    which-module "^2.0.0"
+    y18n "^4.0.0"
+    yargs-parser "^13.0.0"
+
+yargs@13.2.1:
+  version "13.2.1"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-13.2.1.tgz#c8888bcf24424bd4e5a834348366f6fcc37bb8d9"
+  integrity sha512-HgY0xHGmPPakg6kEDufqxZuXVtvPZcipORC8O7S44iEnwsUmP+qnhReHc6d1dyeIZkrPmYFblh45Z2oeDn++fQ==
   dependencies:
     cliui "^4.0.0"
     find-up "^3.0.0"

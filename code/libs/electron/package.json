@@ -13,18 +13,18 @@
     "chmod": "chmod 777 node_modules/.bin/ts"
   },
   "dependencies": {
-    "@platform/electron": "0.0.98",
-    "@platform/log": "0.0.78",
-    "@platform/ui.object": "0.0.44",
-    "@platform/react": "0.0.8",
-    "@platform/util.value": "0.0.28",
+    "@platform/electron": "0.0.99",
+    "@platform/log": "0.0.79",
+    "@platform/ui.object": "0.0.45",
+    "@platform/react": "0.0.9",
+    "@platform/util.value": "0.0.29",
     "@types/app-root-path": "1.2.4",
     "@uiharness/types": "0.0.57",
     "tslib": "1.9.3"
   },
   "devDependencies": {
     "@platform/test": "0.0.29",
-    "@platform/ts": "3.3.54",
+    "@platform/ts": "3.3.55",
     "@types/electron-window-state": "2.0.33",
     "electron": "4.0.6"
   },
