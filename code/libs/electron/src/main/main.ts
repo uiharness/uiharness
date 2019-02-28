@@ -3,14 +3,13 @@ import { fs } from '@platform/fs';
 import { app, BrowserWindow } from 'electron';
 import * as os from 'os';
 
-import { is, IUihRuntimeConfig, value } from '../common';
+import { IUihRuntimeConfig, value } from '../common';
 import * as menus from './menus';
 import * as t from './types';
 import * as mainWindow from './window';
 
 export * from '../types';
 
-type Env = 'prod' | 'dev';
 type IResponse<M extends t.IpcMessage> = {
   window: BrowserWindow;
   newWindow: t.NewWindowFactory;
@@ -32,68 +31,76 @@ export function init<M extends t.IpcMessage>(args: {
   windows?: main.IWindows; //           The gloal windows manager.
 }) {
   return new Promise<IResponse<M>>(async (resolve, reject) => {
-    const { config, devTools } = args;
-
-    /**
-     * Initialize [@platform/electron] module.
-     */
-    const appName = config.name;
-    const res = await main.init<M>({
-      log: args.log || logDir({ appName }),
-      ipc: args.ipc,
-      windows: args.windows,
-    });
-    const { log, ipc, id, store, windows } = res;
-    const context: t.IContext = { config, id, store, log, ipc, windows };
-
-    /**
-     * Initialize application when `ready`.
-     */
-    app.on('ready', () => {
-      const name = args.name || config.name || app.getName();
-      const window = mainWindow.create({ ...context, name, devTools, windows });
+    try {
+      const { config, devTools } = args;
 
       /**
-       * Factory for spawning a new window.
+       * Initialize [@platform/electron] module.
        */
-      const newWindow: t.NewWindowFactory = (options = {}) => {
-        const { x, y } = getNewWindowPosition(20);
-        return mainWindow.create({
-          name: options.name || name,
-          defaultX: x,
-          defaultY: y,
-          ...context,
-          ...options,
-        });
-      };
+      const appName = config.name;
+      const res = await main.init<M>({
+        log: args.log || logDir({ appName }),
+        ipc: args.ipc,
+        windows: args.windows,
+      });
+      const { log, ipc, id, store, windows } = res;
+      const context: t.IContext = { config, id, store, log, ipc, windows };
 
       /**
-       * Start the menu manager.
+       * Initialize application when `ready`.
        */
-      menus.manage({ ...context, newWindow });
+      app.on('ready', () => {
+        try {
+          const name = args.name || config.name || app.getName();
+          const window = mainWindow.create({ ...context, name, devTools, windows });
 
-      // Finish up.
-      const res: IResponse<M> = { window, newWindow, log, ipc, windows, store };
-      resolve(res);
-    });
+          /**
+           * Factory for spawning a new window.
+           */
+          const newWindow: t.NewWindowFactory = (options = {}) => {
+            const { x, y } = getNewWindowPosition(20);
+            return mainWindow.create({
+              name: options.name || name,
+              defaultX: x,
+              defaultY: y,
+              ...context,
+              ...options,
+            });
+          };
 
-    /**
-     * [Quit] when all windows are closed.
-     */
-    app.on('window-all-closed', () => {
-      app.quit();
-    });
+          /**
+           * Start the menu manager.
+           */
+          menus.manage({ ...context, newWindow });
+
+          // Finish up.
+          const res: IResponse<M> = { window, newWindow, log, ipc, windows, store };
+          resolve(res);
+        } catch (error) {
+          reject(error);
+        }
+      });
+
+      /**
+       * [Quit] when all windows are closed.
+       */
+      app.on('window-all-closed', () => {
+        app.quit();
+      });
+    } catch (error) {
+      reject(error);
+    }
   });
 }
 
 /**
  * Determines the path to the logs for the app.
  */
-export function logDir(args: { appName: string; env?: Env }) {
+export function logDir(args: { appName: string; env?: t.Environment }) {
   const env = toEnv(args.env);
   const appName = args.appName.replace(/\s/g, '-').toLowerCase();
 
-  if (env === 'dev') {
+  if (env === 'development') {
     return fs.join(fs.resolve('./.dev/log'), appName);
   }
 
@@ -118,7 +125,7 @@ export function logDir(args: { appName: string; env?: Env }) {
 /**
  * Derives the set of log related paths for the app.
  */
-export function paths(args: { appName: string; env?: Env }) {
+export function paths(args: { appName: string; env?: t.Environment }) {
   const { appName } = args;
   const env = toEnv(args.env);
   const log = main.logger.getPaths({ dir: logDir({ appName, env }) });
@@ -128,8 +135,8 @@ export function paths(args: { appName: string; env?: Env }) {
 /**
  * [INTERNAL]
  */
-function toEnv(env?: Env) {
-  return value.defaultValue(env, is.prod ? 'prod' : 'dev');
+function toEnv(env?: t.Environment) {
+  return value.defaultValue(env, main.is.prod ? 'production' : 'development');
 }
 
 function getNewWindowPosition(offset: number) {

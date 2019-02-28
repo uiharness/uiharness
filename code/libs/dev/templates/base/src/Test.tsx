@@ -18,15 +18,11 @@ export class Test extends React.PureComponent<{}, IState> {
   public render() {
     return (
       <div style={{ paddingLeft: 25 }}>
-        <h1>Hello World!</h1>
-        <ul>
-          <li>
-            <Button label={'Increment'} onClick={this.increment(1)} />
-          </li>
-          <li>
-            <Button label={'Decrement'} onClick={this.increment(-1)} />
-          </li>
-        </ul>
+        <h1>👋 Hello!</h1>
+        <div style={{ marginBottom: 10 }}>
+          <Button label={'Increment'} onClick={this.increment(1)} />
+          <Button label={'Decrement'} onClick={this.increment(-1)} />
+        </div>
         <ObjectView name={'state'} data={this.state} />
       </div>
     );

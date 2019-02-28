@@ -106,6 +106,7 @@ export async function bundleElectron(args: {
           .add(`--public-url ./`)
           .arg(`--out-dir ${out.renderer.dir}`)
           .arg(`--out-file ${out.renderer.file}`)
+          .arg(`--target electron`)
           .add(bundlerArgs.cmd)
           .run({ silent: true }),
     });

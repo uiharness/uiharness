@@ -1,3 +1,5 @@
+export type Environment = 'production' | 'development';
+
 export type IUihRuntimeConfig = {
   name: string;
   electron: {

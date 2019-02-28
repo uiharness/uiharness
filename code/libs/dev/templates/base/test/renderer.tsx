@@ -1,8 +1,8 @@
 import '@babel/polyfill';
-import '../node_modules/@uiharness/electron/css/normalize.css';
+import '../node_modules/@platform/css/reset.css';
 import * as React from 'react';
-import { renderer } from '@platform/electron/lib/renderer';
-import { Test } from '../src/components/Test';
+import renderer from '@platform/electron/lib/renderer';
+import { Test } from '../src/Test';
 
 /**
  * [Note] example <App> root provides access to the

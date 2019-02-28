@@ -6,7 +6,7 @@ const DIR = './test/sample';
 const EMPTY = './test/sample/empty.yml';
 const NAME = './test/sample/name.yml';
 const tmpDir = './test/.uiharness.tmp';
-const templatesDir = './tmpl';
+const templatesDir = './templates';
 
 describe('ElectronSettings', () => {
   afterEach(async () => {
