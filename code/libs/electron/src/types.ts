@@ -5,8 +5,6 @@ export * from '@uiharness/types';
 import { IpcMessage, IContext, StoreJson } from '@platform/electron/lib/types';
 import { IUihRuntimeConfig } from '@uiharness/types';
 
-export type Environment = 'production' | 'development';
-
 /**
  * Standard context for a running UIHarness instance that is
  * typically passed as a set of values to functions.
