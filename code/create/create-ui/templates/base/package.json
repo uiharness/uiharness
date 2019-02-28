@@ -5,12 +5,11 @@
     "ui": "ui $@",
     "start": "ui start $@"
   },
-  "dependencies": {},
+  "dependencies": {
+    "react": "latest"
+  },
   "devDependencies": {
     "@uiharness/dev": "latest"
-  },
-  "resolutions": {
-    "@types/react": "16.7.17"
   },
   "license": "MIT"
 }
