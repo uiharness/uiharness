@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { format } from 'url';
 
-import { constants, IUihRuntimeConfig, path, TAG, value } from '../../common';
+import { constants, IRuntimeConfig, path, TAG, value } from '../../common';
 import * as t from '../types';
 
 /**
@@ -87,7 +87,7 @@ export function create(args: t.IContext & t.INewWindowArgs) {
 /**
  * [INTERNAL]
  */
-function getPaths(config: IUihRuntimeConfig) {
+function getPaths(config: IRuntimeConfig) {
   const port = config.electron.port;
   const dev = `http://localhost:${port}`;
   const prod = format({

@@ -1,6 +1,6 @@
 export type Environment = 'production' | 'development';
 
-export type IUihRuntimeConfig = {
+export type IRuntimeConfig = {
   name: string;
   electron: {
     port: number;

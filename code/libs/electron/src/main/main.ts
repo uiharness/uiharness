@@ -3,7 +3,7 @@ import { fs } from '@platform/fs';
 import { app, BrowserWindow } from 'electron';
 import * as os from 'os';
 
-import { IUihRuntimeConfig, value } from '../common';
+import { IRuntimeConfig, value } from '../common';
 import * as menus from './menus';
 import * as t from './types';
 import * as mainWindow from './window';
@@ -23,7 +23,7 @@ type IResponse<M extends t.IpcMessage> = {
  * Default loader for a UIHarness [main] process.
  */
 export function init<M extends t.IpcMessage>(args: {
-  config: IUihRuntimeConfig; //   The [.uiharess/config.json] file.
+  config: IRuntimeConfig; //   The [.uiharess/config.json] file.
   name?: string; //                     The display name of the window.
   ipc?: t.IpcClient<M>; //                Existing IPC client if aleady initialized.
   log?: main.IMainLog; //               Existing log if already initialized.

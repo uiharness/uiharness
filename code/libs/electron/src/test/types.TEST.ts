@@ -3,7 +3,7 @@ import uiharness from '../main';
 
 describe('types', () => {
   it('main', () => {
-    const config: uiharness.IUihRuntimeConfig = {
+    const config: uiharness.IRuntimeConfig = {
       name: 'Foo',
       electron: { port: 123, main: 'main.ts', renderer: 'renderer.tsx' },
     };
