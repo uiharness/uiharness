@@ -16,7 +16,7 @@ publish:
 mac:
   target:
     - zip
-  artifactName: '${productName}-mac.${ext}'
+  artifactName: '${productName}-${version}-mac.${ext}'
   icon: static/build/app.icns
 
 #--------------------------------------------------------------
@@ -24,7 +24,7 @@ mac:
 win:
   target:
     - zip
-  artifactName: '${productName}-win.${ext}'
+  artifactName: '${productName}-${version}-win.${ext}'
   icon: static/build/app.ico
 
 #--------------------------------------------------------------
@@ -33,4 +33,4 @@ linux:
   target:
     - zip
   category: Development
-  artifactName: '${productName}-linux.${ext}'
+  artifactName: '${productName}-${version}-linux.${ext}'
