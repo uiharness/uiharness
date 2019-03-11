@@ -3,14 +3,13 @@
   "version": "0.0.101",
   "scripts": {
     "postinstall": "ui init",
-    "ui": "yarn chmod && ui $@",
-    "start": "yarn chmod && ui start $@",
-    "test": "yarn chmod && ts test",
-    "tdd": "yarn chmod && ts test --watch",
-    "lint": "yarn chmod && ts lint",
-    "build": "yarn chmod && ts build",
-    "prepare": "yarn chmod && ts prepare",
-    "chmod": "chmod 777 node_modules/.bin/ts"
+    "ui": "ui $@",
+    "start": "ui start $@",
+    "test": "ts test",
+    "tdd": "ts test --watch",
+    "lint": "ts lint",
+    "build": "ts build",
+    "prepare": "ts prepare"
   },
   "dependencies": {
     "@uiharness/electron": "0.3.140",
@@ -27,9 +26,6 @@
   "files": [
     "lib"
   ],
-  "engines": {
-    "node": ">=10.x"
-  },
   "keywords": [
     "design",
     "test",

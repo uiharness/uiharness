@@ -3,9 +3,8 @@
   "version": "0.0.125",
   "scripts": {
     "postinstall": "ui init",
-    "ui": "yarn sl && ui $@",
+    "ui": "msync sl && ui $@",
     "start": "ui start $@",
-    "sl": "msync sl && sh ./sh/copy-bin.sh",
     "build": "tsc $@",
     "reset": "sh ./sh/reset.sh",
     "nuke": "sh ./sh/nuke.sh"

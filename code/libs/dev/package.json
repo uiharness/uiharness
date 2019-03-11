@@ -7,12 +7,11 @@
     "ui": "lib/bin/index.js"
   },
   "scripts": {
-    "test": "yarn chmod && ts test",
-    "tdd": "yarn chmod && ts test --watch",
-    "lint": "yarn chmod && ts lint",
-    "build": "yarn chmod && ts build",
-    "prepare": "yarn chmod && ts prepare",
-    "chmod": "chmod 777 node_modules/.bin/ts"
+    "test": "ts test",
+    "tdd": "ts test --watch",
+    "lint": "ts lint",
+    "build": "ts build",
+    "prepare": "ts prepare"
   },
   "dependencies": {
     "@babel/core": "7.3.4",
@@ -37,9 +36,6 @@
     "@types/electron-builder": "2.8.0",
     "@types/filesize": "4.0.1",
     "@types/parcel-bundler": "1.10.2"
-  },
-  "engines": {
-    "node": ">=10.x"
   },
   "files": [
     "lib",
