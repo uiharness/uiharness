@@ -9,6 +9,7 @@ import * as t from './types';
 import * as mainWindow from './window';
 
 export * from '../types';
+export const is = main.is;
 
 type IResponse<M extends t.IpcMessage> = {
   window: BrowserWindow;
