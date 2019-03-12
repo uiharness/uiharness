@@ -93,7 +93,7 @@ export class ElectronSettings {
   }
 
   /**
-   * The paths that JS us bundled to.
+   * The paths that JS is bundled to.
    */
   public out(prod?: boolean) {
     const path = this.path;
