@@ -1,6 +1,4 @@
-import { join, resolve } from 'path';
-
-import { tmpl } from '../common';
+import { tmpl, fs } from '../common';
 
 /**
  * Ensures that all entry-points exist, and copies them if necessary.
@@ -28,7 +26,7 @@ export async function ensureEntries(args: {
     const template = tmpl
       .create()
       .add({
-        dir: resolve(args.templatesDir),
+        dir: fs.resolve(args.templatesDir),
         pattern,
         targetDir,
       })
@@ -38,7 +36,7 @@ export async function ensureEntries(args: {
     // Execute template.
     const variables = {
       NAME: args.name,
-      PATH: join(hops, codePath),
+      PATH: fs.join(hops, codePath),
     };
     await template.execute({ variables });
   };
