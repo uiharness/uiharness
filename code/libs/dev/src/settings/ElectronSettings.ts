@@ -1,5 +1,3 @@
-import { join, resolve } from 'path';
-
 import { constants, fs, value, toBundlerArgs } from '../common';
 import {
   IElectronBuilderConfig,
@@ -8,6 +6,7 @@ import {
   IUIHarnessElectronPaths,
   IUIHarnessPaths,
   LogLevel,
+  IUIHarnessElectronRendererEntry,
 } from '../types';
 import { ensureEntries } from './util';
 
@@ -64,16 +63,42 @@ export class ElectronSettings {
     const path = this.path;
     const entry = typeof this.data.entry === 'object' ? this.data.entry : {};
     const main = entry.main || path.main.defaultEntry.code;
-    const renderer = entry.renderer || path.renderer.defaultEntry.code;
 
-    // const html = renderer.endsWith('.html') ? renderer : path.renderer.defaultEntry.html;
-    const html = path.renderer.defaultEntry.html;
+    type IRendererEntry = { code: string; html: string };
 
+    const toHtml = (code: string) => {
+      const parent = this._paths.parent;
+      let path = code.replace(/^\./, '').replace(/^\//, '');
+      path = path.substr(0, path.lastIndexOf('.'));
+      path = path.replace(/\//g, '.');
+      return fs.join(parent.tmp.html, `electron.${path}.html`);
+    };
+
+    const toRendererEntry = (code: string): IRendererEntry => {
+      return { code, html: toHtml(code) };
+    };
+
+    const parseRenderer = (
+      value?: IUIHarnessElectronRendererEntry,
+    ): { [key: string]: IRendererEntry } => {
+      if (value === undefined) {
+        const code = path.renderer.defaultEntry.code;
+        return { default: toRendererEntry(code) };
+      }
+      if (typeof value === 'string') {
+        return { default: toRendererEntry(value) };
+      }
+      return Object.keys(value).reduce((acc, next) => {
+        const code = value[next];
+        if (code) {
+          acc = { ...acc, [next]: toRendererEntry(code) };
+        }
+        return acc;
+      }, {});
+    };
     return {
       main,
-      renderer: {
-        default: { code: renderer, html },
-      },
+      renderer: parseRenderer(entry.renderer),
     };
   }
 
@@ -84,15 +109,19 @@ export class ElectronSettings {
     const entry = this.entry;
     const name = this._config.name || constants.UNNAMED;
     const codePath = entry.renderer.default.code;
+    const htmlFilename = fs.basename(entry.renderer.default.html);
     const templatesDir = this._paths.parent.templates.html;
     const targetDir = this._paths.parent.tmp.html;
+
+    // console.log('htmlFilename', htmlFilename);
 
     return ensureEntries({
       name,
       codePath,
       templatesDir,
+      pattern: 'electron.html',
       targetDir,
-      pattern: 'renderer.default.html',
+      targetFile: htmlFilename,
     });
   }
 
@@ -114,12 +143,12 @@ export class ElectronSettings {
       main: {
         dir: main.dir,
         file: main.file,
-        path: join(main.dir, main.file),
+        path: fs.join(main.dir, main.file),
       },
       renderer: {
         dir: renderer.dir,
         file: renderer.file,
-        path: join(renderer.dir, renderer.file),
+        path: fs.join(renderer.dir, renderer.file),
       },
     };
   }
@@ -136,8 +165,8 @@ export class ElectronSettings {
    */
   public get builderArgsJson() {
     const load = () => {
-      const dir = resolve(this._paths.parent.dir);
-      const path = join(dir, this.path.builder.configFilename);
+      const dir = fs.resolve(this._paths.parent.dir);
+      const path = fs.join(dir, this.path.builder.configFilename);
       return fs.file.loadAndParseSync<IElectronBuilderConfig>(path, {});
     };
     return this._builderConfig || (this._builderConfig = load());
@@ -181,26 +210,26 @@ export class ElectronSettings {
         },
         out: {
           file: 'main.js',
-          dir: join(bundle, 'app.main'),
+          dir: fs.join(bundle, 'app.main'),
         },
       },
       renderer: {
         defaultEntry: {
           code: 'test/renderer.tsx',
-          html: join(html, 'renderer.default.html'),
+          html: fs.join(html, 'renderer.default.html'),
         },
         out: {
           file: 'renderer.html',
           dir: {
-            dev: join(bundle, 'app.renderer/dev'),
-            prod: join(bundle, 'app.renderer/prod'),
+            dev: fs.join(bundle, 'app.renderer/dev'),
+            prod: fs.join(bundle, 'app.renderer/prod'),
           },
         },
       },
       builder: {
         configFilename: `uiharness.builder.yml`,
-        output: join(tmp, 'dist'),
-        files: [join(bundle, 'app.main/**'), join(bundle, 'app.renderer/prod/**')],
+        output: fs.join(tmp, 'dist'),
+        files: [fs.join(bundle, 'app.main/**'), fs.join(bundle, 'app.renderer/prod/**')],
       },
     };
   }

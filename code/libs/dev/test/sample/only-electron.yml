@@ -1,6 +1,6 @@
 #
 # Sample config for unit-tests.
-# Only contains [web] settings.
+# Only contains [electron] settings.
 #
 
 electron:

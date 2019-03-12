@@ -5,6 +5,7 @@ import { fs } from '../common';
 const DIR = './test/sample';
 const EMPTY = './test/sample/empty.yml';
 const NAME = './test/sample/name.yml';
+const MULTI_RENDERER = './test/sample/multi-renderer.yml';
 const tmpDir = './test/.uiharness.tmp';
 const templatesDir = './templates';
 
@@ -22,7 +23,9 @@ describe('ElectronSettings', () => {
 
       expect(electron.entry.main).to.eql('test/main.ts');
       expect(electron.entry.renderer.default.code).to.eql('test/renderer.tsx');
-      expect(electron.entry.renderer.default.html).to.eql('.uiharness/html/renderer.default.html');
+      expect(electron.entry.renderer.default.html).to.eql(
+        '.uiharness/html/electron.test.renderer.html',
+      );
 
       const bundler = electron.bundlerArgs;
       expect(bundler.sourcemaps).to.eql(true);
@@ -58,12 +61,21 @@ describe('ElectronSettings', () => {
     expect(builder.outputDir).to.eql('.foo/bar/release');
   });
 
+  it('multiple renderer entry points', () => {
+    const electron = Settings.create(MULTI_RENDERER).electron;
+    const renderer = electron.entry.renderer;
+    expect(renderer.default.code).to.eql('./foo/multi/index.tsx');
+    expect(renderer.default.html).to.eql('.uiharness/html/electron.foo.multi.index.html');
+  });
+
   it('copies default entry-point HTML to temporary dir, with application name and path', async () => {
     const settings = Settings.create(NAME, { tmpDir, templatesDir });
     const electron = settings.electron;
     await electron.ensureEntries();
 
-    const text = fs.readFileSync(fs.join(tmpDir, 'html', 'renderer.default.html'), 'utf8');
+    const path = fs.join(tmpDir, 'html', 'electron.test.renderer.html');
+    const text = fs.readFileSync(path, 'utf8');
+
     expect(text).to.include(`<title>My App</title>`);
     expect(text).to.include(`<script src="../../../test/renderer.tsx">`);
   });

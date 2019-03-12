@@ -1,0 +1,11 @@
+#
+# Sample config for unit-tests.
+# Contains multiple renderer entry-points.
+#
+
+electron:
+  port: 1234
+  entry:
+    main: ./foo/start.ts
+    renderer: 
+      default: ./foo/multi/index.tsx
