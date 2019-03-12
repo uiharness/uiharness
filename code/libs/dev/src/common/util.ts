@@ -63,7 +63,10 @@ export function logElectronInfo(args: { settings: Settings; port?: boolean | num
   }
   if (entry.main) {
     log.info.gray(`• entry:          ${formatPath(entry.main)}`);
-    log.info.gray(`                  ${formatPath(entry.renderer.default.code)}`);
+    Object.keys(entry.renderer).forEach(key => {
+      const code = entry.renderer[key].code;
+      log.info.gray(`                  ${formatPath(code)}`);
+    });
   }
   log.info();
 }

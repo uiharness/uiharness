@@ -96,9 +96,14 @@ export class ElectronSettings {
         return acc;
       }, {});
     };
+
+    const renderer = parseRenderer(entry.renderer);
+    const html = Object.keys(renderer).map(key => renderer[key].html);
+
     return {
       main,
-      renderer: parseRenderer(entry.renderer),
+      renderer,
+      html,
     };
   }
 
@@ -202,7 +207,6 @@ export class ElectronSettings {
     const parent = this._paths.parent;
     const tmp = parent.tmp.dir;
     const bundle = parent.tmp.bundle;
-    const html = parent.tmp.html;
 
     return {
       main: {
@@ -217,7 +221,6 @@ export class ElectronSettings {
       renderer: {
         defaultEntry: {
           code: 'test/renderer.tsx',
-          html: fs.join(html, 'renderer.default.html'),
         },
         out: {
           file: 'renderer.html',

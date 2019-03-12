@@ -94,7 +94,6 @@ export type IUIHarnessElectronPaths = {
   renderer: {
     defaultEntry: {
       code: string;
-      html: string;
     };
     out: {
       file: string;

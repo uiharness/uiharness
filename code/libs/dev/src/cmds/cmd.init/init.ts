@@ -86,10 +86,7 @@ export async function init(
     const filter = (path: string) => {
       // Don't write files for platforms that are not configured within the settings.
       const { electron, web } = settings;
-      if (
-        path.endsWith(electron.entry.main) ||
-        path.endsWith(electron.entry.renderer.default.code)
-      ) {
+      if (path.endsWith(electron.entry.main)) {
         return electron.exists;
       }
       if (path.endsWith(web.entry.code)) {
@@ -143,14 +140,19 @@ async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
   const electron = settings.electron;
   const { port } = electron;
   const out = electron.out(args.prod);
+
+  const renderer: IRuntimeConfig['electron']['renderer'] = {};
+  Object.keys(electron.entry.renderer).forEach(key => {
+    const file = fs.basename(electron.entry.renderer[key].html);
+    renderer[key] = fs.join(out.renderer.dir, file);
+  });
+
   const data: IRuntimeConfig = {
     name: settings.name,
     electron: {
       port,
       main: out.main.path,
-      renderer: {
-        default: out.renderer.path,
-      },
+      renderer,
     },
   };
 
@@ -207,7 +209,7 @@ async function getInitializedState(args: { settings: Settings }) {
   const hasSrcFolder = await exists('./src');
   const hasElectronMainEntry = electron.exists ? await exists(electronEntry.main) : null;
   const hasElectronRendererEntry = electron.exists
-    ? await exists(electronEntry.renderer.default.code)
+    ? await exists(electronEntry.renderer.default && electronEntry.renderer.default.code)
     : null;
   const hasWebEntry = web.exists ? await exists(web.entry.code) : null;
   const hasAllScripts = Object.keys(scripts).every(key => scripts[key]);

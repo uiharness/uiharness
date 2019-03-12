@@ -88,11 +88,13 @@ export function create(args: t.IContext & t.INewWindowArgs) {
  * [INTERNAL]
  */
 function getPaths(config: IRuntimeConfig, entryKey: string) {
+  const entryPath = config.electron.renderer[entryKey];
+  const entryFile = entryPath.substr(entryPath.lastIndexOf('/') + 1);
   const port = config.electron.port;
-  const dev = `http://localhost:${port}`;
+  const dev = `http://localhost:${port}/${entryFile}`;
   const prod = format({
     protocol: 'file:',
-    pathname: path.resolve(config.electron.renderer[entryKey]),
+    pathname: path.resolve(entryPath),
     slashes: true,
   });
   const url = main.is.dev ? dev : prod;

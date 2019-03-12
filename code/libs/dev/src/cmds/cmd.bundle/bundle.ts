@@ -107,7 +107,7 @@ export async function bundleElectron(args: {
         cmd
           .clone()
           .add(`parcel`)
-          .add(`build ${entry.renderer.default.html}`)
+          .add(`build ${entry.html.join(' ')}`)
           .add(`--public-url ./`)
           .add(`--out-dir ${out.renderer.dir}`)
           .add(`--out-file ${out.renderer.file}`)
@@ -138,7 +138,10 @@ export async function bundleElectron(args: {
     log.info.gray(`   • version:     ${pkg.version}`);
     log.info.gray(`   • env:         ${env.value}`);
     log.info.gray(`   • entry:       ${formatPath(entry.main)}`);
-    log.info.gray(`                  ${formatPath(entry.renderer.default.code)}`);
+    Object.keys(entry.renderer).forEach(key => {
+      const code = entry.renderer[key].code;
+      log.info.gray(`                  ${formatPath(code)}`);
+    });
     log.info.gray(`   • output:      ${formatPath(out.main.path)}`);
     log.info.gray(`                  ${formatPath(out.renderer.path)}`);
     log.info();
