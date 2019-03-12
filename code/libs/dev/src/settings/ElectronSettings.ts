@@ -92,7 +92,7 @@ export class ElectronSettings {
       codePath,
       templatesDir,
       targetDir,
-      pattern: 'renderer.html',
+      pattern: 'renderer.default.html',
     });
   }
 
@@ -187,7 +187,7 @@ export class ElectronSettings {
       renderer: {
         defaultEntry: {
           code: 'test/renderer.tsx',
-          html: join(html, 'renderer.html'),
+          html: join(html, 'renderer.default.html'),
         },
         out: {
           file: 'renderer.html',

@@ -22,7 +22,7 @@ describe('ElectronSettings', () => {
 
       expect(electron.entry.main).to.eql('test/main.ts');
       expect(electron.entry.renderer.default.code).to.eql('test/renderer.tsx');
-      expect(electron.entry.renderer.default.html).to.eql('.uiharness/html/renderer.html');
+      expect(electron.entry.renderer.default.html).to.eql('.uiharness/html/renderer.default.html');
 
       const bundler = electron.bundlerArgs;
       expect(bundler.sourcemaps).to.eql(true);
@@ -63,7 +63,7 @@ describe('ElectronSettings', () => {
     const electron = settings.electron;
     await electron.ensureEntries();
 
-    const text = fs.readFileSync(fs.join(tmpDir, 'html', 'renderer.html'), 'utf8');
+    const text = fs.readFileSync(fs.join(tmpDir, 'html', 'renderer.default.html'), 'utf8');
     expect(text).to.include(`<title>My App</title>`);
     expect(text).to.include(`<script src="../../../test/renderer.tsx">`);
   });
