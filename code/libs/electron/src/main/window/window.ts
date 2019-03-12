@@ -88,8 +88,6 @@ export function create(args: t.IContext & t.INewWindowArgs) {
  * [INTERNAL]
  */
 function getPaths(config: IRuntimeConfig, entryKey: string) {
-  console.log('entryKey', entryKey);
-
   const port = config.electron.port;
   const dev = `http://localhost:${port}`;
   const prod = format({

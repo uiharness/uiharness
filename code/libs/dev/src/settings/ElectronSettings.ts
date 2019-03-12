@@ -65,11 +65,15 @@ export class ElectronSettings {
     const entry = typeof this.data.entry === 'object' ? this.data.entry : {};
     const main = entry.main || path.main.defaultEntry.code;
     const renderer = entry.renderer || path.renderer.defaultEntry.code;
-    const html = renderer.endsWith('.html') ? renderer : path.renderer.defaultEntry.html;
+
+    // const html = renderer.endsWith('.html') ? renderer : path.renderer.defaultEntry.html;
+    const html = path.renderer.defaultEntry.html;
+
     return {
       main,
-      renderer,
-      html,
+      renderer: {
+        default: { code: renderer, html },
+      },
     };
   }
 
@@ -79,7 +83,7 @@ export class ElectronSettings {
   public async ensureEntries() {
     const entry = this.entry;
     const name = this._config.name || constants.UNNAMED;
-    const codePath = entry.renderer;
+    const codePath = entry.renderer.default.code;
     const templatesDir = this._paths.parent.templates.html;
     const targetDir = this._paths.parent.tmp.html;
 

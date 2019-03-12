@@ -21,8 +21,8 @@ describe('ElectronSettings', () => {
       expect(electron.logLevel).to.eql(3);
 
       expect(electron.entry.main).to.eql('test/main.ts');
-      expect(electron.entry.renderer).to.eql('test/renderer.tsx');
-      expect(electron.entry.html).to.eql('.uiharness/html/renderer.html');
+      expect(electron.entry.renderer.default.code).to.eql('test/renderer.tsx');
+      expect(electron.entry.renderer.default.html).to.eql('.uiharness/html/renderer.html');
 
       const bundler = electron.bundlerArgs;
       expect(bundler.sourcemaps).to.eql(true);
@@ -44,7 +44,7 @@ describe('ElectronSettings', () => {
     expect(electron.logLevel).to.eql(1);
 
     expect(electron.entry.main).to.eql('./foo/start.ts');
-    expect(electron.entry.renderer).to.eql('./foo/render.html');
+    expect(electron.entry.renderer.default.code).to.eql('./foo/render.tsx');
 
     const bundler = electron.bundlerArgs;
     expect(bundler.sourcemaps).to.eql(false);

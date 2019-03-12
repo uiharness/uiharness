@@ -86,7 +86,10 @@ export async function init(
     const filter = (path: string) => {
       // Don't write files for platforms that are not configured within the settings.
       const { electron, web } = settings;
-      if (path.endsWith(electron.entry.main) || path.endsWith(electron.entry.renderer)) {
+      if (
+        path.endsWith(electron.entry.main) ||
+        path.endsWith(electron.entry.renderer.default.code)
+      ) {
         return electron.exists;
       }
       if (path.endsWith(web.entry.code)) {
@@ -203,7 +206,9 @@ async function getInitializedState(args: { settings: Settings }) {
   const hasConfig = await exists('./uiharness.yml');
   const hasSrcFolder = await exists('./src');
   const hasElectronMainEntry = electron.exists ? await exists(electronEntry.main) : null;
-  const hasElectronRendererEntry = electron.exists ? await exists(electronEntry.renderer) : null;
+  const hasElectronRendererEntry = electron.exists
+    ? await exists(electronEntry.renderer.default.code)
+    : null;
   const hasWebEntry = web.exists ? await exists(web.entry.code) : null;
   const hasAllScripts = Object.keys(scripts).every(key => scripts[key]);
 
