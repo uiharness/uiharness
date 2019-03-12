@@ -1,26 +1,22 @@
 {
   "name": "@uiharness/types",
-  "version": "0.0.59",
+  "version": "0.0.62",
   "description": "Shared types between @uiharness modules.",
   "main": "./lib/index",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "test": "yarn chmod && echo no-op",
-    "lint": "yarn chmod && ts lint",
-    "build": "yarn chmod && ts build",
-    "prepare": "yarn chmod && ts prepare",
-    "chmod": "chmod 777 node_modules/.bin/ts"
+    "test": "echo no-op",
+    "lint": "ts lint",
+    "build": "ts build",
+    "prepare": "ts prepare"
   },
   "dependencies": {},
   "devDependencies": {
-    "@platform/ts": "3.3.57"
+    "@platform/ts": "3.3.61"
   },
   "files": [
     "lib"
   ],
-  "engines": {
-    "node": ">=10.x"
-  },
   "keywords": [
     "design",
     "test",

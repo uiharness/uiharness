@@ -26,9 +26,6 @@
     "@tdb/test": "1.2.16",
     "@tdb/typescript": "3.2.10"
   },
-  "engines": {
-    "node": ">=10.x"
-  },
   "keywords": [
     "design",
     "test",

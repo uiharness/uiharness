@@ -1,23 +1,22 @@
 {
   "name": "example",
-  "version": "0.0.123",
+  "version": "0.0.128",
   "scripts": {
     "postinstall": "ui init",
-    "ui": "yarn sl && ui $@",
+    "ui": "msync sl && ui $@",
     "start": "ui start $@",
-    "sl": "msync sl && sh ./sh/copy-bin.sh",
     "build": "tsc $@",
     "reset": "sh ./sh/reset.sh",
     "nuke": "sh ./sh/nuke.sh"
   },
   "dependencies": {
-    "@platform/electron": "0.0.101",
-    "@uiharness/electron": "0.3.138",
-    "react": "^16.8.3"
+    "@platform/electron": "0.1.2",
+    "@uiharness/electron": "0.3.144",
+    "react": "^16.8.4"
   },
   "devDependencies": {
-    "@uiharness/dev": "0.1.38",
-    "typescript": "3.3.3"
+    "@uiharness/dev": "0.1.43",
+    "typescript": "3.3.3333"
   },
   "license": "MIT",
   "private": true

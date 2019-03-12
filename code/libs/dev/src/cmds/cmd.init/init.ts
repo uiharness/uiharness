@@ -1,4 +1,4 @@
-import { constants, fs, IUihRuntimeConfig, log, npm, tmpl, value } from '../../common';
+import { constants, fs, IRuntimeConfig, log, npm, tmpl, value } from '../../common';
 import { Settings } from '../../settings';
 import { clean } from '../cmd.clean';
 import { removeSourceMapRefs } from '../../utils';
@@ -140,7 +140,7 @@ async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
   const electron = settings.electron;
   const { port } = electron;
   const out = electron.out(args.prod);
-  const data: IUihRuntimeConfig = {
+  const data: IRuntimeConfig = {
     name: settings.name,
     electron: {
       port,

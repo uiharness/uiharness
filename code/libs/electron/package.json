@@ -1,32 +1,31 @@
 {
   "name": "@uiharness/electron",
-  "version": "0.3.138",
+  "version": "0.3.144",
   "description": "UIHarness client-tools for Electron (include in dependencies).",
   "main": "./lib/index",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "test": "yarn chmod && ts test",
-    "tdd": "yarn chmod && ts test --watch",
-    "lint": "yarn chmod && ts lint",
-    "build": "yarn chmod && ts build",
-    "prepare": "yarn chmod && ts prepare",
-    "chmod": "chmod 777 node_modules/.bin/ts"
+    "test": "ts test",
+    "tdd": "ts test --watch",
+    "lint": "ts lint",
+    "build": "ts build",
+    "prepare": "ts prepare"
   },
   "dependencies": {
-    "@platform/electron": "0.0.101",
-    "@platform/log": "0.0.81",
-    "@platform/ui.object": "0.0.47",
-    "@platform/react": "0.0.11",
-    "@platform/util.value": "0.0.31",
+    "@platform/electron": "0.1.2",
+    "@platform/log": "0.0.85",
+    "@platform/ui.object": "0.0.54",
+    "@platform/react": "0.0.15",
+    "@platform/util.value": "0.0.35",
     "@types/app-root-path": "1.2.4",
-    "@uiharness/types": "0.0.59",
+    "@uiharness/types": "0.0.62",
     "tslib": "1.9.3"
   },
   "devDependencies": {
-    "@platform/test": "0.0.29",
-    "@platform/ts": "3.3.57",
+    "@platform/test": "0.0.31",
+    "@platform/ts": "3.3.61",
     "@types/electron-window-state": "2.0.33",
-    "electron": "4.0.6"
+    "electron": "4.0.8"
   },
   "files": [
     "lib",

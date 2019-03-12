@@ -1,25 +1,24 @@
 {
   "name": "@uiharness/ui",
-  "version": "0.0.99",
+  "version": "0.0.104",
   "scripts": {
     "postinstall": "ui init",
-    "ui": "yarn chmod && ui $@",
-    "start": "yarn chmod && ui start $@",
-    "test": "yarn chmod && ts test",
-    "tdd": "yarn chmod && ts test --watch",
-    "lint": "yarn chmod && ts lint",
-    "build": "yarn chmod && ts build",
-    "prepare": "yarn chmod && ts prepare",
-    "chmod": "chmod 777 node_modules/.bin/ts"
+    "ui": "ui $@",
+    "start": "ui start $@",
+    "test": "ts test",
+    "tdd": "ts test --watch",
+    "lint": "ts lint",
+    "build": "ts build",
+    "prepare": "ts prepare"
   },
   "dependencies": {
-    "@uiharness/electron": "0.3.138",
-    "@uiharness/types": "0.0.59"
+    "@uiharness/electron": "0.3.144",
+    "@uiharness/types": "0.0.62"
   },
   "devDependencies": {
-    "@platform/test": "0.0.29",
-    "@platform/ts": "3.3.57",
-    "@uiharness/dev": "0.1.38"
+    "@platform/test": "0.0.31",
+    "@platform/ts": "3.3.61",
+    "@uiharness/dev": "0.1.43"
   },
   "resolutions": {
     "@types/react": "16.7.17"
@@ -27,9 +26,6 @@
   "files": [
     "lib"
   ],
-  "engines": {
-    "node": ">=10.x"
-  },
   "keywords": [
     "design",
     "test",

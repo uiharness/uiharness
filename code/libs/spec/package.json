@@ -1,27 +1,26 @@
 {
   "name": "@uiharness/spec",
-  "version": "0.0.14",
+  "version": "0.0.17",
   "description": "Isolated UIHarness data-structures for specifying test specifications.",
   "main": "./lib/index",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "test": "yarn chmod && ts test",
-    "tdd": "yarn chmod && ts test --watch",
-    "lint": "yarn chmod && ts lint",
-    "build": "yarn chmod && ts build",
-    "prepare": "yarn chmod && ts prepare",
-    "chmod": "chmod 777 node_modules/.bin/ts"
+    "test": "ts test",
+    "tdd": "ts test --watch",
+    "lint": "ts lint",
+    "build": "ts build",
+    "prepare": "ts prepare"
   },
   "dependencies": {
-    "@platform/util.value": "0.0.31",
-    "@uiharness/types": "0.0.59"
+    "@platform/util.value": "0.0.35",
+    "@uiharness/types": "0.0.62"
   },
   "devDependencies": {
-    "@platform/test": "0.0.29",
-    "@platform/ts": "3.3.57"
+    "@platform/test": "0.0.31",
+    "@platform/ts": "3.3.61"
   },
   "files": [
     "lib"
   ],
-  "license": "UNLICENSED"
+  "license": "MIT"
 }
