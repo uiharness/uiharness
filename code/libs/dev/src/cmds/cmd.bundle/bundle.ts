@@ -110,7 +110,7 @@ export async function bundleElectron(args: {
           .add(`build ${entry.html.join(' ')}`)
           .add(`--public-url ./`)
           .add(`--out-dir ${out.renderer.dir}`)
-          .add(`--out-file ${out.renderer.file}`)
+          // .add(`--out-file ${out.renderer.file}`)
           .add(`--target electron`)
           .add(bundlerArgs.cmd)
           .run({ silent: true }),
