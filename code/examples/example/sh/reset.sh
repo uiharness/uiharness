@@ -12,4 +12,4 @@ rm -rf .cache
 rm -rf .uiharness
 rm -rf .dev
 
-yarn sl
+msync sl

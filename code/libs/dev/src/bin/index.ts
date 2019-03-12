@@ -181,8 +181,8 @@ const program = yargs
       if (!res.success) {
         return exit(1);
       }
-      if (open && target === 'electron') {
-        await cmds.open({ settings });
+      if (target === 'electron' && open) {
+        await Promise.all([cmds.open({ settings }), cmds.open({ settings, folder: true })]);
       }
       return exit(0);
     },

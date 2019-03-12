@@ -16,6 +16,7 @@ export function electronRendererBundler(
   const electron = settings.electron;
   const out = electron.out(prod);
   const entry = electron.entry.html;
+
   return createBundler(entry, electron.data.bundle, prod, {
     outDir: out.renderer.dir,
     target: 'electron',
@@ -47,7 +48,7 @@ export function webBundler(
  * Creates a bundler.
  */
 function createBundler(
-  entry: string,
+  entry: string | string[],
   bundlerConfig: IParcelBuildConfig | undefined,
   prod: boolean,
   options: ParcelBundler.ParcelOptions,

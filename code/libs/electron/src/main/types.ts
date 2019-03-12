@@ -14,6 +14,7 @@ export type IContext = IContext<IEvents>;
  */
 export type NewWindowFactory = (options?: INewWindowArgs) => BrowserWindow;
 export type INewWindowArgs = {
+  entry?: string; // The ID of the renderer entry path specified in [uiharness.yml]. Defaults to "default".
   name?: string;
   devTools?: boolean;
   defaultWidth?: number;

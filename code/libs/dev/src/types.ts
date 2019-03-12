@@ -26,9 +26,11 @@ export type IUIHarnessElectronConfig = {
   bundle?: IParcelBuildConfig;
   entry?: {
     main?: string;
-    renderer?: string;
+    renderer?: IUIHarnessElectronRendererEntry;
   };
 };
+
+export type IUIHarnessElectronRendererEntry = string | { [key: string]: string };
 
 /**
  * The shape of the `electron-builder.yml` configuration file.
@@ -92,7 +94,6 @@ export type IUIHarnessElectronPaths = {
   renderer: {
     defaultEntry: {
       code: string;
-      html: string;
     };
     out: {
       file: string;
