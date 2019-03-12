@@ -203,13 +203,16 @@ async function getInitializedState(args: { settings: Settings }) {
   const web = settings.web;
   const scripts = { ...SCRIPTS };
 
-  const exists = (path: string) => fs.pathExists(fs.resolve(path));
+  const exists = (...paths: string[]) =>
+    Promise.all(paths.map(path => fs.pathExists(fs.resolve(path))));
 
   const hasConfig = await exists('./uiharness.yml');
   const hasSrcFolder = await exists('./src');
   const hasElectronMainEntry = electron.exists ? await exists(electronEntry.main) : null;
-  const hasElectronRendererEntry = electron.exists
-    ? await exists(electronEntry.renderer.default && electronEntry.renderer.default.code)
+  const hasElectronRendererEntries = electron.exists
+    ? await exists(
+        ...Object.keys(electronEntry.renderer).map(key => electronEntry.renderer[key].code),
+      )
     : null;
   const hasWebEntry = web.exists ? await exists(web.entry.code) : null;
   const hasAllScripts = Object.keys(scripts).every(key => scripts[key]);
@@ -218,7 +221,7 @@ async function getInitializedState(args: { settings: Settings }) {
     hasConfig,
     hasSrcFolder,
     hasElectronMainEntry,
-    hasElectronRendererEntry,
+    hasElectronRendererEntries,
     hasWebEntry,
     hasAllScripts,
   };
