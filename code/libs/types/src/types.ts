@@ -5,6 +5,6 @@ export type IRuntimeConfig = {
   electron: {
     port: number;
     main: string;
-    renderer: { [name: string]: string };
+    renderer: { [id: string]: string };
   };
 };

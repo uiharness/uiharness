@@ -12,7 +12,7 @@ import * as t from '../types';
  * Creates the main window.
  */
 export function create(args: t.IContext & t.INewWindowArgs) {
-  const { id, store, config, log, ipc, windows } = args;
+  const { id, store, config, log, ipc, windows, entry = 'default' } = args;
 
   const context: t.IContext = { config, id, store, log, ipc, windows };
   const title = args.name || config.name;
@@ -77,7 +77,7 @@ export function create(args: t.IContext & t.INewWindowArgs) {
   /**
    * Load the window URL.
    */
-  const paths = getPaths(config);
+  const paths = getPaths(config, entry);
   window.loadURL(paths.url);
 
   // Finish up.
@@ -87,12 +87,14 @@ export function create(args: t.IContext & t.INewWindowArgs) {
 /**
  * [INTERNAL]
  */
-function getPaths(config: IRuntimeConfig) {
+function getPaths(config: IRuntimeConfig, entryKey: string) {
+  console.log('entryKey', entryKey);
+
   const port = config.electron.port;
   const dev = `http://localhost:${port}`;
   const prod = format({
     protocol: 'file:',
-    pathname: path.resolve(config.electron.renderer.default),
+    pathname: path.resolve(config.electron.renderer[entryKey]),
     slashes: true,
   });
   const url = main.is.dev ? dev : prod;
