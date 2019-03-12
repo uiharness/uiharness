@@ -145,7 +145,9 @@ async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
     electron: {
       port,
       main: out.main.path,
-      renderer: out.renderer.path,
+      renderer: {
+        default: out.renderer.path,
+      },
     },
   };
 

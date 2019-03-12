@@ -92,7 +92,7 @@ function getPaths(config: IRuntimeConfig) {
   const dev = `http://localhost:${port}`;
   const prod = format({
     protocol: 'file:',
-    pathname: path.resolve(config.electron.renderer),
+    pathname: path.resolve(config.electron.renderer.default),
     slashes: true,
   });
   const url = main.is.dev ? dev : prod;
