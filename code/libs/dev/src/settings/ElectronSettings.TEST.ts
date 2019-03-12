@@ -64,8 +64,12 @@ describe('ElectronSettings', () => {
   it('multiple renderer entry points', () => {
     const electron = Settings.create(MULTI_RENDERER).electron;
     const renderer = electron.entry.renderer;
+
     expect(renderer.default.code).to.eql('./foo/multi/index.tsx');
     expect(renderer.default.html).to.eql('.uiharness/html/electron.foo.multi.index.html');
+
+    expect(renderer.admin.code).to.eql('./admin.tsx');
+    expect(renderer.admin.html).to.eql('.uiharness/html/electron.admin.html');
   });
 
   it('copies default entry-point HTML to temporary dir, with application name and path', async () => {
@@ -78,5 +82,20 @@ describe('ElectronSettings', () => {
 
     expect(text).to.include(`<title>My App</title>`);
     expect(text).to.include(`<script src="../../../test/renderer.tsx">`);
+  });
+
+  it('copies multi entry-point HTML to temporary dir, with application name and path', async () => {
+    const settings = Settings.create(MULTI_RENDERER, { tmpDir, templatesDir });
+    const electron = settings.electron;
+    await electron.ensureEntries();
+
+    const path1 = fs.join(tmpDir, 'html', 'electron.admin.html');
+    const path2 = fs.join(tmpDir, 'html', 'electron.foo.multi.index.html');
+
+    const text1 = fs.readFileSync(path1, 'utf8');
+    const text2 = fs.readFileSync(path2, 'utf8');
+
+    expect(text1).to.include(`<script src="../../../admin.tsx">`);
+    expect(text2).to.include(`<script src="../../../foo/multi/index.tsx">`);
   });
 });
