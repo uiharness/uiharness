@@ -108,21 +108,22 @@ export class ElectronSettings {
   public async ensureEntries() {
     const entry = this.entry;
     const name = this._config.name || constants.UNNAMED;
-    const codePath = entry.renderer.default.code;
-    const htmlFilename = fs.basename(entry.renderer.default.html);
     const templatesDir = this._paths.parent.templates.html;
     const targetDir = this._paths.parent.tmp.html;
 
-    // console.log('htmlFilename', htmlFilename);
-
-    return ensureEntries({
-      name,
-      codePath,
-      templatesDir,
-      pattern: 'electron.html',
-      targetDir,
-      targetFile: htmlFilename,
+    const wait = Object.keys(entry.renderer).map(key => {
+      const item = entry.renderer[key];
+      return ensureEntries({
+        name,
+        codePath: item.code,
+        templatesDir,
+        pattern: 'electron.html',
+        targetDir,
+        htmlFile: fs.basename(item.html),
+      });
     });
+
+    await Promise.all(wait);
   }
 
   /**

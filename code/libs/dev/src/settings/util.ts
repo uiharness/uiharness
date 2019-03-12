@@ -9,7 +9,7 @@ export async function ensureEntries(args: {
   templatesDir: string;
   pattern: string;
   targetDir: string;
-  targetFile?: string;
+  htmlFile?: string;
 }) {
   const { codePath, pattern } = args;
 
@@ -31,7 +31,7 @@ export async function ensureEntries(args: {
         targetDir,
       })
       .use(tmpl.replace({ edge: '__' }))
-      .use(tmpl.copyFile({ force: true, filename: args.targetFile }));
+      .use(tmpl.copyFile({ force: true, filename: args.htmlFile }));
 
     // Execute template.
     const variables = {
