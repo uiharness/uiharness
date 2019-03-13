@@ -14,7 +14,7 @@ export class App extends React.PureComponent {
   public context!: renderer.ReactContext;
 
   public render() {
-    return <App />;
+    return <Test />;
   }
 }
 
@@ -24,4 +24,4 @@ export class App extends React.PureComponent {
  * Reference your component(s) here or pull in the [UIHarness]
  * visual testing host.
  */
-renderer.render(<Test />, 'root').then(context => context.log.info('renderer loaded!'));
+renderer.render(<App />, 'root').then(context => context.log.info('renderer loaded!'));
