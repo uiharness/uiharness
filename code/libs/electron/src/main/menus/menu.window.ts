@@ -5,6 +5,8 @@ import { filter } from 'rxjs/operators';
 import { TAG } from '../../common';
 import * as t from './types';
 
+type MenuItem = MenuItemConstructorOptions;
+
 /**
  * Current [window] menu state.
  */
@@ -14,7 +16,6 @@ export function current(
     include: main.IWindowTag[];
   },
 ) {
-  type MenuItem = MenuItemConstructorOptions;
   const { newWindow, windows, include = [] } = args;
 
   // Monitor for changes that require a redraw of the menu.
@@ -95,14 +96,11 @@ export function current(
     return submenu;
   };
 
-  const windowsList = refs
+  let windowList: MenuItem[] = refs
     .map(ref => {
       const window = getWindow(ref.id);
       const isCurrent = isFocused(ref.id);
-      let label = window ? window.getTitle() : '';
-      if (label && refs.length > 1 && isCurrent) {
-        label = `${label} (current)`;
-      }
+      const label = window ? window.getTitle() : '';
       const item: MenuItem = {
         label,
         type: 'radio',
@@ -111,12 +109,20 @@ export function current(
       };
       return item;
     })
-    .filter(({ label }) => Boolean(label))
-    .map((item, i) => {
-      // Append index numbers when more than one UIHarness window.
-      // NB: This is to avoid a list of window names all the same.
-      return refs.length > 1 ? { ...item, label: `${i + 1}. ${item.label}` } : item;
-    });
+    .filter(({ label }) => Boolean(label));
+
+  // Put (n) digit suffix on similarly named windows.
+  windowList = windowList.reduce<MenuItem[]>((acc, next) => {
+    const label = next.label;
+    const total = windowList.map(menu => menu.label).filter(label => label === next.label).length;
+    const prior = acc
+      .map(menu => menu.label || '')
+      .filter(label => label.startsWith(next.label || '') && /.*\(\d+\)$/.test(label)).length;
+    if (total > 1) {
+      next = { ...next, label: `${label} (${prior + 1})` };
+    }
+    return [...acc, next];
+  }, []);
 
   const createShowDevTools = () => {
     const parent = getParentWindow(windows.focused ? windows.focused.id : -1);
@@ -135,7 +141,14 @@ export function current(
   };
 
   let submenu: MenuItem[] = [
-    { label: 'New Window', accelerator: 'CommandOrControl+N', click: () => newWindow() },
+    {
+      label: 'New Window',
+      accelerator: 'CommandOrControl+N',
+      click: () => {
+        console.log(`\nTODO 🐷 Open selected entry point  \n`);
+        newWindow({});
+      },
+    },
     { role: 'close' },
     { role: 'minimize' },
     { type: 'separator' },
@@ -151,7 +164,7 @@ export function current(
       click: () => allDevToolsVisible(false),
     },
     { type: 'separator' },
-    ...windowsList,
+    ...windowList,
   ];
 
   // Finish up.
