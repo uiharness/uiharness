@@ -19,7 +19,6 @@ type ICalculatedPaths = {
   renderer: {
     defaultEntry: { code: string };
     out: {
-      file: string;
       dir: { prod: string; dev: string };
     };
   };
@@ -158,7 +157,6 @@ export class ElectronSettings {
     };
     const renderer = {
       dir: prod ? path.renderer.out.dir.prod : path.renderer.out.dir.dev,
-      file: path.renderer.out.file,
     };
 
     return {
@@ -169,8 +167,6 @@ export class ElectronSettings {
       },
       renderer: {
         dir: renderer.dir,
-        file: renderer.file,
-        path: fs.join(renderer.dir, renderer.file),
       },
     };
   }
@@ -239,7 +235,6 @@ export class ElectronSettings {
           code: 'test/renderer.tsx',
         },
         out: {
-          file: 'renderer.html',
           dir: {
             dev: fs.join(bundle, 'app.renderer/dev'),
             prod: fs.join(bundle, 'app.renderer/prod'),
