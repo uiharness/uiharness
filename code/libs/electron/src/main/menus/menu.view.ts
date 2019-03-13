@@ -9,7 +9,6 @@ export function current(args: t.IMenuContext) {
     label: 'View',
     submenu: [{ role: 'reload' }, { role: 'forcereload' }, { type: 'separator' }],
   };
-
   return menu;
 }
 
