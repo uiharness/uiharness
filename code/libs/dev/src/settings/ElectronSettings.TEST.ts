@@ -22,7 +22,9 @@ describe('ElectronSettings', () => {
       expect(electron.logLevel).to.eql(3);
 
       expect(electron.entry.main).to.eql('test/main.ts');
-      expect(electron.entry.renderer.default.code).to.eql('test/renderer.tsx');
+
+      expect(electron.entry.renderer.default.label).to.eql('default');
+      expect(electron.entry.renderer.default.path).to.eql('test/renderer.tsx');
       expect(electron.entry.renderer.default.html).to.eql(
         '.uiharness/html/electron.test.renderer.html',
       );
@@ -47,7 +49,8 @@ describe('ElectronSettings', () => {
     expect(electron.logLevel).to.eql(1);
 
     expect(electron.entry.main).to.eql('./foo/start.ts');
-    expect(electron.entry.renderer.default.code).to.eql('./foo/render.tsx');
+    expect(electron.entry.renderer.default.label).to.eql('default');
+    expect(electron.entry.renderer.default.path).to.eql('./foo/render.tsx');
 
     const bundler = electron.bundlerArgs;
     expect(bundler.sourcemaps).to.eql(false);
@@ -65,10 +68,11 @@ describe('ElectronSettings', () => {
     const electron = Settings.create(MULTI_RENDERER).electron;
     const renderer = electron.entry.renderer;
 
-    expect(renderer.default.code).to.eql('./foo/multi/index.tsx');
+    expect(renderer.default.path).to.eql('./foo/multi/index.tsx');
     expect(renderer.default.html).to.eql('.uiharness/html/electron.foo.multi.index.html');
 
-    expect(renderer.admin.code).to.eql('./admin.tsx');
+    expect(renderer.admin.label).to.eql('Administration');
+    expect(renderer.admin.path).to.eql('./admin.tsx');
     expect(renderer.admin.html).to.eql('.uiharness/html/electron.admin.html');
   });
 

@@ -9,4 +9,6 @@ electron:
     main: ./foo/start.ts
     renderer: 
       default: ./foo/multi/index.tsx
-      admin: ./admin.tsx
+      admin: 
+        path: ./admin.tsx
+        label: 'Administration'

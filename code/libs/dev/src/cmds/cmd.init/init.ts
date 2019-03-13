@@ -213,7 +213,7 @@ async function getInitializedState(args: { settings: Settings }) {
   const hasElectronMainEntry = electron.exists ? await exists(electronEntry.main) : null;
   const hasElectronRendererEntries = electron.exists
     ? await exists(
-        ...Object.keys(electronEntry.renderer).map(key => electronEntry.renderer[key].code),
+        ...Object.keys(electronEntry.renderer).map(key => electronEntry.renderer[key].path),
       )
     : null;
   const hasWebEntry = web.exists ? await exists(web.entry.code) : null;

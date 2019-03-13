@@ -5,7 +5,8 @@ import {
   IElectronConfig,
   ISettingsPaths,
   LogLevel,
-  IRendererEntry,
+  IRendererEntryConfig,
+  IRendererEntryConfigItem,
 } from '../types';
 import { ensureEntries } from './util';
 
@@ -81,7 +82,7 @@ export class ElectronSettings {
     const entry = typeof this.data.entry === 'object' ? this.data.entry : {};
     const main = entry.main || path.main.defaultEntry.code;
 
-    type IREntry = { code: string; html: string };
+    type IREntry = IRendererEntryConfigItem & { html: string };
 
     const toHtml = (code: string) => {
       const parent = this._paths.parent;
@@ -91,22 +92,24 @@ export class ElectronSettings {
       return fs.join(parent.tmp.html, `electron.${path}.html`);
     };
 
-    const toRendererEntry = (code: string): IREntry => {
-      return { code, html: toHtml(code) };
+    const toRendererEntry = (label: string, path: string): IREntry => {
+      return { label, path, html: toHtml(path) };
     };
 
-    const parseRenderer = (value?: IRendererEntry): { [key: string]: IREntry } => {
+    const parseRenderer = (value?: IRendererEntryConfig): { [key: string]: IREntry } => {
       if (value === undefined) {
         const code = path.renderer.defaultEntry.code;
-        return { default: toRendererEntry(code) };
+        return { default: toRendererEntry('default', code) };
       }
       if (typeof value === 'string') {
-        return { default: toRendererEntry(value) };
+        return { default: toRendererEntry('default', value) };
       }
       return Object.keys(value).reduce((acc, next) => {
-        const code = value[next];
-        if (code) {
-          acc = { ...acc, [next]: toRendererEntry(code) };
+        const item = value[next];
+        if (item) {
+          const code = typeof item === 'string' ? item : item.path;
+          const label = typeof item === 'object' ? item.label || next : next;
+          acc = { ...acc, [next]: toRendererEntry(label, code) };
         }
         return acc;
       }, {});
@@ -135,7 +138,7 @@ export class ElectronSettings {
       const item = entry.renderer[key];
       return ensureEntries({
         name,
-        codePath: item.code,
+        codePath: item.path,
         templatesDir,
         pattern: 'electron.html',
         targetDir,
