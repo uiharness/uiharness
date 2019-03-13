@@ -287,10 +287,10 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.9.tgz#693e76a52f61a2f1e7fb48c0eef167b95ea4ffd0"
   integrity sha512-sCZy4SxP9rN2w30Hlmg5dtdRwgYQfYRiLo9usw8X9cxlf+H4FqM1xX7+sNH7NNKVdbXMJWqva7iyy+fxh/V7fA==
 
-"@uiharness/types@0.0.64":
-  version "0.0.64"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.64.tgz#adf9c56cc755dd61c2c3dd5aadc49ebd164b3431"
-  integrity sha512-zQvD2IcsAVg1TqxfZlmb6u5/TF5wjpNPzaRbSwAjcb9gmNk6ydBy0fqdUBPvj0JMfDUhP20EEG1LWrP1KDYjvA==
+"@uiharness/types@0.0.65":
+  version "0.0.65"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.65.tgz#d99c802706a3a9656fd86c5751c6ef44c0dafc99"
+  integrity sha512-FifVFG/ebalKmax4xNolexHfHDfDCHvs3GXusbzkuDl3RI8CfVLDi3RlczPWC/Zql1Yr2+Px7MyuL730ZIDCDg==
 
 ajv@^6.5.5:
   version "6.10.0"

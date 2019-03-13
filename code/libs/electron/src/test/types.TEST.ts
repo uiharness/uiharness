@@ -12,6 +12,7 @@ describe('types', () => {
       },
     };
     expect(config.name).to.eql('Foo');
-    expect(config.electron.renderer.default).to.eql('renderer.tsx');
+    expect(config.electron.renderer.default.label).to.eql('Foo');
+    expect(config.electron.renderer.default.path).to.eql('renderer.tsx');
   });
 });
