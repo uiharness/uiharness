@@ -4,7 +4,7 @@ import { fs, log } from '../../common';
  * Removes temporary generated files.
  */
 export async function clean(args: {}) {
-  const list = ['./.cache', './.uiharness'];
+  const list = ['./.cache', './.uiharness', './.dev'];
 
   log.info.gray('Removing:\n');
   const remove = (path: string) => {
