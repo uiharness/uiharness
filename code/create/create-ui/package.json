@@ -1,6 +1,6 @@
 {
   "name": "create-ui",
-  "version": "0.0.28",
+  "version": "0.0.30",
   "main": "./lib/bin",
   "bin": {
     "create-ui": "./lib/bin.js"
@@ -14,7 +14,7 @@
     "reset": "rm -rf tmp"
   },
   "dependencies": {
-    "create-tmpl": "0.1.35"
+    "create-tmpl": "0.1.36"
   },
   "devDependencies": {
     "@platform/ts": "3.3.61"

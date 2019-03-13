@@ -1,7 +1,7 @@
 import { dirname, join, resolve } from 'path';
 
 import { constants, fs, log, npm, NpmPackage } from '../common';
-import { IUIHarnessConfig, IUIHarnessPaths, IUIHarnessSourcemapsConfig } from '../types';
+import { IConfig, ISettingsPaths, ISourcemapsConfig } from '../types';
 import { ElectronSettings } from './ElectronSettings';
 import { WebSettings } from './WebSettings';
 
@@ -32,7 +32,7 @@ export class Settings {
    */
   public static load(path: string) {
     try {
-      return fs.file.loadAndParseSync<IUIHarnessConfig>(path, {});
+      return fs.file.loadAndParseSync<IConfig>(path, {});
     } catch (error) {
       log.error('💥  ERROR UIHarness');
       log.info.yellow(`Failed to load UIHarness congfig at path '${path}'.`);
@@ -45,7 +45,7 @@ export class Settings {
    * Fields.
    */
   public readonly exists: boolean;
-  public readonly data: IUIHarnessConfig;
+  public readonly data: IConfig;
 
   private _package: NpmPackage;
   private _electron: ElectronSettings;
@@ -54,7 +54,7 @@ export class Settings {
     file: '',
     templatesDir: '',
     tmpDir: '',
-    calculated: undefined as undefined | IUIHarnessPaths,
+    calculated: undefined as undefined | ISettingsPaths,
   };
 
   /**
@@ -134,7 +134,7 @@ export class Settings {
   /**
    * Retrieves file paths.
    */
-  public getPaths(): IUIHarnessPaths {
+  public getPaths(): ISettingsPaths {
     const ROOT = resolve('.');
 
     const fromRoot = (path: string) => {
@@ -168,7 +168,7 @@ export class Settings {
   /**
    * Retrieves optinoal configuration for dealing with source-maps.
    */
-  public get sourcemaps(): IUIHarnessSourcemapsConfig {
+  public get sourcemaps(): ISourcemapsConfig {
     const data = this.data.sourcemaps || {};
     const strip = data.strip || [];
     return { strip };

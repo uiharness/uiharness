@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sh ./reset.sh
+sh ./sh/reset.sh
 rm -rf node_modules

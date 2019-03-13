@@ -1,36 +1,37 @@
 import { join } from 'path';
-
 import { constants, value, toBundlerArgs } from '../common';
-import {
-  IUIHarnessConfig,
-  IUIHarnessPaths,
-  IUIHarnessWebConfig,
-  IUIHarnessWebPaths,
-  LogLevel,
-} from '../types';
+import { IConfig, ISettingsPaths, IWebConfig, LogLevel } from '../types';
 import { ensureEntries } from './util';
 
 const { DEFAULT } = constants;
 
+type ICalculatedPaths = {
+  defaultEntry: { code: string; html: string };
+  out: {
+    file: string;
+    dir: { prod: string; dev: string };
+  };
+};
+
 type IPaths = {
-  parent: IUIHarnessPaths;
-  calculated?: IUIHarnessWebPaths;
+  parent: ISettingsPaths;
+  calculated?: ICalculatedPaths;
 };
 
 /**
  * Represents the `web` section of the `uiharness.yml` configuration file.
  */
 export class WebSettings {
-  public readonly data: IUIHarnessWebConfig;
+  public readonly data: IWebConfig;
   public readonly exists: boolean;
 
-  private readonly _config: IUIHarnessConfig;
+  private readonly _config: IConfig;
   private _paths: IPaths;
 
   /**
    * Constructor.
    */
-  constructor(args: { path: IUIHarnessPaths; config: IUIHarnessConfig }) {
+  constructor(args: { path: ISettingsPaths; config: IConfig }) {
     const { config } = args;
     this._paths = { parent: args.path };
     this._config = config;
@@ -118,7 +119,7 @@ export class WebSettings {
   /**
    * Retrieves file paths.
    */
-  public getPaths(): IUIHarnessWebPaths {
+  public getPaths(): ICalculatedPaths {
     const parent = this._paths.parent;
     const bundle = parent.tmp.bundle;
     const html = parent.tmp.html;

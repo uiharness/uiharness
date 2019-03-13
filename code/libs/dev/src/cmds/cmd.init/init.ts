@@ -143,8 +143,12 @@ async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
 
   const renderer: IRuntimeConfig['electron']['renderer'] = {};
   Object.keys(electron.entry.renderer).forEach(key => {
-    const file = fs.basename(electron.entry.renderer[key].html);
-    renderer[key] = fs.join(out.renderer.dir, file);
+    const { html, label } = electron.entry.renderer[key];
+    const file = fs.basename(html);
+    renderer[key] = {
+      label: label,
+      path: fs.join(out.renderer.dir, file),
+    };
   });
 
   const data: IRuntimeConfig = {
@@ -203,15 +207,17 @@ async function getInitializedState(args: { settings: Settings }) {
   const web = settings.web;
   const scripts = { ...SCRIPTS };
 
-  const exists = (...paths: string[]) =>
-    Promise.all(paths.map(path => fs.pathExists(fs.resolve(path))));
+  const exists = async (...paths: string[]) => {
+    const res = await Promise.all(paths.map(path => fs.pathExists(fs.resolve(path))));
+    return !res.some(value => value === false);
+  };
 
   const hasConfig = await exists('./uiharness.yml');
   const hasSrcFolder = await exists('./src');
   const hasElectronMainEntry = electron.exists ? await exists(electronEntry.main) : null;
   const hasElectronRendererEntries = electron.exists
     ? await exists(
-        ...Object.keys(electronEntry.renderer).map(key => electronEntry.renderer[key].code),
+        ...Object.keys(electronEntry.renderer).map(key => electronEntry.renderer[key].path),
       )
     : null;
   const hasWebEntry = web.exists ? await exists(web.entry.code) : null;

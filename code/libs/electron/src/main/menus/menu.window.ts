@@ -5,6 +5,8 @@ import { filter } from 'rxjs/operators';
 import { TAG } from '../../common';
 import * as t from './types';
 
+type MenuItem = MenuItemConstructorOptions;
+
 /**
  * Current [window] menu state.
  */
@@ -14,19 +16,21 @@ export function current(
     include: main.IWindowTag[];
   },
 ) {
-  type MenuItem = MenuItemConstructorOptions;
-  const { newWindow, windows, include = [] } = args;
+  const { newWindow, windows, include = [], config } = args;
 
   // Monitor for changes that require a redraw of the menu.
   windows.change$
     .pipe(filter(e => ['CREATED', 'CLOSED', 'FOCUS', 'VISIBILITY'].includes(e.type)))
     .subscribe(() => args.changed$.next());
 
+  const allDevToolsVisible = (isVisible: boolean) => {
+    windows
+      .byTag(TAG.DEV_TOOLS.key, TAG.DEV_TOOLS.value)
+      .forEach(ref => setWindowVisibility(ref.id, isVisible));
+  };
+
   // Build list of active windows.
   const refs = windows.byTag(...include);
-  const all = BrowserWindow.getAllWindows();
-
-  const getWindow = (id: number) => all.find(window => window.id === id);
 
   const isDevTools = (id: number) => {
     return windows.byTag(TAG.DEV_TOOLS.key, TAG.DEV_TOOLS.value).some(ref => ref.id === id);
@@ -36,6 +40,14 @@ export function current(
     const window = getWindow(parentId);
     const children = window ? window.getChildWindows() : [];
     return children.find(window => isDevTools(window.id));
+  };
+
+  const getParentWindow = (windowId: number) => {
+    let window = getWindow(windowId);
+    if (window) {
+      window = isDevTools(windowId) ? window.getParentWindow() : window;
+    }
+    return window;
   };
 
   const getChildDevToolsId = (parentId: number) => {
@@ -49,75 +61,111 @@ export function current(
     return focusId === id || focusId === getChildDevToolsId(id);
   };
 
-  const windowSubmenu = (parent: BrowserWindow, windowId: number) => {
-    let submenu: MenuItem[] = [
-      {
-        label: 'Bring to Front',
-        enabled: !isFocused(windowId),
-        click: () => windows.visible(true, windowId),
-      },
-    ];
-
-    const devToolsId = getChildDevToolsId(windowId);
-    const devToolsRef = devToolsId ? windows.refs.find(ref => windowId === devToolsId) : undefined;
-
-    if (devToolsRef && devToolsRef.isVisible) {
-      submenu = [
-        ...submenu,
-        {
-          label: 'Hide Developer Tools',
-          click: () => windows.visible(false, devToolsRef.id),
-        },
-      ];
-    }
-
-    if (!devToolsRef || !devToolsRef.isVisible) {
-      submenu = [
-        ...submenu,
-        {
-          label: 'Show Developer Tools',
-          click: () => main.devTools.create({ parent, windows }),
-        },
-      ];
-    }
-
-    return submenu;
-  };
-
-  const windowsList = refs
+  let windowList: MenuItem[] = refs
     .map(ref => {
       const window = getWindow(ref.id);
-      let label = window ? window.getTitle() : '';
-      if (label && refs.length > 1 && isFocused(ref.id)) {
-        label = `${label} (current)`;
-      }
-      const submenu = window ? windowSubmenu(window, ref.id) : undefined;
+      const isCurrent = isFocused(ref.id);
+      const label = window ? window.getTitle() : '';
       const item: MenuItem = {
         label,
-        submenu,
+        type: 'radio',
+        checked: isCurrent,
         click: () => windows.visible(true, ref.id),
       };
       return item;
     })
-    .filter(({ label }) => Boolean(label))
-    .map((item, i) => {
-      // Append index numbers when more than one UIHarness window.
-      // NB: This is to avoid a list of window names all the same.
-      return refs.length > 1 ? { ...item, label: `${i + 1}. ${item.label}` } : item;
-    });
+    .filter(({ label }) => Boolean(label));
 
-  // Construct the menu.
-  const menu: MenuItem = {
-    label: 'Window',
-    submenu: [
-      { label: 'New Window', accelerator: 'CommandOrControl+N', click: () => newWindow() },
-      { role: 'close' },
-      { role: 'minimize' },
-      { type: 'separator' },
-      ...windowsList,
-    ],
+  // Put (n) digit suffix on similarly named windows.
+  windowList = windowList.reduce<MenuItem[]>((acc, next) => {
+    const label = next.label;
+    const total = windowList.map(menu => menu.label).filter(label => label === next.label).length;
+    const prior = acc
+      .map(menu => menu.label || '')
+      .filter(label => label.startsWith(next.label || '') && /.*\(\d+\)$/.test(label)).length;
+    if (total > 1) {
+      next = { ...next, label: `${label} (${prior + 1})` };
+    }
+    return [...acc, next];
+  }, []);
+
+  const newWindowMenu = (): MenuItem => {
+    const CMD_NEW = 'CommandOrControl+N';
+    const DEFAULT = 'default';
+    const renderer = config.electron.renderer;
+    const items = Object.keys(renderer).map(key => ({ key, ...renderer[key] }));
+    if (items.length < 2) {
+      return {
+        label: 'New Window',
+        accelerator: CMD_NEW,
+        click: () => newWindow({ entry: DEFAULT }),
+      };
+    }
+    const defaultWindow = items.find(item => item.key === DEFAULT) || items[0];
+    const submenu = items.map(({ label, key }) => {
+      const name = label === DEFAULT ? undefined : label;
+      return {
+        label: label === DEFAULT ? 'Default' : label,
+        accelerator: key === defaultWindow.key ? CMD_NEW : undefined,
+        click: () => newWindow({ entry: key, name }),
+      };
+    });
+    return { label: 'New Window', submenu };
   };
 
+  const showDevToolsMenu = (): MenuItem | undefined => {
+    const parent = getParentWindow(windows.focused ? windows.focused.id : -1);
+    if (!parent) {
+      return;
+    }
+    const devTools = getChildDevTools(parent.id);
+    const isShowing = devTools ? devTools.isVisible() : false;
+    if (!devTools || isShowing) {
+      return;
+    }
+    return {
+      label: 'Show Developer Tools',
+      click: () => main.devTools.create({ parent, windows }),
+    };
+  };
+
+  let submenu: MenuItem[] = [
+    newWindowMenu(),
+    { role: 'close' },
+    { role: 'minimize' },
+    { type: 'separator' },
+  ];
+
+  const showDevTools = showDevToolsMenu();
+  submenu = showDevTools ? [...submenu, showDevTools] : submenu;
+
+  submenu = [
+    ...submenu,
+    {
+      label: 'Hide All Developer Tools',
+      click: () => allDevToolsVisible(false),
+    },
+    { type: 'separator' },
+    ...windowList,
+  ];
+
   // Finish up.
+  const menu: MenuItem = { label: 'Window', submenu };
   return menu;
 }
+
+/**
+ * [Internal]
+ */
+const getWindow = (id: number) => BrowserWindow.getAllWindows().find(window => window.id === id);
+
+const setWindowVisibility = (id: number, isVisible: boolean) => {
+  const window = getWindow(id);
+  if (window) {
+    if (isVisible) {
+      window.show();
+    } else {
+      window.hide();
+    }
+  }
+};

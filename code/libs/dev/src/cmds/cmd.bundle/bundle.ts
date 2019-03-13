@@ -139,11 +139,11 @@ export async function bundleElectron(args: {
     log.info.gray(`   • env:         ${env.value}`);
     log.info.gray(`   • entry:       ${formatPath(entry.main)}`);
     Object.keys(entry.renderer).forEach(key => {
-      const code = entry.renderer[key].code;
+      const code = entry.renderer[key].path;
       log.info.gray(`                  ${formatPath(code)}`);
     });
-    log.info.gray(`   • output:      ${formatPath(out.main.path)}`);
-    log.info.gray(`                  ${formatPath(out.renderer.path)}`);
+    log.info.gray(`   • output:      ${formatPath(out.main.dir)}`);
+    log.info.gray(`                  ${formatPath(out.renderer.dir)}`);
     log.info();
   }
   if (stats && !silent) {

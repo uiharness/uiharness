@@ -7,30 +7,34 @@ export type LogLevel = 3 | 2 | 1;
 /**
  * The `uiharness.yml` configuration file.
  */
-export type IUIHarnessConfig = {
+export type IConfig = {
   name?: string;
-  electron?: IUIHarnessElectronConfig;
-  web?: IUIHarnessWebConfig;
-  sourcemaps?: Partial<IUIHarnessSourcemapsConfig>;
+  electron?: IElectronConfig;
+  web?: IWebConfig;
+  sourcemaps?: Partial<ISourcemapsConfig>;
 };
 
-export type IUIHarnessSourcemapsConfig = {
+export type ISourcemapsConfig = {
   strip: string[];
 };
 
 /**
  * Configuration for the electron app.
  */
-export type IUIHarnessElectronConfig = {
+export type IElectronConfig = {
   port?: number; // Port the dev-server runs on for electron.
   bundle?: IParcelBuildConfig;
   entry?: {
     main?: string;
-    renderer?: IUIHarnessElectronRendererEntry;
+    renderer?: IRendererEntryConfig;
   };
 };
 
-export type IUIHarnessElectronRendererEntry = string | { [key: string]: string };
+export type IRendererEntryConfig = string | { [key: string]: string | IRendererEntryConfigItem };
+export type IRendererEntryConfigItem = {
+  path: string;
+  label: string;
+};
 
 /**
  * The shape of the `electron-builder.yml` configuration file.
@@ -45,7 +49,7 @@ export type IElectronBuilderConfig = {
 /**
  * Configuration for the web (browser) app.
  */
-export type IUIHarnessWebConfig = {
+export type IWebConfig = {
   port?: number; // Port the dev-server runs on for electron.
   bundle?: IParcelBuildConfig;
   entry?: string;
@@ -64,7 +68,7 @@ export type IParcelBuildConfig = {
 /**
  * The set of paths to various assets that make up a UIHarness project.
  */
-export type IUIHarnessPaths = {
+export type ISettingsPaths = {
   self: string;
   dir: string;
   package: string;
@@ -78,42 +82,5 @@ export type IUIHarnessPaths = {
     base: string;
     electron: string;
     html: string;
-  };
-};
-
-/**
- * The set of paths related to electron.
- */
-export type IUIHarnessElectronPaths = {
-  main: {
-    defaultEntry: {
-      code: string;
-    };
-    out: { file: string; dir: string };
-  };
-  renderer: {
-    defaultEntry: {
-      code: string;
-    };
-    out: {
-      file: string;
-      dir: { prod: string; dev: string };
-    };
-  };
-  builder: {
-    configFilename: string;
-    files: string[];
-    output: string;
-  };
-};
-
-export type IUIHarnessWebPaths = {
-  defaultEntry: {
-    code: string;
-    html: string;
-  };
-  out: {
-    file: string;
-    dir: { prod: string; dev: string };
   };
 };

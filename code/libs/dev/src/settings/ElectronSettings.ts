@@ -1,37 +1,55 @@
 import { constants, fs, value, toBundlerArgs } from '../common';
 import {
   IElectronBuilderConfig,
-  IUIHarnessConfig,
-  IUIHarnessElectronConfig,
-  IUIHarnessElectronPaths,
-  IUIHarnessPaths,
+  IConfig,
+  IElectronConfig,
+  ISettingsPaths,
   LogLevel,
-  IUIHarnessElectronRendererEntry,
+  IRendererEntryConfig,
+  IRendererEntryConfigItem,
 } from '../types';
 import { ensureEntries } from './util';
 
 const { DEFAULT } = constants;
 
+type ICalculatedPaths = {
+  main: {
+    defaultEntry: { code: string };
+    out: { file: string; dir: string };
+  };
+  renderer: {
+    defaultEntry: { code: string };
+    out: {
+      dir: { prod: string; dev: string };
+    };
+  };
+  builder: {
+    configFilename: string;
+    files: string[];
+    output: string;
+  };
+};
+
 type IPaths = {
-  parent: IUIHarnessPaths;
-  calculated?: IUIHarnessElectronPaths;
+  parent: ISettingsPaths;
+  calculated?: ICalculatedPaths;
 };
 
 /**
  * Represents the `electron` section of the `uiharness.yml` configuration file.
  */
 export class ElectronSettings {
-  public readonly data: IUIHarnessElectronConfig;
+  public readonly data: IElectronConfig;
   public readonly exists: boolean;
 
-  private readonly _config: IUIHarnessConfig;
+  private readonly _config: IConfig;
   private _builderConfig: IElectronBuilderConfig;
   private _paths: IPaths;
 
   /**
    * Constructor.
    */
-  constructor(args: { path: IUIHarnessPaths; config: IUIHarnessConfig }) {
+  constructor(args: { path: ISettingsPaths; config: IConfig }) {
     const { config } = args;
     this._paths = { parent: args.path };
     this._config = config;
@@ -64,7 +82,7 @@ export class ElectronSettings {
     const entry = typeof this.data.entry === 'object' ? this.data.entry : {};
     const main = entry.main || path.main.defaultEntry.code;
 
-    type IRendererEntry = { code: string; html: string };
+    type IREntry = IRendererEntryConfigItem & { html: string };
 
     const toHtml = (code: string) => {
       const parent = this._paths.parent;
@@ -74,24 +92,24 @@ export class ElectronSettings {
       return fs.join(parent.tmp.html, `electron.${path}.html`);
     };
 
-    const toRendererEntry = (code: string): IRendererEntry => {
-      return { code, html: toHtml(code) };
+    const toRendererEntry = (label: string, path: string): IREntry => {
+      return { label, path, html: toHtml(path) };
     };
 
-    const parseRenderer = (
-      value?: IUIHarnessElectronRendererEntry,
-    ): { [key: string]: IRendererEntry } => {
+    const parseRenderer = (value?: IRendererEntryConfig): { [key: string]: IREntry } => {
       if (value === undefined) {
         const code = path.renderer.defaultEntry.code;
-        return { default: toRendererEntry(code) };
+        return { default: toRendererEntry('default', code) };
       }
       if (typeof value === 'string') {
-        return { default: toRendererEntry(value) };
+        return { default: toRendererEntry('default', value) };
       }
       return Object.keys(value).reduce((acc, next) => {
-        const code = value[next];
-        if (code) {
-          acc = { ...acc, [next]: toRendererEntry(code) };
+        const item = value[next];
+        if (item) {
+          const code = typeof item === 'string' ? item : item.path;
+          const label = typeof item === 'object' ? item.label || next : next;
+          acc = { ...acc, [next]: toRendererEntry(label, code) };
         }
         return acc;
       }, {});
@@ -120,7 +138,7 @@ export class ElectronSettings {
       const item = entry.renderer[key];
       return ensureEntries({
         name,
-        codePath: item.code,
+        codePath: item.path,
         templatesDir,
         pattern: 'electron.html',
         targetDir,
@@ -142,7 +160,6 @@ export class ElectronSettings {
     };
     const renderer = {
       dir: prod ? path.renderer.out.dir.prod : path.renderer.out.dir.dev,
-      file: path.renderer.out.file,
     };
 
     return {
@@ -153,8 +170,6 @@ export class ElectronSettings {
       },
       renderer: {
         dir: renderer.dir,
-        file: renderer.file,
-        path: fs.join(renderer.dir, renderer.file),
       },
     };
   }
@@ -203,7 +218,7 @@ export class ElectronSettings {
   /**
    * Retrieves file paths.
    */
-  public getPaths(): IUIHarnessElectronPaths {
+  public getPaths(): ICalculatedPaths {
     const parent = this._paths.parent;
     const tmp = parent.tmp.dir;
     const bundle = parent.tmp.bundle;
@@ -223,7 +238,6 @@ export class ElectronSettings {
           code: 'test/renderer.tsx',
         },
         out: {
-          file: 'renderer.html',
           dir: {
             dev: fs.join(bundle, 'app.renderer/dev'),
             prod: fs.join(bundle, 'app.renderer/prod'),
