@@ -1147,10 +1147,10 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.9.tgz#693e76a52f61a2f1e7fb48c0eef167b95ea4ffd0"
   integrity sha512-sCZy4SxP9rN2w30Hlmg5dtdRwgYQfYRiLo9usw8X9cxlf+H4FqM1xX7+sNH7NNKVdbXMJWqva7iyy+fxh/V7fA==
 
-"@uiharness/dev@0.1.47":
-  version "0.1.47"
-  resolved "https://registry.yarnpkg.com/@uiharness/dev/-/dev-0.1.47.tgz#44b049dba410248e1df932674a4fcdc85d9795c6"
-  integrity sha512-VgX/WBuB9ML2UQwN27zf+/txQ8nYadsh7ez7qxR5UH25kH+P4RXUbtbwljnLJUmMNy+Fiv2ASfi1f1lJz9p9KA==
+"@uiharness/dev@0.1.48":
+  version "0.1.48"
+  resolved "https://registry.yarnpkg.com/@uiharness/dev/-/dev-0.1.48.tgz#c2531d509309d8d6753de52feb8bbffee7ff07ac"
+  integrity sha512-aUoYYN556yZtYudZ+vo2xFy8wd16TumlkP3IxRzf7icEH7GdmIgrgqqaTyEe6LHJf8nhZzS+gnilRNyjwGsirA==
   dependencies:
     "@babel/core" "7.3.4"
     "@babel/polyfill" "7.2.5"
@@ -1159,7 +1159,7 @@
     "@babel/preset-typescript" "7.3.3"
     "@platform/cli" "0.0.61"
     "@platform/fs" "0.0.38"
-    "@uiharness/electron" "0.3.146"
+    "@uiharness/electron" "0.3.147"
     "@uiharness/types" "0.0.64"
     create-tmpl "0.1.36"
     electron "4.0.8"
@@ -1168,10 +1168,10 @@
     parcel-bundler "1.11.0"
     serve "10.1.2"
 
-"@uiharness/electron@0.3.146":
-  version "0.3.146"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.146.tgz#0393061dd36f42d9dd081eff31a2040befaa1c0f"
-  integrity sha512-hDBYuJ5jC6M5zDHL+/6WOtKKP2ODolIuUoekyEUfZlu7gIZl65pIjlyahnZ9b9cBOjakXUJpUrqrXfnOMJcb/w==
+"@uiharness/electron@0.3.147":
+  version "0.3.147"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.3.147.tgz#a1fd2a6342b53c529c5e8c277ef2a65dc53ca945"
+  integrity sha512-w3e61GaxUTkjhYZWmmtIiXhlhtw7e5FOCLZO8SB7K2KJudkTY+o+/t5X3o5A+u5A5cqJKSp+BPA+5eu01TpBPg==
   dependencies:
     "@platform/electron" "0.1.2"
     "@platform/log" "0.0.85"
