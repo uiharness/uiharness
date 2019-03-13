@@ -16,7 +16,7 @@ export function current(
     include: main.IWindowTag[];
   },
 ) {
-  const { newWindow, windows, include = [] } = args;
+  const { newWindow, windows, include = [], config } = args;
 
   // Monitor for changes that require a redraw of the menu.
   windows.change$
@@ -89,7 +89,31 @@ export function current(
     return [...acc, next];
   }, []);
 
-  const createShowDevTools = () => {
+  const newWindowMenu = (): MenuItem => {
+    const CMD_NEW = 'CommandOrControl+N';
+    const DEFAULT = 'default';
+    const renderer = config.electron.renderer;
+    const items = Object.keys(renderer).map(key => ({ key, ...renderer[key] }));
+    if (items.length < 2) {
+      return {
+        label: 'New Window',
+        accelerator: CMD_NEW,
+        click: () => newWindow({ entry: DEFAULT }),
+      };
+    }
+    const defaultWindow = items.find(item => item.key === DEFAULT) || items[0];
+    const submenu = items.map(({ label, key }) => {
+      const name = label === DEFAULT ? undefined : label;
+      return {
+        label: label === DEFAULT ? 'Default' : label,
+        accelerator: key === defaultWindow.key ? CMD_NEW : undefined,
+        click: () => newWindow({ entry: key, name }),
+      };
+    });
+    return { label: 'New Window', submenu };
+  };
+
+  const showDevToolsMenu = (): MenuItem | undefined => {
     const parent = getParentWindow(windows.focused ? windows.focused.id : -1);
     if (!parent) {
       return;
@@ -106,20 +130,13 @@ export function current(
   };
 
   let submenu: MenuItem[] = [
-    {
-      label: 'New Window',
-      accelerator: 'CommandOrControl+N',
-      click: () => {
-        console.log(`\nTODO 🐷 Open selected entry point  \n`);
-        newWindow({});
-      },
-    },
+    newWindowMenu(),
     { role: 'close' },
     { role: 'minimize' },
     { type: 'separator' },
   ];
 
-  const showDevTools = createShowDevTools();
+  const showDevTools = showDevToolsMenu();
   submenu = showDevTools ? [...submenu, showDevTools] : submenu;
 
   submenu = [
