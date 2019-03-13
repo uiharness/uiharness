@@ -30,9 +30,6 @@ export function current(
 
   // Build list of active windows.
   const refs = windows.byTag(...include);
-  const all = BrowserWindow.getAllWindows();
-
-  // const getWindow = (id: number) => all.find(window => window.id === id);
 
   const isDevTools = (id: number) => {
     return windows.byTag(TAG.DEV_TOOLS.key, TAG.DEV_TOOLS.value).some(ref => ref.id === id);
@@ -42,6 +39,14 @@ export function current(
     const window = getWindow(parentId);
     const children = window ? window.getChildWindows() : [];
     return children.find(window => isDevTools(window.id));
+  };
+
+  const getParentWindow = (windowId: number) => {
+    let window = getWindow(windowId);
+    if (window) {
+      window = isDevTools(windowId) ? window.getParentWindow() : window;
+    }
+    return window;
   };
 
   const getChildDevToolsId = (parentId: number) => {
@@ -93,14 +98,15 @@ export function current(
   const windowsList = refs
     .map(ref => {
       const window = getWindow(ref.id);
+      const isCurrent = isFocused(ref.id);
       let label = window ? window.getTitle() : '';
-      if (label && refs.length > 1 && isFocused(ref.id)) {
+      if (label && refs.length > 1 && isCurrent) {
         label = `${label} (current)`;
       }
-      const submenu = window ? windowSubmenu(window, ref.id) : undefined;
       const item: MenuItem = {
         label,
-        submenu,
+        type: 'radio',
+        checked: isCurrent,
         click: () => windows.visible(true, ref.id),
       };
       return item;
@@ -112,24 +118,44 @@ export function current(
       return refs.length > 1 ? { ...item, label: `${i + 1}. ${item.label}` } : item;
     });
 
-  // Construct the menu.
-  const menu: MenuItem = {
-    label: 'Window',
-    submenu: [
-      { label: 'New Window', accelerator: 'CommandOrControl+N', click: () => newWindow() },
-      { role: 'close' },
-      { role: 'minimize' },
-      { type: 'separator' },
-      {
-        label: 'Hide All Developer Tools',
-        click: () => allDevToolsVisible(false),
-      },
-      { type: 'separator' },
-      ...windowsList,
-    ],
+  const createShowDevTools = () => {
+    const parent = getParentWindow(windows.focused ? windows.focused.id : -1);
+    if (!parent) {
+      return;
+    }
+    const devTools = getChildDevTools(parent.id);
+    const isShowing = devTools ? devTools.isVisible() : false;
+    if (!devTools || isShowing) {
+      return;
+    }
+    return {
+      label: 'Show Developer Tools',
+      click: () => main.devTools.create({ parent, windows }),
+    };
   };
 
+  let submenu: MenuItem[] = [
+    { label: 'New Window', accelerator: 'CommandOrControl+N', click: () => newWindow() },
+    { role: 'close' },
+    { role: 'minimize' },
+    { type: 'separator' },
+  ];
+
+  const showDevTools = createShowDevTools();
+  submenu = showDevTools ? [...submenu, showDevTools] : submenu;
+
+  submenu = [
+    ...submenu,
+    {
+      label: 'Hide All Developer Tools',
+      click: () => allDevToolsVisible(false),
+    },
+    { type: 'separator' },
+    ...windowsList,
+  ];
+
   // Finish up.
+  const menu: MenuItem = { label: 'Window', submenu };
   return menu;
 }
 
