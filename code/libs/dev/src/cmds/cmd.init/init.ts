@@ -203,8 +203,10 @@ async function getInitializedState(args: { settings: Settings }) {
   const web = settings.web;
   const scripts = { ...SCRIPTS };
 
-  const exists = (...paths: string[]) =>
-    Promise.all(paths.map(path => fs.pathExists(fs.resolve(path))));
+  const exists = async (...paths: string[]) => {
+    const res = await Promise.all(paths.map(path => fs.pathExists(fs.resolve(path))));
+    return !res.some(value => value === false);
+  };
 
   const hasConfig = await exists('./uiharness.yml');
   const hasSrcFolder = await exists('./src');
