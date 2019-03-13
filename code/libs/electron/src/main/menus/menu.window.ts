@@ -61,41 +61,6 @@ export function current(
     return focusId === id || focusId === getChildDevToolsId(id);
   };
 
-  const windowSubmenu = (parent: BrowserWindow, windowId: number) => {
-    let submenu: MenuItem[] = [
-      {
-        label: 'Bring to Front',
-        enabled: !isFocused(windowId),
-        click: () => windows.visible(true, windowId),
-      },
-    ];
-
-    const devToolsId = getChildDevToolsId(windowId);
-    const devToolsRef = devToolsId ? windows.refs.find(ref => windowId === devToolsId) : undefined;
-
-    if (devToolsRef && devToolsRef.isVisible) {
-      submenu = [
-        ...submenu,
-        {
-          label: 'Hide Developer Tools',
-          click: () => windows.visible(false, devToolsRef.id),
-        },
-      ];
-    }
-
-    if (!devToolsRef || !devToolsRef.isVisible) {
-      submenu = [
-        ...submenu,
-        {
-          label: 'Show Developer Tools',
-          click: () => main.devTools.create({ parent, windows }),
-        },
-      ];
-    }
-
-    return submenu;
-  };
-
   let windowList: MenuItem[] = refs
     .map(ref => {
       const window = getWindow(ref.id);
