@@ -22,11 +22,17 @@ export function current(
     .pipe(filter(e => ['CREATED', 'CLOSED', 'FOCUS', 'VISIBILITY'].includes(e.type)))
     .subscribe(() => args.changed$.next());
 
+  const allDevToolsVisible = (isVisible: boolean) => {
+    windows
+      .byTag(TAG.DEV_TOOLS.key, TAG.DEV_TOOLS.value)
+      .forEach(ref => setWindowVisibility(ref.id, isVisible));
+  };
+
   // Build list of active windows.
   const refs = windows.byTag(...include);
   const all = BrowserWindow.getAllWindows();
 
-  const getWindow = (id: number) => all.find(window => window.id === id);
+  // const getWindow = (id: number) => all.find(window => window.id === id);
 
   const isDevTools = (id: number) => {
     return windows.byTag(TAG.DEV_TOOLS.key, TAG.DEV_TOOLS.value).some(ref => ref.id === id);
@@ -114,6 +120,11 @@ export function current(
       { role: 'close' },
       { role: 'minimize' },
       { type: 'separator' },
+      {
+        label: 'Hide All Developer Tools',
+        click: () => allDevToolsVisible(false),
+      },
+      { type: 'separator' },
       ...windowsList,
     ],
   };
@@ -121,3 +132,19 @@ export function current(
   // Finish up.
   return menu;
 }
+
+/**
+ * [Internal]
+ */
+const getWindow = (id: number) => BrowserWindow.getAllWindows().find(window => window.id === id);
+
+const setWindowVisibility = (id: number, isVisible: boolean) => {
+  const window = getWindow(id);
+  if (window) {
+    if (isVisible) {
+      window.show();
+    } else {
+      window.hide();
+    }
+  }
+};
