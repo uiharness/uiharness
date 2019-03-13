@@ -89,7 +89,7 @@ export function runInitCommand(
 
     alert(res, `Initializing...`);
     const cmd = `cd ${dir} && node node_modules/.bin/ui init`;
-    await exec.run(cmd, { silent: true });
+    await exec.cmd.run(cmd, { silent: true });
 
     res.done(args.done);
   };
