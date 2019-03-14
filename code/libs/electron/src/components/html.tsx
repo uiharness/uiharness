@@ -1,5 +1,5 @@
+import { color, css } from '@platform/react';
 import * as React from 'react';
-import { css, color } from '../common';
 
 /**
  * A styled <hr> element.
