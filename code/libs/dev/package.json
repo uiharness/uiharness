@@ -31,8 +31,8 @@
     "serve": "10.1.2"
   },
   "devDependencies": {
-    "@platform/test": "0.0.31",
-    "@platform/ts": "3.3.61",
+    "@platform/test": "0.0.32",
+    "@platform/ts": "3.3.62",
     "@types/electron-builder": "2.8.0",
     "@types/filesize": "4.1.0",
     "@types/parcel-bundler": "1.10.2"

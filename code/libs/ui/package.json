@@ -12,12 +12,12 @@
     "prepare": "ts prepare"
   },
   "dependencies": {
-    "@uiharness/electron": "0.3.148",
+    "@uiharness/electron": "0.3.151",
     "@uiharness/types": "0.0.65"
   },
   "devDependencies": {
-    "@platform/test": "0.0.31",
-    "@platform/ts": "3.3.61",
+    "@platform/test": "0.0.32",
+    "@platform/ts": "3.3.62",
     "@uiharness/dev": "0.1.49"
   },
   "resolutions": {
