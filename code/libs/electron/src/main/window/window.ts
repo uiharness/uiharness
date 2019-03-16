@@ -48,6 +48,9 @@ export function create(args: t.IContext & t.INewWindowArgs) {
     height: state.height,
     acceptFirstMouse: true,
     fullscreenable: false,
+    webPreferences: {
+      nodeIntegration: true, // Ensure `process` and other node related features are available to the window.
+    },
   });
   windows.tag(window.id, { tag: TAG.WINDOW.key, value: TAG.WINDOW.value });
 
