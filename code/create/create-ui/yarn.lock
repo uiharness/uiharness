@@ -45,24 +45,24 @@
     rxjs "6.4.0"
     tslib "1.9.3"
 
-"@platform/log@0.0.86":
-  version "0.0.86"
-  resolved "https://registry.yarnpkg.com/@platform/log/-/log-0.0.86.tgz#a3125667e0b5a497684a71667e15b3fe0fa35647"
-  integrity sha512-falG8Zs6Hfb2mGAVX+3zsbUaJTavOe5QI09l4++UvsD4J/eurQxyCgJf8lBAbuPeKQml583uBNzwO+0JkOsC0w==
+"@platform/log@0.0.88":
+  version "0.0.88"
+  resolved "https://registry.yarnpkg.com/@platform/log/-/log-0.0.88.tgz#445610163b75e2fbeebc6122464d4d0e13dade36"
+  integrity sha512-/1aM0Fp/b37Y0RDNtNhjD83dg8mYuru5XHBXW08tKbqe22zVUZkiaiHhD6S7A1mPOAiSBTSrJE46p74tq+DWyw==
   dependencies:
     "@platform/libs" "0.0.8"
     chalk "2.4.2"
     cli-table "0.3.1"
 
-"@platform/npm@0.0.34":
-  version "0.0.34"
-  resolved "https://registry.yarnpkg.com/@platform/npm/-/npm-0.0.34.tgz#7f86d8e711cbb7c687a039cf6aa55538bd40777c"
-  integrity sha512-pD5BjiysVzXI3umzI95M9p6aN4Qa84iRoQgSrHWDBfIoF4Xp8Tiqb6lWQwB2raAILAO5LRaQrkvjr+JOfN4kig==
+"@platform/npm@0.0.36":
+  version "0.0.36"
+  resolved "https://registry.yarnpkg.com/@platform/npm/-/npm-0.0.36.tgz#decbac5562a0067b84945ca796dc3a4de3701237"
+  integrity sha512-uuz/9bgNFAMgWbffDQoZacbOgCIQ8eADPEzX2rarSlfeIBWCWoJUeP7I+01j7SllmTH2nMfMBop7vPgR2oS55A==
   dependencies:
     "@platform/fs" "0.0.39"
-    "@platform/log" "0.0.86"
+    "@platform/log" "0.0.88"
     "@platform/util.exec" "0.0.23"
-    "@platform/util.value" "0.0.36"
+    "@platform/util.value" "0.0.38"
 
 "@platform/ts.libs@3.3.5":
   version "3.3.5"
@@ -78,10 +78,10 @@
     tslint-react "3.6.0"
     typescript "3.3.3333"
 
-"@platform/ts@3.3.62":
-  version "3.3.62"
-  resolved "https://registry.yarnpkg.com/@platform/ts/-/ts-3.3.62.tgz#4954896fb4ba369f6bb59d40dd88f39ad3393631"
-  integrity sha512-rxjrSrYhZ3I1yIKRIvYosqJJcWCQ/1gnCwUK56tLM2BgDza5q9ee69EC/KGOMnXeyygqRv6uAQ3+aEp61gouEg==
+"@platform/ts@3.3.64":
+  version "3.3.64"
+  resolved "https://registry.yarnpkg.com/@platform/ts/-/ts-3.3.64.tgz#b09ceae371fb50ebb2858cf0afd106abea22adc8"
+  integrity sha512-AyJhlc8UnJ4wctvIYKctcQVhAVB5XWWYwypmBCJaYtbbRrEJfVg1u3XOmZqXbbQbdKDtgg2aE0kv33lHeiY7Ow==
   dependencies:
     "@platform/cli" "0.0.62"
     "@platform/fs" "0.0.39"
@@ -101,18 +101,18 @@
     chalk "2.4.2"
     listr "0.14.3"
 
-"@platform/util.is@0.0.35":
-  version "0.0.35"
-  resolved "https://registry.yarnpkg.com/@platform/util.is/-/util.is-0.0.35.tgz#4d473c8a23038e4e57a209c8e49d5aae7645f8c3"
-  integrity sha512-1hypRuGVHdS1E3fCRvQeI/VhkKNMT025botXoVxPCGsjfp7bJz1UFmMsjkmG4rnlJL6zDM0FGplFvDXB+5jmCA==
+"@platform/util.is@0.0.37":
+  version "0.0.37"
+  resolved "https://registry.yarnpkg.com/@platform/util.is/-/util.is-0.0.37.tgz#847b4217830c53f89c1c00ee58f421f5e2a7b480"
+  integrity sha512-nTG1S192LgQbpBVkOKCYDW+Om9TZtSm0sv00QE3SCRZTafpkJJXKUaywLlj+NT5/wj8AJkCQmf0ZuTrMgQAVKA==
 
-"@platform/util.value@0.0.36":
-  version "0.0.36"
-  resolved "https://registry.yarnpkg.com/@platform/util.value/-/util.value-0.0.36.tgz#79153428a0ab9585ab70a731bfc62b5ccc6e6a52"
-  integrity sha512-v0EevUntt1M55BKRIF4EF1yahG0fK3ROSFgznPt2dxFyZV085zgEhFDgDEIqo+rsbFZ2ZC29OXjXXSIY6lDB0Q==
+"@platform/util.value@0.0.38":
+  version "0.0.38"
+  resolved "https://registry.yarnpkg.com/@platform/util.value/-/util.value-0.0.38.tgz#bb7cb6d6d3659bfb2598cadf8cd2ecb26bf2c476"
+  integrity sha512-G6rwouQ9jnyCL/cZJRsrnEiVgYflbtHC5O5Midjx0151tZVhZHNhv+tp2oC0UJtNmNNv9yebAwfrimoF7JJfLw==
   dependencies:
     "@platform/libs" "0.0.8"
-    "@platform/util.is" "0.0.35"
+    "@platform/util.is" "0.0.37"
     "@types/semver" "5.5.0"
     cuid "2.1.6"
     dayjs "1.8.10"
@@ -568,15 +568,15 @@ copy-descriptor@^0.1.0:
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
-create-tmpl@0.1.37:
-  version "0.1.37"
-  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.1.37.tgz#d7b4d99a2ee18dfdfb8b851fcebe4a2cca5ee5aa"
-  integrity sha512-Jju2jT6S+UsRHMDFtLk11P04DtRi5XAaXs7ujOtEwwdroJ3eyz1ZrAyU/ph48ioZySaxpKLzBI0EXVgnLSPwug==
+create-tmpl@0.1.38:
+  version "0.1.38"
+  resolved "https://registry.yarnpkg.com/create-tmpl/-/create-tmpl-0.1.38.tgz#cd5771d7577265ff2760cd66d217e91da8328eb0"
+  integrity sha512-1ttGOiXMWj2kH9RKNl3y7G8eyyxZgGmD4IVEbNHC0h3gQNXVRX4/nVHOSwRHOs43DJELnnPMNwWvjAs6oIr+sg==
   dependencies:
     "@platform/cli" "0.0.62"
     "@platform/fs" "0.0.39"
-    "@platform/npm" "0.0.34"
-    "@platform/util.value" "0.0.36"
+    "@platform/npm" "0.0.36"
+    "@platform/util.value" "0.0.38"
     "@types/inquirer" "0.0.44"
     inquirer "6.2.2"
     isbinaryfile "4.0.0"
