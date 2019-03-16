@@ -8,4 +8,7 @@ yarn.lock
 uiharness.yml
 uiharness.builder.yml
 tsconfig.json
+tsconfig.test.json
 release
+lib
+lib.test

@@ -5,12 +5,14 @@
     "postinstall": "ui init",
     "ui": "msync sl && ui $@",
     "start": "ui start $@",
-    "build": "tsc $@",
+    "build": "ts build $@",
+    "build-test": "ts build --tsconfig=tsconfig.test $@",
     "reset": "sh ./sh/reset.sh",
     "nuke": "sh ./sh/nuke.sh"
   },
   "dependencies": {
     "@platform/electron": "0.1.5",
+    "@platform/ts": "^3.3.65",
     "@uiharness/electron": "0.3.155",
     "react": "^16.8.4"
   },

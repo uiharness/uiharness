@@ -21,6 +21,7 @@
     "@babel/preset-typescript": "7.3.3",
     "@platform/cli": "0.0.62",
     "@platform/fs": "0.0.39",
+    "@platform/ts": "3.3.65",
     "@uiharness/electron": "0.3.155",
     "@uiharness/types": "0.0.67",
     "create-tmpl": "0.1.38",
@@ -32,7 +33,6 @@
   },
   "devDependencies": {
     "@platform/test": "0.0.32",
-    "@platform/ts": "3.3.64",
     "@types/electron-builder": "2.8.0",
     "@types/filesize": "4.1.0",
     "@types/parcel-bundler": "1.10.2"
