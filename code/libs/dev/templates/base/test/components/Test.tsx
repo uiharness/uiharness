@@ -1,7 +1,7 @@
 import '../../node_modules/@platform/css/reset.css';
 import '@babel/polyfill';
 
-import { Button, ObjectView } from '@uiharness/electron/lib/components';
+import { Button, ObjectView } from '@uiharness/ui';
 import * as React from 'react';
 
 import { MyComponent } from '../../src';

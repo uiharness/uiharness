@@ -348,20 +348,20 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.9.tgz#693e76a52f61a2f1e7fb48c0eef167b95ea4ffd0"
   integrity sha512-sCZy4SxP9rN2w30Hlmg5dtdRwgYQfYRiLo9usw8X9cxlf+H4FqM1xX7+sNH7NNKVdbXMJWqva7iyy+fxh/V7fA==
 
-"@uiharness/types@0.0.67":
-  version "0.0.67"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.67.tgz#b3abc1c10d734a38eaa8f6d5af0079075a21254d"
-  integrity sha512-/oSZc0xjFQrrsxTQ483HL0DqoKXbP0s75kyrXr5WXZeHIwaskQiUnlfSWZgeb0m0f69/1XV/JwgGnQcgplhrAQ==
+"@uiharness/types@0.0.68":
+  version "0.0.68"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.68.tgz#af63fea8eac281264b3d9835d3c12cde863a7ee3"
+  integrity sha512-rbF8lZjYQ++U/vt9rLCC+qBpU0Zsuv4PndDXGNnEQOGJ45BycwJhUvFTXS+XJedOPqtBF987m0f7rzeDIWkl3g==
 
-"@uiharness/ui@0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@uiharness/ui/-/ui-0.1.2.tgz#ee981853f9488270078b4f869941cf8d968400a3"
-  integrity sha512-NWlKDOgPR2l0FGinThZVWPA4hoswm2suXwZC8v5Fov2CzWa8pEWW4wtnDkAvlEkjivFqUjneQY/w5tDkCcdndg==
+"@uiharness/ui@0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@uiharness/ui/-/ui-0.1.5.tgz#436089a33706bd531d3d6ec7d20593fb59af0a32"
+  integrity sha512-ilY02WswE+yFB9OSxloPWWupni+FRXOO2zJa1gffuCV6BD9fMev4srYf9yiKRyzmUAe6o0xPCFHTBT3gL11g3w==
   dependencies:
     "@platform/electron" "0.1.6"
     "@platform/react" "0.0.19"
     "@platform/ui.object" "0.0.58"
-    "@uiharness/types" "0.0.67"
+    "@uiharness/types" "0.0.68"
 
 ajv@^6.5.5:
   version "6.10.0"
