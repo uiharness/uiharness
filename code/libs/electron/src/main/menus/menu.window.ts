@@ -90,7 +90,7 @@ export function current(
   }, []);
 
   const newWindowMenu = (): MenuItem => {
-    const CMD_NEW = 'CommandOrControl+N';
+    const CMD_NEW = 'CmdOrCtrl+N';
     const DEFAULT = 'default';
     const renderer = config.electron.renderer;
     const items = Object.keys(renderer).map(key => ({ key, ...renderer[key] }));
@@ -120,12 +120,19 @@ export function current(
     }
     const devTools = getChildDevTools(parent.id);
     const isShowing = devTools ? devTools.isVisible() : false;
-    if (!devTools || isShowing) {
+    if (!devTools) {
       return;
     }
     return {
-      label: 'Show Developer Tools',
-      click: () => main.devTools.create({ parent, windows }),
+      label: `${isShowing ? 'Hide' : 'Show'} Developer Tools`,
+      accelerator: 'CmdOrCtrl+Alt+I',
+      click: () => {
+        if (isShowing) {
+          devTools.hide();
+        } else {
+          main.devTools.create({ parent, windows });
+        }
+      },
     };
   };
 
