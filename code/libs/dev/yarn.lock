@@ -880,7 +880,7 @@
     tslint-react "3.6.0"
     typescript "3.3.3333"
 
-"@platform/ts@^3.3.65":
+"@platform/ts@3.3.65":
   version "3.3.65"
   resolved "https://registry.yarnpkg.com/@platform/ts/-/ts-3.3.65.tgz#fea4dc203092416d33c31cf60f7814045d7b8373"
   integrity sha512-Bl1lysSx7nY200iyft2dcOLRyX3QomtyvEivX9DQocdFbsb4So0OgTUDj9GDbxibaSRfaQnyxT07mELaLnCl5g==

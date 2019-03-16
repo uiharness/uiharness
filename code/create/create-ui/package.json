@@ -9,7 +9,7 @@
     "test": "echo no-op",
     "build": "ts build",
     "lint": "ts lint",
-    "prepare": "ts prepare",
+    "prepare": "yarn reset && ts prepare",
     "tmp": "mkdir -p tmp && cd tmp && node ../lib/bin.js",
     "reset": "rm -rf tmp"
   },
@@ -17,7 +17,7 @@
     "create-tmpl": "0.1.38"
   },
   "devDependencies": {
-    "@platform/ts": "3.3.64"
+    "@platform/ts": "3.3.65"
   },
   "repository": "uiharness/uiharness",
   "files": [

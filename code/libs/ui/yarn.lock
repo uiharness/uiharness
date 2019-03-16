@@ -891,6 +891,17 @@
     "@platform/ts.libs" "3.3.5"
     "@platform/util.exec" "0.0.23"
 
+"@platform/ts@3.3.65":
+  version "3.3.65"
+  resolved "https://registry.yarnpkg.com/@platform/ts/-/ts-3.3.65.tgz#fea4dc203092416d33c31cf60f7814045d7b8373"
+  integrity sha512-Bl1lysSx7nY200iyft2dcOLRyX3QomtyvEivX9DQocdFbsb4So0OgTUDj9GDbxibaSRfaQnyxT07mELaLnCl5g==
+  dependencies:
+    "@platform/cli" "0.0.62"
+    "@platform/fs" "0.0.39"
+    "@platform/libs" "0.0.8"
+    "@platform/ts.libs" "3.3.5"
+    "@platform/util.exec" "0.0.23"
+
 "@platform/ui.object@0.0.57":
   version "0.0.57"
   resolved "https://registry.yarnpkg.com/@platform/ui.object/-/ui.object-0.0.57.tgz#0a51557ee6f7d21afc2ae8e69ce80aecf092387b"
@@ -1142,10 +1153,10 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.9.tgz#693e76a52f61a2f1e7fb48c0eef167b95ea4ffd0"
   integrity sha512-sCZy4SxP9rN2w30Hlmg5dtdRwgYQfYRiLo9usw8X9cxlf+H4FqM1xX7+sNH7NNKVdbXMJWqva7iyy+fxh/V7fA==
 
-"@uiharness/dev@0.1.52":
-  version "0.1.52"
-  resolved "https://registry.yarnpkg.com/@uiharness/dev/-/dev-0.1.52.tgz#ddb6c09e9517efec54711ad3423fc90d6b76e7f3"
-  integrity sha512-+AVHJDoIkNgDZD3Ad8XY6ZEOk6Ia83Pv5HQVy71NuuOikx8zzgp6op+RGAnZ1rZ9zE6fptlV9qMqkFE7/HMEQg==
+"@uiharness/dev@0.1.53":
+  version "0.1.53"
+  resolved "https://registry.yarnpkg.com/@uiharness/dev/-/dev-0.1.53.tgz#412c15f076bafedd05d9d16baaba768267d8ac0b"
+  integrity sha512-br6zFnkwjHT28EYmM2bWK7XFqSfFQdpOfCPB57vVnhlYkyJSHshBtg1Rc1jVrOvatGs5XcjrDS7DrmdfaEvpUg==
   dependencies:
     "@babel/core" "7.3.4"
     "@babel/polyfill" "7.2.5"
@@ -1154,6 +1165,7 @@
     "@babel/preset-typescript" "7.3.3"
     "@platform/cli" "0.0.62"
     "@platform/fs" "0.0.39"
+    "@platform/ts" "3.3.65"
     "@uiharness/electron" "0.3.155"
     "@uiharness/types" "0.0.67"
     create-tmpl "0.1.38"
