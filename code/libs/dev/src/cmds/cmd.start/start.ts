@@ -53,7 +53,7 @@ export async function startElectron(args: { settings: Settings }) {
   log.info();
   logElectronInfo({ settings, port: true });
 
-  // Build the main JS.
+  // Build the main javascript.
   await bundleElectron({
     settings,
     prod: false,

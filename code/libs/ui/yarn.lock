@@ -959,7 +959,7 @@
     "@platform/react" "0.0.18"
     react-inspector "2.3.1"
 
-"@platform/ui.object@^0.0.58":
+"@platform/ui.object@0.0.58":
   version "0.0.58"
   resolved "https://registry.yarnpkg.com/@platform/ui.object/-/ui.object-0.0.58.tgz#25479c288ba07b59d2e8a9eb91d9cbfd100fb97c"
   integrity sha512-ZzW03pbiT2gHMdPK5T8Fv1damzXvTqsKRIlEdCYMJLfnvZOrm21jMJUTLpnan+hRQ6rShFXm4KOZx+h1rlxEKQ==
