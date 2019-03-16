@@ -8,14 +8,13 @@ import {
   IVariables,
   Listr,
   log,
-  Platform,
   prompt,
   Template,
+  TemplateType,
 } from './common';
 import * as middleware from './middleware';
 
 export * from './types';
-type TargetOption = 'ALL' | 'ELECTRON' | 'WEB';
 
 /**
  * Initializes a new module.
@@ -68,10 +67,10 @@ export async function init() {
  * or prompts the user for input if parameter is not specified.
  */
 async function prepareTemplate(args: {
-  target?: Platform[];
+  template?: TemplateType;
   moduleName?: string;
 }) {
-  let { target, moduleName } = args;
+  let { template, moduleName } = args;
 
   /**
    * Module name.
@@ -87,18 +86,17 @@ async function prepareTemplate(args: {
   /**
    * Target platform.
    */
-  if (!target) {
-    type ITarget = IPrompt<TargetOption>;
-    const targets: ITarget[] = [
-      { id: 'ALL', label: 'Electron & Web' },
-      { id: 'ELECTRON', label: 'Electron' },
-      { id: 'WEB', label: 'Web' },
+  if (!template) {
+    type ITemplate = IPrompt<TemplateType>;
+    const targets: ITemplate[] = [
+      { id: 'PLATFORM', label: '@platform toolchain' },
+      { id: 'MINIMAL', label: 'minimal' },
     ];
-    const res = await prompt.forOption('Target platform', targets);
+    const res = await prompt.forOption('Template', targets);
     if (!res) {
       return {};
     }
-    target = res.id === 'ALL' ? ['ELECTRON', 'WEB'] : [res.id];
+    template = res.id;
   }
 
   /**
@@ -116,7 +114,12 @@ async function prepareTemplate(args: {
    * User input variables.
    */
   const dir = resolve(`./${moduleName}`);
-  const variables: IVariables = { target, moduleName, dir };
+  const variables: IVariables = {
+    template,
+    platform: ['ELECTRON', 'WEB'],
+    moduleName,
+    dir,
+  };
 
   // Finish up.
   return { tmpl, variables, dir };
