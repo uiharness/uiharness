@@ -12,16 +12,15 @@
     "prepare": "ts prepare"
   },
   "dependencies": {
-    "@uiharness/electron": "0.3.155",
+    "@platform/electron": "0.1.6",
+    "@platform/react": "0.0.19",
+    "@platform/ui.object": "^0.0.58",
     "@uiharness/types": "0.0.67"
   },
   "devDependencies": {
     "@platform/test": "0.0.32",
     "@platform/ts": "3.3.64",
     "@uiharness/dev": "0.1.53"
-  },
-  "resolutions": {
-    "@types/react": "16.7.17"
   },
   "files": [
     "lib"

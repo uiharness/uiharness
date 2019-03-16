@@ -1,5 +1,5 @@
-/**
- * Use the electron [renderer] view in the browser.
- * Or replace this entry-point with a [web] specific one.
- */
-import './renderer';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { Test } from './components/Test';
+
+ReactDOM.render(<Test />, document.getElementById('root'));
