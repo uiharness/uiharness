@@ -82,19 +82,7 @@ export async function init(
 
   if (flags.files) {
     const noForce = ['.gitignore'];
-
-    const filter = (path: string) => {
-      // Don't write files for platforms that are not configured within the settings.
-      const { electron, web } = settings;
-      if (path.endsWith(electron.entry.main)) {
-        return electron.exists;
-      }
-      if (path.endsWith(web.entry.code)) {
-        return web.exists;
-      }
-      return true;
-    };
-
+    const filter = (path: string) => true;
     await tmpl
       .create()
       .add(settings.path.templates.base)

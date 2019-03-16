@@ -7,9 +7,11 @@ export {
 export type IAlert = { message: string };
 
 export type Platform = 'ELECTRON' | 'WEB';
+export type TemplateType = 'MINIMAL' | 'PLATFORM';
 
 export type IVariables = {
-  target: Platform[];
+  template: TemplateType;
+  platform: Platform[];
   moduleName: string;
   dir: string;
 };

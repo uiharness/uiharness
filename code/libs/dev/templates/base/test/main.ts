@@ -1,5 +1,5 @@
 import * as main from '@uiharness/electron/lib/main';
-const config = require('../.uiharness/config.json');
+const config = require('../.uiharness/config.json') as main.IRuntimeConfig;
 
 /**
  * Initialize the default [main] window process with the [UIHarness].

@@ -1,6 +1,6 @@
 {
   "name": "create-ui",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "main": "./lib/bin",
   "bin": {
     "create-ui": "./lib/bin.js"
@@ -9,15 +9,15 @@
     "test": "echo no-op",
     "build": "ts build",
     "lint": "ts lint",
-    "prepare": "ts prepare",
+    "prepare": "yarn reset && ts prepare",
     "tmp": "mkdir -p tmp && cd tmp && node ../lib/bin.js",
     "reset": "rm -rf tmp"
   },
   "dependencies": {
-    "create-tmpl": "0.1.36"
+    "create-tmpl": "0.1.38"
   },
   "devDependencies": {
-    "@platform/ts": "3.3.61"
+    "@platform/ts": "3.3.65"
   },
   "repository": "uiharness/uiharness",
   "files": [

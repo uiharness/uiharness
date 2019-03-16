@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, color, GlamorValue } from '../../common';
+import { css, GlamorValue, color } from '@platform/react';
 
 export type IAboutProps = {
   style?: GlamorValue;

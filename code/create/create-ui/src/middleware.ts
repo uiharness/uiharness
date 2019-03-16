@@ -10,9 +10,7 @@ const alert = (res: ITemplateResponse, message: string) =>
  * Processes a [package.json] file.
  */
 export function processPackage(
-  args: {
-    done?: AfterTemplateMiddleware;
-  } = {},
+  args: { done?: AfterTemplateMiddleware } = {},
 ): TemplateMiddleware<IVariables> {
   return async (req, res) => {
     if (!req.path.source.endsWith('package.json')) {
@@ -29,9 +27,21 @@ export function processPackage(
     // Update the package JSON.
     alert(res, 'Updating [package.json] file');
     pkg.json.name = req.variables.moduleName;
-    res.text = pkg.toJson();
+
+    // Add @platform toolchain options.
+    if (req.variables.template === 'PLATFORM') {
+      pkg.setFields('scripts', {
+        test: 'ts test',
+        tdd: 'ts test --watch',
+        lint: 'ts lint',
+        build: 'ts build $@',
+        'build-test': 'ts build --tsconfig=tsconfig.test $@',
+        prepare: 'ts prepare',
+      });
+    }
 
     // Finish up.
+    res.text = pkg.toJson();
     res.done(args.done);
   };
 }
@@ -67,7 +77,7 @@ export function npmInstall(
     const { dir } = req.variables;
     const pkg = npm.pkg(dir);
     const ver = pkg.devDependencies['@uiharness/dev'];
-    const msg = `Installing v${ver} of the UIHarness...`;
+    const msg = `Installing UIHarness version ${ver}...`;
     alert(res, msg);
 
     await npm.install({ dir });

@@ -1,21 +1,21 @@
 {
   "name": "example",
-  "version": "0.0.134",
+  "version": "0.0.2",
   "scripts": {
     "postinstall": "ui init",
     "ui": "msync sl && ui $@",
     "start": "ui start $@",
-    "build": "tsc $@",
+    "build": "ts build $@",
+    "build-test": "ts build --tsconfig=tsconfig.test $@",
     "reset": "sh ./sh/reset.sh",
     "nuke": "sh ./sh/nuke.sh"
   },
   "dependencies": {
-    "@platform/electron": "0.1.2",
-    "@uiharness/electron": "0.3.148",
+    "@uiharness/electron": "0.3.159",
     "react": "^16.8.4"
   },
   "devDependencies": {
-    "@uiharness/dev": "0.1.49",
+    "@uiharness/dev": "0.2.0",
     "typescript": "3.3.3333"
   },
   "license": "MIT",
