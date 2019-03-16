@@ -84,3 +84,10 @@ export type ISettingsPaths = {
     html: string;
   };
 };
+
+export type ITSConfig = {
+  include: string[];
+  compilerOptions: {
+    outDir: string;
+  };
+};
