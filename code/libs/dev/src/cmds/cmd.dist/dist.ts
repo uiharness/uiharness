@@ -167,6 +167,7 @@ async function prepareBuilderYaml(args: { settings: Settings }) {
   // Update the builder YAML with current input/output paths.
   const data = await fs.file.loadAndParse<IElectronBuilderConfig>(path);
   data.productName = settings.name;
+  data.appId = settings.package.name;
   data.files = files;
   data.directories = {
     ...(data.directories || {}),
