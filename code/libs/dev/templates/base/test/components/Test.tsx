@@ -1,24 +1,22 @@
-import * as React from 'react';
+import '../../node_modules/@platform/css/reset.css';
+import '@babel/polyfill';
+
 import { Button, ObjectView } from '@uiharness/electron/lib/components';
+import * as React from 'react';
+
+import { MyComponent } from '../../src';
 
 /**
- * Sample component.
- *
- * Referred to by the [renderer] and [web] entry-point, see:
- *
- *    - [.uiharness.yml]
- *    - [test/renderer.tsx]
- *    - [test/web.tsx]
- *
+ * Test Component
  */
 export type IState = { count?: number };
 export class Test extends React.PureComponent<{}, IState> {
-  public state: IState = { count: 0 };
+  public state: IState = {};
 
   public render() {
     return (
       <div style={{ paddingLeft: 25 }}>
-        <h1>👋 Hello!</h1>
+        <MyComponent />
         <div style={{ marginBottom: 10 }}>
           <Button label={'Increment'} onClick={this.increment(1)} />
           <Button label={'Decrement'} onClick={this.increment(-1)} />
@@ -28,10 +26,9 @@ export class Test extends React.PureComponent<{}, IState> {
     );
   }
 
-  private increment = (by: number) => {
+  private increment = (amount: number) => {
     return () => {
-      const count = (this.state.count || 0) + by;
-      this.setState({ count });
+      this.setState({ count: (this.state.count || 0) + amount });
     };
   };
 }
