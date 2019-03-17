@@ -1,18 +1,10 @@
-import { join, resolve, basename } from 'path';
+import { basename, join, resolve } from 'path';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
-import {
-  IAlert,
-  IPrompt,
-  IVariables,
-  Listr,
-  log,
-  prompt,
-  Template,
-  TemplateType,
-} from './common';
+import { fs, Listr, log, prompt, Template, TemplateType } from './common';
 import * as middleware from './middleware';
+import * as t from './types';
 
 export * from './types';
 
@@ -25,13 +17,13 @@ export async function init() {
 
   // Prompt for target platform.
   const { tmpl, variables, dir } = await prepareTemplate({});
-  if (!tmpl || !dir) {
+  if (!tmpl || !dir || !variables) {
     return;
   }
 
   const alerts$ = tmpl.events$.pipe(
     filter(e => e.type === 'ALERT'),
-    map(e => e.payload as IAlert),
+    map(e => e.payload as t.IAlert),
   );
 
   // Run the template.
@@ -41,8 +33,15 @@ export async function init() {
       task: async () =>
         new Observable(observer => {
           (async () => {
+            // Copy files and run NPM install.
             alerts$.subscribe(e => observer.next(e.message));
-            await tmpl.execute<IVariables>({ variables });
+            await tmpl.execute<t.IVariables>({ variables });
+
+            // Configure [tsconfig] files.
+            observer.next('Updating tsconfig.json files...');
+            await updateTSConfigFiles({ variables });
+
+            // Finish up.
             observer.complete();
           })();
         }),
@@ -61,6 +60,10 @@ export async function init() {
   // Finish up.
   log.info();
 }
+
+/**
+ * [INTERNAL]
+ */
 
 /**
  * Builds a template based on the given parameters,
@@ -87,7 +90,7 @@ async function prepareTemplate(args: {
    * Target platform.
    */
   if (!template) {
-    type ITemplate = IPrompt<TemplateType>;
+    type ITemplate = t.IPrompt<TemplateType>;
     const targets: ITemplate[] = [
       { id: 'PLATFORM', label: '@platform toolchain' },
       { id: 'MINIMAL', label: 'minimal' },
@@ -114,7 +117,7 @@ async function prepareTemplate(args: {
    * User input variables.
    */
   const dir = resolve(`./${moduleName}`);
-  const variables: IVariables = {
+  const variables: t.IVariables = {
     template,
     platform: ['ELECTRON', 'WEB'],
     moduleName,
@@ -125,9 +128,6 @@ async function prepareTemplate(args: {
   return { tmpl, variables, dir };
 }
 
-/**
- * INTERNAL
- */
 function logComplete(args: { dir: string }) {
   const dir = basename(args.dir);
   log.info.gray('🖐  To start your development server:\n');
@@ -140,4 +140,47 @@ function logComplete(args: { dir: string }) {
   log.info();
   log.info.gray(`See ${log.blue('https://uiharness.com')} for more.\n`);
   log.info();
+}
+
+async function updateTSConfigFiles(args: { variables: t.IVariables }) {
+  const { variables } = args;
+  const files = await getTSConfigFiles(variables.dir);
+
+  // Add the base [tsconfig] template from @platform.
+  if (variables.template === 'PLATFORM') {
+    files.forEach(
+      file => (file.json.extends = './node_modules/@platform/ts/tsconfig.json'),
+    );
+  }
+
+  // Remove any empty "extends" entries.
+  files
+    .filter(file => !Boolean(file.json.extends))
+    .forEach(file => delete file.json.extends);
+
+  // Save files.
+  await Promise.all(
+    files
+      .map(file => ({
+        path: file.path,
+        json: JSON.stringify(file.json, null, '  '),
+      }))
+      .map(file => fs.writeFile(file.path, file.json)),
+  );
+}
+
+async function getTSConfigFiles(dir: string) {
+  const paths = (await fs.readdir(dir))
+    .filter(name => name.endsWith('.json'))
+    .filter(name => name.includes('tsconfig'))
+    .map(name => fs.join(dir, name));
+  return Promise.all(
+    paths.map(async path => {
+      const json = await fs.file.loadAndParse<t.ITSConfig>(path);
+      const include = json.include || [];
+      const compilerOptions = json.compilerOptions || {};
+      const outDir = compilerOptions.outDir || '';
+      return { path, dir, outDir, json: { ...json, include, compilerOptions } };
+    }),
+  );
 }
