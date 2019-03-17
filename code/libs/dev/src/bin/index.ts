@@ -62,14 +62,20 @@ const program = yargs
           describe: 'Overwrite existing files.',
           boolean: true,
         })
+        .option('template', {
+          alias: 't',
+          describe: 'Template to use',
+          choices: ['minimal', 'platform'],
+          default: 'platform',
+        })
         .option('reset', {
           alias: 'r',
           describe: 'Deletes all files created by a previous `init`.',
           boolean: true,
         }),
     e => {
-      const { force, reset } = e;
-      cmds.init({ settings, force, reset });
+      const { force, reset, template } = e;
+      cmds.init({ settings, force, reset, template });
     },
   )
 

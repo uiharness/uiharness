@@ -2,7 +2,7 @@ import { basename, join, resolve } from 'path';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
-import { fs, Listr, log, prompt, Template, TemplateType } from './common';
+import { Listr, log, prompt, Template, TemplateType } from './common';
 import * as middleware from './middleware';
 import * as t from './types';
 
@@ -36,10 +36,6 @@ export async function init() {
             // Copy files and run NPM install.
             alerts$.subscribe(e => observer.next(e.message));
             await tmpl.execute<t.IVariables>({ variables });
-
-            // Configure [tsconfig] files.
-            observer.next('Updating tsconfig.json files...');
-            await updateTSConfigFiles({ variables });
 
             // Finish up.
             observer.complete();
@@ -140,47 +136,4 @@ function logComplete(args: { dir: string }) {
   log.info();
   log.info.gray(`See ${log.blue('https://uiharness.com')} for more.\n`);
   log.info();
-}
-
-async function updateTSConfigFiles(args: { variables: t.IVariables }) {
-  const { variables } = args;
-  const files = await getTSConfigFiles(variables.dir);
-
-  // Add the base [tsconfig] template from @platform.
-  if (variables.template === 'PLATFORM') {
-    files.forEach(
-      file => (file.json.extends = './node_modules/@platform/ts/tsconfig.json'),
-    );
-  }
-
-  // Remove any empty "extends" entries.
-  files
-    .filter(file => !Boolean(file.json.extends))
-    .forEach(file => delete file.json.extends);
-
-  // Save files.
-  await Promise.all(
-    files
-      .map(file => ({
-        path: file.path,
-        json: JSON.stringify(file.json, null, '  '),
-      }))
-      .map(file => fs.writeFile(file.path, file.json)),
-  );
-}
-
-async function getTSConfigFiles(dir: string) {
-  const paths = (await fs.readdir(dir))
-    .filter(name => name.endsWith('.json'))
-    .filter(name => name.includes('tsconfig'))
-    .map(name => fs.join(dir, name));
-  return Promise.all(
-    paths.map(async path => {
-      const json = await fs.file.loadAndParse<t.ITSConfig>(path);
-      const include = json.include || [];
-      const compilerOptions = json.compilerOptions || {};
-      const outDir = compilerOptions.outDir || '';
-      return { path, dir, outDir, json: { ...json, include, compilerOptions } };
-    }),
-  );
 }

@@ -15,11 +15,3 @@ export type IVariables = {
   moduleName: string;
   dir: string;
 };
-
-export type ITSConfig = {
-  extends: string;
-  include: string[];
-  compilerOptions: {
-    outDir: string;
-  };
-};

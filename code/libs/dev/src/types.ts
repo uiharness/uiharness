@@ -3,6 +3,7 @@ export * from '@uiharness/types';
 export type BundleTarget = 'electron' | 'web';
 export type Environment = 'production' | 'development';
 export type LogLevel = 3 | 2 | 1;
+export type InitTemplate = 'minimal' | 'platform';
 
 /**
  * The `uiharness.yml` configuration file.
@@ -86,8 +87,14 @@ export type ISettingsPaths = {
 };
 
 export type ITSConfig = {
+  extends: string;
   include: string[];
   compilerOptions: {
     outDir: string;
   };
+};
+
+export type ITSLint = {
+  extends: string;
+  rules: {};
 };

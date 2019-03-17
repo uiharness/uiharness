@@ -4,6 +4,7 @@ rm -f yarn.lock
 rm -f uiharness*.yml
 rm -f tsconfig.json
 rm -f tsconfig.test.json
+rm -f tslint.json
 
 rm -rf dist
 rm -rf lib
