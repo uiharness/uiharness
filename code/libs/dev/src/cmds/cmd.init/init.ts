@@ -82,12 +82,14 @@ export async function init(
 
   if (flags.files) {
     const noForce = ['.gitignore'];
+    const variables = { NAME: pkg.name };
     const filter = (path: string) => true;
     await tmpl
       .create()
       .add(settings.path.templates.base)
+      .use(tmpl.replace({ edge: '__' }))
       .use(tmpl.copyFile({ force, noForce, filter }))
-      .execute();
+      .execute({ variables });
   }
 }
 
