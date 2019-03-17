@@ -1,5 +1,5 @@
 {
-  "include": ["test"],
+  "include": ["test", "src"],
   "compilerOptions": {
     "outDir": "lib.test",
     "moduleResolution": "node",
