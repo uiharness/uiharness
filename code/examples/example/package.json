@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "scripts": {
     "postinstall": "ui init",
     "ui": "msync sl && ui $@",
@@ -15,7 +15,7 @@
     "react": "^16.8.4"
   },
   "devDependencies": {
-    "@uiharness/dev": "0.2.1",
+    "@uiharness/dev": "0.2.2",
     "typescript": "3.3.3333"
   },
   "license": "MIT",
