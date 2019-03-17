@@ -256,7 +256,7 @@ async function updateTSConfigFiles(args: { dir: string; template: t.InitTemplate
 
   // Add the base [tsconfig] template from @platform.
   if (template === 'platform') {
-    files.forEach(file => (file.json.extends = './node_modules/@platform/ts/tsconfig.json'));
+    files.forEach(file => (file.json.extends = '@platform/ts/tsconfig.json'));
   }
 
   // Remove any empty "extends" entries.

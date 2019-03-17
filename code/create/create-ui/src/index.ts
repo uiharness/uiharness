@@ -88,8 +88,8 @@ async function prepareTemplate(args: {
   if (!template) {
     type ITemplate = t.IPrompt<TemplateType>;
     const targets: ITemplate[] = [
-      { id: 'PLATFORM', label: '@platform toolchain' },
-      { id: 'MINIMAL', label: 'minimal' },
+      { id: 'platform', label: '@platform toolchain' },
+      { id: 'minimal', label: 'minimal' },
     ];
     const res = await prompt.forOption('Template', targets);
     if (!res) {
@@ -107,7 +107,7 @@ async function prepareTemplate(args: {
     .use(middleware.processPackage())
     .use(middleware.saveFile())
     .use(middleware.npmInstall())
-    .use(middleware.runInitCommand({ done: 'COMPLETE' }));
+    .use(middleware.runInitCommand({ template, done: 'COMPLETE' }));
 
   /**
    * User input variables.

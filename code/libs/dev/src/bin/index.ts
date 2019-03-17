@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import * as cmds from '../cmds';
-import { constants, log, yargs, BundleTarget, Environment } from '../common';
+import { BundleTarget, constants, Environment, log, t, yargs } from '../common';
 import { Settings } from '../settings';
-import { wrangleAndLog, BUNDLE_TARGETS, ENVIRONMENTS } from './util';
+import { BUNDLE_TARGETS, ENVIRONMENTS, wrangleAndLog } from './util';
 
 /**
  * Makes the script crash on unhandled rejections instead of silently
@@ -74,7 +74,8 @@ const program = yargs
           boolean: true,
         }),
     e => {
-      const { force, reset, template } = e;
+      const { force, reset } = e;
+      const template = e.template as t.InitTemplate;
       cmds.init({ settings, force, reset, template });
     },
   )
