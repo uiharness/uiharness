@@ -1,5 +1,6 @@
 {
   "name": "__NAME__",
+  "description": "",
   "version": "0.0.0",
   "scripts": {
     "ui": "ui $@",
@@ -11,5 +12,8 @@
   "devDependencies": {
     "@uiharness/dev": "latest"
   },
+  "files": [
+    "lib"
+  ],
   "license": "MIT"
 }
