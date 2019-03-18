@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/ui",
-  "version": "0.1.6",
+  "version": "0.1.8",
   "main": "lib/index",
   "scripts": {
     "test": "ts test",
@@ -10,14 +10,14 @@
     "prepare": "ts prepare"
   },
   "dependencies": {
-    "@platform/electron": "0.1.7",
-    "@platform/react": "0.0.20",
-    "@platform/ui.object": "0.0.59",
-    "@uiharness/types": "0.0.69"
+    "@platform/electron": "0.1.8",
+    "@platform/react": "0.0.21",
+    "@platform/ui.object": "0.0.60",
+    "@uiharness/types": "0.0.71"
   },
   "devDependencies": {
     "@platform/test": "0.0.33",
-    "@platform/ts": "3.3.66"
+    "@platform/ts": "3.3.67"
   },
   "files": [
     "lib"

@@ -1,7 +1,17 @@
-import { constants, fs, IRuntimeConfig, log, npm, tmpl, value } from '../../common';
+import {
+  constants,
+  fs,
+  getTSConfigFiles,
+  IRuntimeConfig,
+  log,
+  npm,
+  t,
+  tmpl,
+  value,
+} from '../../common';
 import { Settings } from '../../settings';
-import { clean } from '../cmd.clean';
 import { removeSourceMapRefs } from '../../utils';
+import { clean } from '../cmd.clean';
 
 const { SCRIPTS } = constants;
 const { defaultValue } = value;
@@ -44,15 +54,17 @@ export async function init(
   args: IInitFlags & {
     settings: Settings;
     reset?: boolean;
+    template?: t.InitTemplate;
   },
 ) {
-  const { settings } = args;
+  const { settings, template = 'platform' } = args;
   const pkg = settings.package;
   if (args.reset) {
     return reset({ settings });
   }
   const flags = toFlags(args);
   const { force, prod } = flags;
+  const dir = settings.dir;
 
   // Ensure the latest configuration files exist within the [.uiharness] folder.
   await saveConfigJson({ settings, prod });
@@ -82,12 +94,16 @@ export async function init(
 
   if (flags.files) {
     const noForce = ['.gitignore'];
+    const variables = { NAME: pkg.name };
     const filter = (path: string) => true;
     await tmpl
       .create()
       .add(settings.path.templates.base)
+      .use(tmpl.replace({ edge: '__' }))
       .use(tmpl.copyFile({ force, noForce, filter }))
-      .execute();
+      .execute({ variables });
+    await updateTSConfigFiles({ dir, template });
+    await updateTSLintFile({ dir, template });
   }
 }
 
@@ -232,4 +248,46 @@ async function stripSourceMaps(args: { settings: Settings }) {
   if (settings.sourcemaps.strip.length > 0) {
     await removeSourceMapRefs(...settings.sourcemaps.strip);
   }
+}
+
+async function updateTSConfigFiles(args: { dir: string; template: t.InitTemplate }) {
+  const { dir, template } = args;
+  const files = await getTSConfigFiles(dir);
+
+  // Add the base [tsconfig] template from @platform.
+  if (template === 'platform') {
+    files.forEach(file => (file.json.extends = '@platform/ts/tsconfig.json'));
+  }
+
+  // Remove any empty "extends" entries.
+  files.filter(file => !Boolean(file.json.extends)).forEach(file => delete file.json.extends);
+
+  // Save files.
+  await Promise.all(
+    files
+      .map(({ path, json }) => ({
+        path,
+        json: toJsonString(json),
+      }))
+      .map(({ path, json }) => fs.writeFile(path, json)),
+  );
+}
+
+async function updateTSLintFile(args: { dir: string; template: t.InitTemplate }) {
+  const { dir, template } = args;
+  const path = fs.join(dir, 'tslint.json');
+  if (await fs.pathExists(path)) {
+    const tslint = await fs.file.loadAndParse<t.ITSLint>(path);
+    if (template === 'platform') {
+      tslint.extends = '@platform/ts/tslint.json';
+    }
+    if (!tslint.extends) {
+      delete tslint.extends;
+    }
+    await fs.writeFile(path, toJsonString(tslint));
+  }
+}
+
+function toJsonString(obj: object) {
+  return `${JSON.stringify(obj, null, '  ')}\n`;
 }

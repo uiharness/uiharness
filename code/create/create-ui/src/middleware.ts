@@ -1,16 +1,18 @@
 import { join } from 'path';
 
 import { exec, fs, IVariables, npm, TemplateMiddleware } from './common';
-import { AfterTemplateMiddleware, IAlert, ITemplateResponse } from './types';
+import * as t from './types';
 
-const alert = (res: ITemplateResponse, message: string) =>
-  res.alert<IAlert>({ message });
+// import { t.AfterTemplateMiddleware, t.IAlert, ITemplateResponse } from './types';
+
+const alert = (res: t.ITemplateResponse, message: string) =>
+  res.alert<t.IAlert>({ message });
 
 /**
  * Processes a [package.json] file.
  */
 export function processPackage(
-  args: { done?: AfterTemplateMiddleware } = {},
+  args: { done?: t.AfterTemplateMiddleware } = {},
 ): TemplateMiddleware<IVariables> {
   return async (req, res) => {
     if (!req.path.source.endsWith('package.json')) {
@@ -29,7 +31,7 @@ export function processPackage(
     pkg.json.name = req.variables.moduleName;
 
     // Add @platform toolchain options.
-    if (req.variables.template === 'PLATFORM') {
+    if (req.variables.template === 'platform') {
       pkg.setFields('scripts', {
         test: 'ts test',
         tdd: 'ts test --watch',
@@ -51,7 +53,7 @@ export function processPackage(
  */
 export function saveFile(
   args: {
-    done?: AfterTemplateMiddleware;
+    done?: t.AfterTemplateMiddleware;
   } = {},
 ): TemplateMiddleware<IVariables> {
   return async (req, res) => {
@@ -70,14 +72,14 @@ export function saveFile(
  */
 export function npmInstall(
   args: {
-    done?: AfterTemplateMiddleware;
+    done?: t.AfterTemplateMiddleware;
   } = {},
 ): TemplateMiddleware<IVariables> {
   return async (req, res) => {
     const { dir } = req.variables;
     const pkg = npm.pkg(dir);
     const ver = pkg.devDependencies['@uiharness/dev'];
-    const msg = `Installing UIHarness version ${ver}...`;
+    const msg = `Installing 🌼  UIHarness version ${ver}...`;
     alert(res, msg);
 
     await npm.install({ dir });
@@ -89,16 +91,15 @@ export function npmInstall(
 /**
  * Run `ui init` command.
  */
-export function runInitCommand(
-  args: {
-    done?: AfterTemplateMiddleware;
-  } = {},
-): TemplateMiddleware<IVariables> {
+export function runInitCommand(args: {
+  template: t.TemplateType;
+  done: t.AfterTemplateMiddleware;
+}): TemplateMiddleware<IVariables> {
   return async (req, res) => {
-    const { dir } = req.variables;
+    const { dir, template } = req.variables;
 
     alert(res, `Initializing...`);
-    const cmd = `cd ${dir} && node node_modules/.bin/ui init`;
+    const cmd = `cd ${dir} && node node_modules/.bin/ui init --template=${template}`;
     await exec.cmd.run(cmd, { silent: true });
 
     res.done(args.done);

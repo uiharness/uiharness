@@ -1,18 +1,10 @@
-import { join, resolve, basename } from 'path';
+import { basename, join, resolve } from 'path';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
-import {
-  IAlert,
-  IPrompt,
-  IVariables,
-  Listr,
-  log,
-  prompt,
-  Template,
-  TemplateType,
-} from './common';
+import { Listr, log, prompt, Template, TemplateType } from './common';
 import * as middleware from './middleware';
+import * as t from './types';
 
 export * from './types';
 
@@ -25,13 +17,13 @@ export async function init() {
 
   // Prompt for target platform.
   const { tmpl, variables, dir } = await prepareTemplate({});
-  if (!tmpl || !dir) {
+  if (!tmpl || !dir || !variables) {
     return;
   }
 
   const alerts$ = tmpl.events$.pipe(
     filter(e => e.type === 'ALERT'),
-    map(e => e.payload as IAlert),
+    map(e => e.payload as t.IAlert),
   );
 
   // Run the template.
@@ -41,8 +33,11 @@ export async function init() {
       task: async () =>
         new Observable(observer => {
           (async () => {
+            // Copy files and run NPM install.
             alerts$.subscribe(e => observer.next(e.message));
-            await tmpl.execute<IVariables>({ variables });
+            await tmpl.execute<t.IVariables>({ variables });
+
+            // Finish up.
             observer.complete();
           })();
         }),
@@ -61,6 +56,10 @@ export async function init() {
   // Finish up.
   log.info();
 }
+
+/**
+ * [INTERNAL]
+ */
 
 /**
  * Builds a template based on the given parameters,
@@ -87,10 +86,10 @@ async function prepareTemplate(args: {
    * Target platform.
    */
   if (!template) {
-    type ITemplate = IPrompt<TemplateType>;
+    type ITemplate = t.IPrompt<TemplateType>;
     const targets: ITemplate[] = [
-      { id: 'PLATFORM', label: '@platform toolchain' },
-      { id: 'MINIMAL', label: 'minimal' },
+      { id: 'platform', label: '@platform toolchain' },
+      { id: 'minimal', label: 'minimal' },
     ];
     const res = await prompt.forOption('Template', targets);
     if (!res) {
@@ -108,13 +107,13 @@ async function prepareTemplate(args: {
     .use(middleware.processPackage())
     .use(middleware.saveFile())
     .use(middleware.npmInstall())
-    .use(middleware.runInitCommand({ done: 'COMPLETE' }));
+    .use(middleware.runInitCommand({ template, done: 'COMPLETE' }));
 
   /**
    * User input variables.
    */
   const dir = resolve(`./${moduleName}`);
-  const variables: IVariables = {
+  const variables: t.IVariables = {
     template,
     platform: ['ELECTRON', 'WEB'],
     moduleName,
@@ -125,9 +124,6 @@ async function prepareTemplate(args: {
   return { tmpl, variables, dir };
 }
 
-/**
- * INTERNAL
- */
 function logComplete(args: { dir: string }) {
   const dir = basename(args.dir);
   log.info.gray('🖐  To start your development server:\n');

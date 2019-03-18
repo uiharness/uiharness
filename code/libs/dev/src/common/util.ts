@@ -1,8 +1,8 @@
 import { DEFAULT } from './constants';
 import { Settings } from '../settings';
-import { BundleTarget, IParcelBuildConfig } from '../types';
-import { log, value, exec } from './libs';
+import { log, value, exec, fs } from './libs';
 import * as logging from './logging';
+import * as t from '../types';
 
 const defaultValue = value.defaultValue;
 
@@ -12,7 +12,7 @@ const defaultValue = value.defaultValue;
 export function logInfo(args: {
   settings: Settings;
   port?: boolean | number;
-  target: BundleTarget;
+  target: t.BundleTarget;
 }) {
   const { target, settings, port } = args;
 
@@ -32,7 +32,7 @@ export function logInfo(args: {
  * Logs that an operation cannot run because the required
  * configuration is not present with the YAML.
  */
-export function logNoConfig(args: { target: BundleTarget }) {
+export function logNoConfig(args: { target: t.BundleTarget }) {
   const { target } = args;
   let msg = '';
   msg += `😵  The "${log.yellow(target)}" configuration `;
@@ -99,7 +99,7 @@ export function logWebInfo(args: { settings: Settings; port?: boolean | number }
 /**
  * Extract JS bundler args (Parcel-JS) or defaults.
  */
-export function toBundlerArgs(data: IParcelBuildConfig = {}) {
+export function toBundlerArgs(data: t.IParcelBuildConfig = {}) {
   // Default values.
   const sourcemaps = defaultValue(data.sourcemaps, true);
   const treeshake = defaultValue(data.treeshake, false);
@@ -116,4 +116,24 @@ export function toBundlerArgs(data: IParcelBuildConfig = {}) {
 
   // Finish up.
   return { sourcemaps, treeshake, cmd: cmd.toString() };
+}
+
+/**
+ * Retrieves [tsconfig.json] files, and variants. from the given directory.
+ */
+export async function getTSConfigFiles(dir: string) {
+  dir = fs.resolve(dir);
+  const paths = (await fs.readdir(dir))
+    .filter(name => name.endsWith('.json'))
+    .filter(name => name.includes('tsconfig'))
+    .map(name => fs.join(dir, name));
+  return Promise.all(
+    paths.map(async path => {
+      const json = await fs.file.loadAndParse<t.ITSConfig>(path);
+      const include = json.include || [];
+      const compilerOptions = json.compilerOptions || {};
+      const outDir = compilerOptions.outDir || '';
+      return { path, dir, outDir, json: { ...json, include, compilerOptions } };
+    }),
+  );
 }

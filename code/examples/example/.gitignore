@@ -9,6 +9,7 @@ uiharness.yml
 uiharness.builder.yml
 tsconfig.json
 tsconfig.test.json
+tslint.json
 release
 lib
 lib.test
