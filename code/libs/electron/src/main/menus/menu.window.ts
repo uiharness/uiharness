@@ -120,14 +120,11 @@ export function current(
     }
     const devTools = getChildDevTools(parent.id);
     const isShowing = devTools ? devTools.isVisible() : false;
-    if (!devTools) {
-      return;
-    }
     return {
       label: `${isShowing ? 'Hide' : 'Show'} Developer Tools`,
       accelerator: 'CmdOrCtrl+Alt+I',
       click: () => {
-        if (isShowing) {
+        if (devTools && isShowing) {
           devTools.hide();
         } else {
           main.devTools.create({ parent, windows });
