@@ -1,7 +1,9 @@
 {
   "name": "__NAME__",
-  "description": "",
   "version": "0.0.0",
+  "description": "",
+  "main": "lib/index",
+  "types": "lib/index.d.ts",
   "scripts": {
     "ui": "ui $@",
     "start": "ui start $@"
