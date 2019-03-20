@@ -141,6 +141,7 @@ export function current(
   ];
 
   const showDevTools = showDevToolsMenu();
+
   submenu = showDevTools ? [...submenu, showDevTools] : submenu;
 
   submenu = [
