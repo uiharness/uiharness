@@ -3,6 +3,7 @@
 dist
 lib
 tmp 
+.tmp*
 node_modules
 .cache
 .uiharness
