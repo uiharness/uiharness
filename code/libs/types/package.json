@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/types",
-  "version": "0.0.74",
+  "version": "0.0.75",
   "description": "Shared types between @uiharness modules.",
   "main": "./lib/index",
   "types": "./lib/index.d.ts",

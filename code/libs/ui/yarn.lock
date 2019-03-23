@@ -45,10 +45,10 @@
     glamor "2.20.40"
     tinycolor2 "1.4.1"
 
-"@platform/electron@0.1.14":
-  version "0.1.14"
-  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.1.14.tgz#341dc0a6bc7a19ef8f89ab85b2728b62f71aca22"
-  integrity sha512-v+gauXya/dmI2RJipz/ks2jO8cepXSHa0/SzEwKjJIMvNlr/GivOF1FlrUwnSlaS67kq4Yt54hvMyYoqWOU3qg==
+"@platform/electron@0.1.15":
+  version "0.1.15"
+  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.1.15.tgz#eb281aef656df5b5c523119748ba04750cfc4f67"
+  integrity sha512-OW1UmJtwQwcgXubicr8bKTPBfalQeae762/CFcB6n1u+YPpkwFF9XEs03lDo8Rkm+RH0NGTIGbhqINZ8rhq39A==
   dependencies:
     "@babel/polyfill" "7.4.0"
     "@platform/fs" "0.0.41"
@@ -60,7 +60,6 @@
     electron-store "3.0.0"
     electron-window-state "5.0.3"
     is-electron "2.2.0"
-    v8-compile-cache "2.0.2"
 
 "@platform/exec@0.0.2":
   version "0.0.2"
@@ -276,10 +275,10 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.10.tgz#17a8ec65cd8e88f51b418ceb271af18d3137df67"
   integrity sha512-WsVzTPshvCSbHThUduGGxbmnwcpkgSctHGHTqzWyFg4lYAuV5qXlyFPOsP3OWqCINfmg/8VXP+zJaa4OxEsBQQ==
 
-"@uiharness/types@0.0.74":
-  version "0.0.74"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.74.tgz#0ae15a0aa354b3f5f70ee3348cf0609a72cb3b9c"
-  integrity sha512-mA+vXkhnHMUwVd1ZKnDEVem/ROQ8qOGvUHg2SiZe0RlCtQ8R5QRRHUrcEPfkF1ypn3Ter2OWCz2cAH5BslG3tQ==
+"@uiharness/types@0.0.75":
+  version "0.0.75"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.0.75.tgz#ba9edc1726dbe8a0bbf778ab3f8f0042df1350cf"
+  integrity sha512-jnQo9uiY6bllUXirVNgI19x+7kS8dHBD5vBpoMyUKfrVrOY0Srz4+rqadVTOFiH+c0HXnMlWlpXY+mp0M3OoTA==
 
 ansi-colors@3.2.3:
   version "3.2.3"
@@ -2500,11 +2499,6 @@ use@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
-
-v8-compile-cache@2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-2.0.2.tgz#a428b28bb26790734c4fc8bc9fa106fccebf6a6c"
-  integrity sha512-1wFuMUIM16MDJRCrpbpuEPTUGmM5QMUg0cr3KFwra2XgOgFcPGDQHDh3CszSCD2Zewc/dh/pamNEW8CbfDebUw==
 
 whatwg-fetch@>=0.10.0:
   version "3.0.0"
