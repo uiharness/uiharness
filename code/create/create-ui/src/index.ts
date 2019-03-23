@@ -65,10 +65,7 @@ export async function init() {
  * Builds a template based on the given parameters,
  * or prompts the user for input if parameter is not specified.
  */
-async function prepareTemplate(args: {
-  template?: TemplateType;
-  moduleName?: string;
-}) {
+async function prepareTemplate(args: { template?: TemplateType; moduleName?: string }) {
   let { template, moduleName } = args;
 
   /**
@@ -101,11 +98,16 @@ async function prepareTemplate(args: {
   /**
    * Construct template.
    */
+
+  // NOTE: NPM does not include the `package.json` file in the bundle, so we name it
+  //       something different to get it deployed.
+  const rename = [{ from: 'pkg.json', to: 'package.json' }];
+
   const tmpl = Template
     // Prepare the template.
     .create(join(__dirname, '../templates/base'))
     .use(middleware.processPackage())
-    .use(middleware.saveFile())
+    .use(middleware.saveFile({ rename }))
     .use(middleware.npmInstall())
     .use(middleware.runInitCommand({ template, done: 'COMPLETE' }));
 

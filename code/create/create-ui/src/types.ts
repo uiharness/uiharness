@@ -1,8 +1,4 @@
-export {
-  IPrompt,
-  AfterTemplateMiddleware,
-  ITemplateResponse,
-} from 'create-tmpl';
+export { IPrompt, AfterTemplateMiddleware, ITemplateResponse } from 'create-tmpl';
 
 export type IAlert = { message: string };
 

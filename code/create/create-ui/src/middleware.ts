@@ -1,12 +1,8 @@
 import { join } from 'path';
-
 import { exec, fs, IVariables, npm, TemplateMiddleware } from './common';
 import * as t from './types';
 
-// import { t.AfterTemplateMiddleware, t.IAlert, ITemplateResponse } from './types';
-
-const alert = (res: t.ITemplateResponse, message: string) =>
-  res.alert<t.IAlert>({ message });
+const alert = (res: t.ITemplateResponse, message: string) => res.alert<t.IAlert>({ message });
 
 /**
  * Processes a [package.json] file.
@@ -15,12 +11,13 @@ export function processPackage(
   args: { done?: t.AfterTemplateMiddleware } = {},
 ): TemplateMiddleware<IVariables> {
   return async (req, res) => {
-    if (!req.path.source.endsWith('package.json')) {
+    if (!req.path.source.endsWith('pkg.json')) {
       return res.next();
     }
 
     // Get latest NPM versions.
     alert(res, `Retrieving latest version information...`);
+
     const pkg = npm.pkg({ json: JSON.parse(req.text || '') });
     await pkg.updateVersions({
       filter: (name, version) => version === 'latest',
@@ -53,16 +50,27 @@ export function processPackage(
  */
 export function saveFile(
   args: {
+    rename?: Array<{ from: string; to: string }>;
     done?: t.AfterTemplateMiddleware;
   } = {},
 ): TemplateMiddleware<IVariables> {
   return async (req, res) => {
+    const { rename = [] } = args;
     const { dir } = req.variables;
-    const path = join(dir, req.path.target);
-    alert(res, `Saving: ${path}`);
+
+    let target = join(dir, req.path.target);
+    rename
+      .filter(item => target.endsWith(item.from))
+      .forEach(item => {
+        target = target.substr(0, target.length - item.from.length);
+        target += item.to;
+      });
+
+    alert(res, `Saving: ${target}`);
 
     await fs.ensureDir(dir);
-    await fs.writeFile(path, req.buffer);
+    await fs.writeFile(target, req.buffer);
+
     res.done(args.done);
   };
 }
