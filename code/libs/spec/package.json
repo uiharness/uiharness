@@ -12,12 +12,12 @@
     "prepare": "ts prepare"
   },
   "dependencies": {
-    "@platform/util.value": "0.0.43",
+    "@platform/util.value": "0.0.44",
     "@uiharness/types": "0.0.75"
   },
   "devDependencies": {
-    "@platform/test": "0.0.34",
-    "@platform/ts": "3.3.69"
+    "@platform/test": "0.0.35",
+    "@platform/ts": "3.3.70"
   },
   "files": [
     "lib"

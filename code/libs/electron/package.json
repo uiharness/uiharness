@@ -12,19 +12,19 @@
     "prepare": "ts prepare"
   },
   "dependencies": {
-    "@platform/electron": "0.1.15",
-    "@platform/log": "0.0.93",
-    "@platform/react": "0.0.27",
-    "@platform/ui.object": "0.0.66",
-    "@platform/util.value": "0.0.43",
+    "@platform/electron": "0.1.16",
+    "@platform/log": "0.0.94",
+    "@platform/react": "0.0.28",
+    "@platform/ui.object": "0.0.67",
+    "@platform/util.value": "0.0.44",
     "@types/app-root-path": "1.2.4",
     "@uiharness/types": "0.0.75",
     "@uiharness/ui": "0.1.12",
     "tslib": "1.9.3"
   },
   "devDependencies": {
-    "@platform/test": "0.0.34",
-    "@platform/ts": "3.3.69",
+    "@platform/test": "0.0.35",
+    "@platform/ts": "3.3.70",
     "@types/electron-window-state": "2.0.33",
     "electron": "4.1.1"
   },
