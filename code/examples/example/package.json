@@ -11,7 +11,7 @@
     "nuke": "sh ./sh/nuke.sh"
   },
   "dependencies": {
-    "@platform/electron": "^0.1.16",
+    "@platform/electron": "^0.1.17",
     "@uiharness/electron": "0.4.4",
     "react": "^16.8.4"
   },
