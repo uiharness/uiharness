@@ -9,13 +9,12 @@
     "start": "ui start $@"
   },
   "dependencies": {
-    "react": "latest"
+    "react": "latest",
+    "react-dom": "latest"
   },
   "devDependencies": {
     "@uiharness/dev": "latest"
   },
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "license": "MIT"
 }
