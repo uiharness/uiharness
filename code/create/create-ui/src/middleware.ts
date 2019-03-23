@@ -7,11 +7,12 @@ const alert = (res: t.ITemplateResponse, message: string) => res.alert<t.IAlert>
 /**
  * Processes a [package.json] file.
  */
-export function processPackage(
-  args: { done?: t.AfterTemplateMiddleware } = {},
-): TemplateMiddleware<IVariables> {
+export function processPackage(args: {
+  filename: string;
+  done?: t.AfterTemplateMiddleware;
+}): TemplateMiddleware<IVariables> {
   return async (req, res) => {
-    if (!req.path.source.endsWith('pkg.json')) {
+    if (!req.path.source.endsWith(args.filename)) {
       return res.next();
     }
 

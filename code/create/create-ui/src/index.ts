@@ -106,7 +106,7 @@ async function prepareTemplate(args: { template?: TemplateType; moduleName?: str
   const tmpl = Template
     // Prepare the template.
     .create(join(__dirname, '../templates/base'))
-    .use(middleware.processPackage())
+    .use(middleware.processPackage({ filename: 'pkg.json' }))
     .use(middleware.saveFile({ rename }))
     .use(middleware.npmInstall())
     .use(middleware.runInitCommand({ template, done: 'COMPLETE' }));
