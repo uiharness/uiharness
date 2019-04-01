@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/spec",
-  "version": "0.0.37",
+  "version": "0.0.38",
   "description": "Isolated UIHarness data-structures for specifying test specifications.",
   "main": "./lib/index",
   "types": "./lib/index.d.ts",
@@ -12,12 +12,12 @@
     "prepare": "ts prepare"
   },
   "dependencies": {
-    "@platform/util.value": "0.0.49",
-    "@uiharness/types": "0.1.5"
+    "@platform/util.value": "0.0.50",
+    "@uiharness/types": "0.1.6"
   },
   "devDependencies": {
     "@platform/test": "0.0.37",
-    "@platform/ts": "3.3.75"
+    "@platform/ts": "3.4.0"
   },
   "files": [
     "lib"
