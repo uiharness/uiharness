@@ -151,10 +151,10 @@
     "@platform/libs" "0.0.11"
     "@platform/ts.libs" "3.4.0"
 
-"@platform/ui.object@0.0.75":
-  version "0.0.75"
-  resolved "https://registry.yarnpkg.com/@platform/ui.object/-/ui.object-0.0.75.tgz#534a184d5f24ebccc8c74fb5ca6cb8e71a6486ef"
-  integrity sha512-UyHZi20XQXaJOCW/oLJgABKZ4L6c3gpLCDw6+bUNitBHYtpte77AxEyJ03xq3UMOY8AtX1O8hq1PIBXvryaOKA==
+"@platform/ui.object@0.0.76":
+  version "0.0.76"
+  resolved "https://registry.yarnpkg.com/@platform/ui.object/-/ui.object-0.0.76.tgz#6d3f9f2302a8daabd24195be56d7e9d82415567b"
+  integrity sha512-+X6oTpYrlGGGS+hwWVtFZubUW0YtqzQ8GoaYVAjmb845LHjoWuYcW+QMRnNMNxK3ogciC310Ai5ZyxiMaWLCog==
   dependencies:
     "@platform/react" "0.1.5"
     react-inspector "3.0.2"
