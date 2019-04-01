@@ -14,10 +14,10 @@
     "reset": "rm -rf tmp"
   },
   "dependencies": {
-    "create-tmpl": "0.1.45"
+    "create-tmpl": "0.1.46"
   },
   "devDependencies": {
-    "@platform/ts": "3.3.74"
+    "@platform/ts": "3.3.75"
   },
   "repository": "uiharness/uiharness",
   "files": [
