@@ -6,8 +6,8 @@ import { Settings } from '../../settings';
 /**
  * Opens a built application.
  */
-export async function open(args: { settings: Settings; folder?: boolean }) {
-  const { settings } = args;
+export async function open(args: { settings: Settings; folder?: boolean; silent?: boolean }) {
+  const { settings, silent } = args;
 
   const formatPath = (path: string) => logging.formatPath(path, true);
 
@@ -23,15 +23,17 @@ export async function open(args: { settings: Settings; folder?: boolean }) {
 
   const runOpen = (path: string, type: 'app' | 'folder') => {
     const appName = settings.name;
-    const paths = main.paths({ appName });
-    const logCmd = tailCommand(paths.log.dir, paths.log.prod.filename);
+    const paths = main.paths({ appName, env: 'production' });
 
-    const action = type === 'app' ? 'Open  ' : 'Folder';
+    if (!silent) {
+      const logCmd = tailCommand(paths.log.dir, paths.log.prod.filename);
+      const action = type === 'app' ? 'Open  ' : 'Folder';
+      log.info();
+      log.info(`🖐  ${action}  ${formatPath(path)}`);
+      log.info.gray(`   logs:   ${logCmd}`);
+      log.info();
+    }
 
-    log.info();
-    log.info(`🖐  ${action}  ${formatPath(path)}`);
-    log.info.gray(`   logs:   ${logCmd}`);
-    log.info();
     return exec.cmd
       .create()
       .add(`open "${path}"`)
@@ -63,7 +65,7 @@ export async function open(args: { settings: Settings; folder?: boolean }) {
   const platform = getPlatformDir();
   const { outputDir = '', productName = 'UNKNOWN' } = config;
 
-  if (!(await fs.pathExists(outputDir))) {
+  if (!silent && !(await fs.pathExists(outputDir))) {
     log.info();
     log.warn(`😩  The app distribution has not been built yet.`);
     log.info(`   ${formatPath(outputDir)}`);
@@ -79,7 +81,7 @@ export async function open(args: { settings: Settings; folder?: boolean }) {
   path = fs.resolve(path);
 
   // Ensure the app has been built.
-  if (!(await fs.pathExists(path))) {
+  if (!silent && !(await fs.pathExists(path))) {
     log.info();
     log.warn(`😩  An app named ${log.magenta(productName)} does not exist.`);
     log.info(`   ${formatPath(path)}`);
