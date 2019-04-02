@@ -7,6 +7,7 @@ export type IRemoveSourceMapsResponse = {
 
 /**
  * Strips source maps references from JS files within the given path.
+ *
  * NOTE:
  *    This is useful when referenced modules has published JS files
  *    with references to source-maps but not actually published
@@ -55,12 +56,20 @@ export async function removeSourceMapRefs(...dirs: string[]) {
     // Write temporary note indicating that the folder has been stripped.
     await fs.writeFile(tmpFile, TEXT);
   };
+
+  // Process each directory.
+  dirs = await expandDirectoryGlobs(dirs);
   await Promise.all(dirs.map(dir => remove(dir)));
-  return { ...result, total: result.changed.length };
+
+  // Finish up.
+  return {
+    ...result,
+    total: result.changed.length,
+  };
 }
 
 /**
- * Removes the source-map ref from theh given file.
+ * Removes the source-map ref from the given file.
  */
 export async function removeSourceMapRef(file: string) {
   try {
@@ -87,8 +96,14 @@ export async function removeSourceMapRef(file: string) {
 }
 
 /**
- * INTERNAL
+ * [Internal]
  */
 function isSourceMapRef(line: string) {
   return line.includes('//# sourceMappingURL=');
+}
+
+async function expandDirectoryGlobs(dirs: string[]) {
+  const wait = dirs.map(dir => fs.resolve(dir)).map(path => fs.glob.find(path, { type: 'DIRS' }));
+  const paths = await Promise.all(wait);
+  return paths.flat();
 }
