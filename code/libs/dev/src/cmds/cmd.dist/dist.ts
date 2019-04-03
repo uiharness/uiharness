@@ -105,6 +105,9 @@ export async function distElectron(args: { settings: Settings; silent?: boolean 
       title: `Building      ${log.yellow('electron app')} 🌼`,
       task: async () => {
         await cmd.run({ silent: true });
+
+        // Clean up.
+        await fs.remove(fs.resolve(fs.join(tmp.dir, 'yarn.lock')));
         await fs.remove(fs.resolve(fs.join(tmp.dir, 'node_modules')));
         await fs.remove(fs.resolve(fs.join(tmp.dir, tmp.dir)));
       },
