@@ -103,9 +103,14 @@ export async function distElectron(args: { settings: Settings; silent?: boolean 
   const tasks = new Listr([
     {
       title: `Building      ${log.yellow('electron app')} 🌼`,
-      task: () => cmd.run({ silent: true }),
+      task: async () => {
+        await cmd.run({ silent: true });
+        await fs.remove(fs.resolve(fs.join(tmp.dir, 'node_modules')));
+        await fs.remove(fs.resolve(fs.join(tmp.dir, tmp.dir)));
+      },
     },
   ]);
+
   try {
     await tasks.run();
   } catch (error) {
