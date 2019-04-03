@@ -2,8 +2,13 @@ import * as React from 'react';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { css, color, COLORS, GlamorValue } from '../../common';
+import { CommandPrompt, ICommandState } from '../primitives';
 
-export type IShellProps = { style?: GlamorValue };
+export type IShellProps = {
+  children?: React.ReactNode;
+  cli: ICommandState;
+  style?: GlamorValue;
+};
 export type IShellState = {};
 
 export class Shell extends React.PureComponent<IShellProps, IShellState> {
@@ -21,6 +26,13 @@ export class Shell extends React.PureComponent<IShellProps, IShellState> {
   public componentWillUnmount() {
     this.unmounted$.next();
     this.unmounted$.complete();
+  }
+
+  /**
+   * [Properties]
+   */
+  public get cli() {
+    return this.props.cli;
   }
 
   /**
@@ -46,10 +58,10 @@ export class Shell extends React.PureComponent<IShellProps, IShellState> {
 
     return (
       <div {...css(styles.base, this.props.style)}>
-        <div {...styles.main}>
-          <div>uiharness/ui</div>
+        <div {...styles.main}>{this.props.children}</div>
+        <div {...styles.footer}>
+          <CommandPrompt cli={this.cli} theme={'DARK'} />
         </div>
-        <div {...styles.footer}>{/* <CommandPrompt cli={this.cli} theme={'DARK'} /> */}</div>
       </div>
     );
   }
