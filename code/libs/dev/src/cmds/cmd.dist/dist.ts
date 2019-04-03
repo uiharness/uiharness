@@ -40,11 +40,12 @@ export async function dist(args: { settings: Settings; target: BundleTarget; sil
  * Bundles the [electron] application.
  */
 export async function distElectron(args: { settings: Settings; silent?: boolean }) {
-  const { settings, silent = false } = args;
   const prod = true;
-  const electron = settings.electron;
-  const out = electron.out(prod);
   process.env.NODE_ENV = 'production';
+
+  const { settings, silent = false } = args;
+  const tmp = settings.path.tmp;
+  const electron = settings.electron;
 
   const handleError = (error: Error, step: string) => {
     if (silent) {
@@ -84,24 +85,35 @@ export async function distElectron(args: { settings: Settings; silent?: boolean 
     return handleError(error, 'building javascript for electron distribution');
   }
 
+  // Make a copy of the configruation file.
+  const configFile = electron.path.builder.configFilename;
+  await fs.copy(configFile, fs.join(tmp.dir, configFile));
+
   // Construct the `build` command.
   const cmd = exec.cmd
     .create()
-    .add(`cd ${fs.resolve('.')}`)
+    .add(`cd ${fs.resolve(tmp.dir)}`)
     .newLine()
     .add(`build`)
     .add(`--x64`)
     .add(`--publish=never`)
-    .add(`-c.extraMetadata.main="${out.main.path}"`)
-    .add(`--config="${electron.path.builder.configFilename}"`);
+    .add(`--config="${configFile}"`);
 
   // Run the electron `build` command.
   const tasks = new Listr([
     {
       title: `Building      ${log.yellow('electron app')} 🌼`,
-      task: () => cmd.run({ silent: true }),
+      task: async () => {
+        await cmd.run({ silent: true });
+
+        // Clean up.
+        await fs.remove(fs.resolve(fs.join(tmp.dir, 'yarn.lock')));
+        await fs.remove(fs.resolve(fs.join(tmp.dir, 'node_modules')));
+        await fs.remove(fs.resolve(fs.join(tmp.dir, tmp.dir)));
+      },
     },
   ]);
+
   try {
     await tasks.run();
   } catch (error) {
@@ -111,7 +123,9 @@ export async function distElectron(args: { settings: Settings; silent?: boolean 
 
   // Log output.
   const config = settings.electron.builderArgs;
-  const path = config.outputDir ? logging.formatPath(config.outputDir, true) : 'UNKNOWN';
+  const path = config.outputDir
+    ? logging.formatPath(fs.join(tmp.dir, config.outputDir), true)
+    : 'UNKNOWN';
 
   if (!silent) {
     log.info();

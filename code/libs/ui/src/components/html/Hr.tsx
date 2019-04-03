@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { color, css } from '../common';
+import { color, css } from '../../common';
 
 /**
  * A styled <hr> element.

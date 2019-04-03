@@ -189,7 +189,10 @@ const program = yargs
         return exit(1);
       }
       if (target === 'electron' && open) {
-        await Promise.all([cmds.open({ settings }), cmds.open({ settings, folder: true })]);
+        await Promise.all([
+          cmds.open({ settings, silent: true }),
+          cmds.open({ settings, silent: true, folder: true }),
+        ]);
       }
       return exit(0);
     },

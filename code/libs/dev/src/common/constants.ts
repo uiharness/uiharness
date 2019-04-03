@@ -21,9 +21,6 @@ export const SCRIPTS = {
 };
 
 export const PKG = {
-  dependencies: {
-    '@uiharness/electron': '__LATEST__',
-  },
   devDependencies: {
     '@uiharness/dev': '__LATEST__',
   },

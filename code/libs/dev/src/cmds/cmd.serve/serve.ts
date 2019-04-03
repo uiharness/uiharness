@@ -8,6 +8,7 @@ import { stats as renderStats } from '../cmd.stats';
  */
 export async function serve(args: { settings: Settings; bundle?: boolean }) {
   const { settings } = args;
+  const tmp = settings.path.tmp;
   const web = settings.web;
 
   if (!web.exists) {
@@ -17,7 +18,7 @@ export async function serve(args: { settings: Settings; bundle?: boolean }) {
 
   const prod = true;
   const out = settings.web.out(prod);
-  const dir = fs.resolve(out.dir);
+  const dir = fs.resolve(fs.join(tmp.dir, out.dir));
   const exists = await fs.pathExists(dir);
 
   // Ensure the distribution has been built.

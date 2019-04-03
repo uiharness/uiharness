@@ -2,7 +2,9 @@
 
 dist
 lib
+lib.test
 tmp 
+.tmp*
 node_modules
 .cache
 .uiharness

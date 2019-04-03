@@ -1,5 +1,4 @@
-import { join } from 'path';
-import { constants, value, toBundlerArgs } from '../common';
+import { fs, constants, value, toBundlerArgs } from '../common';
 import { IConfig, ISettingsPaths, IWebConfig, LogLevel } from '../types';
 import { ensureEntries } from './util';
 
@@ -73,11 +72,14 @@ export class WebSettings {
    * Ensures that all entry-points exist, and copies them if necessary.
    */
   public async ensureEntries() {
+    const parent = this._paths.parent;
     const entry = this.entry;
     const name = this._config.name || constants.UNNAMED;
     const codePath = entry.code;
-    const templatesDir = this._paths.parent.templates.html;
-    const targetDir = this._paths.parent.tmp.html;
+
+    const tmp = parent.tmp;
+    const templatesDir = parent.templates.html;
+    const targetDir = fs.join(tmp.dir, tmp.html);
 
     return ensureEntries({
       name,
@@ -98,7 +100,7 @@ export class WebSettings {
     return {
       dir,
       file,
-      path: join(dir, file),
+      path: fs.join(dir, file),
     };
   }
 
@@ -126,13 +128,13 @@ export class WebSettings {
     return {
       defaultEntry: {
         code: 'test/web.tsx',
-        html: join(html, 'web.html'),
+        html: fs.join(html, 'web.html'),
       },
       out: {
         file: 'index.html',
         dir: {
-          dev: join(bundle, 'web/dev'),
-          prod: join(bundle, 'web/prod'),
+          dev: fs.join(bundle, 'web/dev'),
+          prod: fs.join(bundle, 'web/prod'),
         },
       },
     };

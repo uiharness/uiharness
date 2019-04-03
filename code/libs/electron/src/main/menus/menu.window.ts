@@ -98,7 +98,12 @@ export function current(
       return {
         label: 'New Window',
         accelerator: CMD_NEW,
-        click: () => newWindow({ entry: DEFAULT }),
+        click: () => {
+          // NB: Only load the dev-tools if the currently focused window has them showing.
+          const parent = BrowserWindow.getFocusedWindow();
+          const devTools = parent ? main.devTools.isShowing({ parent, windows }) : false;
+          newWindow({ entry: DEFAULT, devTools });
+        },
       };
     }
     const defaultWindow = items.find(item => item.key === DEFAULT) || items[0];
@@ -141,6 +146,7 @@ export function current(
   ];
 
   const showDevTools = showDevToolsMenu();
+
   submenu = showDevTools ? [...submenu, showDevTools] : submenu;
 
   submenu = [
