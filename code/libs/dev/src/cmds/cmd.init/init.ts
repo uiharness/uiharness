@@ -84,12 +84,8 @@ export async function init(
 
   if (flags.deps) {
     const PKG = constants.PKG;
-    const deps = await npm.getVersions(PKG.dependencies);
     const devDeps = await npm.getVersions(PKG.devDependencies);
-    await pkg
-      .setFields('dependencies', deps, { force: true })
-      .setFields('devDependencies', devDeps, { force: true })
-      .save();
+    await pkg.setFields('devDependencies', devDeps, { force: true }).save();
   }
 
   if (flags.files) {
@@ -200,7 +196,6 @@ async function copyPackage(args: { settings: Settings; prod: boolean }) {
 
   // Ensure UIHarness electron package is available as a dependency.
   ensureDep(pkg, '@uiharness/electron');
-  ensureDep(pkg, '@platform/electron');
 
   // Save the [package.json] file.
   const path = fs.resolve(settings.path.package);
