@@ -257,9 +257,9 @@ async function getInitializedState(args: { settings: Settings }) {
  */
 async function stripSourceMaps(args: { settings: Settings }) {
   const { settings } = args;
-  if (settings.sourcemaps.strip.length > 0) {
-    await removeSourceMapRefs(...settings.sourcemaps.strip);
-  }
+  const common = ['node_modules/rxjs', 'node_modules/react-inspector', 'node_modules/prosemirror*'];
+  const paths = [...common, ...(settings.sourcemaps.strip || [])];
+  await removeSourceMapRefs(...paths);
 }
 
 async function updateTSConfigFiles(args: { dir: string; template: t.InitTemplate }) {
