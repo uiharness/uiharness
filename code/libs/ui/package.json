@@ -3,11 +3,13 @@
   "version": "0.1.27",
   "main": "lib/index",
   "scripts": {
+    "ui": "ui $@",
     "test": "ts test",
     "tdd": "ts test --watch",
     "lint": "ts lint",
     "build": "ts build",
-    "prepare": "ts prepare"
+    "prepare": "ts prepare",
+    "start": "ui start $@"
   },
   "dependencies": {
     "@platform/electron": "0.1.26",
@@ -17,7 +19,8 @@
   },
   "devDependencies": {
     "@platform/test": "0.0.38",
-    "@platform/ts": "3.4.1"
+    "@platform/ts": "3.4.1",
+    "@uiharness/dev": "0.2.29"
   },
   "files": [
     "lib"

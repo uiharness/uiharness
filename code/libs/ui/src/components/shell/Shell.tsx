@@ -31,11 +31,12 @@ export class Shell extends React.PureComponent<IShellProps, IShellState> {
       base: css({
         backgroundColor: 'rgba(255, 0, 0, 0.1)' /* RED */,
         Absolute: 0,
+        padding: 30,
       }),
     };
     return (
       <div {...css(styles.base, this.props.style)}>
-        <div>Shell</div>
+        <div>Shell!!</div>
       </div>
     );
   }
