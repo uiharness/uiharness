@@ -1245,7 +1245,7 @@
     "@uiharness/types" "0.1.10"
     tslib "1.9.3"
 
-"@uiharness/types@0.1.10", "@uiharness/types@^0.1.10":
+"@uiharness/types@0.1.10":
   version "0.1.10"
   resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.1.10.tgz#981ffecd2c9fccd7ea804f21ad37fa835138d942"
   integrity sha512-CtWgXvt1ZLfNwQbh6hm2/wGBiIuKhpo4bj5XtR/wi7j1FQUk5x9rLJwLmJM8UbISwAfNalNoZpXbdmkfCqmXmA==

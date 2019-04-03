@@ -1,15 +1,13 @@
 {
   "name": "@uiharness/ui",
   "version": "0.1.27",
-  "description": "",
   "main": "lib/index",
-  "types": "lib/index.d.ts",
   "scripts": {
     "ui": "ui $@",
     "test": "ts test",
     "tdd": "ts test --watch",
     "lint": "ts lint",
-    "build": "ts build $@",
+    "build": "ts build",
     "build-test": "ts build --tsconfig=tsconfig.test $@",
     "prepare": "ts prepare"
   },

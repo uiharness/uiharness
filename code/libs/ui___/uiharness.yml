@@ -1,7 +1,8 @@
+
 name: uiharness.ui
 
 electron:
-  port: 8818
+  port: 8878
   entry:
     main: test/main.ts
     renderer: 

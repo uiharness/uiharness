@@ -36,7 +36,7 @@ export class Shell extends React.PureComponent<IShellProps, IShellState> {
     };
     return (
       <div {...css(styles.base, this.props.style)}>
-        <div>Shell!!</div>
+        <div>Shell.</div>
       </div>
     );
   }
