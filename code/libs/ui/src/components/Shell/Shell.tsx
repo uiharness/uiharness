@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { css, color, GlamorValue } from '../../common';
+import { css, color, COLORS, GlamorValue } from '../../common';
 
 export type IShellProps = { style?: GlamorValue };
 export type IShellState = {};
@@ -29,14 +29,27 @@ export class Shell extends React.PureComponent<IShellProps, IShellState> {
   public render() {
     const styles = {
       base: css({
-        backgroundColor: 'rgba(255, 0, 0, 0.1)' /* RED */,
         Absolute: 0,
-        padding: 30,
+        Flex: 'vertical',
+      }),
+      main: css({
+        position: 'relative',
+        display: 'flex',
+        flex: 1,
+        padding: 20,
+      }),
+      footer: css({
+        backgroundColor: COLORS.DARK,
+        height: 32,
       }),
     };
+
     return (
       <div {...css(styles.base, this.props.style)}>
-        <h1>Shell</h1>
+        <div {...styles.main}>
+          <div>uiharness/ui</div>
+        </div>
+        <div {...styles.footer}>{/* <CommandPrompt cli={this.cli} theme={'DARK'} /> */}</div>
       </div>
     );
   }
