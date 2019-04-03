@@ -1,6 +1,7 @@
+import { fs } from '../common';
 import { Settings } from '../Settings';
-import { ParcelBundler } from './libs';
 import { IParcelBuildConfig } from '../types';
+import { ParcelBundler } from './libs';
 import { toBundlerArgs } from './util';
 
 export type ParcelOptions = ParcelBundler.ParcelOptions;
@@ -13,12 +14,13 @@ export function electronRendererBundler(
   options: { parcel?: ParcelOptions; prod?: boolean } = {},
 ) {
   const { prod = false } = options;
+  const tmp = settings.path.tmp;
   const electron = settings.electron;
   const out = electron.out(prod);
-  const entry = electron.entry.html;
+  const entry = electron.entry.html.map(path => fs.join(tmp.dir, path));
 
   return createBundler(entry, electron.data.bundle, prod, {
-    outDir: out.renderer.dir,
+    outDir: fs.join(tmp.dir, out.renderer.dir),
     target: 'electron',
     logLevel: electron.logLevel,
     ...options.parcel,
@@ -33,11 +35,12 @@ export function webBundler(
   options: { parcel?: ParcelOptions; prod?: boolean } = {},
 ) {
   const { prod = false } = options;
+  const tmp = settings.path.tmp;
   const web = settings.web;
   const out = web.out(prod);
-  const entry = web.entry.html;
+  const entry = fs.join(tmp.dir, web.entry.html);
   return createBundler(entry, web.data.bundle, prod, {
-    outDir: out.dir,
+    outDir: fs.join(tmp.dir, out.dir),
     target: 'browser',
     logLevel: web.logLevel,
     ...options.parcel,

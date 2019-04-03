@@ -1,4 +1,14 @@
-import { BundleTarget, exec, fs, Listr, log, logging, logNoConfig, value } from '../../common';
+import {
+  BundleTarget,
+  exec,
+  fs,
+  Listr,
+  log,
+  logging,
+  logNoConfig,
+  value,
+  constants,
+} from '../../common';
 import { Settings } from '../../settings';
 import * as init from '../cmd.init';
 import { stats as renderStats } from '../cmd.stats';
@@ -46,6 +56,7 @@ export async function bundleElectron(args: {
 }) {
   const { settings, silent = false } = args;
   const electron = settings.electron;
+  const tmp = settings.path.tmp;
 
   if (!electron.exists) {
     logNoConfig({ target: 'electron' });
@@ -78,8 +89,7 @@ export async function bundleElectron(args: {
   });
 
   const cmd = exec.cmd
-    .create()
-    .add(`export NODE_ENV="${env.value}"`)
+    .create(`export NODE_ENV="${env.value}"`)
     .newLine()
     .add(`cd ${fs.resolve('.')}`)
     .newLine();
@@ -92,8 +102,7 @@ export async function bundleElectron(args: {
           .clone()
           .add(`parcel`)
           .add(`build ${entry.main}`)
-          .add(`--out-dir ${out.main.dir}`)
-          .add(`--out-file ${out.main.file}`)
+          .add(`--out-dir ${fs.join(tmp.dir, out.main.dir)}`)
           .add(`--target electron`)
           .add(bundlerArgs.cmd)
           .run({ silent: true }),
@@ -107,10 +116,9 @@ export async function bundleElectron(args: {
         cmd
           .clone()
           .add(`parcel`)
-          .add(`build ${entry.html.join(' ')}`)
+          .add(`build ${entry.html.map(path => fs.join(tmp.dir, path)).join(' ')}`)
           .add(`--public-url ./`)
-          .add(`--out-dir ${out.renderer.dir}`)
-          // .add(`--out-file ${out.renderer.file}`)
+          .add(`--out-dir ${fs.join(tmp.dir, out.renderer.dir)}`)
           .add(`--target electron`)
           .add(bundlerArgs.cmd)
           .run({ silent: true }),
@@ -165,6 +173,7 @@ export async function bundleWeb(args: {
 }) {
   const { settings, silent = false } = args;
   const summary = value.defaultValue(args.summary, true);
+  const tmp = settings.path.tmp;
   const web = settings.web;
 
   if (!web.exists) {
@@ -194,12 +203,12 @@ export async function bundleWeb(args: {
     .create()
     .add(`export NODE_ENV="${env.value}"`)
     .newLine()
-    .add(`cd ${fs.resolve('.')}`)
+    .add(`cd ${fs.resolve(tmp.dir)}`)
     .newLine()
     .add(`parcel`)
-    .add(`build ${entry.html}`)
+    .add(`build ${fs.join(entry.html)}`)
     .add(`--public-url ./`)
-    .add(`--out-dir ${out.dir}`)
+    .add(`--out-dir ${fs.join(out.dir)}`)
     .add(`--out-file ${out.file}`)
     .add(web.bundlerArgs.cmd);
 
@@ -228,8 +237,8 @@ export async function bundleWeb(args: {
     log.info.gray(`   • package:     ${pkg.name}`);
     log.info.gray(`   • version:     ${pkg.version}`);
     log.info.gray(`   • env:         ${env.value}`);
-    log.info.gray(`   • entry:       ${formatPath(entry.code)}`);
-    log.info.gray(`   • output:      ${formatPath(out.path)}`);
+    log.info.gray(`   • entry:       ${formatPath(fs.join(tmp.dir, entry.code))}`);
+    log.info.gray(`   • output:      ${formatPath(fs.join(tmp.dir, out.path))}`);
     log.info();
   }
   if (stats) {

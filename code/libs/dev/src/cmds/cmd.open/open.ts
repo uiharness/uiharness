@@ -8,6 +8,7 @@ import { Settings } from '../../settings';
  */
 export async function open(args: { settings: Settings; folder?: boolean; silent?: boolean }) {
   const { settings, silent } = args;
+  const tmp = settings.path.tmp;
 
   const formatPath = (path: string) => logging.formatPath(path, true);
 
@@ -63,7 +64,8 @@ export async function open(args: { settings: Settings; folder?: boolean; silent?
 
   // Derive the path to the app.
   const platform = getPlatformDir();
-  const { outputDir = '', productName = 'UNKNOWN' } = config;
+  const { productName = 'UNKNOWN' } = config;
+  const outputDir = fs.join(tmp.dir, config.outputDir || '');
 
   if (!silent && !(await fs.pathExists(outputDir))) {
     log.info();

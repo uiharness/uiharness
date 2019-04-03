@@ -153,9 +153,9 @@ export class Settings {
       package: join(tmp, 'package.json'),
       tmp: {
         dir: tmp,
-        html: join(tmp, 'html'),
-        bundle: join(tmp, '.bundle'),
-        config: join(tmp, 'config.json'),
+        html: join('html'),
+        bundle: join('.bundle'),
+        config: join('config.json'),
       },
       templates: {
         base: join(templates, 'base'),

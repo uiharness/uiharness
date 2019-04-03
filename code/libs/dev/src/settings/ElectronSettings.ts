@@ -132,7 +132,8 @@ export class ElectronSettings {
     const entry = this.entry;
     const name = this._config.name || constants.UNNAMED;
     const templatesDir = this._paths.parent.templates.html;
-    const targetDir = this._paths.parent.tmp.html;
+    const tmp = this._paths.parent.tmp;
+    const targetDir = fs.join(tmp.dir, tmp.html);
 
     const wait = Object.keys(entry.renderer).map(key => {
       const item = entry.renderer[key];
@@ -220,7 +221,6 @@ export class ElectronSettings {
    */
   public getPaths(): ICalculatedPaths {
     const parent = this._paths.parent;
-    const tmp = parent.tmp.dir;
     const bundle = parent.tmp.bundle;
 
     return {
@@ -246,7 +246,7 @@ export class ElectronSettings {
       },
       builder: {
         configFilename: `uiharness.builder.yml`,
-        output: fs.join(tmp, 'dist'),
+        output: 'dist',
         files: [fs.join(bundle, 'app.main/**'), fs.join(bundle, 'app.renderer/prod/**')],
       },
     };

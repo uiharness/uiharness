@@ -141,10 +141,11 @@ async function reset(args: { settings: Settings }) {
  */
 async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
   const { settings } = args;
+  const tmp = settings.path.tmp;
   const electron = settings.electron;
-  const { port } = electron;
   const out = electron.out(args.prod);
 
+  // Prepare `renderer` entry paths.
   const renderer: IRuntimeConfig['electron']['renderer'] = {};
   Object.keys(electron.entry.renderer).forEach(key => {
     const { html, label } = electron.entry.renderer[key];
@@ -155,23 +156,32 @@ async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
     };
   });
 
+  // Pepare the runtime config JSON.
   const data: IRuntimeConfig = {
     name: settings.name,
     electron: {
-      port,
+      port: electron.port,
       main: out.main.path,
       renderer,
     },
   };
 
   // Write the file.
-  const path = settings.path.tmp.config;
+  const path = fs.join(tmp.dir, tmp.config);
   await fs.file.stringifyAndSave(path, data);
   return data;
 }
 
 /**
- *  * Save a copy of the with the 'main' set to the entry point.
+ * Determines whether the module has been initialized.
+ */
+async function getIsInitialized(args: { settings: Settings }) {
+  const state = await getInitializedState(args);
+  return Object.keys(state).every(key => state[key] !== false);
+}
+
+/**
+ * Save a copy of `package.json` the with the `main` field set to the entry point.
  *
  *   NOTE:  This is done so that the module does not have to have the
  *          UIHarness entry-point as it's actual entry point if being
@@ -185,20 +195,27 @@ async function copyPackage(args: { settings: Settings; prod: boolean }) {
   const main = electron.out(prod).main.path;
 
   // Set the "main" entry point for electron.
-  const pkg = npm.pkg('.').json;
-  pkg.main = fs.join('..', main);
+  const pkg = npm.pkg('.');
+  pkg.json.main = fs.join(main);
+
+  // Ensure UIHarness electron package is available as a dependency.
+  ensureDep(pkg, '@uiharness/electron');
+  ensureDep(pkg, '@platform/electron');
 
   // Save the [package.json] file.
   const path = fs.resolve(settings.path.package);
-  await fs.file.stringifyAndSave(path, pkg);
+  await pkg.save(path);
 }
 
 /**
- * Determines whether the module has been initialized.
+ * Ensures the a package has the given dependency.
  */
-async function getIsInitialized(args: { settings: Settings }) {
-  const state = await getInitializedState(args);
-  return Object.keys(state).every(key => state[key] !== false);
+function ensureDep(pkg: npm.NpmPackage, name: string) {
+  const dep = npm.pkg(fs.join('./node_modules', name));
+  if (dep.version) {
+    pkg.setFields('dependencies', { [name]: dep.version });
+    pkg.removeFields('devDependencies', [name]);
+  }
 }
 
 /**
