@@ -1,5 +1,3 @@
-import { dirname, join, resolve } from 'path';
-
 import { constants, fs, log, npm, NpmPackage } from '../common';
 import { IConfig, ISettingsPaths, ISourcemapsConfig } from '../types';
 import { ElectronSettings } from './ElectronSettings';
@@ -66,7 +64,7 @@ export class Settings {
     path = path.trim();
     const lstat = fs.existsSync(path) ? fs.lstatSync(path) : undefined;
     const isDirectory = lstat && lstat.isDirectory();
-    path = isDirectory ? join(path, UIHARNESS_YAML) : path;
+    path = isDirectory ? fs.join(path, UIHARNESS_YAML) : path;
 
     // Overridden paths.
     const tmpDir = options.tmpDir ? options.tmpDir : PATH.TMP;
@@ -88,7 +86,7 @@ export class Settings {
   }
 
   public get dir() {
-    return dirname(this._paths.file);
+    return fs.dirname(this._paths.file);
   }
 
   /**
@@ -135,7 +133,7 @@ export class Settings {
    * Retrieves file paths.
    */
   public getPaths(): ISettingsPaths {
-    const ROOT = resolve('.');
+    const ROOT = fs.resolve('.');
 
     const fromRoot = (path: string) => {
       if (path.startsWith(ROOT)) {
@@ -149,18 +147,18 @@ export class Settings {
     const self = fromRoot(this._paths.file);
     return {
       self,
-      dir: dirname(self),
-      package: join(tmp, 'package.json'),
+      dir: fs.dirname(self),
+      package: fs.join(tmp, 'package.json'),
       tmp: {
         dir: tmp,
-        html: join('html'),
-        bundle: join('.bundle'),
-        config: join('config.json'),
+        html: fs.join('html'),
+        bundle: fs.join('bundle'),
+        config: fs.join('config.json'),
       },
       templates: {
-        base: join(templates, 'base'),
-        electron: join(templates, 'electron'),
-        html: join(templates, 'html'),
+        base: fs.join(templates, 'base'),
+        electron: fs.join(templates, 'electron'),
+        html: fs.join(templates, 'html'),
       },
     };
   }

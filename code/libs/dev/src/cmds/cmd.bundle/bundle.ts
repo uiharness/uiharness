@@ -1,14 +1,4 @@
-import {
-  BundleTarget,
-  exec,
-  fs,
-  Listr,
-  log,
-  logging,
-  logNoConfig,
-  value,
-  constants,
-} from '../../common';
+import { BundleTarget, exec, fs, Listr, log, logging, logNoConfig, value } from '../../common';
 import { Settings } from '../../settings';
 import * as init from '../cmd.init';
 import { stats as renderStats } from '../cmd.stats';

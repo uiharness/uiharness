@@ -1,4 +1,3 @@
-import { join } from 'path';
 import { fs, constants, value, toBundlerArgs } from '../common';
 import { IConfig, ISettingsPaths, IWebConfig, LogLevel } from '../types';
 import { ensureEntries } from './util';
@@ -101,7 +100,7 @@ export class WebSettings {
     return {
       dir,
       file,
-      path: join(dir, file),
+      path: fs.join(dir, file),
     };
   }
 
@@ -129,13 +128,13 @@ export class WebSettings {
     return {
       defaultEntry: {
         code: 'test/web.tsx',
-        html: join(html, 'web.html'),
+        html: fs.join(html, 'web.html'),
       },
       out: {
         file: 'index.html',
         dir: {
-          dev: join(bundle, 'web/dev'),
-          prod: join(bundle, 'web/prod'),
+          dev: fs.join(bundle, 'web/dev'),
+          prod: fs.join(bundle, 'web/prod'),
         },
       },
     };
