@@ -13,7 +13,7 @@ describe('WebSettings', () => {
       expect(web.port).to.eql(1234);
       expect(web.logLevel).to.eql(3);
 
-      expect(web.entry.html).to.eql('.uiharness/html/web.html');
+      expect(web.entry.html).to.eql('html/web.html');
       expect(web.entry.code).to.eql('test/web.tsx');
 
       const bundler = web.bundlerArgs;

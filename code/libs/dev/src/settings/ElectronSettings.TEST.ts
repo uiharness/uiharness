@@ -25,9 +25,7 @@ describe('ElectronSettings', () => {
 
       expect(electron.entry.renderer.default.label).to.eql('default');
       expect(electron.entry.renderer.default.path).to.eql('test/renderer.tsx');
-      expect(electron.entry.renderer.default.html).to.eql(
-        '.uiharness/html/electron.test.renderer.html',
-      );
+      expect(electron.entry.renderer.default.html).to.eql('html/electron.test.renderer.html');
 
       const bundler = electron.bundlerArgs;
       expect(bundler.sourcemaps).to.eql(true);
@@ -69,11 +67,11 @@ describe('ElectronSettings', () => {
     const renderer = electron.entry.renderer;
 
     expect(renderer.default.path).to.eql('./foo/multi/index.tsx');
-    expect(renderer.default.html).to.eql('.uiharness/html/electron.foo.multi.index.html');
+    expect(renderer.default.html).to.eql('html/electron.foo.multi.index.html');
 
     expect(renderer.admin.label).to.eql('Administration');
     expect(renderer.admin.path).to.eql('./admin.tsx');
-    expect(renderer.admin.html).to.eql('.uiharness/html/electron.admin.html');
+    expect(renderer.admin.html).to.eql('html/electron.admin.html');
   });
 
   it('copies default entry-point HTML to temporary dir, with application name and path', async () => {
