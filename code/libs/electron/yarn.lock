@@ -294,20 +294,10 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.11.tgz#a090d88e1f40a910e6443c95493c1c035c76ebdc"
   integrity sha512-IsU1TD+8cQCyG76ZqxP0cVFnofvfzT8p/wO8ENT4jbN/KKN3grsHFgHNl/U+08s33ayX4LwI85cEhYXCOlOkMw==
 
-"@uiharness/types@0.1.9":
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.1.9.tgz#0e4217da5cc099323e8891120a0906bebe21090f"
-  integrity sha512-qkYQD0TlzEFO1YCZ417nxQgJIgJqvo8Ky75tXb9o7vp9fBQPV5QtAY9GqGp9ofbrH6XRdrEolWKPktsblsdkAA==
-
-"@uiharness/ui@0.1.26":
-  version "0.1.26"
-  resolved "https://registry.yarnpkg.com/@uiharness/ui/-/ui-0.1.26.tgz#852a668ab0e1739d4761283fc50737d7bf442902"
-  integrity sha512-upkwDdVU9ESLDSfrJd4g7D5fHTGllfc4sxAZZOSlaR83jSfdF4QApVfmw51vL+psvktP1EXt+mrAcKErV4CuLA==
-  dependencies:
-    "@platform/electron" "0.1.26"
-    "@platform/react" "0.1.6"
-    "@platform/ui.object" "0.0.78"
-    "@uiharness/types" "0.1.9"
+"@uiharness/types@0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.1.10.tgz#981ffecd2c9fccd7ea804f21ad37fa835138d942"
+  integrity sha512-CtWgXvt1ZLfNwQbh6hm2/wGBiIuKhpo4bj5XtR/wi7j1FQUk5x9rLJwLmJM8UbISwAfNalNoZpXbdmkfCqmXmA==
 
 ajv@^6.10.0, ajv@^6.5.5:
   version "6.10.0"

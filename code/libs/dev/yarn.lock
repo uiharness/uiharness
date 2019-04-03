@@ -1389,10 +1389,10 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.11.tgz#a090d88e1f40a910e6443c95493c1c035c76ebdc"
   integrity sha512-IsU1TD+8cQCyG76ZqxP0cVFnofvfzT8p/wO8ENT4jbN/KKN3grsHFgHNl/U+08s33ayX4LwI85cEhYXCOlOkMw==
 
-"@uiharness/electron@0.4.17":
-  version "0.4.17"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.4.17.tgz#f1e103f20b0fe512e511928f5d72f3e33f64c37c"
-  integrity sha512-n/omjFmSY8rpbX1khuscRYEtIszzvIO75DRmRr1lG3BTPlUA5idjPlaJAHDFN64MYjc7FwtqaU8s0KaAdy/TXw==
+"@uiharness/electron@0.4.18":
+  version "0.4.18"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.4.18.tgz#97a9d800cbb1c8b8bd8129c1e35df06fc9fb3722"
+  integrity sha512-yHjv/8MJ+mnb3qlXOUIWv3rYLxnKXqfM2oV8EiUrs09uvqHyDG+iViPj3nBZFibg3KufbGwtRU8J1y4J80xzxA==
   dependencies:
     "@platform/electron" "0.1.26"
     "@platform/log" "0.0.101"
@@ -1400,24 +1400,13 @@
     "@platform/ui.object" "0.0.78"
     "@platform/util.value" "0.0.51"
     "@types/app-root-path" "1.2.4"
-    "@uiharness/types" "0.1.9"
-    "@uiharness/ui" "0.1.26"
+    "@uiharness/types" "0.1.10"
     tslib "1.9.3"
 
-"@uiharness/types@0.1.9":
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.1.9.tgz#0e4217da5cc099323e8891120a0906bebe21090f"
-  integrity sha512-qkYQD0TlzEFO1YCZ417nxQgJIgJqvo8Ky75tXb9o7vp9fBQPV5QtAY9GqGp9ofbrH6XRdrEolWKPktsblsdkAA==
-
-"@uiharness/ui@0.1.26":
-  version "0.1.26"
-  resolved "https://registry.yarnpkg.com/@uiharness/ui/-/ui-0.1.26.tgz#852a668ab0e1739d4761283fc50737d7bf442902"
-  integrity sha512-upkwDdVU9ESLDSfrJd4g7D5fHTGllfc4sxAZZOSlaR83jSfdF4QApVfmw51vL+psvktP1EXt+mrAcKErV4CuLA==
-  dependencies:
-    "@platform/electron" "0.1.26"
-    "@platform/react" "0.1.6"
-    "@platform/ui.object" "0.0.78"
-    "@uiharness/types" "0.1.9"
+"@uiharness/types@0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.1.10.tgz#981ffecd2c9fccd7ea804f21ad37fa835138d942"
+  integrity sha512-CtWgXvt1ZLfNwQbh6hm2/wGBiIuKhpo4bj5XtR/wi7j1FQUk5x9rLJwLmJM8UbISwAfNalNoZpXbdmkfCqmXmA==
 
 "@zeit/schemas@2.6.0":
   version "2.6.0"

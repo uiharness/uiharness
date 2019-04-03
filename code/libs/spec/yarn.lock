@@ -179,10 +179,10 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.11.tgz#a090d88e1f40a910e6443c95493c1c035c76ebdc"
   integrity sha512-IsU1TD+8cQCyG76ZqxP0cVFnofvfzT8p/wO8ENT4jbN/KKN3grsHFgHNl/U+08s33ayX4LwI85cEhYXCOlOkMw==
 
-"@uiharness/types@0.1.9":
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.1.9.tgz#0e4217da5cc099323e8891120a0906bebe21090f"
-  integrity sha512-qkYQD0TlzEFO1YCZ417nxQgJIgJqvo8Ky75tXb9o7vp9fBQPV5QtAY9GqGp9ofbrH6XRdrEolWKPktsblsdkAA==
+"@uiharness/types@0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.1.10.tgz#981ffecd2c9fccd7ea804f21ad37fa835138d942"
+  integrity sha512-CtWgXvt1ZLfNwQbh6hm2/wGBiIuKhpo4bj5XtR/wi7j1FQUk5x9rLJwLmJM8UbISwAfNalNoZpXbdmkfCqmXmA==
 
 ansi-colors@3.2.3:
   version "3.2.3"
