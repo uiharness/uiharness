@@ -13,7 +13,8 @@
     "react-dom": "latest"
   },
   "devDependencies": {
-    "@uiharness/dev": "latest"
+    "@uiharness/dev": "latest",
+    "@uiharness/ui": "latest"
   },
   "files": ["lib"],
   "license": "MIT"

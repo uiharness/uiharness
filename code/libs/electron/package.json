@@ -19,7 +19,6 @@
     "@platform/util.value": "0.0.51",
     "@types/app-root-path": "1.2.4",
     "@uiharness/types": "0.1.9",
-    "@uiharness/ui": "0.1.26",
     "tslib": "1.9.3"
   },
   "devDependencies": {

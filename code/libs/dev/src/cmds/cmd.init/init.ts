@@ -195,7 +195,8 @@ async function copyPackage(args: { settings: Settings; prod: boolean }) {
   pkg.json.main = fs.join(main);
 
   // Ensure UIHarness electron package is available as a dependency.
-  ensureDep(pkg, '@uiharness/electron');
+  ensureDependency(pkg, '@uiharness/electron');
+  ensureDependency(pkg, '@uiharness/ui');
 
   // Save the [package.json] file.
   const path = fs.resolve(settings.path.package);
@@ -205,9 +206,9 @@ async function copyPackage(args: { settings: Settings; prod: boolean }) {
 /**
  * Ensures the a package has the given dependency.
  */
-function ensureDep(pkg: npm.NpmPackage, name: string) {
+function ensureDependency(pkg: npm.NpmPackage, name: string) {
   const dep = npm.pkg(fs.join('./node_modules', name));
-  if (dep.version) {
+  if (dep.exists && dep.version) {
     pkg.setFields('dependencies', { [name]: dep.version });
     pkg.removeFields('devDependencies', [name]);
   }
