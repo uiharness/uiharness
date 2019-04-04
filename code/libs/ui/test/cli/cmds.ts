@@ -1,11 +1,11 @@
-import { Command, t } from '../components/common';
+import { t, Shell } from '../components/common';
 
 type P = t.ITestCommandProps;
 
 /**
  * The root of the CLI application.
  */
-export const root = Command.create<P>('root')
+export const root = Shell.Command.create<P>('root')
   //
   .add('foo', async e => {
     const {} = e.props;

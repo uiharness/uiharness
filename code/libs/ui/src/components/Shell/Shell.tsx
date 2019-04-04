@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { css, color, COLORS, GlamorValue } from '../../common';
+import { CommandState, Command, css, color, COLORS, GlamorValue } from '../../common';
 import { CommandPrompt, ICommandState } from '../primitives';
 
 export type IShellProps = {
@@ -12,6 +12,16 @@ export type IShellProps = {
 export type IShellState = {};
 
 export class Shell extends React.PureComponent<IShellProps, IShellState> {
+  /**
+   * [State]
+   */
+  public static CommandState = CommandState;
+  public static Command = Command;
+
+  /**
+   * [Fields]
+   */
+
   public state: IShellState = {};
   private unmounted$ = new Subject();
   private state$ = new Subject<Partial<IShellState>>();
@@ -48,7 +58,6 @@ export class Shell extends React.PureComponent<IShellProps, IShellState> {
         position: 'relative',
         display: 'flex',
         flex: 1,
-        padding: 20,
       }),
       footer: css({
         backgroundColor: COLORS.DARK,
