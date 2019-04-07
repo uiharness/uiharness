@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "scripts": {
     "postinstall": "ui init",
     "ui": "msync sl && ui $@",
@@ -11,7 +11,7 @@
     "nuke": "sh ./sh/nuke.sh"
   },
   "dependencies": {
-    "@uiharness/ui": "^0.1.37",
+    "@uiharness/ui": "^0.1.38",
     "react": "^16.8.6"
   },
   "devDependencies": {
