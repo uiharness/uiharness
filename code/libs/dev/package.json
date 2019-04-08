@@ -19,9 +19,9 @@
     "@babel/preset-env": "7.4.3",
     "@babel/preset-react": "7.0.0",
     "@babel/preset-typescript": "7.3.3",
-    "@platform/cli": "0.0.73",
-    "@platform/fs": "0.0.46",
-    "@platform/ts": "3.4.3",
+    "@platform/cli": "0.0.74",
+    "@platform/fs": "0.0.47",
+    "@platform/ts": "3.4.4",
     "@uiharness/electron": "0.4.21",
     "@uiharness/types": "0.1.12",
     "create-tmpl": "0.1.50",
@@ -32,7 +32,7 @@
     "serve": "11.0.0"
   },
   "devDependencies": {
-    "@platform/test": "0.0.39",
+    "@platform/test": "0.0.40",
     "@types/electron-builder": "2.8.0",
     "@types/filesize": "4.1.0",
     "@types/parcel-bundler": "1.12.0"

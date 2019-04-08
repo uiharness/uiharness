@@ -14,15 +14,15 @@
     "prepare": "ts prepare"
   },
   "dependencies": {
-    "@platform/electron": "0.1.30",
-    "@platform/react": "0.1.8",
-    "@platform/ui.cli": "^0.0.24",
-    "@platform/ui.object": "0.0.80",
+    "@platform/electron": "0.1.31",
+    "@platform/react": "0.1.9",
+    "@platform/ui.cli": "^0.0.26",
+    "@platform/ui.object": "0.0.81",
     "@uiharness/types": "0.1.12"
   },
   "devDependencies": {
-    "@platform/test": "0.0.39",
-    "@platform/ts": "3.4.3",
+    "@platform/test": "0.0.40",
+    "@platform/ts": "3.4.4",
     "@uiharness/dev": "0.2.33"
   },
   "files": [
