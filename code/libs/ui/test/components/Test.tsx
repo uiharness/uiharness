@@ -19,6 +19,11 @@ export class Test extends React.PureComponent<ITestProps, t.ITestState> {
   public componentWillMount() {
     this.state$.pipe(takeUntil(this.unmounted$)).subscribe(e => this.setState(e));
     this.cli = cli.init({ state$: this.state$ });
+    const cli$ = this.cli.events$.pipe(takeUntil(this.unmounted$));
+
+    cli$.subscribe(e => {
+      console.log('🌳', e.type, e.payload);
+    });
   }
 
   public componentWillUnmount() {
@@ -30,11 +35,14 @@ export class Test extends React.PureComponent<ITestProps, t.ITestState> {
    * [Render]
    */
   public render() {
-    const styles = { base: css({}) };
+    const styles = {
+      base: css({}),
+      content: css({ padding: 20 }),
+    };
     return (
       <div {...css(styles.base, this.props.style)}>
-        <Shell cli={this.cli}>
-          <div>Message: {this.state.message || 'NONE'}</div>
+        <Shell cli={this.cli} tree={{}}>
+          <div {...styles.content}>Message: {this.state.message || 'NONE'}</div>
         </Shell>
       </div>
     );
