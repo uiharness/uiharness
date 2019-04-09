@@ -41,7 +41,7 @@ export class Test extends React.PureComponent<ITestProps, t.ITestState> {
     };
     return (
       <div {...css(styles.base, this.props.style)}>
-        <Shell cli={this.cli} tree={{}}>
+        <Shell cli={this.cli} tree={{ background: -0.02 }}>
           <div {...styles.content}>Message: {this.state.message || 'NONE'}</div>
         </Shell>
       </div>

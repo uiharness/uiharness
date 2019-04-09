@@ -2,13 +2,22 @@ import * as React from 'react';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { color, COLORS, Command, CommandState, css, GlamorValue, t, value } from '../../common';
-import { CommandPrompt, CommandTree, ICommandState } from '../primitives';
+import {
+  color as colorUtil,
+  COLORS,
+  Command,
+  CommandState,
+  css,
+  GlamorValue,
+  t,
+  value,
+} from '../../common';
+import { CommandPrompt, CommandTree, ICommandTreeProps, ICommandState } from '../primitives';
 
 export type IShellProps = {
   children?: React.ReactNode;
   cli: ICommandState;
-  tree?: { width?: number };
+  tree?: { width?: number; background?: number };
   style?: GlamorValue;
 };
 export type IShellState = {};
@@ -53,6 +62,15 @@ export class Shell extends React.PureComponent<IShellProps, IShellState> {
     return this.props.cli;
   }
 
+  private get background() {
+    const { tree = {} } = this.props;
+    const level = value.defaultValue(tree.background, -0.02);
+    const color = colorUtil.format(level);
+    const isDark = level <= -0.4;
+    const theme: ICommandTreeProps['theme'] = isDark ? 'DARK' : 'LIGHT';
+    return { color, isDark, theme };
+  }
+
   /**
    * [Render]
    */
@@ -68,14 +86,6 @@ export class Shell extends React.PureComponent<IShellProps, IShellState> {
         display: 'flex',
         flex: 1,
       }),
-      index:
-        tree &&
-        css({
-          width: value.defaultValue(tree.width, 200),
-          borderRight: `solid 1px ${color.format(-0.1)}`,
-          backgroundColor: color.format(-0.03),
-          display: 'flex',
-        }),
       body: css({
         flex: 1,
       }),
@@ -85,20 +95,50 @@ export class Shell extends React.PureComponent<IShellProps, IShellState> {
       }),
     };
 
-    const elIndex = tree && (
-      <div {...styles.index}>
-        <CommandTree cli={this.cli} events$={this.tree$} />
-      </div>
-    );
-
     return (
       <div {...css(styles.base, this.props.style)}>
         <div {...styles.main}>
-          {elIndex}
+          {tree && this.renderIndex()}
           <div {...styles.body}>{this.props.children}</div>
         </div>
         <div {...styles.footer}>
           <CommandPrompt cli={this.cli} theme={'DARK'} />
+        </div>
+      </div>
+    );
+  }
+
+  private renderIndex() {
+    const { tree = {} } = this.props;
+    const background = this.background;
+
+    const styles = {
+      base: css({
+        position: 'relative',
+        width: value.defaultValue(tree.width, 200),
+        borderRight: `solid 1px ${colorUtil.format(-0.1)}`,
+      }),
+      bg: css({
+        Absolute: 0,
+        backgroundColor: background.color,
+        borderBottom: background.isDark && `solid 1px ${colorUtil.format(0.2)}`,
+      }),
+      tree: css({
+        Absolute: 0,
+        display: 'flex',
+      }),
+    };
+
+    return (
+      <div {...styles.base}>
+        <div {...styles.bg} />
+        <div {...styles.tree}>
+          <CommandTree
+            cli={this.cli}
+            events$={this.tree$}
+            background={'NONE'}
+            theme={background.theme}
+          />
         </div>
       </div>
     );
