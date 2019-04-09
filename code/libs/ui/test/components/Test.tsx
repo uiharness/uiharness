@@ -37,7 +37,10 @@ export class Test extends React.PureComponent<ITestProps, t.ITestState> {
   public render() {
     const styles = {
       base: css({}),
-      content: css({ padding: 20 }),
+      content: css({
+        padding: 20,
+        flex: 1,
+      }),
     };
     return (
       <div {...css(styles.base, this.props.style)}>

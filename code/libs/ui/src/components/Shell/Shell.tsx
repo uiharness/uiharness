@@ -87,6 +87,8 @@ export class Shell extends React.PureComponent<IShellProps, IShellState> {
         flex: 1,
       }),
       body: css({
+        position: 'relative',
+        display: 'flex',
         flex: 1,
       }),
       footer: css({
