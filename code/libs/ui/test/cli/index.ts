@@ -1,13 +1,14 @@
 import { Subject } from 'rxjs';
-import { Shell, t } from '../components/common';
+
+import { CommandState, t } from '../components/common';
 import { root } from './cmds';
 
 export function init(args: { state$: Subject<Partial<t.ITestState>> }) {
   const { state$ } = args;
-  return Shell.CommandState.create({
+  return CommandState.create({
     root,
-    getInvokeArgs: async state => {
-      const props: t.ITestCommandProps = { state$ };
+    beforeInvoke: async e => {
+      const props: t.ITestCommandProps = { ...e.props, state$ };
       return { props };
     },
   });
