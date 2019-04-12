@@ -50,6 +50,10 @@ export class Shell extends React.PureComponent<IShellProps, IShellState> {
     state$.subscribe(e => this.setState(e));
   }
 
+  public componentDidMount() {
+    this.cli.invoke();
+  }
+
   public componentWillUnmount() {
     this.unmounted$.next();
     this.unmounted$.complete();
