@@ -18,6 +18,7 @@ export type IShellProps = {
   children?: React.ReactNode;
   cli: ICommandState;
   tree?: { width?: number; background?: number };
+  focusOnLoad?: boolean;
   style?: GlamorValue;
 };
 export type IShellState = {};
@@ -37,6 +38,9 @@ export class Shell extends React.PureComponent<IShellProps, IShellState> {
   private unmounted$ = new Subject();
   private state$ = new Subject<Partial<IShellState>>();
   private tree$ = new Subject<t.CommandTreeEvent>();
+
+  private prompt!: CommandPrompt;
+  private promptRef = (ref: CommandPrompt) => (this.prompt = ref);
 
   /**
    * [Lifecycle]
@@ -76,10 +80,21 @@ export class Shell extends React.PureComponent<IShellProps, IShellState> {
   }
 
   /**
+   * [Methods]
+   */
+  public focus() {
+    if (this.prompt) {
+      this.prompt.focus();
+    }
+    return this;
+  }
+
+  /**
    * [Render]
    */
   public render() {
     const { tree } = this.props;
+    const focusOnLoad = value.defaultValue(this.props.focusOnLoad, true);
     const styles = {
       base: css({
         Absolute: 0,
@@ -108,7 +123,7 @@ export class Shell extends React.PureComponent<IShellProps, IShellState> {
           <div {...styles.body}>{this.props.children}</div>
         </div>
         <div {...styles.footer}>
-          <CommandPrompt cli={this.cli} theme={'DARK'} />
+          <CommandPrompt cli={this.cli} theme={'DARK'} focusOnLoad={focusOnLoad} />
         </div>
       </div>
     );
