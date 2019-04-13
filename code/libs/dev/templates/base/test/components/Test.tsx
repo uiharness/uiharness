@@ -1,34 +1,43 @@
-import '../../node_modules/@platform/css/reset.css';
-import '@babel/polyfill';
-
-import { Button, ObjectView } from '@uiharness/ui';
 import * as React from 'react';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
-import { MyComponent } from '../../src';
+import * as cli from '../cli';
+import { Shell, t, MyComponent, ObjectView, Hr } from '../common';
 
-/**
- * Test Component
- */
-export type IState = { count?: number };
-export class Test extends React.PureComponent<{}, IState> {
-  public state: IState = {};
+export type ITestProps = {};
 
-  public render() {
-    return (
-      <div style={{ paddingLeft: 25 }}>
-        <MyComponent />
-        <div style={{ marginBottom: 10 }}>
-          <Button label={'Increment'} onClick={this.increment(1)} />
-          <Button label={'Decrement'} onClick={this.increment(-1)} />
-        </div>
-        <ObjectView name={'state'} data={this.state} />
-      </div>
-    );
+export class Test extends React.PureComponent<ITestProps, t.ITestState> {
+  public state: t.ITestState = {};
+  private unmounted$ = new Subject();
+  private state$ = new Subject<Partial<t.ITestState>>();
+  private cli: t.ICommandState = cli.init({ state$: this.state$ });
+
+  /**
+   * [Lifecycle]
+   */
+  public componentWillMount() {
+    const state$ = this.state$.pipe(takeUntil(this.unmounted$));
+    state$.subscribe(e => this.setState(e));
   }
 
-  private increment = (amount: number) => {
-    return () => {
-      this.setState({ count: (this.state.count || 0) + amount });
-    };
-  };
+  public componentWillUnmount() {
+    this.unmounted$.next();
+    this.unmounted$.complete();
+  }
+
+  /**
+   * [Render]
+   */
+  public render() {
+    return (
+      <Shell cli={this.cli} tree={{}}>
+        <div style={{ padding: 30, flex: 1 }}>
+          <MyComponent text={this.state.title} />
+          <Hr />
+          <ObjectView name={'state'} data={this.state} />
+        </div>
+      </Shell>
+    );
+  }
 }
