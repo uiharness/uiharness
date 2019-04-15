@@ -155,6 +155,7 @@ async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
   // Pepare the runtime config JSON.
   const data: IRuntimeConfig = {
     name: settings.name,
+    version: settings.package.version || '0.0.0',
     electron: {
       port: electron.port,
       main: out.main.path,

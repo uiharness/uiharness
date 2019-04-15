@@ -2,6 +2,7 @@ export type Environment = 'production' | 'development';
 
 export type IRuntimeConfig = {
   name: string;
+  version: string;
   electron: {
     port: number;
     main: string;
