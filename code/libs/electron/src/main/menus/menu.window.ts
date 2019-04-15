@@ -108,11 +108,11 @@ export function current(
     }
     const defaultWindow = items.find(item => item.key === DEFAULT) || items[0];
     const submenu = items.map(({ label, key }) => {
-      const name = label === DEFAULT ? undefined : label;
+      const title = label === DEFAULT ? undefined : label;
       return {
         label: label === DEFAULT ? 'Default' : label,
         accelerator: key === defaultWindow.key ? CMD_NEW : undefined,
-        click: () => newWindow({ entry: key, name }),
+        click: () => newWindow({ entry: key, title }),
       };
     });
     return { label: 'New Window', submenu };
