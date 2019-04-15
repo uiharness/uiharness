@@ -10,8 +10,8 @@ electron:
     main: test/main.ts
     renderer: 
       default: test/renderer.tsx
-      another: 
-        path: test/renderer.tsx # Example secondary entry, point this to another path.
+      sample: 
+        path: test/renderer.tsx # Example secondary entry. Point this to another entry file.
         title: __NAME__ 
 
 
