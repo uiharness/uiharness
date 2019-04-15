@@ -86,7 +86,7 @@ async function prepareTemplate(args: { template?: TemplateType; moduleName?: str
     type ITemplate = t.IPrompt<TemplateType>;
     const targets: ITemplate[] = [
       { id: 'platform', label: '@platform toolchain' },
-      { id: 'minimal', label: 'minimal' },
+      // { id: 'minimal', label: 'minimal' },
     ];
     const res = await prompt.forOption('Template', targets);
     if (!res) {
