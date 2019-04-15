@@ -88,7 +88,7 @@ export function npmInstall(
     const { dir } = req.variables;
     const pkg = npm.pkg(dir);
     const ver = pkg.devDependencies['@uiharness/dev'];
-    const msg = `Installing 🌼  UIHarness v${ver}...`;
+    const msg = `🌼  Installing UIHarness v${ver}...`;
     alert(res, msg);
 
     await npm.install({ dir });
