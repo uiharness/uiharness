@@ -9,8 +9,7 @@
     "start": "ui start $@"
   },
   "dependencies": {
-    "react": "latest",
-    "react-dom": "latest"
+    "@platform/react": "latest"
   },
   "devDependencies": {
     "@uiharness/dev": "latest",
