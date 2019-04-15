@@ -8,11 +8,11 @@ describe('types', () => {
       electron: {
         port: 123,
         main: 'main.ts',
-        renderer: { default: { label: 'Foo', path: 'renderer.tsx' } },
+        renderer: { default: { title: 'Foo', path: 'renderer.tsx' } },
       },
     };
     expect(config.name).to.eql('Foo');
-    expect(config.electron.renderer.default.label).to.eql('Foo');
+    expect(config.electron.renderer.default.title).to.eql('Foo');
     expect(config.electron.renderer.default.path).to.eql('renderer.tsx');
   });
 });

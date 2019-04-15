@@ -10,6 +10,6 @@ export type IRuntimeConfig = {
 };
 
 export type IRuntimeConfigRenderer = {
-  label: string;
   path: string;
+  title: string;
 };

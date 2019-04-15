@@ -16,7 +16,7 @@ export function create(args: t.IContext & t.INewWindowArgs) {
 
   const context: t.IContext = { config, id, store, log, ipc, windows };
   const entry: t.IRuntimeConfigRenderer = config.electron.renderer[args.entry || 'default'];
-  const title = args.title || entry.label || config.name || app.getName();
+  const title = args.title || entry.title || config.name || app.getName();
   const devTools = value.defaultValue(args.devTools, true);
   const defaultWidth = value.defaultValue(args.defaultWidth, 1000);
   const defaultHeight = value.defaultValue(args.defaultHeight, 800);

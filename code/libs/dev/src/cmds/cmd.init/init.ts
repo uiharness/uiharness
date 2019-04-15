@@ -144,10 +144,10 @@ async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
   // Prepare `renderer` entry paths.
   const renderer: IRuntimeConfig['electron']['renderer'] = {};
   Object.keys(electron.entry.renderer).forEach(key => {
-    const { html, label } = electron.entry.renderer[key];
+    const { html, title } = electron.entry.renderer[key];
     const file = fs.basename(html);
     renderer[key] = {
-      label: label,
+      title,
       path: fs.join(out.renderer.dir, file),
     };
   });

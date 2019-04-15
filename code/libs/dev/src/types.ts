@@ -32,7 +32,7 @@ export type IElectronConfig = {
 export type IRendererEntryConfig = string | { [key: string]: string | IRendererEntryConfigItem };
 export type IRendererEntryConfigItem = {
   path: string;
-  label: string;
+  title: string;
 };
 
 /**

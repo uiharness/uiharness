@@ -107,12 +107,12 @@ export function current(
       };
     }
     const defaultWindow = items.find(item => item.key === DEFAULT) || items[0];
-    const submenu = items.map(({ label, key }) => {
-      const title = label === DEFAULT ? undefined : label;
+    const submenu = items.map(item => {
+      const title = item.title === DEFAULT ? undefined : item.title;
       return {
-        label: label === DEFAULT ? 'Default' : label,
-        accelerator: key === defaultWindow.key ? CMD_NEW : undefined,
-        click: () => newWindow({ entry: key, title }),
+        label: title || 'Default',
+        accelerator: item.key === defaultWindow.key ? CMD_NEW : undefined,
+        click: () => newWindow({ entry: item.key, title }),
       };
     });
     return { label: 'New Window', submenu };

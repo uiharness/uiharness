@@ -11,4 +11,4 @@ electron:
       default: ./foo/multi/index.tsx
       admin: 
         path: ./admin.tsx
-        label: 'Administration'
+        title: 'Administration'
