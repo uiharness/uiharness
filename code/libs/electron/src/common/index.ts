@@ -1,7 +1,6 @@
 import * as constants from './constants';
-import * as templateString from './templateString';
 
-export { constants, templateString };
+export { constants };
 export * from './libs';
 export * from '../types';
 
