@@ -141,6 +141,9 @@ async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
   const electron = settings.electron;
   const out = electron.out(args.prod);
 
+  // Version.
+  const version = settings.package.version || '0.0.0';
+
   // Prepare `renderer` entry paths.
   const renderer: IRuntimeConfig['electron']['renderer'] = {};
   Object.keys(electron.entry.renderer).forEach(key => {
@@ -155,7 +158,7 @@ async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
   // Pepare the runtime config JSON.
   const data: IRuntimeConfig = {
     name: settings.name,
-    version: settings.package.version || '0.0.0',
+    version,
     electron: {
       port: electron.port,
       main: out.main.path,

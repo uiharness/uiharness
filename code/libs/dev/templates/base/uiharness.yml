@@ -12,7 +12,7 @@ electron:
       default: test/renderer.tsx
       sample: 
         path: test/renderer.tsx # Example secondary entry. Point this to another entry file.
-        title: __NAME__ 
+        title: __NAME__ (v${version})
 
 
 web:

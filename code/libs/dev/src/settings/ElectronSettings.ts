@@ -1,4 +1,4 @@
-import { constants, fs, value, toBundlerArgs } from '../common';
+import { str, constants, fs, value, toBundlerArgs, NpmPackage } from '../common';
 import {
   IElectronBuilderConfig,
   IConfig,
@@ -43,16 +43,18 @@ export class ElectronSettings {
   public readonly exists: boolean;
 
   private readonly _config: IConfig;
+  private readonly _package: NpmPackage;
   private _builderConfig: IElectronBuilderConfig;
   private _paths: IPaths;
 
   /**
    * [Constructor]
    */
-  constructor(args: { path: ISettingsPaths; config: IConfig }) {
+  constructor(args: { path: ISettingsPaths; config: IConfig; package: NpmPackage }) {
     const { config } = args;
     this._paths = { parent: args.path };
     this._config = config;
+    this._package = args.package;
     this.data = config.electron || {};
     this.exists = Boolean(config.electron);
   }
@@ -92,6 +94,7 @@ export class ElectronSettings {
     const path = this.path;
     const entry = typeof this.data.entry === 'object' ? this.data.entry : {};
     const main = entry.main || path.main.defaultEntry.code;
+    const version = this._package.version || '0.0.0';
 
     type IREntry = IRendererEntryConfigItem & { html: string };
 
@@ -103,7 +106,12 @@ export class ElectronSettings {
       return fs.join(parent.tmp.html, `electron.${path}.html`);
     };
 
+    const formatText = (text: string) => {
+      return str.tmpl.replace(text, { version });
+    };
+
     const toRendererEntry = (title: string, path: string): IREntry => {
+      title = formatText(title);
       return { title, path, html: toHtml(path) };
     };
 

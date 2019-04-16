@@ -105,6 +105,7 @@ export class Settings {
       (this._electron = new ElectronSettings({
         path: this.path,
         config: this.data,
+        package: this.package,
       }))
     );
   }

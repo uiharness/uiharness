@@ -69,7 +69,7 @@ describe('ElectronSettings', () => {
     expect(renderer.default.path).to.eql('./foo/multi/index.tsx');
     expect(renderer.default.html).to.eql('html/electron.foo.multi.index.html');
 
-    expect(renderer.admin.title).to.eql('Administration');
+    expect(renderer.admin.title).to.eql('Administration (v0.0.0)');
     expect(renderer.admin.path).to.eql('./admin.tsx');
     expect(renderer.admin.html).to.eql('html/electron.admin.html');
   });
