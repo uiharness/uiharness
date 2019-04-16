@@ -17,7 +17,7 @@ mac:
   target:
     - zip
   artifactName: '${productName}-${version}-mac.${ext}'
-  icon: static/build/app.icns
+  icon: ../static/build/app.icns
 
 #--------------------------------------------------------------
 
@@ -25,7 +25,7 @@ win:
   target:
     - zip
   artifactName: '${productName}-${version}-win.${ext}'
-  icon: static/build/app.ico
+  icon: ../static/build/app.ico
 
 #--------------------------------------------------------------
 
