@@ -1,7 +1,7 @@
 {
   "name": "@uiharness/dev",
   "description": "The common UIHarness dev-tools (include in your devDependencies).",
-  "version": "0.2.43",
+  "version": "0.2.44",
   "main": "lib/index",
   "bin": {
     "ui": "lib/bin/index.js"
@@ -14,17 +14,17 @@
     "prepare": "ts prepare"
   },
   "dependencies": {
-    "@babel/core": "7.4.3",
-    "@babel/polyfill": "7.4.3",
-    "@babel/preset-env": "7.4.3",
+    "@babel/core": "7.4.4",
+    "@babel/polyfill": "7.4.4",
+    "@babel/preset-env": "7.4.4",
     "@babel/preset-react": "7.0.0",
     "@babel/preset-typescript": "7.3.3",
-    "@platform/cli": "0.0.82",
-    "@platform/fs": "0.0.54",
-    "@platform/ts": "3.4.12",
-    "@platform/util.string": "^0.1.5",
-    "@uiharness/electron": "0.4.29",
-    "@uiharness/types": "0.1.20",
+    "@platform/cli": "0.0.84",
+    "@platform/fs": "0.0.55",
+    "@platform/ts": "3.4.14",
+    "@platform/util.string": "^0.1.7",
+    "@uiharness/electron": "0.4.30",
+    "@uiharness/types": "0.1.21",
     "create-tmpl": "0.1.50",
     "electron": "4.1.4",
     "electron-builder": "20.39.0",
@@ -33,7 +33,7 @@
     "serve": "11.0.0"
   },
   "devDependencies": {
-    "@platform/test": "0.0.47",
+    "@platform/test": "0.0.48",
     "@types/electron-builder": "2.8.0",
     "@types/filesize": "4.1.0",
     "@types/parcel-bundler": "1.12.0"
