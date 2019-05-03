@@ -12,7 +12,7 @@
     "prepare": "ts prepare"
   },
   "dependencies": {
-    "@platform/util.value": "0.0.64",
+    "@platform/util.value": "0.1.2",
     "@uiharness/types": "0.1.21"
   },
   "devDependencies": {
