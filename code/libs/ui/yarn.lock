@@ -1191,10 +1191,10 @@
     "@platform/util.value" "0.1.5"
     minimist "1.2.0"
 
-"@platform/cli.ui@0.1.8":
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/@platform/cli.ui/-/cli.ui-0.1.8.tgz#80ffdcd2796a0a9eee2639d71b7d00e513c01def"
-  integrity sha512-AJ9jPi6PPhl2VG18hceK+KJTd3FH3nBlVw6mcM3cFwm5KBhLtPkwKktFv1sb9QgdsPn69cb+/BqGgTcIsv7U+w==
+"@platform/cli.ui@0.1.9":
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/@platform/cli.ui/-/cli.ui-0.1.9.tgz#c099831534db791c6fa3a87a011ee37a0bcc735c"
+  integrity sha512-qkUP2m5HjRuKyU88WGx7AmpjYHShgoWOj6wZAa9eowUkwHp5shvNu/yrm1JSqfyRX2ZSmmPErfziCKSyojjx+A==
   dependencies:
     "@platform/cli.spec" "0.1.21"
     "@platform/react" "0.1.26"
