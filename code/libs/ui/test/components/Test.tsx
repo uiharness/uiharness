@@ -48,6 +48,7 @@ export class Test extends React.PureComponent<ITestProps, t.ITestState> {
           <div {...styles.content}>
             <div>Message: {this.state.message || 'NONE'}</div>
             <Hr />
+            <Hr thickness={5} />
             <Hr.Dashed />
             <Hr.Pink />
             <Hr.PinkDashed />

@@ -6,6 +6,7 @@ export type IHrProps = {
   margin?: string | number | Array<string | number | null>;
   dashed?: boolean;
   opacity?: number;
+  thickness?: number;
   style?: GlamorValue;
 };
 
@@ -20,13 +21,13 @@ export class Hr extends React.PureComponent<IHrProps> {
     return <Hr color={'PINK'} opacity={0.4} {...props} />;
   }
   public static PinkDashed(props: IHrProps) {
-    return <Hr.Pink dashed={true} {...props} />;
+    return <Hr.Pink dashed={true} opacity={0.5} {...props} />;
   }
   public static Cyan(props: IHrProps) {
     return <Hr color={'CYAN'} opacity={0.7} {...props} />;
   }
   public static CyanDashed(props: IHrProps) {
-    return <Hr.Cyan dashed={true} opacity={0.8} {...props} />;
+    return <Hr.Cyan dashed={true} opacity={1} {...props} />;
   }
 
   /**
@@ -34,8 +35,9 @@ export class Hr extends React.PureComponent<IHrProps> {
    */
   public render() {
     const { dashed } = this.props;
+    const thickness = value.defaultValue(this.props.thickness, 1);
     const margin = this.props.margin === undefined ? [20, 0] : this.props.margin;
-    const opacity = value.defaultValue(this.props.opacity, 0.15);
+    const opacity = value.defaultValue(this.props.opacity, 0.1);
 
     let color = this.props.color;
     color = color === 'PINK' ? COLORS.PINK : color;
@@ -46,7 +48,7 @@ export class Hr extends React.PureComponent<IHrProps> {
       base: css({
         ...css.toMargins(margin),
         border: 'none',
-        borderBottom: `${dashed ? 'dashed' : 'solid'} 1px ${color}`,
+        borderBottom: `${dashed ? 'dashed' : 'solid'} ${thickness}px ${color}`,
         opacity,
       }),
     };
