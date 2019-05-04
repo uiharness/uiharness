@@ -47,8 +47,12 @@ export class Test extends React.PureComponent<ITestProps, t.ITestState> {
         <CommandShell cli={this.cli} tree={{ background: -0.02 }}>
           <div {...styles.content}>
             <div>Message: {this.state.message || 'NONE'}</div>
-            <Hr color={'PINK'} dashed={true} opacity={0.3} />
-            <Hr color={'CYAN'} dashed={true} opacity={0.8} />
+            <Hr />
+            <Hr.Dashed />
+            <Hr.Pink />
+            <Hr.PinkDashed />
+            <Hr.Cyan />
+            <Hr.CyanDashed />
           </div>
         </CommandShell>
       </div>
