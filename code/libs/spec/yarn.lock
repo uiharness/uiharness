@@ -211,10 +211,10 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@uiharness/types@0.1.24":
-  version "0.1.24"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.1.24.tgz#3eee522116b17bd6622ba7ead447a5537c36135f"
-  integrity sha512-BKdZoyZjCI9nf6xQFA8vgtReCwqiF6xW9/y+aS6F65f4sLbMz43Ump4pEwSBUtHOyJ1r74PQGoxWdF/pJW8lDA==
+"@uiharness/types@0.1.25":
+  version "0.1.25"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.1.25.tgz#3456bfbee92775ab06c96a73989fdc16eb3fc917"
+  integrity sha512-Ca/m/qon2l01pcKLeYQekzBUkNb7oUX9vmhYMTKSa4iWnZF5JPpnKvkmIXOibxn+RmkkUjyH30JtbXh3XCKn4w==
 
 ansi-colors@3.2.3:
   version "3.2.3"
