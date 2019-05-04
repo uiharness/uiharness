@@ -3,6 +3,7 @@ export const COLORS = {
   BLACK: '#000',
   DARK: '#293042', // Black with a slight blue tinge.
   BLUE: '#4D7EF7',
+  PINK: '#FF0067',
   CLI: {
     WHITE: '#fff',
     BLUE: '#477AF7',

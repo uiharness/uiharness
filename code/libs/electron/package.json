@@ -12,11 +12,11 @@
     "prepare": "ts prepare"
   },
   "dependencies": {
-    "@platform/electron": "0.1.48",
+    "@platform/electron": "0.1.49",
     "@platform/log": "0.0.116",
-    "@platform/react": "0.1.26",
-    "@platform/ui.object": "0.0.98",
-    "@platform/util.value": "0.1.5",
+    "@platform/react": "0.1.27",
+    "@platform/ui.object": "0.0.99",
+    "@platform/util.value": "0.1.6",
     "@types/app-root-path": "1.2.4",
     "@uiharness/types": "0.1.24",
     "tslib": "1.9.3"

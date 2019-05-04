@@ -1,5 +1,5 @@
-import { t, Shell } from '../components/common';
-const create = Shell.Command.create;
+import { t, CommandShell } from '../common';
+const create = CommandShell.Command.create;
 
 type P = t.ITestCommandProps;
 
