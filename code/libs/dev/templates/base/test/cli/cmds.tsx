@@ -1,6 +1,6 @@
 import { Command, t } from '../common';
 
-type P = t.ICommandProps & { count: number };
+type P = t.ICommandProps;
 
 /**
  * The root of the CLI application.
