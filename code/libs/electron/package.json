@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/electron",
-  "version": "0.4.41",
+  "version": "0.4.42",
   "description": "UIHarness client-tools for Electron (include in dependencies).",
   "main": "./lib/index",
   "types": "./lib/index.d.ts",
@@ -12,18 +12,18 @@
     "prepare": "ts prepare"
   },
   "dependencies": {
-    "@platform/electron": "0.1.60",
-    "@platform/log": "0.0.121",
-    "@platform/react": "0.2.4",
-    "@platform/ui.object": "0.0.110",
-    "@platform/util.value": "0.2.4",
+    "@platform/electron": "0.1.61",
+    "@platform/log": "0.0.122",
+    "@platform/react": "0.2.5",
+    "@platform/ui.object": "0.0.111",
+    "@platform/util.value": "0.2.5",
     "@types/app-root-path": "1.2.4",
-    "@uiharness/types": "0.1.28",
+    "@uiharness/types": "0.1.29",
     "tslib": "1.9.3"
   },
   "devDependencies": {
-    "@platform/test": "0.0.52",
-    "@platform/ts": "3.4.21",
+    "@platform/test": "0.0.53",
+    "@platform/ts": "3.4.22",
     "@types/electron-window-state": "2.0.33",
     "electron": "4.1.4"
   },

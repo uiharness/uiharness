@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 import * as cmds from '../cmds';
 import { BundleTarget, constants, Environment, log, t, yargs } from '../common';
 import { Settings } from '../settings';
