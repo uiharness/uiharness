@@ -3,6 +3,8 @@
 # Non-default values.
 #
 
+name: my-app
+
 electron:
   port: 1234
   entry:

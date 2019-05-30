@@ -23,7 +23,7 @@ describe('ElectronSettings', () => {
 
       expect(electron.entry.main).to.eql('test/main.ts');
 
-      expect(electron.entry.renderer.default.label).to.eql('default');
+      expect(electron.entry.renderer.default.title).to.eql('Unnamed');
       expect(electron.entry.renderer.default.path).to.eql('test/renderer.tsx');
       expect(electron.entry.renderer.default.html).to.eql('html/electron.test.renderer.html');
 
@@ -47,7 +47,7 @@ describe('ElectronSettings', () => {
     expect(electron.logLevel).to.eql(1);
 
     expect(electron.entry.main).to.eql('./foo/start.ts');
-    expect(electron.entry.renderer.default.label).to.eql('default');
+    expect(electron.entry.renderer.default.title).to.eql('my-app');
     expect(electron.entry.renderer.default.path).to.eql('./foo/render.tsx');
 
     const bundler = electron.bundlerArgs;
@@ -69,7 +69,7 @@ describe('ElectronSettings', () => {
     expect(renderer.default.path).to.eql('./foo/multi/index.tsx');
     expect(renderer.default.html).to.eql('html/electron.foo.multi.index.html');
 
-    expect(renderer.admin.label).to.eql('Administration');
+    expect(renderer.admin.title).to.eql('Administration (v0.0.0)');
     expect(renderer.admin.path).to.eql('./admin.tsx');
     expect(renderer.admin.html).to.eql('html/electron.admin.html');
   });

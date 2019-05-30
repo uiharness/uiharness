@@ -1,3 +1,4 @@
 import * as React from 'react';
 
-export const MyComponent = () => <h1>👋 Hello!</h1>;
+export * from './types';
+export const MyComponent = (props: { text?: string }) => <h1>👋 {props.text || 'Hello!'}</h1>;

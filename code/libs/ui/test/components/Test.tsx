@@ -3,7 +3,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import * as cli from '../cli';
-import { css, GlamorValue, Shell, t } from './common';
+import { css, GlamorValue, CommandShell, t, log, Hr } from '../common';
 
 export type ITestProps = { style?: GlamorValue };
 
@@ -22,7 +22,7 @@ export class Test extends React.PureComponent<ITestProps, t.ITestState> {
     const cli$ = this.cli.events$.pipe(takeUntil(this.unmounted$));
 
     cli$.subscribe(e => {
-      console.log('🌳', e.type, e.payload);
+      log.info('🌳', e.type, e.payload);
     });
   }
 
@@ -37,13 +37,25 @@ export class Test extends React.PureComponent<ITestProps, t.ITestState> {
   public render() {
     const styles = {
       base: css({}),
-      content: css({ padding: 20 }),
+      content: css({
+        padding: 20,
+        flex: 1,
+      }),
     };
     return (
       <div {...css(styles.base, this.props.style)}>
-        <Shell cli={this.cli} tree={{}}>
-          <div {...styles.content}>Message: {this.state.message || 'NONE'}</div>
-        </Shell>
+        <CommandShell cli={this.cli} tree={{ background: -0.02 }}>
+          <div {...styles.content}>
+            <div>Message: {this.state.message || 'NONE'}</div>
+            <Hr />
+            <Hr thickness={5} />
+            <Hr.Dashed />
+            <Hr.Pink />
+            <Hr.PinkDashed />
+            <Hr.Cyan />
+            <Hr.CyanDashed />
+          </div>
+        </CommandShell>
       </div>
     );
   }

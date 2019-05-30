@@ -53,8 +53,7 @@ export function init<M extends t.IpcMessage>(args: {
        */
       app.on('ready', () => {
         try {
-          const name = args.name || config.name || app.getName();
-          const window = mainWindow.create({ ...context, name, devTools, windows });
+          const window = mainWindow.create({ ...context, devTools, windows });
 
           /**
            * Factory for spawning a new window.
@@ -62,7 +61,6 @@ export function init<M extends t.IpcMessage>(args: {
           const newWindow: t.NewWindowFactory = (options = {}) => {
             const { x, y } = getNewWindowPosition(20);
             return mainWindow.create({
-              name: options.name || name,
               defaultX: x,
               defaultY: y,
               ...context,

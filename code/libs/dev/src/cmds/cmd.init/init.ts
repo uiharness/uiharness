@@ -141,13 +141,16 @@ async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
   const electron = settings.electron;
   const out = electron.out(args.prod);
 
+  // Version.
+  const version = settings.package.version || '0.0.0';
+
   // Prepare `renderer` entry paths.
   const renderer: IRuntimeConfig['electron']['renderer'] = {};
   Object.keys(electron.entry.renderer).forEach(key => {
-    const { html, label } = electron.entry.renderer[key];
+    const { html, title } = electron.entry.renderer[key];
     const file = fs.basename(html);
     renderer[key] = {
-      label: label,
+      title,
       path: fs.join(out.renderer.dir, file),
     };
   });
@@ -155,6 +158,7 @@ async function saveConfigJson(args: { settings: Settings; prod: boolean }) {
   // Pepare the runtime config JSON.
   const data: IRuntimeConfig = {
     name: settings.name,
+    version,
     electron: {
       port: electron.port,
       main: out.main.path,

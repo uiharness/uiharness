@@ -1,25 +1,30 @@
 import main from '@platform/electron/lib/main';
-import { BrowserWindow } from 'electron';
+import { app, BrowserWindow } from 'electron';
 import * as WindowState from 'electron-window-state';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { format } from 'url';
 
-import { constants, IRuntimeConfig, path, TAG, value } from '../../common';
+import { constants, path, TAG, value } from '../../common';
 import * as t from '../types';
 
 /**
  * Creates the main window.
  */
 export function create(args: t.IContext & t.INewWindowArgs) {
-  const { id, store, config, log, ipc, windows, entry = 'default' } = args;
+  const { id, store, config, log, ipc, windows } = args;
 
   const context: t.IContext = { config, id, store, log, ipc, windows };
-  const title = args.name || config.name;
+  const entry: t.IRuntimeConfigRenderer = config.electron.renderer[args.entry || 'default'];
   const devTools = value.defaultValue(args.devTools, true);
   const defaultWidth = value.defaultValue(args.defaultWidth, 1000);
   const defaultHeight = value.defaultValue(args.defaultHeight, 800);
   const index = windows.byTag(TAG.WINDOW.key, TAG.WINDOW.value).length;
+
+  /**
+   * Prepare the title.
+   */
+  const title = args.title || entry.title || config.name || app.getName();
 
   /**
    * Setup window state manager (bounds).
@@ -82,16 +87,16 @@ export function create(args: t.IContext & t.INewWindowArgs) {
    */
   const paths = getPaths(config, entry);
   window.loadURL(paths.url);
+  log.info.yellow(`Loaded window: ${log.gray(paths.url)}`);
 
   // Finish up.
   return window;
 }
 
 /**
- * [INTERNAL]
+ * [Helpers]
  */
-function getPaths(config: IRuntimeConfig, entryKey: string) {
-  const entry = config.electron.renderer[entryKey];
+function getPaths(config: t.IRuntimeConfig, entry: t.IRuntimeConfigRenderer) {
   const filename = entry.path.substr(entry.path.lastIndexOf('/') + 1);
   const port = config.electron.port;
   const dev = `http://localhost:${port}/${filename}`;

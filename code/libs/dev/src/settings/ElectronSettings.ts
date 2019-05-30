@@ -1,4 +1,4 @@
-import { constants, fs, value, toBundlerArgs } from '../common';
+import { str, constants, fs, value, toBundlerArgs, NpmPackage } from '../common';
 import {
   IElectronBuilderConfig,
   IConfig,
@@ -43,18 +43,31 @@ export class ElectronSettings {
   public readonly exists: boolean;
 
   private readonly _config: IConfig;
+  private readonly _package: NpmPackage;
   private _builderConfig: IElectronBuilderConfig;
   private _paths: IPaths;
 
   /**
-   * Constructor.
+   * [Constructor]
    */
-  constructor(args: { path: ISettingsPaths; config: IConfig }) {
+  constructor(args: { path: ISettingsPaths; config: IConfig; package: NpmPackage }) {
     const { config } = args;
     this._paths = { parent: args.path };
     this._config = config;
+    this._package = args.package;
     this.data = config.electron || {};
     this.exists = Boolean(config.electron);
+  }
+
+  /**
+   * [Properties]
+   */
+
+  /**
+   * The root application name.
+   */
+  private get appName() {
+    return this._config.name || constants.UNNAMED;
   }
 
   /**
@@ -81,6 +94,7 @@ export class ElectronSettings {
     const path = this.path;
     const entry = typeof this.data.entry === 'object' ? this.data.entry : {};
     const main = entry.main || path.main.defaultEntry.code;
+    const version = this._package.version || '0.0.0';
 
     type IREntry = IRendererEntryConfigItem & { html: string };
 
@@ -92,24 +106,30 @@ export class ElectronSettings {
       return fs.join(parent.tmp.html, `electron.${path}.html`);
     };
 
-    const toRendererEntry = (label: string, path: string): IREntry => {
-      return { label, path, html: toHtml(path) };
+    const formatText = (text: string) => {
+      return str.tmpl.replace(text, { version });
+    };
+
+    const toRendererEntry = (title: string, path: string): IREntry => {
+      title = formatText(title);
+      return { title, path, html: toHtml(path) };
     };
 
     const parseRenderer = (value?: IRendererEntryConfig): { [key: string]: IREntry } => {
+      const defaultTitle = this.appName;
       if (value === undefined) {
         const code = path.renderer.defaultEntry.code;
-        return { default: toRendererEntry('default', code) };
+        return { default: toRendererEntry(defaultTitle, code) };
       }
       if (typeof value === 'string') {
-        return { default: toRendererEntry('default', value) };
+        return { default: toRendererEntry(defaultTitle, value) };
       }
       return Object.keys(value).reduce((acc, next) => {
         const item = value[next];
         if (item) {
           const code = typeof item === 'string' ? item : item.path;
-          const label = typeof item === 'object' ? item.label || next : next;
-          acc = { ...acc, [next]: toRendererEntry(label, code) };
+          const title = typeof item === 'object' ? item.title || defaultTitle : defaultTitle;
+          acc = { ...acc, [next]: toRendererEntry(title, code) };
         }
         return acc;
       }, {});
@@ -126,11 +146,15 @@ export class ElectronSettings {
   }
 
   /**
+   * [Methods]
+   */
+
+  /**
    * Ensures that all entry-points exist, and copies them if necessary.
    */
   public async ensureEntries() {
     const entry = this.entry;
-    const name = this._config.name || constants.UNNAMED;
+    const name = this.appName;
     const templatesDir = this._paths.parent.templates.html;
     const tmp = this._paths.parent.tmp;
     const targetDir = fs.join(tmp.dir, tmp.html);

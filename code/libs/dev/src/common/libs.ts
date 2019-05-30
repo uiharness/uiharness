@@ -15,3 +15,4 @@ export { log } from '@platform/log/lib/server';
 export { npm, NpmPackage } from '@platform/npm';
 export { Template, TemplateMiddleware } from 'create-tmpl';
 export { exec } from '@platform/exec';
+export { str } from '@platform/util.string';
