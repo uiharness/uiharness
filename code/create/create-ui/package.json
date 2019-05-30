@@ -17,7 +17,7 @@
     "create-tmpl": "0.1.54"
   },
   "devDependencies": {
-    "@platform/ts": "3.4.22"
+    "@platform/ts": "3.4.24"
   },
   "repository": "uiharness/uiharness",
   "files": [
