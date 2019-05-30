@@ -374,10 +374,10 @@
   resolved "https://registry.yarnpkg.com/@types/tinycolor2/-/tinycolor2-1.4.2.tgz#721ca5c5d1a2988b4a886e35c2ffc5735b6afbdf"
   integrity sha512-PeHg/AtdW6aaIO2a+98Xj7rWY4KC1E6yOy7AFknJQ7VXUGNrMlyxDFxJo7HqLtjQms/ZhhQX52mLVW/EX3JGOw==
 
-"@uiharness/types@0.1.29":
-  version "0.1.29"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.1.29.tgz#f3082763517ec7ebecd9a4e77cc0783c61faf192"
-  integrity sha512-MZCSBQG4ffKGJwzAQv0jtDEEy2sEppOdf8oBSjXwY2lUD/7Y6mVm0FjUf8GHLmDz/NnL7IN/rHW63IPfJFZsQA==
+"@uiharness/types@0.1.30":
+  version "0.1.30"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.1.30.tgz#3f96ab2a015350138b6536d30a4713748d7f9d07"
+  integrity sha512-NeC707MhZqLU+CeQ54C/jzDt0MfKfCT5adQZLXcsygU9WiTI+pKLjces4A6oRSHoK2hJpKPxYDj5pAODMA3nMA==
 
 ajv@^6.10.0, ajv@^6.5.5:
   version "6.10.0"

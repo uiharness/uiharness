@@ -189,10 +189,10 @@
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-6.0.0.tgz#86ba89f02a414e39c68d02b351872e4ed31bd773"
   integrity sha512-OO0srjOGH99a4LUN2its3+r6CBYcplhJ466yLqs+zvAWgphCpS8hYZEZ797tRDP/QKcqTdb/YCN6ifASoAWkrQ==
 
-"@uiharness/types@0.1.29":
-  version "0.1.29"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.1.29.tgz#f3082763517ec7ebecd9a4e77cc0783c61faf192"
-  integrity sha512-MZCSBQG4ffKGJwzAQv0jtDEEy2sEppOdf8oBSjXwY2lUD/7Y6mVm0FjUf8GHLmDz/NnL7IN/rHW63IPfJFZsQA==
+"@uiharness/types@0.1.30":
+  version "0.1.30"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.1.30.tgz#3f96ab2a015350138b6536d30a4713748d7f9d07"
+  integrity sha512-NeC707MhZqLU+CeQ54C/jzDt0MfKfCT5adQZLXcsygU9WiTI+pKLjces4A6oRSHoK2hJpKPxYDj5pAODMA3nMA==
 
 ansi-colors@3.2.3:
   version "3.2.3"
