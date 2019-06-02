@@ -189,6 +189,10 @@ export async function bundleWeb(args: {
     renderer: silent ? 'silent' : undefined,
   });
 
+  const buildPaths = Object.keys(entry)
+    .map(key => entry[key].html)
+    .join(' ');
+
   const cmd = exec.cmd
     .create()
     .add(`export NODE_ENV="${env.value}"`)
@@ -196,7 +200,7 @@ export async function bundleWeb(args: {
     .add(`cd ${fs.resolve(tmp.dir)}`)
     .newLine()
     .add(`parcel`)
-    .add(`build ${fs.join(entry.default.html)}`)
+    .add(`build ${buildPaths}`)
     .add(`--public-url ./`)
     .add(`--out-dir ${fs.join(out.dir)}`)
     .add(`--out-file ${out.file}`)
