@@ -18,6 +18,7 @@
     "@platform/electron": "0.1.68",
     "@platform/react": "0.2.12",
     "@platform/ui.object": "0.0.118",
+    "@platform/util.string": "0.1.18",
     "@uiharness/types": "0.1.32"
   },
   "devDependencies": {

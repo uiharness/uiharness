@@ -1172,6 +1172,16 @@
     fuzzy "0.1.3"
     underscore.string "3.3.5"
 
+"@platform/util.string@^0.1.18":
+  version "0.1.18"
+  resolved "https://registry.yarnpkg.com/@platform/util.string/-/util.string-0.1.18.tgz#7ace040ae96e77ec12a77d46b38b9f280964e352"
+  integrity sha512-oH5Ar090ZWM28S92UPHlTq9RvSdDI9fZ/H1NcaPFnmkUt4ZnuVC8+v0zylsbDWr0OiPtPF18+T+LOBRovVfz7w==
+  dependencies:
+    "@types/underscore.string" "0.0.37"
+    escape-string-regexp "2.0.0"
+    fuzzy "0.1.3"
+    underscore.string "3.3.5"
+
 "@platform/util.value@0.3.4":
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/@platform/util.value/-/util.value-0.3.4.tgz#84bcb7aa99e37558a929696179c0f798b8642453"
