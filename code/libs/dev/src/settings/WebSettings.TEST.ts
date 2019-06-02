@@ -13,8 +13,8 @@ describe('WebSettings', () => {
       expect(web.port).to.eql(1234);
       expect(web.logLevel).to.eql(3);
 
-      expect(web.entry.html).to.eql('html/web.html');
-      expect(web.entry.code).to.eql('test/web.tsx');
+      expect(web.entry.default.html).to.eql('html/web.html');
+      expect(web.entry.default.code).to.eql('test/web.tsx');
 
       const bundler = web.bundlerArgs;
       expect(bundler.sourcemaps).to.eql(true);
@@ -31,7 +31,7 @@ describe('WebSettings', () => {
     expect(web.exists).to.eql(true);
     expect(web.port).to.eql(3030);
     expect(web.logLevel).to.eql(1);
-    expect(web.entry.html).to.eql('./foo/web.html');
+    expect(web.entry.default.html).to.eql('./foo/web.html');
 
     const bundler = web.bundlerArgs;
     expect(bundler.sourcemaps).to.eql(false);

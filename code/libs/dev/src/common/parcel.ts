@@ -38,7 +38,7 @@ export function webBundler(
   const tmp = settings.path.tmp;
   const web = settings.web;
   const out = web.out(prod);
-  const entry = fs.join(tmp.dir, web.entry.html);
+  const entry = fs.join(tmp.dir, web.entry.default.html);
   return createBundler(entry, web.data.bundle, prod, {
     outDir: fs.join(tmp.dir, out.dir),
     target: 'browser',

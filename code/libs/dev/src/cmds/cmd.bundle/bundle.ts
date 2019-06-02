@@ -196,7 +196,7 @@ export async function bundleWeb(args: {
     .add(`cd ${fs.resolve(tmp.dir)}`)
     .newLine()
     .add(`parcel`)
-    .add(`build ${fs.join(entry.html)}`)
+    .add(`build ${fs.join(entry.default.html)}`)
     .add(`--public-url ./`)
     .add(`--out-dir ${fs.join(out.dir)}`)
     .add(`--out-file ${out.file}`)
@@ -227,7 +227,7 @@ export async function bundleWeb(args: {
     log.info.gray(`   • package:     ${pkg.name}`);
     log.info.gray(`   • version:     ${pkg.version}`);
     log.info.gray(`   • env:         ${env.value}`);
-    log.info.gray(`   • entry:       ${formatPath(fs.join(tmp.dir, entry.code))}`);
+    log.info.gray(`   • entry:       ${formatPath(fs.join(tmp.dir, entry.default.code))}`);
     log.info.gray(`   • output:      ${formatPath(fs.join(tmp.dir, out.path))}`);
     log.info();
   }

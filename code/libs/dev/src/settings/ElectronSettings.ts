@@ -163,10 +163,10 @@ export class ElectronSettings {
       const item = entry.renderer[key];
       return ensureEntries({
         name,
-        codePath: item.path,
         templatesDir,
-        pattern: 'electron.html',
         targetDir,
+        pattern: 'electron.html',
+        codePath: item.path,
         htmlFile: fs.basename(item.html),
       });
     });

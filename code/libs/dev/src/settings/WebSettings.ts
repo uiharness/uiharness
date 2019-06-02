@@ -28,7 +28,7 @@ export class WebSettings {
   private _paths: IPaths;
 
   /**
-   * Constructor.
+   * [Constructor]
    */
   constructor(args: { path: ISettingsPaths; config: IConfig }) {
     const { config } = args;
@@ -36,6 +36,13 @@ export class WebSettings {
     this._config = config;
     this.data = config.web || {};
     this.exists = Boolean(config.web);
+  }
+
+  /**
+   * The root application name.
+   */
+  private get appName() {
+    return this._config.name || constants.UNNAMED;
   }
 
   /**
@@ -62,9 +69,9 @@ export class WebSettings {
     const path = this.path;
     const code = this.data.entry || path.defaultEntry.code;
     const html = code.endsWith('.html') ? code : path.defaultEntry.html;
+    const defaultEntry = { code, html };
     return {
-      code,
-      html,
+      default: defaultEntry,
     };
   }
 
@@ -72,22 +79,35 @@ export class WebSettings {
    * Ensures that all entry-points exist, and copies them if necessary.
    */
   public async ensureEntries() {
-    const parent = this._paths.parent;
     const entry = this.entry;
-    const name = this._config.name || constants.UNNAMED;
-    const codePath = entry.code;
+    const name = this.appName;
+    const parent = this._paths.parent;
 
     const tmp = parent.tmp;
     const templatesDir = parent.templates.html;
     const targetDir = fs.join(tmp.dir, tmp.html);
 
-    return ensureEntries({
-      name,
-      codePath,
-      templatesDir,
-      targetDir,
-      pattern: 'web.html',
+    const wait = Object.keys(entry).map(key => {
+      const item = entry[key];
+      return ensureEntries({
+        name,
+        templatesDir,
+        targetDir,
+        pattern: 'web.html',
+        codePath: item.code,
+        htmlFile: fs.basename(item.html),
+      });
     });
+
+    await Promise.all(wait);
+
+    // await ensureEntries({
+    //   name,
+    //   codePath,
+    //   templatesDir,
+    //   targetDir,
+    //   pattern: 'web.html',
+    // });
   }
 
   /**
