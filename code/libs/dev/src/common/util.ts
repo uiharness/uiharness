@@ -80,7 +80,7 @@ export function logWebInfo(args: { settings: Settings; port?: boolean | number }
   const formatPath = (path: string) => logging.formatPath(path, true);
 
   const web = settings.web;
-  const entry = web.entry.default.code;
+  const entry = web.entry.default.path;
   const showPort = Boolean(args.port);
   const port = typeof args.port === 'number' ? args.port : web.port;
 

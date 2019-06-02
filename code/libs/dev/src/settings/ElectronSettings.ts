@@ -99,6 +99,7 @@ export class ElectronSettings {
       version,
       paths: this._paths.parent,
       default: { title: this.appName, codePath: path.renderer.defaultEntry.code },
+      htmlFilePrefix: 'electron',
     });
     const html = Object.keys(renderer).map(key => renderer[key].html);
 

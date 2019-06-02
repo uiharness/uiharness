@@ -13,8 +13,8 @@ describe('WebSettings', () => {
       expect(web.port).to.eql(1234);
       expect(web.logLevel).to.eql(3);
 
-      expect(web.entry.default.html).to.eql('html/web.html');
-      expect(web.entry.default.code).to.eql('test/web.tsx');
+      expect(web.entry.default.html).to.eql('html/web.test.web.html');
+      expect(web.entry.default.path).to.eql('test/web.tsx');
 
       const bundler = web.bundlerArgs;
       expect(bundler.sourcemaps).to.eql(true);
@@ -31,11 +31,30 @@ describe('WebSettings', () => {
     expect(web.exists).to.eql(true);
     expect(web.port).to.eql(3030);
     expect(web.logLevel).to.eql(1);
-    expect(web.entry.default.html).to.eql('./foo/web.html');
+    expect(web.entry.default.html).to.eql('html/web.foo.web.html');
 
     const bundler = web.bundlerArgs;
     expect(bundler.sourcemaps).to.eql(false);
     expect(bundler.treeshake).to.eql(true);
     expect(bundler.cmd).to.eql('--experimental-scope-hoisting --log-level 1');
+  });
+
+  it('multiple entry points', () => {
+    const web = Settings.create(fs.join(DIR, 'web.multi-entry.yml')).web;
+    expect(web.exists).to.eql(true);
+
+    const entry = web.entry;
+
+    expect(entry.default.title).to.eql('my-app');
+    expect(entry.default.path).to.eql('./foo/web.html');
+    expect(entry.default.html).to.eql('html/web.foo.web.html');
+
+    expect(entry.admin.title).to.eql('my-app');
+    expect(entry.admin.path).to.eql('./foo/admin.tsx');
+    expect(entry.default.html).to.eql('html/web.foo.web.html');
+
+    expect(entry.chat.title).to.eql('My Chat');
+    expect(entry.chat.path).to.eql('./foo/chat.tsx');
+    expect(entry.chat.html).to.eql('html/web.foo.chat.html');
   });
 });

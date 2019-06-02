@@ -1,6 +1,6 @@
-import { fs, constants, value, toBundlerArgs } from '../common';
+import { fs, constants, value, toBundlerArgs, NpmPackage } from '../common';
 import { IConfig, ISettingsPaths, IWebConfig, LogLevel } from '../types';
-import { ensureEntries } from './util';
+import { ensureEntries, parseEntry } from './util';
 
 const { DEFAULT } = constants;
 
@@ -25,15 +25,17 @@ export class WebSettings {
   public readonly exists: boolean;
 
   private readonly _config: IConfig;
+  private readonly _package: NpmPackage;
   private _paths: IPaths;
 
   /**
    * [Constructor]
    */
-  constructor(args: { path: ISettingsPaths; config: IConfig }) {
+  constructor(args: { path: ISettingsPaths; config: IConfig; package: NpmPackage }) {
     const { config } = args;
     this._paths = { parent: args.path };
     this._config = config;
+    this._package = args.package;
     this.data = config.web || {};
     this.exists = Boolean(config.web);
   }
@@ -66,13 +68,14 @@ export class WebSettings {
    * Retrieves the entry paths used by the JS bundler.
    */
   public get entry() {
-    const path = this.path;
-    const code = this.data.entry || path.defaultEntry.code;
-    const html = code.endsWith('.html') ? code : path.defaultEntry.html;
-    const defaultEntry = { code, html };
-    return {
-      default: defaultEntry,
-    };
+    const version = this._package.version || '0.0.0';
+    return parseEntry({
+      value: this.data.entry,
+      version,
+      paths: this._paths.parent,
+      default: { title: this.appName, codePath: this.path.defaultEntry.code },
+      htmlFilePrefix: 'web',
+    });
   }
 
   /**
@@ -94,20 +97,12 @@ export class WebSettings {
         templatesDir,
         targetDir,
         pattern: 'web.html',
-        codePath: item.code,
+        codePath: item.path,
         htmlFile: fs.basename(item.html),
       });
     });
 
     await Promise.all(wait);
-
-    // await ensureEntries({
-    //   name,
-    //   codePath,
-    //   templatesDir,
-    //   targetDir,
-    //   pattern: 'web.html',
-    // });
   }
 
   /**

@@ -45,15 +45,18 @@ export async function ensureEntries(args: {
   await ensureRendererHtml();
 }
 
+/**
+ * Converts a YAML entry value (string / object) into a standard set of
+ * entry definitions.
+ */
 export function parseEntry(args: {
   value?: t.IEntryConfig;
   version: string;
   default: { title: string; codePath: string };
-  // defaultTitle: string;
-  // defaultEntryCode: string;
   paths: t.ISettingsPaths;
+  htmlFilePrefix: string;
 }): { [key: string]: t.IEntryConfigDef } {
-  const { value, version } = args;
+  const { value, version, htmlFilePrefix } = args;
   const defaultTitle = args.default.title;
 
   const toHtml = (code: string) => {
@@ -61,7 +64,7 @@ export function parseEntry(args: {
     let path = code.replace(/^\./, '').replace(/^\//, '');
     path = path.substr(0, path.lastIndexOf('.'));
     path = path.replace(/\//g, '.');
-    return fs.join(parent.tmp.html, `electron.${path}.html`);
+    return fs.join(parent.tmp.html, `${htmlFilePrefix}.${path}.html`);
   };
 
   const formatText = (text: string) => {

@@ -227,7 +227,7 @@ export async function bundleWeb(args: {
     log.info.gray(`   • package:     ${pkg.name}`);
     log.info.gray(`   • version:     ${pkg.version}`);
     log.info.gray(`   • env:         ${env.value}`);
-    log.info.gray(`   • entry:       ${formatPath(fs.join(tmp.dir, entry.default.code))}`);
+    log.info.gray(`   • entry:       ${formatPath(fs.join(tmp.dir, entry.default.path))}`);
     log.info.gray(`   • output:      ${formatPath(fs.join(tmp.dir, out.path))}`);
     log.info();
   }

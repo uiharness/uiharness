@@ -15,8 +15,8 @@
     "react": "^16.8.6"
   },
   "devDependencies": {
-    "@uiharness/electron": "^0.4.45",
     "@uiharness/dev": "0.2.59",
+    "@uiharness/electron": "^0.4.45",
     "typescript": "3.5.1"
   },
   "license": "MIT",

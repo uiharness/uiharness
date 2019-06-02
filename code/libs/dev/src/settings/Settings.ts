@@ -119,6 +119,7 @@ export class Settings {
       (this._web = new WebSettings({
         path: this.path,
         config: this.data,
+        package: this.package,
       }))
     );
   }
