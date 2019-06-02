@@ -176,8 +176,9 @@ const program = yargs
         })
         .option('open', {
           alias: 'o',
-          describe: 'Open the application when built (default: false).',
+          describe: 'Open the application when built (default: true).',
           boolean: true,
+          default: true,
         }),
     async e => {
       const { silent, open } = e;
