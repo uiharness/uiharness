@@ -1,4 +1,4 @@
-import { tmpl, fs } from '../common';
+import { tmpl, fs, t, str } from '../common';
 
 /**
  * Ensures that all entry-points exist, and copies them if necessary.
@@ -43,4 +43,50 @@ export async function ensureEntries(args: {
 
   // Prepare.
   await ensureRendererHtml();
+}
+
+export function parseEntry(args: {
+  value?: t.IEntryConfig;
+  version: string;
+  default: { title: string; codePath: string };
+  // defaultTitle: string;
+  // defaultEntryCode: string;
+  paths: t.ISettingsPaths;
+}): { [key: string]: t.IEntryConfigDef } {
+  const { value, version } = args;
+  const defaultTitle = args.default.title;
+
+  const toHtml = (code: string) => {
+    const parent = args.paths;
+    let path = code.replace(/^\./, '').replace(/^\//, '');
+    path = path.substr(0, path.lastIndexOf('.'));
+    path = path.replace(/\//g, '.');
+    return fs.join(parent.tmp.html, `electron.${path}.html`);
+  };
+
+  const formatText = (text: string) => {
+    return str.tmpl.replace(text, { version });
+  };
+
+  const toRendererEntry = (title: string, path: string): t.IEntryConfigDef => {
+    title = formatText(title);
+    return { title, path, html: toHtml(path) };
+  };
+
+  if (value === undefined) {
+    const code = args.default.codePath;
+    return { default: toRendererEntry(defaultTitle, code) };
+  }
+  if (typeof value === 'string') {
+    return { default: toRendererEntry(defaultTitle, value) };
+  }
+  return Object.keys(value).reduce((acc, next) => {
+    const item = value[next];
+    if (item) {
+      const code = typeof item === 'string' ? item : item.path;
+      const title = typeof item === 'object' ? item.title || defaultTitle : defaultTitle;
+      acc = { ...acc, [next]: toRendererEntry(title, code) };
+    }
+    return acc;
+  }, {});
 }

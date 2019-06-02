@@ -1,14 +1,12 @@
-import { str, constants, fs, value, toBundlerArgs, NpmPackage } from '../common';
+import { constants, fs, NpmPackage, toBundlerArgs, value } from '../common';
 import {
-  IElectronBuilderConfig,
   IConfig,
+  IElectronBuilderConfig,
   IElectronConfig,
   ISettingsPaths,
   LogLevel,
-  IRendererEntryConfig,
-  IRendererEntryConfigItem,
 } from '../types';
-import { ensureEntries } from './util';
+import { ensureEntries, parseEntry } from './util';
 
 const { DEFAULT } = constants;
 
@@ -96,46 +94,12 @@ export class ElectronSettings {
     const main = entry.main || path.main.defaultEntry.code;
     const version = this._package.version || '0.0.0';
 
-    type IREntry = IRendererEntryConfigItem & { html: string };
-
-    const toHtml = (code: string) => {
-      const parent = this._paths.parent;
-      let path = code.replace(/^\./, '').replace(/^\//, '');
-      path = path.substr(0, path.lastIndexOf('.'));
-      path = path.replace(/\//g, '.');
-      return fs.join(parent.tmp.html, `electron.${path}.html`);
-    };
-
-    const formatText = (text: string) => {
-      return str.tmpl.replace(text, { version });
-    };
-
-    const toRendererEntry = (title: string, path: string): IREntry => {
-      title = formatText(title);
-      return { title, path, html: toHtml(path) };
-    };
-
-    const parseRenderer = (value?: IRendererEntryConfig): { [key: string]: IREntry } => {
-      const defaultTitle = this.appName;
-      if (value === undefined) {
-        const code = path.renderer.defaultEntry.code;
-        return { default: toRendererEntry(defaultTitle, code) };
-      }
-      if (typeof value === 'string') {
-        return { default: toRendererEntry(defaultTitle, value) };
-      }
-      return Object.keys(value).reduce((acc, next) => {
-        const item = value[next];
-        if (item) {
-          const code = typeof item === 'string' ? item : item.path;
-          const title = typeof item === 'object' ? item.title || defaultTitle : defaultTitle;
-          acc = { ...acc, [next]: toRendererEntry(title, code) };
-        }
-        return acc;
-      }, {});
-    };
-
-    const renderer = parseRenderer(entry.renderer);
+    const renderer = parseEntry({
+      value: entry.renderer,
+      version,
+      paths: this._paths.parent,
+      default: { title: this.appName, codePath: path.renderer.defaultEntry.code },
+    });
     const html = Object.keys(renderer).map(key => renderer[key].html);
 
     return {
