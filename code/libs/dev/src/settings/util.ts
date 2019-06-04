@@ -55,7 +55,7 @@ export function parseEntry(args: {
   default: { title: string; codePath: string };
   paths: t.ISettingsPaths;
   htmlFilePrefix: string;
-}): { [key: string]: t.IEntryConfigDef } {
+}): t.IEntryDefs {
   const { value, version, htmlFilePrefix } = args;
   const defaultTitle = args.default.title;
 
@@ -71,7 +71,7 @@ export function parseEntry(args: {
     return str.tmpl.replace(text, { version });
   };
 
-  const toRendererEntry = (title: string, path: string): t.IEntryConfigDef => {
+  const toRendererEntry = (title: string, path: string): t.IEntryDef => {
     title = formatText(title);
     return { title, path, html: toHtml(path) };
   };

@@ -1,11 +1,4 @@
-import { constants, fs, NpmPackage, toBundlerArgs, value } from '../common';
-import {
-  IConfig,
-  IElectronBuilderConfig,
-  IElectronConfig,
-  ISettingsPaths,
-  LogLevel,
-} from '../types';
+import { constants, fs, NpmPackage, t, toBundlerArgs, value } from '../common';
 import { ensureEntries, parseEntry } from './util';
 
 const { DEFAULT } = constants;
@@ -29,7 +22,7 @@ type ICalculatedPaths = {
 };
 
 type IPaths = {
-  parent: ISettingsPaths;
+  parent: t.ISettingsPaths;
   calculated?: ICalculatedPaths;
 };
 
@@ -37,18 +30,10 @@ type IPaths = {
  * Represents the `electron` section of the `uiharness.yml` configuration file.
  */
 export class ElectronSettings {
-  public readonly data: IElectronConfig;
-  public readonly exists: boolean;
-
-  private readonly _config: IConfig;
-  private readonly _package: NpmPackage;
-  private _builderConfig: IElectronBuilderConfig;
-  private _paths: IPaths;
-
   /**
    * [Constructor]
    */
-  constructor(args: { path: ISettingsPaths; config: IConfig; package: NpmPackage }) {
+  constructor(args: { path: t.ISettingsPaths; config: t.IConfig; package: NpmPackage }) {
     const { config } = args;
     this._paths = { parent: args.path };
     this._config = config;
@@ -56,6 +41,17 @@ export class ElectronSettings {
     this.data = config.electron || {};
     this.exists = Boolean(config.electron);
   }
+
+  /**
+   * [Fields]
+   */
+  public readonly data: t.IElectronConfig;
+  public readonly exists: boolean;
+
+  private readonly _config: t.IConfig;
+  private readonly _package: NpmPackage;
+  private _builderConfig: t.IElectronBuilderConfig;
+  private _paths: IPaths;
 
   /**
    * [Properties]
@@ -79,7 +75,7 @@ export class ElectronSettings {
    * The level of logging to include.
    * https://parceljs.org/cli.html#change-log-level
    */
-  public get logLevel(): LogLevel {
+  public get logLevel(): t.LogLevel {
     const bundle = this.data.bundle;
     const logLevel = bundle ? bundle.logLevel : undefined;
     return value.defaultValue(logLevel, DEFAULT.LOG_LEVEL);
@@ -94,19 +90,20 @@ export class ElectronSettings {
     const main = entry.main || path.main.defaultEntry.code;
     const version = this._package.version || '0.0.0';
 
-    const renderer = parseEntry({
-      value: entry.renderer,
-      version,
-      paths: this._paths.parent,
-      default: { title: this.appName, codePath: path.renderer.defaultEntry.code },
-      htmlFilePrefix: 'electron',
-    });
-    const html = Object.keys(renderer).map(key => renderer[key].html);
+    const paths = this._paths;
+    const title = this.appName;
 
     return {
       main,
-      renderer,
-      html,
+      get renderer(): t.IEntryDefs {
+        return parseEntry({
+          value: entry.renderer,
+          version,
+          paths: paths.parent,
+          default: { title, codePath: path.renderer.defaultEntry.code },
+          htmlFilePrefix: 'electron',
+        });
+      },
     };
   }
 
@@ -178,7 +175,7 @@ export class ElectronSettings {
     const load = () => {
       const dir = fs.resolve(this._paths.parent.dir);
       const path = fs.join(dir, this.path.builder.configFilename);
-      return fs.file.loadAndParseSync<IElectronBuilderConfig>(path, {});
+      return fs.file.loadAndParseSync<t.IElectronBuilderConfig>(path, {});
     };
     return this._builderConfig || (this._builderConfig = load());
   }

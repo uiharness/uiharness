@@ -1,4 +1,4 @@
-import { constants, fs, log, npm, NpmPackage } from '../common';
+import { constants, fs, log, npm, NpmPackage, t } from '../common';
 import { IConfig, ISettingsPaths, ISourcemapsConfig } from '../types';
 import { ElectronSettings } from './ElectronSettings';
 import { WebSettings } from './WebSettings';
@@ -40,7 +40,7 @@ export class Settings {
   }
 
   /**
-   * Fields.
+   * [Fields]
    */
   public readonly exists: boolean;
   public readonly data: IConfig;
@@ -56,7 +56,7 @@ export class Settings {
   };
 
   /**
-   * Constructor.
+   * [Constructor]
    */
   private constructor(path: string | undefined, options: IUIHarnessSettingsOptions) {
     // Wrangle path.
@@ -172,5 +172,22 @@ export class Settings {
     const data = this.data.sourcemaps || {};
     const strip = data.strip || [];
     return { strip };
+  }
+
+  /**
+   * [Methods]
+   */
+
+  /**
+   * Convert entries defined within YAML a string of paths.
+   */
+
+  public toEntryPaths(entries: t.IEntryDefs, dir: string = '') {
+    return Settings.toEntryPaths(entries, dir);
+  }
+  public static toEntryPaths(entries: t.IEntryDefs, dir: string = '') {
+    return Object.keys(entries)
+      .map(key => entries[key].html)
+      .map(path => fs.join(dir, path));
   }
 }

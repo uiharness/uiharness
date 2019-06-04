@@ -1,5 +1,4 @@
-import { fs, constants, value, toBundlerArgs, NpmPackage } from '../common';
-import { IConfig, ISettingsPaths, IWebConfig, LogLevel } from '../types';
+import { constants, fs, NpmPackage, t, toBundlerArgs, value } from '../common';
 import { ensureEntries, parseEntry } from './util';
 
 const { DEFAULT } = constants;
@@ -13,7 +12,7 @@ type ICalculatedPaths = {
 };
 
 type IPaths = {
-  parent: ISettingsPaths;
+  parent: t.ISettingsPaths;
   calculated?: ICalculatedPaths;
 };
 
@@ -21,17 +20,10 @@ type IPaths = {
  * Represents the `web` section of the `uiharness.yml` configuration file.
  */
 export class WebSettings {
-  public readonly data: IWebConfig;
-  public readonly exists: boolean;
-
-  private readonly _config: IConfig;
-  private readonly _package: NpmPackage;
-  private _paths: IPaths;
-
   /**
    * [Constructor]
    */
-  constructor(args: { path: ISettingsPaths; config: IConfig; package: NpmPackage }) {
+  constructor(args: { path: t.ISettingsPaths; config: t.IConfig; package: NpmPackage }) {
     const { config } = args;
     this._paths = { parent: args.path };
     this._config = config;
@@ -39,6 +31,16 @@ export class WebSettings {
     this.data = config.web || {};
     this.exists = Boolean(config.web);
   }
+
+  /**
+   * [Fields]
+   */
+  public readonly data: t.IWebConfig;
+  public readonly exists: boolean;
+
+  private readonly _config: t.IConfig;
+  private readonly _package: NpmPackage;
+  private _paths: IPaths;
 
   /**
    * The root application name.
@@ -58,7 +60,7 @@ export class WebSettings {
    * The level of logging to include.
    * https://parceljs.org/cli.html#change-log-level
    */
-  public get logLevel(): LogLevel {
+  public get logLevel(): t.LogLevel {
     const bundle = this.data.bundle;
     const logLevel = bundle ? bundle.logLevel : undefined;
     return value.defaultValue(logLevel, DEFAULT.LOG_LEVEL);

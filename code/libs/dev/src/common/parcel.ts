@@ -17,7 +17,7 @@ export function electronRendererBundler(
   const tmp = settings.path.tmp;
   const electron = settings.electron;
   const out = electron.out(prod);
-  const entry = electron.entry.html.map(path => fs.join(tmp.dir, path));
+  const entry = settings.toEntryPaths(electron.entry.renderer, tmp.dir);
 
   return createBundler(entry, electron.data.bundle, prod, {
     outDir: fs.join(tmp.dir, out.renderer.dir),
@@ -38,7 +38,8 @@ export function webBundler(
   const tmp = settings.path.tmp;
   const web = settings.web;
   const out = web.out(prod);
-  const entry = fs.join(tmp.dir, web.entry.default.html);
+  const entry = settings.toEntryPaths(web.entry, tmp.dir);
+
   return createBundler(entry, web.data.bundle, prod, {
     outDir: fs.join(tmp.dir, out.dir),
     target: 'browser',

@@ -34,7 +34,8 @@ export type IEntryConfigItem = {
   path: string;
   title: string;
 };
-export type IEntryConfigDef = IEntryConfigItem & { html: string };
+export type IEntryDef = IEntryConfigItem & { html: string };
+export type IEntryDefs = { [key: string]: IEntryDef };
 
 /**
  * The shape of the `electron-builder.yml` configuration file.

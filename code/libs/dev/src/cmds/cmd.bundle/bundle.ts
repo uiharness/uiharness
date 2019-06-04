@@ -100,13 +100,14 @@ export async function bundleElectron(args: {
   }
 
   if (renderer) {
+    const entryPaths = settings.toEntryPaths(entry.renderer).join(' ');
     tasks.add({
       title: `Bundling      ${log.cyan('renderer')} ${env.display}`,
       task: () =>
         cmd
           .clone()
           .add(`parcel`)
-          .add(`build ${entry.html.map(path => fs.join(tmp.dir, path)).join(' ')}`)
+          .add(`build ${entryPaths}`)
           .add(`--public-url ./`)
           .add(`--out-dir ${fs.join(tmp.dir, out.renderer.dir)}`)
           .add(`--target electron`)
