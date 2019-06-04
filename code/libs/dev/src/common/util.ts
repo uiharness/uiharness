@@ -87,16 +87,23 @@ export function logWebInfo(args: { settings: Settings; port?: boolean | number }
     log.info.gray(`• port:           ${port}`);
   }
   const entries = Settings.toEntryList(web.entry).map(({ key, html }) => ({ key, path: html }));
-  logEntries(entries);
+  logEntries(entries, {
+    formatPath: path => `http://localhost:${port}/${log.cyan(fs.basename(path))}`,
+  });
   log.info();
 }
 
 /**
  * Log entry point details.
  */
-export function logEntries(entries: Array<{ key: string; path: string }>) {
+export function logEntries(
+  entries: Array<{ key: string; path: string }>,
+  options: { formatPath?: (path: string) => string } = {},
+) {
   if (entries.length > 0) {
-    const formatPath = (path: string) => logging.formatPath(path, true);
+    const formatPath = options.formatPath
+      ? options.formatPath
+      : (path: string) => logging.formatPath(path, true);
     const displayKey = (key: string) => log.green(`(${key})`);
     log.info.gray(`• entry:          ${formatPath(entries[0].path)} ${displayKey(entries[0].key)}`);
     entries.slice(1).forEach(item => {
