@@ -100,7 +100,7 @@ export async function bundleElectron(args: {
   }
 
   if (renderer) {
-    const entryPaths = settings.toEntryPaths(entry.renderer).join(' ');
+    const entryPaths = Settings.toEntryPaths(entry.renderer).join(' ');
     tasks.add({
       title: `Bundling      ${log.cyan('renderer')} ${env.display}`,
       task: () =>

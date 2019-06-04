@@ -18,6 +18,10 @@ export type IUIHarnessSettingsOptions = {
  */
 export class Settings {
   /**
+   * [Static]
+   */
+
+  /**
    * Looks for the settings file within the given directory
    * and creates a new instance.
    */
@@ -37,6 +41,22 @@ export class Settings {
       log.info.yellow(error.message);
       throw error;
     }
+  }
+
+  /**
+   * Convert entries defined within YAML a string of paths.
+   */
+  public static toEntryList(entries: t.IEntryDefs) {
+    return Object.keys(entries).map(key => entries[key]);
+  }
+  public static toEntryPaths(
+    entries: t.IEntryDefs,
+    options: { dir?: string; field?: 'html' | 'path' } = {},
+  ) {
+    const { dir = '', field = 'html' } = options;
+    return Settings.toEntryList(entries)
+      .map(entry => entry[field])
+      .map(path => fs.join(dir, path));
   }
 
   /**
@@ -172,22 +192,5 @@ export class Settings {
     const data = this.data.sourcemaps || {};
     const strip = data.strip || [];
     return { strip };
-  }
-
-  /**
-   * [Methods]
-   */
-
-  /**
-   * Convert entries defined within YAML a string of paths.
-   */
-
-  public toEntryPaths(entries: t.IEntryDefs, dir: string = '') {
-    return Settings.toEntryPaths(entries, dir);
-  }
-  public static toEntryPaths(entries: t.IEntryDefs, dir: string = '') {
-    return Object.keys(entries)
-      .map(key => entries[key].html)
-      .map(path => fs.join(dir, path));
   }
 }

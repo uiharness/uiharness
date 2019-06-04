@@ -34,7 +34,7 @@ export type IEntryConfigItem = {
   path: string;
   title: string;
 };
-export type IEntryDef = IEntryConfigItem & { html: string };
+export type IEntryDef = IEntryConfigItem & { key: string; html: string };
 export type IEntryDefs = { [key: string]: IEntryDef };
 
 /**

@@ -1,8 +1,8 @@
-import { DEFAULT } from './constants';
 import { Settings } from '../settings';
-import { log, value, exec, fs } from './libs';
-import * as logging from './logging';
 import * as t from '../types';
+import { DEFAULT } from './constants';
+import { exec, fs, log, value } from './libs';
+import * as logging from './logging';
 
 const defaultValue = value.defaultValue;
 
@@ -48,7 +48,6 @@ export function logNoConfig(args: { target: t.BundleTarget }) {
 export function logElectronInfo(args: { settings: Settings; port?: boolean | number }) {
   const { settings } = args;
   const pkg = settings.package;
-  const formatPath = (path: string) => logging.formatPath(path, true);
 
   const electron = settings.electron;
   const entry = electron.entry;
@@ -62,11 +61,11 @@ export function logElectronInfo(args: { settings: Settings; port?: boolean | num
     log.info.gray(`• port:           ${port}`);
   }
   if (entry.main) {
-    log.info.gray(`• entry:          ${formatPath(entry.main)}`);
-    Object.keys(entry.renderer).forEach(key => {
-      const code = entry.renderer[key].path;
-      log.info.gray(`                  ${formatPath(code)}`);
-    });
+    const entries = [
+      { key: 'main', path: entry.main },
+      ...Settings.toEntryList(entry.renderer).map(({ key, html }) => ({ key, path: html })),
+    ];
+    logEntries(entries);
   }
   log.info();
 }
@@ -77,10 +76,7 @@ export function logElectronInfo(args: { settings: Settings; port?: boolean | num
 export function logWebInfo(args: { settings: Settings; port?: boolean | number }) {
   const { settings } = args;
   const pkg = settings.package;
-  const formatPath = (path: string) => logging.formatPath(path, true);
-
   const web = settings.web;
-  const entry = web.entry.default.path;
   const showPort = Boolean(args.port);
   const port = typeof args.port === 'number' ? args.port : web.port;
 
@@ -90,10 +86,24 @@ export function logWebInfo(args: { settings: Settings; port?: boolean | number }
   if (showPort) {
     log.info.gray(`• port:           ${port}`);
   }
-  if (entry) {
-    log.info.gray(`• entry:          ${formatPath(entry)}`);
-  }
+  const entries = Settings.toEntryList(web.entry).map(({ key, html }) => ({ key, path: html }));
+  logEntries(entries);
   log.info();
+}
+
+/**
+ * Log entry point details.
+ */
+export function logEntries(entries: Array<{ key: string; path: string }>) {
+  if (entries.length > 0) {
+    const formatPath = (path: string) => logging.formatPath(path, true);
+    const displayKey = (key: string) => log.green(`(${key})`);
+    log.info.gray(`• entry:          ${formatPath(entries[0].path)} ${displayKey(entries[0].key)}`);
+    entries.slice(1).forEach(item => {
+      const { path, key } = item;
+      log.info.gray(`                  ${formatPath(path)} ${displayKey(key)}`);
+    });
+  }
 }
 
 /**
@@ -105,9 +115,11 @@ export function toBundlerArgs(data: t.IParcelBuildConfig = {}) {
   const treeshake = defaultValue(data.treeshake, false);
   const logLevel = value.defaultValue(data.logLevel, DEFAULT.LOG_LEVEL);
 
-  // Build command-line arguments.
-  // See:
-  //    https://parceljs.org/cli.html
+  /**
+   * Build command-line arguments.
+   * See:
+   *  - https://parceljs.org/cli.html
+   */
   const cmd = exec.cmd
     .create()
     .add('--no-source-maps', sourcemaps)

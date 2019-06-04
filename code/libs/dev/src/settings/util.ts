@@ -58,6 +58,7 @@ export function parseEntry(args: {
 }): t.IEntryDefs {
   const { value, version, htmlFilePrefix } = args;
   const defaultTitle = args.default.title;
+  const DEFAULT_KEY = 'default';
 
   const toHtml = (code: string) => {
     const parent = args.paths;
@@ -71,24 +72,24 @@ export function parseEntry(args: {
     return str.tmpl.replace(text, { version });
   };
 
-  const toRendererEntry = (title: string, path: string): t.IEntryDef => {
+  const toRendererEntry = (key: string, title: string, path: string): t.IEntryDef => {
     title = formatText(title);
-    return { title, path, html: toHtml(path) };
+    return { key, title, path, html: toHtml(path) };
   };
 
   if (value === undefined) {
     const code = args.default.codePath;
-    return { default: toRendererEntry(defaultTitle, code) };
+    return { default: toRendererEntry(DEFAULT_KEY, defaultTitle, code) };
   }
   if (typeof value === 'string') {
-    return { default: toRendererEntry(defaultTitle, value) };
+    return { default: toRendererEntry(DEFAULT_KEY, defaultTitle, value) };
   }
-  return Object.keys(value).reduce((acc, next) => {
-    const item = value[next];
+  return Object.keys(value).reduce((acc, key) => {
+    const item = value[key];
     if (item) {
       const code = typeof item === 'string' ? item : item.path;
       const title = typeof item === 'object' ? item.title || defaultTitle : defaultTitle;
-      acc = { ...acc, [next]: toRendererEntry(title, code) };
+      acc = { ...acc, [key]: toRendererEntry(key, title, code) };
     }
     return acc;
   }, {});
