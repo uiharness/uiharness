@@ -1,4 +1,5 @@
 import { fs } from '@platform/fs';
+import { value } from '../common';
 
 export type IRemoveSourceMapsResponse = {
   total: number;
@@ -105,5 +106,5 @@ function isSourceMapRef(line: string) {
 async function expandDirectoryGlobs(dirs: string[]) {
   const wait = dirs.map(dir => fs.resolve(dir)).map(path => fs.glob.find(path, { type: 'DIRS' }));
   const paths = await Promise.all(wait);
-  return paths.flat();
+  return value.flatten<string>(paths);
 }
