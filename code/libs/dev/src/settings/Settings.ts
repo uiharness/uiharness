@@ -1,4 +1,4 @@
-import { constants, fs, log, npm, NpmPackage, t } from '../common';
+import { R, constants, fs, log, npm, NpmPackage, t } from '../common';
 import { IConfig, ISettingsPaths, ISourcemapsConfig } from '../types';
 import { ElectronSettings } from './ElectronSettings';
 import { WebSettings } from './WebSettings';
@@ -54,9 +54,10 @@ export class Settings {
     options: { dir?: string; field?: 'html' | 'path' } = {},
   ) {
     const { dir = '', field = 'html' } = options;
-    return Settings.toEntryList(entries)
+    const paths = Settings.toEntryList(entries)
       .map(entry => entry[field])
       .map(path => fs.join(dir, path));
+    return R.uniq(paths);
   }
 
   /**
