@@ -27,6 +27,7 @@ const CMD = {
   STATS: 'stats',
   DIST: 'dist [target]',
   DIST_D: 'd',
+  REBUILD: 'rebuild',
   OPEN: 'open',
   OPEN_O: 'o',
   SERVE: 'serve',
@@ -196,6 +197,19 @@ const program = yargs
           cmds.open({ settings, silent: true, folder: true }),
         ]);
       }
+      return exit(0);
+    },
+  )
+
+  /**
+   * `dist`
+   */
+  .command(
+    [CMD.REBUILD],
+    'Rebuild native module.',
+    e => e,
+    async e => {
+      await cmds.rebuild();
       return exit(0);
     },
   )
