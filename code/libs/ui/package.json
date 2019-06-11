@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@platform/cli.ui": "0.2.13",
-    "@platform/electron": "0.3.0",
+    "@platform/electron": "0.3.6",
     "@platform/react": "0.3.1",
     "@platform/ui.object": "0.0.121",
     "@platform/util.string": "0.1.19",
