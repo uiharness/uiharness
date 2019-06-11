@@ -27,6 +27,7 @@ const CMD = {
   STATS: 'stats',
   DIST: 'dist [target]',
   DIST_D: 'd',
+  REBUILD: 'rebuild',
   OPEN: 'open',
   OPEN_O: 'o',
   SERVE: 'serve',
@@ -176,8 +177,9 @@ const program = yargs
         })
         .option('open', {
           alias: 'o',
-          describe: 'Open the application when built (default: false).',
+          describe: 'Open the application when built (default: true).',
           boolean: true,
+          default: true,
         }),
     async e => {
       const { silent, open } = e;
@@ -195,6 +197,19 @@ const program = yargs
           cmds.open({ settings, silent: true, folder: true }),
         ]);
       }
+      return exit(0);
+    },
+  )
+
+  /**
+   * `dist`
+   */
+  .command(
+    [CMD.REBUILD],
+    'Rebuild native module.',
+    e => e,
+    async e => {
+      await cmds.rebuild();
       return exit(0);
     },
   )

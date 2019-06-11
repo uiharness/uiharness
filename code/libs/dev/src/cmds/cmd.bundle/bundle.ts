@@ -100,13 +100,18 @@ export async function bundleElectron(args: {
   }
 
   if (renderer) {
+    const entryPaths = Settings.toEntryPaths(entry.renderer, {
+      dir: tmp.dir,
+      field: 'html',
+    }).join(' ');
+
     tasks.add({
       title: `Bundling      ${log.cyan('renderer')} ${env.display}`,
       task: () =>
         cmd
           .clone()
           .add(`parcel`)
-          .add(`build ${entry.html.map(path => fs.join(tmp.dir, path)).join(' ')}`)
+          .add(`build ${entryPaths}`)
           .add(`--public-url ./`)
           .add(`--out-dir ${fs.join(tmp.dir, out.renderer.dir)}`)
           .add(`--target electron`)
@@ -189,6 +194,10 @@ export async function bundleWeb(args: {
     renderer: silent ? 'silent' : undefined,
   });
 
+  const buildPaths = Object.keys(entry)
+    .map(key => entry[key].html)
+    .join(' ');
+
   const cmd = exec.cmd
     .create()
     .add(`export NODE_ENV="${env.value}"`)
@@ -196,7 +205,7 @@ export async function bundleWeb(args: {
     .add(`cd ${fs.resolve(tmp.dir)}`)
     .newLine()
     .add(`parcel`)
-    .add(`build ${fs.join(entry.html)}`)
+    .add(`build ${buildPaths}`)
     .add(`--public-url ./`)
     .add(`--out-dir ${fs.join(out.dir)}`)
     .add(`--out-file ${out.file}`)
@@ -227,7 +236,7 @@ export async function bundleWeb(args: {
     log.info.gray(`   • package:     ${pkg.name}`);
     log.info.gray(`   • version:     ${pkg.version}`);
     log.info.gray(`   • env:         ${env.value}`);
-    log.info.gray(`   • entry:       ${formatPath(fs.join(tmp.dir, entry.code))}`);
+    log.info.gray(`   • entry:       ${formatPath(fs.join(tmp.dir, entry.default.path))}`);
     log.info.gray(`   • output:      ${formatPath(fs.join(tmp.dir, out.path))}`);
     log.info();
   }

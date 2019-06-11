@@ -241,7 +241,7 @@ async function getInitializedState(args: { settings: Settings }) {
         ...Object.keys(electronEntry.renderer).map(key => electronEntry.renderer[key].path),
       )
     : null;
-  const hasWebEntry = web.exists ? await exists(web.entry.code) : null;
+  const hasWebEntry = web.exists ? await exists(web.entry.default.path) : null;
   const hasAllScripts = Object.keys(scripts).every(key => scripts[key]);
 
   const result = {

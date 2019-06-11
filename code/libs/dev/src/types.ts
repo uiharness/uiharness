@@ -25,15 +25,17 @@ export type IElectronConfig = {
   bundle?: IParcelBuildConfig;
   entry?: {
     main?: string;
-    renderer?: IRendererEntryConfig;
+    renderer?: IEntryConfig;
   };
 };
 
-export type IRendererEntryConfig = string | { [key: string]: string | IRendererEntryConfigItem };
-export type IRendererEntryConfigItem = {
+export type IEntryConfig = string | { [key: string]: string | IEntryConfigItem };
+export type IEntryConfigItem = {
   path: string;
   title: string;
 };
+export type IEntryDef = IEntryConfigItem & { key: string; html: string };
+export type IEntryDefs = { [key: string]: IEntryDef };
 
 /**
  * The shape of the `electron-builder.yml` configuration file.

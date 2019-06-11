@@ -1,0 +1,16 @@
+#
+# Sample config for unit-tests.
+# Multiple entry points for the web
+#
+
+name: my-app
+
+
+web:
+  port: 3030
+  entry: 
+    default: ./foo/web.html
+    admin: ./foo/admin.tsx
+    chat:
+      title: My Chat
+      path: ./foo/chat.tsx

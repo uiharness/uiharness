@@ -1,4 +1,4 @@
-import { constants, fs, log, npm, NpmPackage } from '../common';
+import { R, constants, fs, log, npm, NpmPackage, t } from '../common';
 import { IConfig, ISettingsPaths, ISourcemapsConfig } from '../types';
 import { ElectronSettings } from './ElectronSettings';
 import { WebSettings } from './WebSettings';
@@ -17,6 +17,10 @@ export type IUIHarnessSettingsOptions = {
  * Represents the `uiharness.yml` configuration file.
  */
 export class Settings {
+  /**
+   * [Static]
+   */
+
   /**
    * Looks for the settings file within the given directory
    * and creates a new instance.
@@ -40,7 +44,24 @@ export class Settings {
   }
 
   /**
-   * Fields.
+   * Convert entries defined within YAML a string of paths.
+   */
+  public static toEntryList(entries: t.IEntryDefs) {
+    return Object.keys(entries).map(key => entries[key]);
+  }
+  public static toEntryPaths(
+    entries: t.IEntryDefs,
+    options: { dir?: string; field?: 'html' | 'path' } = {},
+  ) {
+    const { dir = '', field = 'html' } = options;
+    const paths = Settings.toEntryList(entries)
+      .map(entry => entry[field])
+      .map(path => fs.join(dir, path));
+    return R.uniq(paths);
+  }
+
+  /**
+   * [Fields]
    */
   public readonly exists: boolean;
   public readonly data: IConfig;
@@ -56,7 +77,7 @@ export class Settings {
   };
 
   /**
-   * Constructor.
+   * [Constructor]
    */
   private constructor(path: string | undefined, options: IUIHarnessSettingsOptions) {
     // Wrangle path.
@@ -119,6 +140,7 @@ export class Settings {
       (this._web = new WebSettings({
         path: this.path,
         config: this.data,
+        package: this.package,
       }))
     );
   }

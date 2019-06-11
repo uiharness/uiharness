@@ -1,14 +1,5 @@
-import { str, constants, fs, value, toBundlerArgs, NpmPackage } from '../common';
-import {
-  IElectronBuilderConfig,
-  IConfig,
-  IElectronConfig,
-  ISettingsPaths,
-  LogLevel,
-  IRendererEntryConfig,
-  IRendererEntryConfigItem,
-} from '../types';
-import { ensureEntries } from './util';
+import { constants, fs, NpmPackage, t, toBundlerArgs, value } from '../common';
+import { ensureEntries, parseEntry } from './util';
 
 const { DEFAULT } = constants;
 
@@ -31,7 +22,7 @@ type ICalculatedPaths = {
 };
 
 type IPaths = {
-  parent: ISettingsPaths;
+  parent: t.ISettingsPaths;
   calculated?: ICalculatedPaths;
 };
 
@@ -39,18 +30,10 @@ type IPaths = {
  * Represents the `electron` section of the `uiharness.yml` configuration file.
  */
 export class ElectronSettings {
-  public readonly data: IElectronConfig;
-  public readonly exists: boolean;
-
-  private readonly _config: IConfig;
-  private readonly _package: NpmPackage;
-  private _builderConfig: IElectronBuilderConfig;
-  private _paths: IPaths;
-
   /**
    * [Constructor]
    */
-  constructor(args: { path: ISettingsPaths; config: IConfig; package: NpmPackage }) {
+  constructor(args: { path: t.ISettingsPaths; config: t.IConfig; package: NpmPackage }) {
     const { config } = args;
     this._paths = { parent: args.path };
     this._config = config;
@@ -58,6 +41,17 @@ export class ElectronSettings {
     this.data = config.electron || {};
     this.exists = Boolean(config.electron);
   }
+
+  /**
+   * [Fields]
+   */
+  public readonly data: t.IElectronConfig;
+  public readonly exists: boolean;
+
+  private readonly _config: t.IConfig;
+  private readonly _package: NpmPackage;
+  private _builderConfig: t.IElectronBuilderConfig;
+  private _paths: IPaths;
 
   /**
    * [Properties]
@@ -81,7 +75,7 @@ export class ElectronSettings {
    * The level of logging to include.
    * https://parceljs.org/cli.html#change-log-level
    */
-  public get logLevel(): LogLevel {
+  public get logLevel(): t.LogLevel {
     const bundle = this.data.bundle;
     const logLevel = bundle ? bundle.logLevel : undefined;
     return value.defaultValue(logLevel, DEFAULT.LOG_LEVEL);
@@ -96,52 +90,20 @@ export class ElectronSettings {
     const main = entry.main || path.main.defaultEntry.code;
     const version = this._package.version || '0.0.0';
 
-    type IREntry = IRendererEntryConfigItem & { html: string };
-
-    const toHtml = (code: string) => {
-      const parent = this._paths.parent;
-      let path = code.replace(/^\./, '').replace(/^\//, '');
-      path = path.substr(0, path.lastIndexOf('.'));
-      path = path.replace(/\//g, '.');
-      return fs.join(parent.tmp.html, `electron.${path}.html`);
-    };
-
-    const formatText = (text: string) => {
-      return str.tmpl.replace(text, { version });
-    };
-
-    const toRendererEntry = (title: string, path: string): IREntry => {
-      title = formatText(title);
-      return { title, path, html: toHtml(path) };
-    };
-
-    const parseRenderer = (value?: IRendererEntryConfig): { [key: string]: IREntry } => {
-      const defaultTitle = this.appName;
-      if (value === undefined) {
-        const code = path.renderer.defaultEntry.code;
-        return { default: toRendererEntry(defaultTitle, code) };
-      }
-      if (typeof value === 'string') {
-        return { default: toRendererEntry(defaultTitle, value) };
-      }
-      return Object.keys(value).reduce((acc, next) => {
-        const item = value[next];
-        if (item) {
-          const code = typeof item === 'string' ? item : item.path;
-          const title = typeof item === 'object' ? item.title || defaultTitle : defaultTitle;
-          acc = { ...acc, [next]: toRendererEntry(title, code) };
-        }
-        return acc;
-      }, {});
-    };
-
-    const renderer = parseRenderer(entry.renderer);
-    const html = Object.keys(renderer).map(key => renderer[key].html);
+    const paths = this._paths;
+    const title = this.appName;
 
     return {
       main,
-      renderer,
-      html,
+      get renderer(): t.IEntryDefs {
+        return parseEntry({
+          value: entry.renderer,
+          version,
+          paths: paths.parent,
+          default: { title, codePath: path.renderer.defaultEntry.code },
+          htmlFilePrefix: 'electron',
+        });
+      },
     };
   }
 
@@ -163,10 +125,10 @@ export class ElectronSettings {
       const item = entry.renderer[key];
       return ensureEntries({
         name,
-        codePath: item.path,
         templatesDir,
-        pattern: 'electron.html',
         targetDir,
+        pattern: 'electron.html',
+        codePath: item.path,
         htmlFile: fs.basename(item.html),
       });
     });
@@ -213,7 +175,7 @@ export class ElectronSettings {
     const load = () => {
       const dir = fs.resolve(this._paths.parent.dir);
       const path = fs.join(dir, this.path.builder.configFilename);
-      return fs.file.loadAndParseSync<IElectronBuilderConfig>(path, {});
+      return fs.file.loadAndParseSync<t.IElectronBuilderConfig>(path, {});
     };
     return this._builderConfig || (this._builderConfig = load());
   }
