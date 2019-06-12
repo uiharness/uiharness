@@ -61,6 +61,7 @@ export async function distElectron(args: { settings: Settings; silent?: boolean 
 
   // Ensure the module is initialized.
   await init.prepare({ settings, prod });
+  await init.copyPackage({ settings, prod }); // Ensure the `main` path in [package.json] points to prod.
   await prepareBuilderYaml({ settings });
 
   if (!silent) {
@@ -187,5 +188,6 @@ async function prepareBuilderYaml(args: { settings: Settings }) {
     ...(data.directories || {}),
     output,
   };
+
   await fs.file.stringifyAndSave<IElectronBuilderConfig>(path, data);
 }
