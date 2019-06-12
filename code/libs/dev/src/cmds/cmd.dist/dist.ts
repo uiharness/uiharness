@@ -86,14 +86,24 @@ export async function distElectron(args: { settings: Settings; silent?: boolean 
     return handleError(error, 'building javascript for electron distribution');
   }
 
-  // Make a copy of the configruation file.
+  // Make a copy of the config file.
   const configFile = electron.path.builder.configFilename;
   await fs.copy(configFile, fs.join(tmp.dir, configFile));
+
+  // Copy the whole folder to a temporary `dist-build` location.
+  // Note:  This is so if a dev environment is running it does not impact
+  //        upon the configuration setting the builder is looking at.
+  //        👌 This allows builds to run in the background while developing.
+  const buildDir = fs.resolve('.build');
+  await fs.copy(tmp.dir, buildDir);
+
+  // Reset after build directory snapshot is made.
+  await init.copyPackage({ settings, prod: false }); // Reset the `main` path in [package.json] points to dev
 
   // Construct the `build` command.
   const cmd = exec.cmd
     .create()
-    .add(`cd ${fs.resolve(tmp.dir)}`)
+    .add(`cd ${buildDir}`)
     .newLine()
     .add(`build`)
     .add(`--x64`)
@@ -105,12 +115,15 @@ export async function distElectron(args: { settings: Settings; silent?: boolean 
     {
       title: `Building      ${log.yellow('electron app')} 🌼`,
       task: async () => {
+        // Run the builder.
         await cmd.run({ silent: true });
 
-        // Clean up.
-        await fs.remove(fs.resolve(fs.join(tmp.dir, 'yarn.lock')));
-        await fs.remove(fs.resolve(fs.join(tmp.dir, 'node_modules')));
-        await fs.remove(fs.resolve(fs.join(tmp.dir, tmp.dir)));
+        // Copy the finished artifact back to to the .uiharness folder
+        // and clean up.
+        const target = fs.join(tmp.dir, 'dist');
+        await fs.remove(target);
+        await fs.copy(fs.join(buildDir, 'dist'), target);
+        await fs.remove(buildDir);
       },
     },
   ]);

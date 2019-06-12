@@ -10,7 +10,7 @@ export async function clean(args: {}) {
     .map(file => file.outDir)
     .map(dir => `./${dir}`);
 
-  const list = ['./.cache', './.uiharness', './.dev', ...outDirs];
+  const list = ['./.cache', './.uiharness', './.dev', './.build', ...outDirs];
 
   log.info.gray('Removing:\n');
   const remove = (path: string) => {
