@@ -55,7 +55,7 @@ export async function bundleElectron(args: {
   }
 
   const summary = value.defaultValue(args.summary, true);
-  const stats = value.defaultValue(args.stats, true);
+  const stats = value.defaultValue(args.stats, false);
   const prod = value.defaultValue(args.prod, true);
   const env = toEnv(prod);
   let { main, renderer } = args;
@@ -135,6 +135,11 @@ export async function bundleElectron(args: {
 
   // Log results.
   if (summary && !silent) {
+    const size = {
+      main: await toSize(settings, out.main.dir),
+      renderer: await toSize(settings, out.renderer.dir),
+    };
+
     log.info();
     log.info(`🤟  Javascript bundling for ${log.yellow('electron')} complete.\n`);
     log.info.gray(`   • package:     ${pkg.name}`);
@@ -145,8 +150,8 @@ export async function bundleElectron(args: {
       const code = entry.renderer[key].path;
       log.info.gray(`                  ${formatPath(code)}`);
     });
-    log.info.gray(`   • output:      ${formatPath(out.main.dir)}`);
-    log.info.gray(`                  ${formatPath(out.renderer.dir)}`);
+    log.info.gray(`   • output:      ${formatPath(out.main.dir)} (${log.blue(size.main)})`);
+    log.info.gray(`                  ${formatPath(out.renderer.dir)} (${log.blue(size.renderer)})`);
     log.info();
   }
   if (stats && !silent) {
@@ -177,7 +182,7 @@ export async function bundleWeb(args: {
     return { success: false, error };
   }
 
-  const stats = value.defaultValue(args.stats, true);
+  const stats = value.defaultValue(args.stats, false);
   const prod = value.defaultValue(args.prod, true);
   const env = toEnv(prod);
   const pkg = settings.package;
@@ -231,13 +236,17 @@ export async function bundleWeb(args: {
 
   // Log results.
   if (summary && !silent) {
+    const size = await toSize(settings, out.dir);
+    const entryPath = fs.join(tmp.dir, entry.default.path);
+    const outputPath = fs.join(tmp.dir, out.path);
+
     log.info();
     log.info(`🤟  Javascript bundling for ${log.yellow('web')} complete.\n`);
     log.info.gray(`   • package:     ${pkg.name}`);
     log.info.gray(`   • version:     ${pkg.version}`);
     log.info.gray(`   • env:         ${env.value}`);
-    log.info.gray(`   • entry:       ${formatPath(fs.join(tmp.dir, entry.default.path))}`);
-    log.info.gray(`   • output:      ${formatPath(fs.join(tmp.dir, out.path))}`);
+    log.info.gray(`   • entry:       ${formatPath(entryPath)}`);
+    log.info.gray(`   • output:      ${formatPath(outputPath)} (${log.blue(size)})`);
     log.info();
   }
   if (stats) {
@@ -247,12 +256,18 @@ export async function bundleWeb(args: {
 }
 
 /**
- * INTERNAL
+ * [Helpers]
  */
 const formatPath = (path: string) => logging.formatPath(path, true);
 
-function toEnv(prod?: boolean) {
+const toEnv = (prod?: boolean) => {
   const value = prod === true || prod === undefined ? 'production' : 'development';
   const display = log.gray(`(${value})`);
   return { value, display };
-}
+};
+
+const toSize = async (settings: Settings, dir: string) => {
+  dir = fs.resolve(fs.join(settings.path.tmp.dir, dir));
+  const size = await fs.size.dir(dir);
+  return size.toString({ round: 0, spacer: '' });
+};
