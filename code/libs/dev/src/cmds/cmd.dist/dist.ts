@@ -95,6 +95,7 @@ export async function distElectron(args: { settings: Settings; silent?: boolean 
   //        upon the configuration setting the builder is looking at.
   //        👌 This allows builds to run in the background while developing.
   const buildDir = fs.resolve('.build');
+  await fs.remove(buildDir);
   await fs.copy(tmp.dir, buildDir);
 
   // Reset after build directory snapshot is made.
