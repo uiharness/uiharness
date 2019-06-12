@@ -20,7 +20,7 @@ export async function rebuild() {
 
   // Print reference to documentation.
   const url = 'https://electronjs.org/docs/tutorial/using-native-node-modules';
-  log.info('🤟')
+  log.info('🤟');
   log.info(`For more information see:`);
   log.info(`- ${log.blue(url)}`);
   log.info();
