@@ -1588,10 +1588,10 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@uiharness/electron@0.4.57":
-  version "0.4.57"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.4.57.tgz#e83be343c1548c44f509e90a0933f90104a0ce28"
-  integrity sha512-dgu4c+iu1iGxyv+KIxwhCKdtd5IqpYV5AeafEMyz7gWP/Quj+gBJ8bjOeDHlCIpqxmr32PzaFX8bNYekipUqug==
+"@uiharness/electron@0.4.58":
+  version "0.4.58"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.4.58.tgz#55fb83c905078f37d3846f203f357aa40dfd7d08"
+  integrity sha512-9P7PIkXp8os06lzOa6FV4S9E84NNNY0i2PCK8pt6whr0napBetvyr1U3nn0TXJBODhSGBXwhV36Xw6K7yjWxTw==
   dependencies:
     "@platform/electron" "0.3.6"
     "@platform/log" "0.0.126"

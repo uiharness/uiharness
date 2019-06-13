@@ -1347,10 +1347,10 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@uiharness/dev@0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@uiharness/dev/-/dev-0.4.0.tgz#38da2f87f368ec539980bf7890e38578de94223f"
-  integrity sha512-gywmGtdQe31Cco6KgWvLlE29ZvaxYXawfI8AE6ZMZrbol81scWdoWFVwgq9mZnLnMC7h2cIWDP50ch2glxojsA==
+"@uiharness/dev@0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@uiharness/dev/-/dev-0.4.1.tgz#d9f56cf3359dee9c2a0649dbacd5723b224ddeab"
+  integrity sha512-qEXSNrHW92n9vPyvV7B5O2KtZ8jcqFzU+pD5ooGRw6GkMLaRvQNq0YQS5QGZDCzW6yof31N/scOEljycBJ5OwA==
   dependencies:
     "@babel/core" "7.4.5"
     "@babel/polyfill" "7.4.4"
@@ -1361,7 +1361,7 @@
     "@platform/fs" "0.1.2"
     "@platform/ts" "3.4.26"
     "@platform/util.string" "^0.1.19"
-    "@uiharness/electron" "0.4.57"
+    "@uiharness/electron" "0.4.58"
     "@uiharness/types" "0.4.0"
     create-tmpl "0.1.57"
     electron "5.0.3"
@@ -1370,10 +1370,10 @@
     parcel-bundler "1.12.3"
     serve "11.0.1"
 
-"@uiharness/electron@0.4.57":
-  version "0.4.57"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.4.57.tgz#e83be343c1548c44f509e90a0933f90104a0ce28"
-  integrity sha512-dgu4c+iu1iGxyv+KIxwhCKdtd5IqpYV5AeafEMyz7gWP/Quj+gBJ8bjOeDHlCIpqxmr32PzaFX8bNYekipUqug==
+"@uiharness/electron@0.4.58":
+  version "0.4.58"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.4.58.tgz#55fb83c905078f37d3846f203f357aa40dfd7d08"
+  integrity sha512-9P7PIkXp8os06lzOa6FV4S9E84NNNY0i2PCK8pt6whr0napBetvyr1U3nn0TXJBODhSGBXwhV36Xw6K7yjWxTw==
   dependencies:
     "@platform/electron" "0.3.6"
     "@platform/log" "0.0.126"

@@ -23,74 +23,67 @@ type IResponse<M extends t.IpcMessage> = {
 /**
  * Default loader for a UIHarness [main] process.
  */
-export function init<M extends t.IpcMessage>(args: {
+export async function init<M extends t.IpcMessage>(args: {
   config: IRuntimeConfig; //            The [.uiharess/config.json] file.
   name?: string; //                     The display name of the window.
   ipc?: t.IpcClient; //                 Existing IPC client if aleady initialized.
   log?: main.IMainLog; //               Existing log if already initialized.
   devTools?: boolean; //                Show dev tools on load when running in development (default: true)
   windows?: main.IWindows; //           The gloal windows manager.
-}) {
-  return new Promise<IResponse<M>>(async (resolve, reject) => {
-    try {
-      const { config, devTools } = args;
+}): Promise<IResponse<M>> {
+  try {
+    await ready();
 
-      /**
-       * Initialize [@platform/electron] module.
-       */
-      const appName = config.name;
-      const res = await main.init<M>({
-        log: args.log || logDir({ appName }),
-        ipc: args.ipc,
-        windows: args.windows,
+    /**
+     * Initialize [@platform/electron] module.
+     */
+    const { config, devTools } = args;
+    const appName = config.name;
+    console.log('appName', appName);
+
+    const res = await main.init<M>({
+      log: args.log || logDir({ appName }),
+      ipc: args.ipc,
+      windows: args.windows,
+    });
+    const { log, id, store, windows } = res;
+    const ipc = res.ipc as t.IpcClient;
+    const context: t.IContext = { config, id, store, log, ipc, windows };
+
+    /**
+     * Create the new window.
+     */
+    const window = mainWindow.create({ ...context, devTools, windows });
+
+    /**
+     * Factory for spawning a new window.
+     */
+    const newWindow: t.NewWindowFactory = (options = {}) => {
+      const { x, y } = getNewWindowPosition(20);
+      return mainWindow.create({
+        defaultX: x,
+        defaultY: y,
+        ...context,
+        ...options,
       });
-      const { log, id, store, windows } = res;
-      const ipc = res.ipc as t.IpcClient;
-      const context: t.IContext = { config, id, store, log, ipc, windows };
+    };
 
-      /**
-       * Initialize application when `ready`.
-       */
-      app.on('ready', () => {
-        try {
-          const window = mainWindow.create({ ...context, devTools, windows });
+    /**
+     * Start the menu manager.
+     */
+    menus.manage({ ...context, newWindow });
 
-          /**
-           * Factory for spawning a new window.
-           */
-          const newWindow: t.NewWindowFactory = (options = {}) => {
-            const { x, y } = getNewWindowPosition(20);
-            return mainWindow.create({
-              defaultX: x,
-              defaultY: y,
-              ...context,
-              ...options,
-            });
-          };
+    /**
+     * Quit when all windows are closed.
+     */
+    app.on('window-all-closed', () => app.quit());
 
-          /**
-           * Start the menu manager.
-           */
-          menus.manage({ ...context, newWindow });
-
-          // Finish up.
-          const res: IResponse<M> = { window, newWindow, log, ipc, windows, store };
-          resolve(res);
-        } catch (error) {
-          reject(error);
-        }
-      });
-
-      /**
-       * [Quit] when all windows are closed.
-       */
-      app.on('window-all-closed', () => {
-        app.quit();
-      });
-    } catch (error) {
-      reject(error);
-    }
-  });
+    // Finish up.
+    const result: IResponse<M> = { window, newWindow, log, ipc, windows, store };
+    return result;
+  } catch (error) {
+    throw error;
+  }
 }
 
 /**
@@ -133,7 +126,20 @@ export function paths(args: { appName: string; env?: t.Environment }) {
 }
 
 /**
- * [INTERNAL]
+ * Promise that waits until the app is ready.
+ */
+export function ready() {
+  return new Promise((resolve, reject) => {
+    if (app.isReady()) {
+      resolve();
+    } else {
+      app.on('ready', () => resolve());
+    }
+  });
+}
+
+/**
+ * [Helpers]
  */
 function toEnv(env?: t.Environment) {
   return value.defaultValue(env, main.is.prod ? 'production' : 'development');
