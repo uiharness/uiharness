@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "@uiharness/ui": "^0.4.1",
-    "react": "^16.8.6"
+    "react": "^16.8.6",
+    "sodium-universal": "^2.0.0"
   },
   "devDependencies": {
     "@uiharness/dev": "^0.4.1",

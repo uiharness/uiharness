@@ -1,3 +1,5 @@
+import { Subject } from 'rxjs';
+
 import {
   BundleTarget,
   exec,
@@ -59,6 +61,10 @@ export async function distElectron(args: { settings: Settings; silent?: boolean 
     }
   };
 
+  // Clear any old build artificats.
+  const buildDir = fs.resolve('.build');
+  await fs.remove(buildDir);
+
   // Ensure the module is initialized.
   await init.prepare({ settings, prod });
   await init.copyPackage({ settings, prod }); // Ensure the `main` path in [package.json] points to prod.
@@ -94,38 +100,47 @@ export async function distElectron(args: { settings: Settings; silent?: boolean 
   // Note:  This is so if a dev environment is running it does not impact
   //        upon the configuration setting the builder is looking at.
   //        👌 This allows builds to run in the background while developing.
-  const buildDir = fs.resolve('.build');
-  await fs.remove(buildDir);
   await fs.copy(tmp.dir, buildDir);
 
   // Reset after build directory snapshot is made.
-  await init.copyPackage({ settings, prod: false }); // Reset the `main` path in [package.json] points to dev
+  await init.copyPackage({ settings, prod: false }); // Reset the `main` path in [package.json] to point to dev.
 
-  // Construct the `build` command.
-  const cmd = exec.cmd
-    .create()
-    .add(`cd ${buildDir}`)
-    .newLine()
-    .add(`build`)
-    .add(`--x64`)
-    .add(`--publish=never`)
-    .add(`--config="${configFile}"`);
+  // Copy the finished artifact back to to the [.uiharness] folder and clean up.
+  const onBuildComplete = async () => {
+    const source = fs.join(buildDir, 'dist');
+    const target = fs.join(tmp.dir, 'dist');
+    await fs.remove(target);
+    await fs.copy(source, target);
+    await fs.remove(buildDir);
+  };
+
+  const runBuilder = async () => {
+    // Run the builder.
+    const cmd = exec.cmd
+      .create()
+      .add(`cd ${buildDir}`)
+      .newLine()
+      .add(`build`)
+      .add(`--x64`)
+      .add(`--publish=never`)
+      .add(`--config="${configFile}"`)
+      .run({ silent: true });
+
+    const $ = new Subject<string>();
+    cmd.output$.subscribe(e => $.next(e.text));
+    cmd.complete$.subscribe(async () => {
+      await onBuildComplete();
+      $.complete();
+    });
+
+    return $;
+  };
 
   // Run the electron `build` command.
   const tasks = new Listr([
     {
       title: `Building      ${log.yellow('electron app')} 🌼`,
-      task: async () => {
-        // Run the builder.
-        await cmd.run({ silent: true });
-
-        // Copy the finished artifact back to to the .uiharness folder
-        // and clean up.
-        const target = fs.join(tmp.dir, 'dist');
-        await fs.remove(target);
-        await fs.copy(fs.join(buildDir, 'dist'), target);
-        await fs.remove(buildDir);
-      },
+      task: () => runBuilder(),
     },
   ]);
 
@@ -176,7 +191,7 @@ export async function distWeb(args: { settings: Settings; silent?: boolean }) {
 }
 
 /**
- * INTERNAL
+ * [Helpers]
  */
 async function prepareBuilderYaml(args: { settings: Settings }) {
   const { settings } = args;
