@@ -1225,10 +1225,27 @@
     glamor "2.20.40"
     tinycolor2 "1.4.1"
 
-"@platform/electron@0.3.6", "@platform/electron@^0.3.6":
+"@platform/electron@0.3.6":
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.3.6.tgz#28f0bc86e14492834ea25b8ffe2eb49474d21eb1"
   integrity sha512-8U8q1d294KaOWyaGQJ4Q2wyzO8yv1hBfBp0BfzD1UupyoGO9H+leAK2G6JXtQLa+y//IeFmBmGzDauEaIN16DA==
+  dependencies:
+    "@babel/polyfill" "7.4.4"
+    "@platform/fs" "0.1.2"
+    "@platform/log" "0.0.126"
+    "@platform/react" "0.3.1"
+    "@types/app-root-path" "1.2.4"
+    app-root-path "2.2.1"
+    electron-log "3.0.6"
+    electron-store "3.3.0"
+    electron-window-state "5.0.3"
+    is-electron "2.2.0"
+    minimist "1.2.0"
+
+"@platform/electron@^0.3.7":
+  version "0.3.7"
+  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.3.7.tgz#a7ba27d1a0cb025e3329149fc81fce1fc84a19ea"
+  integrity sha512-0xrTV5/nX6eoKNQiC4VN3zjVDgeJffcy9wMJ0mDGm7BP0giZM/tB4TSSSn3PuoBWYNR8Z02IDPKH8zVRvgMhhQ==
   dependencies:
     "@babel/polyfill" "7.4.4"
     "@platform/fs" "0.1.2"
@@ -3726,10 +3743,10 @@ electron-window-state@5.0.3:
     jsonfile "^4.0.0"
     mkdirp "^0.5.1"
 
-electron@5.0.3:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-5.0.3.tgz#919818962caffbd909af15bc8a3034be972fa76e"
-  integrity sha512-kgnxPQoTNzu0lKC8ToAktt93mTimgqHZGFCVmTaFjs1G2Bk9VqKHljbQemH+REKAaw1aEgIRn2JCrTe0Dy7fVQ==
+electron@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-5.0.0.tgz#d8352e2c9625b3be0112ce0c1bf5c9b6f692557e"
+  integrity sha512-++emIe4vLihiYiAVL+E8DT5vSNVFEIuQCRxA+VfpDRVBcog85UB28vi4ogRmMOK3UffzKdWV6e1jqp3T0KpBoA==
   dependencies:
     "@types/node" "^10.12.18"
     electron-download "^4.1.0"
