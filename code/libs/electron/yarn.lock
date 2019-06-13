@@ -51,10 +51,10 @@
     glamor "2.20.40"
     tinycolor2 "1.4.1"
 
-"@platform/electron@0.3.7":
-  version "0.3.7"
-  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.3.7.tgz#a7ba27d1a0cb025e3329149fc81fce1fc84a19ea"
-  integrity sha512-0xrTV5/nX6eoKNQiC4VN3zjVDgeJffcy9wMJ0mDGm7BP0giZM/tB4TSSSn3PuoBWYNR8Z02IDPKH8zVRvgMhhQ==
+"@platform/electron@0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.4.0.tgz#34246dd5cbd03d4020b021d38145a6853554611b"
+  integrity sha512-IbJoStqQCobZWKEmvMhDRbqKLpbwXikwl8K5lWyj3HpvZyPTKsvJucpN2HhfJjCK0kOOsM/ZAGD3rU/EgRmOlw==
   dependencies:
     "@babel/polyfill" "7.4.4"
     "@platform/fs" "0.1.2"
@@ -306,10 +306,10 @@
   resolved "https://registry.yarnpkg.com/@types/tinycolor2/-/tinycolor2-1.4.2.tgz#721ca5c5d1a2988b4a886e35c2ffc5735b6afbdf"
   integrity sha512-PeHg/AtdW6aaIO2a+98Xj7rWY4KC1E6yOy7AFknJQ7VXUGNrMlyxDFxJo7HqLtjQms/ZhhQX52mLVW/EX3JGOw==
 
-"@uiharness/types@0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.4.0.tgz#831b67d6180817e5b107e5d913e9fa440d3b8aea"
-  integrity sha512-YkWkx1jHmRkaNTFL9eZ0Nc7xYAiS0wZRlJ5Vi885UoNAD0euCIlx6S9jIm9NDgXmxU5wEf0u6wUxRMcYS8e5DQ==
+"@uiharness/types@0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.5.0.tgz#2832daf153d81236efff1b549b0665217d46ea55"
+  integrity sha512-8ybAe6BkeZ6+khTY6P4uCUpXMPS1EhAt7xInYPOkM7k6AM/wgZ4YiJxZy5OtkPx02JNOsCwhLUvsGboOGwQ4bA==
 
 ajv@^6.10.0, ajv@^6.5.5:
   version "6.10.0"
