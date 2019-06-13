@@ -115,6 +115,8 @@ export async function distElectron(args: { settings: Settings; silent?: boolean 
   };
 
   const runBuilder = async () => {
+    log.info.gray('  -------------------------------------');
+
     // Run the builder.
     const cmd = exec.cmd
       .create()

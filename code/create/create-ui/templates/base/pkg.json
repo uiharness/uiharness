@@ -13,7 +13,8 @@
   },
   "devDependencies": {
     "@uiharness/dev": "latest",
-    "@uiharness/ui": "latest"
+    "@uiharness/ui": "latest",
+    "electron": "5.0.0"
   },
   "files": ["lib"],
   "license": "MIT"
