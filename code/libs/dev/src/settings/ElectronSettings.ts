@@ -144,6 +144,7 @@ export class ElectronSettings {
    */
   public out(prod?: boolean) {
     const path = this.path;
+
     const main = {
       file: path.main.out.file,
       dir: prod ? path.main.out.dir.prod : path.main.out.dir.dev,
