@@ -22,7 +22,7 @@
     "@uiharness/dev": "0.5.1",
     "@uiharness/electron": "0.5.1",
     "electron": "5.0.0",
-    "typescript": "3.5.1"
+    "typescript": "3.5.2"
   },
   "license": "MIT",
   "private": true
