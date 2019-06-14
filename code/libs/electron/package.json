@@ -12,7 +12,7 @@
     "prepare": "ts prepare"
   },
   "dependencies": {
-    "@platform/electron": "0.4.3",
+    "@platform/electron": "0.4.4",
     "@platform/log": "0.0.128",
     "@platform/react": "0.3.3",
     "@platform/ui.object": "0.0.123",
