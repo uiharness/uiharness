@@ -107,7 +107,7 @@ export function logEntries(
     const displayKey = (key: string) => {
       key = key === 'main' ? 'MAIN' : key;
       key = key === 'default' ? 'DEFAULT' : key;
-      log.green(`(${key})`);
+      return log.green(`(${key})`);
     };
     log.info.gray(`• entry:          ${formatPath(entries[0].path)} ${displayKey(entries[0].key)}`);
     entries.slice(1).forEach(item => {
