@@ -105,9 +105,11 @@ export function logEntries(
       ? options.formatPath
       : (path: string) => logging.formatPath(path, true);
     const displayKey = (key: string) => {
-      key = key === 'main' ? 'MAIN' : key;
-      key = key === 'default' ? 'DEFAULT' : key;
-      return log.green(`(${key})`);
+      const MAIN = 'MAIN';
+      const DEFAULT = 'DEFAULT';
+      key = key === 'main' ? MAIN : key;
+      key = key === 'default' ? DEFAULT : key;
+      return [MAIN, DEFAULT].includes(key) ? log.magenta(`(${key})`) : log.green(`(${key})`);
     };
     log.info.gray(`• entry:          ${formatPath(entries[0].path)} ${displayKey(entries[0].key)}`);
     entries.slice(1).forEach(item => {
