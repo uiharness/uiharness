@@ -17,7 +17,7 @@ type IResponse<M extends t.IpcMessage> = {
   windows: main.IWindows;
   log: main.IMainLog;
   ipc: t.IpcClient<M>;
-  store: main.IStoreClient;
+  settings: main.ISettingsClient;
 };
 
 /**
@@ -46,9 +46,9 @@ export async function init<M extends t.IpcMessage>(args: {
       ipc: args.ipc,
       windows: args.windows,
     });
-    const { log, id, store, windows } = res;
+    const { log, id, settings, windows } = res;
     const ipc = res.ipc as t.IpcClient;
-    const context: t.IContext = { config, id, store, log, ipc, windows };
+    const context: t.IContext = { config, id, settings, log, ipc, windows };
 
     /**
      * Create the new window.
@@ -79,7 +79,7 @@ export async function init<M extends t.IpcMessage>(args: {
     app.on('window-all-closed', () => app.quit());
 
     // Finish up.
-    const result: IResponse<M> = { window, newWindow, log, ipc, windows, store };
+    const result: IResponse<M> = { window, newWindow, log, ipc, windows, settings };
     return result;
   } catch (error) {
     throw error;

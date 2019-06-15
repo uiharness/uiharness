@@ -14,7 +14,7 @@ import { TAG } from '../../common';
  * Handles the creation of menus.
  */
 export function manage(args: t.IContext & { newWindow: t.NewWindowFactory }) {
-  const { config, id, store, log, ipc, windows, newWindow } = args;
+  const { config, id, settings, log, ipc, windows, newWindow } = args;
 
   const changed$ = new Subject();
   const stop = () => changed$.complete();
@@ -23,7 +23,7 @@ export function manage(args: t.IContext & { newWindow: t.NewWindowFactory }) {
   const context: t.IMenuContext = {
     config,
     id,
-    store,
+    settings,
     log,
     ipc,
     windows,

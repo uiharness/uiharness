@@ -12,9 +12,9 @@ import * as t from '../types';
  * Creates the main window.
  */
 export function create(args: t.IContext & t.INewWindowArgs) {
-  const { id, store, config, log, ipc, windows } = args;
+  const { id, settings, config, log, ipc, windows } = args;
 
-  const context: t.IContext = { config, id, store, log, ipc, windows };
+  const context: t.IContext = { config, id, settings, log, ipc, windows };
   const entry: t.IRuntimeConfigRenderer = config.electron.renderer[args.entry || 'default'];
   const devTools = value.defaultValue(args.devTools, true);
   const defaultWidth = value.defaultValue(args.defaultWidth, 1000);
