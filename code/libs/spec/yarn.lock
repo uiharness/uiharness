@@ -200,10 +200,10 @@
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-6.0.1.tgz#a984b405c702fa5a7ec6abc56b37f2ba35ef5af6"
   integrity sha512-ffCdcrEE5h8DqVxinQjo+2d1q+FV5z7iNtPofw3JsrltSoSVlOGaW0rY8XxtO9XukdTn8TaCGWmk2VFGhI70mg==
 
-"@uiharness/types@0.5.5":
-  version "0.5.5"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.5.5.tgz#f0924dcace7c106b68d64d9d727d3719b4ca9158"
-  integrity sha512-h3MIHgJlFvQ+7y6KH3wlrhWIuQYZBYY6getXe6Fp9PctO2aTs1C02YszYqdNUfuZJsxBEwIfhhbBHIRGI3/lgQ==
+"@uiharness/types@0.5.6":
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.5.6.tgz#d5580c682a8eef3173da00f2a7c2234c002d40d9"
+  integrity sha512-pAF+dnI/XQVq5Y3563xZMPMU/LGyzxb9g1beY4boJ4tYyBcQa29qVCfUcwQ5588B/w/AQgtdvFhSqUqXhCE44w==
 
 ansi-colors@3.2.3:
   version "3.2.3"
@@ -2024,8 +2024,6 @@ rxjs@^6.5.1:
   version "6.5.1"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.5.1.tgz#f7a005a9386361921b8524f38f54cbf80e5d08f4"
   integrity sha512-y0j31WJc83wPu31vS1VlAFW5JGrnGC+j+TtGAa1fRQphy48+fDYiDmX8tjGloToEsMkxnouOg/1IzXGKkJnZMg==
-  dependencies:
-    tslib "^1.9.0"
 
 safe-buffer@^5.1.1, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
