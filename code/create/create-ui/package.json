@@ -1,6 +1,6 @@
 {
   "name": "create-ui",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "main": "./lib/bin",
   "bin": {
     "create-ui": "./lib/bin.js"
@@ -14,10 +14,10 @@
     "reset": "rm -rf tmp"
   },
   "dependencies": {
-    "create-tmpl": "0.1.59"
+    "create-tmpl": "0.1.60"
   },
   "devDependencies": {
-    "@platform/ts": "3.4.32"
+    "@platform/ts": "3.4.33"
   },
   "repository": "uiharness/uiharness",
   "files": [
