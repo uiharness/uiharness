@@ -51,10 +51,10 @@
     glamor "2.20.40"
     tinycolor2 "1.4.1"
 
-"@platform/electron@0.5.2":
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.5.2.tgz#620a450d7c002888377c17dc73b1b9c8fdb59d6c"
-  integrity sha512-aINadl2BIHdf234QOAY+945e+gnSs5WtsW3nEX/++6ZnQPZIrVRuI0DkzkTwPRrzhXyuOaj95duR44SJyME6Wg==
+"@platform/electron@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.6.0.tgz#a420ac0f0c8fce59dd19834be6898ef195829037"
+  integrity sha512-0b1iX8Jitug95je2/ODXOWP8OKaC7kULlGiTI3cmn/wvqtpB4eIMqz0cmdG9WtAKcu9eirhxu1ghuIxARzl0Ig==
   dependencies:
     "@platform/fs" "0.1.6"
     "@platform/libs" "^0.0.18"

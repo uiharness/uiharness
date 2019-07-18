@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/electron",
-  "version": "0.5.9",
+  "version": "0.5.10",
   "description": "UIHarness client-tools for Electron (include in dependencies).",
   "main": "./lib/index",
   "types": "./lib/index.d.ts",
@@ -12,7 +12,7 @@
     "prepare": "ts prepare"
   },
   "dependencies": {
-    "@platform/electron": "0.5.2",
+    "@platform/electron": "0.6.0",
     "@platform/log": "0.0.133",
     "@platform/react": "0.3.12",
     "@platform/ui.object": "0.0.132",

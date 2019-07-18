@@ -39,7 +39,6 @@ export async function init<M extends t.IpcMessage>(args: {
      */
     const { config, devTools } = args;
     const appName = config.name;
-    console.log('appName', appName);
 
     const res = await main.init<M>({
       log: args.log || logDir({ appName }),
