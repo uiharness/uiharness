@@ -48,6 +48,7 @@ export async function distElectron(args: { settings: Settings; silent?: boolean 
   const { settings, silent = false } = args;
   const tmp = settings.path.tmp;
   const electron = settings.electron;
+  const builderArgs = settings.electron.builderArgs;
 
   const handleError = (error: Error, step: string) => {
     if (silent) {
@@ -101,6 +102,7 @@ export async function distElectron(args: { settings: Settings; silent?: boolean 
   //        upon the configuration setting the builder is looking at.
   //        👌 This allows builds to run in the background while developing.
   await fs.copy(tmp.dir, buildDir);
+  await fs.ensureDir(fs.join(buildDir, 'dist'));
 
   // Reset after build directory snapshot is made.
   await init.copyPackage({ settings, prod: false }); // Reset the `main` path in [package.json] to point to dev.
@@ -108,7 +110,7 @@ export async function distElectron(args: { settings: Settings; silent?: boolean 
   // Copy the finished artifact back to to the [.uiharness] folder and clean up.
   const onBuildComplete = async () => {
     const source = fs.join(buildDir, 'dist');
-    const target = fs.join(tmp.dir, 'dist');
+    const target = fs.resolve(builderArgs.outputDir || 'dist');
     await fs.remove(target);
     await fs.copy(source, target);
     await fs.remove(buildDir);
@@ -122,7 +124,7 @@ export async function distElectron(args: { settings: Settings; silent?: boolean 
       .create()
       .add(`cd ${buildDir}`)
       .newLine()
-      .add(`build`)
+      .add(`electron-builder build`)
       .add(`--x64`)
       .add(`--publish=never`)
       .add(`--config="${configFile}"`)
@@ -154,16 +156,15 @@ export async function distElectron(args: { settings: Settings; silent?: boolean 
   }
 
   // Log output.
-  const config = settings.electron.builderArgs;
-  const path = config.outputDir
-    ? logging.formatPath(fs.join(tmp.dir, config.outputDir), true)
+  const path = builderArgs.outputDir
+    ? logging.formatPath(fs.resolve(builderArgs.outputDir), true)
     : 'UNKNOWN';
 
   if (!silent) {
     log.info();
     log.info(`🤟  Application distribution complete.\n`);
-    log.info.gray(`   • productName: ${log.yellow(config.productName)}`);
-    log.info.gray(`   • appId:       ${config.appId}`);
+    log.info.gray(`   • productName: ${log.yellow(builderArgs.productName)}`);
+    log.info.gray(`   • appId:       ${builderArgs.appId}`);
     log.info.gray(`   • version:     ${settings.package.version}`);
     log.info.gray(`   • folder:      ${path}`);
     log.info();

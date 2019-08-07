@@ -28,7 +28,7 @@
     "@uiharness/types": "0.5.8",
     "create-tmpl": "0.1.62",
     "electron": "5.0.5",
-    "electron-builder": "20.44.4",
+    "electron-builder": "21.2.0",
     "filesize": "4.1.2",
     "parcel-bundler": "1.12.3",
     "serve": "11.1.0"

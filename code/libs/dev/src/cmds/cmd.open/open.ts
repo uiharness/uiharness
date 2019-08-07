@@ -65,7 +65,7 @@ export async function open(args: { settings: Settings; folder?: boolean; silent?
   // Derive the path to the app.
   const platform = getPlatformDir();
   const { productName = 'UNKNOWN' } = config;
-  const outputDir = fs.join(tmp.dir, config.outputDir || '');
+  const outputDir = config.outputDir || 'dist';
 
   if (!silent && !(await fs.pathExists(outputDir))) {
     log.info();
