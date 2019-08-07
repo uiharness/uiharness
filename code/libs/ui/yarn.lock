@@ -1567,10 +1567,10 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@uiharness/dev@0.5.17":
-  version "0.5.17"
-  resolved "https://registry.yarnpkg.com/@uiharness/dev/-/dev-0.5.17.tgz#885a69b47b50909e1683a8261b4557858c769996"
-  integrity sha512-g1eLe0Vg5zKrnDqfBQvWHZ1um34oUGbHuKAoZJQ4kmY9FeKbEp3PiUjeJdcSn2mECxdXahyE6pjTtsgspKKrug==
+"@uiharness/dev@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@uiharness/dev/-/dev-0.6.0.tgz#59f7c638728d06c4f9c2eac9b40e969860b5f9df"
+  integrity sha512-RaQiftjIjS+TLjqj+b2hHm34yxixdYMWAO6s8yWU0BqnEuantjmhfYMrRzPO6m52DFd7woWiIixk1UuCHjoNjQ==
   dependencies:
     "@babel/core" "7.5.5"
     "@babel/preset-env" "7.5.5"
@@ -1581,8 +1581,8 @@
     "@platform/fs" "0.1.7"
     "@platform/ts" "3.4.35"
     "@platform/util.string" "^0.3.2"
-    "@uiharness/electron" "0.5.12"
-    "@uiharness/types" "0.5.9"
+    "@uiharness/electron" "0.6.1"
+    "@uiharness/types" "0.6.0"
     create-tmpl "0.1.62"
     electron "6.0.1"
     electron-builder "21.2.0"
@@ -1590,10 +1590,10 @@
     parcel-bundler "1.12.3"
     serve "11.1.0"
 
-"@uiharness/electron@0.5.12":
-  version "0.5.12"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.5.12.tgz#d044c3beb1ac73211aac3c7d575a8909d41c36e4"
-  integrity sha512-23dGqJunftJlYUaHEUX9/CdqU1ovyyvbwMIv3tBkQL/fta+nkCg6cWud5slAduYFsqsW54SLED9eTx29IGjEEA==
+"@uiharness/electron@0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.6.1.tgz#a1b48d0098a2a4c3c7abbd4c133477980c4112ca"
+  integrity sha512-Ye+SJ7gegjezT2i5We35pM/PPJFL044vssXd2H3rIdkRsMEpuZF0pPUDMj/UjuCBj5csBjHfMs3SAnQbxXQyJw==
   dependencies:
     "@platform/electron" "0.7.2"
     "@platform/log" "0.0.135"
@@ -1601,13 +1601,13 @@
     "@platform/ui.object" "0.0.134"
     "@platform/util.value" "0.4.6"
     "@types/app-root-path" "1.2.4"
-    "@uiharness/types" "0.5.9"
+    "@uiharness/types" "0.6.0"
     tslib "1.10.0"
 
-"@uiharness/types@0.5.9":
-  version "0.5.9"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.5.9.tgz#25ad18f5cf1ebc8010abdbe009df4226e2aadb9e"
-  integrity sha512-wGEaA7UtSnvqFDjNmY02No6m/CNyoo8kkf0/PKjYBrxibOl+LRPL7WwSI3csHL55qXxyHplHztOHqKJOmyNivg==
+"@uiharness/types@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.6.0.tgz#330e744f628cd397a0645d8c9deb2f18e05b96be"
+  integrity sha512-EsSyMApF9fBXf6ryB20tzlR79Ev0lnONUXyj9BSBVyhcDNy0dNqTWKfk+j4jPk4fpE6ezzxoGXr8ctf6MqkYpQ==
 
 "@zeit/schemas@2.6.0":
   version "2.6.0"
