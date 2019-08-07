@@ -15,7 +15,7 @@ export function current(args: t.IMenuContext) {
       { role: 'services' },
       { type: 'separator' },
       { role: 'hide' },
-      { role: 'hideothers' },
+      { role: 'hideOthers' },
       { role: 'unhide' },
       { type: 'separator' },
       { role: 'quit' },

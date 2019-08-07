@@ -6,7 +6,10 @@ const { DEFAULT } = constants;
 type ICalculatedPaths = {
   main: {
     defaultEntry: { code: string };
-    out: { file: string; dir: string };
+    out: {
+      file: string;
+      dir: { prod: string; dev: string };
+    };
   };
   renderer: {
     defaultEntry: { code: string };
@@ -141,9 +144,10 @@ export class ElectronSettings {
    */
   public out(prod?: boolean) {
     const path = this.path;
+
     const main = {
-      dir: path.main.out.dir,
       file: path.main.out.file,
+      dir: prod ? path.main.out.dir.prod : path.main.out.dir.dev,
     };
     const renderer = {
       dir: prod ? path.renderer.out.dir.prod : path.renderer.out.dir.dev,
@@ -151,8 +155,8 @@ export class ElectronSettings {
 
     return {
       main: {
-        dir: main.dir,
         file: main.file,
+        dir: main.dir,
         path: fs.join(main.dir, main.file),
       },
       renderer: {
@@ -216,7 +220,10 @@ export class ElectronSettings {
         },
         out: {
           file: 'main.js',
-          dir: fs.join(bundle, 'app.main'),
+          dir: {
+            dev: fs.join(bundle, 'app.main/dev'),
+            prod: fs.join(bundle, 'app.main/prod'),
+          },
         },
       },
       renderer: {
@@ -233,7 +240,7 @@ export class ElectronSettings {
       builder: {
         configFilename: `uiharness.builder.yml`,
         output: 'dist',
-        files: [fs.join(bundle, 'app.main/**'), fs.join(bundle, 'app.renderer/prod/**')],
+        files: [fs.join(bundle, 'app.main/prod/**'), fs.join(bundle, 'app.renderer/prod/**')],
       },
     };
   }

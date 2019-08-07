@@ -11,35 +11,43 @@ export async function stats(args: {
 }) {
   const { prod, settings } = args;
   const targets = Array.isArray(args.target) ? args.target : [args.target];
+  const base = settings.path.tmp.dir;
+
+  const show = {
+    dev: prod === undefined || prod === false,
+    prod: prod === undefined || prod === true,
+  };
 
   if (targets.includes('electron')) {
     const path = settings.electron.path;
 
-    await logDir(path.main.out.dir);
-    if (prod === undefined || prod === false) {
-      await logDir(path.renderer.out.dir.dev);
+    if (show.dev) {
+      await logDir(base, path.main.out.dir.dev);
+      await logDir(base, path.renderer.out.dir.dev);
     }
-    if (prod === undefined || prod === true) {
-      await logDir(path.renderer.out.dir.prod);
+    if (show.prod) {
+      await logDir(base, path.main.out.dir.prod);
+      await logDir(base, path.renderer.out.dir.prod);
     }
   }
 
   if (targets.includes('web')) {
     const path = settings.web.path;
-    if (prod === undefined || prod === false) {
-      await logDir(path.out.dir.dev);
+    if (show.dev) {
+      await logDir(base, path.out.dir.dev);
     }
-    if (prod === undefined || prod === true) {
-      await logDir(path.out.dir.prod);
+    if (show.prod) {
+      await logDir(base, path.out.dir.prod);
     }
   }
 }
 
 /**
- * internal
+ * [Internal]
  */
-async function logDir(dir: string) {
-  dir = fs.resolve(dir);
+async function logDir(base: string, dir: string) {
+  dir = fs.resolve(fs.join(base, dir));
+
   if (!(await fs.pathExists(dir))) {
     return;
   }

@@ -189,7 +189,7 @@ async function getIsInitialized(args: { settings: Settings }) {
  *          but [electron] can still find the correct startup location in [main].
  *
  */
-async function copyPackage(args: { settings: Settings; prod: boolean }) {
+export async function copyPackage(args: { settings: Settings; prod: boolean }) {
   const { settings, prod } = args;
   const electron = settings.electron;
   const main = electron.out(prod).main.path;

@@ -1,5 +1,5 @@
 import * as cmds from '@platform/electron/lib/bin/cmds';
-import { Settings } from '../../settings';
+import { log } from '../../common';
 
 /**
  * Rebuilds native modules.
@@ -15,6 +15,16 @@ import { Settings } from '../../settings';
  *   - https://github.com/electron/electron/issues/5851
  *
  */
-export async function rebuild() {
-  await cmds.rebuild();
+export async function rebuild(options: { silent?: boolean; cwd?: string } = {}) {
+  const { silent, cwd } = options;
+  await cmds.rebuild({ silent, cwd });
+
+  if (!options.silent) {
+    // Print reference to documentation.
+    const url = 'https://electronjs.org/docs/tutorial/using-native-node-modules';
+    log.info('🤟');
+    log.info(`For more information see:`);
+    log.info(`- ${log.blue(url)}`);
+    log.info();
+  }
 }

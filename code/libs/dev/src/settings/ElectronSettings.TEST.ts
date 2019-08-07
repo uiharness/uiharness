@@ -27,6 +27,11 @@ describe('ElectronSettings', () => {
       expect(electron.entry.renderer.default.path).to.eql('test/renderer.tsx');
       expect(electron.entry.renderer.default.html).to.eql('html/electron.test.renderer.html');
 
+      const out = electron.out();
+      expect(out.main.file).to.eql('main.js');
+      expect(out.main.dir).to.eql('bundle/app.main/dev');
+      expect(out.main.path).to.eql('bundle/app.main/dev/main.js');
+
       const bundler = electron.bundlerArgs;
       expect(bundler.sourcemaps).to.eql(true);
       expect(bundler.treeshake).to.eql(false);
@@ -48,7 +53,7 @@ describe('ElectronSettings', () => {
 
     expect(electron.entry.main).to.eql('./foo/start.ts');
     expect(electron.entry.renderer.default.title).to.eql('my-app');
-    expect(electron.entry.renderer.default.path).to.eql('./foo/render.tsx');
+    expect(electron.entry.renderer.default.path).to.eql('foo/render.tsx');
 
     const bundler = electron.bundlerArgs;
     expect(bundler.sourcemaps).to.eql(false);

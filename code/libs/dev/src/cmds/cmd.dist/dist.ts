@@ -1,3 +1,5 @@
+import { Subject } from 'rxjs';
+
 import {
   BundleTarget,
   exec,
@@ -46,6 +48,7 @@ export async function distElectron(args: { settings: Settings; silent?: boolean 
   const { settings, silent = false } = args;
   const tmp = settings.path.tmp;
   const electron = settings.electron;
+  const builderArgs = settings.electron.builderArgs;
 
   const handleError = (error: Error, step: string) => {
     if (silent) {
@@ -59,8 +62,13 @@ export async function distElectron(args: { settings: Settings; silent?: boolean 
     }
   };
 
+  // Clear any old build artificats.
+  const buildDir = fs.resolve('.build');
+  await fs.remove(buildDir);
+
   // Ensure the module is initialized.
   await init.prepare({ settings, prod });
+  await init.copyPackage({ settings, prod }); // Ensure the `main` path in [package.json] points to prod.
   await prepareBuilderYaml({ settings });
 
   if (!silent) {
@@ -85,32 +93,58 @@ export async function distElectron(args: { settings: Settings; silent?: boolean 
     return handleError(error, 'building javascript for electron distribution');
   }
 
-  // Make a copy of the configruation file.
+  // Make a copy of the config file.
   const configFile = electron.path.builder.configFilename;
   await fs.copy(configFile, fs.join(tmp.dir, configFile));
 
-  // Construct the `build` command.
-  const cmd = exec.cmd
-    .create()
-    .add(`cd ${fs.resolve(tmp.dir)}`)
-    .newLine()
-    .add(`build`)
-    .add(`--x64`)
-    .add(`--publish=never`)
-    .add(`--config="${configFile}"`);
+  // Copy the whole folder to a temporary `dist-build` location.
+  // Note:  This is so if a dev environment is running it does not impact
+  //        upon the configuration setting the builder is looking at.
+  //        👌 This allows builds to run in the background while developing.
+  await fs.copy(tmp.dir, buildDir);
+  await fs.ensureDir(fs.join(buildDir, 'dist'));
+
+  // Reset after build directory snapshot is made.
+  await init.copyPackage({ settings, prod: false }); // Reset the `main` path in [package.json] to point to dev.
+
+  // Copy the finished artifact back to to the [.uiharness] folder and clean up.
+  const onBuildComplete = async () => {
+    const source = fs.join(buildDir, 'dist');
+    const target = fs.resolve(builderArgs.outputDir || 'dist');
+    await fs.remove(target);
+    await fs.copy(source, target);
+    await fs.remove(buildDir);
+  };
+
+  const runBuilder = async () => {
+    log.info.gray('  -------------------------------------');
+
+    // Run the builder.
+    const cmd = exec.cmd
+      .create()
+      .add(`cd ${buildDir}`)
+      .newLine()
+      .add(`electron-builder build`)
+      .add(`--x64`)
+      .add(`--publish=never`)
+      .add(`--config="${configFile}"`)
+      .run({ silent: true });
+
+    const $ = new Subject<string>();
+    cmd.output$.subscribe(e => $.next(e.text));
+    cmd.complete$.subscribe(async () => {
+      await onBuildComplete();
+      $.complete();
+    });
+
+    return $;
+  };
 
   // Run the electron `build` command.
   const tasks = new Listr([
     {
       title: `Building      ${log.yellow('electron app')} 🌼`,
-      task: async () => {
-        await cmd.run({ silent: true });
-
-        // Clean up.
-        await fs.remove(fs.resolve(fs.join(tmp.dir, 'yarn.lock')));
-        await fs.remove(fs.resolve(fs.join(tmp.dir, 'node_modules')));
-        await fs.remove(fs.resolve(fs.join(tmp.dir, tmp.dir)));
-      },
+      task: () => runBuilder(),
     },
   ]);
 
@@ -122,16 +156,15 @@ export async function distElectron(args: { settings: Settings; silent?: boolean 
   }
 
   // Log output.
-  const config = settings.electron.builderArgs;
-  const path = config.outputDir
-    ? logging.formatPath(fs.join(tmp.dir, config.outputDir), true)
+  const path = builderArgs.outputDir
+    ? logging.formatPath(fs.resolve(builderArgs.outputDir), true)
     : 'UNKNOWN';
 
   if (!silent) {
     log.info();
     log.info(`🤟  Application distribution complete.\n`);
-    log.info.gray(`   • productName: ${log.yellow(config.productName)}`);
-    log.info.gray(`   • appId:       ${config.appId}`);
+    log.info.gray(`   • productName: ${log.yellow(builderArgs.productName)}`);
+    log.info.gray(`   • appId:       ${builderArgs.appId}`);
     log.info.gray(`   • version:     ${settings.package.version}`);
     log.info.gray(`   • folder:      ${path}`);
     log.info();
@@ -161,7 +194,7 @@ export async function distWeb(args: { settings: Settings; silent?: boolean }) {
 }
 
 /**
- * INTERNAL
+ * [Helpers]
  */
 async function prepareBuilderYaml(args: { settings: Settings }) {
   const { settings } = args;
@@ -187,5 +220,6 @@ async function prepareBuilderYaml(args: { settings: Settings }) {
     ...(data.directories || {}),
     output,
   };
+
   await fs.file.stringifyAndSave<IElectronBuilderConfig>(path, data);
 }

@@ -1,7 +1,7 @@
-export { IStoreClient, IpcClient, ILog } from '@platform/electron/lib/types';
+export { ISettingsClient, IpcClient, ILog } from '@platform/electron/lib/types';
 export * from '@uiharness/types';
 
-import { IpcMessage, IContext as ICoreContext, StoreJson } from '@platform/electron/lib/types';
+import { IpcMessage, IContext as ICoreContext, SettingsJson } from '@platform/electron/lib/types';
 import { IRuntimeConfig } from '@uiharness/types';
 
 /**
@@ -9,7 +9,10 @@ import { IRuntimeConfig } from '@uiharness/types';
  * typically passed as a set of values to functions.
  */
 
-export type IContext<E extends IpcMessage = any, S extends StoreJson = any> = ICoreContext<E, S> & {
+export type IContext<E extends IpcMessage = any, S extends SettingsJson = any> = ICoreContext<
+  E,
+  S
+> & {
   config: IRuntimeConfig;
 };
 
