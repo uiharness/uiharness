@@ -1521,10 +1521,10 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@uiharness/electron@0.5.11":
-  version "0.5.11"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.5.11.tgz#af9bec0bd1489c007354f464dc2c5412372449ba"
-  integrity sha512-XDjA6kMFfaUS4tFSjQst2RVZ9Rtw7mutOSSdk+fOH83Ad/8favkEqg0qXDYT4Qxhac2NtXyim2Q2uJ5j7XCvyg==
+"@uiharness/electron@0.5.12":
+  version "0.5.12"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.5.12.tgz#d044c3beb1ac73211aac3c7d575a8909d41c36e4"
+  integrity sha512-23dGqJunftJlYUaHEUX9/CdqU1ovyyvbwMIv3tBkQL/fta+nkCg6cWud5slAduYFsqsW54SLED9eTx29IGjEEA==
   dependencies:
     "@platform/electron" "0.7.2"
     "@platform/log" "0.0.135"
@@ -1532,13 +1532,13 @@
     "@platform/ui.object" "0.0.134"
     "@platform/util.value" "0.4.6"
     "@types/app-root-path" "1.2.4"
-    "@uiharness/types" "0.5.8"
+    "@uiharness/types" "0.5.9"
     tslib "1.10.0"
 
-"@uiharness/types@0.5.8":
-  version "0.5.8"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.5.8.tgz#4269e835eadd7020f1c0685ee03fb960ca73d538"
-  integrity sha512-s6ufM2Ej9aDHMGsqgwO60tGcgass6VlrW8z9brqsi5GdaLAtiTJhoT1PJCZixILrr1dvrH3tUu2iNQRYrXJ/8w==
+"@uiharness/types@0.5.9":
+  version "0.5.9"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.5.9.tgz#25ad18f5cf1ebc8010abdbe009df4226e2aadb9e"
+  integrity sha512-wGEaA7UtSnvqFDjNmY02No6m/CNyoo8kkf0/PKjYBrxibOl+LRPL7WwSI3csHL55qXxyHplHztOHqKJOmyNivg==
 
 "@zeit/schemas@2.6.0":
   version "2.6.0"
@@ -3604,10 +3604,10 @@ electron-window-state@5.0.3:
     jsonfile "^4.0.0"
     mkdirp "^0.5.1"
 
-electron@5.0.5:
-  version "5.0.5"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-5.0.5.tgz#2d04499064d3f6c89c4642e47cfe9ea151d794eb"
-  integrity sha512-GzVQhImBX3rSCFPyJ1u1KbxquoidAHzGeCH2FTs3lzAh1H8m4vd7xh6CNC111mT/I8pxFk5D8s3atJlJQLPAeg==
+electron@6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-6.0.1.tgz#9dcdb3773e933890f432403f2ff5851cffbea126"
+  integrity sha512-XY69rI5IThIxsOS2BD+1ZkHE9hqkm4xN5a3WQFSmFRr2by4q5CnIe9vXmptlouGPTLs3tb7ySX/+K9CvH3szvg==
   dependencies:
     "@types/node" "^10.12.18"
     electron-download "^4.1.0"

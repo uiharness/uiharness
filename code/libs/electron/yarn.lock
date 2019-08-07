@@ -307,10 +307,10 @@
   resolved "https://registry.yarnpkg.com/@types/tinycolor2/-/tinycolor2-1.4.2.tgz#721ca5c5d1a2988b4a886e35c2ffc5735b6afbdf"
   integrity sha512-PeHg/AtdW6aaIO2a+98Xj7rWY4KC1E6yOy7AFknJQ7VXUGNrMlyxDFxJo7HqLtjQms/ZhhQX52mLVW/EX3JGOw==
 
-"@uiharness/types@0.5.8":
-  version "0.5.8"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.5.8.tgz#4269e835eadd7020f1c0685ee03fb960ca73d538"
-  integrity sha512-s6ufM2Ej9aDHMGsqgwO60tGcgass6VlrW8z9brqsi5GdaLAtiTJhoT1PJCZixILrr1dvrH3tUu2iNQRYrXJ/8w==
+"@uiharness/types@0.5.9":
+  version "0.5.9"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.5.9.tgz#25ad18f5cf1ebc8010abdbe009df4226e2aadb9e"
+  integrity sha512-wGEaA7UtSnvqFDjNmY02No6m/CNyoo8kkf0/PKjYBrxibOl+LRPL7WwSI3csHL55qXxyHplHztOHqKJOmyNivg==
 
 ajv@^6.5.5:
   version "6.10.0"
@@ -889,10 +889,10 @@ electron@*:
     electron-download "^4.1.0"
     extract-zip "^1.0.3"
 
-electron@5.0.5:
-  version "5.0.5"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-5.0.5.tgz#2d04499064d3f6c89c4642e47cfe9ea151d794eb"
-  integrity sha512-GzVQhImBX3rSCFPyJ1u1KbxquoidAHzGeCH2FTs3lzAh1H8m4vd7xh6CNC111mT/I8pxFk5D8s3atJlJQLPAeg==
+electron@6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-6.0.1.tgz#9dcdb3773e933890f432403f2ff5851cffbea126"
+  integrity sha512-XY69rI5IThIxsOS2BD+1ZkHE9hqkm4xN5a3WQFSmFRr2by4q5CnIe9vXmptlouGPTLs3tb7ySX/+K9CvH3szvg==
   dependencies:
     "@types/node" "^10.12.18"
     electron-download "^4.1.0"

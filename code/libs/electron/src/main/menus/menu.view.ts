@@ -7,7 +7,7 @@ import * as t from './types';
 export function current(args: t.IMenuContext) {
   const menu: MenuItemConstructorOptions = {
     label: 'View',
-    submenu: [{ role: 'reload' }, { role: 'forcereload' }, { type: 'separator' }],
+    submenu: [{ role: 'reload' }, { role: 'forceReload' }, { type: 'separator' }],
   };
   return menu;
 }

@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/ui",
-  "version": "0.5.17",
+  "version": "0.5.18",
   "description": "",
   "main": "lib/index",
   "types": "lib/index.d.ts",
@@ -19,12 +19,12 @@
     "@platform/react": "0.3.14",
     "@platform/ui.object": "0.0.134",
     "@platform/util.string": "0.3.2",
-    "@uiharness/types": "0.5.8"
+    "@uiharness/types": "0.5.9"
   },
   "devDependencies": {
     "@platform/test": "0.0.60",
     "@platform/ts": "3.4.35",
-    "@uiharness/dev": "0.5.16"
+    "@uiharness/dev": "0.5.17"
   },
   "files": [
     "lib"

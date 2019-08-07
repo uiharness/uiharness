@@ -14,9 +14,9 @@ export function current(args: t.IMenuContext) {
       { role: 'cut' },
       { role: 'copy' },
       { role: 'paste' },
-      { role: 'pasteandmatchstyle' },
+      { role: 'pasteAndMatchStyle' },
       { role: 'delete' },
-      { role: 'selectall' },
+      { role: 'selectAll' },
     ],
   };
 
