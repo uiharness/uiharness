@@ -53,7 +53,7 @@ export type IElectronBuilderConfig = {
 export type IWebConfig = {
   port?: number; // Port the dev-server runs on for electron.
   bundle?: IParcelBuildConfig;
-  entry?: string;
+  entry?: IEntryConfig;
 };
 
 /**
@@ -89,9 +89,7 @@ export type ISettingsPaths = {
 export type ITSConfig = {
   extends: string;
   include: string[];
-  compilerOptions: {
-    outDir: string;
-  };
+  compilerOptions: { outDir: string };
 };
 
 export type ITSLint = {
