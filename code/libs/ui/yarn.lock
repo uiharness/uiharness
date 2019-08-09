@@ -1567,10 +1567,10 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@uiharness/dev@0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@uiharness/dev/-/dev-0.6.0.tgz#59f7c638728d06c4f9c2eac9b40e969860b5f9df"
-  integrity sha512-RaQiftjIjS+TLjqj+b2hHm34yxixdYMWAO6s8yWU0BqnEuantjmhfYMrRzPO6m52DFd7woWiIixk1UuCHjoNjQ==
+"@uiharness/dev@0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@uiharness/dev/-/dev-0.6.1.tgz#35ce4cc64116857b352fe4a96e9613858bdded01"
+  integrity sha512-ZJUgj2TtGdGOsJOXXRvK7XQIWEvb9L+WpZ5wWZxt+o+DcOXQ13UJzI06Lcr7mEcOMKeYPi7et5mSJ81+AYVZDQ==
   dependencies:
     "@babel/core" "7.5.5"
     "@babel/preset-env" "7.5.5"
