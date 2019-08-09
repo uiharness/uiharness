@@ -96,6 +96,22 @@ export async function startWeb(args: { settings: Settings }) {
   log.info();
   logWebInfo({ settings, port: true });
 
+  // Copy static assets to dev server.
+  // NB:  This allows referencing the assets from server during development
+  //      simulating having a `static` folder end-point in [production].
+  if (!prod) {
+    const base = settings.getPaths().tmp.dir;
+    const targetDir = fs.resolve(base, web.getPaths().out.dir.dev);
+    const sourceDirs = await fs.glob.find(`${fs.resolve('static')}/*`, { type: 'DIRS' });
+    const copying = sourceDirs
+      .filter(source => fs.basename(source) !== 'build') // NB: electron build assets, not relevant to [web].
+      .map(source => {
+        const target = fs.join(targetDir, fs.basename(source));
+        return fs.copy(source, target);
+      });
+    await Promise.all(copying);
+  }
+
   // Start the web dev-server
   await web.ensureEntries();
   const renderer = parcel.webBundler(settings);
