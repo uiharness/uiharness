@@ -57,4 +57,14 @@ describe('WebSettings', () => {
     expect(entry.chat.path).to.eql('./foo/chat.tsx');
     expect(entry.chat.html).to.eql('html/web.foo.chat.html');
   });
+
+  it('static resources (empty)', () => {
+    const web = Settings.create(fs.join(DIR, 'uiharness.yml')).web;
+    expect(web.static.paths).to.eql([]);
+  });
+
+  it('static resources (declared)', () => {
+    const web = Settings.create(fs.join(DIR, 'web.static.yml')).web;
+    expect(web.static.paths).to.eql(['favicon.ico', 'css/', 'images/']);
+  });
 });

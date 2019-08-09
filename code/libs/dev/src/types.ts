@@ -54,6 +54,20 @@ export type IWebConfig = {
   port?: number; // Port the dev-server runs on for electron.
   bundle?: IParcelBuildConfig;
   entry?: IEntryConfig;
+  static?: IWebConfigStatic;
+  head?: IWebConfigHead;
+};
+
+/**
+ * Paths to static resources to copy to the bundle.
+ */
+export type IWebConfigStatic = string[];
+
+/**
+ * Values to include within the page <head>.
+ */
+export type IWebConfigHead = {
+  stylesheets?: string[];
 };
 
 /**

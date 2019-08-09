@@ -67,6 +67,14 @@ export class WebSettings {
   }
 
   /**
+   * Paths to static resources to include in the bundle.
+   */
+  public get static() {
+    const paths = this.data.static || [];
+    return { paths };
+  }
+
+  /**
    * Retrieves the entry paths used by the JS bundler.
    */
   public get entry() {
