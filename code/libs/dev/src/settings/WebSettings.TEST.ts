@@ -58,13 +58,27 @@ describe('WebSettings', () => {
     expect(entry.chat.html).to.eql('html/web.foo.chat.html');
   });
 
-  it('static resources (empty)', () => {
-    const web = Settings.create(fs.join(DIR, 'uiharness.yml')).web;
-    expect(web.static.paths).to.eql([]);
+  describe('static resources', () => {
+    it('empty', () => {
+      const web = Settings.create(fs.join(DIR, 'uiharness.yml')).web;
+      expect(web.static.paths).to.eql([]);
+    });
+
+    it('paths (declared)', () => {
+      const web = Settings.create(fs.join(DIR, 'web.static.yml')).web;
+      expect(web.static.paths).to.eql(['favicon.ico', 'css/', 'images/']);
+    });
   });
 
-  it('static resources (declared)', () => {
-    const web = Settings.create(fs.join(DIR, 'web.static.yml')).web;
-    expect(web.static.paths).to.eql(['favicon.ico', 'css/', 'images/']);
+  describe('<head>', () => {
+    it('empty', () => {
+      const web = Settings.create(fs.join(DIR, 'uiharness.yml')).web;
+      expect(web.head.stylesheets).to.eql([]);
+    });
+
+    it('paths (declared)', () => {
+      const web = Settings.create(fs.join(DIR, 'web.head.yml')).web;
+      expect(web.head.stylesheets).to.eql(['/css/global.css', '/css/normalize.css']);
+    });
   });
 });

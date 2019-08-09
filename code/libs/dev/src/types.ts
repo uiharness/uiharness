@@ -59,12 +59,12 @@ export type IWebConfig = {
 };
 
 /**
- * Paths to static resources to copy to the bundle.
+ * Paths to static resources to include in the bundle.
  */
 export type IWebConfigStatic = string[];
 
 /**
- * Values to include within the page <head>.
+ * Declarations to include within the page <head>.
  */
 export type IWebConfigHead = {
   stylesheets?: string[];

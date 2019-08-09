@@ -75,6 +75,16 @@ export class WebSettings {
   }
 
   /**
+   * Declarations to include within the page <head>.
+   */
+  public get head() {
+    const head = this.data.head || {};
+    return {
+      stylesheets: head.stylesheets || [],
+    };
+  }
+
+  /**
    * Retrieves the entry paths used by the JS bundler.
    */
   public get entry() {
