@@ -2,6 +2,7 @@ import { BundleTarget, exec, fs, Listr, log, logging, logNoConfig, value } from 
 import { Settings } from '../../settings';
 import * as init from '../cmd.init';
 import { stats as renderStats } from '../cmd.stats';
+import * as staticAssets from '../../common/staticAssets';
 
 /**
  * Runs the JS bundler.
@@ -192,6 +193,7 @@ export async function bundleWeb(args: {
   // Ensure the module is initialized.
   await init.prepare({ settings, prod });
   await web.ensureEntries();
+  await staticAssets.copyWeb({ settings, prod });
 
   // Build the command.
   const tasks = new Listr([], {

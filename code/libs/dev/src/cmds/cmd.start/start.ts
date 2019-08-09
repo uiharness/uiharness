@@ -11,6 +11,7 @@ import {
 import { Settings } from '../../settings';
 import { bundleElectron } from '../cmd.bundle';
 import * as init from '../cmd.init';
+import * as staticAssets from '../../common/staticAssets';
 
 /**
  * Starts the development server for the given target.
@@ -85,6 +86,7 @@ export async function startWeb(args: { settings: Settings }) {
   const web = settings.web;
   const prod = false;
   const port = web.port;
+  const paths = web.getPaths();
 
   if (!web.exists) {
     logNoConfig({ target: 'web' });
@@ -99,21 +101,24 @@ export async function startWeb(args: { settings: Settings }) {
   // Copy static assets to dev server.
   // NB:  This allows referencing the assets from server during development
   //      simulating having a `static` folder end-point in [production].
-  if (!prod) {
-    const base = settings.getPaths().tmp.dir;
-    const targetDir = fs.resolve(base, web.getPaths().out.dir.dev);
-    const sourceDirs = await fs.glob.find(`${fs.resolve('static')}/*`, { type: 'DIRS' });
-    const copying = sourceDirs
-      .filter(source => fs.basename(source) !== 'build') // NB: electron build assets, not relevant to [web].
-      .map(source => {
-        const target = fs.join(targetDir, fs.basename(source));
-        return fs.copy(source, target);
-      });
-    await Promise.all(copying);
-  }
+  await staticAssets.copyWeb({ settings, prod });
 
   // Start the web dev-server
   await web.ensureEntries();
   const renderer = parcel.webBundler(settings);
   await (renderer as any).serve(port);
+}
+
+/**
+ * Copies static assets
+ */
+export async function copyStaticAssets(args: { target: BundleTarget; settings: Settings }) {
+  const { target } = args;
+
+  if (target === 'electron') {
+    log.warn(`Copying static assets for [electron] target not supported yet`);
+    return;
+  }
+
+  it('does', () => {});
 }
