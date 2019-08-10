@@ -136,7 +136,6 @@ export async function distElectron(args: { settings: Settings; silent?: boolean 
       await onBuildComplete();
       $.complete();
     });
-
     return $;
   };
 

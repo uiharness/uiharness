@@ -1,8 +1,17 @@
-import { BundleTarget, exec, fs, Listr, log, logging, logNoConfig, value } from '../../common';
+import {
+  defaultValue,
+  BundleTarget,
+  exec,
+  fs,
+  Listr,
+  log,
+  logging,
+  logNoConfig,
+} from '../../common';
+import * as staticAssets from '../../common/staticAssets';
 import { Settings } from '../../settings';
 import * as init from '../cmd.init';
 import { stats as renderStats } from '../cmd.stats';
-import * as staticAssets from '../../common/staticAssets';
 
 /**
  * Runs the JS bundler.
@@ -55,9 +64,9 @@ export async function bundleElectron(args: {
     return { success: false, error };
   }
 
-  const summary = value.defaultValue(args.summary, true);
-  const stats = value.defaultValue(args.stats, false);
-  const prod = value.defaultValue(args.prod, true);
+  const summary = defaultValue(args.summary, true);
+  const stats = defaultValue(args.stats, false);
+  const prod = defaultValue(args.prod, true);
   const env = toEnv(prod);
   let { main, renderer } = args;
   const pkg = settings.package;
@@ -121,9 +130,25 @@ export async function bundleElectron(args: {
     });
   }
 
+  const outPath = electron.bundlerArgs.output;
+  const copyOutput = async () => {
+    if (outPath) {
+      const copy = async (type: 'main' | 'renderer', source: string) => {
+        const sourceDir = fs.join(fs.resolve(tmp.dir), source);
+        const targetDir = fs.join(fs.resolve(outPath), type);
+        await fs.ensureDir(fs.dirname(targetDir));
+        await fs.remove(targetDir);
+        await fs.copy(sourceDir, targetDir);
+      };
+      await copy('main', out.main.dir);
+      await copy('renderer', out.renderer.dir);
+    }
+  };
+
   // Run scripts.
   try {
     await tasks.run();
+    await copyOutput();
   } catch (error) {
     if (!silent) {
       log.info();
@@ -140,6 +165,10 @@ export async function bundleElectron(args: {
       main: await toSize(settings, out.main.dir),
       renderer: await toSize(settings, out.renderer.dir),
     };
+    const output = {
+      main: outPath ? fs.join(outPath, 'main') : fs.join(tmp.dir, out.main.dir),
+      renderer: outPath ? fs.join(outPath, 'renderer') : fs.join(tmp.dir, out.renderer.dir),
+    };
 
     log.info();
     log.info(`🤟  Javascript bundling for ${log.yellow('electron')} complete.\n`);
@@ -151,8 +180,8 @@ export async function bundleElectron(args: {
       const code = entry.renderer[key].path;
       log.info.gray(`                  ${formatPath(code)}`);
     });
-    log.info.gray(`   • output:      ${formatPath(out.main.dir)} (${log.blue(size.main)})`);
-    log.info.gray(`                  ${formatPath(out.renderer.dir)} (${log.blue(size.renderer)})`);
+    log.info.gray(`   • output:      ${formatPath(output.main)} (${log.blue(size.main)})`);
+    log.info.gray(`                  ${formatPath(output.renderer)} (${log.blue(size.renderer)})`);
     log.info();
   }
   if (stats && !silent) {
@@ -173,7 +202,7 @@ export async function bundleWeb(args: {
   stats?: boolean;
 }) {
   const { settings, silent = false } = args;
-  const summary = value.defaultValue(args.summary, true);
+  const summary = defaultValue(args.summary, true);
   const tmp = settings.path.tmp;
   const web = settings.web;
 
@@ -183,8 +212,8 @@ export async function bundleWeb(args: {
     return { success: false, error };
   }
 
-  const stats = value.defaultValue(args.stats, false);
-  const prod = value.defaultValue(args.prod, true);
+  const stats = defaultValue(args.stats, false);
+  const prod = defaultValue(args.prod, true);
   const env = toEnv(prod);
   const pkg = settings.package;
   const entry = web.entry;
@@ -214,7 +243,7 @@ export async function bundleWeb(args: {
     .add(`parcel`)
     .add(`build ${buildPaths}`)
     .add(`--public-url ./`)
-    .add(`--out-dir ${fs.join(out.dir)}`)
+    .add(`--out-dir ${out.dir}`)
     .add(`--out-file ${out.file}`)
     .add(web.bundlerArgs.cmd);
 
@@ -223,9 +252,21 @@ export async function bundleWeb(args: {
     task: () => cmd.run({ silent: true }),
   });
 
+  const outPath = web.bundlerArgs.output;
+  const copyOutput = async () => {
+    if (outPath) {
+      const sourceDir = fs.join(fs.resolve(tmp.dir), out.dir);
+      const targetDir = fs.resolve(outPath);
+      await fs.ensureDir(fs.dirname(targetDir));
+      await fs.remove(targetDir);
+      await fs.copy(sourceDir, targetDir);
+    }
+  };
+
   // Run scripts.
   try {
     await tasks.run();
+    await copyOutput();
   } catch (error) {
     if (!silent) {
       log.info();
@@ -239,16 +280,18 @@ export async function bundleWeb(args: {
   // Log results.
   if (summary && !silent) {
     const size = await toSize(settings, out.dir);
-    const entryPath = fs.join(tmp.dir, entry.default.path);
-    const outputPath = fs.join(tmp.dir, out.path);
+    const path = {
+      entry: fs.join(tmp.dir, entry.default.path),
+      output: outPath ? outPath : fs.join(tmp.dir, out.path),
+    };
 
     log.info();
     log.info(`🤟  Javascript bundling for ${log.yellow('web')} complete.\n`);
     log.info.gray(`   • package:     ${pkg.name}`);
     log.info.gray(`   • version:     ${pkg.version}`);
     log.info.gray(`   • env:         ${env.value}`);
-    log.info.gray(`   • entry:       ${formatPath(entryPath)}`);
-    log.info.gray(`   • output:      ${formatPath(outputPath)} (${log.blue(size)})`);
+    log.info.gray(`   • entry:       ${formatPath(path.entry)}`);
+    log.info.gray(`   • output:      ${formatPath(path.output)} (${log.blue(size)})`);
     log.info();
   }
   if (stats) {
