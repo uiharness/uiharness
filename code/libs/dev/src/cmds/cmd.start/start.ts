@@ -108,17 +108,3 @@ export async function startWeb(args: { settings: Settings }) {
   const renderer = parcel.webBundler(settings);
   await (renderer as any).serve(port);
 }
-
-/**
- * Copies static assets
- */
-export async function copyStaticAssets(args: { target: BundleTarget; settings: Settings }) {
-  const { target } = args;
-
-  if (target === 'electron') {
-    log.warn(`Copying static assets for [electron] target not supported yet`);
-    return;
-  }
-
-  it('does', () => {});
-}
