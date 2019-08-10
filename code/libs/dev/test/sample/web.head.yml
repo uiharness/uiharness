@@ -8,5 +8,5 @@ web:
   entry: ./foo/web.html
   head:
     stylesheets:
-      - /css/global.css
       - /css/normalize.css
+      - /css/global.css

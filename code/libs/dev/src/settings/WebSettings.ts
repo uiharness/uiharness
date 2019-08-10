@@ -105,20 +105,18 @@ export class WebSettings {
     const entry = this.entry;
     const name = this.appName;
     const parent = this._paths.parent;
-
     const tmp = parent.tmp;
-    const templatesDir = parent.templates.html;
-    const targetDir = fs.join(tmp.dir, tmp.html);
 
     const wait = Object.keys(entry).map(key => {
       const item = entry[key];
       return ensureEntries({
         name,
-        templatesDir,
-        targetDir,
+        templatesDir: parent.templates.html,
+        targetDir: fs.join(tmp.dir, tmp.html),
         pattern: 'web.html',
         codePath: item.path,
         htmlFile: fs.basename(item.html),
+        stylesheets: this.head.stylesheets,
       });
     });
 

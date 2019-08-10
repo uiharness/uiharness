@@ -93,7 +93,7 @@ describe('WebSettings', () => {
 
     it('paths (declared)', () => {
       const web = Settings.create(fs.join(DIR, 'web.head.yml')).web;
-      expect(web.head.stylesheets).to.eql(['/css/global.css', '/css/normalize.css']);
+      expect(web.head.stylesheets).to.eql(['/css/normalize.css', '/css/global.css']);
     });
   });
 });

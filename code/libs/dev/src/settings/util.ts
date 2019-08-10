@@ -10,8 +10,9 @@ export async function ensureEntries(args: {
   pattern: string;
   targetDir: string;
   htmlFile?: string;
+  stylesheets?: string[];
 }) {
-  const { codePath, pattern } = args;
+  const { codePath, pattern, stylesheets = [] } = args;
 
   const ensureRendererHtml = async () => {
     // Prepare paths.
@@ -33,11 +34,18 @@ export async function ensureEntries(args: {
       .use(tmpl.replace({ edge: '__' }))
       .use(tmpl.copyFile({ force: true, filename: args.htmlFile }));
 
+    const toStylesheet = (path: string) => `<link rel="stylesheet" type="text/css" href="${path}">`;
+    const STYLESHEETS = stylesheets
+      .map((path, i) => `${i > 0 ? '    ' : ''}${toStylesheet(path)}`)
+      .join('\n');
+
     // Execute template.
     const variables = {
       NAME: args.name,
       PATH: fs.join(hops, codePath),
+      STYLESHEETS,
     };
+
     await template.execute({ variables });
   };
 
