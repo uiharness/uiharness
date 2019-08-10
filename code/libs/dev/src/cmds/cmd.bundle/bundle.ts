@@ -135,7 +135,7 @@ export async function bundleElectron(args: {
     if (outPath) {
       const copy = async (type: 'main' | 'renderer', source: string) => {
         const sourceDir = fs.join(fs.resolve(tmp.dir), source);
-        const targetDir = fs.join(fs.resolve(outPath), type);
+        const targetDir = fs.join(fs.resolve(outPath), settings.package.version || '0.0.0', type);
         await fs.ensureDir(fs.dirname(targetDir));
         await fs.remove(targetDir);
         await fs.copy(sourceDir, targetDir);
@@ -256,7 +256,7 @@ export async function bundleWeb(args: {
   const copyOutput = async () => {
     if (outPath) {
       const sourceDir = fs.join(fs.resolve(tmp.dir), out.dir);
-      const targetDir = fs.resolve(outPath);
+      const targetDir = fs.resolve(outPath, settings.package.version || '0.0.0');
       await fs.ensureDir(fs.dirname(targetDir));
       await fs.remove(targetDir);
       await fs.copy(sourceDir, targetDir);
