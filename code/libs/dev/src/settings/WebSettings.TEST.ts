@@ -30,13 +30,28 @@ describe('WebSettings', () => {
 
     expect(web.exists).to.eql(true);
     expect(web.port).to.eql(3030);
-    expect(web.logLevel).to.eql(1);
+    expect(web.logLevel).to.eql(3);
     expect(web.entry.default.html).to.eql('html/web.foo.web.html');
+  });
 
-    const bundler = web.bundlerArgs;
-    expect(bundler.sourcemaps).to.eql(false);
-    expect(bundler.treeshake).to.eql(true);
-    expect(bundler.cmd).to.eql('--experimental-scope-hoisting --log-level 1');
+  describe('bundlerArgs', () => {
+    it('default values', () => {
+      const web = Settings.create(fs.join(DIR, 'uiharness.yml')).web;
+      const bundler = web.bundlerArgs;
+      expect(bundler.sourcemaps).to.eql(true);
+      expect(bundler.treeshake).to.eql(false);
+      expect(bundler.cmd).to.eql('--no-source-maps --log-level 3');
+      expect(bundler.output).to.eql(undefined);
+    });
+
+    it('custom values', () => {
+      const web = Settings.create(fs.join(DIR, 'web.bundle.yml')).web;
+      const bundler = web.bundlerArgs;
+      expect(bundler.sourcemaps).to.eql(false);
+      expect(bundler.treeshake).to.eql(true);
+      expect(bundler.cmd).to.eql('--experimental-scope-hoisting --log-level 1');
+      expect(bundler.output).to.eql('static/dist');
+    });
   });
 
   it('multiple entry points', () => {

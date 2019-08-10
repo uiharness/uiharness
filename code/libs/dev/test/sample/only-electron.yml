@@ -8,7 +8,3 @@ electron:
   entry:
     main: ./foo/start.ts
     renderer: ./foo/render.tsx
-  bundle:
-    sourcemaps: false
-    treeshake: true
-    logLevel: 1

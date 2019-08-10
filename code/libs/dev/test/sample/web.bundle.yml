@@ -1,0 +1,13 @@
+#
+# Sample config for unit-tests.
+#
+
+
+web:
+  port: 3030
+  entry: ./foo/web.html
+  bundle:
+    sourcemaps: false
+    treeshake: true
+    logLevel: 1
+    output: 'static/dist'
