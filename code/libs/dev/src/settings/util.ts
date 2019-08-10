@@ -36,6 +36,7 @@ export async function ensureEntries(args: {
 
     const toStylesheet = (path: string) => `<link rel="stylesheet" type="text/css" href="${path}">`;
     const STYLESHEETS = stylesheets
+      .map(path => fs.join(hops, path))
       .map((path, i) => `${i > 0 ? '    ' : ''}${toStylesheet(path)}`)
       .join('\n');
 

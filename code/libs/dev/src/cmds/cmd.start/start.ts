@@ -86,7 +86,6 @@ export async function startWeb(args: { settings: Settings }) {
   const web = settings.web;
   const prod = false;
   const port = web.port;
-  const paths = web.getPaths();
 
   if (!web.exists) {
     logNoConfig({ target: 'web' });
