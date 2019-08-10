@@ -131,11 +131,12 @@ export async function bundleElectron(args: {
   }
 
   const outPath = electron.bundlerArgs.output;
+  const pkgVersion = settings.package.version || '0.0.0';
   const copyOutput = async () => {
     if (outPath) {
       const copy = async (type: 'main' | 'renderer', source: string) => {
         const sourceDir = fs.join(fs.resolve(tmp.dir), source);
-        const targetDir = fs.join(fs.resolve(outPath), settings.package.version || '0.0.0', type);
+        const targetDir = fs.join(fs.resolve(outPath), pkgVersion, type);
         await fs.ensureDir(fs.dirname(targetDir));
         await fs.remove(targetDir);
         await fs.copy(sourceDir, targetDir);
@@ -166,8 +167,12 @@ export async function bundleElectron(args: {
       renderer: await toSize(settings, out.renderer.dir),
     };
     const output = {
-      main: outPath ? fs.join(outPath, 'main') : fs.join(tmp.dir, out.main.dir),
-      renderer: outPath ? fs.join(outPath, 'renderer') : fs.join(tmp.dir, out.renderer.dir),
+      main: outPath
+        ? fs.join(outPath, fs.join(outPath, pkgVersion), 'main')
+        : fs.join(tmp.dir, out.main.dir),
+      renderer: outPath
+        ? fs.join(outPath, fs.join(outPath, pkgVersion), 'renderer')
+        : fs.join(tmp.dir, out.renderer.dir),
     };
 
     log.info();
@@ -253,10 +258,11 @@ export async function bundleWeb(args: {
   });
 
   const outPath = web.bundlerArgs.output;
+  const pkgVersion = settings.package.version || '0.0.0';
   const copyOutput = async () => {
     if (outPath) {
       const sourceDir = fs.join(fs.resolve(tmp.dir), out.dir);
-      const targetDir = fs.resolve(outPath, settings.package.version || '0.0.0');
+      const targetDir = fs.resolve(outPath, pkgVersion);
       await fs.ensureDir(fs.dirname(targetDir));
       await fs.remove(targetDir);
       await fs.copy(sourceDir, targetDir);
@@ -282,7 +288,7 @@ export async function bundleWeb(args: {
     const size = await toSize(settings, out.dir);
     const path = {
       entry: fs.join(tmp.dir, entry.default.path),
-      output: outPath ? outPath : fs.join(tmp.dir, out.path),
+      output: outPath ? fs.join(outPath, pkgVersion) : fs.join(tmp.dir, out.path),
     };
 
     log.info();
