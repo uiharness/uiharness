@@ -139,7 +139,7 @@ export async function bundleElectron(args: {
       const copy = async (type: 'main' | 'renderer', source: string) => {
         const sourceDir = fs.join(fs.resolve(tmp.dir), source);
         const targetDir = fs.join(fs.resolve(outPath), pkgVersion, type);
-        await copyAndIndexFolder(sourceDir, targetDir);
+        await copyFolder(sourceDir, targetDir);
       };
       await copy('main', out.main.dir);
       await copy('renderer', out.renderer.dir);
@@ -263,7 +263,7 @@ export async function bundleWeb(args: {
     if (outPath) {
       const sourceDir = fs.join(fs.resolve(tmp.dir), out.dir);
       const targetDir = fs.resolve(outPath, pkgVersion);
-      await copyAndIndexFolder(sourceDir, targetDir);
+      await copyFolder(sourceDir, targetDir);
     }
   };
 
@@ -321,31 +321,8 @@ const toSize = async (settings: Settings, dir: string) => {
   return size.toString({ round: 0, spacer: '' });
 };
 
-const copyAndIndexFolder = async (sourceDir: string, targetDir: string) => {
-  // Copy folder.
+const copyFolder = async (sourceDir: string, targetDir: string) => {
   await fs.ensureDir(fs.dirname(targetDir));
   await fs.remove(targetDir);
   await fs.copy(sourceDir, targetDir);
-
-  // Size.
-  const size = await fs.size.dir(targetDir);
-
-  // Create index [manifest.yml].
-  const names = await fs.readdir(targetDir);
-  const files = (await Promise.all(
-    names.map(async name => ({ name, isFile: await fs.is.file(fs.join(targetDir, name)) })),
-  ))
-    .filter(item => item.isFile)
-    .map(item => item.name);
-  const dirs = names.filter(name => !files.includes(name));
-
-  const manifest = {
-    createdAt: time.now.timestamp,
-    bytes: size.bytes,
-    size: size.toString(),
-    files,
-    dirs,
-  };
-  const yaml = jsYaml.safeDump(manifest);
-  await fs.writeFile(fs.join(targetDir, 'manifest.yml'), yaml);
 };
