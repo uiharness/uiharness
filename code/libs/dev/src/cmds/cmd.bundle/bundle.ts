@@ -89,8 +89,8 @@ export async function bundleElectron(args: {
     main: fs.join(tmp.dir, out.main.dir),
     renderer: fs.join(tmp.dir, out.renderer.dir),
   };
-  await fs.remove(outDir.main);
-  await fs.remove(outDir.renderer);
+  await resetFolder(outDir.main);
+  await resetFolder(outDir.renderer);
 
   // Build the command.
   const tasks = new Listr([], {
@@ -235,10 +235,10 @@ export async function bundleWeb(args: {
   // Ensure the module is initialized.
   await init.prepare({ settings, prod });
   await web.ensureEntries();
-  await staticAssets.copyWeb({ settings, prod });
 
-  // Delete any existing bundle.
-  await fs.remove(fs.join(tmp.dir, out.dir));
+  // Prop targer folder.
+  await resetFolder(fs.join(tmp.dir, out.dir));
+  await staticAssets.copyWeb({ settings, prod });
 
   // Build the command.
   const tasks = new Listr([], {
@@ -336,4 +336,9 @@ const copyFolder = async (sourceDir: string, targetDir: string) => {
   await fs.ensureDir(fs.dirname(targetDir));
   await fs.remove(targetDir);
   await fs.copy(sourceDir, targetDir);
+};
+
+const resetFolder = async (dir: string) => {
+  await fs.remove(dir);
+  await fs.ensureDir(dir);
 };
