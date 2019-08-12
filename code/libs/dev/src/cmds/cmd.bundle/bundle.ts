@@ -84,6 +84,14 @@ export async function bundleElectron(args: {
   await init.prepare({ settings, prod });
   await electron.ensureEntries();
 
+  // Delete any existing bundle.
+  const outDir = {
+    main: fs.join(tmp.dir, out.main.dir),
+    renderer: fs.join(tmp.dir, out.renderer.dir),
+  };
+  await fs.remove(outDir.main);
+  await fs.remove(outDir.renderer);
+
   // Build the command.
   const tasks = new Listr([], {
     concurrent: true,
@@ -104,7 +112,7 @@ export async function bundleElectron(args: {
           .clone()
           .add(`parcel`)
           .add(`build ${entry.main}`)
-          .add(`--out-dir ${fs.join(tmp.dir, out.main.dir)}`)
+          .add(`--out-dir ${outDir.main}`)
           .add(`--target electron`)
           .add(bundlerArgs.cmd)
           .run({ silent: true }),
@@ -125,7 +133,7 @@ export async function bundleElectron(args: {
           .add(`parcel`)
           .add(`build ${entryPaths}`)
           .add(`--public-url ./`)
-          .add(`--out-dir ${fs.join(tmp.dir, out.renderer.dir)}`)
+          .add(`--out-dir ${outDir.renderer}`)
           .add(`--target electron`)
           .add(bundlerArgs.cmd)
           .run({ silent: true }),
@@ -229,6 +237,9 @@ export async function bundleWeb(args: {
   await web.ensureEntries();
   await staticAssets.copyWeb({ settings, prod });
 
+  // Delete any existing bundle.
+  await fs.remove(fs.join(tmp.dir, out.dir));
+
   // Build the command.
   const tasks = new Listr([], {
     concurrent: true,
@@ -286,7 +297,7 @@ export async function bundleWeb(args: {
     const size = await toSize(settings, out.dir);
     const path = {
       entry: fs.join(tmp.dir, entry.default.path),
-      output: outPath ? fs.join(outPath, pkgVersion) : fs.join(tmp.dir, out.path),
+      output: outPath ? fs.join(outPath, pkgVersion) : fs.join(tmp.dir, out.dir),
     };
 
     log.info();
