@@ -9,6 +9,7 @@ import {
   logNoConfig,
   jsYaml,
   time,
+  npm,
 } from '../../common';
 import * as staticAssets from '../../common/staticAssets';
 import { Settings } from '../../settings';
@@ -24,8 +25,13 @@ export async function bundle(args: {
   prod?: boolean;
   silent?: boolean;
   summary?: boolean;
+  increment?: boolean;
 }) {
   const { target, silent = false, prod, settings, summary } = args;
+
+  if (args.increment) {
+    await npm.prompt.incrementVersion({ save: true, noChange: true });
+  }
 
   switch (target) {
     case 'electron':

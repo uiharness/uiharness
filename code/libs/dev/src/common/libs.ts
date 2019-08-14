@@ -10,7 +10,6 @@ export { main, Listr, jsYaml };
 
 export { ParcelBundler, yargs, filesize };
 export { value, time, defaultValue } from '@platform/util.value';
-
 export { fs } from '@platform/fs';
 export { log } from '@platform/log/lib/server';
 export { npm, NpmPackage } from '@platform/npm';

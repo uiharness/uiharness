@@ -137,19 +137,24 @@ const program = yargs
           alias: 'd',
           boolean: true,
         })
+        .option('increment', {
+          describe: 'Increment module version (default: false).',
+          alias: 'i',
+          boolean: true,
+        })
         .option('silent', {
           alias: 's',
           describe: 'No console output (default: false).',
           boolean: true,
         }),
     async e => {
-      const { silent, dev = false } = e;
+      const { silent, dev = false, increment = false } = e;
       const prod = !dev;
       const target = wrangleBundleTarget(e.target);
       if (!target) {
         return exit(1);
       }
-      const res = await cmds.bundle({ settings, prod, silent, target });
+      const res = await cmds.bundle({ settings, prod, silent, target, increment });
       if (!res.success) {
         return exit(1);
       }
