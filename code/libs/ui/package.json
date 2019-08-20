@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/ui",
-  "version": "0.6.11",
+  "version": "0.6.12",
   "description": "",
   "main": "lib/index",
   "types": "lib/index.d.ts",
@@ -14,17 +14,17 @@
     "prepare": "ts prepare"
   },
   "dependencies": {
-    "@platform/cli.ui": "0.2.40",
-    "@platform/electron": "0.7.2",
-    "@platform/react": "0.3.14",
-    "@platform/ui.object": "0.0.134",
-    "@platform/util.string": "0.3.2",
-    "@uiharness/types": "0.6.0"
+    "@platform/cli.ui": "0.2.44",
+    "@platform/electron": "0.7.6",
+    "@platform/react": "0.3.18",
+    "@platform/ui.object": "0.0.138",
+    "@platform/util.string": "0.3.6",
+    "@uiharness/types": "0.6.1"
   },
   "devDependencies": {
-    "@platform/test": "0.0.60",
-    "@platform/ts": "3.4.35",
-    "@uiharness/dev": "0.9.0"
+    "@platform/test": "0.0.61",
+    "@platform/ts": "3.5.0",
+    "@uiharness/dev": "0.9.1"
   },
   "files": [
     "lib"

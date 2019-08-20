@@ -104,7 +104,10 @@ function isSourceMapRef(line: string) {
 }
 
 async function expandDirectoryGlobs(dirs: string[]) {
-  const wait = dirs.map(dir => fs.resolve(dir)).map(path => fs.glob.find(path, { type: 'DIRS' }));
+  const wait = dirs
+    .map(dir => fs.resolve(dir))
+    .map(path => `${path}/`)
+    .map(path => fs.glob.find(path, { includeDirs: true }));
   const paths = await Promise.all(wait);
   return value.flatten<string>(paths);
 }
