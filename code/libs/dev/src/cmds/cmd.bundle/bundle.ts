@@ -87,6 +87,8 @@ export async function bundleElectron(args: {
   renderer = all ? true : renderer;
 
   // Ensure the module is initialized.
+  const tsconfig = tsconfigFile(settings);
+  await tsconfig.before();
   await init.prepare({ settings, prod });
   await electron.ensureEntries();
 
@@ -172,6 +174,8 @@ export async function bundleElectron(args: {
       log.info();
     }
     return { success: false, error };
+  } finally {
+    await tsconfig.after();
   }
 
   // Log results.
@@ -239,10 +243,12 @@ export async function bundleWeb(args: {
   const out = web.out(prod);
 
   // Ensure the module is initialized.
+  const tsconfig = tsconfigFile(settings);
+  await tsconfig.before();
   await init.prepare({ settings, prod });
   await web.ensureEntries();
 
-  // Prop targer folder.
+  // Prepare target folder.
   await resetFolder(fs.join(tmp.dir, out.dir));
   await staticAssets.copyWeb({ settings, prod });
 
@@ -296,6 +302,8 @@ export async function bundleWeb(args: {
       log.info();
     }
     return { success: false, error };
+  } finally {
+    await tsconfig.after();
   }
 
   // Log results.
@@ -347,4 +355,48 @@ const copyFolder = async (sourceDir: string, targetDir: string) => {
 const resetFolder = async (dir: string) => {
   await fs.remove(dir);
   await fs.ensureDir(dir);
+};
+
+const tsconfigFile = (settings: Settings) => {
+  type TSConfig = {
+    compilerOptions?: { module?: string };
+  };
+
+  const path = {
+    source: fs.resolve('./tsconfig.json'),
+    backup: fs.resolve('./tsconfig.json.backup'),
+  };
+
+  const api = {
+    async before() {
+      // Make a backup of the [tsconfig].
+      await api.backup();
+
+      // Update compiler options.
+      const path = fs.resolve('./tsconfig.json');
+      let file = await fs.file.loadAndParse<TSConfig>(path);
+      const compilerOptions = { ...file.compilerOptions } || {};
+
+      // NB: `modeule:esnext` is required for dynamic imports (aka. "code splitting").
+      compilerOptions.module = 'esnext';
+      file = { ...file, compilerOptions };
+
+      // Save.
+      await fs.file.stringifyAndSave(path, file);
+    },
+    async after() {
+      await api.restore();
+    },
+    async backup() {
+      await api.restore();
+      await fs.copy(path.source, path.backup);
+    },
+    async restore() {
+      if (await fs.pathExists(path.backup)) {
+        await fs.rename(path.backup, path.source);
+      }
+    },
+  };
+
+  return api;
 };
