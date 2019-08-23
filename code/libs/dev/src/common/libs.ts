@@ -3,13 +3,13 @@ import * as ParcelBundler from 'parcel-bundler';
 import * as yargs from 'yargs';
 import * as Listr from 'listr';
 import * as filesize from 'filesize';
+import * as jsYaml from 'js-yaml';
 export * from './ramda';
 
-export { main, Listr };
+export { main, Listr, jsYaml };
 
 export { ParcelBundler, yargs, filesize };
-export { value, time } from '@platform/util.value';
-
+export { value, time, defaultValue } from '@platform/util.value';
 export { fs } from '@platform/fs';
 export { log } from '@platform/log/lib/server';
 export { npm, NpmPackage } from '@platform/npm';

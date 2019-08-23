@@ -1,6 +1,6 @@
 import { fs } from '../common';
 import { Settings } from '../Settings';
-import { IParcelBuildConfig } from '../types';
+import { IBundleConfig } from '../types';
 import { ParcelBundler } from './libs';
 import { toBundlerArgs } from './util';
 
@@ -53,7 +53,7 @@ export function webBundler(
  */
 function createBundler(
   entry: string | string[],
-  bundlerConfig: IParcelBuildConfig | undefined,
+  bundlerConfig: IBundleConfig | undefined,
   prod: boolean,
   options: ParcelBundler.ParcelOptions,
 ) {

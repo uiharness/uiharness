@@ -67,6 +67,24 @@ export class WebSettings {
   }
 
   /**
+   * Paths to static resources to include in the bundle.
+   */
+  public get static() {
+    const paths = this.data.static || [];
+    return { paths };
+  }
+
+  /**
+   * Declarations to include within the page <head>.
+   */
+  public get head() {
+    const head = this.data.head || {};
+    return {
+      stylesheets: head.stylesheets || [],
+    };
+  }
+
+  /**
    * Retrieves the entry paths used by the JS bundler.
    */
   public get entry() {
@@ -87,20 +105,18 @@ export class WebSettings {
     const entry = this.entry;
     const name = this.appName;
     const parent = this._paths.parent;
-
     const tmp = parent.tmp;
-    const templatesDir = parent.templates.html;
-    const targetDir = fs.join(tmp.dir, tmp.html);
 
     const wait = Object.keys(entry).map(key => {
       const item = entry[key];
       return ensureEntries({
         name,
-        templatesDir,
-        targetDir,
+        templatesDir: parent.templates.html,
+        targetDir: fs.join(tmp.dir, tmp.html),
         pattern: 'web.html',
         codePath: item.path,
         htmlFile: fs.basename(item.html),
+        stylesheets: this.head.stylesheets,
       });
     });
 

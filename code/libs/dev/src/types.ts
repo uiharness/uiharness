@@ -22,7 +22,7 @@ export type ISourcemapsConfig = { strip: string[] };
  */
 export type IElectronConfig = {
   port?: number; // Port the dev-server runs on for electron.
-  bundle?: IParcelBuildConfig;
+  bundle?: IBundleConfig;
   entry?: {
     main?: string;
     renderer?: IEntryConfig;
@@ -52,18 +52,33 @@ export type IElectronBuilderConfig = {
  */
 export type IWebConfig = {
   port?: number; // Port the dev-server runs on for electron.
-  bundle?: IParcelBuildConfig;
-  entry?: string;
+  bundle?: IBundleConfig;
+  entry?: IEntryConfig;
+  static?: IWebStaticConfig;
+  head?: IWebHeadConfig;
+};
+
+/**
+ * Paths to static resources to include in the bundle.
+ */
+export type IWebStaticConfig = string[];
+
+/**
+ * Declarations to include within the page <head>.
+ */
+export type IWebHeadConfig = {
+  stylesheets?: string[];
 };
 
 /**
  * Build args for the Parcel bundler.
  * https://parceljs.org/cli.html
  */
-export type IParcelBuildConfig = {
+export type IBundleConfig = {
   sourcemaps?: boolean; // Default: true.
   treeshake?: boolean; //  Default:  true
   logLevel?: LogLevel; // Default = 1 (errors only). https://parceljs.org/cli.html#change-log-level
+  output?: string; // Optional path to a location to copy the dist bundle to.
 };
 
 /**
@@ -89,9 +104,7 @@ export type ISettingsPaths = {
 export type ITSConfig = {
   extends: string;
   include: string[];
-  compilerOptions: {
-    outDir: string;
-  };
+  compilerOptions: { outDir: string };
 };
 
 export type ITSLint = {

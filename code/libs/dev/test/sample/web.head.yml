@@ -1,0 +1,12 @@
+#
+# Sample config for unit-tests.
+#
+
+
+web:
+  port: 3030
+  entry: ./foo/web.html
+  head:
+    stylesheets:
+      - /css/normalize.css
+      - /css/global.css

@@ -49,22 +49,37 @@ describe('ElectronSettings', () => {
     const electron = Settings.create(DIR).electron;
     expect(electron.exists).to.eql(true);
     expect(electron.port).to.eql(1234);
-    expect(electron.logLevel).to.eql(1);
+    expect(electron.logLevel).to.eql(3);
 
     expect(electron.entry.main).to.eql('./foo/start.ts');
     expect(electron.entry.renderer.default.title).to.eql('my-app');
     expect(electron.entry.renderer.default.path).to.eql('foo/render.tsx');
-
-    const bundler = electron.bundlerArgs;
-    expect(bundler.sourcemaps).to.eql(false);
-    expect(bundler.treeshake).to.eql(true);
-    expect(bundler.cmd).to.eql('--experimental-scope-hoisting --log-level 1');
 
     const builder = electron.builderArgs;
     expect(builder.exists).to.eql(true);
     expect(builder.productName).to.eql('MY_APP');
     expect(builder.appId).to.eql('com.my-app.app');
     expect(builder.outputDir).to.eql('.foo/bar/release');
+  });
+
+  describe('bundlerArgs', () => {
+    it('default values', () => {
+      const electron = Settings.create(fs.join(DIR, 'uiharness.yml')).electron;
+      const bundler = electron.bundlerArgs;
+      expect(bundler.sourcemaps).to.eql(true);
+      expect(bundler.treeshake).to.eql(false);
+      expect(bundler.cmd).to.eql('--no-source-maps --log-level 3');
+      expect(bundler.output).to.eql(undefined);
+    });
+
+    it('custom values', () => {
+      const electron = Settings.create(fs.join(DIR, 'electron.bundle.yml')).electron;
+      const bundler = electron.bundlerArgs;
+      expect(bundler.sourcemaps).to.eql(false);
+      expect(bundler.treeshake).to.eql(true);
+      expect(bundler.cmd).to.eql('--experimental-scope-hoisting --log-level 1');
+      expect(bundler.output).to.eql('static/dist');
+    });
   });
 
   it('multiple renderer entry points', () => {

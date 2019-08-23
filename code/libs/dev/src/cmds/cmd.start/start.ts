@@ -11,6 +11,7 @@ import {
 import { Settings } from '../../settings';
 import { bundleElectron } from '../cmd.bundle';
 import * as init from '../cmd.init';
+import * as staticAssets from '../../common/staticAssets';
 
 /**
  * Starts the development server for the given target.
@@ -95,6 +96,11 @@ export async function startWeb(args: { settings: Settings }) {
   await init.prepare({ settings, prod });
   log.info();
   logWebInfo({ settings, port: true });
+
+  // Copy static assets to dev server.
+  // NB:  This allows referencing the assets from server during development
+  //      simulating having a `static` folder end-point in [production].
+  await staticAssets.copyWeb({ settings, prod });
 
   // Start the web dev-server
   await web.ensureEntries();

@@ -122,11 +122,12 @@ export function logEntries(
 /**
  * Extract JS bundler args (Parcel-JS) or defaults.
  */
-export function toBundlerArgs(data: t.IParcelBuildConfig = {}) {
+export function toBundlerArgs(data: t.IBundleConfig = {}) {
   // Default values.
   const sourcemaps = defaultValue(data.sourcemaps, true);
   const treeshake = defaultValue(data.treeshake, false);
-  const logLevel = value.defaultValue(data.logLevel, DEFAULT.LOG_LEVEL);
+  const logLevel = defaultValue(data.logLevel, DEFAULT.LOG_LEVEL);
+  const output = data.output;
 
   /**
    * Build command-line arguments.
@@ -140,7 +141,7 @@ export function toBundlerArgs(data: t.IParcelBuildConfig = {}) {
     .add(`--log-level ${logLevel}`);
 
   // Finish up.
-  return { sourcemaps, treeshake, cmd: cmd.toString() };
+  return { sourcemaps, treeshake, output, cmd: cmd.toString() };
 }
 
 /**
