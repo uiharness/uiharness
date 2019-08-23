@@ -30,15 +30,15 @@
     glamor "2.20.40"
     tinycolor2 "1.4.1"
 
-"@platform/electron@0.7.6":
-  version "0.7.6"
-  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.7.6.tgz#cb8820c2ad33ae3888a8e9a0aea7fd3292ca80ee"
-  integrity sha512-p6sZYD5SiQ1KHselKGd/coQn71hatREJ+URLpzUC9SvkBVen76Q1MUh3vTwwUqPUkM+HhWsoSpPp1vuA8mCFEQ==
+"@platform/electron@0.7.7":
+  version "0.7.7"
+  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.7.7.tgz#7d5e58b2298c8e29507677591fe7c453e80ce144"
+  integrity sha512-bfkF0pN8n5hBOvhUx9FzNXG7Td5TRZTKWgzb5kJRTlKa0IhuLL7yU+DsQCyezCLY7ClMJIenXf6/6xiASK2jiw==
   dependencies:
     "@platform/fs" "0.2.0"
     "@platform/libs" "0.1.1"
     "@platform/log" "0.0.139"
-    "@platform/react" "0.3.18"
+    "@platform/react" "0.3.19"
     "@platform/types" "0.0.26"
     "@types/app-root-path" "1.2.4"
     app-root-path "2.2.1"
@@ -94,15 +94,15 @@
     chalk "2.4.2"
     cli-table "0.3.1"
 
-"@platform/react@0.3.18":
-  version "0.3.18"
-  resolved "https://registry.yarnpkg.com/@platform/react/-/react-0.3.18.tgz#49c373872f95b7706ac982fcd548918abae3b77d"
-  integrity sha512-NkZesxbKB0J7zSrFt6A2sZ2H9nYrMpeao86EJiB24e6bfihoD/ATnJ+sUTMvXonmbvWjTsbxPrODD7D29Iejew==
+"@platform/react@0.3.19":
+  version "0.3.19"
+  resolved "https://registry.yarnpkg.com/@platform/react/-/react-0.3.19.tgz#f6d9a3ece1c0ad52dcfe9d44e4435d668c69b2bb"
+  integrity sha512-IYaD1DoegPGfc2+PSbbYbCL/TPylUrP3KJfD1LLRZMhtlSPNByneSAUx93zqOHcW4BhQBJGgr+tHyRvT3T+YDQ==
   dependencies:
     "@platform/css" "0.1.33"
     "@platform/util.is" "0.0.88"
     "@types/react" "16.9.2"
-    "@types/react-dom" "16.8.5"
+    "@types/react-dom" "16.9.0"
     react "16.9.0"
     react-dom "16.9.0"
 
@@ -146,12 +146,12 @@
   resolved "https://registry.yarnpkg.com/@platform/types/-/types-0.0.26.tgz#cd725db692eb00a72d7c99577978104bd00ecc76"
   integrity sha512-kX/2uT3qDNon70rxg7rOeYKH+M0Qvz2pLS5mFRujZFN9boP94CpayEicEVEJikkiCtlXmoV/ta6NGh0xROCm7g==
 
-"@platform/ui.object@0.0.138":
-  version "0.0.138"
-  resolved "https://registry.yarnpkg.com/@platform/ui.object/-/ui.object-0.0.138.tgz#7c1fa0bfc8e64cfd935c67fa08f115a3fea6d268"
-  integrity sha512-Yjxe31Gob3NTE6jl1KdSOGmViOi0ZAdL4gGTEmVMODG4CO6tMJhzFViDQXIktjSWKQl5y5cZkTZgjJ99T1OAYA==
+"@platform/ui.object@0.0.139":
+  version "0.0.139"
+  resolved "https://registry.yarnpkg.com/@platform/ui.object/-/ui.object-0.0.139.tgz#7c49fda8cd46a984e510f75dee1b0c67062148ed"
+  integrity sha512-ewEtrhGB1QRJwwt/KxaJUirABTPAfxsNa8yb1eaaLNL67dsqatMMMcLOuHXstcyLzb0O2FT7/tRdfGk0inSqgQ==
   dependencies:
-    "@platform/react" "0.3.18"
+    "@platform/react" "0.3.19"
     react-inspector "3.0.2"
 
 "@platform/util.is@0.0.88":
@@ -255,10 +255,10 @@
   dependencies:
     ts-toolbelt "^3.2.22"
 
-"@types/react-dom@16.8.5":
-  version "16.8.5"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.8.5.tgz#3e3f4d99199391a7fb40aa3a155c8dd99b899cbd"
-  integrity sha512-idCEjROZ2cqh29+trmTmZhsBAUNQuYrF92JHKzZ5+aiFM1mlSk3bb23CK7HhYuOY75Apgap5y2jTyHzaM2AJGA==
+"@types/react-dom@16.9.0":
+  version "16.9.0"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.9.0.tgz#ba6ddb00bf5de700b0eb91daa452081ffccbfdea"
+  integrity sha512-OL2lk7LYGjxn4b0efW3Pvf2KBVP0y1v3wip1Bp7nA79NkOpElH98q3WdCEdDj93b2b0zaeBG9DvriuKjIK5xDA==
   dependencies:
     "@types/react" "*"
 

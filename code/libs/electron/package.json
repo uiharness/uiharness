@@ -12,10 +12,10 @@
     "prepare": "ts prepare"
   },
   "dependencies": {
-    "@platform/electron": "0.7.6",
+    "@platform/electron": "0.7.7",
     "@platform/log": "0.0.139",
-    "@platform/react": "0.3.18",
-    "@platform/ui.object": "0.0.138",
+    "@platform/react": "0.3.19",
+    "@platform/ui.object": "0.0.139",
     "@platform/util.value": "0.4.10",
     "@types/app-root-path": "1.2.4",
     "@uiharness/types": "0.6.1",

@@ -14,10 +14,10 @@
     "prepare": "ts prepare"
   },
   "dependencies": {
-    "@platform/cli.ui": "0.2.44",
-    "@platform/electron": "0.7.6",
-    "@platform/react": "0.3.18",
-    "@platform/ui.object": "0.0.138",
+    "@platform/cli.ui": "0.2.45",
+    "@platform/electron": "0.7.7",
+    "@platform/react": "0.3.19",
+    "@platform/ui.object": "0.0.139",
     "@platform/util.string": "0.3.6",
     "@uiharness/types": "0.6.1"
   },
