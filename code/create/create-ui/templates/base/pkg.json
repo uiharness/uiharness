@@ -14,8 +14,8 @@
   "devDependencies": {
     "@uiharness/dev": "latest",
     "@uiharness/ui": "latest",
-    "electron": "5.0.0"
+    "electron": "latest"
   },
-  "files": ["lib"],
+  "files": ["lib", "!*.TEST.{js, mjs, d.ts}"],
   "license": "MIT"
 }
