@@ -1,0 +1,16 @@
+manifest: manifest.yml
+
+builder:
+  bundles: ../bundle
+  entries: ../lib/entry/entry.html.js
+
+s3:
+  endpoint: sfo2.digitaloceanspaces.com
+  cdn: uih.sfo2.cdn.digitaloceanspaces.com
+  accessKey: SPACES_KEY
+  secret: SPACES_SECRET
+  bucket: uih
+  path:
+    base: website/v1
+    manifest: manifest.yml
+    bundles: bundle
