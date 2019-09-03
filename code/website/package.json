@@ -20,7 +20,7 @@
   "dependencies": {
     "@platform/react": "0.3.24",
     "@platform/ui.icon": "0.0.88",
-    "@platform/ui.shell": "0.1.15"
+    "@platform/ui.shell": "0.1.16"
   },
   "devDependencies": {
     "@platform/test": "0.0.63",

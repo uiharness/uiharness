@@ -1371,24 +1371,24 @@
     "@platform/react" "0.3.24"
     "@platform/util.animate" "0.0.53"
 
-"@platform/ui.shell.types@0.0.10":
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/@platform/ui.shell.types/-/ui.shell.types-0.0.10.tgz#93384434b01f15e85e96599b965641a70a0e7a42"
-  integrity sha512-ov7Rns9UG68ivAlIigYn0UlqTQwTZAF4NtPJ5cv/8eQOX/r6olHoXdEeShtPKYd7w9zAaAaY2mhk0MhFB/3+Dg==
+"@platform/ui.shell.types@0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@platform/ui.shell.types/-/ui.shell.types-0.0.11.tgz#c8724b8b4397f6804bbae11fb56add61e45a17a5"
+  integrity sha512-IsmOJC+rSnNERrZn32P/26EhraR3It52d5O01vZ/+I7IJTeARpxlo7FBAVqdFjfepxg+J6sOd9+m1aYmSiZ1iQ==
   dependencies:
     "@platform/libs" "0.1.2"
     "@platform/ui.tree" "0.3.6"
 
-"@platform/ui.shell@^0.1.15":
-  version "0.1.15"
-  resolved "https://registry.yarnpkg.com/@platform/ui.shell/-/ui.shell-0.1.15.tgz#bcc989ceca964be9aa9e7d260da63658df5e969f"
-  integrity sha512-OGtbLUPLYICCuBBVLXt9IY2LpW6X6vKM5dtm5Za/+FAOyjA4j1+/BAVWFvta+Nwt4elH+zk6AuvvjhXB1GeDwA==
+"@platform/ui.shell@0.1.16":
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/@platform/ui.shell/-/ui.shell-0.1.16.tgz#6ce90110a820cd0d7f93927a6d94b19103d09584"
+  integrity sha512-bQmX3JjSXEHVj3rISbT9UZanIoOK2E2TvsPKZw6rNp7E/Cp7w0H0+YHmAFLUGymoKmpKCAoCanF70DObuQ4T0g==
   dependencies:
     "@platform/log" "0.0.143"
     "@platform/react" "0.3.24"
     "@platform/ui.icon" "0.0.88"
     "@platform/ui.loader" "0.2.4"
-    "@platform/ui.shell.types" "0.0.10"
+    "@platform/ui.shell.types" "0.0.11"
     "@platform/ui.tree" "0.3.6"
     "@platform/util.value" "0.5.3"
 
