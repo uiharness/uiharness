@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "0.0.40",
+  "version": "0.0.42",
   "scripts": {
     "postinstall": "ui init",
     "ui": "msync sl && ui $@",
@@ -11,13 +11,13 @@
     "nuke": "sh ./sh/nuke.sh"
   },
   "dependencies": {
-    "@uiharness/ui": "0.6.12",
+    "@uiharness/ui": "0.6.14",
     "core-js": "3.2.1"
   },
   "devDependencies": {
-    "@uiharness/dev": "0.9.1",
-    "@uiharness/electron": "0.6.2",
-    "electron": "6.0.2",
+    "@uiharness/dev": "0.9.3",
+    "@uiharness/electron": "0.6.3",
+    "electron": "6.0.5",
     "typescript": "3.5.3"
   },
   "license": "MIT",
