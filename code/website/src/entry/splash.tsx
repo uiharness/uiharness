@@ -15,9 +15,8 @@ export const factory: shell.SplashFactory = args => {
   }
 
   if (type === 'TOP:RIGHT') {
-    const size = attr('html', 'data-size');
     const version = attr('html', 'data-version');
-    const text = size && version ? `version ${version}, size ${size}` : '';
+    const text = version ? `version ${version}` : '';
     return renderText({ text, theme });
   }
 
