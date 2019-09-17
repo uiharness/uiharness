@@ -17,8 +17,8 @@
   "devDependencies": {
     "@uiharness/dev": "0.9.7",
     "@uiharness/electron": "0.6.7",
-    "electron": "6.0.7",
-    "typescript": "3.6.2"
+    "electron": "6.0.9",
+    "typescript": "3.6.3"
   },
   "license": "MIT",
   "private": true

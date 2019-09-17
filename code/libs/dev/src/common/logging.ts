@@ -1,4 +1,4 @@
-import { R, fs, log, filesize } from './libs';
+import { R, fs, log } from './libs';
 
 /**
  * Formats a path to be a display path.
@@ -19,7 +19,7 @@ export async function fileStatsTable(args: { dir: string; showHeader?: boolean }
   const { showHeader = false } = args;
   const dir = fs.resolve(args.dir);
 
-  const toSize = (bytes: number) => filesize(bytes, { round: 0, spacer: '' });
+  const toSize = (bytes: number) => fs.size.toString(bytes, { round: 0, spacer: '' });
 
   const getPaths = (dir: string) => {
     return fs.pathExistsSync(dir) ? fs.readdirSync(dir).map(path => fs.join(dir, path)) : [];

@@ -2,13 +2,12 @@ import main from '@uiharness/electron/lib/main';
 import * as ParcelBundler from 'parcel-bundler';
 import * as yargs from 'yargs';
 import * as Listr from 'listr';
-import * as filesize from 'filesize';
 import * as jsYaml from 'js-yaml';
 export * from './ramda';
 
 export { main, Listr, jsYaml };
 
-export { ParcelBundler, yargs, filesize };
+export { ParcelBundler, yargs };
 export { value, time, defaultValue } from '@platform/util.value';
 export { fs } from '@platform/fs';
 export { log } from '@platform/log/lib/server';

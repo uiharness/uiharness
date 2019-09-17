@@ -12,7 +12,7 @@
     "prepare": "ts prepare"
   },
   "dependencies": {
-    "@platform/electron": "0.7.15",
+    "@platform/electron": "0.7.17",
     "@platform/log": "0.0.145",
     "@platform/react": "0.3.26",
     "@platform/ui.object": "0.0.146",
@@ -25,7 +25,7 @@
     "@platform/test": "0.0.64",
     "@platform/ts": "3.5.6",
     "@types/electron-window-state": "2.0.33",
-    "electron": "6.0.7"
+    "electron": "6.0.9"
   },
   "files": [
     "lib",

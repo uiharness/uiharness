@@ -1,5 +1,5 @@
 {
-  "name": "slc.ui.server",
+  "name": "uiharness.website.server",
   "version": "0.0.9",
   "scripts": {
     "ssr": "ssr $@",
@@ -12,7 +12,7 @@
     "@platform/react.ssr": "^1.1.11"
   },
   "devDependencies": {
-    "ts-node": "^8.3.0"
+    "ts-node": "^8.4.1"
   },
   "license": "MIT",
   "private": true

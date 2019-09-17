@@ -14,8 +14,8 @@
     "prepare": "ts prepare"
   },
   "dependencies": {
-    "@platform/cli.ui": "0.2.55",
-    "@platform/electron": "0.7.15",
+    "@platform/cli.ui": "0.2.57",
+    "@platform/electron": "0.7.17",
     "@platform/react": "0.3.26",
     "@platform/ui.object": "0.0.146",
     "@platform/util.string": "0.3.12",
