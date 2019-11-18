@@ -1,13 +1,13 @@
 import { IpcClient, IpcMessage, ISettingsClient } from '@platform/electron';
 import { BrowserWindow } from 'electron';
 
-import { IContext, IEvents, IRuntimeConfig } from '../types';
+import { IContext as IContextLocal, IEvents, IRuntimeConfig } from '../types';
 
 export { IpcMessage, IpcClient, IRuntimeConfig, ISettingsClient };
 export * from '../types';
 
 export type UIHarnessIpc = IpcClient<IEvents>;
-export type IContext = IContext<IEvents>;
+export type IContext = IContextLocal<IEvents>;
 
 /**
  * New window.
