@@ -1,3 +1,5 @@
+import { image } from './libs';
+
 export const COLORS = {
   WHITE: '#FFF',
   DARK: '#293042', // Inky blue/black.
@@ -9,6 +11,11 @@ const IMAGES = '/images';
 export const IMAGE = {
   LOGO: {
     SPLASH: [`${IMAGES}/splash/logo.png`, `${IMAGES}/splash/logo@2x.png`, 212, 91],
-    MAIN: [`${IMAGES}/main/logo.png`, `${IMAGES}/main/logo@2x.png`, 357, 143],
+    MAIN: image({
+      x1: `${IMAGES}/main/logo.png`,
+      x2: `${IMAGES}/main/logo@2x.png`,
+      width: 357,
+      height: 143,
+    }),
   },
 };

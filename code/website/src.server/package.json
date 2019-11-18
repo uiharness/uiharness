@@ -1,5 +1,5 @@
 {
-  "name": "slc.ui.server",
+  "name": "uiharness.website.server",
   "version": "0.0.9",
   "scripts": {
     "ssr": "ssr $@",
@@ -9,10 +9,10 @@
     "watch": "nodemon --watch ../src -e ts,tsx --delay 2"
   },
   "dependencies": {
-    "@platform/react.ssr": "^1.1.8"
+    "@platform/react.ssr": "^1.1.15"
   },
   "devDependencies": {
-    "ts-node": "^8.3.0"
+    "ts-node": "^8.5.2"
   },
   "license": "MIT",
   "private": true

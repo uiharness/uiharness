@@ -1,6 +1,6 @@
 {
   "name": "uiharness.website",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Website for the UIHarness.",
   "types": "lib/index.d.ts",
   "scripts": {
@@ -18,15 +18,16 @@
     "deploy": "cd src.server && yarn deploy"
   },
   "dependencies": {
-    "@platform/react": "0.3.24",
-    "@platform/ui.icon": "0.0.88",
-    "@platform/ui.shell": "0.1.15"
+    "@platform/react": "0.3.26",
+    "@platform/ui.icon": "0.0.90",
+    "@platform/ui.image": "^0.2.0",
+    "@platform/ui.shell": "0.1.20"
   },
   "devDependencies": {
-    "@platform/test": "0.0.63",
-    "@platform/ts": "3.5.4",
-    "@uiharness/dev": "0.9.3",
-    "@uiharness/ui": "0.6.14"
+    "@platform/test": "0.0.64",
+    "@platform/ts": "3.5.6",
+    "@uiharness/dev": "0.9.7",
+    "@uiharness/ui": "0.6.18"
   },
   "files": [
     "lib",

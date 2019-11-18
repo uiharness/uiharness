@@ -24,21 +24,7 @@ export class Home extends React.PureComponent {
         Absolute: 0,
         Flex: 'horizontal-center-center',
       }),
-      logo: css({
-        Image: IMAGE.LOGO.MAIN,
-      }),
     };
-    return (
-      <div {...styles.base}>
-        <div {...styles.logo} />
-      </div>
-    );
+    return <div {...styles.base}>{IMAGE.LOGO.MAIN({ fadeIn: 1000 })}</div>;
   }
-
-  /**
-   * [Handlers]
-   */
-  private loadAside = () => {
-    this.context.shell.load('Sidebar');
-  };
 }

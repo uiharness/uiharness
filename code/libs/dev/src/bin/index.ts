@@ -302,7 +302,12 @@ const program = yargs
   /**
    * `serve`
    */
-  .command([CMD.SERVE], 'Serve the web distribution.', e => e, e => cmds.serve({ settings }))
+  .command(
+    [CMD.SERVE],
+    'Serve the web distribution.',
+    e => e,
+    e => cmds.serve({ settings }),
+  )
 
   .help('h')
   .alias('h', 'help')
