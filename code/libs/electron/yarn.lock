@@ -343,10 +343,10 @@
   resolved "https://registry.yarnpkg.com/@types/tinycolor2/-/tinycolor2-1.4.2.tgz#721ca5c5d1a2988b4a886e35c2ffc5735b6afbdf"
   integrity sha512-PeHg/AtdW6aaIO2a+98Xj7rWY4KC1E6yOy7AFknJQ7VXUGNrMlyxDFxJo7HqLtjQms/ZhhQX52mLVW/EX3JGOw==
 
-"@uiharness/types@0.6.8":
-  version "0.6.8"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.6.8.tgz#a73dca263d0a2b699a5de54481c5549f9533cefb"
-  integrity sha512-2rpfyPbSQE/NVcmElsV82P3h1grj3tPI9QkpLerE5GsABLy4v1jwzRVULGUcEuqCciCo0lpPLSxyaHQbrUes0g==
+"@uiharness/types@0.6.9":
+  version "0.6.9"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.6.9.tgz#49ce421f5051ebf97af99308e2ee78ee0ab6935d"
+  integrity sha512-7opDlkpsEQpM7omY/l9I841cnfF0lAn/1TQfu7Ge1Ch1z3FFxP2tQ10YypZ5gEmsNpUuZP+U0Q8/16Hrk3wc2A==
 
 abab@^2.0.0:
   version "2.0.3"
