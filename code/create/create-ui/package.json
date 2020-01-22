@@ -18,7 +18,7 @@
     "tslib": "1.10.0"
   },
   "devDependencies": {
-    "@platform/ts": "3.7.2"
+    "@platform/ts": "3.7.9"
   },
   "repository": "uiharness/uiharness",
   "files": [

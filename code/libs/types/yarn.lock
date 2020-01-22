@@ -18,10 +18,10 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@platform/exec@0.2.35":
-  version "0.2.35"
-  resolved "https://registry.yarnpkg.com/@platform/exec/-/exec-0.2.35.tgz#97d964bd74de506dad3d62cd45ac9381c5a24549"
-  integrity sha512-j31OW2ONQwHItEw6JfGRZc2Wx2vrA41L229odBLSq60DJUttHqYJB+fDMVNk1BMC3cv4lnKwtcASizGaZMR4VQ==
+"@platform/exec@0.2.42":
+  version "0.2.42"
+  resolved "https://registry.yarnpkg.com/@platform/exec/-/exec-0.2.42.tgz#8f4f616cc9fed27fb2d5d271ec809734c5d81be8"
+  integrity sha512-7wX55b9EsRvWiZOul5WxZhVyMn11Q1vG9d3cebE+PeVxwmXHApNfaM7x1ggWHnSOU/cKtrxgJlcmvyx3rnxRiw==
   dependencies:
     "@platform/libs" "0.1.5"
     "@types/chalk" "2.2.0"
@@ -30,10 +30,10 @@
     chalk "3.0.0"
     listr "0.14.3"
 
-"@platform/fs@0.3.5":
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/@platform/fs/-/fs-0.3.5.tgz#e3a9242dc46b38381ffcdc9b84d206746111a148"
-  integrity sha512-lkjq1z5wjDx2NHW0wra8mAn34oD1l246HKWBDh5bV1FwkiIe383ZUIpZX2YjjgqpJCIHKrZVh2lj3NsoiBHTbQ==
+"@platform/fs@0.5.3":
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/@platform/fs/-/fs-0.5.3.tgz#09f39211c0b42c17c2e248b8d580467e66baaacd"
+  integrity sha512-SdohMYS3kshQA42L+BSl2hLuPyrMMc+1uezixGs1wWdq+gAB4260B4HQetyMKezRqkKs/k2BlDJhNAqZ/5Wxtw==
   dependencies:
     "@types/fs-extra" "8.0.1"
     "@types/js-yaml" "3.12.1"
@@ -58,29 +58,29 @@
     rxjs "6.5.3"
     tslib "1.10.0"
 
-"@platform/ts.libs@3.7.1":
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/@platform/ts.libs/-/ts.libs-3.7.1.tgz#30ee1aeef6c7c1ea8d642b9ee5efcdbc997c2c08"
-  integrity sha512-wltOkd5iTiNDAxcyiWm0lxtlTpJ9HmsYMshlnl7K8q/yfxv8EhDvBDWs2rTW+P5koG8OdYkRJB/PMAgzS9maGQ==
+"@platform/ts.libs@3.7.3":
+  version "3.7.3"
+  resolved "https://registry.yarnpkg.com/@platform/ts.libs/-/ts.libs-3.7.3.tgz#9bf160f8173a803a2aed829cae99a324438d880e"
+  integrity sha512-I5mBleJses8JuzGu4TvqcTvvVmsKM9K8SNl0kixTYcPysrXWSiCB2H23gQgYCvez5sa9r0Xf4eeNsoBaU4vH0A==
   dependencies:
-    "@types/node" "12.12.12"
+    "@types/node" "13.1.6"
     prettier "1.19.1"
-    ts-node "8.5.2"
+    ts-node "8.6.1"
     tslib "1.10.0"
     tslint "5.20.1"
     tslint-config-prettier "1.18.0"
     tslint-react "4.1.0"
-    typescript "3.7.2"
+    typescript "3.7.4"
 
-"@platform/ts@3.7.2":
-  version "3.7.2"
-  resolved "https://registry.yarnpkg.com/@platform/ts/-/ts-3.7.2.tgz#982e8d8d58b667876a00c4062a22712d61d46688"
-  integrity sha512-Qw11UsVXk8TxArK5D8sVAxopJAUnvtSR0LNuOYOYGiGrsjIxnWFRpAQW1w/RrTwK7Xq8GcEy3jXgmtXQ+VATaw==
+"@platform/ts@3.7.9":
+  version "3.7.9"
+  resolved "https://registry.yarnpkg.com/@platform/ts/-/ts-3.7.9.tgz#07becefebc4010f064dbf464bd9a66ddfad71a9d"
+  integrity sha512-ca1qxw6OgRKkwFNCaDqsyaHKGBRDcsVds6aJQfOO3qfkT/H/pXiZN9L23doyKOH0b6u4sTZU/E2twkNj1J/lFw==
   dependencies:
-    "@platform/exec" "0.2.35"
-    "@platform/fs" "0.3.5"
+    "@platform/exec" "0.2.42"
+    "@platform/fs" "0.5.3"
     "@platform/libs" "0.1.5"
-    "@platform/ts.libs" "3.7.1"
+    "@platform/ts.libs" "3.7.3"
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
@@ -126,10 +126,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.7.4.tgz#64db61e0359eb5a8d99b55e05c729f130a678b04"
   integrity sha512-W0+n1Y+gK/8G2P/piTkBBN38Qc5Q1ZSO6B5H3QmPCUewaiXOo2GCAWZ4ElZCcNhjJuBSUSLGFUJnmlCn5+nxOQ==
 
-"@types/node@12.12.12":
-  version "12.12.12"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.12.tgz#529bc3e73dbb35dd9e90b0a1c83606a9d3264bdb"
-  integrity sha512-MGuvYJrPU0HUwqF7LqvIj50RZUX23Z+m583KBygKYUZLlZ88n6w28XRNJRJgsHukLEnLz6w6SvxZoLgbr5wLqQ==
+"@types/node@13.1.6":
+  version "13.1.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.1.6.tgz#076028d0b0400be8105b89a0a55550c86684ffec"
+  integrity sha512-Jg1F+bmxcpENHP23sVKkNuU3uaxPnsBMW0cLjleiikFKomJQbsn0Cqk2yDvQArqzZN6ABfBkZ0To7pQ8sLdWDg==
 
 "@types/ramda@0.26.36":
   version "0.26.36"
@@ -1001,16 +1001,16 @@ tar-stream@^2.1.0:
     inherits "^2.0.3"
     readable-stream "^3.1.1"
 
-ts-node@8.5.2:
-  version "8.5.2"
-  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-8.5.2.tgz#434f6c893bafe501a30b32ac94ee36809ba2adce"
-  integrity sha512-W1DK/a6BGoV/D4x/SXXm6TSQx6q3blECUzd5TN+j56YEMX3yPVMpHsICLedUw3DvGF3aTQ8hfdR9AKMaHjIi+A==
+ts-node@8.6.1:
+  version "8.6.1"
+  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-8.6.1.tgz#a31838d93cb67bbe2c56026848ab6c9224564c4e"
+  integrity sha512-KqPbO7/UuOPE4ANAOV9geZjk6tet6rK2K+DFeEJq6kIXUi0nLkrOMksozGkIlFopOorkStlwar3DdWYrdl7zCw==
   dependencies:
     arg "^4.1.0"
     diff "^4.0.1"
     make-error "^1.1.1"
     source-map-support "^0.5.6"
-    yn "^3.0.0"
+    yn "^4.0.0"
 
 ts-toolbelt@^4.10.7:
   version "4.10.12"
@@ -1072,10 +1072,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@3.7.2:
-  version "3.7.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.7.2.tgz#27e489b95fa5909445e9fef5ee48d81697ad18fb"
-  integrity sha512-ml7V7JfiN2Xwvcer+XAf2csGO1bPBdRbFCkYBczNZggrBZ9c7G3riSUeJmqEU5uOtXNPMhE3n+R4FA/3YOAWOQ==
+typescript@3.7.4:
+  version "3.7.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.7.4.tgz#1743a5ec5fef6a1fa9f3e4708e33c81c73876c19"
+  integrity sha512-A25xv5XCtarLwXpcDNZzCGvW2D1S3/bACratYBx2sax8PefsFhlYmkQicKHvpYflFS8if4zne5zT5kpJ7pzuvw==
 
 universalify@^0.1.0:
   version "0.1.2"
@@ -1107,10 +1107,10 @@ yauzl@2.4.1:
   dependencies:
     fd-slicer "~1.0.1"
 
-yn@^3.0.0:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/yn/-/yn-3.1.1.tgz#1e87401a09d767c1d5eab26a6e4c185182d2eb50"
-  integrity sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==
+yn@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/yn/-/yn-4.0.0.tgz#611480051ea43b510da1dfdbe177ed159f00a979"
+  integrity sha512-huWiiCS4TxKc4SfgmTwW1K7JmXPPAmuXWYy4j9qjQo4+27Kni8mGhAAi1cloRWmBe2EqcLgt3IGqQoRL/MtPgg==
 
 zip-stream@^2.1.2:
   version "2.1.2"
