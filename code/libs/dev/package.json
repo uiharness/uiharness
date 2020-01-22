@@ -1,7 +1,7 @@
 {
   "name": "@uiharness/dev",
   "description": "The common UIHarness dev-tools (include in your devDependencies).",
-  "version": "0.9.10",
+  "version": "0.9.11",
   "main": "lib/index",
   "bin": {
     "ui": "lib/bin/index.js"
@@ -25,8 +25,8 @@
     "@platform/npm": "^0.2.45",
     "@platform/ts": "3.7.9",
     "@platform/util.string": "0.3.24",
-    "@uiharness/electron": "0.6.10",
-    "@uiharness/types": "0.6.9",
+    "@uiharness/electron": "0.6.11",
+    "@uiharness/types": "0.6.10",
     "create-tmpl": "0.1.68",
     "electron": "7.1.9",
     "electron-builder": "22.2.0",
