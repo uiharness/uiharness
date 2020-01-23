@@ -1830,7 +1830,7 @@
     chalk "3.0.0"
     cli-table "0.3.1"
 
-"@platform/npm@0.2.46", "@platform/npm@^0.2.46":
+"@platform/npm@0.2.46":
   version "0.2.46"
   resolved "https://registry.yarnpkg.com/@platform/npm/-/npm-0.2.46.tgz#30df6ea6eee91286d8ab48a1f08834390a7bbd02"
   integrity sha512-gKhgseTQML8x34CzxY7W9cJTvvjFxelF1IeTldbroXty+d0gkn3MxlirugMtx9wSv24ExnjA8KNQdgR2d3XdZw==
@@ -1844,6 +1844,14 @@
     "@types/semver" "6.2.0"
     inquirer "7.0.3"
     semver "7.1.1"
+
+"@platform/polyfill@0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@platform/polyfill/-/polyfill-0.0.1.tgz#10b50a6d975f3fc55870dbc478e5840fbf41b7f5"
+  integrity sha512-xCwG9F/tptWBtCsbN2yM8SJS5LdUa7lfA1BdLsjT/W+A7GqEaRtnsIun8XSDcXaY4XIyYpeTwSNqJooCh9GaSQ==
+  dependencies:
+    core-js "3.6.4"
+    regenerator-runtime "0.13.3"
 
 "@platform/react@0.3.52":
   version "0.3.52"
@@ -2128,10 +2136,10 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@uiharness/electron@0.7.1":
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.7.1.tgz#e02bf516f56e41e73d29d831ab9ff2e5774afa6f"
-  integrity sha512-+7wuKTBwzN9qETQ0gbiabH4F+uSGifxiEnYjIDb1UuDptL8tDbg/ot2jUThvNo2v94SloRx5LlBxkHuW4EJK0A==
+"@uiharness/electron@0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@uiharness/electron/-/electron-0.7.2.tgz#1a23d28094d29032b1086426b007c583bcd6283d"
+  integrity sha512-IevkTmP+6Q6fYSpL7Eosbe2ztlgBu/jIiDl9fwWHJ9NXrk8OPYcTgsdHBVAYUvRMFi9uM5mK1DkEI5qa7BOE/g==
   dependencies:
     "@platform/electron" "0.7.44"
     "@platform/log" "0.1.4"
@@ -2139,13 +2147,13 @@
     "@platform/ui.object" "0.0.172"
     "@platform/util.value" "0.7.1"
     "@types/app-root-path" "1.2.4"
-    "@uiharness/types" "0.7.1"
+    "@uiharness/types" "0.7.2"
     tslib "1.10.0"
 
-"@uiharness/types@0.7.1":
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.7.1.tgz#b4edb30784f61686092bef1d9e3fdb6455c634e5"
-  integrity sha512-GVzXcdndy2tmuUTgpD04BZxRh2aT08p/0oLCJUClErnB/SFgOcjxtmDmjSrotLKzNjfI1uVdAJct92OqUY6mdA==
+"@uiharness/types@0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.7.2.tgz#466c7049d87f6986ff2011d3eb497f504be69618"
+  integrity sha512-MAwWgC9qy8sRPAWtZZ5EhfQFnZ2P+QpGUtVogztO85CdUr/QTe6HqxCsCvIlLDEUzfIjf426otnLPcgdyecP1g==
 
 "@zeit/schemas@2.6.0":
   version "2.6.0"
@@ -3499,6 +3507,11 @@ core-js-compat@^3.6.2:
   dependencies:
     browserslist "^4.8.3"
     semver "7.0.0"
+
+core-js@3.6.4:
+  version "3.6.4"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.4.tgz#440a83536b458114b9cb2ac1580ba377dc470647"
+  integrity sha512-4paDGScNgZP2IXXilaffL9X7968RuvwlkK3xWtZRVqgd8SYNiVKRJvkFd1aqqEuPfN7E68ZHEp9hDj6lHj4Hyw==
 
 core-js@^2.4.0:
   version "2.6.9"
@@ -8065,15 +8078,15 @@ regenerate@^1.2.1, regenerate@^1.4.0:
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.4.0.tgz#4a856ec4b56e4077c557589cae85e7a4c8869a11"
   integrity sha512-1G6jJVDWrt0rK99kBjvEtziZNCICAuvIPkSiUFIQxVP06RCVpq3dmDo2oi6ABpYaDYaTRr67BEhL8r1wgEZZKg==
 
+regenerator-runtime@0.13.3, regenerator-runtime@^0.13.2:
+  version "0.13.3"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.3.tgz#7cf6a77d8f5c6f60eb73c5fc1955b2ceb01e6bf5"
+  integrity sha512-naKIZz2GQ8JWh///G7L3X6LaQUAMp2lvb1rvwwsURe/VXwD6VMfr+/1NuNw3ag8v2kY1aQ/go5SNn79O9JU7yw==
+
 regenerator-runtime@^0.11.0:
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
   integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
-
-regenerator-runtime@^0.13.2:
-  version "0.13.3"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.3.tgz#7cf6a77d8f5c6f60eb73c5fc1955b2ceb01e6bf5"
-  integrity sha512-naKIZz2GQ8JWh///G7L3X6LaQUAMp2lvb1rvwwsURe/VXwD6VMfr+/1NuNw3ag8v2kY1aQ/go5SNn79O9JU7yw==
 
 regenerator-transform@^0.14.0:
   version "0.14.1"
