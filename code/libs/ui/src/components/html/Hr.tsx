@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { color as colorUtil, css, COLORS, value, GlamorValue } from '../../common';
+import { color as colorUtil, css, style, COLORS, value, CssValue } from '../../common';
 
 export type IHrProps = {
   color?: string | number | 'PINK' | 'CYAN';
@@ -7,7 +7,7 @@ export type IHrProps = {
   dashed?: boolean;
   opacity?: number;
   thickness?: number;
-  style?: GlamorValue;
+  style?: CssValue;
 };
 
 export class Hr extends React.PureComponent<IHrProps> {
@@ -46,7 +46,7 @@ export class Hr extends React.PureComponent<IHrProps> {
 
     const styles = {
       base: css({
-        ...css.toMargins(margin),
+        ...style.toMargins(margin),
         border: 'none',
         borderBottom: `${dashed ? 'dashed' : 'solid'} ${thickness}px ${color}`,
         opacity,

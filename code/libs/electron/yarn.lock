@@ -334,10 +334,10 @@
   resolved "https://registry.yarnpkg.com/@types/tinycolor2/-/tinycolor2-1.4.2.tgz#721ca5c5d1a2988b4a886e35c2ffc5735b6afbdf"
   integrity sha512-PeHg/AtdW6aaIO2a+98Xj7rWY4KC1E6yOy7AFknJQ7VXUGNrMlyxDFxJo7HqLtjQms/ZhhQX52mLVW/EX3JGOw==
 
-"@uiharness/types@0.7.2":
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.7.2.tgz#466c7049d87f6986ff2011d3eb497f504be69618"
-  integrity sha512-MAwWgC9qy8sRPAWtZZ5EhfQFnZ2P+QpGUtVogztO85CdUr/QTe6HqxCsCvIlLDEUzfIjf426otnLPcgdyecP1g==
+"@uiharness/types@0.7.3":
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.7.3.tgz#31670915c56931dbb614e6369233ca020e903649"
+  integrity sha512-ybLgDcZQ+qKs+5g5HuXiWeIQRBPbSrWou89XRvsXzEHWEOoDp7TnuQTmjp5dC48UKd3XvSAsuh2AigeqDgNcMQ==
 
 abab@^2.0.0:
   version "2.0.3"
