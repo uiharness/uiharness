@@ -12,6 +12,6 @@ export { value, time, defaultValue } from '@platform/util.value';
 export { fs } from '@platform/fs';
 export { log } from '@platform/log/lib/server';
 export { npm, NpmPackage } from '@platform/npm';
-export { Template, TemplateMiddleware } from 'create-tmpl';
+export { Template, TemplateMiddleware } from '@platform/tmpl';
 export { exec } from '@platform/exec';
 export { str } from '@platform/util.string';
