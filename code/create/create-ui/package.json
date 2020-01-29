@@ -6,15 +6,16 @@
     "create-ui": "./lib/bin.js"
   },
   "scripts": {
-    "test": "echo no-op",
+    "test": "echo test",
     "build": "ts build",
     "lint": "ts lint",
     "prepare": "yarn reset && ts prepare",
-    "tmp": "mkdir -p tmp && cd tmp && node ../lib/bin.js",
-    "reset": "rm -rf tmp"
+    "demo": "mkdir -p tmp && cd tmp && node ../lib/bin.js",
+    "clean": "rm -rf tmp"
   },
   "dependencies": {
-    "create-tmpl": "0.1.70",
+    "@platform/cli": "0.5.13",
+    "@platform/tmpl": "0.1.0",
     "tslib": "1.10.0"
   },
   "devDependencies": {

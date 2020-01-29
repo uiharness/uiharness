@@ -2,9 +2,8 @@ import { basename, join, resolve } from 'path';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
-import { Listr, log, prompt, Template, TemplateType } from './common';
+import { log, t, Template, TemplateType, cli } from './common';
 import * as middleware from './middleware';
-import * as t from './types';
 
 export * from './types';
 
@@ -22,27 +21,42 @@ export async function init() {
   }
 
   const alerts$ = tmpl.events$.pipe(
-    filter(e => e.type === 'ALERT'),
+    filter(e => e.type === 'TMPL/alert'),
     map(e => e.payload as t.IAlert),
   );
 
-  // Run the template.
-  const tasks = new Listr([
-    {
-      title: 'Setup',
-      task: async () =>
-        new Observable(observer => {
-          (async () => {
-            // Copy files and run NPM install.
-            alerts$.subscribe(e => observer.next(e.message));
-            await tmpl.execute<t.IVariables>({ variables });
+  const tasks = cli.tasks().task('Setup', async () => {
+    return new Observable(observer => {
+      (async () => {
+        // Copy files and run NPM install.
+        alerts$.subscribe(e => observer.next(e.message));
+        await tmpl.execute<t.IVariables>({ variables });
 
-            // Finish up.
-            observer.complete();
-          })();
-        }),
-    },
-  ]);
+        // Finish up.
+        observer.complete();
+      })();
+    });
+  });
+
+  // const f = tasks1.task('Setup', async () => {})
+
+  // Run the template.
+  // const tasks = new Listr([
+  //   {
+  //     title: 'Setup',
+  //     task: async () =>
+  //       new Observable(observer => {
+  //         (async () => {
+  //           // Copy files and run NPM install.
+  //           alerts$.subscribe(e => observer.next(e.message));
+  //           await tmpl.execute<t.IVariables>({ variables });
+
+  //           // Finish up.
+  //           observer.complete();
+  //         })();
+  //       }),
+  //   },
+  // ]);
 
   try {
     log.info();
@@ -72,7 +86,7 @@ async function prepareTemplate(args: { template?: TemplateType; moduleName?: str
    * Module name.
    */
   if (!moduleName) {
-    const res = await prompt.forText('Module name');
+    const res = await cli.prompt.text({ message: 'Module name' });
     if (!res) {
       return {};
     }
@@ -83,16 +97,24 @@ async function prepareTemplate(args: { template?: TemplateType; moduleName?: str
    * Target platform.
    */
   if (!template) {
-    type ITemplate = t.IPrompt<TemplateType>;
-    const targets: ITemplate[] = [
-      { id: 'platform', label: '@platform toolchain' },
-      // { id: 'minimal', label: 'minimal' },
-    ];
-    const res = await prompt.forOption('Template', targets);
+    // type ITemplate = t.IPrompt<TemplateType>;
+    // const targets: ITemplate[] = [
+    //   { id: 'platform', label: '@platform toolchain' },
+    //   // { id: 'minimal', label: 'minimal' },
+    // ];
+
+    const res = await cli.prompt.radio<TemplateType>({
+      message: 'Template',
+      items: [
+        { name: '@platform toolchain', value: 'platform' },
+        // {  name: 'minimal', value: 'minimal' },
+      ],
+    });
+
     if (!res) {
       return {};
     }
-    template = res.id;
+    template = res;
   }
 
   /**

@@ -1,5 +1,9 @@
 export { log } from '@platform/log/lib/server';
 export { time } from '@platform/util.value';
 export { npm, NpmPackage, INpmPackageFields } from '@platform/npm';
-export { fs, Listr, prompt, Template, TemplateMiddleware } from 'create-tmpl';
+
 export { exec } from '@platform/exec';
+export { fs } from '@platform/fs';
+
+export { Template, TemplateMiddleware } from '@platform/tmpl';
+export { cli } from '@platform/cli';
