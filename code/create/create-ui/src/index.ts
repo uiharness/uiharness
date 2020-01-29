@@ -25,42 +25,22 @@ export async function init() {
     map(e => e.payload as t.IAlert),
   );
 
-  const tasks = cli.tasks().task('Setup', async () => {
-    return new Observable(observer => {
-      (async () => {
-        // Copy files and run NPM install.
+  const task: cli.exec.ITask = {
+    title: 'Setup',
+    task: () =>
+      new Observable(observer => {
         alerts$.subscribe(e => observer.next(e.message));
-        await tmpl.execute<t.IVariables>({ variables });
-
-        // Finish up.
-        observer.complete();
-      })();
-    });
-  });
-
-  // const f = tasks1.task('Setup', async () => {})
-
-  // Run the template.
-  // const tasks = new Listr([
-  //   {
-  //     title: 'Setup',
-  //     task: async () =>
-  //       new Observable(observer => {
-  //         (async () => {
-  //           // Copy files and run NPM install.
-  //           alerts$.subscribe(e => observer.next(e.message));
-  //           await tmpl.execute<t.IVariables>({ variables });
-
-  //           // Finish up.
-  //           observer.complete();
-  //         })();
-  //       }),
-  //   },
-  // ]);
+        (async () => {
+          // Copy files and run NPM install.
+          await tmpl.execute<t.IVariables>({ variables });
+          observer.complete();
+        })();
+      }),
+  };
 
   try {
     log.info();
-    await tasks.run();
+    await cli.exec.tasks.run(task);
     log.info();
     logComplete({ dir });
   } catch (error) {
