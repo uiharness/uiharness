@@ -1,8 +1,8 @@
+import { css, CssValue } from '@platform/react';
 import * as React from 'react';
-import { css, GlamorValue, color } from '@platform/react';
 
 export type IAboutProps = {
-  style?: GlamorValue;
+  style?: CssValue;
 };
 
 export class About extends React.PureComponent<IAboutProps> {

@@ -1,6 +1,6 @@
 {
   "name": "@uiharness/ui",
-  "version": "0.6.20",
+  "version": "0.7.4",
   "description": "",
   "main": "lib/index",
   "types": "lib/index.d.ts",
@@ -14,20 +14,23 @@
     "prepare": "ts prepare"
   },
   "dependencies": {
-    "@platform/cli.ui": "0.2.60",
-    "@platform/electron": "0.7.20",
-    "@platform/react": "0.3.29",
-    "@platform/ui.object": "0.0.149",
-    "@platform/util.string": "0.3.15",
-    "@uiharness/types": "0.6.8"
+    "@platform/cli.ui": "0.2.92",
+    "@platform/electron": "0.7.54",
+    "@platform/react": "0.4.8",
+    "@platform/ui.object": "0.0.181",
+    "@platform/util.string": "0.3.27",
+    "@uiharness/types": "0.7.3"
   },
   "devDependencies": {
-    "@platform/test": "0.0.65",
-    "@platform/ts": "3.7.0",
-    "@uiharness/dev": "0.9.9"
+    "@platform/test": "0.1.2",
+    "@platform/ts": "3.7.12",
+    "@uiharness/dev": "0.10.4"
   },
   "files": [
-    "lib"
+    "lib",
+    "!lib/test",
+    "!*.TEST.{js, mjs, d.ts}",
+    "!*.INTEGRATION.{js, mjs, d.ts}"
   ],
   "keywords": [
     "design",

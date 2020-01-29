@@ -1,6 +1,5 @@
 import { join } from 'path';
-import { exec, fs, IVariables, npm, TemplateMiddleware } from './common';
-import * as t from './types';
+import { exec, fs, IVariables, npm, TemplateMiddleware, t } from './common';
 
 const alert = (res: t.ITemplateResponse, message: string) => res.alert<t.IAlert>({ message });
 
