@@ -1,39 +1,10 @@
 {
   "name": "create-uiharness",
-  "version": "1.2.12",
-  "description": "Create a minimal starting module using the UIHarness with a single command.",
-  "main": "./lib/index",
-  "types": "./lib/index.d.ts",
+  "version": "1.3.0",
+  "main": "./bin.js",
   "bin": {
     "create-uiharness": "./lib/bin.js"
   },
-  "scripts": {
-    "tmp": "node ./lib/bin $@",
-    "example": "create-uiharness",
-    "example:yarn": "yarn create uiharness",
-    "clean": "sh ./sh/clean.sh",
-    "test": "sh ./node_modules/@tdb/test/sh/test.sh $@",
-    "tdd": "yarn run test --reporter min --watch",
-    "lint": "sh ./node_modules/@tdb/typescript/sh/lint.sh $@",
-    "build": "sh ./node_modules/@tdb/typescript/sh/build.sh $@",
-    "prepare": "yarn run lint && yarn test && yarn run build"
-  },
-  "dependencies": {
-    "create-tmpl": "0.1.9",
-    "new-file": "^1.2.2"
-  },
-  "devDependencies": {
-    "@tdb/test": "1.2.16",
-    "@tdb/typescript": "3.2.10"
-  },
-  "keywords": [
-    "design",
-    "test",
-    "react",
-    "typescript",
-    "electron",
-    "create"
-  ],
-  "repository": "github.com/uiharness/uiharness",
+  "repository": "uiharness/uiharness",
   "license": "MIT"
 }
