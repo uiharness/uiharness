@@ -9,20 +9,22 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
-"@platform/cli.prompt@0.2.13":
-  version "0.2.13"
-  resolved "https://registry.yarnpkg.com/@platform/cli.prompt/-/cli.prompt-0.2.13.tgz#b06b0908980c1a22cdd188e22a5f43d699af5dfd"
-  integrity sha512-D9+P00UE5T8BAkvT1aSB05Q44RB2XtUal7sRBXXUvG5D2ch+IBorEEWKu8OmZ41DiaGC37mxqJmP+wfNVzJFaQ==
+"@platform/cli.prompt@0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@platform/cli.prompt/-/cli.prompt-0.3.1.tgz#7573409e6b4c2acafc45257d8bda968a6a497478"
+  integrity sha512-XHNPCknsIK+PJb0NvTNZqUqxf3i9ALEyHSE6QVv8yvTmcGNoA/HR46gS7RFjdVk3VeUE9Wg4osdKtesv2UWt+A==
   dependencies:
+    "@platform/fs" "0.5.5"
     "@platform/libs" "0.2.0"
+    "@platform/log" "0.1.7"
     inquirer "7.0.3"
 
-"@platform/cli@0.5.12":
-  version "0.5.12"
-  resolved "https://registry.yarnpkg.com/@platform/cli/-/cli-0.5.12.tgz#155e3d234f08c83fd1f3ab01d1caa4b48eb55b27"
-  integrity sha512-310FB43WxDewXwzG7/CRlix3RKe1qgsLZfriXyKKZvGjLBO5Dg2VxjEjILT4WI31UK0nIpfeWqyDKn2BSU50+w==
+"@platform/cli@0.5.14":
+  version "0.5.14"
+  resolved "https://registry.yarnpkg.com/@platform/cli/-/cli-0.5.14.tgz#82441250c5b16830212cb9e91dd5613131d26c98"
+  integrity sha512-5DYpenCC3PrqAkdFMl3uPSfeeaTO3UOc/N1wRRG4RwhDoU+qig8iz9JmMeyq1MkN/GxC7lQVbNdgn/wAxXhu/w==
   dependencies:
-    "@platform/cli.prompt" "0.2.13"
+    "@platform/cli.prompt" "0.3.1"
     "@platform/exec" "0.2.45"
     "@platform/fs" "0.5.5"
     "@platform/libs" "0.2.0"
@@ -153,12 +155,12 @@
     micro-cors "0.1.1"
     path-to-regexp "6.1.0"
 
-"@platform/npm@0.2.49":
-  version "0.2.49"
-  resolved "https://registry.yarnpkg.com/@platform/npm/-/npm-0.2.49.tgz#49193e5859a14bb9edb965da8fa94dffc3e138c7"
-  integrity sha512-ckED+2tWExu3WiN7PazlAAN4JksP5dCqsMVS+GUnR1/RRhr6l6gpfzCCpPbqRxQHL22iGJqGgrBDxO8+d8nQug==
+"@platform/npm@0.2.50":
+  version "0.2.50"
+  resolved "https://registry.yarnpkg.com/@platform/npm/-/npm-0.2.50.tgz#5bfe2acb771a415c3a16dbdb28e4628686fe498d"
+  integrity sha512-KB9NO4laxVWj+OZ1B3ZyTJf0Okz7wAMUcrpqNyk7OIBs3kkWU+y8+3rBo/5ZtNacBxQHKxpp13OL8zaloomWTA==
   dependencies:
-    "@platform/cli.prompt" "0.2.13"
+    "@platform/cli.prompt" "0.3.1"
     "@platform/exec" "0.2.45"
     "@platform/fs" "0.5.5"
     "@platform/log" "0.1.7"
@@ -168,12 +170,12 @@
     inquirer "7.0.3"
     semver "7.1.1"
 
-"@platform/react.ssr@^1.1.98":
-  version "1.1.98"
-  resolved "https://registry.yarnpkg.com/@platform/react.ssr/-/react.ssr-1.1.98.tgz#93278ec1feed44b5c63dd5177b054491c363e4b7"
-  integrity sha512-PDPBkEUSkAkfe+3ICo7FmgPxRpkpCaau4hbCyFFPKYl+WlR564JU1qYBSw39zFPgurxe1FbWna4xm5eUXbGgUQ==
+"@platform/react.ssr@^1.1.99":
+  version "1.1.99"
+  resolved "https://registry.yarnpkg.com/@platform/react.ssr/-/react.ssr-1.1.99.tgz#6465e15d40ce8458d4d045d92838f0700425c5d6"
+  integrity sha512-kBeNG9MY5BiOLeOimVOkiwlBUAWPIpMsyY3rb9VzXUpszSdA4VMalHPuhL7ebURWcGJyZ6zh+nTWAGzD0yWpgQ==
   dependencies:
-    "@platform/cli" "0.5.12"
+    "@platform/cli" "0.5.14"
     "@platform/exec" "0.2.45"
     "@platform/fs" "0.5.5"
     "@platform/fs.s3" "0.6.27"
@@ -181,7 +183,7 @@
     "@platform/libs" "0.2.0"
     "@platform/log" "0.1.7"
     "@platform/micro" "0.12.37"
-    "@platform/npm" "0.2.49"
+    "@platform/npm" "0.2.50"
     "@platform/react" "0.4.8"
     bowser "2.8.1"
     cheerio "1.0.0-rc.3"

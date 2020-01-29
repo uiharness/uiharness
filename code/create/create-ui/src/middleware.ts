@@ -1,5 +1,4 @@
-import { join } from 'path';
-import { exec, fs, IVariables, npm, TemplateMiddleware, t } from './common';
+import { exec, fs, npm, t } from './common';
 
 const alert = (res: t.ITemplateResponse, message: string) => res.alert<t.IAlert>({ message });
 
@@ -8,8 +7,8 @@ const alert = (res: t.ITemplateResponse, message: string) => res.alert<t.IAlert>
  */
 export function processPackage(args: {
   filename: string;
-  done?: t.AfterTemplateMiddleware;
-}): TemplateMiddleware<IVariables> {
+  done?: t.TemplateAfterMiddleware;
+}): t.TemplateMiddleware<t.ITemplateVariables> {
   return async (req, res) => {
     if (!req.path.source.endsWith(args.filename)) {
       return res.next();
@@ -51,14 +50,14 @@ export function processPackage(args: {
 export function saveFile(
   args: {
     rename?: Array<{ from: string; to: string }>;
-    done?: t.AfterTemplateMiddleware;
+    done?: t.TemplateAfterMiddleware;
   } = {},
-): TemplateMiddleware<IVariables> {
+): t.TemplateMiddleware<t.IVariables> {
   return async (req, res) => {
     const { rename = [] } = args;
     const { dir } = req.variables;
 
-    let target = join(dir, req.path.target);
+    let target = fs.join(dir, req.path.target);
     rename
       .filter(item => target.endsWith(item.from))
       .forEach(item => {
@@ -80,9 +79,9 @@ export function saveFile(
  */
 export function npmInstall(
   args: {
-    done?: t.AfterTemplateMiddleware;
+    done?: t.TemplateAfterMiddleware;
   } = {},
-): TemplateMiddleware<IVariables> {
+): t.TemplateMiddleware<t.IVariables> {
   return async (req, res) => {
     const { dir } = req.variables;
     const pkg = npm.pkg(dir);
@@ -101,8 +100,8 @@ export function npmInstall(
  */
 export function runInitCommand(args: {
   template: t.TemplateType;
-  done: t.AfterTemplateMiddleware;
-}): TemplateMiddleware<IVariables> {
+  done: t.TemplateAfterMiddleware;
+}): t.TemplateMiddleware<t.IVariables> {
   return async (req, res) => {
     const { dir, template } = req.variables;
 

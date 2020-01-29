@@ -14,8 +14,8 @@
     "clean": "rm -rf tmp"
   },
   "dependencies": {
-    "@platform/cli": "0.5.13",
-    "@platform/tmpl": "0.1.0"
+    "@platform/cli": "0.5.14",
+    "@platform/tmpl": "0.1.2"
   },
   "devDependencies": {
     "@platform/ts": "3.7.12"
