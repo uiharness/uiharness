@@ -34,10 +34,10 @@
     listr "0.14.3"
     yargs "15.1.0"
 
-"@platform/css@0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@platform/css/-/css-0.3.0.tgz#82acc15ec2ccd8328b44a19a02dff17d331c822b"
-  integrity sha512-s89KWkKOzdK/LhFnsqnTmpUWD25dPcOBATt4deV+Z7NJLWzqKMeze3XxpkUkXV8d0ZfFh05N4LBpNm8Xx+0o7w==
+"@platform/css@0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@platform/css/-/css-0.3.1.tgz#8da5e0e73a18857770ef8ec99dfe17de88854400"
+  integrity sha512-Nn7r+BEQvny1Wk63UImeEwhQA3gnr2xNq2W/L0/xjxpK1nvuo+ZElsKClaqziL+OUK89nqefHiTxRd/INMOCag==
   dependencies:
     "@platform/libs" "0.2.0"
     "@platform/util.is" "0.0.109"
@@ -58,22 +58,22 @@
     chalk "3.0.0"
     listr "0.14.3"
 
-"@platform/fs.s3.types@0.1.10":
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/@platform/fs.s3.types/-/fs.s3.types-0.1.10.tgz#a36e92343530730fa05b327459342a4cde841ffa"
-  integrity sha512-arKiXxTQ8Sxswk+fUS5313nudnJ2lPesF31y6FHlOLr+SOhUM4JU1OEQN16cN2hHs4U3xu7VbuQkIVju+tPVKg==
+"@platform/fs.s3.types@0.1.12":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@platform/fs.s3.types/-/fs.s3.types-0.1.12.tgz#2e6f2c90ee28ce9a1ac80f9b355e228ccd44fd9e"
+  integrity sha512-bP/oeDNccgzyCG/jfrVMACbMYgOAwMJWsH1YnuBsdTHipFVM6/qgCrfp3vRuMZpx+14mRdfmo4DPnIi6lsAeLQ==
   dependencies:
-    "@platform/http.types" "0.0.5"
+    "@platform/http.types" "0.1.1"
     "@platform/types" "0.4.4"
 
-"@platform/fs.s3@0.6.24":
-  version "0.6.24"
-  resolved "https://registry.yarnpkg.com/@platform/fs.s3/-/fs.s3-0.6.24.tgz#b43d9ee129bd87f2c7e078cdb2e5095d4d03a618"
-  integrity sha512-kfW1FEDavffyYKsMsgCZSv0wsvZQi89SIn1uXri0zXaTCnmZS42LbOmuJqBLVBL/2xu4yHr2XRTezwex0OEDrw==
+"@platform/fs.s3@0.6.27":
+  version "0.6.27"
+  resolved "https://registry.yarnpkg.com/@platform/fs.s3/-/fs.s3-0.6.27.tgz#ceadfbaaa8a07449cdcc4434cb93faed3d89d9a5"
+  integrity sha512-Ay277LCQXpWjUKAZSy0kSRFAQbJjrnS1FnSISSk9llYE4fBuqdB+5GDN+uuMnBK088qSkT5TiB74zVhxI9r4Nw==
   dependencies:
     "@platform/fs" "0.5.5"
-    "@platform/fs.s3.types" "0.1.10"
-    "@platform/http" "0.10.6"
+    "@platform/fs.s3.types" "0.1.12"
+    "@platform/http" "0.11.1"
     "@platform/libs" "0.2.0"
     "@platform/log" "0.1.7"
     "@platform/types" "0.4.4"
@@ -98,21 +98,21 @@
     js-yaml "3.13.1"
     minimatch "3.0.4"
 
-"@platform/http.types@0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@platform/http.types/-/http.types-0.0.5.tgz#660b8ddcc0d620c6bc47d4e09d5c7c8b302a13d0"
-  integrity sha512-jwIOFYShxlHjN4w5IslILXS64YQ9aursYRk/UqBhtL/YvPm7MVITs+6cOxhWe939/wrWfans3zhCDJ4/zDfZYw==
+"@platform/http.types@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@platform/http.types/-/http.types-0.1.1.tgz#878ef5ca1a214dd90c7f999bb9fc8677f9577750"
+  integrity sha512-XVBk/hm9xj8UVRrm9nsV5OG4tq7rE1bppLH17407Zdz6gBF6LKDuaqgLWDhLmGzXt1cvLYkPF0cMGPCoSL9bog==
   dependencies:
     "@platform/libs" "0.2.0"
     "@platform/types" "0.4.4"
 
-"@platform/http@0.10.6":
-  version "0.10.6"
-  resolved "https://registry.yarnpkg.com/@platform/http/-/http-0.10.6.tgz#27e44bd46b1f9707c525d9148d9d0debb9743c75"
-  integrity sha512-2QHM7liXnc1NuelKJW+zZlIR9WgDLCxNJny2QBLlLPjGPRNnodZzV33PdiYXvUF6tWuoKjvp6KDfE172Zc3WSw==
+"@platform/http@0.11.1":
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/@platform/http/-/http-0.11.1.tgz#249780a27e662884cdacfc6f6057e8cfb0320ec1"
+  integrity sha512-mDEgVb657KgQpJbPA2oSy3KlNkSfl9Ac8FFkZ9yHyyaDiGGYdb1CiF1OC07A3PCIH09jB9hvjve6oeyfp1kJsQ==
   dependencies:
     "@platform/fs" "0.5.5"
-    "@platform/http.types" "0.0.5"
+    "@platform/http.types" "0.1.1"
     "@platform/libs" "0.2.0"
     "@platform/types" "0.4.4"
     "@platform/util.value" "0.7.3"
@@ -138,12 +138,12 @@
     chalk "3.0.0"
     cli-table "0.3.1"
 
-"@platform/micro@0.12.34":
-  version "0.12.34"
-  resolved "https://registry.yarnpkg.com/@platform/micro/-/micro-0.12.34.tgz#8e65cffd399ba1d5fbb2bc5ad0c2c9a4d2906814"
-  integrity sha512-/jQ2Sp93kI1oi5M9AOi7ThCGSS3RR6fjccVbjAVLFN1KnARBctiivnjC9Gm80LRWYOhJERO5cinvK9HO+vq+Vw==
+"@platform/micro@0.12.37":
+  version "0.12.37"
+  resolved "https://registry.yarnpkg.com/@platform/micro/-/micro-0.12.37.tgz#adca3ba0b21a007c7d489f933fc856874daf4026"
+  integrity sha512-HAviyeHpj89TtARoksjxp1H83WYKeDE2MsiwspgpdhXHosh0LVELq13Z+qBddf3BOZPQt6j3sHfHfOT/tC2u3g==
   dependencies:
-    "@platform/http.types" "0.0.5"
+    "@platform/http.types" "0.1.1"
     "@platform/libs" "0.2.0"
     "@platform/log" "0.1.7"
     "@platform/types" "0.4.4"
@@ -168,33 +168,33 @@
     inquirer "7.0.3"
     semver "7.1.1"
 
-"@platform/react.ssr@^1.1.93":
-  version "1.1.93"
-  resolved "https://registry.yarnpkg.com/@platform/react.ssr/-/react.ssr-1.1.93.tgz#04f82e7a391a1895ea38182f3aea085149cbebf5"
-  integrity sha512-Naj0aUE6PpWptNkHdgiefl3KsZxDKn8EFJiaE4p0yovgc4W49xOzKBlMJSG3Wwarb8OqY/I/90lfFBlG7Oxyag==
+"@platform/react.ssr@^1.1.98":
+  version "1.1.98"
+  resolved "https://registry.yarnpkg.com/@platform/react.ssr/-/react.ssr-1.1.98.tgz#93278ec1feed44b5c63dd5177b054491c363e4b7"
+  integrity sha512-PDPBkEUSkAkfe+3ICo7FmgPxRpkpCaau4hbCyFFPKYl+WlR564JU1qYBSw39zFPgurxe1FbWna4xm5eUXbGgUQ==
   dependencies:
     "@platform/cli" "0.5.12"
     "@platform/exec" "0.2.45"
     "@platform/fs" "0.5.5"
-    "@platform/fs.s3" "0.6.24"
-    "@platform/http" "0.10.6"
+    "@platform/fs.s3" "0.6.27"
+    "@platform/http" "0.11.1"
     "@platform/libs" "0.2.0"
     "@platform/log" "0.1.7"
-    "@platform/micro" "0.12.34"
+    "@platform/micro" "0.12.37"
     "@platform/npm" "0.2.49"
-    "@platform/react" "0.4.6"
+    "@platform/react" "0.4.8"
     bowser "2.8.1"
     cheerio "1.0.0-rc.3"
     listr "0.14.3"
     path-to-regexp "6.1.0"
     semver "7.1.1"
 
-"@platform/react@0.4.6":
-  version "0.4.6"
-  resolved "https://registry.yarnpkg.com/@platform/react/-/react-0.4.6.tgz#1b29ab4b420636ec5377ef36b359c4295c1c4c39"
-  integrity sha512-2FNPZYlQlYHhm9MOru2gewio90A+hf19kL9jLuZTwPjP3vm3tsaWYCgsDhVTtBpQ2jZeslgWIiwzS4gR8FUHyw==
+"@platform/react@0.4.8":
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/@platform/react/-/react-0.4.8.tgz#a673b01db2dec7a95ab118b394930ba9d48de722"
+  integrity sha512-+PrwwRPiGSSRFE+6zacRGAImqsl1df4AsRfqFyFCY9EFFqz1K24HiPk8R5mFLSUnmdLqVkGHUGbcuShgwabD6A==
   dependencies:
-    "@platform/css" "0.3.0"
+    "@platform/css" "0.3.1"
     "@platform/util.is" "0.0.109"
     "@types/react" "16.9.19"
     "@types/react-dom" "16.9.5"

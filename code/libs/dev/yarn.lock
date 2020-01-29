@@ -1746,12 +1746,39 @@
     "@platform/libs" "0.2.0"
     inquirer "7.0.3"
 
+"@platform/cli.prompt@0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@platform/cli.prompt/-/cli.prompt-0.3.0.tgz#e1d669dcedbb2117018bd03cdb3e66c1ffedb7e0"
+  integrity sha512-S7D6Rsbq1hMPxMotQfDEge1VjhLm9Ba2VZWR2m6XfhV/o+VZXeuSkSAcMaNGSP3gFgdvFh6fkPWvaOatvrEFmg==
+  dependencies:
+    "@platform/fs" "0.5.5"
+    "@platform/libs" "0.2.0"
+    "@platform/log" "0.1.7"
+    inquirer "7.0.3"
+
 "@platform/cli@0.5.12":
   version "0.5.12"
   resolved "https://registry.yarnpkg.com/@platform/cli/-/cli-0.5.12.tgz#155e3d234f08c83fd1f3ab01d1caa4b48eb55b27"
   integrity sha512-310FB43WxDewXwzG7/CRlix3RKe1qgsLZfriXyKKZvGjLBO5Dg2VxjEjILT4WI31UK0nIpfeWqyDKn2BSU50+w==
   dependencies:
     "@platform/cli.prompt" "0.2.13"
+    "@platform/exec" "0.2.45"
+    "@platform/fs" "0.5.5"
+    "@platform/libs" "0.2.0"
+    "@platform/log" "0.1.7"
+    "@platform/util.value" "0.7.3"
+    "@types/inquirer" "6.5.0"
+    "@types/yargs" "15.0.1"
+    inquirer "7.0.3"
+    listr "0.14.3"
+    yargs "15.1.0"
+
+"@platform/cli@0.5.13":
+  version "0.5.13"
+  resolved "https://registry.yarnpkg.com/@platform/cli/-/cli-0.5.13.tgz#835e19c00dc99e1f23a44dbd625a62688e595bff"
+  integrity sha512-mfvWY00NXHY6eFDWvILkcxOqcQf676F6KQJc2Z1yoFm7If/DvO5j/S2Qy0usB5TV3MaQGO1z3anEVaCDpFBmow==
+  dependencies:
+    "@platform/cli.prompt" "0.3.0"
     "@platform/exec" "0.2.45"
     "@platform/fs" "0.5.5"
     "@platform/libs" "0.2.0"
@@ -1776,6 +1803,19 @@
     jss-plugin-global "10.0.3"
     tinycolor2 "1.4.1"
 
+"@platform/css@0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@platform/css/-/css-0.3.1.tgz#8da5e0e73a18857770ef8ec99dfe17de88854400"
+  integrity sha512-Nn7r+BEQvny1Wk63UImeEwhQA3gnr2xNq2W/L0/xjxpK1nvuo+ZElsKClaqziL+OUK89nqefHiTxRd/INMOCag==
+  dependencies:
+    "@platform/libs" "0.2.0"
+    "@platform/util.is" "0.0.109"
+    "@platform/util.value" "0.7.3"
+    "@types/tinycolor2" "1.4.2"
+    glamor-jss "1.4.1"
+    jss-plugin-global "10.0.3"
+    tinycolor2 "1.4.1"
+
 "@platform/electron@0.7.52":
   version "0.7.52"
   resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.7.52.tgz#f8e1682f5d1670925e39b6591b88e3171ca593ed"
@@ -1785,6 +1825,22 @@
     "@platform/libs" "0.2.0"
     "@platform/log" "0.1.7"
     "@platform/react" "0.4.6"
+    "@platform/types" "0.4.4"
+    "@types/app-root-path" "1.2.4"
+    app-root-path "3.0.0"
+    electron-log "4.0.3"
+    electron-window-state "5.0.3"
+    minimist "1.2.0"
+
+"@platform/electron@0.7.54":
+  version "0.7.54"
+  resolved "https://registry.yarnpkg.com/@platform/electron/-/electron-0.7.54.tgz#395975c3e6f90c9fbec40c75e0be654fc6d6f257"
+  integrity sha512-f8TZvua7u6Yrd0HpW9hyJBGWPuYjutSbKc7+l6NO7mFSk+YJx0mcHZ2VIMfy072R2wn0/Bw2JtQ7fsWhnm2XIQ==
+  dependencies:
+    "@platform/fs" "0.5.5"
+    "@platform/libs" "0.2.0"
+    "@platform/log" "0.1.7"
+    "@platform/react" "0.4.8"
     "@platform/types" "0.4.4"
     "@types/app-root-path" "1.2.4"
     app-root-path "3.0.0"
@@ -1918,6 +1974,18 @@
   integrity sha512-2FNPZYlQlYHhm9MOru2gewio90A+hf19kL9jLuZTwPjP3vm3tsaWYCgsDhVTtBpQ2jZeslgWIiwzS4gR8FUHyw==
   dependencies:
     "@platform/css" "0.3.0"
+    "@platform/util.is" "0.0.109"
+    "@types/react" "16.9.19"
+    "@types/react-dom" "16.9.5"
+    react "16.12.0"
+    react-dom "16.12.0"
+
+"@platform/react@0.4.8":
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/@platform/react/-/react-0.4.8.tgz#a673b01db2dec7a95ab118b394930ba9d48de722"
+  integrity sha512-+PrwwRPiGSSRFE+6zacRGAImqsl1df4AsRfqFyFCY9EFFqz1K24HiPk8R5mFLSUnmdLqVkGHUGbcuShgwabD6A==
+  dependencies:
+    "@platform/css" "0.3.1"
     "@platform/util.is" "0.0.109"
     "@types/react" "16.9.19"
     "@types/react-dom" "16.9.5"
