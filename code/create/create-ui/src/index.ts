@@ -1,8 +1,7 @@
-import { basename, join, resolve } from 'path';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
-import { log, t, Template, TemplateType, cli } from './common';
+import { log, t, Template, TemplateType, cli, fs } from './common';
 import * as middleware from './middleware';
 
 export * from './types';
@@ -29,9 +28,9 @@ export async function init() {
     title: 'Setup',
     task: () =>
       new Observable(observer => {
+        // Copy files and run NPM install.
         alerts$.subscribe(e => observer.next(e.message));
         (async () => {
-          // Copy files and run NPM install.
           await tmpl.execute<t.IVariables>({ variables });
           observer.complete();
         })();
@@ -107,7 +106,7 @@ async function prepareTemplate(args: { template?: TemplateType; moduleName?: str
 
   const tmpl = Template
     // Prepare the template.
-    .create(join(__dirname, '../templates/base'))
+    .create(fs.join(__dirname, '../templates/base'))
     .use(middleware.processPackage({ filename: 'pkg.json' }))
     .use(middleware.saveFile({ rename }))
     .use(middleware.npmInstall())
@@ -116,7 +115,7 @@ async function prepareTemplate(args: { template?: TemplateType; moduleName?: str
   /**
    * User input variables.
    */
-  const dir = resolve(`./${moduleName}`);
+  const dir = fs.resolve(`./${moduleName}`);
   const variables: t.IVariables = {
     template,
     platform: ['ELECTRON', 'WEB'],
@@ -129,7 +128,7 @@ async function prepareTemplate(args: { template?: TemplateType; moduleName?: str
 }
 
 function logComplete(args: { dir: string }) {
-  const dir = basename(args.dir);
+  const dir = fs.basename(args.dir);
   log.info.gray('🖐  To start your development server:\n');
   log.info.cyan(`     cd ${log.white(dir)}`);
   log.info.cyan(`     yarn start`);

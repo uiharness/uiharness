@@ -71,10 +71,7 @@ export async function startElectron(args: { settings: Settings }) {
 
   // Start the electron process.
   const dir = fs.resolve(settings.path.tmp.dir);
-  exec.cmd
-    .create('electron')
-    .add(dir)
-    .run();
+  exec.cmd.create('electron').add(dir).run();
 }
 
 /**

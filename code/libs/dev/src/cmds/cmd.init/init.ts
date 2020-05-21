@@ -111,10 +111,7 @@ async function reset(args: { settings: Settings }) {
   const pkg = settings.package;
   pkg.removeFields('scripts', SCRIPTS).save();
 
-  await tmpl
-    .create(settings.path.templates.base)
-    .use(tmpl.deleteFile())
-    .execute();
+  await tmpl.create(settings.path.templates.base).use(tmpl.deleteFile()).execute();
 
   await clean({});
 

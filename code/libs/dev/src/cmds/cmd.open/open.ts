@@ -35,10 +35,7 @@ export async function open(args: { settings: Settings; folder?: boolean; silent?
       log.info();
     }
 
-    return exec.cmd
-      .create()
-      .add(`open "${path}"`)
-      .run();
+    return exec.cmd.create().add(`open "${path}"`).run();
   };
 
   const config = settings.electron.builderArgs;

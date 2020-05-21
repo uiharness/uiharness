@@ -33,10 +33,5 @@ export async function serve(args: { settings: Settings; bundle?: boolean }) {
   renderStats({ settings, prod, target: 'web' });
 
   // Start the server.
-  await exec.cmd
-    .create()
-    .add(`cd ${dir}`)
-    .newLine()
-    .add(`serve`)
-    .run();
+  await exec.cmd.create().add(`cd ${dir}`).newLine().add(`serve`).run();
 }

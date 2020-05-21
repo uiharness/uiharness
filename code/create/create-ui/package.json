@@ -14,11 +14,11 @@
     "clean": "rm -rf tmp"
   },
   "dependencies": {
-    "@platform/cli": "0.5.14",
-    "@platform/tmpl": "0.1.2"
+    "@platform/cli": "0.5.36",
+    "@platform/tmpl": "0.1.25"
   },
   "devDependencies": {
-    "@platform/ts": "3.7.12"
+    "@platform/ts": "3.9.2"
   },
   "repository": "uiharness/uiharness",
   "files": [

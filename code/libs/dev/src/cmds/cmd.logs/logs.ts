@@ -32,18 +32,9 @@ export async function logs(args: { settings: Settings; env: Environment; tail?: 
    * Display the log contents.
    */
   if (tail) {
-    await exec.cmd
-      .create()
-      .add('tail')
-      .add('-f')
-      .add(path)
-      .run();
+    await exec.cmd.create().add('tail').add('-f').add(path).run();
   } else {
-    await exec.cmd
-      .create()
-      .add('cat')
-      .add(path)
-      .run();
+    await exec.cmd.create().add('cat').add(path).run();
     log.info();
     log.info(logging.formatPath(path, false));
   }

@@ -204,10 +204,7 @@ async function prepareBuilderYaml(args: { settings: Settings }) {
 
   // Copy in the template file if it does not yet exist.
   if (!exists) {
-    await tmpl
-      .create(settings.path.templates.electron)
-      .use(tmpl.copyFile({}))
-      .execute();
+    await tmpl.create(settings.path.templates.electron).use(tmpl.copyFile({})).execute();
   }
 
   // Update the builder YAML with current input/output paths.

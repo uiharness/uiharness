@@ -79,7 +79,8 @@ export function current(
   // Put (n) digit suffix on similarly named windows.
   windowList = windowList.reduce<MenuItem[]>((acc, next) => {
     const label = next.label;
-    const total = windowList.map(menu => menu.label).filter(label => label === next.label).length;
+    const total = windowList.map(menu => menu.label).filter(label => label === next.label)
+      .length;
     const prior = acc
       .map(menu => menu.label || '')
       .filter(label => label.startsWith(next.label || '') && /.*\(\d+\)$/.test(label)).length;

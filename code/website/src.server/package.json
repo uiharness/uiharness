@@ -9,10 +9,10 @@
     "watch": "nodemon --watch ../src -e ts,tsx --delay 2"
   },
   "dependencies": {
-    "@platform/react.ssr": "^1.1.99"
+    "@platform/react.ssr": "^1.1.139"
   },
   "devDependencies": {
-    "ts-node": "^8.6.2"
+    "ts-node": "^8.10.1"
   },
   "license": "MIT",
   "private": true
