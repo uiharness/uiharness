@@ -1,14 +1,12 @@
 import {
-  defaultValue,
   BundleTarget,
+  defaultValue,
   exec,
   fs,
   Listr,
   log,
   logging,
   logNoConfig,
-  jsYaml,
-  time,
   npm,
 } from '../../common';
 import * as staticAssets from '../../common/staticAssets';

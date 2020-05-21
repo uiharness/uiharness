@@ -1,4 +1,4 @@
-import { BrowserWindow, MenuItemConstructorOptions } from 'electron';
+import { MenuItemConstructorOptions } from 'electron';
 import * as t from './types';
 
 /**
@@ -15,4 +15,4 @@ export function current(args: t.IMenuContext) {
 /**
  * [INTERNAL]
  */
-const getWindow = (id: number) => BrowserWindow.getAllWindows().find(window => window.id === id);
+// const getWindow = (id: number) => BrowserWindow.getAllWindows().find(window => window.id === id);

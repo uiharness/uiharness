@@ -412,10 +412,10 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@uiharness/types@0.7.4":
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.7.4.tgz#5e27b33ad0f1511b3dfa51a4ce8d4b0bbe7958fd"
-  integrity sha512-ETMMfaOSZVQXXXJ02A4s+LoCny/UCkKojCXiH08itYTDCeK6ja0gCsuMKmFQubM11U/an5H1130cGd+15wRp7w==
+"@uiharness/types@0.7.5":
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/@uiharness/types/-/types-0.7.5.tgz#e32a1f1609ad2dd0fdd64a62e7a9e14455bea9aa"
+  integrity sha512-ih+x61+dq5f15T/aa26DLRKhfDzhLalNJTNMlnkNwaySXphITjq2H9SmXFRnZerGCfvoRwcJLA4PvIGOJt2thg==
 
 acorn-jsx@^5.2.0:
   version "5.2.0"

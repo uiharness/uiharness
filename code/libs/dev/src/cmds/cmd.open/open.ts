@@ -8,7 +8,6 @@ import { Settings } from '../../settings';
  */
 export async function open(args: { settings: Settings; folder?: boolean; silent?: boolean }) {
   const { settings, silent } = args;
-  const tmp = settings.path.tmp;
 
   const formatPath = (path: string) => logging.formatPath(path, true);
 
