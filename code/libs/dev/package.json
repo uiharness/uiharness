@@ -29,7 +29,7 @@
     "@uiharness/electron": "0.7.3",
     "@uiharness/types": "0.7.3",
     "create-tmpl": "0.1.70",
-    "electron": "7.1.10",
+    "electron": "13.6.6",
     "electron-builder": "22.2.0",
     "parcel-bundler": "1.12.4",
     "serve": "11.3.0"
